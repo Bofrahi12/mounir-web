@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bermijou Shop | ملابس رياضية ترند — Nike و Under Armour</title>
+<meta name="description" content="Bermijou Shop — ملابس رياضية ترند: أحذية Nike، هوديات وسيرفاتمونت Under Armour. التوصيل لجميع المدن والدفع عند الاستلام.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',Tahoma,sans-serif;background:#0d0d10;color:#f5f5f7;line-height:1.8}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.demo-bar{background:linear-gradient(135deg,#d9a441,#f2c66d);color:#1a1206;text-align:center;font-weight:800;padding:10px 16px;font-size:.95rem}
+.nav{position:sticky;top:0;z-index:50;background:rgba(13,13,16,.94);backdrop-filter:blur(8px);border-bottom:1px solid #26262c}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-weight:900;font-size:1.3rem;color:#fff;text-decoration:none;letter-spacing:1px}
+.logo span{color:#e63946}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{color:#b9b9c2;text-decoration:none;font-weight:700;font-size:.95rem}
+.nav-links a:hover{color:#e63946}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:12px;padding:12px 30px;transition:.2s;border:none;cursor:pointer;font-family:inherit;font-size:1rem}
+.btn-red{background:#e63946;color:#fff}
+.btn-red:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,57,70,.4)}
+.btn-wa{background:#25d366;color:#062b16}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.4)}
+.btn-ghost{border:2px solid #3a3a42;color:#fff;background:transparent}
+.btn-ghost:hover{border-color:#e63946;color:#e63946}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:70px 0}
+.hero-badge{display:inline-block;background:rgba(230,57,70,.14);border:1px solid rgba(230,57,70,.5);color:#ff7b86;padding:8px 20px;border-radius:50px;font-weight:800;margin-bottom:20px}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.5;margin-bottom:16px}
+.hero h1 .red{color:#e63946}
+.hero p{color:#b9b9c2;font-size:1.1rem;margin-bottom:30px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero img{width:100%;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.brands{background:#141418;border-top:1px solid #26262c;border-bottom:1px solid #26262c;padding:18px 0;text-align:center}
+.brands span{font-weight:900;letter-spacing:4px;color:#8a8a94;margin:0 22px;font-size:1.05rem}
+.section{padding:70px 0}
+.sec-title{text-align:center;font-size:1.9rem;font-weight:900;margin-bottom:8px}
+.sec-sub{text-align:center;color:#b9b9c2;margin-bottom:40px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.p-card{background:#16161b;border:1px solid #26262c;border-radius:18px;overflow:hidden;transition:.25s;position:relative}
+.p-card:hover{transform:translateY(-5px);border-color:rgba(230,57,70,.5)}
+.p-card img{width:100%;height:280px;object-fit:cover;display:block}
+.p-tag{position:absolute;top:14px;right:14px;background:#e63946;color:#fff;font-weight:800;font-size:.8rem;padding:5px 14px;border-radius:50px}
+.p-body{padding:22px}
+.p-body h3{font-size:1.15rem;margin-bottom:6px}
+.p-body .desc{color:#8a8a94;font-size:.92rem;margin-bottom:12px}
+.price{font-size:1.6rem;font-weight:900;color:#e63946;margin-bottom:16px}
+.price small{font-size:.85rem;color:#8a8a94;font-weight:600}
+.p-body .btn{width:100%;text-align:center}
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.feat{background:#16161b;border:1px solid #26262c;border-radius:14px;padding:26px 16px;text-align:center}
+.feat .ic{font-size:2.2rem;margin-bottom:10px}
+.feat h4{font-size:1rem;margin-bottom:6px}
+.feat p{color:#8a8a94;font-size:.88rem}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{background:#16161b;border:1px solid #26262c;border-radius:14px;padding:30px 22px;text-align:center}
+.step-n{width:50px;height:50px;border-radius:50%;background:#e63946;color:#fff;font-weight:900;font-size:1.35rem;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.faq-item{background:#16161b;border:1px solid #26262c;border-radius:12px;margin-bottom:12px;overflow:hidden;max-width:720px;margin-left:auto;margin-right:auto}
+.faq-q{width:100%;background:none;border:none;color:#fff;font-family:inherit;font-weight:800;font-size:1.02rem;padding:18px 22px;display:flex;justify-content:space-between;cursor:pointer;text-align:right}
+.faq-q span{color:#e63946;font-size:1.3rem}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s}
+.faq-a p{padding:0 22px 18px;color:#b9b9c2}
+.cta-final{background:linear-gradient(135deg,rgba(230,57,70,.16),rgba(230,57,70,.05));border:1px solid rgba(230,57,70,.35);border-radius:20px;padding:50px 30px;text-align:center}
+.cta-final h2{font-size:1.8rem;margin-bottom:12px}
+.cta-final p{color:#b9b9c2;margin-bottom:26px}
+footer{border-top:1px solid #26262c;padding:30px 0;text-align:center;color:#8a8a94;font-size:.88rem}
+footer .demo-note{color:#d9a441;font-weight:700;margin-top:8px}
+.wa-float{position:fixed;bottom:22px;left:22px;width:60px;height:60px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:1.8rem;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:60}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.grid-3,.feats,.steps{grid-template-columns:1fr}.nav-links a:not(.btn){display:none}}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">📌 عينة تجريبية — صايبها ليك منير بوفري باش تشوف كيفاش غيبان المحل ديالك أونلاين</div>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">BERMIJOU <span>SHOP</span></a>
+    <nav class="nav-links">
+      <a href="#products">المنتجات</a>
+      <a href="#how">كيفاش تطلب</a>
+      <a href="#faq">أسئلة</a>
+      <a href="https://wa.me/212702960030" class="btn btn-wa" style="padding:9px 20px">واتساب</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero container">
+  <div>
+    <div class="hero-badge">🔥 تشكيلة الترند الجديدة وصلات</div>
+    <h1>ملابس رياضية ترند<br><span class="red">Nike</span> و <span class="red">Under Armour</span></h1>
+    <p>أحذية، هوديات وسيرفاتمونت أصلية 100% — التوصيل لجميع المدن المغربية والدفع عند الاستلام.</p>
+    <div class="hero-cta">
+      <a href="#products" class="btn btn-red">تسوق التشكيلة 👇</a>
+      <a href="https://wa.me/212702960030?text=%D8%B7%D9%84%D8%A8" class="btn btn-ghost" data-wa="سلام، بغيت نستفسر على المنتجات ديالكم">💬 استفسر واتساب</a>
+    </div>
+  </div>
+  <img src="demo-bermijou/img/hero.webp" alt="تشكيلة Bermijou Shop">
+</section>
+
+<div class="brands"><span>NIKE</span><span>UNDER ARMOUR</span><span>ترند 2026</span></div>
+
+<section class="section container" id="products">
+  <h2 class="sec-title">🔥 الأكثر طلباً</h2>
+  <p class="sec-sub">اختار المنتج وضغط على الزر — الطلب كيوصلنا مباشرة فواتساب</p>
+  <div class="grid-3">
+    <div class="p-card">
+      <span class="p-tag">الأكثر مبيعاً 🔥</span>
+      <img src="demo-bermijou/img/sneakers.webp" alt="حذاء رياضي ترند">
+      <div class="p-body">
+        <h3>حذاء رياضي ترند — ستايل Nike</h3>
+        <p class="desc">خفيف ومريح، مثالي للرياضة والاستعمال اليومي. متوفر بجميع المقاسات.</p>
+        <div class="price">549 درهم <small>بدل 699</small></div>
+        <a class="btn btn-wa" data-wa="سلام، بغيت نطلب: حذاء رياضي ترند (ستايل Nike) — 549 درهم">📲 اطلب دابا عبر واتساب</a>
+      </div>
+    </div>
+    <div class="p-card">
+      <img src="demo-bermijou/img/hoodie.webp" alt="هودي شتوي">
+      <div class="p-body">
+        <h3>هودي شتوي — ستايل Under Armour</h3>
+        <p class="desc">قطن دافئ بجودة عالية، تصميم عصري يناسب كل الأذواق.</p>
+        <div class="price">349 درهم <small>بدل 449</small></div>
+        <a class="btn btn-wa" data-wa="سلام، بغيت نطلب: هودي شتوي (ستايل Under Armour) — 349 درهم">📲 اطلب دابا عبر واتساب</a>
+      </div>
+    </div>
+    <div class="p-card">
+      <span class="p-tag">جديد ✨</span>
+      <img src="demo-bermijou/img/tracksuit.webp" alt="سيرفاتمونت كاملة">
+      <div class="p-body">
+        <h3>سيرفاتمونت رياضية كاملة</h3>
+        <p class="desc">جاكيت + سروال، خامة ممتازة للرياضة والخرجات اليومية.</p>
+        <div class="price">599 درهم <small>بدل 799</small></div>
+        <a class="btn btn-wa" data-wa="سلام، بغيت نطلب: سيرفاتمونت رياضية كاملة — 599 درهم">📲 اطلب دابا عبر واتساب</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section container" style="padding-top:0">
+  <div class="feats">
+    <div class="feat"><div class="ic">🚚</div><h4>التوصيل لجميع المدن</h4><p>التوصيل سريع لجميع أنحاء المغرب</p></div>
+    <div class="feat"><div class="ic">💵</div><h4>الدفع عند الاستلام</h4><p>خلص ملي توصلك السلعة وتشوفها</p></div>
+    <div class="feat"><div class="ic">✅</div><h4>منتجات أصلية 100%</h4><p>جودة مضمونة أو استرجاع المبلغ</p></div>
+    <div class="feat"><div class="ic">🔄</div><h4>تبديل المقاس</h4><p>إلا ما جاكش المقاس نبدلوه ليك</p></div>
+  </div>
+</section>
+
+<section class="section container" id="how" style="padding-top:0">
+  <h2 class="sec-title">كيفاش تطلب؟</h2>
+  <p class="sec-sub">3 خطوات بسيطة والطلب عندك</p>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><h4>اختار المنتج</h4><p>تصفح التشكيلة واختار اللي عجبك</p></div>
+    <div class="step"><div class="step-n">2</div><h4>ضغط زر واتساب</h4><p>الطلب كيتصيفط مباشرة لينا</p></div>
+    <div class="step"><div class="step-n">3</div><h4>أكد الطلب</h4><p>نتصلو بيك للتأكيد ونصيفطو ليك السلعة</p></div>
+  </div>
+</section>
+
+<section class="section container" id="faq" style="padding-top:0">
+  <h2 class="sec-title">أسئلة شائعة</h2>
+  <p class="sec-sub"></p>
+  <div class="faq-item">
+    <button class="faq-q">التوصيل شحال كيدير ديال الوقت؟ <span>+</span></button>
+    <div class="faq-a"><p>من 24 حتى 72 ساعة حسب المدينة ديالك.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">كيفاش كنخلص؟ <span>+</span></button>
+    <div class="faq-a"><p>الدفع عند الاستلام — كتخلص ملي توصلك السلعة وتشوفها بعينيك.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">إلا ما جانيش المقاس؟ <span>+</span></button>
+    <div class="faq-a"><p>ما كاين مشكل — نبدلوه ليك بمقاس آخر بلا تعقيدات.</p></div>
+  </div>
+</section>
+
+<section class="section container" style="padding-top:0">
+  <div class="cta-final">
+    <h2>🔥 الكمية محدودة — طلب دابا!</h2>
+    <p>تشكيلة الترند كتسالي بسرعة. صيفط طلبك فواتساب وخلي الباقي علينا.</p>
+    <a class="btn btn-wa" style="font-size:1.15rem;padding:16px 44px" data-wa="سلام، بغيت نطلب من تشكيلة الترند ديالكم">📲 اطلب عبر واتساب</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Bermijou Shop — طنجة، المغرب</div>
+    <div class="demo-note">📌 عينة تجريبية للتوضيح فقط — المنتجات والصور لأغراض العرض | صممها منير بوفري</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/212702960030" class="wa-float" aria-label="واتساب">💬</a>
+
+<script>
+const WA='212702960030';
+document.querySelectorAll('[data-wa]').forEach(a=>{
+  a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(a.getAttribute('data-wa'));
+  a.target='_blank';a.rel='noopener';
+});
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');
+  q.addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o=>{o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight=null;});
+    if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
+});
+</script>
+</body>
+</html>
