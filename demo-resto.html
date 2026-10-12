@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Jasmin — Cuisine marocaine authentique à Tanger</title>
+<meta name="description" content="Le Jasmin — cuisine marocaine authentique au cœur de Tanger. Tajines, couscous, grillades et poissons frais. Ouvert tous les jours de 12h00 à 23h00.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+<style>
+  :root{
+    --coal:#171310; --coal2:#1f1a15; --card:#241d17;
+    --cream:#f6efe6; --cream2:#efe4d3;
+    --terra:#c05f33; --terra2:#d97b4a;
+    --gold:#d9a441; --gold2:#eec26e;
+    --ink:#2a211a; --muted:#8b7d6d; --line:#e3d5bf;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Jost',sans-serif;background:var(--coal);color:var(--cream);line-height:1.7;font-weight:300}
+  h1,h2,h3,.serif{font-family:'Playfair Display',serif}
+  .container{max-width:1140px;margin:0 auto;padding:0 22px}
+  img{display:block;max-width:100%}
+
+  /* demo banner */
+  .demo-banner{background:var(--terra);color:#fff;text-align:center;font-size:.83rem;font-weight:500;letter-spacing:.04em;padding:7px 14px}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:60;background:rgba(23,19,16,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,164,65,.22)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:18px}
+  .logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--cream);text-decoration:none;white-space:nowrap}
+  .logo span{color:var(--gold)}
+  .logo small{display:block;font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-top:-4px}
+  .links{display:flex;gap:28px;align-items:center}
+  .links a{color:#ddd2c2;text-decoration:none;font-size:.95rem;font-weight:400;letter-spacing:.03em;transition:.2s}
+  .links a:hover{color:var(--gold2)}
+  .btn{display:inline-block;text-decoration:none;font-weight:500;letter-spacing:.05em;border-radius:3px;padding:12px 28px;transition:.25s;border:1px solid transparent;cursor:pointer;font-family:inherit;font-size:1rem;text-align:center}
+  .btn-terra{background:var(--terra);color:#fff}
+  .btn-terra:hover{background:var(--terra2);transform:translateY(-2px)}
+  .btn-outline{border-color:rgba(246,239,230,.55);color:var(--cream);background:rgba(23,19,16,.25)}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold2)}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#241a08;font-weight:600}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(217,164,65,.3)}
+  .btn-sm{padding:9px 20px;font-size:.92rem}
+  .btn-block{width:100%}
+  .burger{display:none;background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer}
+
+  /* hero */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;background:url('demo-resto/img/hero.jpg') center 62%/cover no-repeat}
+  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,19,16,.62),rgba(23,19,16,.45) 45%,rgba(23,19,16,.88))}
+  .hero-inner{position:relative;text-align:center;padding:90px 22px 80px;width:100%}
+  .hero-badge{display:inline-block;border:1px solid rgba(238,194,110,.6);color:var(--gold2);padding:7px 20px;border-radius:50px;font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px;background:rgba(23,19,16,.4)}
+  .hero h1{font-size:clamp(2.5rem,6.4vw,4.4rem);font-weight:700;line-height:1.15;margin-bottom:18px;text-shadow:0 3px 24px rgba(0,0,0,.5)}
+  .hero h1 em{color:var(--gold2);font-style:italic}
+  .hero p{color:#eadfce;font-size:1.18rem;max-width:620px;margin:0 auto 36px}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero-meta{margin-top:44px;color:#cdbc9f;font-size:.93rem;letter-spacing:.06em}
+
+  /* sections */
+  .section{padding:88px 0}
+  .section-cream{background:var(--cream);color:var(--ink)}
+  .sec-kicker{text-align:center;color:var(--terra);letter-spacing:.3em;text-transform:uppercase;font-size:.8rem;font-weight:500;margin-bottom:10px}
+  .section-cream .sec-kicker{color:var(--terra)}
+  .sec-title{text-align:center;font-size:clamp(1.9rem,4vw,2.6rem);font-weight:700;margin-bottom:14px}
+  .sec-sub{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 50px;font-size:1.03rem}
+  .section-cream .sec-sub{color:#7a6c5b}
+  .ornament{text-align:center;color:var(--gold);font-size:1.05rem;letter-spacing:.5em;margin-bottom:18px}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .about-img{border-radius:6px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);border:1px solid rgba(217,164,65,.25)}
+  .about-img img{width:100%;height:520px;object-fit:cover}
+  .about-txt h2{font-size:2.1rem;font-weight:700;margin-bottom:8px;text-align:left}
+  .about-txt .sec-kicker{text-align:left}
+  .about-txt p{color:#d8cbb6;margin-bottom:16px;font-size:1.02rem}
+  .about-sign{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold2);font-size:1.25rem;margin-top:8px}
+  .about-points{display:flex;gap:30px;margin-top:26px;flex-wrap:wrap}
+  .about-points div strong{display:block;font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold)}
+  .about-points div span{color:var(--muted);font-size:.9rem}
+
+  /* menu */
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px 60px}
+  .menu-cat h3{font-size:1.45rem;font-weight:700;color:var(--ink);border-bottom:2px solid var(--gold);padding-bottom:10px;margin-bottom:8px}
+  .menu-cat h3 span{color:var(--terra);margin-right:8px}
+  .dish{display:flex;gap:14px;padding:15px 0;border-bottom:1px dashed var(--line)}
+  .dish:last-child{border-bottom:none}
+  .dish-txt{flex:1}
+  .dish-txt h4{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:600;color:var(--ink)}
+  .dish-txt p{color:#7a6c5b;font-size:.92rem;line-height:1.55}
+  .dish-price{font-family:'Playfair Display',serif;font-weight:700;color:var(--terra);font-size:1.1rem;white-space:nowrap}
+  .dish-price small{font-size:.72rem;color:#a08d74;font-family:'Jost',sans-serif;font-weight:400}
+  .menu-note{text-align:center;color:#7a6c5b;margin-top:44px;font-size:.95rem}
+
+  /* gallery */
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .gal-grid figure{border-radius:6px;overflow:hidden;position:relative}
+  .gal-grid img{width:100%;height:300px;object-fit:cover;transition:transform .5s}
+  .gal-grid figure:hover img{transform:scale(1.06)}
+  .gal-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;background:linear-gradient(transparent,rgba(23,19,16,.85));color:var(--cream);font-size:.92rem;font-family:'Playfair Display',serif;font-style:italic}
+
+  /* infos */
+  .infos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .info-card{background:var(--card);border:1px solid rgba(217,164,65,.2);border-radius:6px;padding:32px 26px;text-align:center}
+  .info-card .ic{font-size:2.1rem;margin-bottom:12px}
+  .info-card h3{font-size:1.2rem;margin-bottom:8px;color:var(--gold2)}
+  .info-card p{color:#d8cbb6;font-size:.97rem}
+  .info-card a{color:var(--gold2);text-decoration:none}
+  .info-card a:hover{text-decoration:underline}
+
+  /* reservation */
+  .resa-box{max-width:680px;margin:0 auto;background:#fffdf9;border-radius:8px;padding:42px 38px;box-shadow:0 24px 60px rgba(42,33,26,.16)}
+  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-weight:500;margin-bottom:7px;font-size:.95rem;color:var(--ink)}
+  .field input,.field select{width:100%;background:#fff;border:1px solid var(--line);border-radius:5px;color:var(--ink);font-family:inherit;font-size:1rem;padding:12px 15px;transition:.2s}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 3px rgba(192,95,51,.14)}
+  .form-note{text-align:center;color:#7a6c5b;font-size:.88rem;margin-top:14px}
+  .form-err{color:#b3372a;font-weight:500;min-height:1.4em;font-size:.93rem}
+
+  /* footer */
+  footer{border-top:1px solid rgba(217,164,65,.2);padding:48px 0 38px;text-align:center;background:var(--coal2)}
+  footer .logo{font-size:1.7rem}
+  footer p{color:var(--muted);margin-top:10px;font-size:.95rem}
+  .foot-demo{max-width:640px;margin:18px auto 0;font-size:.83rem;color:#6f6151;border-top:1px dashed rgba(217,164,65,.2);padding-top:18px}
+  .copy{font-size:.82rem}
+
+  .wa-float{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:60;transition:.2s}
+  .wa-float:hover{transform:scale(1.08)}
+
+  @media(max-width:900px){
+    .menu-grid{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:1fr 1fr}
+    .infos-grid{grid-template-columns:1fr}
+    .about-grid{grid-template-columns:1fr}
+    .about-img img{height:380px}
+  }
+  @media(max-width:640px){
+    .links{position:fixed;top:70px;right:0;left:0;background:var(--coal2);flex-direction:column;padding:22px;gap:16px;border-bottom:1px solid rgba(217,164,65,.25);display:none}
+    .links.open{display:flex}
+    .burger{display:block}
+    .row-2{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:1fr}
+    .section{padding:62px 0}
+    .resa-box{padding:30px 22px}
+    .hero{min-height:76vh}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">🧪 Site de démonstration — plats et prix à titre illustratif</div>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#accueil" class="logo">Le <span>Jasmin</span><small>Tanger · Maroc</small></a>
+    <nav class="links" id="navLinks">
+      <a href="#accueil">Accueil</a>
+      <a href="#histoire">Notre histoire</a>
+      <a href="#menu">Menu</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#reservation">Réservation</a>
+      <a href="tel:+212693981822" class="btn btn-terra btn-sm">📞 06 93 98 18 22</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="accueil">
+  <div class="container hero-inner">
+    <div class="hero-badge">Restaurant marocain · Tanger</div>
+    <h1>Cuisine marocaine authentique<br>au <em>cœur de Tanger</em></h1>
+    <p>Tajines mijotés au feu doux, couscous du vendredi, poissons frais du port de Tanger — les recettes de nos grands-mères, servies dans un décor de riad.</p>
+    <div class="hero-cta">
+      <a href="#reservation" class="btn btn-terra">🍽️ Réserver une table</a>
+      <a href="#menu" class="btn btn-outline">Voir le menu</a>
+    </div>
+    <div class="hero-meta">🕛 Ouvert tous les jours · 12h00 – 23h00 &nbsp;·&nbsp; 📍 Centre-ville, Tanger</div>
+  </div>
+</section>
+
+<section class="section" id="histoire">
+  <div class="container about-grid">
+    <div class="about-img"><img src="demo-resto/img/about.jpg" alt="Notre chef en cuisine"></div>
+    <div class="about-txt">
+      <div class="sec-kicker">Notre histoire</div>
+      <h2>Une table de famille,<br>devenue une adresse de Tanger</h2>
+      <div class="ornament">✦ ✦ ✦</div>
+      <p>Tout a commencé par les recettes de notre grand-mère, transmises de main en main depuis trois générations. Au Jasmin, chaque tajine mijote lentement, chaque semoule est roulée à la main, et le thé à la menthe se verse de haut, comme il se doit.</p>
+      <p>Nous travaillons chaque matin avec les pêcheurs du port et les maraîchers des souks de Tanger : le poisson du jour, les légumes de saison et les épices fraîchement moulues font notre carte, simple et sincère.</p>
+      <p class="about-sign">— La famille du Jasmin</p>
+      <div class="about-points">
+        <div><strong>3</strong><span>générations de recettes</span></div>
+        <div><strong>100%</strong><span>produits frais du marché</span></div>
+        <div><strong>7j/7</strong><span>service midi et soir</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-cream" id="menu">
+  <div class="container">
+    <div class="sec-kicker">La carte</div>
+    <h2 class="sec-title">Notre menu</h2>
+    <p class="sec-sub">Des plats préparés à la commande, dans le respect des recettes traditionnelles du Nord du Maroc.</p>
+    <div class="menu-grid">
+
+      <div class="menu-cat">
+        <h3><span>🥗</span>Entrées</h3>
+        <div class="dish"><div class="dish-txt"><h4>Harira traditionnelle</h4><p>Soupe de tomates, lentilles et pois chiches, céleri et coriandre fraîche.</p></div><div class="dish-price">35 <small>DH</small></div></div>
+        <div class="dish"><div class="dish-txt"><h4>Salade marocaine</h4><p>Tomates, concombre, oignon doux et olives, huile d'argan et cumin.</p></div><div class="dish-price">40 <small>DH</small></div></div>
+        <div class="dish"><div class="dish-txt"><h4>Briouates au fromage</h4><p>Quatre feuilles de brick croustillantes, fromage frais et herbes du jardin.</p></div><div class="dish-price">45 <small>DH</small></div></div>
+        <div class="dish"><div class="dish-txt"><h4>Zaalouk d'aubergines</h4><p>Caviar d'aubergines fumées, tomates, ail, paprika et huile d'olive.</p></div><div class="dish-price">40 <small>DH</small></div></div>
+      </div>
+
+      <div class="menu-cat">
+        <h3><span>🍲</span>Plats traditionnels</h3>
+        <div class="dish"><div class="dish-txt"><h4>Tajine kefta aux œufs</h4><p>Boulettes de bœuf épicées, sauce tomate mijotée, œufs pochés.</p></div><div class="dish-price">85 <small>DH</small></div></div>
+        <div class="dish"><div class="dish-txt"><h4>Tajine d'agneau aux pruneaux</h4><p>Agneau fondant, pruneaux caramélisés, amandes grillées et cannelle.</p></div><div class="dish-price">110 <small>DH</small></div></div>
+        <div class="dish"><div class="dish-txt"><h4>Couscous royal du vendredi</h4><p>Semoule fine roulée main, agneau, poulet, merguez et légumes du marché.</p></div><div class="dish-price">120 <small>DH</small></div></div>
+        <div class="dish"><div class="dish-txt"><h4>Poulet au citron confit</h4><p>Poulet fermier mijoté, olives violettes et citron confit maison.</p></div><div class="dish-price">95 <small>DH</small></div></div>
+      </div>
+
+      <div class="menu-cat">
+        <h3><span>🔥</span>Grillades &amp; Poissons</h3>
+        <div class="dish"><div class="dish-txt"><h4>Dorade grillée à la chermoula</h4><p>Poisson du jour du port de Tanger, marinade chermoula, légumes grillés.</p></div><div class="dish-price">130 <small>DH</small></div></div>
+        <div class="dish"><div class="dish-txt"><h4>Brochettes mixtes</h4><p>Agneau, poulet et kefta grillés au charbon de bois, riz parfumé.</p></div><div class="dish-price">105 <small>DH</small></div></div>
+        <div class="dish"><div class="dish-txt"><h4>Méchoui d'épaule d'agneau</h4><p>Cuit lentement au four traditionnel, servi au cumin et beurre rance.</p></div><div class="dish-price">160 <small>DH</small></div></div>
+      </div>
+
+      <div class="menu-cat">
+        <h3><span>🍰</span>Desserts &amp; Boissons</h3>
+        <div class="dish"><div class="dish-txt"><h4>Pastilla au lait et aux amandes</h4><p>Feuilles croustillantes, crème légère à la fleur d'oranger.</p></div><div class="dish-price">50 <small>DH</small></div></div>
+        <div class="dish"><div class="dish-txt"><h4>Kaab el ghazal</h4><p>Trois cornes de gazelle à la pâte d'amande et à la cannelle.</p></div><div class="dish-price">35 <small>DH</small></div></div>
+        <div class="dish"><div class="dish-txt"><h4>Thé à la menthe traditionnel</h4><p>Thé vert et menthe fraîche, versé à la marocaine.</p></div><div class="dish-price">20 <small>DH</small></div></div>
+        <div class="dish"><div class="dish-txt"><h4>Jus d'orange frais</h4><p>Oranges de saison pressées à la minute.</p></div><div class="dish-price">25 <small>DH</small></div></div>
+      </div>
+
+    </div>
+    <p class="menu-note">Pain maison et olives offerts à chaque table · Carte susceptible de varier selon le marché du jour.</p>
+  </div>
+</section>
+
+<section class="section" id="galerie">
+  <div class="container">
+    <div class="sec-kicker">Galerie</div>
+    <h2 class="sec-title">En images</h2>
+    <p class="sec-sub">Un aperçu de nos assiettes et de nos rituels de table.</p>
+    <div class="gal-grid">
+      <figure><img src="demo-resto/img/g1.jpg" alt="Tajine signature"><figcaption>Le tajine, notre signature</figcaption></figure>
+      <figure><img src="demo-resto/img/g2.jpg" alt="Couscous aux légumes"><figcaption>Couscous aux légumes du marché</figcaption></figure>
+      <figure><img src="demo-resto/img/g3.jpg" alt="Poisson grillé entier"><figcaption>Poisson grillé du jour</figcaption></figure>
+      <figure><img src="demo-resto/img/g4.jpg" alt="Thé à la menthe"><figcaption>Le rituel du thé à la menthe</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sec-kicker">Infos pratiques</div>
+    <h2 class="sec-title">Nous trouver</h2>
+    <p class="sec-sub">À deux pas de la place du Grand Socco, au centre de Tanger.</p>
+    <div class="infos-grid">
+      <div class="info-card"><div class="ic">🕛</div><h3>Horaires</h3><p>Tous les jours<br>12h00 – 23h00<br><span style="color:var(--muted);font-size:.9rem">Service continu le week-end</span></p></div>
+      <div class="info-card"><div class="ic">📍</div><h3>Adresse</h3><p>12, Avenue Mohammed V<br>Centre-ville<br>90000 Tanger, Maroc</p></div>
+      <div class="info-card"><div class="ic">📞</div><h3>Téléphone</h3><p><a href="tel:+212693981822">+212 6 93 98 18 22</a><br><span style="color:var(--muted);font-size:.9rem">Réponse rapide, aussi sur WhatsApp</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-cream" id="reservation">
+  <div class="container">
+    <div class="sec-kicker">Réservation</div>
+    <h2 class="sec-title">Réserver une table</h2>
+    <p class="sec-sub">Remplissez le formulaire : votre demande part directement sur notre WhatsApp, et nous vous confirmons en quelques minutes.</p>
+    <form class="resa-box" id="resaForm" novalidate>
+      <div class="row-2">
+        <div class="field">
+          <label for="rName">Nom complet *</label>
+          <input type="text" id="rName" placeholder="Ex : Yasmine El Amrani" required>
+        </div>
+        <div class="field">
+          <label for="rPhone">Téléphone *</label>
+          <input type="tel" id="rPhone" placeholder="06 XX XX XX XX" required>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="rDate">Date *</label>
+          <input type="date" id="rDate" required>
+        </div>
+        <div class="field">
+          <label for="rTime">Heure *</label>
+          <select id="rTime" required>
+            <option value="">Choisir…</option>
+            <option>12h00</option><option>12h30</option><option>13h00</option><option>13h30</option>
+            <option>14h00</option><option>19h00</option><option>19h30</option><option>20h00</option>
+            <option>20h30</option><option>21h00</option><option>21h30</option><option>22h00</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="rGuests">Nombre de personnes *</label>
+        <select id="rGuests" required>
+          <option value="">Choisir…</option>
+          <option>1 personne</option><option>2 personnes</option><option>3 personnes</option>
+          <option>4 personnes</option><option>5 personnes</option><option>6 personnes</option>
+          <option>7 personnes</option><option>8 personnes et plus</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="rNote">Précisions (optionnel)</label>
+        <input type="text" id="rNote" placeholder="Anniversaire, table en terrasse, allergies…">
+      </div>
+      <p class="form-err" id="resaErr"></p>
+      <button type="submit" class="btn btn-gold btn-lg btn-block">📲 Confirmer via WhatsApp</button>
+      <p class="form-note">En cliquant, WhatsApp s'ouvre avec votre demande déjà rédigée — il ne reste qu'à l'envoyer.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo">Le <span>Jasmin</span></div>
+    <p>Cuisine marocaine authentique — Centre-ville, Tanger · Tous les jours 12h00 – 23h00 · +212 6 93 98 18 22</p>
+    <p class="copy">© 2026 Le Jasmin — Démo</p>
+    <p class="foot-demo">Site de démonstration réalisé à titre d'exemple — les plats et prix sont illustratifs.</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/212693981822?text=Bonjour%20Le%20Jasmin%2C%20je%20souhaite%20des%20informations%20pour%20une%20r%C3%A9servation." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script>
+  // Menu mobile
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+  navLinks.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ navLinks.classList.remove('open'); } });
+
+  // Réservation -> WhatsApp
+  document.getElementById('resaForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name   = document.getElementById('rName').value.trim();
+    var phone  = document.getElementById('rPhone').value.trim();
+    var date   = document.getElementById('rDate').value;
+    var time   = document.getElementById('rTime').value;
+    var guests = document.getElementById('rGuests').value;
+    var note   = document.getElementById('rNote').value.trim();
+    var err    = document.getElementById('resaErr');
+    if(!name || !phone || !date || !time || !guests){
+      err.textContent = 'Merci de remplir tous les champs marqués d\u2019un astérisque.';
+      return;
+    }
+    err.textContent = '';
+    var parts = date.split('-');
+    var dateFr = parts[2] + '/' + parts[1] + '/' + parts[0];
+    var msg = 'Bonjour Le Jasmin, je souhaite réserver une table :\n'
+            + '• Nom : ' + name + '\n'
+            + '• Téléphone : ' + phone + '\n'
+            + '• Date : ' + dateFr + '\n'
+            + '• Heure : ' + time + '\n'
+            + '• Personnes : ' + guests;
+    if(note){ msg += '\n• Précisions : ' + note; }
+    msg += '\nMerci de me confirmer la disponibilité.';
+    window.open('https://wa.me/212693981822?text=' + encodeURIComponent(msg), '_blank');
+  });
+</script>
+</body>
+</html>

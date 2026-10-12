@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>ATLAS MODE — أطلس مود | متجر أزياء مغربي (نموذج تجريبي)</title>
+<meta name="description" content="نموذج تجريبي لمتجر أزياء مغربي: ملابس نسائية ورجالية، أحذية وإكسسوارات — الدفع عند الاستلام والتوصيل لجميع المدن المغربية.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧥</text></svg>">
+<style>
+:root{
+  --cream:#faf6ef; --white:#ffffff; --ink:#1b150e; --muted:#7a6f60;
+  --accent:#c2571b; --accent-dark:#9c4211; --sand:#f1e7d8; --line:#e9dfd0;
+  --green:#25d366; --radius:18px;
+  --shadow:0 10px 30px rgba(27,21,14,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',Tahoma,sans-serif;background:var(--cream);color:var(--ink);line-height:1.8}
+img{display:block;max-width:100%}
+.container{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* demo banner */
+.demo-banner{background:var(--ink);color:#f5ead9;text-align:center;font-size:.85rem;font-weight:700;padding:8px 14px;letter-spacing:.2px}
+
+/* header */
+header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hd-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.logo{font-weight:900;font-size:1.5rem;color:var(--ink);text-decoration:none;letter-spacing:1px}
+.logo span{color:var(--accent)}
+.logo small{display:block;font-size:.68rem;letter-spacing:3px;color:var(--muted);font-weight:700;line-height:1}
+nav.main-nav{display:flex;gap:28px}
+nav.main-nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:1rem}
+nav.main-nav a:hover{color:var(--accent)}
+.cart-btn{position:relative;background:var(--ink);color:#fff;border:none;border-radius:50px;padding:10px 20px;font-family:inherit;font-weight:800;font-size:.95rem;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.2s}
+.cart-btn:hover{background:var(--accent)}
+.cart-count{position:absolute;top:-8px;inset-inline-start:-8px;background:var(--accent);color:#fff;font-size:.75rem;font-weight:900;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+.cart-btn:hover .cart-count{background:var(--ink)}
+.burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink)}
+
+/* hero */
+.hero{padding:56px 0 64px;background:linear-gradient(180deg,var(--cream),#fff)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero-badge{display:inline-block;background:#fbe9db;color:var(--accent-dark);border:1px solid #f3cdb0;font-weight:800;font-size:.85rem;padding:6px 16px;border-radius:50px;margin-bottom:18px}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:900;line-height:1.35;margin-bottom:16px}
+.hero h1 .accent{color:var(--accent)}
+.hero p{color:var(--muted);font-size:1.12rem;margin-bottom:30px;max-width:480px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:50px;padding:13px 32px;font-size:1rem;border:2px solid transparent;cursor:pointer;font-family:inherit;transition:.2s;text-align:center}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-dark);transform:translateY(-2px)}
+.btn-wa{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-wa:hover{border-color:var(--green);color:#128c4b}
+.hero-img{position:relative}
+.hero-img::before{content:'';position:absolute;inset:22px -22px -22px 22px;background:var(--sand);border-radius:26px;z-index:0}
+.hero-img img{position:relative;z-index:1;width:100%;height:540px;object-fit:cover;border-radius:26px;box-shadow:var(--shadow)}
+.hero-tag{position:absolute;z-index:2;bottom:26px;inset-inline-start:26px;background:#fff;border-radius:14px;padding:10px 18px;box-shadow:var(--shadow);font-weight:800;font-size:.95rem}
+.hero-tag span{color:var(--accent)}
+
+/* trust */
+.trust{background:#fff;border-block:1px solid var(--line)}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:22px 0}
+.trust-item{display:flex;align-items:center;gap:12px;justify-content:center;font-weight:800;font-size:.98rem}
+.trust-item .t-icon{font-size:1.7rem}
+.trust-item small{display:block;color:var(--muted);font-weight:600;font-size:.82rem}
+
+/* sections */
+.section{padding:72px 0}
+.sec-title{font-size:2rem;font-weight:900;text-align:center;margin-bottom:8px}
+.sec-sub{text-align:center;color:var(--muted);margin-bottom:42px}
+
+/* categories */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat-card{position:relative;border-radius:var(--radius);overflow:hidden;text-decoration:none;box-shadow:var(--shadow)}
+.cat-card img{width:100%;height:300px;object-fit:cover;transition:.4s}
+.cat-card:hover img{transform:scale(1.06)}
+.cat-label{position:absolute;bottom:0;right:0;left:0;padding:38px 18px 16px;background:linear-gradient(transparent,rgba(20,13,6,.78));color:#fff}
+.cat-label h3{font-size:1.3rem;font-weight:900}
+.cat-label span{font-size:.88rem;color:#ffd9bd;font-weight:700}
+
+/* products */
+.shop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.product{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s;display:flex;flex-direction:column}
+.product:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#e2cdb4}
+.p-img{position:relative}
+.p-img img{width:100%;height:320px;object-fit:cover}
+.p-badge{position:absolute;top:12px;inset-inline-start:12px;background:var(--accent);color:#fff;font-weight:900;font-size:.82rem;padding:4px 12px;border-radius:50px}
+.p-body{padding:18px;display:flex;flex-direction:column;flex:1}
+.p-cat{color:var(--accent);font-weight:800;font-size:.8rem;letter-spacing:.4px}
+.p-name{font-weight:800;font-size:1.08rem;margin:4px 0 10px;line-height:1.55}
+.p-price{display:flex;align-items:baseline;gap:10px;margin-top:auto;margin-bottom:14px}
+.p-price .new{font-size:1.3rem;font-weight:900;color:var(--accent-dark)}
+.p-price .old{color:var(--muted);text-decoration:line-through;font-size:.95rem}
+.add-btn{background:var(--ink);color:#fff;border:none;border-radius:12px;padding:12px;font-family:inherit;font-weight:800;font-size:.98rem;cursor:pointer;transition:.2s;width:100%}
+.add-btn:hover{background:var(--accent)}
+
+/* promo */
+.promo{background:linear-gradient(120deg,var(--accent-dark),var(--accent) 60%,#d97b3f);color:#fff;border-radius:26px;padding:52px 40px;text-align:center;box-shadow:var(--shadow)}
+.promo h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;margin-bottom:10px}
+.promo p{color:#ffe3cd;font-size:1.08rem;margin-bottom:26px}
+.promo .btn{background:#fff;color:var(--accent-dark)}
+.promo .btn:hover{transform:translateY(-2px)}
+
+/* testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.testi{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px}
+.testi .stars{color:#e8a33d;font-size:1.05rem;letter-spacing:2px;margin-bottom:12px}
+.testi p{color:#4c4234;font-size:1rem;margin-bottom:16px}
+.testi .who{font-weight:900}
+.testi .who small{display:block;color:var(--muted);font-weight:600}
+
+/* footer */
+footer{background:var(--ink);color:#e9e2d4;padding:60px 0 0;margin-top:20px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-bottom:40px}
+footer h4{color:#fff;font-size:1.1rem;margin-bottom:14px;font-weight:900}
+footer p,footer li{color:#bdb09a;font-size:.95rem}
+footer ul{list-style:none}
+footer li{padding:4px 0}
+footer a{color:#ffd9bd;text-decoration:none;font-weight:700}
+.foot-logo{font-size:1.5rem;font-weight:900;color:#fff;letter-spacing:1px}
+.foot-logo span{color:var(--accent)}
+.foot-bottom{border-top:1px solid #33291d;padding:20px 0;text-align:center;color:#9a8b74;font-size:.88rem}
+
+/* cart drawer */
+.overlay{position:fixed;inset:0;background:rgba(20,13,6,.5);opacity:0;pointer-events:none;transition:.3s;z-index:80}
+.overlay.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;bottom:0;inset-inline-end:0;width:min(400px,92vw);background:#fff;z-index:90;transform:translateX(-110%);transition:.35s;display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.2)}
+[dir="rtl"] .drawer{transform:translateX(-110%)}
+.drawer.open{transform:translateX(0)!important}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px;border-bottom:1px solid var(--line)}
+.drawer-head h3{font-size:1.2rem;font-weight:900}
+.drawer-close{background:var(--sand);border:none;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer}
+.drawer-items{flex:1;overflow-y:auto;padding:16px 20px}
+.cart-empty{text-align:center;color:var(--muted);padding:40px 10px;font-weight:700}
+.ci{display:flex;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line);align-items:center}
+.ci img{width:62px;height:74px;object-fit:cover;border-radius:10px}
+.ci-info{flex:1}
+.ci-name{font-weight:800;font-size:.95rem;line-height:1.5}
+.ci-price{color:var(--accent-dark);font-weight:800;font-size:.92rem}
+.ci-actions{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty-btn{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);background:#fff;font-weight:900;cursor:pointer;font-family:inherit}
+.qty-btn:hover{border-color:var(--accent);color:var(--accent)}
+.ci-remove{background:none;border:none;color:#c0392b;font-size:.82rem;font-weight:800;cursor:pointer;font-family:inherit;margin-inline-start:auto}
+.drawer-foot{border-top:1px solid var(--line);padding:18px 20px;background:var(--cream)}
+.total-row{display:flex;justify-content:space-between;font-weight:900;font-size:1.15rem;margin-bottom:6px}
+.ship-note{color:var(--muted);font-size:.85rem;margin-bottom:14px}
+.order-btn{display:block;width:100%;background:var(--green);color:#fff;text-align:center;text-decoration:none;font-weight:900;font-size:1.05rem;padding:14px;border-radius:12px;border:none;cursor:pointer;font-family:inherit}
+.order-btn:hover{background:#1eb856}
+.order-btn:disabled{background:#b9c4bc;cursor:not-allowed}
+
+/* toast */
+.toast{position:fixed;bottom:26px;right:50%;transform:translate(50%,90px);background:var(--ink);color:#fff;font-weight:800;padding:12px 26px;border-radius:50px;z-index:120;transition:.35s;box-shadow:var(--shadow);font-size:.95rem}
+.toast.show{transform:translate(50%,0)}
+
+/* responsive */
+@media(max-width:1020px){
+  .shop-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-grid{grid-template-columns:repeat(2,1fr);gap:18px}
+  .testi-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  nav.main-nav{position:fixed;top:70px;right:0;left:0;background:#fff;flex-direction:column;padding:18px 22px;gap:14px;border-bottom:1px solid var(--line);display:none;z-index:55}
+  nav.main-nav.open{display:flex}
+  .burger{display:block}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-img img{height:420px}
+  .hero-img::before{inset:14px -10px -14px 10px}
+  .section{padding:52px 0}
+}
+@media(max-width:520px){
+  .shop-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .cart-btn .cart-label{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">🧪 نموذج تجريبي — متجر للعرض فقط، المنتجات والأثمنة استرشادية</div>
+
+<header>
+  <div class="container hd-inner">
+    <a href="#home" class="logo">ATLAS<span>MODE</span><small>أطلس مود — طنجة</small></a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#home">الرئيسية</a>
+      <a href="#shop">المتجر</a>
+      <a href="#cats">التصنيفات</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button class="cart-btn" onclick="openCart()" aria-label="سلة التسوق">🛒 <span class="cart-label">السلة</span><span class="cart-count" id="cartCount">0</span></button>
+      <button class="burger" id="burger" aria-label="القائمة">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-badge">✨ تشكيلة جديدة — خريف 2026</span>
+      <h1>أناقة مغربية… <span class="accent">بلمسة عصرية</span></h1>
+      <p>ملابس، أحذية وإكسسوارات مختارة بعناية للمرأة والرجل العصريين. جودة تستاهلها، أثمنة في المتناول، والدفع عند الاستلام حتى لباب دارك.</p>
+      <div class="hero-cta">
+        <a href="#shop" class="btn btn-accent">🛍️ تسوق الآن</a>
+        <a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20ATLAS%20MODE" target="_blank" rel="noopener" class="btn btn-wa">💬 سولنا فواتساب</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="demo-mode/img/hero.jpg" alt="فستان أخضر أنيق — تشكيلة ATLAS MODE">
+      <div class="hero-tag">ابتداءً من <span>299 درهم</span> فقط</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="container trust-grid">
+    <div class="trust-item"><span class="t-icon">🚚</span><span>توصيل سريع<small>لجميع المدن المغربية</small></span></div>
+    <div class="trust-item"><span class="t-icon">💵</span><span>الدفع عند الاستلام<small>خلّص غير ملي توصلك السلعة</small></span></div>
+    <div class="trust-item"><span class="t-icon">↩️</span><span>إرجاع ساهل<small>خلال 14 يوم من الاستلام</small></span></div>
+    <div class="trust-item"><span class="t-icon">✅</span><span>جودة مضمونة<small>كنعاينو كل قطعة قبل الشحن</small></span></div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="section" id="cats">
+  <div class="container">
+    <h2 class="sec-title">تسوّق حسب التصنيف</h2>
+    <p class="sec-sub">أربع عوالم، ستايل واحد: أنت.</p>
+    <div class="cat-grid">
+      <a class="cat-card" href="#shop">
+        <img src="demo-mode/img/cat-femmes.jpg" alt="ملابس نسائية">
+        <div class="cat-label"><h3>نساء</h3><span>فساتين، معاطف وبلايز ←</span></div>
+      </a>
+      <a class="cat-card" href="#shop">
+        <img src="demo-mode/img/cat-hommes.jpg" alt="ملابس رجالية">
+        <div class="cat-label"><h3>رجال</h3><span>سترات جلد وقطع شتوية ←</span></div>
+      </a>
+      <a class="cat-card" href="#shop">
+        <img src="demo-mode/img/cat-chaussures.jpg" alt="أحذية">
+        <div class="cat-label"><h3>أحذية</h3><span>رياضية وكلاسيكية ←</span></div>
+      </a>
+      <a class="cat-card" href="#shop">
+        <img src="demo-mode/img/cat-accessoires.jpg" alt="إكسسوارات">
+        <div class="cat-label"><h3>إكسسوارات</h3><span>حقائب ولمسات أخيرة ←</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section" id="shop" style="padding-top:10px">
+  <div class="container">
+    <h2 class="sec-title">المتجر</h2>
+    <p class="sec-sub">قطع مختارة من التشكيلة الجديدة — زيد للسلة واطلب بلا تعقيد.</p>
+    <div class="shop-grid">
+
+      <article class="product">
+        <div class="p-img"><img src="demo-mode/img/p1.jpg" alt="فستان سهرة زمردي"><span class="p-badge">-31%</span></div>
+        <div class="p-body">
+          <span class="p-cat">نساء</span>
+          <h3 class="p-name">فستان سهرة زمردي بأكمام طويلة</h3>
+          <div class="p-price"><span class="new">449 درهم</span><span class="old">649 درهم</span></div>
+          <button class="add-btn" onclick="addToCart(1)">🛒 أضف إلى السلة</button>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="p-img"><img src="demo-mode/img/p2.jpg" alt="فستان ميدي بنقشة الفهد"></div>
+        <div class="p-body">
+          <span class="p-cat">نساء</span>
+          <h3 class="p-name">فستان ميدي بنقشة الفهد</h3>
+          <div class="p-price"><span class="new">399 درهم</span></div>
+          <button class="add-btn" onclick="addToCart(2)">🛒 أضف إلى السلة</button>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="p-img"><img src="demo-mode/img/p3.jpg" alt="فستان صيفي بالأزهار"></div>
+        <div class="p-body">
+          <span class="p-cat">نساء</span>
+          <h3 class="p-name">فستان صيفي بالأزهار</h3>
+          <div class="p-price"><span class="new">349 درهم</span></div>
+          <button class="add-btn" onclick="addToCart(3)">🛒 أضف إلى السلة</button>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="p-img"><img src="demo-mode/img/p4.jpg" alt="سترة جلد بايكر سوداء"></div>
+        <div class="p-body">
+          <span class="p-cat">رجال</span>
+          <h3 class="p-name">سترة جلد «بايكر» سوداء</h3>
+          <div class="p-price"><span class="new">899 درهم</span></div>
+          <button class="add-btn" onclick="addToCart(4)">🛒 أضف إلى السلة</button>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="p-img"><img src="demo-mode/img/p5.jpg" alt="سترة شتوية بياقة فراء"><span class="p-badge">-23%</span></div>
+        <div class="p-body">
+          <span class="p-cat">رجال</span>
+          <h3 class="p-name">سترة شتوية بياقة فراء فاخرة</h3>
+          <div class="p-price"><span class="new">999 درهم</span><span class="old">1,299 درهم</span></div>
+          <button class="add-btn" onclick="addToCart(5)">🛒 أضف إلى السلة</button>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="p-img"><img src="demo-mode/img/p6.jpg" alt="جينز نسائي بخصر عال"></div>
+        <div class="p-body">
+          <span class="p-cat">نساء</span>
+          <h3 class="p-name">جينز بخصر عالٍ مع حزام</h3>
+          <div class="p-price"><span class="new">299 درهم</span></div>
+          <button class="add-btn" onclick="addToCart(6)">🛒 أضف إلى السلة</button>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="p-img"><img src="demo-mode/img/p7.jpg" alt="حذاء رياضي أسود"><span class="p-badge">-27%</span></div>
+        <div class="p-body">
+          <span class="p-cat">أحذية</span>
+          <h3 class="p-name">حذاء رياضي أسود مريح</h3>
+          <div class="p-price"><span class="new">549 درهم</span><span class="old">749 درهم</span></div>
+          <button class="add-btn" onclick="addToCart(7)">🛒 أضف إلى السلة</button>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="p-img"><img src="demo-mode/img/p8.jpg" alt="حقيبة توت مبطنة حمراء"></div>
+        <div class="p-body">
+          <span class="p-cat">إكسسوارات</span>
+          <h3 class="p-name">حقيبة «توت» مبطّنة حمراء</h3>
+          <div class="p-price"><span class="new">329 درهم</span></div>
+          <button class="add-btn" onclick="addToCart(8)">🛒 أضف إلى السلة</button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROMO -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="promo">
+      <h2>🔥 تخفيضات الموسم — حتى -40%</h2>
+      <p>على قطع مختارة من التشكيلة الشتوية. الكمية محدودة، والطلب كيوصلك حتى لباب الدار مع الدفع عند الاستلام.</p>
+      <a href="#shop" class="btn">شوف العروض ←</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <h2 class="sec-title">شنو قالو علينا زبناؤنا</h2>
+    <p class="sec-sub">آراء حقيقية من مدن مغربية مختلفة.</p>
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>«طلبت الفستان الأخضر ووصلني في يومين لطنجة. القماش زوين بزاف والقياس مضبوط — أكيد غادي نعاود نطلب.»</p>
+        <div class="who">سلمى<small>طنجة</small></div>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>«السترة الجلد فاقت التوقعات ديالي، والتعامل راقي في واتساب. خلصت غير ملي وصلاتني السلعة، بلا ما نتقلق.»</p>
+        <div class="who">يوسف<small>الدار البيضاء</small></div>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>«الحقيبة الحمراء وليت كنخرج بيها كل نهار. الثمن مناسب والجودة باينة من أول استعمال. شكراً أطلس مود!»</p>
+        <div class="who">خديجة<small>أكادير</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">ATLAS<span>MODE</span></div>
+        <p style="margin-top:12px">متجر أزياء مغربي كيقرّب ليك آخر صيحات الموضة بجودة مضمونة وأثمنة مدروسة — من طنجة إلى جميع المدن المغربية.</p>
+      </div>
+      <div>
+        <h4>تواصل معنا</h4>
+        <ul>
+          <li>📍 طنجة، المغرب</li>
+          <li>💬 واتساب: <a href="https://wa.me/212693981822" target="_blank" rel="noopener" dir="ltr">+212 693-981822</a></li>
+          <li>✉️ البريد: contact@atlasmode.example</li>
+        </ul>
+      </div>
+      <div>
+        <h4>أوقات العمل</h4>
+        <ul>
+          <li>الاثنين – السبت: 9:00 → 20:00</li>
+          <li>الأحد: 10:00 → 14:00</li>
+          <li>الطلبات عبر الموقع: 24/7</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      © 2026 Atlas Mode — Démo · نموذج تجريبي للعرض فقط — المنتجات والأثمنة استرشادية ولا تمثل متجراً حقيقياً.
+    </div>
+  </div>
+</footer>
+
+<!-- CART -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="سلة التسوق">
+  <div class="drawer-head">
+    <h3>🛒 سلة التسوق</h3>
+    <button class="drawer-close" onclick="closeCart()" aria-label="إغلاق">✕</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>المجموع</span><span id="cartTotal">0 درهم</span></div>
+    <p class="ship-note">🚚 التوصيل يُحسب عند تأكيد الطلب — الدفع عند الاستلام.</p>
+    <button class="order-btn" id="orderBtn" onclick="orderWhatsApp()">📲 اطلب عبر واتساب</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast">✅ تزاد المنتج للسلة</div>
+
+<script>
+const PRODUCTS = {
+  1:{name:'فستان سهرة زمردي بأكمام طويلة', price:449, img:'demo-mode/img/p1.jpg'},
+  2:{name:'فستان ميدي بنقشة الفهد', price:399, img:'demo-mode/img/p2.jpg'},
+  3:{name:'فستان صيفي بالأزهار', price:349, img:'demo-mode/img/p3.jpg'},
+  4:{name:'سترة جلد «بايكر» سوداء', price:899, img:'demo-mode/img/p4.jpg'},
+  5:{name:'سترة شتوية بياقة فراء فاخرة', price:999, img:'demo-mode/img/p5.jpg'},
+  6:{name:'جينز بخصر عالٍ مع حزام', price:299, img:'demo-mode/img/p6.jpg'},
+  7:{name:'حذاء رياضي أسود مريح', price:549, img:'demo-mode/img/p7.jpg'},
+  8:{name:'حقيبة «توت» مبطّنة حمراء', price:329, img:'demo-mode/img/p8.jpg'}
+};
+const WA_NUMBER = '212693981822';
+let cart = {};
+
+function fmt(n){ return n.toLocaleString('fr-MA') + ' درهم'; }
+
+function cartCountTotal(){
+  return Object.values(cart).reduce((a,q)=>a+q,0);
+}
+function cartPriceTotal(){
+  return Object.entries(cart).reduce((a,[id,q])=>a + PRODUCTS[id].price*q, 0);
+}
+
+function addToCart(id){
+  cart[id] = (cart[id]||0) + 1;
+  renderCart();
+  showToast('✅ تزاد «' + PRODUCTS[id].name + '» للسلة');
+}
+function changeQty(id,delta){
+  cart[id] = (cart[id]||0) + delta;
+  if(cart[id] <= 0) delete cart[id];
+  renderCart();
+}
+function removeItem(id){
+  delete cart[id];
+  renderCart();
+}
+
+function renderCart(){
+  document.getElementById('cartCount').textContent = cartCountTotal();
+  const box = document.getElementById('drawerItems');
+  const ids = Object.keys(cart);
+  if(!ids.length){
+    box.innerHTML = '<div class="cart-empty">🛍️ السلة خاوية…<br>زيد شي قطعة من المتجر وارجع لهنا.</div>';
+  } else {
+    box.innerHTML = ids.map(id=>{
+      const p = PRODUCTS[id], q = cart[id];
+      return '<div class="ci">' +
+        '<img src="' + p.img + '" alt="">' +
+        '<div class="ci-info">' +
+          '<div class="ci-name">' + p.name + '</div>' +
+          '<div class="ci-price">' + fmt(p.price*q) + '</div>' +
+          '<div class="ci-actions">' +
+            '<button class="qty-btn" onclick="changeQty(' + id + ',1)">+</button>' +
+            '<span style="font-weight:900;min-width:20px;text-align:center">' + q + '</span>' +
+            '<button class="qty-btn" onclick="changeQty(' + id + ',-1)">−</button>' +
+            '<button class="ci-remove" onclick="removeItem(' + id + ')">🗑 حذف</button>' +
+          '</div>' +
+        '</div></div>';
+    }).join('');
+  }
+  document.getElementById('cartTotal').textContent = fmt(cartPriceTotal());
+  document.getElementById('orderBtn').disabled = !ids.length;
+}
+
+function orderWhatsApp(){
+  const ids = Object.keys(cart);
+  if(!ids.length) return;
+  let lines = ['السلام ATLAS MODE، بغيت نطلب هاد المنتجات:', ''];
+  ids.forEach(id=>{
+    const p = PRODUCTS[id], q = cart[id];
+    lines.push('• ' + p.name + ' × ' + q + ' — ' + fmt(p.price*q));
+  });
+  lines.push('');
+  lines.push('المجموع: ' + fmt(cartPriceTotal()));
+  lines.push('الدفع عند الاستلام. شكراً!');
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank');
+}
+
+function openCart(){
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+}
+function closeCart(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+document.getElementById('burger').addEventListener('click', ()=>{
+  document.getElementById('mainNav').classList.toggle('open');
+});
+document.querySelectorAll('#mainNav a').forEach(a=>a.addEventListener('click', ()=>{
+  document.getElementById('mainNav').classList.remove('open');
+}));
+
+renderCart();
+</script>
+</body>
+</html>
