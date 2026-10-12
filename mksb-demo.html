@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MKSB Voyage | Votre partenaire tourisme, voyage et découverte — Tanger</title>
+<meta name="description" content="MKSB Voyage — Agence de voyages à Tanger : visites guidées, excursions au Maroc, voyages organisés en Espagne, billets d'avion et réservations d'hôtels. Réservez directement sur WhatsApp.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat',Arial,sans-serif;background:#0b1526;color:#f2f6fb;line-height:1.7}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.demo-bar{background:rgba(217,164,65,.12);border-bottom:1px solid rgba(217,164,65,.35);color:#f2c66d;text-align:center;font-weight:700;padding:7px 16px;font-size:.82rem}
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,21,38,.95);backdrop-filter:blur(8px);border-bottom:1px solid #1d2c47}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-weight:900;font-size:1.25rem;color:#fff;text-decoration:none;letter-spacing:.5px}
+.logo span{color:#3fa7ff}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{color:#b9c6d8;text-decoration:none;font-weight:700;font-size:.92rem}
+.nav-links a:hover{color:#3fa7ff}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:12px;padding:12px 28px;transition:.2s;border:none;cursor:pointer;font-family:inherit;font-size:1rem}
+.btn-blue{background:#1d7fe0;color:#fff}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,127,224,.45)}
+.btn-wa{background:#25d366;color:#062b16}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.4)}
+.btn-ghost{border:2px solid #33465f;color:#fff;background:transparent}
+.btn-ghost:hover{border-color:#3fa7ff;color:#3fa7ff}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:64px 0}
+.hero-badge{display:inline-block;background:rgba(63,167,255,.13);border:1px solid rgba(63,167,255,.45);color:#7cc2ff;padding:8px 20px;border-radius:50px;font-weight:800;margin-bottom:20px;font-size:.9rem}
+.hero h1{font-size:clamp(1.9rem,4.6vw,2.9rem);font-weight:900;line-height:1.35;margin-bottom:16px}
+.hero h1 .blue{color:#3fa7ff}
+.hero p{color:#b9c6d8;font-size:1.05rem;margin-bottom:28px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero img{width:100%;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5);height:420px;object-fit:cover}
+.stats{background:#0e1b31;border-top:1px solid #1d2c47;border-bottom:1px solid #1d2c47;padding:22px 0;text-align:center}
+.stats .container{display:flex;justify-content:center;gap:44px;flex-wrap:wrap}
+.stat strong{font-size:1.5rem;color:#3fa7ff;display:block}
+.stat span{color:#b9c6d8;font-size:.88rem;font-weight:600}
+.section{padding:66px 0}
+.sec-title{text-align:center;font-size:1.85rem;font-weight:900;margin-bottom:8px}
+.sec-sub{text-align:center;color:#b9c6d8;margin-bottom:40px;max-width:640px;margin-left:auto;margin-right:auto}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.t-card{background:#111e33;border:1px solid #22344f;border-radius:18px;overflow:hidden;transition:.25s;position:relative}
+.t-card:hover{transform:translateY(-5px);border-color:rgba(63,167,255,.55)}
+.t-card img{width:100%;height:240px;object-fit:cover;display:block}
+.t-tag{position:absolute;top:14px;left:14px;background:#1d7fe0;color:#fff;font-weight:800;font-size:.78rem;padding:5px 14px;border-radius:50px}
+.t-body{padding:22px}
+.t-body h3{font-size:1.12rem;margin-bottom:6px}
+.t-body .desc{color:#93a2b8;font-size:.9rem;margin-bottom:12px}
+.t-body .incl{color:#93a2b8;font-size:.82rem;margin-bottom:14px;list-style:none}
+.t-body .incl li:before{content:"✓ ";color:#25d366;font-weight:800}
+.price{font-size:1.5rem;font-weight:900;color:#3fa7ff;margin-bottom:16px}
+.price small{font-size:.82rem;color:#93a2b8;font-weight:600}
+.t-body .btn{width:100%;text-align:center}
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.feat{background:#111e33;border:1px solid #22344f;border-radius:14px;padding:26px 16px;text-align:center}
+.feat .ic{font-size:2.2rem;margin-bottom:10px}
+.feat h4{font-size:1rem;margin-bottom:6px}
+.feat p{color:#93a2b8;font-size:.88rem}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{background:#111e33;border:1px solid #22344f;border-radius:14px;padding:30px 22px;text-align:center}
+.step-n{width:50px;height:50px;border-radius:50%;background:#1d7fe0;color:#fff;font-weight:900;font-size:1.35rem;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.faq-item{background:#111e33;border:1px solid #22344f;border-radius:12px;margin-bottom:12px;overflow:hidden;max-width:720px;margin-left:auto;margin-right:auto}
+.faq-q{width:100%;background:none;border:none;color:#fff;font-family:inherit;font-weight:800;font-size:1rem;padding:18px 22px;display:flex;justify-content:space-between;cursor:pointer;text-align:left}
+.faq-q span{color:#3fa7ff;font-size:1.3rem}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s}
+.faq-a p{padding:0 22px 18px;color:#b9c6d8}
+.cta-final{background:linear-gradient(135deg,rgba(29,127,224,.18),rgba(29,127,224,.04));border:1px solid rgba(63,167,255,.35);border-radius:20px;padding:50px 30px;text-align:center}
+.cta-final h2{font-size:1.7rem;margin-bottom:12px}
+.cta-final p{color:#b9c6d8;margin-bottom:26px}
+footer{border-top:1px solid #1d2c47;padding:30px 0;text-align:center;color:#93a2b8;font-size:.88rem}
+footer .demo-note{color:#d9a441;font-weight:700;margin-top:8px}
+.wa-float{position:fixed;bottom:22px;right:22px;width:60px;height:60px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:1.8rem;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:60}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.hero img{height:300px}.grid-3,.feats,.steps{grid-template-columns:1fr}.nav-links a:not(.btn){display:none}}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">📌 Page de démonstration — voici à quoi ressemblerait le site officiel de l'agence</div>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">MKSB <span>VOYAGE</span></a>
+    <nav class="nav-links">
+      <a href="#voyages">Voyages</a>
+      <a href="#services">Services</a>
+      <a href="#faq">Questions</a>
+      <a href="https://wa.me/212719121329" class="btn btn-wa" style="padding:9px 20px">WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero container">
+  <div>
+    <div class="hero-badge">✈️ Agence de voyages — Tanger</div>
+    <h1>Votre partenaire <span class="blue">tourisme, voyage</span> et découverte</h1>
+    <p>Visites guidées à Tanger, excursions dans tout le Maroc et voyages organisés en Espagne. Réservez en un clic — on s'occupe de tout le reste.</p>
+    <div class="hero-cta">
+      <a href="#voyages" class="btn btn-blue">Voir les voyages 👇</a>
+      <a href="https://wa.me/212719121329?text=Bonjour%20MKSB%20Voyage%2C%20je%20souhaite%20des%20informations%20sur%20vos%20voyages." class="btn btn-ghost">💬 Discuter sur WhatsApp</a>
+    </div>
+  </div>
+  <img src="demo-mksb/img/hero.jpg" alt="Côte de Tanger — vue panoramique">
+</section>
+
+<div class="stats">
+  <div class="container">
+    <div class="stat"><strong>Tanger</strong><span>Basés au cœur de Tanger</span></div>
+    <div class="stat"><strong>4+</strong><span>Destinations vedettes</span></div>
+    <div class="stat"><strong>1 clic</strong><span>Réservation via WhatsApp</span></div>
+  </div>
+</div>
+
+<section class="section container" id="voyages">
+  <h2 class="sec-title">🌍 Voyages populaires</h2>
+  <p class="sec-sub">Cliquez sur un voyage pour réserver instantanément sur WhatsApp — on confirme votre place en quelques minutes.</p>
+  <div class="grid-3">
+    <div class="t-card">
+      <span class="t-tag">Le favori ⭐</span>
+      <img src="demo-mksb/img/hero.jpg" alt="Découverte de Tanger">
+      <div class="t-body">
+        <h3>Découverte de Tanger — journée guidée</h3>
+        <p class="desc">La Kasbah, le musée Ibn Battouta, le souk Barra et le mythique Café Hafa face à la mer.</p>
+        <ul class="incl">
+          <li>Guide local accompagnateur</li>
+          <li>Transport touristique inclus</li>
+          <li>Départ quotidien de Tanger</li>
+        </ul>
+        <div class="price">À partir de 350 DH <small>/ personne</small></div>
+        <a class="btn btn-wa" href="https://wa.me/212719121329?text=Bonjour%20MKSB%20Voyage%2C%20je%20veux%20r%C3%A9server%20la%20journ%C3%A9e%20%22D%C3%A9couverte%20de%20Tanger%22.%20Quelles%20dates%20sont%20disponibles%20%3F">📲 Réserver sur WhatsApp</a>
+      </div>
+    </div>
+    <div class="t-card">
+      <span class="t-tag">Excursion</span>
+      <img src="demo-mksb/img/chefchaouen.jpg" alt="Chefchaouen, la ville bleue">
+      <div class="t-body">
+        <h3>Chefchaouen — la ville bleue</h3>
+        <p class="desc">Une journée dans la perle bleue du Rif : ruelles, cascades de Ras El Maa et artisanat local.</p>
+        <ul class="incl">
+          <li>Transport A/R depuis Tanger</li>
+          <li>Temps libre + visite guidée</li>
+          <li>Départs le week-end</li>
+        </ul>
+        <div class="price">À partir de 450 DH <small>/ personne</small></div>
+        <a class="btn btn-wa" href="https://wa.me/212719121329?text=Bonjour%20MKSB%20Voyage%2C%20je%20veux%20r%C3%A9server%20l%27excursion%20%22Chefchaouen%20%E2%80%94%20la%20ville%20bleue%22.%20Quelles%20dates%20sont%20disponibles%20%3F">📲 Réserver sur WhatsApp</a>
+      </div>
+    </div>
+    <div class="t-card">
+      <span class="t-tag">Circuit Maroc</span>
+      <img src="demo-mksb/img/marrakech.jpg" alt="Marrakech">
+      <div class="t-body">
+        <h3>Circuit Marrakech — 3 jours</h3>
+        <p class="desc">La ville ocre en 3 jours : médina, jardins Majorelle, place Jemaa El Fna et excursions aux alentours.</p>
+        <ul class="incl">
+          <li>Hôtel 4★ + transport inclus</li>
+          <li>Accompagnateur pendant le circuit</li>
+          <li>Visites selon programme</li>
+        </ul>
+        <div class="price">À partir de 2 900 DH <small>/ personne</small></div>
+        <a class="btn btn-wa" href="https://wa.me/212719121329?text=Bonjour%20MKSB%20Voyage%2C%20je%20veux%20r%C3%A9server%20le%20circuit%20%22Marrakech%20%E2%80%94%203%20jours%22.%20Quelles%20dates%20sont%20disponibles%20%3F">📲 Réserver sur WhatsApp</a>
+      </div>
+    </div>
+    <div class="t-card">
+      <span class="t-tag">Voyage organisé</span>
+      <img src="demo-mksb/img/seville.webp" alt="Séville, Andalousie">
+      <div class="t-body">
+        <h3>Andalousie, Espagne — 4 jours</h3>
+        <p class="desc">Séville, Grenade et la Costa del Sol : traversée en ferry depuis Tanger, hôtel et visites guidées.</p>
+        <ul class="incl">
+          <li>Traversée A/R + transport touristique</li>
+          <li>Hôtel avec demi-pension</li>
+          <li>Accompagnateur du Maroc</li>
+        </ul>
+        <div class="price">À partir de 4 399 DH <small>/ personne</small></div>
+        <a class="btn btn-wa" href="https://wa.me/212719121329?text=Bonjour%20MKSB%20Voyage%2C%20je%20veux%20r%C3%A9server%20le%20voyage%20%22Andalousie%2C%20Espagne%20%E2%80%94%204%20jours%22.%20Quelles%20dates%20sont%20disponibles%20%3F">📲 Réserver sur WhatsApp</a>
+      </div>
+    </div>
+    <div class="t-card">
+      <span class="t-tag">Services</span>
+      <img src="demo-mksb/img/marrakech.jpg" alt="Billets et hôtels">
+      <div class="t-body">
+        <h3>Billets d'avion &amp; hôtels</h3>
+        <p class="desc">Réservation de vols vers toutes les destinations et d'hôtels au Maroc comme à l'étranger, aux meilleurs prix.</p>
+        <ul class="incl">
+          <li>Comparaison des meilleurs tarifs</li>
+          <li>Hôtels 3★ à 5★ partout</li>
+          <li>Devis gratuit en 10 minutes</li>
+        </ul>
+        <div class="price">Devis gratuit <small>sur WhatsApp</small></div>
+        <a class="btn btn-wa" href="https://wa.me/212719121329?text=Bonjour%20MKSB%20Voyage%2C%20je%20souhaite%20un%20devis%20pour%20un%20billet%20d%27avion%20%2F%20un%20h%C3%B4tel.">📲 Demander un devis</a>
+      </div>
+    </div>
+    <div class="t-card">
+      <span class="t-tag">Sur mesure</span>
+      <img src="demo-mksb/img/chefchaouen.jpg" alt="Voyage sur mesure">
+      <div class="t-body">
+        <h3>Voyage sur mesure — groupes</h3>
+        <p class="desc">Familles, associations, entreprises : un programme construit autour de vos envies, avec accompagnement dédié.</p>
+        <ul class="incl">
+          <li>Programme 100% personnalisé</li>
+          <li>Tarifs de groupe avantageux</li>
+          <li>Un seul interlocuteur</li>
+        </ul>
+        <div class="price">Devis gratuit <small>sur WhatsApp</small></div>
+        <a class="btn btn-wa" href="https://wa.me/212719121329?text=Bonjour%20MKSB%20Voyage%2C%20je%20souhaite%20un%20voyage%20sur%20mesure%20pour%20un%20groupe.">📲 Discuter du projet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section container" id="services" style="padding-top:0">
+  <h2 class="sec-title">✅ Pourquoi réserver avec MKSB Voyage</h2>
+  <p class="sec-sub">Une agence de Tanger, un accompagnement humain du premier message jusqu'au retour.</p>
+  <div class="feats">
+    <div class="feat"><div class="ic">📲</div><h4>Réservation WhatsApp</h4><p>Un clic, votre demande arrive directement à l'agence.</p></div>
+    <div class="feat"><div class="ic">🧭</div><h4>Accompagnement</h4><p>Guide et assistance pendant tout le voyage.</p></div>
+    <div class="feat"><div class="ic">💰</div><h4>Meilleurs prix</h4><p>Tarifs négociés sur vols, hôtels et circuits.</p></div>
+    <div class="feat"><div class="ic">📍</div><h4>Basés à Tanger</h4><p>Une équipe locale qui connaît chaque destination.</p></div>
+  </div>
+</section>
+
+<section class="section container" style="padding-top:0">
+  <h2 class="sec-title">❓ Questions fréquentes</h2>
+  <p class="sec-sub">Les réponses aux questions qu'on nous pose le plus sur WhatsApp.</p>
+  <div class="faq-item">
+    <button class="faq-q">Comment réserver un voyage ? <span>+</span></button>
+    <div class="faq-a"><p>Cliquez sur « Réserver sur WhatsApp » sous le voyage choisi : un message pré-rempli s'ouvre, envoyez-le et on confirme votre place en quelques minutes.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">Faut-il payer d'avance ? <span>+</span></button>
+    <div class="faq-a"><p>Un acompte de 50% confirme votre réservation, le solde se règle avant le départ. Tous les détails sont confirmés par écrit sur WhatsApp.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">Organisez-vous des voyages pour groupes ? <span>+</span></button>
+    <div class="faq-a"><p>Oui — familles, associations et entreprises : programme sur mesure, tarifs de groupe et un interlocuteur unique.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">Que faire en cas d'annulation ? <span>+</span></button>
+    <div class="faq-a"><p>Les conditions d'annulation sont précisées pour chaque voyage avant le paiement. En cas d'imprévu, on trouve toujours une solution ensemble.</p></div>
+  </div>
+</section>
+
+<section class="section container" style="padding-top:0">
+  <div class="cta-final">
+    <h2>Prêt à partir ? ✈️</h2>
+    <p>Envoyez-nous un message — on vous répond avec les dates disponibles et le meilleur tarif.</p>
+    <a class="btn btn-wa" href="https://wa.me/212719121329?text=Bonjour%20MKSB%20Voyage%2C%20je%20souhaite%20des%20informations%20sur%20vos%20voyages." style="font-size:1.1rem;padding:14px 40px">💬 Contacter MKSB Voyage</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    MKSB Voyage — Agence de voyages, Tanger<br>
+    📞 WhatsApp : +212 719 121 329
+    <div class="demo-note">📌 Page de démonstration — prix et offres à titre illustratif uniquement.</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/212719121329?text=Bonjour%20MKSB%20Voyage%2C%20je%20souhaite%20des%20informations%20sur%20vos%20voyages." aria-label="WhatsApp">💬</a>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var a = btn.nextElementSibling;
+    var open = a.style.maxHeight && a.style.maxHeight !== '0px';
+    document.querySelectorAll('.faq-a').forEach(function(x){ x.style.maxHeight = '0px'; });
+    if(!open){ a.style.maxHeight = a.scrollHeight + 'px'; }
+  });
+});
+</script>
+</body>
+</html>
