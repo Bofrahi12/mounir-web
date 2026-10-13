@@ -3,8 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>معرض الأعمال | طنجة ويب — 18 موقعاً حياً بمعايير عالمية</title>
+<title>معرض أعمال تصميم المواقع | مشاريع حية ومنشورة — طنجة ويب</title>
 <meta name="description" content="معرض أعمال طنجة ويب: 18 موقعاً ومنصة حقيقية منشورة + نماذج كاملة لكل قطاع: عقارات، مطاعم، مقاهي، رياضة، كراء سيارات، طب أسنان، أفراح، سفر والمزيد. لقطات حقيقية من كل موقع وروابط حية.">
+<link rel="canonical" href="https://bofrahi12.github.io/mounir-web/portfolio.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_MA">
+<meta property="og:site_name" content="طنجة ويب">
+<meta property="og:title" content="معرض أعمال تصميم المواقع | مشاريع حية ومنشورة — طنجة ويب">
+<meta property="og:description" content="18 مشروعاً منشوراً أو نموذجاً حياً: منصات عقارية وتعليمية، متاجر، مطاعم، عيادات، سفر والمزيد — لقطات حقيقية وروابط حية.">
+<meta property="og:url" content="https://bofrahi12.github.io/mounir-web/portfolio.html">
+<meta property="og:image" content="https://bofrahi12.github.io/mounir-web/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="معرض أعمال تصميم المواقع — طنجة ويب">
+<meta name="twitter:description" content="مشاريع حية ومنصات ونماذج حسب القطاع — شوف الخدمة بعينيك.">
+<meta name="twitter:image" content="https://bofrahi12.github.io/mounir-web/og-image.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"معرض أعمال تصميم المواقع — طنجة ويب","url":"https://bofrahi12.github.io/mounir-web/portfolio.html","isPartOf":{"@type":"WebSite","name":"طنجة ويب","url":"https://bofrahi12.github.io/mounir-web/"}}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -70,6 +87,21 @@
   .cta-box h2{font-size:1.8rem;font-weight:900;margin-bottom:12px}
   .cta-box p{color:#9aa7c2;margin-bottom:28px}
   @media(max-width:900px){.works{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}.stat{min-width:110px}}
+
+  .details-btn{display:inline-block;margin-top:12px;border:1px solid rgba(217,164,65,.5);color:var(--gold2);font-weight:800;font-size:.86rem;padding:7px 16px;border-radius:50px;cursor:pointer}
+  .details-btn:hover{background:rgba(217,164,65,.12)}
+  .modal{position:fixed;inset:0;background:rgba(4,6,10,.78);display:none;align-items:center;justify-content:center;z-index:200;padding:18px}
+  .modal.open{display:flex}
+  .modal-box{background:#0e1626;border:1px solid #2a3752;border-radius:20px;max-width:620px;width:100%;max-height:88vh;overflow:auto;padding:30px 28px;position:relative}
+  .modal-box h3{font-size:1.5rem;font-weight:900;margin-bottom:4px}
+  .modal-box .msec{color:var(--gold2);font-weight:700;font-size:.9rem;margin-bottom:16px}
+  .modal-box h4{color:var(--gold);font-size:1rem;margin:16px 0 5px}
+  .modal-box p,.modal-box li{color:#c7d2e6;font-size:.95rem}
+  .modal-box ul{list-style:none}
+  .modal-box li{padding-inline-start:20px;position:relative;margin-bottom:4px}
+  .modal-box li::before{content:"✓";position:absolute;inset-inline-start:0;color:var(--gold);font-weight:900}
+  .modal-close{position:absolute;top:14px;inset-inline-end:16px;background:#16223a;border:1px solid #2a3752;color:#fff;width:38px;height:38px;border-radius:50%;font-size:1.05rem;cursor:pointer}
+  .modal-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
 </style>
 </head>
 <body>
@@ -81,10 +113,11 @@
       <a href="index.html#services">خدماتنا</a>
       <a href="portfolio.html">أعمالنا</a>
       <a href="index.html#pricing">الأسعار</a>
+      <a href="index.html#process">طريقة العمل</a>
       <a href="index.html#faq">الأسئلة الشائعة</a>
       <a href="index.html#contact" class="btn btn-gold btn-sm">طلب عرض ثمن</a>
     </nav>
-    <button class="burger" id="burger" aria-label="القائمة">☰</button>
+    <button class="burger" id="burger" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">☰</button>
   </div>
 </header>
 
@@ -105,78 +138,83 @@
 <section class="section" style="padding-top:10px">
   <div class="container">
 
-    <div class="filters" id="filters">
-      <button class="fbtn act" data-f="all">الكل <span class="n">18</span></button>
-      <button class="fbtn" data-f="real">مشاريع تجارية كاملة <span class="n">5</span></button>
-      <button class="fbtn" data-f="demo">نماذج قطاعية كاملة <span class="n">10</span></button>
-      <button class="fbtn" data-f="client">نماذج لزبناء <span class="n">3</span></button>
+    <div class="filters" id="filters" role="group" aria-label="تصفية الأعمال حسب القطاع">
+      <button class="fbtn act" data-f="all">الكل <span class="n"></span></button>
+      <button class="fbtn" data-f="resto">مطاعم ومقاهي <span class="n"></span></button>
+      <button class="fbtn" data-f="stores">متاجر <span class="n"></span></button>
+      <button class="fbtn" data-f="immo">عقارات <span class="n"></span></button>
+      <button class="fbtn" data-f="sante">عيادات وتجميل <span class="n"></span></button>
+      <button class="fbtn" data-f="voyage">سفر <span class="n"></span></button>
+      <button class="fbtn" data-f="sport">رياضة <span class="n"></span></button>
+      <button class="fbtn" data-f="services">خدمات <span class="n"></span></button>
+      <button class="fbtn" data-f="plateformes">منصات <span class="n"></span></button>
     </div>
 
     <div class="works" id="works">
 
-<a class="wcard" data-cat="real" href="https://bofrahi12.github.io/capimmo-tanger/" target="_blank" rel="noopener">
+<a class="wcard" data-cat="real" data-sector="plateformes immo" href="https://bofrahi12.github.io/capimmo-tanger/" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/capimmo-tanger</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/capimmo.jpg" alt="Cap Immo Tanger" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/capimmo.webp" alt="Cap Immo Tanger" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
-          <div class="tags"><span class="tag tag-live">● حي الآن</span><span class="tag tag-cat">عقارات</span></div>
+          <div class="tags"><span class="tag tag-live">منصة حية</span><span class="tag tag-cat">عقارات</span></div>
           <h3>Cap Immo Tanger</h3>
           <p>سوق عقارات متكامل لوكالة بطنجة، يتجدد يومياً بإعلانات متحقق منها.</p>
           <ul class="feats"><li>+120 إعلاناً متحققاً</li><li>بحث وفلترة متقدمة · عربية + فرنسية</li><li>تواصل واتساب مباشر مع الوكالة</li></ul>
-          <span class="go">زيارة الموقع <i>←</i></span>
+          <span class="details-btn" data-case="capimmo" role="button" tabindex="0">🔎 شاهد تفاصيل المشروع</span><span class="go">زيارة الموقع <i>←</i></span>
         </div>
       </a>
 
-      <a class="wcard" data-cat="real" href="https://tradeproacademy.pro" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="real" data-sector="plateformes" href="https://tradeproacademy.pro" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">tradeproacademy.pro</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/tradepro.jpg" alt="TradePro Academy" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/tradepro.webp" alt="TradePro Academy" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
-          <div class="tags"><span class="tag tag-live">● حي الآن</span><span class="tag tag-cat">منصة تعليمية</span></div>
+          <div class="tags"><span class="tag tag-live">منصة حية</span><span class="tag tag-cat">منصة تعليمية</span></div>
           <h3>TradePro Academy</h3>
           <p>منصة دورات تداول كاملة بدومين خاص وقاعدة بيانات حقيقية.</p>
           <ul class="feats"><li>حسابات طلاب + دفع بنكي وUSDT</li><li>شهادات إتمام موقّعة من الخادم</li><li>لوحة إدارة شاملة للمنصة</li></ul>
-          <span class="go">زيارة الموقع <i>←</i></span>
+          <span class="details-btn" data-case="tradepro" role="button" tabindex="0">🔎 شاهد تفاصيل المشروع</span><span class="go">زيارة الموقع <i>←</i></span>
         </div>
       </a>
 
-      <a class="wcard" data-cat="real" href="https://bofrahi12.github.io/islamic-civilization-explorer/" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="real" data-sector="plateformes" href="https://bofrahi12.github.io/islamic-civilization-explorer/" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/islamic-civilization-explorer</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/islamic.jpg" alt="Discover Islam" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/islamic.webp" alt="Discover Islam" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
-          <div class="tags"><span class="tag tag-live">● حي الآن</span><span class="tag tag-cat">تعليمي · إنجليزية</span></div>
+          <div class="tags"><span class="tag tag-live">مشروع منشور</span><span class="tag tag-cat">تعليمي · إنجليزية</span></div>
           <h3>Discover Islam</h3>
           <p>موقع تعليمي تفاعلي بالإنجليزية لجمهور عالمي.</p>
           <ul class="feats"><li>+120 صفحة محتوى</li><li>أدلة وقصص تفاعلية</li><li>إحصائيات زوار حية</li></ul>
-          <span class="go">زيارة الموقع <i>←</i></span>
+          <span class="details-btn" data-case="islamic" role="button" tabindex="0">🔎 شاهد تفاصيل المشروع</span><span class="go">زيارة الموقع <i>←</i></span>
         </div>
       </a>
 
-      <a class="wcard" data-cat="real" href="https://bofrahi12.github.io/localboost-ai-site/" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="real" data-sector="plateformes services" href="https://bofrahi12.github.io/localboost-ai-site/" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/localboost-ai-site</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/localboost.jpg" alt="LocalBoost AI" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/localboost.webp" alt="LocalBoost AI" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
-          <div class="tags"><span class="tag tag-live">● حي الآن</span><span class="tag tag-cat">تسويق · ذكاء اصطناعي</span></div>
+          <div class="tags"><span class="tag tag-live">مشروع منشور</span><span class="tag tag-cat">تسويق · ذكاء اصطناعي</span></div>
           <h3>LocalBoost AI</h3>
           <p>موقع تسويقي لخدمة ذكاء اصطناعي مع إضافة ووردبريس مرافقة.</p>
           <ul class="feats"><li>نسختان عربية وإنجليزية</li><li>عرض تفاعلي للمنتج</li><li>صفحات تحويل للزوار</li></ul>
-          <span class="go">زيارة الموقع <i>←</i></span>
+          <span class="details-btn" data-case="localboost" role="button" tabindex="0">🔎 شاهد تفاصيل المشروع</span><span class="go">زيارة الموقع <i>←</i></span>
         </div>
       </a>
 
-      <a class="wcard" data-cat="real" href="https://bofrahi12.github.io/tanger-safe-buy/" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="real" data-sector="immo" href="https://bofrahi12.github.io/tanger-safe-buy/" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/tanger-safe-buy</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/safebuy.jpg" alt="Tanger Safe Buy" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/safebuy.webp" alt="Tanger Safe Buy" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
-          <div class="tags"><span class="tag tag-live">● حي الآن</span><span class="tag tag-cat">صفحة هبوط · جالية</span></div>
+          <div class="tags"><span class="tag tag-live">مشروع منشور</span><span class="tag tag-cat">صفحة هبوط · جالية</span></div>
           <h3>Tanger Safe Buy</h3>
           <p>صفحة هبوط لمشروع «عقار المغرب بلا نصب» موجهة للجالية المغربية بالخارج.</p>
           <ul class="feats"><li>طلبات توصل مباشرة لواتساب</li><li>رسائل ثقة للجالية في أوروبا وأمريكا</li></ul>
-          <span class="go">زيارة الموقع <i>←</i></span>
+          <span class="details-btn" data-case="safebuy" role="button" tabindex="0">🔎 شاهد تفاصيل المشروع</span><span class="go">زيارة الموقع <i>←</i></span>
         </div>
       </a>
 
-      <a class="wcard" data-cat="demo" href="https://bofrahi12.github.io/mounir-web/demo-mode.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="demo" data-sector="stores" href="https://bofrahi12.github.io/mounir-web/demo-mode.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/demo-mode</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/mode.jpg" alt="Atlas Mode" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/mode.webp" alt="Atlas Mode" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
           <div class="tags"><span class="tag tag-demo">نموذج تجريبي</span><span class="tag tag-cat">متجر ملابس</span></div>
           <h3>Atlas Mode</h3>
@@ -186,9 +224,9 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="demo" href="https://bofrahi12.github.io/mounir-web/demo-resto.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="demo" data-sector="resto" href="https://bofrahi12.github.io/mounir-web/demo-resto.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/demo-resto</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/resto.jpg" alt="Le Jasmin" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/resto.webp" alt="Le Jasmin" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
           <div class="tags"><span class="tag tag-demo">نموذج تجريبي</span><span class="tag tag-cat">مطعم · فرنسية</span></div>
           <h3>Le Jasmin</h3>
@@ -198,9 +236,9 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="demo" href="https://bofrahi12.github.io/mounir-web/demo-cafe.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="demo" data-sector="resto" href="https://bofrahi12.github.io/mounir-web/demo-cafe.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/demo-cafe</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/cafe.jpg" alt="مقهى الأصالة" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/cafe.webp" alt="مقهى الأصالة" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
           <div class="tags"><span class="tag tag-demo">نموذج تجريبي</span><span class="tag tag-cat">مقهى</span></div>
           <h3>مقهى الأصالة</h3>
@@ -210,9 +248,9 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="demo" href="https://bofrahi12.github.io/mounir-web/demo-gym.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="demo" data-sector="sport" href="https://bofrahi12.github.io/mounir-web/demo-gym.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/demo-gym</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/gym.jpg" alt="نادي القمة للرياضة" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/gym.webp" alt="نادي القمة للرياضة" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
           <div class="tags"><span class="tag tag-demo">نموذج تجريبي</span><span class="tag tag-cat">قاعة رياضية</span></div>
           <h3>نادي القمة للرياضة</h3>
@@ -222,9 +260,9 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="demo" href="https://bofrahi12.github.io/mounir-web/demo-location.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="demo" data-sector="services" href="https://bofrahi12.github.io/mounir-web/demo-location.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/demo-location</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/location.jpg" alt="Tangier Drive" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/location.webp" alt="Tangier Drive" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
           <div class="tags"><span class="tag tag-demo">نموذج تجريبي</span><span class="tag tag-cat">كراء سيارات · فرنسية</span></div>
           <h3>Tangier Drive</h3>
@@ -234,9 +272,9 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="demo" href="https://bofrahi12.github.io/mounir-web/demo-dentaire.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="demo" data-sector="sante" href="https://bofrahi12.github.io/mounir-web/demo-dentaire.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/demo-dentaire</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/dentaire.jpg" alt="Clinique Dentaire Sourire" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/dentaire.webp" alt="Clinique Dentaire Sourire" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
           <div class="tags"><span class="tag tag-demo">نموذج تجريبي</span><span class="tag tag-cat">عيادة أسنان · فرنسية</span></div>
           <h3>Clinique Dentaire Sourire</h3>
@@ -246,9 +284,9 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="demo" href="https://bofrahi12.github.io/mounir-web/demo-spa.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="demo" data-sector="sante" href="https://bofrahi12.github.io/mounir-web/demo-spa.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/demo-spa</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/spa.jpg" alt="واحة الجمال" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/spa.webp" alt="واحة الجمال" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
           <div class="tags"><span class="tag tag-demo">نموذج تجريبي</span><span class="tag tag-cat">صالون وسبا</span></div>
           <h3>واحة الجمال</h3>
@@ -258,9 +296,9 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="demo" href="https://bofrahi12.github.io/mounir-web/demo-patisserie.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="demo" data-sector="resto stores" href="https://bofrahi12.github.io/mounir-web/demo-patisserie.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/demo-patisserie</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/patisserie.jpg" alt="حلويات النخبة" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/patisserie.webp" alt="حلويات النخبة" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
           <div class="tags"><span class="tag tag-demo">نموذج تجريبي</span><span class="tag tag-cat">حلويات</span></div>
           <h3>حلويات النخبة</h3>
@@ -270,9 +308,9 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="demo" href="https://bofrahi12.github.io/mounir-web/demo-riad.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="demo" data-sector="voyage" href="https://bofrahi12.github.io/mounir-web/demo-riad.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/demo-riad</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/riad.jpg" alt="Riad Jasmin" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/riad.webp" alt="Riad Jasmin" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
           <div class="tags"><span class="tag tag-demo">نموذج تجريبي</span><span class="tag tag-cat">رياض · فرنسية</span></div>
           <h3>Riad Jasmin</h3>
@@ -282,9 +320,9 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="demo" href="https://bofrahi12.github.io/mounir-web/demo-fetes.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="demo" data-sector="services" href="https://bofrahi12.github.io/mounir-web/demo-fetes.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/demo-fetes</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/fetes.jpg" alt="قاعة الياسمين للأفراح" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/fetes.webp" alt="قاعة الياسمين للأفراح" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
           <div class="tags"><span class="tag tag-demo">نموذج تجريبي</span><span class="tag tag-cat">قاعة أفراح</span></div>
           <h3>قاعة الياسمين للأفراح</h3>
@@ -294,11 +332,11 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="client" href="https://bofrahi12.github.io/mounir-web/mksb-demo.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="client" data-sector="voyage" href="https://bofrahi12.github.io/mounir-web/mksb-demo.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/mksb-demo</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/mksb.jpg" alt="MKSB Voyage" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/mksb.webp" alt="MKSB Voyage" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
-          <div class="tags"><span class="tag tag-demo">نموذج لزبون</span><span class="tag tag-cat">وكالة أسفار</span></div>
+          <div class="tags"><span class="tag tag-demo">نموذج مخصص لنشاط حقيقي</span><span class="tag tag-cat">وكالة أسفار</span></div>
           <h3>MKSB Voyage</h3>
           <p>نموذج صايب ببيانات وكالة أسفار حقيقية بطنجة طلبت عرضاً.</p>
           <ul class="feats"><li>رحلات منظمة بأثمنة حقيقية</li><li>زر حجز فوري في كل عرض</li></ul>
@@ -306,11 +344,11 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="client" href="https://bofrahi12.github.io/mounir-web/bermijou-demo.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="client" data-sector="stores" href="https://bofrahi12.github.io/mounir-web/bermijou-demo.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/bermijou-demo</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/bermijou.jpg" alt="Bermijou Shop" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/bermijou.webp" alt="Bermijou Shop" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
-          <div class="tags"><span class="tag tag-demo">نموذج لزبون</span><span class="tag tag-cat">متجر رياضي</span></div>
+          <div class="tags"><span class="tag tag-demo">نموذج مخصص لنشاط حقيقي</span><span class="tag tag-cat">متجر رياضي</span></div>
           <h3>Bermijou Shop</h3>
           <p>نموذج متجر ملابس رياضية صايب لزبون بمنتجاته الحقيقية.</p>
           <ul class="feats"><li>كتالوج بالصور والأثمنة</li><li>طلب سريع عبر واتساب</li></ul>
@@ -318,11 +356,11 @@
         </div>
       </a>
 
-      <a class="wcard" data-cat="client" href="https://bofrahi12.github.io/mounir-web/nojom-demo.html" target="_blank" rel="noopener">
+      <a class="wcard" data-cat="client" data-sector="services" href="https://bofrahi12.github.io/mounir-web/nojom-demo.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/nojom-demo</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/nojom.jpg" alt="Studio Nojom" loading="lazy"></div>
+        <div class="shotwrap"><img class="shot" src="shots/nojom.webp" alt="Studio Nojom" width="1280" height="800" loading="lazy"></div>
         <div class="wbody">
-          <div class="tags"><span class="tag tag-demo">نموذج لزبون</span><span class="tag tag-cat">استوديو تصوير</span></div>
+          <div class="tags"><span class="tag tag-demo">نموذج مخصص لنشاط حقيقي</span><span class="tag tag-cat">استوديو تصوير</span></div>
           <h3>Studio Nojom</h3>
           <p>نموذج صايب لاستوديو تصوير حقيقي بطنجة طلب يشوف الأمثلة.</p>
           <ul class="feats"><li>معرض أعمال بـ 6 صور</li><li>3 باقات تصوير بأثمنة توضيحية</li><li>حجز مباشرة عبر واتساب الاستوديو</li></ul>
@@ -362,16 +400,71 @@
 
 <a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D9%85%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D8%AF%D9%8A%D8%A7%D9%84%D9%83%20%D9%88%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D9%85%D9%88%D9%82%D8%B9%20%D9%84%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D8%AF%D9%8A%D8%A7%D9%84%D9%8A" class="wa-float" target="_blank" rel="noopener" aria-label="تواصل واتساب">💬</a>
 
+
+<div class="modal" id="caseModal" role="dialog" aria-modal="true" aria-labelledby="caseTitle" hidden>
+  <div class="modal-box">
+    <button class="modal-close" id="caseClose" aria-label="إغلاق">✕</button>
+    <h3 id="caseTitle"></h3>
+    <p class="msec" id="caseSector"></p>
+    <h4>المشكلة قبل الموقع</h4><p id="caseProblem"></p>
+    <h4>الهدف</h4><p id="caseGoal"></p>
+    <h4>الحل الذي تم بناؤه</h4><p id="caseSolution"></p>
+    <h4>الوظائف الرئيسية</h4><ul id="caseFeats"></ul>
+    <div class="modal-cta">
+      <a class="btn btn-ghost" id="caseVisit" href="#" target="_blank" rel="noopener">🌐 زيارة الموقع</a>
+      <a class="btn btn-gold" href="index.html#contact">📩 بغيت موقع بحال هادا</a>
+    </div>
+  </div>
+</div>
 <script src="script.js"></script>
 <script>
+  const CASES = {"capimmo": {"t": "Cap Immo Tanger", "s": "عقارات · منصة حية", "p": "وكالة عقارية بطنجة كانت تعرض الشقق عبر منشورات متفرقة في السوشيال ميديا — الإعلانات تضيع، والزبون لا يجد بحثاً منظماً ولا طريقة سريعة للمقارنة والتواصل.", "g": "سوق عقارات منظم واحترافي يبني الثقة، يتجدد يومياً، ويحوّل الزائر إلى طلب تواصل في واتساب.", "sol": "منصة عقارية كاملة بنسختين عربية وفرنسية: عرض الإعلانات بصور وتفاصيل كاملة، بحث وفلاتر متقدمة، وزر واتساب مباشر في كل عقار.", "f": ["أكثر من 120 إعلاناً متحققاً", "بحث وفلترة حسب الحي والثمن والمساحة", "تحديث يومي للإعلانات", "تواصل واتساب مباشر مع الوكالة"], "u": "https://bofrahi12.github.io/capimmo-tanger/"}, "tradepro": {"t": "TradePro Academy", "s": "منصة تعليمية · منصة حية", "p": "بيع دورات تدريبية بدون منصة: لا حسابات للطلاب، لا تتبع للتقدم، ولا طريقة منظمة للدفع وتسليم الشهادات.", "g": "منصة دورات كاملة بدومين خاص تستقبل الطالب من صفحة البيع حتى الشهادة.", "sol": "منصة بقاعدة بيانات حقيقية: حسابات طلاب، دفع بنكي وUSDT، شهادات إتمام موقعة من الخادم، ولوحة إدارة شاملة.", "f": ["حسابات طلاب ومنطقة خاصة", "دفع بنكي وUSDT", "شهادات إتمام موقعة من الخادم", "لوحة إدارة للمنصة"], "u": "https://tradeproacademy.pro"}, "islamic": {"t": "Discover Islam", "s": "موقع تعليمي بالإنجليزية · مشروع منشور", "p": "محتوى تعليمي غني لكنه مبعثر، بدون بنية تصفح واضحة لجمهور عالمي يبحث بإنجليزية بسيطة.", "g": "موقع تعليمي تفاعلي منظم يجعل المحتوى قابلاً للاكتشاف والقراءة المتسلسلة.", "sol": "موقع بأكثر من 120 صفحة محتوى: أدلة وقصص تفاعلية وبنية تصفح واضحة وإحصائيات زوار حية.", "f": ["أكثر من 120 صفحة محتوى", "أدلة وقصص تفاعلية", "إحصائيات زوار حية", "تصميم موجه لجمهور عالمي"], "u": "https://bofrahi12.github.io/islamic-civilization-explorer/"}, "localboost": {"t": "LocalBoost AI", "s": "تسويق · ذكاء اصطناعي · مشروع منشور", "p": "خدمة ذكاء اصطناعي للمحلات المحلية بدون واجهة تسويقية تقنع صاحب المحل بسرعة وتعرض المنتج بشكل ملموس.", "g": "موقع تسويقي يقدم الخدمة بوضوح ويحوّل الزائر إلى تجربة للمنتج.", "sol": "موقع بنسختين عربية وإنجليزية مع عرض تفاعلي للمنتج، ترافقه إضافة ووردبريس جاهزة للاستعمال.", "f": ["نسختان عربية وإنجليزية", "عرض تفاعلي للمنتج", "إضافة ووردبريس مرافقة"], "u": "https://bofrahi12.github.io/localboost-ai-site/"}, "safebuy": {"t": "Tanger Safe Buy", "s": "صفحة هبوط · جالية · مشروع منشور", "p": "المغاربة المقيمون بالخارج يريدون شراء عقار في طنجة لكنهم يخافون من النصب والتعامل عن بُعد بدون ضمانات واضحة.", "g": "صفحة هبوط تبني الثقة وتشرح طريقة الشراء الآمن، وتحوّل المهتم إلى محادثة واتساب.", "sol": "صفحة هبوط موجهة للجالية في أوروبا وأمريكا برسائل ثقة واضحة وخطوات شراء مفهومة وطلبات تواصل مباشرة إلى واتساب.", "f": ["رسائل ثقة موجهة للجالية", "شرح خطوات الشراء الآمن", "طلبات توصل مباشرة لواتساب"], "u": "https://bofrahi12.github.io/tanger-safe-buy/"}};
+  const modal = document.getElementById('caseModal');
+  const closeBtn = document.getElementById('caseClose');
+  let lastFocus = null;
+  function openCase(id) {
+    const c = CASES[id]; if (!c) return;
+    lastFocus = document.activeElement;
+    document.getElementById('caseTitle').textContent = c.t;
+    document.getElementById('caseSector').textContent = c.s;
+    document.getElementById('caseProblem').textContent = c.p;
+    document.getElementById('caseGoal').textContent = c.g;
+    document.getElementById('caseSolution').textContent = c.sol;
+    document.getElementById('caseFeats').innerHTML = c.f.map(x => '<li>' + x + '</li>').join('');
+    document.getElementById('caseVisit').href = c.u;
+    modal.hidden = false; modal.classList.add('open');
+    closeBtn.focus();
+    trackEvent('case_open', id);
+  }
+  function closeCase() {
+    modal.classList.remove('open'); modal.hidden = true;
+    if (lastFocus) lastFocus.focus();
+  }
+  document.querySelectorAll('.details-btn').forEach(b => {
+    b.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); openCase(b.dataset.case); });
+    b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); openCase(b.dataset.case); } });
+  });
+  closeBtn.addEventListener('click', closeCase);
+  modal.addEventListener('click', e => { if (e.target === modal) closeCase(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeCase(); });
+
   const fbtns = document.querySelectorAll('.fbtn');
   const cards = document.querySelectorAll('.wcard');
-  fbtns.forEach(b => b.addEventListener('click', () => {
-    fbtns.forEach(x => x.classList.remove('act'));
-    b.classList.add('act');
-    const f = b.dataset.f;
-    cards.forEach(c => { c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none'; });
-  }));
+  fbtns.forEach(b => {
+    const n = b.querySelector('.n');
+    if (n) {
+      const f = b.dataset.f;
+      const count = f === 'all' ? cards.length : [...cards].filter(c => (c.dataset.sector || '').split(' ').includes(f)).length;
+      n.textContent = count;
+    }
+    b.addEventListener('click', () => {
+      fbtns.forEach(x => x.classList.remove('act'));
+      b.classList.add('act');
+      const f = b.dataset.f;
+      cards.forEach(c => { c.style.display = (f === 'all' || (c.dataset.sector || '').split(' ').includes(f)) ? '' : 'none'; });
+      trackEvent('portfolio_filter', f);
+    });
+  });
 </script>
 </body>
 </html>

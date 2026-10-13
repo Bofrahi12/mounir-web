@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://bofrahi12.github.io/mounir-web/sitemap.xml
