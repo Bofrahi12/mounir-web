@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mounir Boufrahi — Caissier expérimenté à Tanger | Disponible immédiatement</title>
+<meta name="description" content="Caissier expérimenté (3 ans) à Tanger : gestion de caisse rigoureuse, service client, barista de café. Disponible immédiatement pour cafés et restaurants haut de gamme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E3A5F;--navy2:#152C49;--gold:#C9A227;--gold2:#E4C65B;--ink:#22262B;--muted:#5B6470;--bg:#F7F5F0;--card:#FFFFFF;--line:#E6E1D3}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Jost',Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  /* hero */
+  .hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:56px 0 46px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:auto -120px -160px auto;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,39,.28),transparent 65%)}
+  .hero-inner{display:flex;gap:34px;align-items:center;position:relative;z-index:1}
+  .photo{width:168px;height:210px;object-fit:cover;border-radius:14px;border:3px solid var(--gold);box-shadow:0 18px 40px rgba(0,0,0,.35);flex-shrink:0}
+  .avail{display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,.14);border:1px solid rgba(37,211,102,.55);color:#7DEBA6;font-weight:600;font-size:.88rem;padding:6px 16px;border-radius:50px;margin-bottom:16px}
+  .avail::before{content:"";width:9px;height:9px;border-radius:50%;background:#25D366;box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(2.1rem,5vw,3rem);line-height:1.15;margin-bottom:8px}
+  .role{color:var(--gold2);font-weight:600;font-size:1.12rem;letter-spacing:.4px;margin-bottom:16px}
+  .hero p{color:#D7DEE8;max-width:520px;font-size:1.02rem}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff;padding:8px 16px;border-radius:10px;font-weight:600;font-size:.92rem}
+  .badge strong{color:var(--gold2)}
+  /* sections */
+  section{padding:44px 0 6px}
+  h2{font-family:'Playfair Display',serif;font-size:1.55rem;color:var(--navy);margin-bottom:6px}
+  .rule{width:54px;height:3px;background:var(--gold);border-radius:2px;margin-bottom:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-bottom:18px;box-shadow:0 4px 18px rgba(30,58,95,.05)}
+  .job-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+  .job-head h3{font-size:1.14rem;color:var(--ink)}
+  .job-head span{color:var(--gold);font-weight:700;font-size:.92rem;white-space:nowrap}
+  .place{color:var(--muted);font-weight:500;margin-bottom:10px}
+  .card ul{list-style:none}
+  .card li{padding:5px 0 5px 22px;position:relative;color:#3A4149}
+  .card li::before{content:"▸";position:absolute;left:2px;color:var(--gold);font-weight:700}
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{background:#FBF7EA;border:1px solid var(--line);border-radius:50px;padding:8px 18px;font-weight:500;font-size:.95rem}
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .why .w{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:22px 20px;text-align:center}
+  .why .w .ic{font-size:1.9rem;margin-bottom:8px}
+  .why .w h3{font-size:1.05rem;margin-bottom:6px;color:var(--navy)}
+  .why .w p{color:var(--muted);font-size:.93rem}
+  .langs{display:flex;gap:26px;flex-wrap:wrap}
+  .langs div strong{color:var(--navy)}
+  .langs div span{color:var(--muted)}
+  /* cta */
+  .cta{background:linear-gradient(160deg,var(--navy),var(--navy2));border-radius:18px;padding:38px 32px;text-align:center;color:#fff;margin:40px 0 10px}
+  .cta h2{color:#fff}
+  .cta p{color:#D7DEE8;margin-bottom:24px}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;border-radius:12px;padding:14px 30px;font-size:1.02rem;transition:.2s}
+  .btn-wa{background:#25D366;color:#08351A}
+  .btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,.35)}
+  .btn-cv{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#231a02}
+  .btn-cv:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(201,162,39,.35)}
+  .btn-call{border:2px solid rgba(255,255,255,.4);color:#fff}
+  .btn-call:hover{border-color:var(--gold2);color:var(--gold2)}
+  footer{text-align:center;color:var(--muted);padding:26px 0 40px;font-size:.9rem}
+  @media(max-width:720px){
+    .hero-inner{flex-direction:column;text-align:center}
+    .hero p{margin:0 auto}
+    .badges,.cta-btns{justify-content:center}
+    .avail{margin-inline:auto}
+    .why{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <img class="photo" src="candidat/photo.jpg" alt="Mounir Boufrahi">
+    <div>
+      <span class="avail">Disponible immédiatement</span>
+      <h1>Mounir Boufrahi</h1>
+      <div class="role">Caissier expérimenté · Employé polyvalent · Barista de café</div>
+      <p>Trois ans d'expérience dans les cafés et restaurants de Tanger. Une caisse tenue avec rigueur et précision, un service client soigné, et le sang-froid nécessaire pendant les rushs et les week-ends.</p>
+      <div class="badges">
+        <span class="badge"><strong>3 ans</strong> d'expérience</span>
+        <span class="badge">📍 Tanger</span>
+        <span class="badge">Français courant</span>
+        <span class="badge">Bonne présentation</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2>Pourquoi me recruter</h2>
+    <div class="rule"></div>
+    <div class="why">
+      <div class="w"><div class="ic">🎯</div><h3>Caisse irréprochable</h3><p>Encaissements espèces et TPE, clôture de caisse quotidienne — zéro approximation, tout est vérifiable.</p></div>
+      <div class="w"><div class="ic">⚡</div><h3>À l'aise sous pression</h3><p>Rushs du soir, week-ends, forte affluence : le rythme monte, la qualité de service ne descend pas.</p></div>
+      <div class="w"><div class="ic">🤝</div><h3>Polyvalent</h3><p>Caisse, accueil, service en salle, bar à café et coordination avec la cuisine — une seule personne, plusieurs postes.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Expérience professionnelle</h2>
+    <div class="rule"></div>
+    <div class="card">
+      <div class="job-head"><h3>Caissier</h3><span>2025 – 2026</span></div>
+      <div class="place">Restaurant Cherry Cherry — Tanger</div>
+      <ul>
+        <li>Gestion complète de la caisse et des encaissements (espèces, TPE) avec rigueur et précision.</li>
+        <li>Accueil des clients, prise et suivi des commandes, coordination avec la salle et la cuisine.</li>
+        <li>Préparation et service des boissons ; tenue du rythme pendant les rushs et les week-ends.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="job-head"><h3>Caissier</h3><span>2023 – 2025</span></div>
+      <div class="place">Café Regalo — Tanger</div>
+      <ul>
+        <li>Encaissements quotidiens et clôture de caisse en fin de service.</li>
+        <li>Accueil, information et orientation des clients.</li>
+        <li>Service en salle et renfort au bar pendant les pics d'activité.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Compétences</h2>
+    <div class="rule"></div>
+    <div class="chips">
+      <span class="chip">Gestion de caisse &amp; encaissement</span>
+      <span class="chip">Accueil &amp; service client</span>
+      <span class="chip">Prise et suivi des commandes</span>
+      <span class="chip">Préparation des boissons &amp; bar à café</span>
+      <span class="chip">Clôture de caisse</span>
+      <span class="chip">Gestion du stress et des rushs</span>
+      <span class="chip">Travail en équipe</span>
+      <span class="chip">Sens de l'organisation</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Langues &amp; qualités</h2>
+    <div class="rule"></div>
+    <div class="card">
+      <div class="langs">
+        <div><strong>Arabe</strong> — <span>langue maternelle</span></div>
+        <div><strong>Français</strong> — <span>courant</span></div>
+        <div><strong>Anglais</strong> — <span>notions</span></div>
+      </div>
+      <p style="margin-top:14px;color:#3A4149">Sérieux et ponctuel · Dynamique et motivé · Bonne présentation · Sens du service · Apprentissage rapide · Certificat en informatique et bureautique.</p>
+    </div>
+  </section>
+
+  <div class="cta">
+    <h2>Vous cherchez un caissier fiable à Tanger ?</h2>
+    <p>Je suis disponible immédiatement pour les cafés et restaurants haut de gamme.<br>Contactez-moi directement — réponse rapide.</p>
+    <div class="cta-btns">
+      <a class="btn btn-wa" href="https://wa.me/212693981822?text=Bonjour%20Mounir%2C%20nous%20avons%20consult%C3%A9%20votre%20profil%20de%20caissier%20exp%C3%A9riment%C3%A9%20et%20il%20nous%20int%C3%A9resse.%20Pouvons-nous%20en%20discuter%20%3F" target="_blank" rel="noopener">💬 WhatsApp — 0693 981 822</a>
+      <a class="btn btn-cv" href="candidat/CV_Mounir_Boufrahi.pdf" target="_blank" rel="noopener">📄 Télécharger mon CV</a>
+      <a class="btn btn-call" href="tel:+212693981822">📞 Appeler</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Mounir Boufrahi — Caissier expérimenté · Tanger, Maroc · Références disponibles sur demande
+</footer>
+
+</body>
+</html>
