@@ -130,3 +130,8 @@ footer p{color:var(--muted);margin-top:8px}
   .section{padding:60px 0}
   .lead-form{padding:26px 20px}
 }
+
+.logo{display:inline-flex;align-items:center;gap:10px}
+.logo img{width:35px;height:35px;border-radius:9px;flex-shrink:0}
+.foot-inner .logo img{width:40px;height:40px;border-radius:11px}
+.logo .lat{display:block;font-size:.58rem;letter-spacing:3.5px;color:#8fa1c0;font-weight:700;line-height:1}
