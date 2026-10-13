@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Nojom — ستوديو تصوير احترافي بطنجة</title>
+<meta name="description" content="عينة تجريبية — موقع ستوديو تصوير: أعراس، بورتريه، مناسبات، منتجات. حجز الجلسات عبر واتساب.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0c;--card:#141418;--line:#26262e;--gold:#d4af37;--gold2:#f2c66d;--txt:#f4f1ea;--mut:#a9a49a;--wa:#25d366}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',Tahoma,sans-serif;background:var(--bg);color:var(--txt);line-height:1.8}
+img{max-width:100%;display:block}
+.demo-bar{background:linear-gradient(90deg,#1a1a10,#241f0d,#1a1a10);color:var(--gold2);text-align:center;font-size:.85rem;font-weight:700;padding:9px 14px;border-bottom:1px solid #3a3312}
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{max-width:1060px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:13px 18px}
+.logo{font-size:1.3rem;font-weight:900;letter-spacing:.5px}
+.logo span{color:var(--gold)}
+.nav nav{display:flex;gap:20px;font-size:.95rem}
+.nav nav a{color:var(--mut);text-decoration:none;font-weight:700}
+.nav nav a:hover{color:var(--gold2)}
+.hero{position:relative;text-align:center;padding:96px 18px 84px;background:linear-gradient(rgba(5,5,8,.72),rgba(5,5,8,.86)),url('demo-nojom/img/hero.webp') center/cover no-repeat}
+.hero h1{font-size:2.5rem;font-weight:900;line-height:1.35;max-width:760px;margin:0 auto 14px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:#d8d2c4;max-width:600px;margin:0 auto 28px;font-size:1.08rem}
+.btn{display:inline-block;background:var(--wa);color:#052b16;font-weight:900;text-decoration:none;border-radius:999px;padding:14px 34px;font-size:1.08rem;box-shadow:0 8px 26px rgba(37,211,102,.35)}
+.btn:active{transform:scale(.97)}
+.btn.gold{background:var(--gold);color:#221a02;box-shadow:0 8px 26px rgba(212,175,55,.3)}
+.wrap{max-width:1060px;margin:0 auto;padding:56px 18px}
+h2.sec{text-align:center;font-size:1.7rem;font-weight:900;margin-bottom:8px}
+.sec-sub{text-align:center;color:var(--mut);margin-bottom:34px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.g-item{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.g-item img{height:270px;width:100%;object-fit:cover;transition:transform .5s}
+.g-item:hover img{transform:scale(1.06)}
+.g-cap{position:absolute;bottom:0;right:0;left:0;padding:26px 16px 12px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-weight:800;font-size:1.05rem}
+.g-cap small{display:block;color:var(--gold2);font-weight:700;font-size:.82rem}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:6px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
+.feat .ic{font-size:1.7rem}
+.feat strong{display:block;margin:6px 0 2px}
+.feat p{color:var(--mut);font-size:.92rem}
+.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.pack{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 22px;text-align:center;position:relative}
+.pack.hot{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 14px 34px rgba(212,175,55,.12)}
+.tag{position:absolute;top:-13px;right:50%;transform:translateX(50%);background:var(--gold);color:#221a02;font-size:.78rem;font-weight:900;border-radius:999px;padding:3px 14px}
+.pack h3{font-size:1.2rem;font-weight:900}
+.price{font-size:2rem;font-weight:900;color:var(--gold);margin:8px 0}
+.price small{font-size:.9rem;color:var(--mut);font-weight:700}
+.pack ul{list-style:none;color:var(--mut);font-size:.95rem;margin:0 0 20px;text-align:right}
+.pack ul li{padding:4px 0;border-bottom:1px dashed #232329}
+.pack ul li:last-child{border:0}
+.pack .btn{padding:11px 26px;font-size:1rem}
+.cta-end{text-align:center;background:linear-gradient(160deg,#171408,#0d0d10);border:1px solid #3a3312;border-radius:20px;padding:38px 20px;margin-top:56px}
+.cta-end h2{font-size:1.55rem;font-weight:900;margin-bottom:8px}
+.cta-end p{color:var(--mut);margin-bottom:22px}
+footer{border-top:1px solid var(--line);padding:26px 18px;text-align:center;color:var(--mut);font-size:.9rem}
+footer .fname{color:var(--txt);font-weight:900;font-size:1.05rem}
+@media(max-width:560px){.hero h1{font-size:1.8rem}.nav nav{display:none}}
+</style>
+</head>
+<body>
+<div class="demo-bar">📌 عينة تجريبية — هكا غتبان الصفحة الرسمية ديال الستوديو</div>
+<header>
+  <div class="nav">
+    <div class="logo">Studio <span>Nojom</span> 📸</div>
+    <nav>
+      <a href="#works">أعمالنا</a>
+      <a href="#packs">الباقات</a>
+      <a href="#book">احجز جلستك</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>كنوثّقو أجمل لحظاتكم <em>بعدسة احترافية</em></h1>
+  <p>ستوديو تصوير فطنجة: أعراس، بورتريه، مناسبات عائلية وتصوير منتجات — جودة عالية وتسليم سريع، والحجز مباشرة بواتساب.</p>
+  <a class="btn" href="https://wa.me/212667682868?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20%D8%AA%D8%B5%D9%88%D9%8A%D8%B1" target="_blank" rel="noopener">📲 احجز جلستك دابا</a>
+</section>
+
+<div class="wrap" id="works">
+  <h2 class="sec">🎞️ من أعمالنا</h2>
+  <p class="sec-sub">نماذج من أساليب التصوير اللي كنقدمو — اضغط على أي خدمة فالباقات باش تحجز</p>
+  <div class="grid">
+    <div class="g-item"><img src="demo-nojom/img/wedding.webp" alt="تصوير أعراس مغربية"><div class="g-cap">أعراس مغربية<small>تغطية كاملة + جلسة عرسان</small></div></div>
+    <div class="g-item"><img src="demo-nojom/img/portrait.webp" alt="بورتريه احترافي"><div class="g-cap">بورتريه<small>جلسات شخصية بإضاءة سينمائية</small></div></div>
+    <div class="g-item"><img src="demo-nojom/img/event.webp" alt="تغطية مناسبات"><div class="g-cap">مناسبات وحفلات<small>أعياد ميلاد، خطوبة، حفلات</small></div></div>
+    <div class="g-item"><img src="demo-nojom/img/fashion.webp" alt="تصوير موضة"><div class="g-cap">موضة وأزياء<small>للماركات والمؤثرين</small></div></div>
+    <div class="g-item"><img src="demo-nojom/img/products.webp" alt="تصوير منتجات"><div class="g-cap">تصوير منتجات<small>عطور، مجوهرات، إعلانات</small></div></div>
+    <div class="g-item"><img src="demo-nojom/img/hero.webp" alt="داخل الستوديو"><div class="g-cap">داخل الستوديو<small>معدات وإضاءة احترافية</small></div></div>
+  </div>
+
+  <div class="feats" style="margin-top:34px">
+    <div class="feat"><div class="ic">⚡</div><strong>تسليم سريع</strong><p>صورك معدّلة وجاهزة فـ48 حتى 72 ساعة</p></div>
+    <div class="feat"><div class="ic">🎨</div><strong>تعديل احترافي</strong><p>رتوش وألوان سينمائية بلا ما يتبدل الشكل الطبيعي</p></div>
+    <div class="feat"><div class="ic">📍</div><strong>ستوديو + خارجي</strong><p>تصوير داخل الستوديو ولا فالمكان اللي تختاروه</p></div>
+    <div class="feat"><div class="ic">📲</div><strong>حجز ساهل</strong><p>احجز التاريخ ديالك بواتساب فدقيقة وحدة</p></div>
+  </div>
+</div>
+
+<div class="wrap" id="packs" style="padding-top:6px">
+  <h2 class="sec">💼 الباقات</h2>
+  <p class="sec-sub">أثمنة توضيحية للعينة — الأثمنة الحقيقية كتتحدد مع الستوديو</p>
+  <div class="packs">
+    <div class="pack">
+      <h3>جلسة بورتريه</h3>
+      <div class="price">299 <small>درهم</small></div>
+      <ul>
+        <li>جلسة 45 دقيقة فالستوديو</li>
+        <li>10 صور معدّلة بجودة عالية</li>
+        <li>خلفيتان مختلفتان</li>
+        <li>التسليم فـ48 ساعة</li>
+      </ul>
+      <a class="btn" href="https://wa.me/212667682868?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20%D8%A8%D9%88%D8%B1%D8%AA%D8%B1%D9%8A%D9%87" target="_blank" rel="noopener">احجز هاد الباقة</a>
+    </div>
+    <div class="pack hot">
+      <div class="tag">الأكثر طلباً ⭐</div>
+      <h3>جلسة عرسان</h3>
+      <div class="price">899 <small>درهم</small></div>
+      <ul>
+        <li>جلسة ساعتين (ستوديو + خارجي)</li>
+        <li>25 صورة معدّلة بجودة عالية</li>
+        <li>ألبوم صور فاخر</li>
+        <li>معرض أونلاين خاص بيكم</li>
+      </ul>
+      <a class="btn" href="https://wa.me/212667682868?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20%D8%B9%D8%B1%D8%B3%D8%A7%D9%86" target="_blank" rel="noopener">احجز هاد الباقة</a>
+    </div>
+    <div class="pack">
+      <h3>تغطية عرس كاملة</h3>
+      <div class="price"><small>من</small> 2.900 <small>درهم</small></div>
+      <ul>
+        <li>تغطية اليوم كامل: صور + فيديو</li>
+        <li>+200 صورة معدّلة</li>
+        <li>فيديو ملخص احترافي</li>
+        <li>ألبوم + نسخة رقمية</li>
+      </ul>
+      <a class="btn" href="https://wa.me/212667682868?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D8%AA%D8%BA%D8%B7%D9%8A%D8%A9%20%D8%B9%D8%B1%D8%B3%20%D9%83%D8%A7%D9%85%D9%84%D8%A9" target="_blank" rel="noopener">اطلب عرض الثمن</a>
+    </div>
+  </div>
+
+  <div class="cta-end" id="book">
+    <h2>📅 التاريخ ديالك كيتسنى</h2>
+    <p>الأعراس والمناسبات كتحجز بسرعة — أكد التاريخ ديالك اليوم بواتساب</p>
+    <a class="btn gold" href="https://wa.me/212667682868?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%AD%D8%AC%D8%B2%20%D9%81%D9%80%20Studio%20Nojom" target="_blank" rel="noopener">📲 واتساب الستوديو</a>
+  </div>
+</div>
+
+<footer>
+  <div class="fname">Studio Nojom 📸 — طنجة</div>
+  <p>📌 عينة تجريبية للتوضيح فقط — الصور والأثمنة توضيحية</p>
+</footer>
+</body>
+</html>
