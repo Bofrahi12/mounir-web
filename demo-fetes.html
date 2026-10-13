@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قاعة الياسمين للأفراح — قاعة أعراس ومناسبات فاخرة بطنجة (نموذج تجريبي)</title>
+<meta name="description" content="قاعة الياسمين للأفراح بطنجة: أعراس، خطوبة، ليالي حنة ومناسبات عائلية في قاعة فاخرة — ممّون، ديكور، نكافة وفرقة. نموذج تجريبي.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+<style>
+  :root{
+    --bg:#14100c; --bg2:#1a140f; --card:#211912;
+    --cream:#f6ecd9; --cream2:#e9dcbc; --muted:#b3a284;
+    --gold:#d4af37; --gold2:#eec96e; --goldD:#9a7b24;
+    --wine:#8c2b3a; --line:rgba(212,175,55,.25);
+    --green:#25d366; --radius:18px;
+    --shadow:0 18px 45px rgba(0,0,0,.45);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Cairo',Tahoma,sans-serif;background:var(--bg);color:var(--cream);line-height:1.8}
+  img{display:block;max-width:100%}
+  .container{max-width:1140px;margin:0 auto;padding:0 22px}
+
+  /* demo banner */
+  .demo-banner{background:linear-gradient(90deg,var(--goldD),var(--gold),var(--goldD));color:#241a02;text-align:center;font-size:.86rem;font-weight:800;padding:8px 14px}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:60;background:rgba(20,16,12,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:18px}
+  .logo{font-size:1.45rem;font-weight:900;color:var(--cream);text-decoration:none;white-space:nowrap;line-height:1.15}
+  .logo span{color:var(--gold)}
+  .logo small{display:block;font-size:.66rem;letter-spacing:.24em;color:var(--muted);font-weight:700}
+  .links{display:flex;gap:26px;align-items:center}
+  .links a{color:var(--cream2);text-decoration:none;font-size:.97rem;font-weight:700;transition:.2s}
+  .links a:hover{color:var(--gold2)}
+  .btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:50px;padding:12px 30px;transition:.25s;border:2px solid transparent;cursor:pointer;font-family:inherit;font-size:1rem;text-align:center}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#241a02}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(212,175,55,.35)}
+  .btn-outline{border-color:rgba(246,236,217,.6);color:#fff;background:rgba(20,16,12,.3)}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold2)}
+  .btn-wine{background:var(--wine);color:#fff}
+  .btn-wine:hover{background:#a53446;transform:translateY(-2px)}
+  .btn-sm{padding:9px 22px;font-size:.92rem}
+  .btn-block{width:100%}
+  .burger{display:none;background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer}
+
+  /* hero */
+  .hero{position:relative;min-height:90vh;display:flex;align-items:center;background:url('demo-fetes/img/hero.webp') center 45%/cover no-repeat}
+  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,11,7,.72),rgba(16,11,7,.5) 45%,rgba(16,11,7,.92))}
+  .hero-inner{position:relative;text-align:center;padding:90px 22px 80px;width:100%}
+  .hero-badge{display:inline-block;border:1px solid rgba(238,201,110,.7);color:var(--gold2);padding:7px 22px;border-radius:50px;font-size:.86rem;font-weight:800;letter-spacing:.14em;margin-bottom:24px;background:rgba(16,11,7,.45)}
+  .hero h1{font-size:clamp(2.3rem,6vw,4.1rem);font-weight:900;line-height:1.4;margin-bottom:18px;text-shadow:0 3px 24px rgba(0,0,0,.55)}
+  .hero h1 em{color:var(--gold2);font-style:normal}
+  .hero p{color:#efe3c2;font-size:1.15rem;max-width:640px;margin:0 auto 36px}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero-meta{margin-top:44px;color:#d9c69a;font-size:.94rem;font-weight:700}
+
+  /* sections */
+  .section{padding:84px 0}
+  .section-dark{background:var(--bg2)}
+  .sec-kicker{text-align:center;color:var(--gold);letter-spacing:.28em;font-size:.8rem;font-weight:800;margin-bottom:10px}
+  .sec-title{text-align:center;font-size:clamp(1.9rem,4vw,2.55rem);font-weight:900;margin-bottom:14px}
+  .sec-sub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 48px;font-size:1.03rem}
+  .ornament{text-align:center;color:var(--gold);font-size:1rem;letter-spacing:.5em;margin-bottom:16px}
+
+  /* intro */
+  .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .intro-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .intro-img img{width:100%;height:500px;object-fit:cover}
+  .intro-txt .sec-kicker{text-align:right}
+  .intro-txt h2{font-size:2.05rem;font-weight:900;margin-bottom:14px;line-height:1.5}
+  .intro-txt p{color:#d8c9a6;margin-bottom:16px;font-size:1.02rem}
+  .intro-points{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+  .intro-points div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-weight:800;font-size:.95rem}
+  .intro-points div span{display:block;color:var(--muted);font-weight:400;font-size:.87rem}
+
+  /* services */
+  .serv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .serv{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 22px;text-align:center;transition:.25s}
+  .serv:hover{transform:translateY(-5px);border-color:var(--gold)}
+  .serv .ic{font-size:2.2rem;margin-bottom:12px}
+  .serv h3{font-size:1.13rem;font-weight:900;margin-bottom:8px;color:var(--gold2)}
+  .serv p{color:#cfc09e;font-size:.93rem}
+
+  /* gallery */
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .gal-grid figure{border-radius:var(--radius);overflow:hidden;position:relative;border:1px solid var(--line)}
+  .gal-grid img{width:100%;height:320px;object-fit:cover;transition:transform .5s}
+  .gal-grid figure:hover img{transform:scale(1.06)}
+  .gal-grid figcaption{position:absolute;right:0;left:0;bottom:0;padding:26px 16px 12px;background:linear-gradient(transparent,rgba(12,8,5,.88));color:var(--cream);font-size:.93rem;font-weight:800}
+
+  /* packages */
+  .pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+  .pack{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;display:flex;flex-direction:column;position:relative;transition:.25s}
+  .pack:hover{transform:translateY(-5px)}
+  .pack.featured{border:2px solid var(--gold);box-shadow:0 20px 50px rgba(212,175,55,.18)}
+  .pack .tag{position:absolute;top:-15px;inset-inline-start:50%;transform:translateX(50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#241a02;font-size:.8rem;font-weight:900;border-radius:50px;padding:4px 18px;white-space:nowrap}
+  .pack h3{font-size:1.4rem;font-weight:900;text-align:center}
+  .pack .p-sub{text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:16px}
+  .pack-price{text-align:center;font-size:2.1rem;font-weight:900;color:var(--gold);line-height:1.3}
+  .pack-price small{display:block;font-size:.8rem;color:var(--muted);font-weight:600}
+  .pack ul{list-style:none;margin:22px 0 26px}
+  .pack ul li{padding:8px 0;border-bottom:1px dashed rgba(212,175,55,.18);color:#e2d3ab;font-size:.97rem}
+  .pack ul li:last-child{border-bottom:none}
+  .pack ul li::before{content:'✦ ';color:var(--gold)}
+  .pack .btn{margin-top:auto}
+  .pack-note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:28px}
+
+  /* form */
+  .book-box{max-width:700px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:42px 38px;box-shadow:var(--shadow)}
+  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-weight:800;margin-bottom:7px;font-size:.95rem}
+  .field input,.field select{width:100%;background:#171008;border:1px solid var(--line);border-radius:10px;color:var(--cream);font-family:inherit;font-size:1rem;padding:12px 15px;transition:.2s}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.16)}
+  .field select option{background:#1a140f;color:var(--cream)}
+  .form-note{text-align:center;color:var(--muted);font-size:.88rem;margin-top:14px}
+  .form-err{color:#ff9a8a;font-weight:800;min-height:1.4em;font-size:.93rem}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:52px 0 38px;text-align:center;background:#100c08}
+  footer .flogo{font-size:1.7rem;font-weight:900}
+  footer .flogo span{color:var(--gold)}
+  footer p{color:var(--muted);margin-top:10px;font-size:.95rem}
+  .foot-demo{max-width:640px;margin:18px auto 0;font-size:.83rem;color:#7d6c4e;border-top:1px dashed var(--line);padding-top:18px}
+  .copy{font-size:.82rem}
+
+  .wa-float{position:fixed;bottom:24px;inset-inline-start:24px;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:60;transition:.2s}
+  .wa-float:hover{transform:scale(1.08)}
+
+  @media(max-width:1020px){
+    .serv-grid{grid-template-columns:1fr 1fr}
+    .pack-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+    .gal-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:760px){
+    .links{position:fixed;top:72px;right:0;left:0;background:var(--bg2);flex-direction:column;padding:22px;gap:16px;border-bottom:1px solid var(--line);display:none}
+    .links.open{display:flex}
+    .burger{display:block}
+    .intro-grid{grid-template-columns:1fr}
+    .intro-img img{height:360px}
+    .intro-txt .sec-kicker{text-align:center}
+    .intro-points{grid-template-columns:1fr}
+    .row-2{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:1fr}
+    .section{padding:60px 0}
+    .book-box{padding:30px 22px}
+    .hero{min-height:78vh}
+  }
+  @media(max-width:520px){
+    .serv-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">📌 نموذج تجريبي — الصور والأثمنة توضيحية</div>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">قاعة <span>الياسمين</span> للأفراح<small>طنجة · المغرب</small></a>
+    <nav class="links" id="navLinks">
+      <a href="#home">الرئيسية</a>
+      <a href="#galerie">المعرض</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#packs">الباقات</a>
+      <a href="#dispo">طلب التوفر</a>
+      <a href="tel:+212693981822" class="btn btn-gold btn-sm">📞 06 93 98 18 22</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="القائمة">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container hero-inner">
+    <div class="hero-badge">💍 قاعة أفراح فاخرة · طنجة</div>
+    <h1>ليلة العمر…<br>في قاعة <em>تليق بها</em></h1>
+    <p>أعراس، خطوبة، ليالي حنة ومناسبات عائلية في قاعة مغربية فاخرة بقلب طنجة — وفريق كامل كيهتم بكل التفاصيل، من أول ضيف حتى آخر رقصة.</p>
+    <div class="hero-cta">
+      <a href="#dispo" class="btn btn-gold">📅 اطلب التوفر ديال التاريخ ديالك</a>
+      <a href="#packs" class="btn btn-outline">شوف الباقات</a>
+    </div>
+    <div class="hero-meta">🏛️ قاعة كبرى + قاعة حنة &nbsp;·&nbsp; 🍽️ ممّون شامل &nbsp;·&nbsp; 📍 طنجة</div>
+  </div>
+</section>
+
+<section class="section" id="maison">
+  <div class="container intro-grid">
+    <div class="intro-img"><img src="demo-fetes/img/g1.webp" alt="منصة العرسان الذهبية في قاعة الياسمين"></div>
+    <div class="intro-txt">
+      <div class="sec-kicker">قاعة الياسمين</div>
+      <h2>فخامة مغربية أصيلة،<br>وتنظيم بلا توتر</h2>
+      <div class="ornament" style="text-align:right">✦ ✦ ✦</div>
+      <p>من لحظة دخول العرسان تحت الأقواس الذهبية، حتى تقديم آخر طبق حلو — قاعة الياسمين مصممة باش تعيش ليلتك كضيف شرف، ماشي كمنظّم.</p>
+      <p>ديكور ملكي بالزخارف المغربية، إضاءة دافئة، منصة عرسان (عمارية) تليق بالصور ديالك، وفريق عندو خبرة في الأعراس المغربية بكل طقوسها: الحنة، النكافة، والفرقة الأندلسية.</p>
+      <div class="intro-points">
+        <div>🏛️ قاعتان في فضاء واحد<span>قاعة كبرى للأعراس وقاعة دافئة للخطوبة والحنة</span></div>
+        <div>🍽️ مطبخ وممّون داخلي<span>أطباق مغربية وعصرية محضرة في نفس اليوم</span></div>
+        <div>👰 نكافة وعمارية<span>أطقم تقليدية وعصرية مع مرافقة كاملة للعروسة</span></div>
+        <div>🎶 فرقة وإحياء<span>فرقة أندلسية، دقة مراكشية ودي جي حسب ذوقك</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark" id="services">
+  <div class="container">
+    <div class="sec-kicker">خدماتنا</div>
+    <h2 class="sec-title">السعة والخدمات</h2>
+    <p class="sec-sub">كل ما تحتاجوه ليلتكم الكبيرة، مجموع في بلاصة وحدة — بلا ما تبقاو تجريو بين المورّدين.</p>
+    <div class="serv-grid">
+      <div class="serv"><div class="ic">🏛️</div><h3>القاعة الكبرى</h3><p>قاعة أعراس فاخرة بأقواس ذهبية وثريات كريستال — تستوعب حتى 500 ضيف جالسين.</p></div>
+      <div class="serv"><div class="ic">🌸</div><h3>قاعة الحنة والخطوبة</h3><p>فضاء حميمي مزين بالألوان التقليدية — حتى 150 ضيف، مثالي لليلة الحنة والخطوبة.</p></div>
+      <div class="serv"><div class="ic">🍽️</div><h3>الممّون (Traiteur)</h3><p>بسطيلة، مشوي، طواجن وحلويات مغربية وعصرية — قوائم قابلة للتخصيص حسب الميزانية.</p></div>
+      <div class="serv"><div class="ic">🎀</div><h3>الديكور والثيمات</h3><p>ديكور الطاولات، الورود والإضاءة بثيمات متعددة: ملكي، أندلسي، عصري… حسب ذوق العرسان.</p></div>
+      <div class="serv"><div class="ic">👰</div><h3>النكافة والعمارية</h3><p>نكافة محترفة بأطقم تقليدية فاخرة، وعمارية ذهبية كتدخل بيها العروسة كالأميرات.</p></div>
+      <div class="serv"><div class="ic">🎶</div><h3>الفرقة والإحياء</h3><p>فرقة أندلسية، عيطة ودقة مراكشية، أو دي جي — برنامج موسيقي كامل طوال الليلة.</p></div>
+      <div class="serv"><div class="ic">📸</div><h3>التصوير</h3><p>تصوير فوتوغرافي وفيديو احترافي لتوثيق كل لحظات الليلة، مع ألبوم وشاشة عرض.</p></div>
+      <div class="serv"><div class="ic">🚗</div><h3>الاستقبال والباركينغ</h3><p>فضاء استقبال بالشاي والحلويات للضيوف، وموقف سيارات واسع قريب من القاعة.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="galerie">
+  <div class="container">
+    <div class="sec-kicker">المعرض</div>
+    <h2 class="sec-title">القاعة بالصور</h2>
+    <p class="sec-sub">أجواء حقيقية من قلب القاعة: المنصة، الطاولات، والتفاصيل اللي كتصنع الفرق.</p>
+    <div class="gal-grid">
+      <figure><img src="demo-fetes/img/hero.webp" alt="القاعة الكبرى بالثريات الكريستال"><figcaption>القاعة الكبرى وثرياتها</figcaption></figure>
+      <figure><img src="demo-fetes/img/g1.webp" alt="منصة العرسان الذهبية"><figcaption>منصة العرسان الذهبية</figcaption></figure>
+      <figure><img src="demo-fetes/img/g2.webp" alt="تفاصيل طاولة الضيوف"><figcaption>تفاصيل طاولات الضيوف</figcaption></figure>
+      <figure><img src="demo-fetes/img/g3.webp" alt="السقف المغربي المرسوم"><figcaption>السقف التقليدي المرسوم</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark" id="packs">
+  <div class="container">
+    <div class="sec-kicker">الباقات</div>
+    <h2 class="sec-title">باقات الأعراس</h2>
+    <p class="sec-sub">ثلاث باقات واضحة، وقابلة للتعديل حسب التاريخ وعدد الضيوف والخدمات اللي تختاروها.</p>
+    <div class="pack-grid">
+
+      <div class="pack">
+        <h3>الباقة الفضية</h3>
+        <p class="p-sub">الأساسيات بفخامة</p>
+        <div class="pack-price">9,900 درهم<small>ابتداءً من · ثمن توضيحي</small></div>
+        <ul>
+          <li>كراء القاعة الكبرى (حتى 200 ضيف)</li>
+          <li>ديكور أساسي للمنصة والطاولات</li>
+          <li>منصة عرسان + عمارية</li>
+          <li>استقبال الضيوف بالشاي والحلويات</li>
+          <li>فريق تنظيم يوم الحفل</li>
+        </ul>
+        <a class="btn btn-outline btn-block" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%81%D8%B6%D9%8A%D8%A9%20%D9%81%D9%8A%20%D9%82%D8%A7%D8%B9%D8%A9%20%D8%A7%D9%84%D9%8A%D8%A7%D8%B3%D9%85%D9%8A%D9%86%20%D9%84%D9%84%D8%A3%D9%81%D8%B1%D8%A7%D8%AD.">💬 استفسر على الفضية</a>
+      </div>
+
+      <div class="pack featured">
+        <div class="tag">⭐ الأكثر طلباً</div>
+        <h3>الباقة الذهبية</h3>
+        <p class="p-sub">ليلة كاملة بلا ما تفكر في والو</p>
+        <div class="pack-price">14,900 درهم<small>ابتداءً من · ثمن توضيحي</small></div>
+        <ul>
+          <li>كل مزايا الباقة الفضية</li>
+          <li>القاعة حتى 350 ضيف</li>
+          <li>ممّون كامل (عشاء + حلويات)</li>
+          <li>نكافة بأطقم تقليدية وعصرية</li>
+          <li>فرقة أندلسية + دقة مراكشية</li>
+          <li>ديكور ورود طبيعية للطاولات</li>
+        </ul>
+        <a class="btn btn-gold btn-block" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%B0%D9%87%D8%A8%D9%8A%D8%A9%20%D9%81%D9%8A%20%D9%82%D8%A7%D8%B9%D8%A9%20%D8%A7%D9%84%D9%8A%D8%A7%D8%B3%D9%85%D9%8A%D9%86%20%D9%84%D9%84%D8%A3%D9%81%D8%B1%D8%A7%D8%AD.">💬 استفسر على الذهبية</a>
+      </div>
+
+      <div class="pack">
+        <h3>الباقة الملكية</h3>
+        <p class="p-sub">قصر كامل لليلة واحدة</p>
+        <div class="pack-price">24,900 درهم<small>ابتداءً من · ثمن توضيحي</small></div>
+        <ul>
+          <li>كل مزايا الباقة الذهبية</li>
+          <li>القاعتان معاً حتى 500 ضيف</li>
+          <li>ممّون فاخر بقوائم مخصصة</li>
+          <li>تصوير فوتوغرافي وفيديو كامل</li>
+          <li>ديكور ملكي كامل + شاشة عرض</li>
+          <li>جناح خاص للعرسان داخل القاعة</li>
+        </ul>
+        <a class="btn btn-wine btn-block" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%85%D9%84%D9%83%D9%8A%D8%A9%20%D9%81%D9%8A%20%D9%82%D8%A7%D8%B9%D8%A9%20%D8%A7%D9%84%D9%8A%D8%A7%D8%B3%D9%85%D9%8A%D9%86%20%D9%84%D9%84%D8%A3%D9%81%D8%B1%D8%A7%D8%AD.">💬 استفسر على الملكية</a>
+      </div>
+
+    </div>
+    <p class="pack-note">📌 أثمنة انطلاق توضيحية — الثمن النهائي كيتحدد حسب تاريخ المناسبة، عدد الضيوف والخدمات المختارة. زيارة القاعة والمعاينة مرحباً بها بالحجز.</p>
+  </div>
+</section>
+
+<section class="section" id="dispo">
+  <div class="container">
+    <div class="sec-kicker">طلب التوفر</div>
+    <h2 class="sec-title">واش التاريخ ديالك خاوي؟</h2>
+    <p class="sec-sub">عمّر الاستمارة وغادي توصّلنا مباشرة لواتساب — كنأكدو ليك التوفر والثمن المناسب لباقتك في أقرب وقت.</p>
+    <form class="book-box" id="dispoForm" novalidate>
+      <div class="row-2">
+        <div class="field">
+          <label for="fName">الاسم الكامل *</label>
+          <input type="text" id="fName" placeholder="مثال: سارة العلوي" required>
+        </div>
+        <div class="field">
+          <label for="fPhone">رقم الهاتف *</label>
+          <input type="tel" id="fPhone" placeholder="06 XX XX XX XX" required>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="fDate">تاريخ المناسبة *</label>
+          <input type="date" id="fDate" required>
+        </div>
+        <div class="field">
+          <label for="fType">نوع المناسبة *</label>
+          <select id="fType" required>
+            <option value="">اختار…</option>
+            <option>عرس</option><option>خطوبة</option><option>ليلة حنة</option>
+            <option>عيد ميلاد</option><option>مناسبة عائلية</option><option>أخرى</option>
+          </select>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="fGuests">عدد الضيوف التقريبي *</label>
+          <select id="fGuests" required>
+            <option value="">اختار…</option>
+            <option>أقل من 100 ضيف</option><option>100 – 200 ضيف</option>
+            <option>200 – 350 ضيف</option><option>350 – 500 ضيف</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fPack">الباقة المفضلة</label>
+          <select id="fPack">
+            <option value="">مازال ما قررت</option>
+            <option>الباقة الفضية</option><option>الباقة الذهبية</option><option>الباقة الملكية</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="fNote">ملاحظات (اختياري)</label>
+        <input type="text" id="fNote" placeholder="ثيمة خاصة، أطباق معينة، أسئلة…">
+      </div>
+      <p class="form-err" id="dispoErr"></p>
+      <button type="submit" class="btn btn-gold btn-block">📲 صيفط طلب التوفر عبر واتساب</button>
+      <p class="form-note">بالضغط على الزر، غادي يتحل واتساب والطلب ديالك مكتوب واجد — غير صيفطو.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="flogo">قاعة <span>الياسمين</span> للأفراح</div>
+    <p>قاعة أعراس ومناسبات فاخرة — طنجة · أعراس، خطوبة وحنة · <span dir="ltr">+212 6 93 98 18 22</span></p>
+    <p class="copy">© 2026 قاعة الياسمين للأفراح — Démo</p>
+    <p class="foot-demo">📌 نموذج تجريبي — الصور والأثمنة توضيحية. موقع للعرض فقط، وقاعة الياسمين للأفراح اسم خيالي لا يمثل قاعة حقيقية.</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D8%AA%D9%88%D9%81%D8%B1%20%D9%82%D8%A7%D8%B9%D8%A9%20%D8%A7%D9%84%D9%8A%D8%A7%D8%B3%D9%85%D9%8A%D9%86%20%D9%84%D9%84%D8%A3%D9%81%D8%B1%D8%A7%D8%AD." class="wa-float" target="_blank" rel="noopener" aria-label="واتساب">💬</a>
+
+<script>
+  // القائمة في الهاتف
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+  navLinks.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ navLinks.classList.remove('open'); } });
+
+  // طلب التوفر -> واتساب
+  document.getElementById('dispoForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name   = document.getElementById('fName').value.trim();
+    var phone  = document.getElementById('fPhone').value.trim();
+    var date   = document.getElementById('fDate').value;
+    var type   = document.getElementById('fType').value;
+    var guests = document.getElementById('fGuests').value;
+    var pack   = document.getElementById('fPack').value;
+    var note   = document.getElementById('fNote').value.trim();
+    var err    = document.getElementById('dispoErr');
+    if(!name || !phone || !date || !type || !guests){
+      err.textContent = 'المرجو ملء جميع الخانات اللي فيها نجمة (*).';
+      return;
+    }
+    err.textContent = '';
+    var p = date.split('-');
+    var dateFr = p[2] + '/' + p[1] + '/' + p[0];
+    var msg = 'السلام عليكم قاعة الياسمين للأفراح، بغيت نطلب التوفر:\n'
+            + '• الاسم: ' + name + '\n'
+            + '• الهاتف: ' + phone + '\n'
+            + '• تاريخ المناسبة: ' + dateFr + '\n'
+            + '• نوع المناسبة: ' + type + '\n'
+            + '• عدد الضيوف: ' + guests;
+    if(pack){ msg += '\n• الباقة المفضلة: ' + pack; }
+    if(note){ msg += '\n• ملاحظات: ' + note; }
+    msg += '\nشكراً، كنستنى تأكيد التوفر والثمن.';
+    window.open('https://wa.me/212693981822?text=' + encodeURIComponent(msg), '_blank');
+  });
+</script>
+</body>
+</html>

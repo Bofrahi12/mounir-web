@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>مقهى الأصالة — قهوة مختصة وبرانش في طنجة (نموذج تجريبي)</title>
+<meta name="description" content="نموذج تجريبي لموقع مقهى مختصة في طنجة: قهوة مختصة، برانش، عصائر طازجة وحلويات — الطلب والحجز عبر واتساب.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+<style>
+:root{
+  --cream:#faf5ec; --white:#fffdf8; --ink:#2b1a10; --muted:#8a7460;
+  --coffee:#6f4a2f; --coffee-dark:#4c2f1c; --caramel:#c98a3d; --caramel-light:#f3e2c7;
+  --line:#ead9c2; --green:#25d366; --radius:18px;
+  --shadow:0 12px 32px rgba(43,26,16,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',Tahoma,sans-serif;background:var(--cream);color:var(--ink);line-height:1.8}
+img{display:block;max-width:100%}
+.container{max-width:1140px;margin:0 auto;padding:0 20px}
+
+/* demo banner */
+.demo-banner{background:var(--ink);color:#f3e2c7;text-align:center;font-size:.86rem;font-weight:700;padding:8px 14px}
+
+/* header */
+header{position:sticky;top:0;z-index:60;background:rgba(255,253,248,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hd-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.logo{font-weight:900;font-size:1.45rem;color:var(--ink);text-decoration:none}
+.logo span{color:var(--caramel)}
+.logo small{display:block;font-size:.66rem;letter-spacing:3px;color:var(--muted);font-weight:700;line-height:1.2}
+nav.main-nav{display:flex;gap:26px;align-items:center}
+nav.main-nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:.98rem}
+nav.main-nav a:hover{color:var(--coffee)}
+.nav-cta{background:var(--green);color:#052e16!important;border-radius:50px;padding:8px 20px;font-weight:800!important}
+.burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink)}
+
+/* hero */
+.hero{position:relative;min-height:84vh;display:flex;align-items:center;background:url('demo-cafe/img/hero.webp') center 55%/cover no-repeat}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,17,8,.58),rgba(30,17,8,.46) 45%,rgba(30,17,8,.86))}
+.hero-inner{position:relative;text-align:center;padding:88px 20px 76px;width:100%}
+.hero-badge{display:inline-block;border:1px solid rgba(243,226,199,.65);color:#f7e8cf;padding:6px 20px;border-radius:50px;font-size:.86rem;font-weight:700;margin-bottom:22px;background:rgba(30,17,8,.35)}
+.hero h1{font-size:clamp(2.2rem,5.6vw,3.7rem);font-weight:900;line-height:1.4;color:#fff8ec;margin-bottom:16px;text-shadow:0 3px 22px rgba(0,0,0,.45)}
+.hero h1 .accent{color:#eec27f}
+.hero p{color:#f3e6d0;font-size:1.14rem;max-width:600px;margin:0 auto 34px}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:50px;padding:13px 32px;font-size:1rem;border:2px solid transparent;cursor:pointer;font-family:inherit;transition:.2s;text-align:center}
+.btn-caramel{background:var(--caramel);color:#2b1a10}
+.btn-caramel:hover{background:#dfa04e;transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,248,236,.7);color:#fff8ec;background:rgba(30,17,8,.25)}
+.btn-ghost:hover{border-color:#eec27f;color:#eec27f}
+.hero-meta{margin-top:40px;color:#e6d3b3;font-size:.93rem;font-weight:600}
+
+/* trust */
+.trust{background:var(--white);border-bottom:1px solid var(--line)}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:20px 0}
+.trust-item{display:flex;align-items:center;gap:12px;justify-content:center;font-weight:800;font-size:.96rem}
+.trust-item .t-icon{font-size:1.65rem}
+.trust-item small{display:block;color:var(--muted);font-weight:600;font-size:.8rem}
+
+/* sections */
+.section{padding:72px 0}
+.sec-kicker{text-align:center;color:var(--coffee);font-weight:800;font-size:.85rem;letter-spacing:1px;margin-bottom:6px}
+.sec-title{font-size:2rem;font-weight:900;text-align:center;margin-bottom:8px}
+.sec-sub{text-align:center;color:var(--muted);margin-bottom:42px;max-width:620px;margin-inline:auto}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-img{border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.about-img img{width:100%;height:480px;object-fit:cover}
+.about-txt h2{font-size:1.9rem;font-weight:900;margin-bottom:14px;line-height:1.5}
+.about-txt p{color:#5c4634;margin-bottom:14px}
+.about-feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.about-feats div{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:800;font-size:.95rem}
+.about-feats div span{display:block;color:var(--muted);font-weight:600;font-size:.85rem}
+
+/* menu */
+.menu-section{background:var(--white);border-block:1px solid var(--line)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px 56px}
+.menu-cat h3{font-size:1.35rem;font-weight:900;color:var(--coffee-dark);border-bottom:2px solid var(--caramel);padding-bottom:10px;margin-bottom:6px}
+.item{display:flex;gap:14px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.item:last-child{border-bottom:none}
+.item-txt{flex:1}
+.item-txt h4{font-size:1.05rem;font-weight:800}
+.item-txt p{color:var(--muted);font-size:.9rem;line-height:1.6}
+.item-price{font-weight:900;color:var(--coffee);font-size:1.08rem;white-space:nowrap}
+.item-price small{font-size:.72rem;color:var(--muted);font-weight:600}
+.menu-note{text-align:center;color:var(--muted);margin-top:38px;font-size:.93rem}
+
+/* gallery */
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.gal-grid figure{border-radius:16px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+.gal-grid img{width:100%;height:280px;object-fit:cover;transition:transform .5s}
+.gal-grid figure:hover img{transform:scale(1.06)}
+.gal-grid figcaption{position:absolute;right:0;left:0;bottom:0;padding:30px 16px 12px;background:linear-gradient(transparent,rgba(30,17,8,.85));color:#fff8ec;font-size:.93rem;font-weight:800}
+
+/* infos */
+.infos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.info-card{background:var(--ink);color:#f3e6d0;border-radius:18px;padding:32px 24px;text-align:center}
+.info-card .ic{font-size:2rem;margin-bottom:10px}
+.info-card h3{font-size:1.18rem;margin-bottom:8px;color:#eec27f;font-weight:900}
+.info-card p{font-size:.96rem}
+.info-card a{color:#eec27f;text-decoration:none;font-weight:800}
+
+/* order form */
+.order-box{max-width:660px;margin:0 auto;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:40px 36px;box-shadow:var(--shadow)}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:800;margin-bottom:6px;font-size:.94rem}
+.field input,.field select,.field textarea{width:100%;background:#fff;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem;padding:12px 14px;color:var(--ink)}
+.field textarea{resize:vertical;min-height:74px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--caramel);box-shadow:0 0 0 3px rgba(201,138,61,.15)}
+.form-err{color:#b3372a;font-weight:700;min-height:1.4em;font-size:.92rem}
+.order-btn{display:block;width:100%;background:var(--green);color:#fff;border:none;border-radius:12px;padding:15px;font-family:inherit;font-weight:900;font-size:1.05rem;cursor:pointer}
+.order-btn:hover{background:#1eb856}
+.form-note{text-align:center;color:var(--muted);font-size:.87rem;margin-top:12px}
+
+/* footer */
+footer{background:var(--ink);color:#d9c4a3;padding:54px 0 0;margin-top:10px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;padding-bottom:38px}
+footer h4{color:#fff8ec;font-size:1.08rem;margin-bottom:12px;font-weight:900}
+footer p,footer li{color:#bfa87f;font-size:.94rem}
+footer ul{list-style:none}
+footer li{padding:4px 0}
+footer a{color:#eec27f;text-decoration:none;font-weight:700}
+.foot-logo{font-size:1.5rem;font-weight:900;color:#fff8ec}
+.foot-logo span{color:var(--caramel)}
+.foot-bottom{border-top:1px solid #453122;padding:18px 0;text-align:center;color:#9a7f5c;font-size:.87rem}
+
+.wa-float{position:fixed;bottom:24px;inset-inline-end:24px;width:58px;height:58px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:1.65rem;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:70;transition:.2s}
+.wa-float:hover{transform:scale(1.08)}
+
+@media(max-width:960px){
+  .menu-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .infos-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .about-img img{height:360px}
+  .trust-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  nav.main-nav{position:fixed;top:70px;right:0;left:0;background:var(--white);flex-direction:column;padding:18px 22px;gap:14px;border-bottom:1px solid var(--line);display:none;z-index:55}
+  nav.main-nav.open{display:flex}
+  .burger{display:block}
+  .gal-grid{grid-template-columns:1fr}
+  .row-2{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .section{padding:52px 0}
+  .order-box{padding:28px 20px}
+  .hero{min-height:74vh}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">📌 نموذج تجريبي — الصور والأثمنة توضيحية</div>
+
+<header>
+  <div class="container hd-inner">
+    <a href="#home" class="logo">مقهى <span>الأصالة</span><small>CAFÉ AL ASSALA — طنجة</small></a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#home">الرئيسية</a>
+      <a href="#about">علينا</a>
+      <a href="#menu">القائمة</a>
+      <a href="#gallery">الألبوم</a>
+      <a href="#infos">الأوقات والموقع</a>
+      <a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D9%85%D9%82%D9%87%D9%89%20%D8%A7%D9%84%D8%A3%D8%B5%D8%A7%D9%84%D8%A9%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8." target="_blank" rel="noopener" class="nav-cta">📲 اطلب واتساب</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="القائمة">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container hero-inner">
+    <span class="hero-badge">☕ قهوة مختصة · برانش · طنجة</span>
+    <h1>قهوة تتصنع بحب…<br><span class="accent">على الطريقة الأصيلة</span></h1>
+    <p>حبوب مختصة محمّصة بعناية، برانش مغربي غني، وترّاس كيطل على أزقة طنجة القديمة. بلاصتك الصباحية، كل نهار.</p>
+    <div class="hero-cta">
+      <a href="#menu" class="btn btn-caramel">📖 شوف القائمة</a>
+      <a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D9%85%D9%82%D9%87%D9%89%20%D8%A7%D9%84%D8%A3%D8%B5%D8%A7%D9%84%D8%A9%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8." target="_blank" rel="noopener" class="btn btn-ghost">💬 اطلب عبر واتساب</a>
+    </div>
+    <div class="hero-meta">🕖 مفتوح كل أيام الأسبوع · 7:30 ← 23:00 &nbsp;·&nbsp; 📍 وسط مدينة طنجة</div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="container trust-grid">
+    <div class="trust-item"><span class="t-icon">🌱</span><span>حبوب مختصة<small>تحميص خفيف ومتوسط</small></span></div>
+    <div class="trust-item"><span class="t-icon">🥐</span><span>مخبوزات صباحية<small>كرواسون ومسمن ساخن</small></span></div>
+    <div class="trust-item"><span class="t-icon">📶</span><span>واي فاي وخدمة هادئة<small>بلاصة مناسبة للخدمة والقراية</small></span></div>
+    <div class="trust-item"><span class="t-icon">🚚</span><span>توصيل داخل طنجة<small>للطلبات عبر واتساب</small></span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div class="about-img"><img src="demo-cafe/img/g2.webp" alt="بارستا كيوجد لاتيه آرت في مقهى الأصالة"></div>
+    <div class="about-txt">
+      <div class="sec-kicker" style="text-align:start">قصتنا</div>
+      <h2>مقهى صغير بروح كبيرة، في قلب طنجة</h2>
+      <p>في «الأصالة» كنآمنو أن القهوة الزوينة كتبدا من الحبة: كنختارو حبوب مختصة من مصادر معروفة، كنطحنوها في البلاصة، وكنوجدو كل كاس بعناية — من الإسبريسو المضبوط حتى الكابتشينو برغوة حريرية ولاتيه آرت متقن.</p>
+      <p>وبالموازاة مع القهوة، كنقدمو برانش مغربي كامل: مسمن ساخن، أملو، جبن بلدي، زيتون وعصير برتقال طازج — فطور كيشبه لدارنا، في أجواء دافئة بزليج وخشب منحوت.</p>
+      <div class="about-feats">
+        <div>☕ قهوة مختصة<span>إسبريسو، فلتر وطرق تحضير بطيئة</span></div>
+        <div>🥞 برانش كامل<span>مغربي وعصري، حتى 14:00</span></div>
+        <div>🍰 حلويات الدار<span>تشيز كيك وتيراميسو وحلويات اليوم</span></div>
+        <div>🌿 ترّاس مشمس<span>إطلالة على أزقة المدينة القديمة</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="section menu-section" id="menu">
+  <div class="container">
+    <div class="sec-kicker">القائمة</div>
+    <h2 class="sec-title">شنو عندنا اليوم؟</h2>
+    <p class="sec-sub">أثمنة توضيحية في هذا النموذج — القائمة الحقيقية كتتبدل حسب الموسم وتوفر المنتجات الطازجة.</p>
+    <div class="menu-grid">
+
+      <div class="menu-cat">
+        <h3>☕ قهوة مختصة</h3>
+        <div class="item"><div class="item-txt"><h4>إسبريسو</h4><p>جرعة مركزة من حبوب مختصة محمصة متوسطة.</p></div><div class="item-price">14 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>أمريكانو</h4><p>إسبريسو ممدد بماء ساخن، نكهة نظيفة ومتوازنة.</p></div><div class="item-price">16 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>كابتشينو</h4><p>رغوة حليب حريرية مع رشة كاكاو خفيفة.</p></div><div class="item-price">20 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>لاتيه آرت</h4><p>حليب مبخّر بعناية ورسم يدوي على الوجه.</p></div><div class="item-price">22 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>فلات وايت</h4><p>جرعة مزدوجة مع طبقة رقيقة من الحليب المخملي.</p></div><div class="item-price">22 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>موكا بالشوكولاتة البلجيكية</h4><p>إسبريسو، شوكولاتة ذائبة وحليب مبخّر.</p></div><div class="item-price">24 <small>درهم</small></div></div>
+      </div>
+
+      <div class="menu-cat">
+        <h3>🧃 عصائر ومشروبات</h3>
+        <div class="item"><div class="item-txt"><h4>عصير برتقال طازج</h4><p>برتقال الموسم معصور في البلاصة، بلا سكر مضاف.</p></div><div class="item-price">22 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>سموذي أفوكادو ولوز</h4><p>أفوكادو، حليب لوز، عسل حر ولمسة فانيليا.</p></div><div class="item-price">30 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>عصير رمان</h4><p>رمان طازج معصور يدوياً، غني ومنعش.</p></div><div class="item-price">26 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>آيس لاتيه</h4><p>إسبريسو بارد مع حليب طازج ومكعبات ثلج.</p></div><div class="item-price">24 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>أتاي بالنعناع</h4><p>شاي أخضر ونعناع طازج، كيتصب على الطريقة المغربية.</p></div><div class="item-price">16 <small>درهم</small></div></div>
+      </div>
+
+      <div class="menu-cat">
+        <h3>🥞 فطور وبرانش</h3>
+        <div class="item"><div class="item-txt"><h4>فطور الأصالة الكامل</h4><p>مسمن، أملو، جبن بلدي، زيتون، بيض بلدي، عصير برتقال وقهوة أو أتاي.</p></div><div class="item-price">55 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>توست أفوكادو وبيض</h4><p>خبز محمص، أفوكادو مهروس وبيض مسلوق بالتوابل الخفيفة.</p></div><div class="item-price">45 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>أومليت الأعشاب والجبن</h4><p>بيض بلدي، أعشاب طازجة وجبن ذائب، مع خبز الدار.</p></div><div class="item-price">35 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>بانكيك بالعسل واللوز</h4><p>بانكيك هش مع عسل حر ورقائق لوز محمصة.</p></div><div class="item-price">32 <small>درهم</small></div></div>
+      </div>
+
+      <div class="menu-cat">
+        <h3>🍰 حلويات</h3>
+        <div class="item"><div class="item-txt"><h4>تشيز كيك الفواكه الحمراء</h4><p>قاعدة بسكويت بالزبدة وكريمة خفيفة وفواكه الموسم.</p></div><div class="item-price">28 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>تيراميسو</h4><p>الوصفة الإيطالية الأصلية بقهوة الأصالة.</p></div><div class="item-price">30 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>براونيز الشوكولاتة</h4><p>قطعة غنية بالشوكولاتة الداكنة والجوز.</p></div><div class="item-price">25 <small>درهم</small></div></div>
+        <div class="item"><div class="item-txt"><h4>كرواسون بالزبدة</h4><p>كيتحضر كل صباح، هش وذهبي.</p></div><div class="item-price">12 <small>درهم</small></div></div>
+      </div>
+
+    </div>
+    <p class="menu-note">البرانش كيتقدم حتى 14:00 · جميع المشروبات متوفرة ساخنة أو باردة · سولنا على حلوى اليوم في واتساب.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="sec-kicker">الألبوم</div>
+    <h2 class="sec-title">أجواء الأصالة بالصور</h2>
+    <p class="sec-sub">من رائحة القهوة الصباحية حتى غروب الشمس على الترّاس.</p>
+    <div class="gal-grid">
+      <figure><img src="demo-cafe/img/hero.webp" alt="فضاء مقهى الأصالة بالزليج المغربي"><figcaption>الفضاء الداخلي بالزليج المغربي</figcaption></figure>
+      <figure><img src="demo-cafe/img/g1.webp" alt="طاولة برانش مغربي كاملة"><figcaption>برانش الأصالة الكامل</figcaption></figure>
+      <figure><img src="demo-cafe/img/g2.webp" alt="تحضير لاتيه آرت"><figcaption>لاتيه آرت كيتحضر قدامك</figcaption></figure>
+      <figure><img src="demo-cafe/img/g3.webp" alt="تراس المقهى المطل على المدينة القديمة"><figcaption>الترّاس وإطلالة المدينة القديمة</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- INFOS -->
+<section class="section" id="infos" style="padding-top:6px">
+  <div class="container">
+    <div class="sec-kicker">معلومات عملية</div>
+    <h2 class="sec-title">الأوقات والموقع</h2>
+    <p class="sec-sub">تلقانا في وسط طنجة، على مقربة من المحطة والمدينة القديمة.</p>
+    <div class="infos-grid">
+      <div class="info-card"><div class="ic">🕖</div><h3>أوقات العمل</h3><p>الاثنين – الأحد<br>7:30 ← 23:00<br>البرانش حتى 14:00</p></div>
+      <div class="info-card"><div class="ic">📍</div><h3>العنوان</h3><p>شارع محمد الخامس<br>وسط المدينة<br>طنجة، المغرب</p></div>
+      <div class="info-card"><div class="ic">📲</div><h3>الطلب والحجز</h3><p><a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D9%85%D9%82%D9%87%D9%89%20%D8%A7%D9%84%D8%A3%D8%B5%D8%A7%D9%84%D8%A9%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D9%88%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8." target="_blank" rel="noopener" dir="ltr">+212 693-981822</a><br>واتساب — رد سريع في أوقات العمل</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section class="section" id="order" style="padding-top:6px">
+  <div class="container">
+    <div class="sec-kicker">اطلب دابا</div>
+    <h2 class="sec-title">طلبك يوصلنا في واتساب</h2>
+    <p class="sec-sub">عمر هاد الاستمارة وطلبك غادي يتحول مباشرة لرسالة واتساب جاهزة للإرسال.</p>
+    <form class="order-box" id="orderForm" novalidate>
+      <div class="row-2">
+        <div class="field">
+          <label for="oName">الاسم *</label>
+          <input type="text" id="oName" placeholder="مثال: سارة بنعمر" required>
+        </div>
+        <div class="field">
+          <label for="oPhone">رقم الهاتف *</label>
+          <input type="tel" id="oPhone" placeholder="06 XX XX XX XX" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="oType">نوع الطلب *</label>
+        <select id="oType" required>
+          <option value="">اختر…</option>
+          <option>حجز طاولة</option>
+          <option>طلب للتوصيل</option>
+          <option>طلب فطور/برانش لمجموعة</option>
+          <option>استفسار عام</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="oMsg">تفاصيل الطلب</label>
+        <textarea id="oMsg" placeholder="مثال: طاولة لشخصين غداً مع 10:00، وفطور الأصالة الكامل…"></textarea>
+      </div>
+      <p class="form-err" id="orderErr"></p>
+      <button type="submit" class="order-btn">📲 أرسل الطلب عبر واتساب</button>
+      <p class="form-note">بالضغط على الزر، غادي يتفتح واتساب وطلبك مكتوب جاهز — صيفطو وصافي.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">مقهى <span>الأصالة</span></div>
+        <p style="margin-top:12px">مقهى مختصة في قلب طنجة: قهوة مختصة، برانش مغربي وحلويات الدار — في أجواء دافئة مستوحاة من تراث المدينة.</p>
+      </div>
+      <div>
+        <h4>تواصل معنا</h4>
+        <ul>
+          <li>📍 شارع محمد الخامس، طنجة</li>
+          <li>💬 واتساب: <a href="https://wa.me/212693981822" target="_blank" rel="noopener" dir="ltr">+212 693-981822</a></li>
+          <li>🕖 كل أيام الأسبوع: 7:30 ← 23:00</li>
+        </ul>
+      </div>
+      <div>
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="#menu">القائمة</a></li>
+          <li><a href="#gallery">الألبوم</a></li>
+          <li><a href="#order">اطلب عبر واتساب</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      © 2026 مقهى الأصالة — Démo · 📌 نموذج تجريبي للعرض فقط — الصور والأثمنة توضيحية ولا تمثل مقهى حقيقياً.
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D9%85%D9%82%D9%87%D9%89%20%D8%A7%D9%84%D8%A3%D8%B5%D8%A7%D9%84%D8%A9%D8%8C%20%D8%B9%D9%86%D8%AF%D9%8A%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1." class="wa-float" target="_blank" rel="noopener" aria-label="واتساب">💬</a>
+
+<script>
+// قائمة الهاتف
+var burger = document.getElementById('burger');
+var mainNav = document.getElementById('mainNav');
+burger.addEventListener('click', function(){ mainNav.classList.toggle('open'); });
+mainNav.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ mainNav.classList.remove('open'); } });
+
+// الطلب -> واتساب
+document.getElementById('orderForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name  = document.getElementById('oName').value.trim();
+  var phone = document.getElementById('oPhone').value.trim();
+  var type  = document.getElementById('oType').value;
+  var msg   = document.getElementById('oMsg').value.trim();
+  var err   = document.getElementById('orderErr');
+  if(!name || !phone || !type){
+    err.textContent = 'المرجو تعبئة الاسم والهاتف ونوع الطلب.';
+    return;
+  }
+  err.textContent = '';
+  var text = 'السلام مقهى الأصالة، عندي طلب:\n'
+           + '• الاسم: ' + name + '\n'
+           + '• الهاتف: ' + phone + '\n'
+           + '• نوع الطلب: ' + type;
+  if(msg){ text += '\n• التفاصيل: ' + msg; }
+  text += '\nشكراً!';
+  window.open('https://wa.me/212693981822?text=' + encodeURIComponent(text), '_blank');
+});
+</script>
+</body>
+</html>

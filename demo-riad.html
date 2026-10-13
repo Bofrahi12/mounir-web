@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riad Jasmin — Riad de charme dans la médina de Tanger (Démonstration)</title>
+<meta name="description" content="Riad Jasmin — maison d'hôtes de charme au cœur de la médina de Tanger : chambres et suites, hammam, terrasse panoramique et excursions. Site de démonstration.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+<style>
+  :root{
+    --sand:#faf6ee; --sand2:#f3ead9; --white:#fffdf8;
+    --ink:#22303a; --muted:#71808a;
+    --teal:#175d74; --teal2:#1f7591; --teald:#0f4254;
+    --gold:#c19a3f; --gold2:#dcb95e;
+    --line:#e7dcc4; --green:#25d366;
+    --shadow:0 18px 45px rgba(34,48,58,.12);
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Cairo',Tahoma,sans-serif;background:var(--sand);color:var(--ink);line-height:1.75;font-weight:400}
+  img{display:block;max-width:100%}
+  .container{max-width:1140px;margin:0 auto;padding:0 22px}
+
+  /* demo banner */
+  .demo-banner{background:var(--teald);color:#f3e9d2;text-align:center;font-size:.85rem;font-weight:700;padding:8px 14px;letter-spacing:.02em}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:60;background:rgba(250,246,238,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:18px}
+  .logo{font-size:1.5rem;font-weight:900;color:var(--ink);text-decoration:none;white-space:nowrap;line-height:1.1}
+  .logo span{color:var(--teal)}
+  .logo small{display:block;font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .links{display:flex;gap:26px;align-items:center}
+  .links a{color:var(--ink);text-decoration:none;font-size:.97rem;font-weight:600;transition:.2s}
+  .links a:hover{color:var(--teal)}
+  .btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:50px;padding:12px 30px;transition:.25s;border:2px solid transparent;cursor:pointer;font-family:inherit;font-size:1rem;text-align:center}
+  .btn-teal{background:var(--teal);color:#fff}
+  .btn-teal:hover{background:var(--teald);transform:translateY(-2px)}
+  .btn-outline{border-color:rgba(255,255,255,.7);color:#fff;background:rgba(15,66,84,.25)}
+  .btn-outline:hover{border-color:var(--gold2);color:var(--gold2)}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#2a2005}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(193,154,63,.35)}
+  .btn-sm{padding:9px 22px;font-size:.92rem}
+  .btn-block{width:100%}
+  .burger{display:none;background:none;border:none;color:var(--ink);font-size:1.6rem;cursor:pointer}
+
+  /* hero */
+  .hero{position:relative;min-height:90vh;display:flex;align-items:center;background:url('demo-riad/img/hero.webp') center 40%/cover no-repeat}
+  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,45,58,.55),rgba(15,45,58,.35) 45%,rgba(15,45,58,.82))}
+  .hero-inner{position:relative;text-align:center;padding:90px 22px 80px;width:100%;color:#fff}
+  .hero-badge{display:inline-block;border:1px solid rgba(220,185,94,.75);color:#f0d488;padding:7px 22px;border-radius:50px;font-size:.85rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px;background:rgba(15,45,58,.4)}
+  .hero h1{font-size:clamp(2.4rem,6.2vw,4.2rem);font-weight:900;line-height:1.25;margin-bottom:18px;text-shadow:0 3px 24px rgba(0,0,0,.45)}
+  .hero h1 em{color:var(--gold2);font-style:normal}
+  .hero p{color:#f2ecdc;font-size:1.16rem;max-width:640px;margin:0 auto 36px}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero-meta{margin-top:44px;color:#e6dcc2;font-size:.94rem;font-weight:600;letter-spacing:.04em}
+
+  /* sections */
+  .section{padding:84px 0}
+  .section-white{background:var(--white)}
+  .sec-kicker{text-align:center;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-size:.8rem;font-weight:800;margin-bottom:10px}
+  .sec-title{text-align:center;font-size:clamp(1.9rem,4vw,2.55rem);font-weight:900;margin-bottom:14px}
+  .sec-sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 48px;font-size:1.03rem}
+  .ornament{text-align:center;color:var(--teal);font-size:1rem;letter-spacing:.5em;margin-bottom:16px}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .about-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .about-img img{width:100%;height:520px;object-fit:cover}
+  .about-txt .sec-kicker{text-align:left}
+  .about-txt h2{font-size:2.05rem;font-weight:900;margin-bottom:14px;line-height:1.4}
+  .about-txt p{color:#4c5a63;margin-bottom:16px;font-size:1.02rem}
+  .about-points{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+  .about-points div{background:var(--sand);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-weight:700;font-size:.95rem}
+  .about-points div span{display:block;color:var(--muted);font-weight:400;font-size:.87rem}
+
+  /* rooms */
+  .rooms-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .room{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s;display:flex;flex-direction:column}
+  .room:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .room img{width:100%;height:300px;object-fit:cover}
+  .room-body{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
+  .room-body h3{font-size:1.35rem;font-weight:900;margin-bottom:6px}
+  .room-body p{color:var(--muted);font-size:.97rem;margin-bottom:14px}
+  .room-feats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .room-feats span{background:var(--sand2);color:var(--teald);font-size:.8rem;font-weight:700;border-radius:50px;padding:4px 13px}
+  .room-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .room-price{font-size:1.45rem;font-weight:900;color:var(--teal)}
+  .room-price small{display:block;font-size:.76rem;color:var(--muted);font-weight:600}
+  .tarif-note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:26px}
+
+  /* experiences */
+  .exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .exp{border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:var(--shadow);text-decoration:none}
+  .exp img{width:100%;height:340px;object-fit:cover;transition:transform .5s}
+  .exp:hover img{transform:scale(1.06)}
+  .exp-cap{position:absolute;left:0;right:0;bottom:0;padding:44px 18px 16px;background:linear-gradient(transparent,rgba(12,38,48,.88));color:#fff}
+  .exp-cap h3{font-size:1.18rem;font-weight:800}
+  .exp-cap p{font-size:.88rem;color:#e8dfc6}
+
+  /* gallery */
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .gal-grid figure{border-radius:var(--radius);overflow:hidden;position:relative}
+  .gal-grid img{width:100%;height:300px;object-fit:cover;transition:transform .5s}
+  .gal-grid figure:hover img{transform:scale(1.06)}
+  .gal-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;background:linear-gradient(transparent,rgba(12,38,48,.85));color:#fff;font-size:.92rem;font-weight:700}
+
+  /* infos */
+  .infos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .info-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 26px;text-align:center}
+  .info-card .ic{font-size:2.1rem;margin-bottom:12px}
+  .info-card h3{font-size:1.2rem;font-weight:800;margin-bottom:8px;color:var(--teal)}
+  .info-card p{color:#4c5a63;font-size:.97rem}
+  .info-card a{color:var(--teal);font-weight:700;text-decoration:none}
+  .info-card a:hover{text-decoration:underline}
+
+  /* booking */
+  .book-box{max-width:700px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:42px 38px;box-shadow:var(--shadow)}
+  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-weight:700;margin-bottom:7px;font-size:.95rem}
+  .field input,.field select{width:100%;background:var(--white);border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:inherit;font-size:1rem;padding:12px 15px;transition:.2s}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(23,93,116,.14)}
+  .form-note{text-align:center;color:var(--muted);font-size:.88rem;margin-top:14px}
+  .form-err{color:#b3372a;font-weight:700;min-height:1.4em;font-size:.93rem}
+
+  /* footer */
+  footer{background:var(--teald);color:#d9e4e6;padding:52px 0 38px;text-align:center}
+  footer .flogo{font-size:1.7rem;font-weight:900;color:#fff}
+  footer .flogo span{color:var(--gold2)}
+  footer p{color:#a9bfc5;margin-top:10px;font-size:.95rem}
+  .foot-demo{max-width:640px;margin:18px auto 0;font-size:.83rem;color:#7e9aa3;border-top:1px dashed rgba(220,185,94,.3);padding-top:18px}
+  .copy{font-size:.82rem}
+
+  .wa-float{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:60;transition:.2s}
+  .wa-float:hover{transform:scale(1.08)}
+
+  @media(max-width:960px){
+    .exp-grid{grid-template-columns:1fr 1fr}
+    .gal-grid{grid-template-columns:1fr 1fr}
+    .infos-grid{grid-template-columns:1fr}
+    .about-grid{grid-template-columns:1fr}
+    .about-img img{height:380px}
+    .rooms-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    .links{position:fixed;top:70px;right:0;left:0;background:var(--sand);flex-direction:column;padding:22px;gap:16px;border-bottom:1px solid var(--line);display:none}
+    .links.open{display:flex}
+    .burger{display:block}
+    .row-2{grid-template-columns:1fr}
+    .exp-grid{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:1fr}
+    .section{padding:60px 0}
+    .book-box{padding:30px 22px}
+    .hero{min-height:78vh}
+    .about-points{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">📌 Démonstration — photos et tarifs indicatifs</div>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#accueil" class="logo">Riad <span>Jasmin</span><small>Médina · Tanger</small></a>
+    <nav class="links" id="navLinks">
+      <a href="#accueil">Accueil</a>
+      <a href="#chambres">Chambres</a>
+      <a href="#experiences">Expériences</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#reservation">Réservation</a>
+      <a href="tel:+212693981822" class="btn btn-teal btn-sm">📞 06 93 98 18 22</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="accueil">
+  <div class="container hero-inner">
+    <div class="hero-badge">Maison d'hôtes · Médina de Tanger</div>
+    <h1>Un riad de charme<br>au <em>cœur de la médina</em></h1>
+    <p>Derrière une porte de cèdre sculpté, un patio de zelliges, une fontaine qui murmure et le parfum du jasmin — le Tanger authentique, à quelques pas du Grand Socco.</p>
+    <div class="hero-cta">
+      <a href="#reservation" class="btn btn-gold">🌿 Demander une réservation</a>
+      <a href="#chambres" class="btn btn-outline">Découvrir les chambres</a>
+    </div>
+    <div class="hero-meta">📍 Médina de Tanger &nbsp;·&nbsp; 🍳 Petit-déjeuner inclus &nbsp;·&nbsp; 🛁 Hammam traditionnel</div>
+  </div>
+</section>
+
+<section class="section" id="maison">
+  <div class="container about-grid">
+    <div class="about-img"><img src="demo-riad/img/g1.webp" alt="Suite du Riad Jasmin avec lit en bois sculpté et zelliges"></div>
+    <div class="about-txt">
+      <div class="sec-kicker">La maison</div>
+      <h2>Une maison de famille,<br>ouverte aux voyageurs</h2>
+      <div class="ornament">✦ ✦ ✦</div>
+      <p>Le Riad Jasmin est une demeure traditionnelle de la médina, restaurée dans le respect des artisans de Tanger : zelliges taillés à la main, plâtre sculpté, bois de cèdre et tadelakt.</p>
+      <p>Autour du patio baigné de lumière, nos chambres et suites mêlent confort contemporain et âme marocaine. Le matin, le petit-déjeuner est servi sur la terrasse, face aux toits blancs de la vieille ville et à la mer au loin.</p>
+      <div class="about-points">
+        <div>🍳 Petit-déjeuner marocain<span>Msemen, olives, fromage frais, jus d'orange et thé à la menthe</span></div>
+        <div>🛁 Hammam privé<span>Rituel traditionnel au savon noir et à l'huile d'argan, sur réservation</span></div>
+        <div>🌅 Terrasse panoramique<span>Vue sur la médina, la kasbah et le détroit au coucher du soleil</span></div>
+        <div>🧭 Accueil personnalisé<span>Conseils d'itinéraires, restaurants et adresses d'artisans</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-white" id="chambres">
+  <div class="container">
+    <div class="sec-kicker">Hébergement</div>
+    <h2 class="sec-title">Nos chambres &amp; suites</h2>
+    <p class="sec-sub">Quatre chambres, quatre ambiances — toutes donnent sur le patio ou la terrasse, et le petit-déjeuner est toujours inclus.</p>
+    <div class="rooms-grid">
+
+      <article class="room">
+        <img src="demo-riad/img/g1.webp" alt="Chambre Jasmin — lit en bois de cèdre sculpté" style="object-position:center 15%">
+        <div class="room-body">
+          <h3>Chambre Jasmin</h3>
+          <p>Chambre double lumineuse au premier étage, lit en cèdre sculpté, salle de bain en tadelakt et fenêtre sur le patio fleuri.</p>
+          <div class="room-feats"><span>2 personnes</span><span>Lit double</span><span>Salle de bain privée</span><span>Climatisation</span></div>
+          <div class="room-foot">
+            <div class="room-price">490 DH<small>par nuit · tarif indicatif</small></div>
+            <a class="btn btn-teal btn-sm" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20Riad%20Jasmin%2C%20je%20souhaite%20r%C3%A9server%20la%20Chambre%20Jasmin.%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9%20et%20le%20tarif.">Réserver</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room">
+        <img src="demo-riad/img/hero.webp" alt="Chambre Médina — donnant sur le patio de zelliges" style="object-position:center 70%">
+        <div class="room-body">
+          <h3>Chambre Médina</h3>
+          <p>Au rez-de-chaussée, à deux pas de la fontaine : la chambre idéale pour vivre le riad de l'intérieur, entre zelliges bleus et portes anciennes.</p>
+          <div class="room-feats"><span>2 personnes</span><span>Accès direct patio</span><span>Salle de bain privée</span><span>Wi-Fi</span></div>
+          <div class="room-foot">
+            <div class="room-price">590 DH<small>par nuit · tarif indicatif</small></div>
+            <a class="btn btn-teal btn-sm" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20Riad%20Jasmin%2C%20je%20souhaite%20r%C3%A9server%20la%20Chambre%20M%C3%A9dina.%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9%20et%20le%20tarif.">Réserver</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room">
+        <img src="demo-riad/img/g2.webp" alt="Suite Terrasse — terrasse privée vue médina et mer">
+        <div class="room-body">
+          <h3>Suite Terrasse</h3>
+          <p>Suite ouverte sur une terrasse privée : salon extérieur, lanternes et vue imprenable sur les toits de la médina et le détroit au loin.</p>
+          <div class="room-feats"><span>2 à 3 personnes</span><span>Terrasse privée</span><span>Coin salon</span><span>Vue médina &amp; mer</span></div>
+          <div class="room-foot">
+            <div class="room-price">890 DH<small>par nuit · tarif indicatif</small></div>
+            <a class="btn btn-teal btn-sm" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20Riad%20Jasmin%2C%20je%20souhaite%20r%C3%A9server%20la%20Suite%20Terrasse.%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9%20et%20le%20tarif.">Réserver</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room">
+        <img src="demo-riad/img/g1.webp" alt="Suite Zellige — grande suite aux zelliges colorés" style="object-position:center 88%">
+        <div class="room-body">
+          <h3>Suite Zellige</h3>
+          <p>Notre plus grande suite : plafond de plâtre sculpté, zelliges polychromes, grand lit sculpté et salon de lecture baigné de lumière.</p>
+          <div class="room-feats"><span>2 à 4 personnes</span><span>Grand lit + salon</span><span>Baignoire</span><span>Idéale en famille</span></div>
+          <div class="room-foot">
+            <div class="room-price">1 250 DH<small>par nuit · tarif indicatif</small></div>
+            <a class="btn btn-teal btn-sm" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20Riad%20Jasmin%2C%20je%20souhaite%20r%C3%A9server%20la%20Suite%20Zellige.%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9%20et%20le%20tarif.">Réserver</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="tarif-note">Tarifs indicatifs par nuit, petit-déjeuner inclus — le tarif exact dépend de la saison et de la durée du séjour. Enfants bienvenus.</p>
+  </div>
+</section>
+
+<section class="section" id="experiences">
+  <div class="container">
+    <div class="sec-kicker">Expériences</div>
+    <h2 class="sec-title">Vivre le riad, vivre Tanger</h2>
+    <p class="sec-sub">Au-delà de la chambre : les rituels et les escapades qui font un séjour inoubliable.</p>
+    <div class="exp-grid">
+      <a class="exp" href="#reservation">
+        <img src="demo-riad/img/g3.webp" alt="Hammam traditionnel du riad">
+        <div class="exp-cap"><h3>🛁 Hammam traditionnel</h3><p>Gommage au savon noir, rhassoul et massage à l'huile d'argan, dans notre hammam de marbre.</p></div>
+      </a>
+      <a class="exp" href="#reservation">
+        <img src="demo-riad/img/g2.webp" alt="Terrasse panoramique au coucher du soleil" style="object-position:center 30%">
+        <div class="exp-cap"><h3>🌅 Terrasse panoramique</h3><p>Thé à la menthe au coucher du soleil, dîners privés et nuits étoilées sur les toits de la médina.</p></div>
+      </a>
+      <a class="exp" href="#reservation">
+        <img src="demo-riad/img/hero.webp" alt="Patio du riad et petit-déjeuner marocain" style="object-position:center 90%">
+        <div class="exp-cap"><h3>🍳 Table du riad</h3><p>Petit-déjeuner marocain généreux et, sur commande, dîner traditionnel préparé par notre cuisinière.</p></div>
+      </a>
+      <a class="exp" href="#reservation">
+        <img src="demo-riad/img/g1.webp" alt="Point de départ des excursions dans la médina" style="object-position:center 55%">
+        <div class="exp-cap"><h3>🧭 Excursions</h3><p>Visite guidée de la médina et de la kasbah, Cap Spartel et grottes d'Hercule, journée à Asilah ou Chefchaouen.</p></div>
+      </a>
+    </div>
+    <p class="tarif-note">Une question sur le hammam ou les soins ? <a href="https://wa.me/212693981822?text=Bonjour%20Riad%20Jasmin%2C%20je%20souhaite%20des%20informations%20sur%20le%20hammam%20et%20les%20soins." target="_blank" rel="noopener" style="color:var(--teal);font-weight:800">Écrivez-nous sur WhatsApp →</a></p>
+  </div>
+</section>
+
+<section class="section section-white" id="galerie">
+  <div class="container">
+    <div class="sec-kicker">Galerie</div>
+    <h2 class="sec-title">Le riad en images</h2>
+    <p class="sec-sub">Le patio, les chambres, la terrasse et le hammam — un aperçu de l'atmosphère du Jasmin.</p>
+    <div class="gal-grid">
+      <figure><img src="demo-riad/img/hero.webp" alt="Le patio et sa fontaine"><figcaption>Le patio et sa fontaine</figcaption></figure>
+      <figure><img src="demo-riad/img/g1.webp" alt="Suite aux zelliges"><figcaption>Suite aux zelliges</figcaption></figure>
+      <figure><img src="demo-riad/img/g2.webp" alt="La terrasse au crépuscule"><figcaption>La terrasse au crépuscule</figcaption></figure>
+      <figure><img src="demo-riad/img/g3.webp" alt="Le hammam de marbre"><figcaption>Le hammam de marbre</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sec-kicker">Nous trouver</div>
+    <h2 class="sec-title">Au cœur de la médina de Tanger</h2>
+    <p class="sec-sub">Une adresse facile à rejoindre, impossible à oublier.</p>
+    <div class="infos-grid">
+      <div class="info-card"><div class="ic">📍</div><h3>Adresse</h3><p>Derb el Jasmin, Médina<br>90000 Tanger, Maroc<br><span style="color:var(--muted);font-size:.9rem">À quelques minutes à pied du Grand Socco et de la Kasbah</span></p></div>
+      <div class="info-card"><div class="ic">🧭</div><h3>À proximité</h3><p>Grand Socco &amp; cinéma Rif<br>Kasbah et son musée<br>Port de Tanger Ville et Corniche<br>Souks et cafés historiques de la médina</p></div>
+      <div class="info-card"><div class="ic">📞</div><h3>Contact</h3><p><a href="tel:+212693981822">+212 6 93 98 18 22</a><br><span style="color:var(--muted);font-size:.9rem">Réponse rapide, aussi sur WhatsApp<br>Arrivée à partir de 14h · Départ jusqu'à 12h</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-white" id="reservation">
+  <div class="container">
+    <div class="sec-kicker">Réservation</div>
+    <h2 class="sec-title">Demander une réservation</h2>
+    <p class="sec-sub">Remplissez le formulaire : votre demande part directement sur notre WhatsApp, et nous vous confirmons la disponibilité rapidement.</p>
+    <form class="book-box" id="bookForm" novalidate>
+      <div class="row-2">
+        <div class="field">
+          <label for="bName">Nom complet *</label>
+          <input type="text" id="bName" placeholder="Ex : Claire Dupont" required>
+        </div>
+        <div class="field">
+          <label for="bPhone">Téléphone *</label>
+          <input type="tel" id="bPhone" placeholder="+33 6 XX XX XX XX" required>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="bIn">Date d'arrivée *</label>
+          <input type="date" id="bIn" required>
+        </div>
+        <div class="field">
+          <label for="bOut">Date de départ *</label>
+          <input type="date" id="bOut" required>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="bRoom">Chambre souhaitée *</label>
+          <select id="bRoom" required>
+            <option value="">Choisir…</option>
+            <option>Chambre Jasmin — 490 DH/nuit (indicatif)</option>
+            <option>Chambre Médina — 590 DH/nuit (indicatif)</option>
+            <option>Suite Terrasse — 890 DH/nuit (indicatif)</option>
+            <option>Suite Zellige — 1 250 DH/nuit (indicatif)</option>
+            <option>Pas de préférence</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="bGuests">Voyageurs *</label>
+          <select id="bGuests" required>
+            <option value="">Choisir…</option>
+            <option>1 personne</option><option>2 personnes</option><option>3 personnes</option>
+            <option>4 personnes</option><option>5 personnes et plus</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="bNote">Message (optionnel)</label>
+        <input type="text" id="bNote" placeholder="Hammam, dîner le premier soir, arrivée tardive…">
+      </div>
+      <p class="form-err" id="bookErr"></p>
+      <button type="submit" class="btn btn-gold btn-block">📲 Envoyer la demande via WhatsApp</button>
+      <p class="form-note">En cliquant, WhatsApp s'ouvre avec votre demande déjà rédigée — il ne reste qu'à l'envoyer.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="flogo">Riad <span>Jasmin</span></div>
+    <p>Maison d'hôtes de charme — Médina de Tanger · Petit-déjeuner inclus · +212 6 93 98 18 22</p>
+    <p class="copy">© 2026 Riad Jasmin — Démo</p>
+    <p class="foot-demo">📌 Démonstration — photos et tarifs indicatifs. Site réalisé à titre d'exemple ; le Riad Jasmin est un établissement fictif.</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/212693981822?text=Bonjour%20Riad%20Jasmin%2C%20je%20souhaite%20des%20informations%20pour%20un%20s%C3%A9jour." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script>
+  // Menu mobile
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+  navLinks.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ navLinks.classList.remove('open'); } });
+
+  // Demande de réservation -> WhatsApp
+  document.getElementById('bookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name   = document.getElementById('bName').value.trim();
+    var phone  = document.getElementById('bPhone').value.trim();
+    var dIn    = document.getElementById('bIn').value;
+    var dOut   = document.getElementById('bOut').value;
+    var room   = document.getElementById('bRoom').value;
+    var guests = document.getElementById('bGuests').value;
+    var note   = document.getElementById('bNote').value.trim();
+    var err    = document.getElementById('bookErr');
+    if(!name || !phone || !dIn || !dOut || !room || !guests){
+      err.textContent = 'Merci de remplir tous les champs marqués d\u2019un astérisque.';
+      return;
+    }
+    if(dOut <= dIn){
+      err.textContent = 'La date de départ doit être postérieure à la date d\u2019arrivée.';
+      return;
+    }
+    err.textContent = '';
+    function fr(d){ var p = d.split('-'); return p[2] + '/' + p[1] + '/' + p[0]; }
+    var msg = 'Bonjour Riad Jasmin, je souhaite réserver un séjour :\n'
+            + '• Nom : ' + name + '\n'
+            + '• Téléphone : ' + phone + '\n'
+            + '• Arrivée : ' + fr(dIn) + '\n'
+            + '• Départ : ' + fr(dOut) + '\n'
+            + '• Chambre : ' + room + '\n'
+            + '• Voyageurs : ' + guests;
+    if(note){ msg += '\n• Message : ' + note; }
+    msg += '\nMerci de me confirmer la disponibilité et le tarif exact.';
+    window.open('https://wa.me/212693981822?text=' + encodeURIComponent(msg), '_blank');
+  });
+</script>
+</body>
+</html>

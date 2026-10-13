@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tangier Drive — Location de voitures à Tanger</title>
+<meta name="description" content="Tangier Drive — location de voitures à Tanger : citadines, SUV, familiales et premium. Livraison à l'aéroport Ibn Battouta, chauffeur privé et longue durée. Réservation simple via WhatsApp.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
+<style>
+  :root{
+    --navy:#0d1526; --navy2:#131f38; --card:#16233d;
+    --paper:#f7f8fa; --white:#ffffff;
+    --amber:#f6a21e; --amber2:#ffb84d;
+    --ink:#1c2536; --muted:#68738a; --line:#e4e8ef;
+    --green:#25d366; --radius:16px;
+    --shadow:0 14px 34px rgba(13,21,38,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Cairo',Tahoma,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7}
+  img{display:block;max-width:100%}
+  .container{max-width:1160px;margin:0 auto;padding:0 20px}
+
+  /* demo banner */
+  .demo-banner{background:var(--amber);color:#231600;text-align:center;font-size:.87rem;font-weight:800;padding:8px 14px;letter-spacing:.2px}
+
+  /* header */
+  header{position:sticky;top:0;z-index:60;background:rgba(13,21,38,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(246,162,30,.25)}
+  .hd-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+  .logo{font-weight:900;font-size:1.45rem;color:#fff;text-decoration:none;letter-spacing:.4px;white-space:nowrap}
+  .logo span{color:var(--amber)}
+  .logo small{display:block;font-size:.62rem;letter-spacing:3.5px;color:#93a1bd;font-weight:700;line-height:1.1;text-transform:uppercase}
+  nav.main-nav{display:flex;gap:26px;align-items:center}
+  nav.main-nav a{color:#dbe2f0;text-decoration:none;font-weight:700;font-size:.98rem;transition:.2s}
+  nav.main-nav a:hover{color:var(--amber2)}
+  .btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:50px;padding:12px 28px;font-size:1rem;border:2px solid transparent;cursor:pointer;font-family:inherit;transition:.2s;text-align:center}
+  .btn-amber{background:var(--amber);color:#231600}
+  .btn-amber:hover{background:var(--amber2);transform:translateY(-2px)}
+  .btn-ghost{background:rgba(13,21,38,.3);color:#fff;border-color:rgba(255,255,255,.55)}
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber2)}
+  .btn-wa{background:var(--green);color:#06300f}
+  .btn-wa:hover{background:#1eb856;transform:translateY(-2px)}
+  .btn-sm{padding:9px 20px;font-size:.92rem}
+  .btn-block{width:100%}
+  .burger{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
+
+  /* hero */
+  .hero{position:relative;min-height:86vh;display:flex;align-items:center;background:url('demo-location/img/hero.webp') center 58%/cover no-repeat}
+  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,21,38,.88) 0%,rgba(13,21,38,.62) 46%,rgba(13,21,38,.18) 100%)}
+  .hero-inner{position:relative;padding:86px 20px 76px;width:100%}
+  .hero-badge{display:inline-block;background:rgba(246,162,30,.16);border:1px solid rgba(246,162,30,.65);color:var(--amber2);padding:6px 18px;border-radius:50px;font-size:.85rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px}
+  .hero h1{color:#fff;font-size:clamp(2.3rem,5.6vw,3.9rem);font-weight:900;line-height:1.22;max-width:640px;margin-bottom:16px}
+  .hero h1 em{font-style:normal;color:var(--amber)}
+  .hero p{color:#d7deeb;font-size:1.14rem;max-width:540px;margin-bottom:32px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{margin-top:40px;color:#aebad0;font-size:.93rem;font-weight:600}
+
+  /* trust */
+  .trust{background:#fff;border-bottom:1px solid var(--line)}
+  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:24px 0}
+  .trust-item{display:flex;align-items:center;gap:12px;justify-content:center;font-weight:800;font-size:.97rem}
+  .trust-item .t-icon{font-size:1.65rem}
+  .trust-item small{display:block;color:var(--muted);font-weight:600;font-size:.82rem}
+
+  /* sections */
+  .section{padding:76px 0}
+  .section-dark{background:var(--navy);color:#e8edf6}
+  .sec-kicker{text-align:center;color:#c47f0d;letter-spacing:.26em;text-transform:uppercase;font-size:.78rem;font-weight:800;margin-bottom:10px}
+  .section-dark .sec-kicker{color:var(--amber)}
+  .sec-title{text-align:center;font-size:clamp(1.8rem,3.8vw,2.5rem);font-weight:900;margin-bottom:12px}
+  .sec-sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 46px;font-size:1.02rem}
+  .section-dark .sec-sub{color:#9fb0ca}
+
+  /* fleet */
+  .fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .car{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s;display:flex;flex-direction:column}
+  .car:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#f3cf8e}
+  .car-img{position:relative}
+  .car-img img{width:100%;height:220px;object-fit:cover}
+  .car-cat{position:absolute;top:12px;left:12px;background:var(--navy);color:#fff;font-weight:800;font-size:.78rem;padding:4px 13px;border-radius:50px;letter-spacing:.04em}
+  .car-body{padding:20px;display:flex;flex-direction:column;flex:1}
+  .car-body h3{font-size:1.18rem;font-weight:900;margin-bottom:8px}
+  .car-specs{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:.88rem;font-weight:600;margin-bottom:16px}
+  .car-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px dashed var(--line);padding-top:16px}
+  .car-price{font-weight:900;font-size:1.28rem;color:var(--navy)}
+  .car-price small{display:block;font-size:.74rem;color:var(--muted);font-weight:700}
+  .fleet-note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:30px}
+
+  /* services */
+  .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .srv{background:var(--card);border:1px solid rgba(246,162,30,.22);border-radius:var(--radius);padding:34px 26px;text-align:center}
+  .srv .ic{font-size:2.4rem;margin-bottom:14px}
+  .srv h3{font-size:1.22rem;font-weight:900;color:#fff;margin-bottom:10px}
+  .srv p{color:#a9b8d2;font-size:.97rem}
+
+  /* steps */
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:0 auto}
+  .step{text-align:center;padding:10px 16px}
+  .step .num{width:58px;height:58px;margin:0 auto 16px;border-radius:50%;background:var(--amber);color:#231600;font-weight:900;font-size:1.45rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-weight:900;font-size:1.12rem;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:.95rem}
+
+  /* booking form */
+  .book-box{max-width:720px;margin:0 auto;background:#fff;border-radius:20px;padding:42px 38px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-weight:800;margin-bottom:7px;font-size:.94rem}
+  .field input,.field select{width:100%;background:#fbfcfe;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:inherit;font-size:1rem;padding:12px 15px;transition:.2s}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(246,162,30,.18)}
+  .form-note{text-align:center;color:var(--muted);font-size:.88rem;margin-top:14px}
+  .form-err{color:#b3372a;font-weight:700;min-height:1.4em;font-size:.93rem}
+  .cond-note{max-width:720px;margin:22px auto 0;text-align:center;color:#9fb0ca;font-size:.88rem}
+
+  /* contact */
+  .infos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .info-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 26px;text-align:center}
+  .info-card .ic{font-size:2.1rem;margin-bottom:12px}
+  .info-card h3{font-size:1.18rem;font-weight:900;margin-bottom:8px}
+  .info-card p{color:var(--muted);font-size:.96rem}
+  .info-card a{color:#c47f0d;text-decoration:none;font-weight:800}
+  .info-card a:hover{text-decoration:underline}
+
+  /* footer */
+  footer{background:var(--navy2);color:#a9b8d2;padding:46px 0 36px;text-align:center;border-top:1px solid rgba(246,162,30,.2)}
+  footer .logo{font-size:1.6rem}
+  footer p{margin-top:10px;font-size:.94rem}
+  .foot-demo{max-width:640px;margin:18px auto 0;font-size:.83rem;color:#71809c;border-top:1px dashed rgba(246,162,30,.22);padding-top:18px}
+  .copy{font-size:.82rem}
+
+  .wa-float{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:60;transition:.2s}
+  .wa-float:hover{transform:scale(1.08)}
+
+  @media(max-width:1020px){
+    .fleet-grid{grid-template-columns:repeat(2,1fr)}
+    .trust-grid{grid-template-columns:repeat(2,1fr);gap:18px}
+  }
+  @media(max-width:760px){
+    nav.main-nav{position:fixed;top:70px;right:0;left:0;background:var(--navy2);flex-direction:column;padding:20px 22px;gap:14px;border-bottom:1px solid rgba(246,162,30,.25);display:none;z-index:55}
+    nav.main-nav.open{display:flex}
+    .burger{display:block}
+    .srv-grid,.steps-grid,.infos-grid{grid-template-columns:1fr}
+    .row-2{grid-template-columns:1fr}
+    .section{padding:56px 0}
+    .book-box{padding:30px 22px}
+    .hero{min-height:78vh}
+  }
+  @media(max-width:560px){
+    .fleet-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">📌 Démonstration — photos et tarifs indicatifs</div>
+
+<header>
+  <div class="container hd-inner">
+    <a href="#accueil" class="logo">Tangier<span>Drive</span><small>Location de voitures · Tanger</small></a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#accueil">Accueil</a>
+      <a href="#flotte">Notre flotte</a>
+      <a href="#services">Services</a>
+      <a href="#reservation">Réservation</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:+212693981822" class="btn btn-amber btn-sm">📞 06 93 98 18 22</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="accueil">
+  <div class="container hero-inner">
+    <div class="hero-badge">Location de voitures · Tanger</div>
+    <h1>La route du Nord commence <em>à Tanger</em></h1>
+    <p>Citadines économiques, SUV familiaux et berlines premium, entretenus et prêts à partir. Réservez en quelques minutes sur WhatsApp, récupérez votre voiture où vous voulez à Tanger.</p>
+    <div class="hero-cta">
+      <a href="#flotte" class="btn btn-amber">🚗 Voir la flotte</a>
+      <a href="https://wa.me/212693981822?text=Bonjour%20Tangier%20Drive%2C%20je%20souhaite%20louer%20une%20voiture%20%C3%A0%20Tanger." target="_blank" rel="noopener" class="btn btn-ghost">💬 Réserver sur WhatsApp</a>
+    </div>
+    <div class="hero-meta">✈️ Aéroport Ibn Battouta &nbsp;·&nbsp; 🚉 Gare de Tanger &nbsp;·&nbsp; 🏨 Livraison à votre hôtel</div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="container trust-grid">
+    <div class="trust-item"><span class="t-icon">🛡️</span><span>Assurance incluse<small>tous risques selon catégorie</small></span></div>
+    <div class="trust-item"><span class="t-icon">🧼</span><span>Voitures propres<small>nettoyées avant chaque location</small></span></div>
+    <div class="trust-item"><span class="t-icon">↩️</span><span>Annulation flexible<small>sans frais jusqu'à 24 h avant</small></span></div>
+    <div class="trust-item"><span class="t-icon">🆘</span><span>Assistance 7j/7<small>une équipe joignable en continu</small></span></div>
+  </div>
+</div>
+
+<!-- FLEET -->
+<section class="section" id="flotte">
+  <div class="container">
+    <div class="sec-kicker">Notre flotte</div>
+    <h2 class="sec-title">Des voitures pour chaque trajet</h2>
+    <p class="sec-sub">De la petite citadine pour la médina au SUV 7 places pour les escapades vers Chefchaouen ou Asilah — choisissez, réservez, partez.</p>
+    <div class="fleet-grid">
+
+      <article class="car">
+        <div class="car-img"><img src="demo-location/img/g1.webp" alt="Citadine blanche"><span class="car-cat">Citadine</span></div>
+        <div class="car-body">
+          <h3>Citadine Éco</h3>
+          <div class="car-specs"><span>👥 5 places</span><span>⚙️ Manuelle</span><span>❄️ Climatisée</span><span>🧳 1 bagage</span></div>
+          <div class="car-foot">
+            <div class="car-price">250 DH<small>par jour · tarif indicatif</small></div>
+            <button class="btn btn-amber btn-sm" onclick="pickCar('Citadine Éco')">Réserver</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="car">
+        <div class="car-img"><img src="demo-location/img/g1.webp" alt="Citadine automatique blanche" style="object-position:center 70%"><span class="car-cat">Citadine</span></div>
+        <div class="car-body">
+          <h3>Citadine Auto</h3>
+          <div class="car-specs"><span>👥 5 places</span><span>⚙️ Automatique</span><span>❄️ Climatisée</span><span>🧳 1 bagage</span></div>
+          <div class="car-foot">
+            <div class="car-price">300 DH<small>par jour · tarif indicatif</small></div>
+            <button class="btn btn-amber btn-sm" onclick="pickCar('Citadine Auto')">Réserver</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="car">
+        <div class="car-img"><img src="demo-location/img/g2.webp" alt="SUV argenté face à la baie de Tanger"><span class="car-cat">SUV</span></div>
+        <div class="car-body">
+          <h3>SUV Confort</h3>
+          <div class="car-specs"><span>👥 5 places</span><span>⚙️ Automatique</span><span>❄️ Climatisée</span><span>🧳 3 bagages</span></div>
+          <div class="car-foot">
+            <div class="car-price">450 DH<small>par jour · tarif indicatif</small></div>
+            <button class="btn btn-amber btn-sm" onclick="pickCar('SUV Confort')">Réserver</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="car">
+        <div class="car-img"><img src="demo-location/img/g2.webp" alt="SUV familial sur la côte" style="object-position:center 30%"><span class="car-cat">Familiale</span></div>
+        <div class="car-body">
+          <h3>SUV Familial 7 places</h3>
+          <div class="car-specs"><span>👥 7 places</span><span>⚙️ Automatique</span><span>❄️ Climatisée</span><span>🧳 4 bagages</span></div>
+          <div class="car-foot">
+            <div class="car-price">600 DH<small>par jour · tarif indicatif</small></div>
+            <button class="btn btn-amber btn-sm" onclick="pickCar('SUV Familial 7 places')">Réserver</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="car">
+        <div class="car-img"><img src="demo-location/img/g3.webp" alt="Berline premium noire devant un hôtel"><span class="car-cat">Premium</span></div>
+        <div class="car-body">
+          <h3>Berline Premium</h3>
+          <div class="car-specs"><span>👥 5 places</span><span>⚙️ Automatique</span><span>🪑 Cuir</span><span>🧳 3 bagages</span></div>
+          <div class="car-foot">
+            <div class="car-price">800 DH<small>par jour · tarif indicatif</small></div>
+            <button class="btn btn-amber btn-sm" onclick="pickCar('Berline Premium')">Réserver</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="car">
+        <div class="car-img"><img src="demo-location/img/hero.webp" alt="Flotte Tangier Drive sur la corniche de Tanger"><span class="car-cat">Premium</span></div>
+        <div class="car-body">
+          <h3>Premium avec chauffeur</h3>
+          <div class="car-specs"><span>👥 4 passagers</span><span>🧑‍✈️ Chauffeur privé</span><span>🕐 À la journée</span><span>🧳 3 bagages</span></div>
+          <div class="car-foot">
+            <div class="car-price">1 200 DH<small>par jour · tarif indicatif</small></div>
+            <button class="btn btn-amber btn-sm" onclick="pickCar('Premium avec chauffeur')">Réserver</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="fleet-note">Tarifs indicatifs par jour, assurance et entretien inclus. Dégressifs dès 7 jours — demandez votre devis sur WhatsApp.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section-dark" id="services">
+  <div class="container">
+    <div class="sec-kicker">Nos services</div>
+    <h2 class="sec-title">Plus qu'une location</h2>
+    <p class="sec-sub">Des services pensés pour les voyageurs comme pour les résidents, dès votre arrivée à Tanger.</p>
+    <div class="srv-grid">
+      <div class="srv">
+        <div class="ic">✈️</div>
+        <h3>Livraison à l'aéroport</h3>
+        <p>Votre voiture vous attend à la sortie de l'aéroport Ibn Battouta, à l'heure de votre vol — ou à la gare et à votre hôtel en centre-ville.</p>
+      </div>
+      <div class="srv">
+        <div class="ic">🧑‍✈️</div>
+        <h3>Chauffeur privé</h3>
+        <p>Un chauffeur expérimenté pour vos journées d'affaires, vos excursions vers Tétouan ou Chefchaouen, et vos soirées en toute tranquillité.</p>
+      </div>
+      <div class="srv">
+        <div class="ic">📅</div>
+        <h3>Longue durée</h3>
+        <p>Vous restez plusieurs semaines ? Profitez de tarifs mensuels dégressifs, entretien et véhicule de remplacement inclus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="section">
+  <div class="container">
+    <div class="sec-kicker">Simple et rapide</div>
+    <h2 class="sec-title">Comment ça marche</h2>
+    <p class="sec-sub">Trois étapes, quelques minutes, et la voiture est à vous.</p>
+    <div class="steps-grid">
+      <div class="step"><div class="num">1</div><h3>Choisissez</h3><p>Parcourez la flotte et choisissez la voiture adaptée à votre séjour et à votre budget.</p></div>
+      <div class="step"><div class="num">2</div><h3>Réservez</h3><p>Remplissez le formulaire : votre demande part sur WhatsApp, nous confirmons la disponibilité aussitôt.</p></div>
+      <div class="step"><div class="num">3</div><h3>Roulez</h3><p>Récupérez la voiture à l'aéroport, à la gare ou à votre hôtel — et profitez du Nord du Maroc.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="section section-dark" id="reservation" style="padding-top:20px">
+  <div class="container">
+    <div class="sec-kicker">Réservation</div>
+    <h2 class="sec-title">Réserver votre voiture</h2>
+    <p class="sec-sub">Remplissez le formulaire : votre demande part directement sur notre WhatsApp, et nous vous confirmons en quelques minutes.</p>
+    <form class="book-box" id="bookForm" novalidate>
+      <div class="row-2">
+        <div class="field">
+          <label for="bName">Nom complet *</label>
+          <input type="text" id="bName" placeholder="Ex : Karim Benali" required>
+        </div>
+        <div class="field">
+          <label for="bPhone">Téléphone / WhatsApp *</label>
+          <input type="tel" id="bPhone" placeholder="06 XX XX XX XX" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="bCar">Voiture souhaitée *</label>
+        <select id="bCar" required>
+          <option value="">Choisir…</option>
+          <option>Citadine Éco — 250 DH/jour</option>
+          <option>Citadine Auto — 300 DH/jour</option>
+          <option>SUV Confort — 450 DH/jour</option>
+          <option>SUV Familial 7 places — 600 DH/jour</option>
+          <option>Berline Premium — 800 DH/jour</option>
+          <option>Premium avec chauffeur — 1 200 DH/jour</option>
+        </select>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="bStart">Date de début *</label>
+          <input type="date" id="bStart" required>
+        </div>
+        <div class="field">
+          <label for="bEnd">Date de retour *</label>
+          <input type="date" id="bEnd" required>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="bPlace">Lieu de prise en charge *</label>
+          <select id="bPlace" required>
+            <option value="">Choisir…</option>
+            <option>Aéroport Ibn Battouta</option>
+            <option>Gare de Tanger Ville</option>
+            <option>Centre-ville de Tanger</option>
+            <option>Mon hôtel à Tanger</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="bNote">Précisions (optionnel)</label>
+          <input type="text" id="bNote" placeholder="N° de vol, siège enfant, GPS…">
+        </div>
+      </div>
+      <p class="form-err" id="bookErr"></p>
+      <button type="submit" class="btn btn-wa btn-block">📲 Confirmer via WhatsApp</button>
+      <p class="form-note">En cliquant, WhatsApp s'ouvre avec votre demande déjà rédigée — il ne reste qu'à l'envoyer.</p>
+    </form>
+    <p class="cond-note">Conditions simples : permis de conduire valide, pièce d'identité, et caution selon la catégorie du véhicule (par carte ou espèces). Aucun frais caché.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="sec-kicker">Contact</div>
+    <h2 class="sec-title">Nous trouver à Tanger</h2>
+    <p class="sec-sub">Une question, un devis longue durée, une arrivée tardive ? Écrivez-nous, nous répondons vite.</p>
+    <div class="infos-grid">
+      <div class="info-card"><div class="ic">🕗</div><h3>Horaires</h3><p>Tous les jours<br>8h00 – 22h00<br><span style="font-size:.9rem">Livraisons aéroport 24h/24 sur réservation</span></p></div>
+      <div class="info-card"><div class="ic">📍</div><h3>Adresse</h3><p>Avenue Mohammed VI<br>Corniche de Tanger<br>90000 Tanger, Maroc</p></div>
+      <div class="info-card"><div class="ic">📞</div><h3>Téléphone</h3><p><a href="tel:+212693981822">+212 6 93 98 18 22</a><br><span style="font-size:.9rem">Appels et WhatsApp, réponse rapide</span></p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo">Tangier<span>Drive</span></div>
+    <p>Location de voitures — Corniche de Tanger · Tous les jours 8h00 – 22h00 · +212 6 93 98 18 22</p>
+    <p class="copy">© 2026 Tangier Drive — Démo</p>
+    <p class="foot-demo">Site de démonstration réalisé à titre d'exemple — les photos et les tarifs sont indicatifs et ne correspondent pas à une agence réelle.</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/212693981822?text=Bonjour%20Tangier%20Drive%2C%20je%20souhaite%20des%20informations%20pour%20louer%20une%20voiture%20%C3%A0%20Tanger." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script>
+  // Menu mobile
+  var burger = document.getElementById('burger');
+  var mainNav = document.getElementById('mainNav');
+  burger.addEventListener('click', function(){ mainNav.classList.toggle('open'); });
+  mainNav.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ mainNav.classList.remove('open'); } });
+
+  // Pré-sélection depuis une carte véhicule
+  function pickCar(name){
+    var sel = document.getElementById('bCar');
+    for(var i = 0; i < sel.options.length; i++){
+      if(sel.options[i].text.indexOf(name) === 0){ sel.selectedIndex = i; break; }
+    }
+    document.getElementById('reservation').scrollIntoView({behavior:'smooth'});
+  }
+
+  // Réservation -> WhatsApp
+  document.getElementById('bookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name  = document.getElementById('bName').value.trim();
+    var phone = document.getElementById('bPhone').value.trim();
+    var car   = document.getElementById('bCar').value;
+    var start = document.getElementById('bStart').value;
+    var end   = document.getElementById('bEnd').value;
+    var place = document.getElementById('bPlace').value;
+    var note  = document.getElementById('bNote').value.trim();
+    var err   = document.getElementById('bookErr');
+    if(!name || !phone || !car || !start || !end || !place){
+      err.textContent = 'Merci de remplir tous les champs marqués d\u2019un astérisque.';
+      return;
+    }
+    if(end < start){
+      err.textContent = 'La date de retour doit être après la date de début.';
+      return;
+    }
+    err.textContent = '';
+    function frDate(iso){ var p = iso.split('-'); return p[2] + '/' + p[1] + '/' + p[0]; }
+    var days = Math.round((new Date(end) - new Date(start)) / 86400000);
+    var msg = 'Bonjour Tangier Drive, je souhaite réserver une voiture :\n'
+            + '• Nom : ' + name + '\n'
+            + '• Téléphone : ' + phone + '\n'
+            + '• Voiture : ' + car + '\n'
+            + '• Du : ' + frDate(start) + '\n'
+            + '• Au : ' + frDate(end) + (days > 0 ? ' (' + days + ' jour' + (days > 1 ? 's' : '') + ')' : '') + '\n'
+            + '• Prise en charge : ' + place;
+    if(note){ msg += '\n• Précisions : ' + note; }
+    msg += '\nMerci de me confirmer la disponibilité et le tarif total.';
+    window.open('https://wa.me/212693981822?text=' + encodeURIComponent(msg), '_blank');
+  });
+</script>
+</body>
+</html>

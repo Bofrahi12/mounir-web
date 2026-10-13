@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>نادي القمة للرياضة — قاعة رياضية في طنجة (نموذج تجريبي)</title>
+<meta name="description" content="نموذج تجريبي لموقع قاعة رياضية في طنجة: كمال أجسام، لياقة، تايكواندو ويوغا للنساء — جدول الحصص وباقات الاشتراك، والتسجيل عبر واتساب.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏋️</text></svg>">
+<style>
+:root{
+  --bg:#0d1117; --bg2:#12161d; --card:#171c26; --line:#262d3d;
+  --ink:#f2f4f8; --muted:#98a2b8; --accent:#ff7a1a; --accent2:#ffb03a;
+  --lime:#b8e62e; --green:#25d366; --radius:18px;
+  --shadow:0 14px 34px rgba(0,0,0,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+img{display:block;max-width:100%}
+.container{max-width:1140px;margin:0 auto;padding:0 20px}
+
+/* demo banner */
+.demo-banner{background:linear-gradient(90deg,#3a1c00,#5c2d00,#3a1c00);color:#ffd9ae;text-align:center;font-size:.86rem;font-weight:700;padding:8px 14px}
+
+/* header */
+header{position:sticky;top:0;z-index:60;background:rgba(13,17,23,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hd-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.logo{font-weight:900;font-size:1.4rem;color:var(--ink);text-decoration:none}
+.logo span{color:var(--accent)}
+.logo small{display:block;font-size:.64rem;letter-spacing:3px;color:var(--muted);font-weight:700;line-height:1.2}
+nav.main-nav{display:flex;gap:26px;align-items:center}
+nav.main-nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:.97rem}
+nav.main-nav a:hover{color:var(--accent2)}
+.nav-cta{background:var(--green);color:#052e16!important;border-radius:50px;padding:8px 20px;font-weight:800!important}
+.burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink)}
+
+/* hero */
+.hero{position:relative;min-height:86vh;display:flex;align-items:center;background:url('demo-gym/img/hero.webp') center 40%/cover no-repeat}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,11,15,.66),rgba(9,11,15,.5) 45%,rgba(9,11,15,.92))}
+.hero-inner{position:relative;text-align:center;padding:90px 20px 78px;width:100%}
+.hero-badge{display:inline-block;border:1px solid rgba(255,176,58,.6);color:var(--accent2);padding:6px 20px;border-radius:50px;font-size:.86rem;font-weight:800;margin-bottom:22px;background:rgba(9,11,15,.4)}
+.hero h1{font-size:clamp(2.2rem,5.6vw,3.8rem);font-weight:900;line-height:1.4;color:#fff;margin-bottom:16px;text-shadow:0 3px 22px rgba(0,0,0,.55)}
+.hero h1 .accent{color:var(--accent)}
+.hero p{color:#d7dce6;font-size:1.14rem;max-width:620px;margin:0 auto 34px}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:50px;padding:13px 32px;font-size:1rem;border:2px solid transparent;cursor:pointer;font-family:inherit;transition:.2s;text-align:center}
+.btn-accent{background:var(--accent);color:#221100}
+.btn-accent:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.65);color:#fff;background:rgba(9,11,15,.3)}
+.btn-ghost:hover{border-color:var(--accent2);color:var(--accent2)}
+.hero-meta{margin-top:40px;color:#c3cadb;font-size:.93rem;font-weight:600}
+
+/* features */
+.feat{background:var(--bg2);border-bottom:1px solid var(--line)}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:22px 0}
+.feat-item{display:flex;align-items:center;gap:12px;justify-content:center;font-weight:800;font-size:.96rem}
+.feat-item .f-icon{font-size:1.65rem}
+.feat-item small{display:block;color:var(--muted);font-weight:600;font-size:.8rem}
+
+/* sections */
+.section{padding:72px 0}
+.sec-kicker{text-align:center;color:var(--accent);font-weight:800;font-size:.85rem;letter-spacing:1px;margin-bottom:6px}
+.sec-title{font-size:2rem;font-weight:900;text-align:center;margin-bottom:8px}
+.sec-sub{text-align:center;color:var(--muted);margin-bottom:42px;max-width:640px;margin-inline:auto}
+
+/* programs */
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prog{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s;display:flex;flex-direction:column}
+.prog:hover{transform:translateY(-5px);border-color:#3d2c17;box-shadow:var(--shadow)}
+.prog img{width:100%;height:220px;object-fit:cover}
+.prog-emoji{height:220px;display:flex;align-items:center;justify-content:center;font-size:4.6rem;background:linear-gradient(140deg,#232a3a,#171c26)}
+.prog-body{padding:20px;display:flex;flex-direction:column;flex:1}
+.prog-body h3{font-size:1.2rem;font-weight:900;margin-bottom:6px}
+.prog-body p{color:var(--muted);font-size:.93rem;flex:1}
+.prog-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.prog-meta span{background:#202634;border:1px solid var(--line);color:#c9d2e4;border-radius:50px;padding:3px 12px;font-size:.8rem;font-weight:700}
+
+/* schedule */
+.sched-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+table.sched{width:100%;border-collapse:collapse;min-width:640px}
+.sched th,.sched td{padding:15px 18px;text-align:start;border-bottom:1px solid var(--line)}
+.sched th{background:#1d2331;font-weight:900;color:var(--accent2);font-size:.95rem}
+.sched tr:last-child td{border-bottom:none}
+.sched td{font-size:.96rem}
+.sched td.cls{font-weight:800}
+.sched td.time{color:var(--accent2);font-weight:800;white-space:nowrap}
+.sched-note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:16px}
+
+/* pricing */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px 26px;text-align:center;display:flex;flex-direction:column;position:relative}
+.plan.hot{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow)}
+.plan-tag{position:absolute;top:-14px;inset-inline-start:50%;transform:translateX(50%);background:var(--accent);color:#221100;font-weight:900;font-size:.8rem;padding:4px 16px;border-radius:50px}
+.plan h3{font-size:1.25rem;font-weight:900}
+.plan .amount{font-size:2.4rem;font-weight:900;color:var(--accent2);margin:10px 0 2px;line-height:1.2}
+.plan .amount small{font-size:.95rem;color:var(--muted);font-weight:700}
+.plan .per{color:var(--muted);font-size:.88rem;margin-bottom:18px}
+.plan ul{list-style:none;text-align:start;margin-bottom:24px;flex:1}
+.plan ul li{padding:7px 0;border-bottom:1px dashed var(--line);font-size:.95rem;color:#d7dce6}
+.plan ul li:last-child{border-bottom:none}
+.plan .btn{width:100%}
+.btn-plan{background:#232b3d;color:#fff;border-color:var(--line)}
+.btn-plan:hover{border-color:var(--accent);color:var(--accent2)}
+.btn-join{background:var(--green);color:#fff}
+.btn-join:hover{background:#1eb856;transform:translateY(-2px)}
+
+/* signup form */
+.join-box{max-width:660px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:40px 36px}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:800;margin-bottom:6px;font-size:.94rem}
+.field input,.field select{width:100%;background:#10141c;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem;padding:12px 14px;color:var(--ink)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,122,26,.16)}
+.form-err{color:#ff8a7a;font-weight:700;min-height:1.4em;font-size:.92rem}
+.join-btn{display:block;width:100%;background:var(--green);color:#fff;border:none;border-radius:12px;padding:15px;font-family:inherit;font-weight:900;font-size:1.05rem;cursor:pointer}
+.join-btn:hover{background:#1eb856}
+.form-note{text-align:center;color:var(--muted);font-size:.87rem;margin-top:12px}
+
+/* footer */
+footer{background:#090b0f;border-top:1px solid var(--line);padding:54px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;padding-bottom:38px}
+footer h4{color:#fff;font-size:1.08rem;margin-bottom:12px;font-weight:900}
+footer p,footer li{color:#8d97ac;font-size:.94rem}
+footer ul{list-style:none}
+footer li{padding:4px 0}
+footer a{color:var(--accent2);text-decoration:none;font-weight:700}
+.foot-logo{font-size:1.5rem;font-weight:900;color:#fff}
+.foot-logo span{color:var(--accent)}
+.foot-bottom{border-top:1px solid var(--line);padding:18px 0;text-align:center;color:#6d768c;font-size:.87rem}
+
+.wa-float{position:fixed;bottom:24px;inset-inline-end:24px;width:58px;height:58px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:1.65rem;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:70;transition:.2s}
+.wa-float:hover{transform:scale(1.08)}
+
+@media(max-width:960px){
+  .prog-grid{grid-template-columns:1fr 1fr}
+  .price-grid{grid-template-columns:1fr;max-width:480px;margin-inline:auto}
+  .feat-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  nav.main-nav{position:fixed;top:70px;right:0;left:0;background:var(--bg2);flex-direction:column;padding:18px 22px;gap:14px;border-bottom:1px solid var(--line);display:none;z-index:55}
+  nav.main-nav.open{display:flex}
+  .burger{display:block}
+  .prog-grid{grid-template-columns:1fr}
+  .row-2{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .section{padding:52px 0}
+  .join-box{padding:28px 20px}
+  .hero{min-height:76vh}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">📌 نموذج تجريبي — الصور والأثمنة توضيحية</div>
+
+<header>
+  <div class="container hd-inner">
+    <a href="#home" class="logo">نادي <span>القمة</span><small>SUMMIT CLUB — طنجة</small></a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#home">الرئيسية</a>
+      <a href="#programs">البرامج</a>
+      <a href="#schedule">الجدول</a>
+      <a href="#pricing">الاشتراكات</a>
+      <a href="#join">تسجيل</a>
+      <a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D9%82%D9%85%D8%A9%20%D9%84%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D8%A9%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%88%D8%A7%D9%84%D8%AD%D8%B5%D8%B5." target="_blank" rel="noopener" class="nav-cta">🏋️ سجل دابا</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="القائمة">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container hero-inner">
+    <span class="hero-badge">🏋️ قاعة رياضية متكاملة · طنجة</span>
+    <h1>قوتك كتبدا من هنا…<br><span class="accent">طلع للقمة</span></h1>
+    <p>أوزان حرة، كارديو، تايكواندو ويوغا للنساء — مدربين كيرافقوك خطوة بخطوة، وقاعة مفتوحة من الصباح حتى الليل.</p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn btn-accent">🔥 شوف باقات الاشتراك</a>
+      <a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D9%82%D9%85%D8%A9%20%D9%84%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D8%A9%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%88%D8%A7%D9%84%D8%AD%D8%B5%D8%B5." target="_blank" rel="noopener" class="btn btn-ghost">💬 سولنا في واتساب</a>
+    </div>
+    <div class="hero-meta">🕕 مفتوح كل أيام الأسبوع · 6:00 ← 22:00 &nbsp;·&nbsp; 📍 طنجة</div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<div class="feat">
+  <div class="container feat-grid">
+    <div class="feat-item"><span class="f-icon">🎓</span><span>مدربون معتمدون<small>مرافقة داخل القاعة</small></span></div>
+    <div class="feat-item"><span class="f-icon">📈</span><span>متابعة شخصية<small>برنامج تدريب وتغذية</small></span></div>
+    <div class="feat-item"><span class="f-icon">🧖</span><span>حمام وساونا<small>للاسترخاء بعد الحصة</small></span></div>
+    <div class="feat-item"><span class="f-icon">🧕</span><span>فضاء خاص بالنساء<small>حصص وقاعة مستقلة</small></span></div>
+  </div>
+</div>
+
+<!-- PROGRAMS -->
+<section class="section" id="programs">
+  <div class="container">
+    <div class="sec-kicker">برامجنا</div>
+    <h2 class="sec-title">اختار الرياضة اللي كتشبهك</h2>
+    <p class="sec-sub">من بناء العضلات حتى الهدوء الذهني — كل برنامج بمدرب خاص وجدول واضح.</p>
+    <div class="prog-grid">
+
+      <article class="prog">
+        <img src="demo-gym/img/g1.webp" alt="حصة كمال أجسام ورفع أثقال">
+        <div class="prog-body">
+          <h3>💪 كمال الأجسام</h3>
+          <p>أوزان حرة وماكينات حديثة، وبرامج قوة وتضخيم متكيفة مع مستواك وهدفك.</p>
+          <div class="prog-meta"><span>قاعة الأوزان</span><span>06:00 – 22:00</span></div>
+        </div>
+      </article>
+
+      <article class="prog">
+        <img src="demo-gym/img/hero.webp" alt="فضاء الكارديو واللياقة في النادي">
+        <div class="prog-body">
+          <h3>🏃 لياقة وكارديو</h3>
+          <p>مشايات ودراجات وأجهزة كارديو بإطلالة مفتوحة، وحصص جماعية لحرق الدهون ورفع اللياقة.</p>
+          <div class="prog-meta"><span>حصص جماعية</span><span>صباحاً ومساءً</span></div>
+        </div>
+      </article>
+
+      <article class="prog">
+        <img src="demo-gym/img/g2.webp" alt="حصة تايكواندو داخل النادي">
+        <div class="prog-body">
+          <h3>🥋 تايكواندو</h3>
+          <p>فنون قتالية للأطفال والكبار: انضباط، قوة وثقة في النفس، مع تحضير للأحزمة والمنافسات.</p>
+          <div class="prog-meta"><span>أطفال + كبار</span><span>مدرب معتمد</span></div>
+        </div>
+      </article>
+
+      <article class="prog">
+        <img src="demo-gym/img/g3.webp" alt="حصة يوغا للنساء">
+        <div class="prog-body">
+          <h3>🧘 يوغا وبيلاتس — نساء</h3>
+          <p>حصص في فضاء خاص بالنساء: مرونة، توازن وهدوء، مناسبة لجميع المستويات.</p>
+          <div class="prog-meta"><span>فضاء نسائي خاص</span><span>3 حصص أسبوعياً</span></div>
+        </div>
+      </article>
+
+      <article class="prog">
+        <div class="prog-emoji">🔥</div>
+        <div class="prog-body">
+          <h3>🏋️ كروس ترينينغ</h3>
+          <p>تمارين وظيفية عالية الكثافة في مجموعات صغيرة: قوة، سرعة وتحمل في حصة وحدة.</p>
+          <div class="prog-meta"><span>مجموعات صغيرة</span><span>18:00 – 19:00</span></div>
+        </div>
+      </article>
+
+      <article class="prog">
+        <div class="prog-emoji">🥊</div>
+        <div class="prog-body">
+          <h3>ملاكمة وكيك بوكسينغ</h3>
+          <p>تقنيات الضرب والدفاع عن النفس مع تدريب بدني كامل — للمبتدئين والمتقدمين.</p>
+          <div class="prog-meta"><span>جميع المستويات</span><span>مساءً</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="section" id="schedule" style="padding-top:6px">
+  <div class="container">
+    <div class="sec-kicker">جدول الحصص</div>
+    <h2 class="sec-title">البرنامج الأسبوعي</h2>
+    <p class="sec-sub">جدول توضيحي في هذا النموذج — الجدول الفعلي كيتأكد في الاستقبال أو عبر واتساب.</p>
+    <div class="sched-wrap">
+      <table class="sched">
+        <thead>
+          <tr><th>الحصة</th><th>الأيام</th><th>التوقيت</th><th>المكان</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cls">🏃 كارديو ولياقة جماعية</td><td>السبت – الخميس</td><td class="time">07:00 – 08:00</td><td>قاعة الكارديو</td></tr>
+          <tr><td class="cls">🧘 يوغا وبيلاتس (نساء)</td><td>الاثنين · الأربعاء · الجمعة</td><td class="time">10:00 – 11:00</td><td>الفضاء النسائي</td></tr>
+          <tr><td class="cls">🥋 تايكواندو — أطفال</td><td>الثلاثاء · الخميس</td><td class="time">17:00 – 18:00</td><td>قاعة الفنون القتالية</td></tr>
+          <tr><td class="cls">🔥 كروس ترينينغ</td><td>السبت · الاثنين · الأربعاء</td><td class="time">18:00 – 19:00</td><td>فضاء التدريب الوظيفي</td></tr>
+          <tr><td class="cls">🥋 تايكواندو — كبار</td><td>الاثنين · الأربعاء</td><td class="time">19:00 – 20:30</td><td>قاعة الفنون القتالية</td></tr>
+          <tr><td class="cls">🥊 ملاكمة وكيك بوكسينغ</td><td>الثلاثاء · الخميس · السبت</td><td class="time">19:00 – 20:00</td><td>قاعة الفنون القتالية</td></tr>
+          <tr><td class="cls">💪 قاعة الأوزان (حر)</td><td>كل أيام الأسبوع</td><td class="time">06:00 – 22:00</td><td>قاعة الأوزان</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sched-note">الجمعة: القاعة مفتوحة من 14:00 إلى 22:00 · الحصص الجماعية قد تتغير في العطل الرسمية.</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing" style="padding-top:6px">
+  <div class="container">
+    <div class="sec-kicker">الاشتراكات</div>
+    <h2 class="sec-title">باقات بسيطة وواضحة</h2>
+    <p class="sec-sub">الأثمنة أسفله توضيحية في هذا النموذج التجريبي. جميع الباقات كتشمل الدخول لقاعة الأوزان والكارديو.</p>
+    <div class="price-grid">
+
+      <div class="plan">
+        <h3>شهري</h3>
+        <div class="amount">250 <small>درهم</small></div>
+        <div class="per">لمدة شهر واحد</div>
+        <ul>
+          <li>✅ دخول قاعة الأوزان والكارديو</li>
+          <li>✅ حصة تجريبية مع مدرب</li>
+          <li>✅ خزانة شخصية</li>
+          <li>⬜ الحصص الجماعية</li>
+          <li>⬜ الحمام والساونا</li>
+        </ul>
+        <a class="btn btn-join" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D9%82%D9%85%D8%A9%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B4%D8%AA%D8%B1%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%B4%D9%87%D8%B1%D9%8A%D8%A9." target="_blank" rel="noopener">📲 اشترك عبر واتساب</a>
+      </div>
+
+      <div class="plan hot">
+        <div class="plan-tag">⭐ الأكثر اختياراً</div>
+        <h3>3 أشهر</h3>
+        <div class="amount">600 <small>درهم</small></div>
+        <div class="per">لمدة 3 أشهر (200 درهم/شهر)</div>
+        <ul>
+          <li>✅ دخول قاعة الأوزان والكارديو</li>
+          <li>✅ جميع الحصص الجماعية</li>
+          <li>✅ برنامج تدريب وتغذية شخصي</li>
+          <li>✅ متابعة شهرية مع المدرب</li>
+          <li>⬜ الحمام والساونا</li>
+        </ul>
+        <a class="btn btn-join" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D9%82%D9%85%D8%A9%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B4%D8%AA%D8%B1%D9%83%20%D9%81%D9%8A%20%D8%A8%D8%A7%D9%82%D8%A9%203%20%D8%A3%D8%B4%D9%87%D8%B1." target="_blank" rel="noopener">📲 اشترك عبر واتساب</a>
+      </div>
+
+      <div class="plan">
+        <h3>سنوي</h3>
+        <div class="amount">1.900 <small>درهم</small></div>
+        <div class="per">لمدة 12 شهراً (الأوفر)</div>
+        <ul>
+          <li>✅ كل مزايا باقة 3 أشهر</li>
+          <li>✅ الحمام والساونا مشمولان</li>
+          <li>✅ إمكانية تجميد الاشتراك 30 يوماً</li>
+          <li>✅ دعوة صديق مرة في الشهر</li>
+          <li>✅ أولوية حجز الحصص</li>
+        </ul>
+        <a class="btn btn-join" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D9%82%D9%85%D8%A9%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B4%D8%AA%D8%B1%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%B3%D9%86%D9%88%D9%8A%D8%A9." target="_blank" rel="noopener">📲 اشترك عبر واتساب</a>
+      </div>
+
+    </div>
+    <p class="sched-note" style="margin-top:22px">💡 أول زيارة؟ احجز حصتك التجريبية عبر واتساب وشوف القاعة بنفسك قبل ما تقرر.</p>
+  </div>
+</section>
+
+<!-- JOIN FORM -->
+<section class="section" id="join" style="padding-top:6px">
+  <div class="container">
+    <div class="sec-kicker">سجل دابا</div>
+    <h2 class="sec-title">طلب تسجيل سريع</h2>
+    <p class="sec-sub">عمر الاستمارة وطلبك غادي يوصلنا مباشرة في واتساب — كنأكدو معاك التسجيل في نفس النهار.</p>
+    <form class="join-box" id="joinForm" novalidate>
+      <div class="row-2">
+        <div class="field">
+          <label for="jName">الاسم الكامل *</label>
+          <input type="text" id="jName" placeholder="مثال: عمر الإدريسي" required>
+        </div>
+        <div class="field">
+          <label for="jPhone">رقم الهاتف *</label>
+          <input type="tel" id="jPhone" placeholder="06 XX XX XX XX" required>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="jPlan">الباقة *</label>
+          <select id="jPlan" required>
+            <option value="">اختر الباقة…</option>
+            <option>شهري — 250 درهم</option>
+            <option>3 أشهر — 600 درهم</option>
+            <option>سنوي — 1.900 درهم</option>
+            <option>حصة تجريبية فقط</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="jGoal">هدفك الرياضي</label>
+          <select id="jGoal">
+            <option value="">اختر (اختياري)…</option>
+            <option>بناء العضلات</option>
+            <option>خسارة الوزن</option>
+            <option>لياقة عامة</option>
+            <option>فنون قتالية</option>
+            <option>يوغا ومرونة</option>
+          </select>
+        </div>
+      </div>
+      <p class="form-err" id="joinErr"></p>
+      <button type="submit" class="join-btn">📲 أرسل طلب التسجيل عبر واتساب</button>
+      <p class="form-note">بالضغط على الزر، غادي يتفتح واتساب وطلبك مكتوب جاهز — صيفطو وصافي.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">نادي <span>القمة</span></div>
+        <p style="margin-top:12px">قاعة رياضية متكاملة في طنجة: أوزان، كارديو، فنون قتالية ويوغا للنساء — بمرافقة مدربين ومتابعة شخصية.</p>
+      </div>
+      <div>
+        <h4>تواصل معنا</h4>
+        <ul>
+          <li>📍 حي الإداري، طنجة</li>
+          <li>💬 واتساب: <a href="https://wa.me/212693981822" target="_blank" rel="noopener" dir="ltr">+212 693-981822</a></li>
+          <li>🕕 كل أيام الأسبوع: 6:00 ← 22:00</li>
+        </ul>
+      </div>
+      <div>
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="#programs">البرامج</a></li>
+          <li><a href="#schedule">جدول الحصص</a></li>
+          <li><a href="#pricing">باقات الاشتراك</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      © 2026 نادي القمة للرياضة — Démo · 📌 نموذج تجريبي للعرض فقط — الصور والأثمنة توضيحية ولا تمثل نادياً حقيقياً.
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D9%82%D9%85%D8%A9%D8%8C%20%D8%B9%D9%86%D8%AF%D9%8A%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83." class="wa-float" target="_blank" rel="noopener" aria-label="واتساب">💬</a>
+
+<script>
+// قائمة الهاتف
+var burger = document.getElementById('burger');
+var mainNav = document.getElementById('mainNav');
+burger.addEventListener('click', function(){ mainNav.classList.toggle('open'); });
+mainNav.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ mainNav.classList.remove('open'); } });
+
+// التسجيل -> واتساب
+document.getElementById('joinForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name  = document.getElementById('jName').value.trim();
+  var phone = document.getElementById('jPhone').value.trim();
+  var plan  = document.getElementById('jPlan').value;
+  var goal  = document.getElementById('jGoal').value;
+  var err   = document.getElementById('joinErr');
+  if(!name || !phone || !plan){
+    err.textContent = 'المرجو تعبئة الاسم والهاتف واختيار الباقة.';
+    return;
+  }
+  err.textContent = '';
+  var text = 'السلام نادي القمة للرياضة، بغيت نتسجل:\n'
+           + '• الاسم: ' + name + '\n'
+           + '• الهاتف: ' + phone + '\n'
+           + '• الباقة: ' + plan;
+  if(goal){ text += '\n• الهدف: ' + goal; }
+  text += '\nشكراً!';
+  window.open('https://wa.me/212693981822?text=' + encodeURIComponent(text), '_blank');
+});
+</script>
+</body>
+</html>
