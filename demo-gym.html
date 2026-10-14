@@ -1,438 +1,383 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex,nofollow">
-<title>FORGE. — Gym &amp; Fitness à Tanger | Musculation, CrossFit, Coaching</title>
-<meta name="description" content="FORGE. — salle de sport premium à Tanger : musculation, crossfit, cardio, HIIT, yoga et coaching privé. Ouvert 7j/7.">
+<meta name="robots" content="noindex">
+<title>نادي القمة — قاعة رياضة في طنجة | كمال أجسام، كروس فيت، تدريب شخصي</title>
+<meta name="description" content="نادي القمة — قاعة رياضة عصرية في طنجة: كمال أجسام، كروس فيت، كارديو، يوغا وتدريب شخصي مع مدربين معتمدين. أول حصة تجريبية مجانية.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏋️</text></svg>">
 <style>
 :root{
-  --bg:#0B0B0D; --bg2:#121215; --card:#16161A; --line:#26262C;
-  --orange:#FF6B00; --orange2:#FF8A33; --txt:#F5F5F7; --mut:#A7A7B3;
+  --bg:#0B0C0E; --bg2:#101215; --card:#15171B; --card2:#1B1E24;
+  --line:#262A31; --lime:#C8F542; --lime-d:#9CCB1E;
+  --txt:#F5F7F2; --mut:#A3AB9F; --wa:#25D366;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
-img{display:block;width:100%}
+body{background:var(--bg);color:var(--txt);font-family:'Tajawal',system-ui,sans-serif;line-height:1.75;overflow-x:hidden}
+img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
-.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
-h1,h2,h3{text-transform:uppercase;line-height:1.12;font-weight:800}
-.sec{padding:88px 0}
-.sec-head{text-align:center;max-width:640px;margin:0 auto 48px}
-.kicker{color:var(--orange);font-weight:700;letter-spacing:3px;font-size:12px;text-transform:uppercase}
-.sec-head h2{font-size:clamp(28px,4vw,40px);margin:10px 0 12px}
-.sec-head h2 span{color:var(--orange)}
-.sec-head p{color:var(--mut);font-size:15px}
-.btn{display:inline-flex;align-items:center;gap:9px;background:var(--orange);color:#fff;font-weight:700;font-size:15px;padding:14px 30px;border-radius:50px;border:2px solid var(--orange);transition:.25s;cursor:pointer;font-family:inherit}
-.btn:hover{background:transparent;color:var(--orange)}
-.btn.ghost{background:transparent;border-color:rgba(255,255,255,.65);color:#fff}
-.btn.ghost:hover{border-color:var(--orange);color:var(--orange)}
-.btn.wa{background:#22c15e;border-color:#22c15e}
-.btn.wa:hover{background:transparent;color:#22c15e}
-
-/* Header */
-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,11,13,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.hd{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
-.logo{font-size:28px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
-.logo i{color:var(--orange);font-style:normal}
-nav.main{display:flex;gap:30px}
-nav.main a{font-size:14px;font-weight:600;color:#E8E8EC;transition:.2s}
-nav.main a:hover{color:var(--orange)}
-.hd .btn{padding:11px 24px;font-size:14px}
-.burger{display:none;background:none;border:0;color:#fff;font-size:26px;cursor:pointer}
-
-/* Hero */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;background:url('demo-gym/img/hero.jpg') center/cover no-repeat;padding:130px 0 80px}
-.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,11,13,.95) 25%,rgba(11,11,13,.55) 60%,rgba(11,11,13,.25))}
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(transparent,var(--bg))}
-.hero .wrap{position:relative;z-index:2;width:100%}
-.hero .tag{display:inline-block;border:1px solid var(--orange);color:var(--orange2);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:7px 16px;border-radius:50px;margin-bottom:22px}
-.hero h1{font-size:clamp(42px,7vw,76px);font-weight:900;max-width:640px}
-.hero h1 span{color:var(--orange)}
-.hero p{color:#D9D9E0;max-width:520px;font-size:17px;margin:20px 0 32px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.disp{font-family:'Changa',sans-serif;line-height:1.25}
+.kick{color:var(--lime);font-family:'Changa',sans-serif;font-weight:700;letter-spacing:.5px;font-size:.95rem;text-transform:uppercase}
+.sec{padding:84px 0}
+.sec-head{max-width:640px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:800;margin:8px 0 10px}
+.sec-head p{color:var(--mut)}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--lime);color:#0B0C0E;font-weight:800;font-family:'Changa',sans-serif;font-size:1.05rem;padding:14px 30px;border-radius:6px;transition:.25s;border:2px solid var(--lime)}
+.btn:hover{background:transparent;color:var(--lime)}
+.btn.ghost{background:transparent;color:var(--txt);border-color:#3A3F47}
+.btn.ghost:hover{border-color:var(--lime);color:var(--lime)}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.btn.wa:hover{background:transparent;color:var(--wa)}
+/* banner */
+.demo-bar{background:linear-gradient(90deg,#1a1400,#241c00);border-bottom:1px solid #4a3d00;color:#FFD94D;text-align:center;font-size:.86rem;font-weight:700;padding:9px 14px}
+/* header */
+header{position:sticky;top:0;z-index:60;background:rgba(11,12,14,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-family:'Changa',sans-serif;font-size:1.55rem;font-weight:800}
+.logo b{color:var(--lime)}
+.logo small{display:block;font-family:'Tajawal';font-size:.62rem;color:var(--mut);font-weight:500;letter-spacing:2px;margin-top:-6px}
+.links{display:flex;gap:26px;font-weight:500}
+.links a:hover{color:var(--lime)}
+.nav .btn{padding:9px 20px;font-size:.95rem}
+@media(max-width:820px){.links{display:none}}
+/* hero */
+.hero{position:relative;padding:110px 0 90px;background:#000;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:url('demo-gym/img/hero.jpg') center/cover;opacity:.42}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,12,14,.55),rgba(11,12,14,.92) 78%,var(--bg))}
+.hero-in{position:relative;z-index:2;max-width:760px}
+.hero h1{font-size:clamp(2.6rem,7.5vw,4.6rem);font-weight:800;line-height:1.12}
+.hero h1 span{color:var(--lime)}
+.hero p{color:#D7DCD2;font-size:1.15rem;max-width:560px;margin:18px 0 30px}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-
-/* Stats */
-.stats{background:var(--orange)}
-.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);padding-top:34px;padding-bottom:34px;text-align:center;gap:18px}
-.stats b{display:block;font-size:clamp(28px,4vw,42px);font-weight:900;color:#141414;line-height:1}
-.stats span{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#3A1E00}
-
-/* Programmes */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.prog{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.25s}
-.prog:hover{transform:translateY(-6px);border-color:var(--orange)}
-.prog .ph{height:200px;overflow:hidden}
-.prog .ph img{height:100%;object-fit:cover}
-.prog .in{padding:22px}
-.prog h3{font-size:19px;margin-bottom:8px}
-.prog h3 span{color:var(--orange)}
-.prog p{color:var(--mut);font-size:14px}
-.prog .meta{display:flex;gap:16px;margin-top:14px;font-size:12.5px;font-weight:600;color:var(--orange2)}
-
-/* Planning */
-.plan-box{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:720px}
-th,td{padding:15px 14px;text-align:center;font-size:14px;border-bottom:1px solid var(--line)}
-thead th{background:#1D1D22;text-transform:uppercase;letter-spacing:1px;font-size:12.5px;color:#fff}
-thead th:first-child,tbody td:first-child{text-align:left;font-weight:700;color:#fff}
-tbody td{color:var(--mut)}
-tbody tr:hover td{background:#1A1A1F;color:#fff}
-td .dot{color:var(--orange);font-weight:800}
-
-/* Coachs */
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.coach{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-align:center;transition:.25s}
-.coach:hover{transform:translateY(-6px);border-color:var(--orange)}
-.coach .ph{height:280px;overflow:hidden}
-.coach .ph img{height:100%;object-fit:cover}
-.coach .in{padding:20px 16px 24px}
-.coach h3{font-size:18px}
-.coach .role{color:var(--orange);font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin:5px 0 9px}
-.coach p{color:var(--mut);font-size:13.5px}
-
-/* Tarifs */
-.price{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px 28px;text-align:center;position:relative;display:flex;flex-direction:column}
-.price.pop{border:2px solid var(--orange);background:linear-gradient(180deg,#1B1208,var(--card))}
-.badge-pop{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:6px 18px;border-radius:50px}
-.price h3{font-size:17px;letter-spacing:2px;color:var(--mut)}
-.price .amount{font-size:48px;font-weight:900;margin:12px 0 2px}
-.price .amount small{font-size:16px;color:var(--mut);font-weight:600}
-.price .per{color:var(--mut);font-size:13.5px;margin-bottom:20px}
-.price ul{list-style:none;text-align:left;margin:0 0 26px;font-size:14.5px}
-.price li{padding:8px 0;border-bottom:1px dashed var(--line)}
-.price li::before{content:"✓";color:var(--orange);font-weight:900;margin-right:10px}
-.price .btn{margin-top:auto;justify-content:center;width:100%}
-.note{text-align:center;color:var(--mut);font-size:13.5px;margin-top:22px}
-
-/* IMC */
-.imc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:38px;display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}
-.imc h3{font-size:26px;margin-bottom:10px}
-.imc h3 span{color:var(--orange)}
-.imc p{color:var(--mut);font-size:14.5px}
-label{display:block;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:16px 0 7px}
-input,select{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:11px;color:#fff;padding:13px 15px;font-family:inherit;font-size:15px}
-input:focus,select:focus{outline:none;border-color:var(--orange)}
-.imc .res{background:var(--bg2);border:1px dashed var(--orange);border-radius:16px;padding:26px;text-align:center}
-.imc .res b{display:block;font-size:52px;font-weight:900;color:var(--orange);line-height:1}
-.imc .res span{display:block;color:var(--mut);margin-top:8px;font-size:14.5px}
-.imc .res .cat{color:#fff;font-weight:700;font-size:17px}
-
-/* Galerie */
-.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.gal .ph{border-radius:16px;overflow:hidden;height:250px}
-.gal img{height:100%;object-fit:cover;transition:.4s}
-.gal .ph:hover img{transform:scale(1.07)}
-
-/* Inscription */
-.join{background:linear-gradient(rgba(11,11,13,.93),rgba(11,11,13,.93)),url('demo-gym/img/g2.jpg') center/cover}
-.join-box{max-width:600px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:40px}
-.join-box h2{text-align:center;font-size:30px}
-.join-box h2 span{color:var(--orange)}
-.join-box>p{text-align:center;color:var(--mut);font-size:14.5px;margin:10px 0 8px}
-.join-box .btn{width:100%;justify-content:center;margin-top:22px;font-size:16px}
-
-/* Footer */
-footer{background:#070708;border-top:1px solid var(--line);padding:56px 0 28px}
-.fcols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:34px;margin-bottom:36px}
-footer p,footer li{color:var(--mut);font-size:14px}
-footer h4{margin-bottom:15px;font-size:16px;text-transform:uppercase;letter-spacing:1px}
-footer ul{list-style:none}
-footer li{padding:4px 0}
-footer li a:hover{color:var(--orange)}
-.copy{border-top:1px solid var(--line);padding-top:22px;text-align:center;color:#6D6D78;font-size:13px}
-
-.demo-badge{position:fixed;left:14px;bottom:14px;z-index:999;background:rgba(10,10,10,.86);color:#FFB27A;border:1px solid rgba(255,107,0,.55);font-size:12px;font-weight:600;padding:7px 14px;border-radius:50px}
-.wa-float{position:fixed;right:16px;bottom:16px;z-index:999;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.45)}
-.wa-float svg{width:30px;height:30px;fill:#fff}
-
-@media(max-width:960px){
-  .grid3{grid-template-columns:repeat(2,1fr)}
-  .grid4,.gal{grid-template-columns:repeat(2,1fr)}
-  .imc{grid-template-columns:1fr}
-  .fcols{grid-template-columns:1fr}
-}
-@media(max-width:640px){
-  nav.main{display:none;position:absolute;top:72px;left:0;right:0;background:#101013;flex-direction:column;padding:18px 24px;gap:15px;border-bottom:1px solid var(--line)}
-  nav.main.open{display:flex}
-  .burger{display:block}
-  .hd .btn{display:none}
-  .grid3,.grid4,.gal{grid-template-columns:1fr}
-  .stats .wrap{grid-template-columns:repeat(2,1fr)}
-  .join-box{padding:28px 22px}
-  .sec{padding:64px 0}
-}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.hero-tags span{border:1px solid #3d434c;background:rgba(255,255,255,.05);padding:6px 14px;border-radius:50px;font-size:.85rem}
+/* stats */
+.stats{background:var(--bg2);border-block:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding-block:34px}
+.stat{text-align:center}
+.stat b{font-family:'Changa';font-size:2.1rem;color:var(--lime);display:block;line-height:1.1}
+.stat span{color:var(--mut);font-size:.92rem}
+@media(max-width:700px){.stats .wrap{grid-template-columns:repeat(2,1fr);gap:22px}}
+/* programmes */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.grid3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.grid3{grid-template-columns:1fr}}
+.prog{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.3s}
+.prog:hover{transform:translateY(-5px);border-color:var(--lime-d)}
+.prog img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.prog div{padding:20px 22px 24px}
+.prog h3{font-size:1.3rem;font-weight:700;margin-bottom:6px}
+.prog p{color:var(--mut);font-size:.95rem}
+.prog .tag{display:inline-block;margin-top:12px;color:var(--lime);font-size:.83rem;font-weight:700;border:1px solid #39402a;padding:3px 12px;border-radius:50px}
+/* planning */
+.sched{background:var(--bg2);border-block:1px solid var(--line)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;min-width:640px;background:var(--card)}
+th,td{padding:15px 18px;text-align:right;border-bottom:1px solid var(--line);font-size:.97rem}
+th{background:#0e1005;color:var(--lime);font-family:'Changa';font-size:1.02rem}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--card2)}
+td b{color:var(--txt)}
+td{color:var(--mut)}
+.pill{display:inline-block;background:#232a12;color:var(--lime);border:1px solid #3d4718;font-size:.78rem;font-weight:700;padding:2px 10px;border-radius:50px}
+/* tarifs */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+@media(max-width:900px){.plans{grid-template-columns:1fr;max-width:440px;margin:0 auto}}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:34px 28px;display:flex;flex-direction:column;position:relative}
+.plan.hot{background:linear-gradient(180deg,#1d2203,#141503);border:2px solid var(--lime);transform:scale(1.03)}
+@media(max-width:900px){.plan.hot{transform:none}}
+.plan .badge{position:absolute;top:-14px;right:50%;transform:translateX(50%);background:var(--lime);color:#0B0C0E;font-weight:800;font-size:.8rem;padding:4px 16px;border-radius:50px;font-family:'Changa'}
+.plan h3{font-size:1.25rem;color:var(--mut);font-weight:700}
+.price{font-family:'Changa';font-size:2.9rem;font-weight:800;line-height:1.15;margin:10px 0 2px}
+.price small{font-size:1rem;color:var(--mut);font-family:'Tajawal';font-weight:500}
+.total{color:var(--mut);font-size:.88rem;margin-bottom:18px}
+.plan ul{list-style:none;margin-bottom:26px;flex:1}
+.plan li{padding:7px 0;color:#D9DED4;font-size:.96rem}
+.plan li::before{content:"✓";color:var(--lime);font-weight:800;margin-left:9px}
+.plan li.off{color:#5d6359}
+.plan li.off::before{content:"—";color:#5d6359}
+.plan .btn{justify-content:center}
+/* coachs */
+.coach{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-align:center}
+.coach img{aspect-ratio:4/4.4;object-fit:cover;width:100%}
+.coach div{padding:16px 14px 20px}
+.coach h3{font-size:1.15rem}
+.coach span{color:var(--lime);font-size:.87rem;font-weight:700}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:900px){.grid4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.grid4{grid-template-columns:1fr}}
+/* bmi */
+.bmi{background:linear-gradient(135deg,#151803,#0e1005);border:1px solid #39402a;border-radius:18px;padding:38px;display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+@media(max-width:820px){.bmi{grid-template-columns:1fr;padding:28px 22px}}
+.bmi h2{font-size:1.9rem;margin-bottom:8px}
+.bmi p{color:var(--mut)}
+.bmi-form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+.bmi-form label{font-size:.88rem;font-weight:700;display:block;margin-bottom:5px}
+.bmi-form input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--txt);padding:11px 13px;font-family:inherit;font-size:1rem;margin-bottom:14px}
+.bmi-form button{width:100%;cursor:pointer}
+#bmiRes{margin-top:14px;font-weight:700;text-align:center;min-height:28px;color:var(--lime)}
+/* faq + gallery */
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:800;font-family:'Changa';font-size:1.08rem;list-style:none}
+summary::-webkit-details-marker{display:none}
+details p{color:var(--mut);margin-top:8px;font-size:.96rem}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:800px){.gal{grid-template-columns:repeat(2,1fr)}}
+.gal img{aspect-ratio:1/1;object-fit:cover;border-radius:12px;width:100%}
+/* cta + footer */
+.cta-band{background:var(--lime);color:#0B0C0E;text-align:center;padding:70px 20px}
+.cta-band h2{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:800}
+.cta-band p{max-width:520px;margin:10px auto 26px;font-weight:500}
+.cta-band .btn{background:#0B0C0E;color:#fff;border-color:#0B0C0E}
+.cta-band .btn:hover{background:transparent;color:#0B0C0E}
+footer{background:#08090B;border-top:1px solid var(--line);padding:44px 0 30px;color:var(--mut);font-size:.92rem}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.foot b{color:var(--txt);font-family:'Changa';font-size:1.15rem}
+.demo-note{border-top:1px solid var(--line);padding-top:18px;text-align:center;font-size:.84rem}
+.wa-float{position:fixed;bottom:20px;inset-inline-start:20px;z-index:70;background:var(--wa);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.55rem;box-shadow:0 8px 24px rgba(0,0,0,.45)}
 </style>
 </head>
 <body>
 
+<div class="demo-bar">📌 نموذج تجريبي — مشروع خيالي للعرض، والأسعار تقريبية</div>
+
 <header>
-  <div class="wrap hd">
-    <a class="logo" href="#">FORGE<i>.</i></a>
-    <nav class="main" id="menu">
-      <a href="#programmes">Programmes</a>
-      <a href="#planning">Planning</a>
-      <a href="#coachs">Coachs</a>
-      <a href="#tarifs">Tarifs</a>
-      <a href="#galerie">Galerie</a>
+  <div class="wrap nav">
+    <a class="logo" href="#">نادي <b>القمة</b><small>SUMMIT GYM · TANGER</small></a>
+    <nav class="links">
+      <a href="#programmes">البرامج</a>
+      <a href="#planning">الجدول</a>
+      <a href="#tarifs">الأسعار</a>
+      <a href="#coachs">المدربون</a>
+      <a href="#faq">أسئلة</a>
     </nav>
-    <a class="btn" href="#inscription">Essai gratuit</a>
-    <button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    <a class="btn" href="https://wa.me/212693981822" data-wa="مرحباً نادي القمة، أريد معلومات عن الاشتراكات.">اشترك الآن</a>
   </div>
 </header>
 
 <section class="hero">
-  <div class="wrap">
-    <span class="tag">Gym &amp; Fitness — Tanger</span>
-    <h1>Forge ton <span>meilleur corps</span></h1>
-    <p>Musculation, CrossFit et coaching privé dans un espace premium de 1 200 m² au cœur de Tanger. Équipement dernière génération, coachs certifiés, ouvert 7j/7 de 6h à 23h.</p>
+  <div class="wrap hero-in">
+    <span class="kick">قاعة رياضة · طنجة</span>
+    <h1>ابنِ أقوى <span>نسخة منك</span><br>في قلب طنجة</h1>
+    <p>أكثر من 1,200 متر مربع من التجهيزات الحديثة، مدربون معتمدون، وحصص جماعية طوال الأسبوع — من الساعة 6 صباحاً إلى 11 ليلاً.</p>
     <div class="hero-cta">
-      <a class="btn" href="#inscription">Commencer — essai gratuit</a>
-      <a class="btn ghost" href="#tarifs">Voir les tarifs</a>
+      <a class="btn wa" href="https://wa.me/212693981822" data-wa="مرحباً نادي القمة، أريد حجز حصتي التجريبية المجانية.">🏋️ احجز حصة تجريبية مجانية</a>
+      <a class="btn ghost" href="#tarifs">اكتشف الأسعار</a>
     </div>
+    <div class="hero-tags"><span>✓ بدون التزام</span><span>✓ أول حصة مجانية</span><span>✓ مفتوح 7/7</span></div>
   </div>
 </section>
 
-<div class="stats">
+<section class="stats">
   <div class="wrap">
-    <div><b>+2 400</b><span>Membres actifs</span></div>
-    <div><b>14</b><span>Coachs certifiés</span></div>
-    <div><b>1 200 m²</b><span>Espace training</span></div>
-    <div><b>7j/7</b><span>6h00 — 23h00</span></div>
+    <div class="stat"><b>+1,200</b><span>عضو نشط</span></div>
+    <div class="stat"><b>12</b><span>مدرباً معتمداً</span></div>
+    <div class="stat"><b>+80</b><span>آلة وجهازاً حديثاً</span></div>
+    <div class="stat"><b>35</b><span>حصة جماعية أسبوعياً</span></div>
   </div>
-</div>
+</section>
 
 <section class="sec" id="programmes">
   <div class="wrap">
     <div class="sec-head">
-      <div class="kicker">Nos disciplines</div>
-      <h2>Programmes <span>d'entraînement</span></h2>
-      <p>Des programmes structurés pour chaque objectif : prise de masse, perte de poids, performance ou simple remise en forme.</p>
+      <span class="kick">برامجنا</span>
+      <h2>تدرّب على طريقتك</h2>
+      <p>برامج مصممة لكل الأهداف: بناء العضلات، خسارة الوزن، اللياقة العامة أو الأداء الرياضي.</p>
     </div>
     <div class="grid3">
-      <article class="prog"><div class="ph"><img src="demo-gym/img/muscu.jpg" alt="Musculation"></div><div class="in"><h3>Muscu<span>lation</span></h3><p>Plateau complet : charges libres, machines guidées et zone haltères jusqu'à 60 kg.</p><div class="meta"><span>Tous niveaux</span><span>Accès libre</span></div></div></article>
-      <article class="prog"><div class="ph"><img src="demo-gym/img/crossfit.jpg" alt="CrossFit"></div><div class="in"><h3>Cross<span>Fit</span></h3><p>Des WOD quotidiens en petits groupes, encadrés par un coach certifié, pour repousser tes limites.</p><div class="meta"><span>6 séances / jour</span><span>Max 12 pers.</span></div></div></article>
-      <article class="prog"><div class="ph"><img src="demo-gym/img/cardio.jpg" alt="Cardio"></div><div class="in"><h3>Cardio <span>Training</span></h3><p>Tapis, vélos et rameurs connectés avec suivi de performance en temps réel.</p><div class="meta"><span>Zone dédiée</span><span>Écrans connectés</span></div></div></article>
-      <article class="prog"><div class="ph"><img src="demo-gym/img/hiit.jpg" alt="HIIT"></div><div class="in"><h3>HIIT <span>Express</span></h3><p>30 minutes à haute intensité pour brûler un maximum de calories en un minimum de temps.</p><div class="meta"><span>30 minutes</span><span>Brûle-graisse</span></div></div></article>
-      <article class="prog"><div class="ph"><img src="demo-gym/img/yoga.jpg" alt="Yoga et mobilité"></div><div class="in"><h3>Yoga <span>&amp; Mobilité</span></h3><p>Souplesse, respiration et récupération — l'équilibre parfait pour progresser sans se blesser.</p><div class="meta"><span>Mer · Sam</span><span>Tous niveaux</span></div></div></article>
-      <article class="prog"><div class="ph"><img src="demo-gym/img/coaching.jpg" alt="Coaching privé"></div><div class="in"><h3>Coaching <span>Privé</span></h3><p>Programme 100 % personnalisé, suivi nutrition et bilan corporel chaque mois.</p><div class="meta"><span>1-to-1</span><span>Suivi nutrition</span></div></div></article>
+      <article class="prog"><img src="demo-gym/img/muscu.jpg" alt="كمال الأجسام"><div><h3>كمال الأجسام</h3><p>قاعة مجهزة بأحدث الأجهزة والأوزان الحرة لبناء القوة والكتلة العضلية.</p><span class="tag">قوة · حجم</span></div></article>
+      <article class="prog"><img src="demo-gym/img/crossfit.jpg" alt="كروس فيت"><div><h3>كروس فيت</h3><p>تمارين وظيفية عالية الكثافة في مجموعات صغيرة وبإشراف مدرب معتمد.</p><span class="tag">كثافة عالية</span></div></article>
+      <article class="prog"><img src="demo-gym/img/cardio.jpg" alt="كارديو"><div><h3>كارديو وحرق الدهون</h3><p>أجهزة مشي ودراجات وشاشات متابعة النبض لبرنامج حرق فعّال وآمن.</p><span class="tag">خسارة الوزن</span></div></article>
+      <article class="prog"><img src="demo-gym/img/hiit.jpg" alt="هييت"><div><h3>HIIT</h3><p>حصص قصيرة ومكثفة من 30 دقيقة لنتائج سريعة في وقت محدود.</p><span class="tag">30 دقيقة</span></div></article>
+      <article class="prog"><img src="demo-gym/img/yoga.jpg" alt="يوغا"><div><h3>يوغا ومرونة</h3><p>حصص صباحية ومسائية للمرونة، التوازن والاسترخاء الذهني.</p><span class="tag">توازن · هدوء</span></div></article>
+      <article class="prog"><img src="demo-gym/img/coaching.jpg" alt="تدريب شخصي"><div><h3>تدريب شخصي</h3><p>مدرب خاص يرافقك بخطة تدريب وتغذية مصممة على مقاس هدفك.</p><span class="tag">1 ضد 1</span></div></article>
     </div>
   </div>
 </section>
 
-<section class="sec" id="planning" style="background:#0E0E10;padding-top:0">
+<section class="sec sched" id="planning">
   <div class="wrap">
     <div class="sec-head">
-      <div class="kicker">Chaque semaine</div>
-      <h2>Planning <span>hebdomadaire</span></h2>
-      <p>Les cours collectifs sont inclus dans tous les abonnements. Réserve ta place à la réception ou sur WhatsApp.</p>
+      <span class="kick">جدول الحصص</span>
+      <h2>حصص جماعية طوال الأسبوع</h2>
+      <p>القاعة مفتوحة كل أيام الأسبوع من 6:00 إلى 23:00 — التدريب الحر متاح في أي وقت خارج الحصص الجماعية.</p>
     </div>
-    <div class="plan-box">
+    <div class="tbl-wrap">
       <table>
-        <thead><tr><th>Cours</th><th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Ven</th><th>Sam</th></tr></thead>
+        <thead><tr><th>الحصة</th><th>الأيام</th><th>التوقيت</th><th>المدرب</th><th>المستوى</th></tr></thead>
         <tbody>
-          <tr><td>CrossFit WOD</td><td>7h <span class="dot">·</span> 19h</td><td>7h <span class="dot">·</span> 19h</td><td>7h <span class="dot">·</span> 19h</td><td>7h <span class="dot">·</span> 19h</td><td>7h <span class="dot">·</span> 18h</td><td>10h</td></tr>
-          <tr><td>HIIT Express</td><td>8h <span class="dot">·</span> 18h</td><td>—</td><td>8h <span class="dot">·</span> 18h</td><td>—</td><td>8h <span class="dot">·</span> 18h</td><td>11h</td></tr>
-          <tr><td>Cardio Cycling</td><td>19h30</td><td>8h <span class="dot">·</span> 19h30</td><td>19h30</td><td>8h <span class="dot">·</span> 19h30</td><td>19h</td><td>9h</td></tr>
-          <tr><td>Yoga &amp; Mobilité</td><td>—</td><td>20h</td><td>7h30</td><td>20h</td><td>—</td><td>9h30</td></tr>
-          <tr><td>Muscu encadrée</td><td>17h–20h</td><td>17h–20h</td><td>17h–20h</td><td>17h–20h</td><td>17h–20h</td><td>10h–13h</td></tr>
+          <tr><td><b>كروس فيت</b></td><td>الاثنين · الأربعاء · الجمعة</td><td>7:00 و 18:30</td><td>عمر الرامي</td><td><span class="pill">متقدم</span></td></tr>
+          <tr><td><b>HIIT حرق الدهون</b></td><td>الثلاثاء · الخميس · السبت</td><td>8:00 و 19:00</td><td>كريم حداد</td><td><span class="pill">كل المستويات</span></td></tr>
+          <tr><td><b>يوغا الصباح</b></td><td>الاثنين إلى الجمعة</td><td>7:30</td><td>سارة بنعمر</td><td><span class="pill">مبتدئ</span></td></tr>
+          <tr><td><b>بيلاتس ومرونة</b></td><td>الأربعاء · السبت</td><td>10:00 و 17:00</td><td>سارة بنعمر</td><td><span class="pill">كل المستويات</span></td></tr>
+          <tr><td><b>ملاكمة ولياقة</b></td><td>الثلاثاء · الخميس</td><td>19:30</td><td>عمر الرامي</td><td><span class="pill">متوسط</span></td></tr>
+          <tr><td><b>سبينينغ (دراجات)</b></td><td>الاثنين · الأربعاء · الجمعة</td><td>12:30 و 20:00</td><td>كريم حداد</td><td><span class="pill">كل المستويات</span></td></tr>
+          <tr><td><b>حصص خاصة بالنساء</b></td><td>كل أيام الأسبوع</td><td>9:00 – 12:00</td><td>سارة بنعمر</td><td><span class="pill">قاعة مخصصة</span></td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<section class="sec" id="coachs" style="padding-top:0">
+<section class="sec" id="tarifs">
   <div class="wrap">
     <div class="sec-head">
-      <div class="kicker">L'équipe</div>
-      <h2>Nos <span>coachs</span></h2>
-      <p>Des coachs certifiés et passionnés, qui te suivent séance après séance.</p>
+      <span class="kick">الأسعار</span>
+      <h2>اشتراكات بلا مفاجآت</h2>
+      <p>أسعار واضحة تشمل الضريبة، بدون رسوم انخراط خفية. الدفع نقداً أو بالتحويل البنكي.</p>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <h3>الأساسية</h3>
+        <div class="price">299 <small>درهم / شهر</small></div>
+        <p class="total">اشتراك شهري — تجديد حر</p>
+        <ul>
+          <li>دخول قاعة كمال الأجسام والكارديو</li>
+          <li>خزانة وغرف تبديل مع دش</li>
+          <li>تقييم بدني عند الانخراط</li>
+          <li class="off">الحصص الجماعية</li>
+          <li class="off">متابعة التغذية</li>
+          <li class="off">الساونا</li>
+        </ul>
+        <a class="btn ghost" href="https://wa.me/212693981822" data-wa="مرحباً نادي القمة، أريد الاشتراك في الخطة الأساسية (299 درهم/شهر).">اختر الأساسية</a>
+      </article>
+      <article class="plan hot">
+        <span class="badge">الأكثر طلباً ⭐</span>
+        <h3>الاحترافية</h3>
+        <div class="price">266 <small>درهم / شهر</small></div>
+        <p class="total">799 درهم فقط كل 3 أشهر</p>
+        <ul>
+          <li>كل مزايا الأساسية</li>
+          <li>جميع الحصص الجماعية بدون حدود</li>
+          <li>خطة تغذية شخصية</li>
+          <li>قياس تركيبة الجسم شهرياً</li>
+          <li>الساونا وحمام البخار</li>
+          <li class="off">حصص تدريب شخصي</li>
+        </ul>
+        <a class="btn" href="https://wa.me/212693981822" data-wa="مرحباً نادي القمة، أريد الاشتراك في الخطة الاحترافية (799 درهم/3 أشهر).">اختر الاحترافية</a>
+      </article>
+      <article class="plan">
+        <h3>الشاملة السنوية</h3>
+        <div class="price">207 <small>درهم / شهر</small></div>
+        <p class="total">2,490 درهم للسنة كاملة</p>
+        <ul>
+          <li>كل مزايا الاحترافية</li>
+          <li>4 حصص تدريب شخصي شهرياً</li>
+          <li>دعوة ضيف مجانية كل شهر</li>
+          <li>تجميد الاشتراك حتى 30 يوماً</li>
+          <li>أولوية حجز الحصص</li>
+          <li>خصم 20% على المكملات</li>
+        </ul>
+        <a class="btn ghost" href="https://wa.me/212693981822" data-wa="مرحباً نادي القمة، أريد الاشتراك في الخطة الشاملة السنوية (2,490 درهم/سنة).">اختر الشاملة</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0" id="coachs">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kick">فريقنا</span>
+      <h2>مدربون يرافقونك حتى الهدف</h2>
+      <p>مدربون معتمدون دولياً، حاضرون في القاعة طوال اليوم لتصحيح حركاتك ودفعك للأمام.</p>
     </div>
     <div class="grid4">
-      <article class="coach"><div class="ph"><img src="demo-gym/img/coach1.jpg" alt="Coach Karim B."></div><div class="in"><h3>Karim B.</h3><div class="role">Musculation · Force</div><p>10 ans d'expérience, spécialiste hypertrophie et préparation physique.</p></div></article>
-      <article class="coach"><div class="ph"><img src="demo-gym/img/coach2.jpg" alt="Coach Yassine E."></div><div class="in"><h3>Yassine E.</h3><div class="role">CrossFit · WOD</div><p>Coach certifié CrossFit L2, il anime les WOD du matin et du soir.</p></div></article>
-      <article class="coach"><div class="ph"><img src="demo-gym/img/coach3.jpg" alt="Coach Salma R."></div><div class="in"><h3>Salma R.</h3><div class="role">Fitness femmes · HIIT</div><p>Spécialiste des programmes féminins : HIIT, renforcement et mobilité.</p></div></article>
-      <article class="coach"><div class="ph"><img src="demo-gym/img/coach4.jpg" alt="Coach Omar T."></div><div class="in"><h3>Omar T.</h3><div class="role">Coaching privé</div><p>Suivi individuel complet : training, nutrition et bilan corporel mensuel.</p></div></article>
+      <article class="coach"><img src="demo-gym/img/coach1.jpg" alt="المدرب يوسف العلمي"><div><h3>يوسف العلمي</h3><span>كمال الأجسام · 10 سنوات خبرة</span></div></article>
+      <article class="coach"><img src="demo-gym/img/coach2.jpg" alt="المدربة سارة بنعمر"><div><h3>سارة بنعمر</h3><span>يوغا وبيلاتس · معتمدة دولياً</span></div></article>
+      <article class="coach"><img src="demo-gym/img/coach3.jpg" alt="المدرب عمر الرامي"><div><h3>عمر الرامي</h3><span>كروس فيت وملاكمة</span></div></article>
+      <article class="coach"><img src="demo-gym/img/coach4.jpg" alt="المدرب كريم حداد"><div><h3>كريم حداد</h3><span>تدريب شخصي وتغذية رياضية</span></div></article>
     </div>
   </div>
 </section>
 
-<section class="sec" id="tarifs" style="background:#0E0E10">
+<section class="sec" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="kicker">Abonnements</div>
-      <h2>Nos <span>tarifs</span></h2>
-      <p>Sans engagement caché : accès complet à la salle et aux cours collectifs dans toutes les formules.</p>
-    </div>
-    <div class="grid3">
-      <div class="price">
-        <h3>Mensuel</h3>
-        <div class="amount">299 <small>DH</small></div>
-        <div class="per">par mois, sans engagement</div>
-        <ul>
-          <li>Accès salle illimité</li>
-          <li>Cours collectifs inclus</li>
-          <li>Vestiaires &amp; douches</li>
-          <li>1 séance d'évaluation offerte</li>
-        </ul>
-        <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20FORGE%20Gym%2C%20je%20veux%20m%27abonner%20%C3%A0%20la%20formule%20Mensuelle%20(299%20DH).">Choisir sur WhatsApp</a>
-      </div>
-      <div class="price pop">
-        <span class="badge-pop">Populaire</span>
-        <h3>Trimestre</h3>
-        <div class="amount">799 <small>DH</small></div>
-        <div class="per">3 mois — soit 266 DH / mois</div>
-        <ul>
-          <li>Tout le Mensuel inclus</li>
-          <li>Programme personnalisé</li>
-          <li>Bilan corporel mensuel</li>
-          <li>1 mois de gel offert</li>
-        </ul>
-        <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20FORGE%20Gym%2C%20je%20veux%20m%27abonner%20%C3%A0%20la%20formule%20Trimestre%20(799%20DH).">Choisir sur WhatsApp</a>
-      </div>
-      <div class="price">
-        <h3>Annuel</h3>
-        <div class="amount">2 490 <small>DH</small></div>
-        <div class="per">12 mois — soit 207 DH / mois</div>
-        <ul>
-          <li>Tout le Trimestre inclus</li>
-          <li>4 séances coaching privé / an</li>
-          <li>Suivi nutrition complet</li>
-          <li>Invité gratuit chaque vendredi</li>
-        </ul>
-        <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20FORGE%20Gym%2C%20je%20veux%20m%27abonner%20%C3%A0%20la%20formule%20Annuelle%20(2%20490%20DH).">Choisir sur WhatsApp</a>
-      </div>
-    </div>
-    <p class="note">Tarifs indicatifs — démonstration. Paiement sur place, espèces ou carte.</p>
-  </div>
-</section>
-
-<section class="sec" id="imc" style="padding-top:0">
-  <div class="wrap">
-    <div class="imc">
+    <div class="bmi">
       <div>
-        <div class="kicker">Outil gratuit</div>
-        <h3>Calcule ton <span>IMC</span></h3>
-        <p>L'indice de masse corporelle te donne un premier repère. Nos coachs t'offrent ensuite un bilan corporel complet et gratuit pour définir ton programme.</p>
-        <label for="poids">Poids (kg)</label>
-        <input type="number" id="poids" min="30" max="250" placeholder="Ex : 78">
-        <label for="taille">Taille (cm)</label>
-        <input type="number" id="taille" min="120" max="230" placeholder="Ex : 178">
-        <button class="btn" style="margin-top:20px" onclick="calcIMC()">Calculer mon IMC</button>
+        <span class="kick">ابدأ من هنا</span>
+        <h2>احسب مؤشر كتلة جسمك</h2>
+        <p>أدخل وزنك وطولك لتعرف مؤشر كتلة الجسم (IMC) الخاص بك، ثم احجز حصتك التجريبية المجانية — سنبني لك برنامجاً يناسب نتيجتك وهدفك.</p>
       </div>
-      <div class="res">
-        <span style="margin:0 0 8px">Ton indice de masse corporelle</span>
-        <b id="imcVal">—</b>
-        <span class="cat" id="imcCat">Entre ton poids et ta taille</span>
-        <span id="imcMsg">Le résultat s'affichera ici.</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="galerie" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="kicker">La salle</div>
-      <h2>En <span>images</span></h2>
-    </div>
-    <div class="gal">
-      <div class="ph"><img src="demo-gym/img/g1.jpg" alt="Entraînement à la salle FORGE"></div>
-      <div class="ph"><img src="demo-gym/img/g2.jpg" alt="Zone haltères FORGE Tanger"></div>
-      <div class="ph"><img src="demo-gym/img/g3.jpg" alt="Cours collectif FORGE"></div>
-      <div class="ph"><img src="demo-gym/img/g4.jpg" alt="Espace cardio FORGE"></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec join" id="inscription">
-  <div class="wrap">
-    <div class="join-box">
-      <h2>Inscription &amp; <span>essai gratuit</span></h2>
-      <p>Remplis le formulaire : ta demande part directement sur notre WhatsApp, on te confirme ta séance d'essai dans l'heure.</p>
-      <form id="joinForm">
-        <label for="nom">Nom complet</label>
-        <input type="text" id="nom" required placeholder="Ton nom">
-        <label for="tel">Téléphone (WhatsApp)</label>
-        <input type="tel" id="tel" required placeholder="06 XX XX XX XX">
-        <label for="formule">Formule souhaitée</label>
-        <select id="formule">
-          <option>Séance d'essai gratuite</option>
-          <option>Mensuel — 299 DH</option>
-          <option>Trimestre — 799 DH</option>
-          <option>Annuel — 2 490 DH</option>
-          <option>Coaching privé</option>
-        </select>
-        <button type="submit" class="btn wa">Envoyer sur WhatsApp</button>
+      <form class="bmi-form" id="bmiForm">
+        <label for="w">الوزن (كغ)</label>
+        <input type="number" id="w" min="30" max="250" placeholder="مثال: 78" required>
+        <label for="h">الطول (سم)</label>
+        <input type="number" id="h" min="120" max="230" placeholder="مثال: 175" required>
+        <button class="btn" type="submit">احسب النتيجة</button>
+        <div id="bmiRes"></div>
       </form>
     </div>
   </div>
 </section>
 
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kick">من داخل النادي</span>
+      <h2>أجواء تحفّزك كل يوم</h2>
+    </div>
+    <div class="gal">
+      <img src="demo-gym/img/g1.jpg" alt="قاعة التدريب">
+      <img src="demo-gym/img/g2.jpg" alt="منطقة الأوزان الحرة">
+      <img src="demo-gym/img/g3.jpg" alt="قاعة الحصص الجماعية">
+      <img src="demo-gym/img/g4.jpg" alt="منطقة الكارديو">
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kick">أسئلة شائعة</span>
+      <h2>كل ما تريد معرفته</h2>
+    </div>
+    <details><summary>هل الحصة التجريبية مجانية فعلاً؟</summary><p>نعم، أول حصة مجانية بالكامل وبدون أي التزام: تدريب حر أو حصة جماعية من اختيارك، مع جولة تعريفية في القاعة وقياس أولي لتركيبة الجسم. احجزها عبر واتساب في أقل من دقيقة.</p></details>
+    <details><summary>هل توجد أوقات وقاعة خاصة بالنساء؟</summary><p>نعم، لدينا قاعة مخصصة للنساء مع مدربة، وحصص صباحية يومية من 9:00 إلى 12:00، إضافة إلى إمكانية التدريب في القاعة المشتركة في أي وقت.</p></details>
+    <details><summary>كيف يتم الدفع؟ وهل يمكن التقسيط؟</summary><p>نقبل الدفع نقداً أو بالتحويل البنكي. الاشتراك السنوي يمكن تقسيطه على دفعتين بدون أي فوائد أو رسوم إضافية.</p></details>
+    <details><summary>هل يمكنني تجميد اشتراكي عند السفر؟</summary><p>نعم، الخطة الشاملة السنوية تتيح تجميد الاشتراك حتى 30 يوماً في السنة، والاحترافية حتى 15 يوماً — يكفي إخبارنا قبل موعد السفر.</p></details>
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2>أول خطوة؟ حصة مجانية.</h2>
+  <p>تعال جرّب القاعة والمدربين والأجواء بنفسك — إذا لم يعجبك المكان، لن تدفع درهماً واحداً.</p>
+  <a class="btn" href="https://wa.me/212693981822" data-wa="مرحباً نادي القمة، أريد حجز حصتي التجريبية المجانية.">احجز عبر واتساب ←</a>
+</section>
+
 <footer>
   <div class="wrap">
-    <div class="fcols">
-      <div>
-        <a class="logo" href="#">FORGE<i>.</i></a>
-        <p style="margin-top:14px">Salle de sport premium à Tanger : musculation, crossfit, cardio et coaching privé. Ouvert 7j/7 de 6h à 23h.</p>
-      </div>
-      <div>
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="#programmes">Programmes</a></li>
-          <li><a href="#planning">Planning</a></li>
-          <li><a href="#coachs">Coachs</a></li>
-          <li><a href="#tarifs">Tarifs</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li>Tanger, Maroc</li>
-          <li>Tél / WhatsApp : +212 693-981 822</li>
-          <li>Ouvert 7j/7 : 6h00 — 23h00</li>
-        </ul>
-      </div>
+    <div class="foot">
+      <div><b>نادي القمة</b><br>شارع محمد الخامس، وسط المدينة، طنجة<br>مفتوح كل أيام الأسبوع: 6:00 – 23:00</div>
+      <div><b>تواصل معنا</b><br>واتساب: 0693 981 822<br>البريد: contact@sommet-gym.ma</div>
+      <div><b>روابط سريعة</b><br><a href="#tarifs">الأسعار</a> · <a href="#planning">جدول الحصص</a> · <a href="#coachs">المدربون</a></div>
     </div>
-    <div class="copy">© 2026 FORGE. Gym &amp; Fitness — Tanger. Site de démonstration : photos et tarifs indicatifs.</div>
+    <p class="demo-note">نموذج تجريبي من مكتبة طنجة ويب — TANJA WEB</p>
   </div>
 </footer>
 
-<div class="demo-badge">Site de démonstration — photos et tarifs indicatifs</div>
-<a class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp" href="https://wa.me/212693981822?text=Bonjour%20FORGE%20Gym%2C%20je%20veux%20des%20informations%20sur%20vos%20abonnements.">
-  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.1.3.7 1.2 1.6 1.9 1.1.9 2 1.2 2.3 1.3.3.1.5.1.6-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg>
-</a>
+<a class="wa-float" href="https://wa.me/212693981822" data-wa="مرحباً نادي القمة، عندي سؤال عن القاعة." aria-label="واتساب">💬</a>
 
 <script>
-function calcIMC(){
-  var p = parseFloat(document.getElementById('poids').value);
-  var t = parseFloat(document.getElementById('taille').value);
-  var val = document.getElementById('imcVal'), cat = document.getElementById('imcCat'), msg = document.getElementById('imcMsg');
-  if(!p || !t || p < 30 || p > 250 || t < 120 || t > 230){
-    val.textContent = '—'; cat.textContent = 'Valeurs à vérifier'; msg.textContent = 'Entre un poids (30–250 kg) et une taille (120–230 cm) valides.';
-    return;
-  }
-  var imc = p / Math.pow(t/100, 2);
-  val.textContent = imc.toFixed(1).replace('.', ',');
-  var c, m;
-  if(imc < 18.5){ c = 'Insuffisance pondérale'; m = 'Objectif : prise de masse propre. Nos coachs te bâtissent un programme musculation + nutrition adapté.'; }
-  else if(imc < 25){ c = 'Poids normal'; m = 'Bonne base ! Objectif : performance et tonicité. CrossFit et musculation encadrée sont faits pour toi.'; }
-  else if(imc < 30){ c = 'Surpoids'; m = 'Objectif : perte de poids durable. HIIT, cardio et suivi nutrition — la plupart de nos membres voient un changement en 8 semaines.'; }
-  else { c = 'Obésité'; m = 'On commence en douceur, sans jugement : programme progressif et suivi rapproché avec un coach dédié.'; }
-  cat.textContent = c; msg.textContent = m;
-}
-document.getElementById('joinForm').addEventListener('submit', function(e){
+document.querySelectorAll('[data-wa]').forEach(function(a){
+  a.href = 'https://wa.me/212693981822?text=' + encodeURIComponent(a.getAttribute('data-wa'));
+});
+document.getElementById('bmiForm').addEventListener('submit', function(e){
   e.preventDefault();
-  var nom = document.getElementById('nom').value.trim();
-  var tel = document.getElementById('tel').value.trim();
-  var f = document.getElementById('formule').value;
-  var text = 'Bonjour FORGE Gym, je suis ' + nom + '. Je souhaite : ' + f + '. Mon téléphone : ' + tel + '.';
-  window.open('https://wa.me/212693981822?text=' + encodeURIComponent(text), '_blank');
+  var w = parseFloat(document.getElementById('w').value), h = parseFloat(document.getElementById('h').value)/100;
+  var res = document.getElementById('bmiRes');
+  if(!w || !h){ res.textContent = 'المرجو إدخال الوزن والطول.'; return; }
+  var bmi = w/(h*h), cat;
+  if(bmi < 18.5) cat = 'نقص في الوزن — برنامج زيادة الكتلة يناسبك';
+  else if(bmi < 25) cat = 'وزن صحي — حافظ عليه وطوّر لياقتك';
+  else if(bmi < 30) cat = 'وزن زائد — برنامج الحرق والكارديو مثالي لك';
+  else cat = 'سمنة — سنرافقك بخطة تدريجية وآمنة';
+  res.textContent = 'مؤشر كتلة جسمك: ' + bmi.toFixed(1) + ' — ' + cat;
 });
 </script>
 </body>
