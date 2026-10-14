@@ -84,6 +84,18 @@ input,select{width:100%;padding:12px 14px;border-radius:9px;border:1px solid var
 .form .btn{width:100%;text-align:center;border:none;cursor:pointer;font-size:16.5px}
 footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--mut);font-size:14px}
 .wa-float{position:fixed;right:20px;bottom:20px;z-index:70;width:58px;height:58px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;font-size:27px;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+
+.quiz{background:var(--panel);border:1px solid var(--gold);border-radius:16px;padding:38px;max-width:760px;margin:0 auto;text-align:center}
+.quiz .step-tag{color:var(--gold2);font-size:13px;letter-spacing:2.5px;text-transform:uppercase}
+.quiz h3{font-size:28px;margin:10px 0 22px}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.qopts{grid-template-columns:1fr}}
+.qopt{background:#0c1424;border:1px solid var(--line);color:var(--txt);border-radius:11px;padding:16px 14px;font-size:16px;font-family:inherit;cursor:pointer;transition:.2s}
+.qopt:hover{border-color:var(--gold);background:#101c33}
+.quiz .result-badge{display:inline-block;background:var(--gold);color:#171204;font-weight:600;padding:6px 18px;border-radius:20px;font-size:14px;letter-spacing:1px}
+.quiz .result-title{font-family:'Cormorant Garamond',serif;font-size:34px;margin:14px 0 8px;color:var(--gold2)}
+.quiz .result-why{color:var(--mut);max-width:520px;margin:0 auto 24px}
+.quiz .restart{background:none;border:none;color:var(--mut);text-decoration:underline;cursor:pointer;font-size:14px;margin-top:14px;font-family:inherit}
 .reveal{opacity:0;transform:translateY(24px);transition:.7s}
 .reveal.on{opacity:1;transform:none}
 </style>
@@ -99,6 +111,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:v
     <div class="menu">
       <a href="#groupe">Le Groupe</a>
       <a href="#formations">Formations</a>
+      <a href="#orientation">Orientation</a>
       <a href="#sites">Nos Sites</a>
       <a href="#inscription">Inscription</a>
       <a href="https://wa.me/212630695159">Contact</a>
@@ -176,6 +189,46 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:v
   </div>
 </section>
 
+
+<section class="sec" id="orientation">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Orientation en ligne</div>
+      <h2>Vous ne savez pas quel diplôme choisir ?</h2>
+      <p>Répondez à deux questions — en 30 secondes, découvrez le parcours fait pour vous et recevez l'orientation d'un conseiller sur WhatsApp. Une réponse claire, tout de suite.</p>
+    </div>
+    <div class="quiz reveal" id="quiz">
+      <div id="q-step1">
+        <div class="step-tag">Question 1 sur 2</div>
+        <h3>Quel est votre niveau actuel ?</h3>
+        <div class="qopts">
+          <button class="qopt" onclick="q1('Bac (ou en cours)')">🎓 J'ai le Bac</button>
+          <button class="qopt" onclick="q1('Bac+2 / diplôme de Technicien')">📘 J'ai un Bac+2</button>
+          <button class="qopt" onclick="q1('Licence (Bac+3)')">📗 J'ai une Licence (Bac+3)</button>
+          <button class="qopt" onclick="q1('Langues')">🗣️ Je veux apprendre une langue</button>
+        </div>
+      </div>
+      <div id="q-step2" style="display:none">
+        <div class="step-tag">Question 2 sur 2</div>
+        <h3>Quel est votre objectif ?</h3>
+        <div class="qopts">
+          <button class="qopt" onclick="q2('Travailler le plus vite possible')">💼 Travailler le plus vite possible</button>
+          <button class="qopt" onclick="q2('Monter en niveau et en responsabilité')">📈 Monter en niveau et en responsabilité</button>
+          <button class="qopt" onclick="q2('Viser l\'international')">🌍 Viser l'international</button>
+          <button class="qopt" onclick="q2('Je ne sais pas encore')">🤔 Je ne sais pas encore</button>
+        </div>
+      </div>
+      <div id="q-result" style="display:none">
+        <span class="result-badge">Votre parcours recommandé</span>
+        <div class="result-title" id="r-title"></div>
+        <p class="result-why" id="r-why"></p>
+        <a class="btn btn-wa" id="r-cta" href="#" target="_blank" rel="noopener">📩 Recevoir les détails sur WhatsApp</a>
+        <br><button class="restart" onclick="qRestart()">Recommencer le test</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="sites">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -245,6 +298,38 @@ footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:v
 <a class="wa-float" href="https://wa.me/212630695159" aria-label="WhatsApp">💬</a>
 
 <script>
+
+var Q = {niveau:'', objectif:''};
+var RECO = {
+  'Bac (ou en cours)': ['Diplôme de Technicien (Bac+2)', "C'est le point de départ idéal après le Bac : une formation professionnelle reconnue, pratique et courte, qui vous rend employable rapidement — avec la possibilité de poursuivre ensuite vers la Licence européenne."],
+  'Bac+2 / diplôme de Technicien': ['Licence Professionnelle Européenne (Bac+3)', "Avec votre Bac+2, la Licence professionnelle européenne est la suite logique : elle valorise votre diplôme, ouvre les postes à responsabilité et reste reconnue à l'international."],
+  'Licence (Bac+3)': ['Master Professionnel Européen (Bac+5)', "Votre Licence vous donne accès au plus haut niveau du groupe : le Master professionnel européen, pensé pour les fonctions de direction et les carrières internationales."],
+  'Langues': ['Centre de Langues & Certification TESOL', "Apprenez une langue avec un objectif clair — ou certifiez-vous TESOL en partenariat avec l'American TESOL Academy pour enseigner l'anglais, ici comme à l'étranger."]
+};
+function q1(n){
+  Q.niveau = n;
+  if(n === 'Langues'){ showResult(); return; }
+  document.getElementById('q-step1').style.display = 'none';
+  document.getElementById('q-step2').style.display = 'block';
+}
+function q2(o){ Q.objectif = o; showResult(); }
+function showResult(){
+  var r = RECO[Q.niveau];
+  document.getElementById('q-step1').style.display = 'none';
+  document.getElementById('q-step2').style.display = 'none';
+  document.getElementById('r-title').textContent = r[0];
+  document.getElementById('r-why').textContent = r[1];
+  var txt = "Bonjour Groupe IKI, j'ai utilisé votre outil d'orientation en ligne. Mon niveau : " + Q.niveau + (Q.objectif ? ". Mon objectif : " + Q.objectif : "") + ". Parcours recommandé : " + r[0] + ". Je souhaite recevoir les détails (conditions, frais, dates d'inscription).";
+  document.getElementById('r-cta').href = 'https://wa.me/212630695159?text=' + encodeURIComponent(txt);
+  document.getElementById('q-result').style.display = 'block';
+}
+function qRestart(){
+  Q = {niveau:'', objectif:''};
+  document.getElementById('q-result').style.display = 'none';
+  document.getElementById('q-step2').style.display = 'none';
+  document.getElementById('q-step1').style.display = 'block';
+}
+
 function sendWa(e){
   e.preventDefault();
   var n=document.getElementById('f-name').value.trim(),
