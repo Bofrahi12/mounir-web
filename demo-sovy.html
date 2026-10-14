@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SOVY — Cuisine gastronomique · Tanger</title>
+<meta name="description" content="SOVY, restaurant gastronomique à Tanger. Produits du marché, carte de saison, terrasse et salons privés. Réservation par WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2314100C'/><text x='50' y='68' font-size='58' font-family='Georgia' fill='%23C9A35C' text-anchor='middle'>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#14100C;--bg2:#1C1712;--panel:#211A14;--gold:#C9A35C;--gold2:#E3C98C;--txt:#F3EEE7;--mut:#B9AE9D;--line:#33291D}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.65}
+h1,h2,h3,.serif{font-family:'Marcellus',Georgia,serif;font-weight:400}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.kick{color:var(--gold);letter-spacing:4px;font-size:12px;font-weight:600;text-transform:uppercase}
+.btn{display:inline-block;background:var(--gold);color:#171208;font-weight:600;letter-spacing:2px;font-size:13px;text-transform:uppercase;padding:15px 34px;border:1px solid var(--gold);transition:.25s;cursor:pointer;font-family:'Jost',sans-serif}
+.btn:hover{background:transparent;color:var(--gold)}
+.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+/* Header */
+header{position:fixed;inset:0 0 auto 0;z-index:80;background:rgba(20,16,12,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hbar{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{font-family:'Marcellus',serif;font-size:30px;letter-spacing:6px;color:#fff}
+.logo b{color:var(--gold);font-weight:400}
+nav.main{display:flex;gap:30px;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+nav.main a{color:#E9E2D4}
+nav.main a:hover{color:var(--gold)}
+.hbar .btn{padding:11px 24px}
+.burger{display:none;background:none;border:0;color:#fff;font-size:26px;cursor:pointer}
+/* Hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;background:url('demo-sovy/img/hero.jpg') center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,12,8,.93) 26%,rgba(16,12,8,.45) 70%,rgba(16,12,8,.25))}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-top:100px}
+.hero h1{font-size:clamp(38px,5.6vw,68px);line-height:1.13;color:#fff;max-width:640px;margin:16px 0 18px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:#E3DAC9;max-width:520px;font-size:17px;font-weight:300;margin-bottom:32px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+/* Citation */
+.quote{padding:70px 0;text-align:center}
+.quote .mark{font-family:'Marcellus',serif;font-size:54px;color:var(--gold);line-height:.6}
+.quote p{font-family:'Marcellus',serif;font-size:clamp(21px,2.8vw,29px);font-style:italic;color:#EFE8DA;max-width:760px;margin:14px auto 12px}
+.quote span{color:var(--gold);letter-spacing:3px;font-size:12px;text-transform:uppercase}
+.divider{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:22px}
+.divider::before,.divider::after{content:"";height:1px;width:90px;background:var(--line)}
+.divider i{color:var(--gold);font-style:normal}
+/* Sections */
+section{padding:88px 0}
+.sec-head{max-width:640px;margin-bottom:44px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(28px,3.8vw,42px);color:#fff;margin:10px 0 12px}
+.sec-head p{color:var(--mut);font-weight:300}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.ph{border-radius:6px;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;margin-top:26px}
+.feats div{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:#E9E2D4}
+.feats i{color:var(--gold);font-style:normal}
+/* Menu */
+.menu-sec{background:var(--bg2)}
+.menu-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:start}
+.dish{margin-bottom:26px}
+.dish .row{display:flex;align-items:baseline;gap:10px}
+.dish h3{font-size:19px;color:#fff;white-space:nowrap}
+.dish .dots{flex:1;border-bottom:1px dotted #6B5B40;transform:translateY(-4px)}
+.dish .price{color:var(--gold);font-family:'Marcellus',serif;font-size:19px;white-space:nowrap}
+.dish p{color:var(--mut);font-size:14px;font-weight:300;margin-top:3px}
+.menu-note{color:#8D8171;font-size:13px;font-style:italic;margin-top:6px}
+.menu-photos{display:grid;gap:18px}
+.menu-photos img{width:100%;object-fit:cover;aspect-ratio:16/10;border-radius:6px}
+/* Banner */
+.banner{position:relative;padding:120px 0;background:url('demo-sovy/img/banner.jpg') center/cover no-repeat fixed}
+.banner::before{content:"";position:absolute;inset:0;background:rgba(14,11,7,.62)}
+.banner .wrap{position:relative;z-index:2;text-align:center}
+.banner h2{font-size:clamp(30px,4.6vw,52px);color:#fff}
+/* Services */
+.stats{display:flex;gap:44px;flex-wrap:wrap;margin-top:30px}
+.stat b{font-family:'Marcellus',serif;font-size:44px;color:#fff;display:block;line-height:1}
+.stat b sup{color:var(--gold);font-size:26px}
+.stat span{color:var(--mut);font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+/* Categories */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cat{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;text-align:center;padding-bottom:26px;transition:.25s}
+.cat:hover{transform:translateY(-5px);border-color:var(--gold)}
+.cat img{width:100%;object-fit:cover;aspect-ratio:4/3}
+.cat h3{font-size:22px;color:#fff;margin:20px 0 4px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:600}
+.cat p{color:var(--mut);font-size:14px;font-weight:300}
+/* Reservation */
+.reserve{position:relative;background:url('demo-sovy/img/reserve.jpg') center/cover no-repeat}
+.reserve::before{content:"";position:absolute;inset:0;background:rgba(13,10,6,.78)}
+.reserve .wrap{position:relative;z-index:2}
+.res-box{max-width:640px;margin:0 auto;background:rgba(24,19,13,.94);border:1px solid var(--line);border-radius:10px;padding:40px 38px}
+.res-box h2{text-align:center;font-size:32px;color:#fff}
+.res-box>p{text-align:center;color:var(--mut);font-weight:300;margin:8px 0 26px;font-size:15px}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-grid .full{grid-column:1/-1}
+label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:7px}
+input,select{width:100%;background:#120E09;border:1px solid var(--line);border-radius:6px;color:#fff;padding:13px 14px;font-family:inherit;font-size:15px;color-scheme:dark}
+input:focus,select:focus{outline:none;border-color:var(--gold)}
+.res-box .btn{width:100%;text-align:center;margin-top:20px}
+/* Footer */
+footer{background:#0C0906;border-top:1px solid var(--line);padding:60px 0 0}
+.f-cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px;padding-bottom:44px}
+.f-cols h4{color:#fff;font-size:14px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;font-family:'Jost',sans-serif;font-weight:600}
+.f-cols p,.f-cols li{color:var(--mut);font-size:14.5px;font-weight:300}
+.f-cols ul{list-style:none}
+.f-cols li{padding:4px 0}
+.f-brand{font-family:'Marcellus',serif;font-size:38px;letter-spacing:8px;color:#fff;text-align:center;padding:26px 0 6px}
+.f-brand b{color:var(--gold);font-weight:400}
+.copyright{border-top:1px solid var(--line);padding:20px 0;text-align:center;color:#7C7160;font-size:13px}
+/* Floating */
+.demo-badge{position:fixed;left:14px;bottom:14px;z-index:999;background:rgba(12,9,6,.88);color:var(--gold2);border:1px solid rgba(201,163,92,.55);font-size:12px;font-weight:500;padding:7px 14px;border-radius:50px}
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:999;width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:27px;box-shadow:0 8px 22px rgba(0,0,0,.45)}
+@media(max-width:900px){.two,.menu-grid{grid-template-columns:1fr}.cats{grid-template-columns:1fr}.f-cols{grid-template-columns:1fr 1fr}.banner{background-attachment:scroll}}
+@media(max-width:680px){nav.main{display:none;position:absolute;top:74px;left:0;right:0;background:#171209;flex-direction:column;padding:18px 22px;gap:15px;border-bottom:1px solid var(--line)}nav.main.open{display:flex}.burger{display:block}.hbar .btn{display:none}.f-grid{grid-template-columns:1fr}.stats{gap:26px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hbar">
+    <a class="logo" href="#">SOV<b>Y</b></a>
+    <nav class="main" id="menu">
+      <a href="#accueil">Accueil</a>
+      <a href="#histoire">Notre histoire</a>
+      <a href="#menu">Menu</a>
+      <a href="#services">Services</a>
+      <a href="#reservation">Réservation</a>
+    </nav>
+    <a class="btn" href="https://wa.me/212693981822?text=Bonjour%20SOVY%2C%20je%20souhaite%20r%C3%A9server%20une%20table." target="_blank" rel="noopener">Réserver</a>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="hero" id="accueil">
+  <div class="wrap">
+    <div class="kick">Restaurant gastronomique — Tanger</div>
+    <h1>Une cuisine <em>d'exception</em> au cœur de Tanger</h1>
+    <p>À deux pas de la médina, SOVY compose chaque jour une carte courte et de saison, à partir des plus beaux produits du marché tangérois et de la pêche du matin.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#reservation">Réserver une table</a>
+      <a class="btn ghost" href="#menu">Découvrir le menu</a>
+    </div>
+  </div>
+</div>
+
+<!-- Citation -->
+<div class="quote">
+  <div class="wrap">
+    <div class="mark">“</div>
+    <p>Cuisiner, c'est raconter la mer, le marché et les saisons de Tanger dans une seule assiette.</p>
+    <span>Le Chef — Maison SOVY</span>
+    <div class="divider"><i>✦</i></div>
+  </div>
+</div>
+
+<!-- Histoire -->
+<section id="histoire" style="padding-top:20px">
+  <div class="wrap two">
+    <div class="ph"><img src="demo-sovy/img/story.jpg" alt="Plat signature du chef SOVY"></div>
+    <div>
+      <div class="kick">Notre histoire</div>
+      <h2 style="font-size:clamp(28px,3.6vw,40px);color:#fff;margin:10px 0 14px">Une table née d'une passion</h2>
+      <p style="color:var(--mut);font-weight:300">Ouverte par un chef formé dans de grandes maisons européennes, puis revenu à Tanger par amour de ses produits, la maison SOVY défend une gastronomie simple en apparence, précise dans le geste : peu d'ingrédients, des cuissons justes, et le goût avant tout.</p>
+      <p style="color:var(--mut);font-weight:300;margin-top:12px">La salle, feutrée et lumineuse, accueille aussi bien les dîners en tête-à-tête que les grandes tablées familiales et les événements privés.</p>
+      <div class="feats">
+        <div><i>✦</i> Cuisine gastronomique de saison</div>
+        <div><i>✦</i> Produits frais du marché, chaque matin</div>
+        <div><i>✦</i> Salons privés & événements</div>
+        <div><i>✦</i> Terrasse avec vue sur la vieille ville</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu de la semaine -->
+<section class="menu-sec" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kick">Cette semaine</div>
+      <h2>Menu de la semaine</h2>
+      <p>Une sélection courte, renouvelée selon les arrivages. La carte complète est disponible en salle.</p>
+    </div>
+    <div class="menu-grid">
+      <div>
+        <div class="dish">
+          <div class="row"><h3>Saumon mariné aux agrumes</h3><span class="dots"></span><span class="price">145 DH</span></div>
+          <p>Saumon gravlax maison, suprêmes d'orange de Berkane, fenouil croquant, huile d'aneth.</p>
+        </div>
+        <div class="dish">
+          <div class="row"><h3>Velouté de potimarron rôti</h3><span class="dots"></span><span class="price">85 DH</span></div>
+          <p>Potimarron rôti au four, éclats de châtaigne, crème fumée et graines torréfiées.</p>
+        </div>
+        <div class="dish">
+          <div class="row"><h3>Filet de bœuf, sauce aux morilles</h3><span class="dots"></span><span class="price">210 DH</span></div>
+          <p>Pièce du boucher grillée, morilles crémées, pommes grenaille confites, jus corsé.</p>
+        </div>
+        <div class="dish">
+          <div class="row"><h3>Loup de ligne rôti au fenouil</h3><span class="dots"></span><span class="price">185 DH</span></div>
+          <p>Pêche du jour du port de Tanger, beurre citronné, jeunes légumes du marché.</p>
+        </div>
+        <div class="dish">
+          <div class="row"><h3>Risotto aux gambas safrané</h3><span class="dots"></span><span class="price">165 DH</span></div>
+          <p>Riz carnaroli crémeux, gambas poêlées, bisque légère parfumée au safran de Taliouine.</p>
+        </div>
+        <p class="menu-note">Prix indicatifs, susceptibles de varier selon les arrivages du marché.</p>
+      </div>
+      <div class="menu-photos">
+        <img src="demo-sovy/img/dish1.jpg" alt="Homard servi en salle">
+        <img src="demo-sovy/img/dish2.jpg" alt="Risotto aux gambas">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bandeau photo -->
+<div class="banner">
+  <div class="wrap">
+    <div class="kick">Produits frais</div>
+    <h2>La qualité se goûte avant tout</h2>
+    <div class="divider"><i>✦</i></div>
+  </div>
+</div>
+
+<!-- Services -->
+<section id="services">
+  <div class="wrap two">
+    <div>
+      <div class="kick">Nos services</div>
+      <h2 style="font-size:clamp(28px,3.6vw,40px);color:#fff;margin:10px 0 14px">Bien plus qu'un dîner</h2>
+      <p style="color:var(--mut);font-weight:300">Déjeuners d'affaires, dîners de famille, mariages et réceptions privées : notre équipe compose des menus sur mesure et privatise tout ou partie de la salle selon vos envies.</p>
+      <div class="stats">
+        <div class="stat"><b>50<sup>+</sup></b><span>Plats à la carte</span></div>
+        <div class="stat"><b>100</b><span>Couverts en salle</span></div>
+        <div class="stat"><b>2</b><span>Salons privés</span></div>
+      </div>
+      <p style="margin-top:26px"><a class="btn" href="https://wa.me/212693981822?text=Bonjour%20SOVY%2C%20je%20souhaite%20un%20devis%20pour%20un%20%C3%A9v%C3%A9nement%20priv%C3%A9." target="_blank" rel="noopener">Privatiser la salle</a></p>
+    </div>
+    <div class="ph"><img src="demo-sovy/img/services.jpg" alt="Dressage gastronomique en cuisine"></div>
+  </div>
+</section>
+
+<!-- Menus par catégorie -->
+<section style="background:var(--bg2);padding-top:70px">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="kick">La carte</div>
+      <h2>Nos menus par catégorie</h2>
+      <p>Trois univers, une même exigence : le produit, la saison, le goût.</p>
+    </div>
+    <div class="cats">
+      <article class="cat">
+        <img src="demo-sovy/img/cat-entrees.jpg" alt="Entrées">
+        <h3>Entrées</h3>
+        <p>Salades composées · Veloutés · Fruits de mer</p>
+      </article>
+      <article class="cat">
+        <img src="demo-sovy/img/cat-plats.jpg" alt="Plats principaux">
+        <h3>Plats</h3>
+        <p>Viandes grillées · Poissons du jour · Risottos</p>
+      </article>
+      <article class="cat">
+        <img src="demo-sovy/img/cat-desserts.jpg" alt="Desserts">
+        <h3>Desserts</h3>
+        <p>Pâtisseries fines · Fruits de saison · Glaces maison</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Réservation -->
+<section class="reserve" id="reservation">
+  <div class="wrap">
+    <div class="res-box">
+      <div class="kick" style="text-align:center">Réservation</div>
+      <h2>Réservez votre table</h2>
+      <p>Complétez le formulaire : votre demande part directement sur notre WhatsApp, confirmation en quelques minutes.</p>
+      <form id="resForm">
+        <div class="f-grid">
+          <div class="full">
+            <label for="rName">Votre nom</label>
+            <input id="rName" type="text" placeholder="Nom complet" required>
+          </div>
+          <div>
+            <label for="rDate">Date</label>
+            <input id="rDate" type="date" required>
+          </div>
+          <div>
+            <label for="rTime">Heure</label>
+            <select id="rTime" required>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00" selected>20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+              <option value="21:30">21:30</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="rGuests">Nombre de personnes</label>
+            <select id="rGuests" required>
+              <option>2 personnes</option>
+              <option>3 personnes</option>
+              <option>4 personnes</option>
+              <option>5 personnes</option>
+              <option>6 personnes</option>
+              <option>Plus de 6 (groupe / événement)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn" type="submit">Confirmer via WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="f-cols">
+      <div>
+        <h4>SOVY — Tanger</h4>
+        <p>Restaurant gastronomique au cœur de Tanger. Cuisine de saison, produits du marché et pêche du jour, dans un cadre feutré et chaleureux.</p>
+      </div>
+      <div>
+        <h4>Adresse</h4>
+        <p>12, avenue Mohammed V<br>Centre-ville, Tanger<br>Maroc</p>
+      </div>
+      <div>
+        <h4>Horaires</h4>
+        <ul>
+          <li>Lundi – Samedi : 12h00 – 15h00</li>
+          <li>et 19h00 – 23h00</li>
+          <li>Dimanche : 19h00 – 23h00</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>WhatsApp : +212 693-981822</li>
+          <li>Réservations conseillées</li>
+          <li>Groupes & événements sur devis</li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-brand">SOV<b>Y</b></div>
+    <div class="copyright">© 2026 SOVY — Cuisine gastronomique, Tanger. Site de démonstration : photos et tarifs indicatifs.</div>
+  </div>
+</footer>
+
+<div class="demo-badge">Site de démonstration — photos et tarifs indicatifs</div>
+<a class="wa-float" href="https://wa.me/212693981822?text=Bonjour%20SOVY%2C%20je%20souhaite%20des%20informations." target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script>
+document.getElementById('resForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('rName').value.trim();
+  var date = document.getElementById('rDate').value;
+  var time = document.getElementById('rTime').value;
+  var guests = document.getElementById('rGuests').value;
+  var text = 'Bonjour SOVY, je souhaite réserver une table.\n'
+    + 'Nom : ' + name + '\n'
+    + 'Date : ' + date + '\n'
+    + 'Heure : ' + time + '\n'
+    + 'Personnes : ' + guests;
+  window.open('https://wa.me/212693981822?text=' + encodeURIComponent(text), '_blank');
+});
+</script>
+</body>
+</html>

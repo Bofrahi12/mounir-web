@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Tanger Sport — طنجة سبورت | متجر معدات وملابس رياضية في طنجة</title>
+<meta name="description" content="Tanger Sport — متجرك الرياضي في طنجة: أحذية جري، معدات لياقة، حقائب وإكسسوارات. الدفع عند الاستلام وتوصيل سريع.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d1220'/><text x='50' y='70' font-size='56' text-anchor='middle' fill='%23ff5a1f' font-weight='bold' font-family='Arial'>T</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f6fb; --dark:#0d1220; --dark2:#161e33;
+  --acc:#ff5a1f; --acc2:#ff8a3d; --lime:#b8e62e;
+  --ink:#131a2a; --ink2:#5a6478;
+  --card:#ffffff; --line:#e3e8f2;
+  --shadow:0 16px 40px rgba(13,18,32,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+h1,h2,h3{font-family:'Cairo',sans-serif}
+
+/* ===== demo banner ===== */
+.demo-banner{background:#05080f;color:#ffd9c7;text-align:center;font-size:.82rem;font-weight:500;padding:7px 14px}
+
+/* ===== header ===== */
+header.site{position:sticky;top:0;z-index:60;background:rgba(13,18,32,.96);backdrop-filter:blur(10px);color:#fff}
+.header-in{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px}
+.logo{display:flex;align-items:center;gap:11px}
+.logo-mark{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--acc),#d63c05);display:flex;align-items:center;justify-content:center;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.35rem;color:#fff;transform:skewX(-6deg)}
+.logo-name{font-family:'Cairo',sans-serif;font-weight:900;font-size:1.3rem;line-height:1.1;letter-spacing:.3px}
+.logo-name span{color:var(--acc)}
+.logo-sub{font-size:.72rem;color:#aebadd;font-weight:500}
+nav.main{margin-inline-start:auto;display:flex;gap:26px;font-weight:500;font-size:.97rem}
+nav.main a{padding:4px 0;opacity:.92}
+nav.main a:hover{color:var(--acc2);opacity:1}
+.cart-btn{margin-inline-start:8px;background:var(--acc);color:#fff;border:0;border-radius:999px;padding:10px 19px;font-family:inherit;font-weight:800;font-size:.95rem;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.25s}
+.cart-btn:hover{background:#e04a12}
+.cart-count{background:#fff;color:var(--acc);border-radius:999px;min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;padding:0 6px}
+.burger{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;color:#fff}
+
+/* ===== hero ===== */
+.hero{position:relative;min-height:86vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--dark)}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,11,20,.92) 0%,rgba(8,11,20,.45) 48%,rgba(8,11,20,.2) 78%)}
+.hero-in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:70px 20px 62px;width:100%}
+.hero .kicker{display:inline-block;background:var(--acc);color:#fff;border-radius:8px;padding:5px 15px;font-family:'Cairo',sans-serif;font-size:.85rem;font-weight:800;letter-spacing:.4px;margin-bottom:18px;transform:skewX(-6deg)}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.3;font-weight:900;text-shadow:0 4px 26px rgba(0,0,0,.45)}
+.hero h1 em{font-style:normal;color:var(--acc2)}
+.hero p{max-width:560px;font-size:1.07rem;font-weight:300;margin:14px 0 28px;color:#e6eaf5}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:12px;padding:13px 30px;font-weight:800;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:.25s;font-family:'Cairo',sans-serif}
+.btn-acc{background:linear-gradient(135deg,var(--acc2),var(--acc));color:#fff;box-shadow:0 12px 30px rgba(255,90,31,.4)}
+.btn-acc:hover{transform:translateY(-2px)}
+.btn-ghost{background:rgba(255,255,255,.09);color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-ghost:hover{background:rgba(255,255,255,.2)}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:34px;margin-top:36px;flex-wrap:wrap}
+.hstat b{font-family:'Cairo',sans-serif;font-size:1.5rem;font-weight:900;color:#fff;display:block;line-height:1.2}
+.hstat span{font-size:.85rem;color:#b9c2da}
+
+/* ===== sections ===== */
+section.blk{padding:80px 20px}
+.wrap{max-width:1180px;margin:0 auto}
+.sec-head{max-width:640px;margin-bottom:44px}
+.sec-head .tag{display:inline-block;color:var(--acc);font-family:'Cairo',sans-serif;font-weight:800;font-size:.85rem;letter-spacing:1.5px;margin-bottom:6px}
+.sec-head h2{font-size:clamp(1.8rem,4vw,2.55rem);font-weight:900;line-height:1.35}
+.sec-head p{color:var(--ink2);font-weight:300;margin-top:6px}
+
+/* categories */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cat-card{position:relative;border-radius:18px;overflow:hidden;min-height:300px;display:flex;align-items:flex-end;color:#fff;box-shadow:var(--shadow)}
+.cat-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.cat-card:hover img{transform:scale(1.06)}
+.cat-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,11,20,.85),rgba(8,11,20,.05) 60%)}
+.cat-txt{position:relative;z-index:2;padding:24px}
+.cat-txt h3{font-size:1.5rem;font-weight:800;margin-bottom:3px}
+.cat-txt p{font-size:.92rem;font-weight:300;color:#dde4f2}
+.cat-txt span{display:inline-block;margin-top:9px;background:var(--acc);color:#fff;border-radius:8px;padding:4px 14px;font-weight:700;font-size:.85rem}
+
+/* products */
+#produits{background:#fff}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.3s}
+#produits .prod{background:var(--bg)}
+.prod:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.prod .ph{aspect-ratio:4/3;overflow:hidden}
+.prod .ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.prod:hover .ph img{transform:scale(1.07)}
+.prod-body{padding:17px 17px 19px;display:flex;flex-direction:column;gap:4px;flex:1}
+.prod-cat{font-size:.73rem;font-weight:800;color:var(--acc);letter-spacing:1px;font-family:'Cairo',sans-serif}
+.prod-name{font-family:'Cairo',sans-serif;font-size:1.13rem;font-weight:800;line-height:1.45}
+.prod-desc{font-size:.87rem;color:var(--ink2);font-weight:300;flex:1}
+.prod-foot{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.price{font-weight:900;font-size:1.12rem;font-family:'Cairo',sans-serif}
+.price s{color:#9aa5ba;font-size:.85rem;font-weight:500;margin-inline-start:5px}
+.add-btn{background:var(--dark);color:#fff;border:0;border-radius:10px;padding:9px 16px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.87rem;cursor:pointer;transition:.25s}
+.add-btn:hover{background:var(--acc)}
+
+/* promo band */
+.promo{position:relative;border-radius:22px;overflow:hidden;color:#fff;min-height:320px;display:flex;align-items:center;box-shadow:var(--shadow)}
+.promo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.promo::after{content:"";position:absolute;inset:0;background:linear-gradient(to left,rgba(8,11,20,.9) 20%,rgba(8,11,20,.35) 65%,rgba(8,11,20,.1))}
+.promo-in{position:relative;z-index:2;padding:44px;max-width:520px}
+.promo-in .tag{display:inline-block;background:var(--lime);color:#131a06;font-family:'Cairo',sans-serif;font-weight:900;font-size:.85rem;border-radius:8px;padding:4px 14px;margin-bottom:14px}
+.promo-in h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:900;line-height:1.35;margin-bottom:8px}
+.promo-in p{font-weight:300;color:#e6eaf5;margin-bottom:22px}
+
+/* perks */
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.perk{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px 24px;text-align:center;transition:.3s}
+.perk:hover{border-color:var(--acc2);box-shadow:var(--shadow)}
+.perk .ico{font-size:2.1rem;margin-bottom:10px}
+.perk h3{font-size:1.2rem;font-weight:800;margin-bottom:5px}
+.perk p{font-size:.93rem;color:var(--ink2);font-weight:300}
+
+/* footer */
+footer.site{background:var(--dark);color:#aebadd;padding:54px 20px 0;font-size:.95rem}
+.foot-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-bottom:38px}
+footer.site h4{font-family:'Cairo',sans-serif;color:#fff;font-size:1.15rem;margin-bottom:12px}
+footer.site a:hover{color:var(--acc2)}
+.foot-bot{border-top:1px solid rgba(174,186,221,.18);text-align:center;padding:18px 10px;font-size:.85rem;color:#78839e}
+
+/* ===== cart drawer ===== */
+.overlay{position:fixed;inset:0;background:rgba(8,11,20,.6);opacity:0;pointer-events:none;transition:.3s;z-index:80}
+.overlay.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;bottom:0;inset-inline-start:0;width:min(430px,94vw);background:var(--bg);z-index:90;transform:translateX(-115%);transition:transform .35s cubic-bezier(.2,.8,.25,1);display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.drawer.open{transform:translateX(0)}
+.drawer-head{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:#fff}
+.drawer-head h3{font-size:1.35rem;font-weight:900}
+.close-x{background:none;border:0;font-size:1.4rem;cursor:pointer;color:var(--ink2)}
+.drawer-items{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px}
+.cart-empty{text-align:center;color:var(--ink2);font-weight:300;padding:36px 10px}
+.ci{display:flex;gap:13px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px}
+.ci img{width:64px;height:64px;object-fit:cover;border-radius:9px}
+.ci-info{flex:1}
+.ci-name{font-weight:700;font-size:.95rem;line-height:1.45}
+.ci-price{color:var(--acc);font-weight:900;font-size:.95rem}
+.ci-actions{display:flex;align-items:center;gap:9px;margin-top:5px}
+.qty-btn{width:27px;height:27px;border-radius:50%;border:1px solid var(--acc);background:#fff;color:var(--acc);font-weight:900;cursor:pointer;font-size:1rem;line-height:1}
+.ci-remove{background:none;border:0;color:#b03a2e;font-size:.82rem;cursor:pointer;font-family:inherit;margin-inline-start:auto}
+.drawer-foot{border-top:1px solid var(--line);padding:18px 22px 22px;background:#fff}
+.total-row{display:flex;justify-content:space-between;font-weight:900;font-size:1.15rem;margin-bottom:14px;font-family:'Cairo',sans-serif}
+.order-btn{width:100%;background:#22a35a;color:#fff;border:0;border-radius:12px;padding:15px;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.05rem;cursor:pointer;transition:.25s}
+.order-btn:hover:not(:disabled){background:#1b8a4b}
+.order-btn:disabled{opacity:.45;cursor:not-allowed}
+.drawer-note{text-align:center;font-size:.82rem;color:var(--ink2);margin-top:10px;font-weight:300}
+
+/* toast */
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,90px);background:var(--dark);color:#fff;padding:12px 24px;border-radius:999px;font-weight:700;font-size:.95rem;z-index:120;transition:.35s;box-shadow:var(--shadow);max-width:92vw;text-align:center}
+.toast.show{transform:translate(-50%,0)}
+
+@media(max-width:960px){
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-grid,.perks{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  nav.main{display:none;position:absolute;top:100%;right:0;left:0;background:var(--dark2);flex-direction:column;padding:16px 22px;gap:14px}
+  nav.main.open{display:flex}
+  .burger{display:block;margin-inline-start:auto}
+  .cart-btn{margin-inline-start:0}
+  .promo-in{padding:30px 24px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">📌 نموذج تجريبي — متجر خيالي للعرض، والأسعار تقريبية</div>
+
+<header class="site">
+  <div class="header-in">
+    <a class="logo" href="#">
+      <span class="logo-mark">T</span>
+      <span>
+        <span class="logo-name">TANGER <span>SPORT</span></span><br>
+        <span class="logo-sub">طنجة سبورت · معدات وملابس رياضية</span>
+      </span>
+    </a>
+    <button class="burger" id="burger" aria-label="القائمة">☰</button>
+    <nav class="main" id="mainNav">
+      <a href="#">الرئيسية</a>
+      <a href="#categories">الأقسام</a>
+      <a href="#produits">المنتجات</a>
+      <a href="#promo">العروض</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <button class="cart-btn" onclick="openCart()">🛒 السلة <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="bg" src="demo-sport/img/hero.jpg" alt="حذاء جري على مضمار — Tanger Sport">
+  <div class="hero-in">
+    <span class="kicker">🔥 عروض الموسم وصلت</span>
+    <h1>جهّز نفسك…<br><em>وانطلق نحو هدفك</em></h1>
+    <p>أحذية ومعدات رياضية أصلية بأفضل الأسعار في طنجة: جري، لياقة، كرة، وأنشطة خارجية — مع الدفع عند الاستلام.</p>
+    <div class="hero-cta">
+      <a class="btn btn-acc" href="#produits">تسوّق الآن</a>
+      <a class="btn btn-ghost" href="#promo">عروض الأسبوع</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><b>+500</b><span>منتج رياضي</span></div>
+      <div class="hstat"><b>24h</b><span>توصيل داخل طنجة</span></div>
+      <div class="hstat"><b>100%</b><span>منتجات أصلية</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="blk" id="categories">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">— أقسام المتجر</span>
+      <h2>تسوّق حسب رياضتك</h2>
+      <p>كل ما تحتاجه لممارستك الرياضية، من الحذاء المناسب إلى آخر إكسسوار.</p>
+    </div>
+    <div class="cat-grid">
+      <a class="cat-card" href="#produits">
+        <img src="demo-sport/img/cat-running.jpg" alt="قسم الجري" loading="lazy">
+        <div class="cat-txt">
+          <h3>الجري 🏃</h3>
+          <p>أحذية جري خفيفة ومريحة لكل المسافات.</p>
+          <span>اكتشف القسم</span>
+        </div>
+      </a>
+      <a class="cat-card" href="#produits">
+        <img src="demo-sport/img/cat-fitness.jpg" alt="قسم اللياقة البدنية" loading="lazy">
+        <div class="cat-txt">
+          <h3>اللياقة البدنية 🏋️</h3>
+          <p>أجهزة وأوزان لبناء صالتك الرياضية في البيت.</p>
+          <span>اكتشف القسم</span>
+        </div>
+      </a>
+      <a class="cat-card" href="#produits">
+        <img src="demo-sport/img/cat-outdoor.jpg" alt="قسم الأحذية الرياضية" loading="lazy">
+        <div class="cat-txt">
+          <h3>أحذية رياضية 👟</h3>
+          <p>تشكيلة واسعة من الأحذية لكل الرياضات والأذواق.</p>
+          <span>اكتشف القسم</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="blk" id="produits">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">— الأكثر مبيعاً</span>
+      <h2>منتجات مختارة</h2>
+      <p>أضف إلى السلة وأرسل طلبك عبر واتساب — الدفع عند الاستلام.</p>
+    </div>
+    <div class="prod-grid" id="prodGrid"></div>
+  </div>
+</section>
+
+<!-- PROMO -->
+<section class="blk" id="promo" style="padding-top:10px">
+  <div class="wrap">
+    <div class="promo">
+      <img src="demo-sport/img/promo.jpg" alt="عرض خاص على الأحذية الرياضية" loading="lazy">
+      <div class="promo-in">
+        <span class="tag">عرض الأسبوع ⚡</span>
+        <h2>حتى −30% على الأحذية الرياضية</h2>
+        <p>لفترة محدودة: خصومات قوية على تشكيلة الأحذية، مع توصيل مجاني داخل طنجة للطلبات فوق 500 درهم.</p>
+        <a class="btn btn-acc" href="#produits">استفد من العرض</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERKS -->
+<section class="blk" style="padding-top:10px">
+  <div class="wrap">
+    <div class="perks">
+      <div class="perk">
+        <div class="ico">✅</div>
+        <h3>منتجات أصلية</h3>
+        <p>نضمن أصالة كل منتج، مع إمكانية الاستبدال خلال 7 أيام.</p>
+      </div>
+      <div class="perk">
+        <div class="ico">🚚</div>
+        <h3>توصيل سريع</h3>
+        <p>التوصيل داخل طنجة خلال 24 ساعة، وإلى باقي المدن في 48 ساعة.</p>
+      </div>
+      <div class="perk">
+        <div class="ico">💵</div>
+        <h3>الدفع عند الاستلام</h3>
+        <p>ادفع فقط عندما يصلك طلبك وتتأكد منه بنفسك.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site" id="contact">
+  <div class="foot-grid">
+    <div>
+      <h4>Tanger Sport — طنجة سبورت</h4>
+      <p>متجرك الرياضي في طنجة: أحذية، معدات لياقة، ملابس وإكسسوارات أصلية بأسعار مناسبة للجميع.</p>
+    </div>
+    <div>
+      <h4>روابط سريعة</h4>
+      <p><a href="#categories">الأقسام</a><br><a href="#produits">المنتجات</a><br><a href="#promo">العروض</a></p>
+    </div>
+    <div>
+      <h4>تواصل معنا</h4>
+      <p>📍 شارع محمد الخامس، طنجة<br>📲 واتساب: 0693981822<br>🕙 يومياً من 9:30 إلى 21:30</p>
+    </div>
+  </div>
+  <div class="foot-bot">نموذج تجريبي من مكتبة طنجة ويب — TANJA WEB</div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="سلة التسوق">
+  <div class="drawer-head">
+    <h3>🛒 سلة التسوق</h3>
+    <button class="close-x" onclick="closeCart()" aria-label="إغلاق">✕</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>المجموع</span><span id="cartTotal">0 درهم</span></div>
+    <button class="order-btn" id="orderBtn" onclick="orderWhatsApp()">إرسال الطلب عبر واتساب ←</button>
+    <div class="drawer-note">الدفع عند الاستلام · التوصيل داخل طنجة في 24 ساعة</div>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PRODUCTS = {
+  1:{name:'حذاء الجري برو', cat:'الجري', desc:'نعل مريح بتقنية امتصاص الصدمات، خفيف ومهوّى', price:649, old:849, img:'demo-sport/img/p-running.jpg'},
+  2:{name:'كرة سلة احترافية', cat:'رياضات جماعية', desc:'مقاس رسمي 7، خامة متينة للملاعب الداخلية والخارجية', price:249, old:0, img:'demo-sport/img/p-ballon.jpg'},
+  3:{name:'جهاز إهليجي منزلي', cat:'اللياقة البدنية', desc:'16 مستوى مقاومة وشاشة لقياس النبض والسعرات', price:3999, old:4799, img:'demo-sport/img/p-elliptique.jpg'},
+  4:{name:'دمبل احترافي 10 كغ', cat:'اللياقة البدنية', desc:'حديد مصبوب بقبضة مريحة ضد الانزلاق — القطعة', price:349, old:0, img:'demo-sport/img/p-halteres.jpg'},
+  5:{name:'طقم التدريب المنزلي', cat:'اللياقة البدنية', desc:'أحزمة مقاومة + أوزان كاحل + حبل قفز في حقيبة واحدة', price:499, old:649, img:'demo-sport/img/p-kit.jpg'},
+  6:{name:'ساعة رياضية ذكية GPS', cat:'إكسسوارات', desc:'تتبع الجري والسباحة، قياس النبض والأكسجين، بطارية 10 أيام', price:899, old:1199, img:'demo-sport/img/p-montre.jpg'},
+  7:{name:'حقيبة رياضية كبيرة', cat:'إكسسوارات', desc:'45 لتراً، جيب منفصل للحذاء، خامة مقاومة للماء', price:329, old:0, img:'demo-sport/img/p-sac.jpg'},
+  8:{name:'سجادة يوغا احترافية', cat:'يوغا وتمدد', desc:'سماكة 6 مم ضد الانزلاق، مع حزام للحمل', price:179, old:229, img:'demo-sport/img/p-yoga.jpg'}
+};
+const WA_NUMBER = '212693981822';
+let cart = {};
+
+function fmt(n){ return n.toLocaleString('fr-MA') + ' درهم'; }
+function cartCountTotal(){ return Object.values(cart).reduce((a,q)=>a+q,0); }
+function cartPriceTotal(){ return Object.entries(cart).reduce((a,[id,q])=>a + PRODUCTS[id].price*q, 0); }
+
+function renderProducts(){
+  document.getElementById('prodGrid').innerHTML = Object.entries(PRODUCTS).map(([id,p])=>
+    '<article class="prod">' +
+      '<div class="ph"><img src="' + p.img + '" alt="' + p.name + '" loading="lazy"></div>' +
+      '<div class="prod-body">' +
+        '<div class="prod-cat">' + p.cat + '</div>' +
+        '<div class="prod-name">' + p.name + '</div>' +
+        '<div class="prod-desc">' + p.desc + '</div>' +
+        '<div class="prod-foot"><span class="price">' + fmt(p.price) + (p.old ? '<s>' + fmt(p.old) + '</s>' : '') + '</span>' +
+        '<button class="add-btn" onclick="addToCart(' + id + ')">أضف إلى السلة +</button></div>' +
+      '</div></article>'
+  ).join('');
+}
+
+function addToCart(id){
+  cart[id] = (cart[id]||0) + 1;
+  renderCart();
+  showToast('✅ أُضيف «' + PRODUCTS[id].name + '» إلى السلة');
+}
+function changeQty(id,delta){
+  cart[id] = (cart[id]||0) + delta;
+  if(cart[id] <= 0) delete cart[id];
+  renderCart();
+}
+function removeItem(id){ delete cart[id]; renderCart(); }
+
+function renderCart(){
+  document.getElementById('cartCount').textContent = cartCountTotal();
+  const box = document.getElementById('drawerItems');
+  const ids = Object.keys(cart);
+  if(!ids.length){
+    box.innerHTML = '<div class="cart-empty">🛒 سلتك فارغة…<br>اختر منتجك الرياضي وارجع إلى هنا لإتمام الطلب.</div>';
+  } else {
+    box.innerHTML = ids.map(id=>{
+      const p = PRODUCTS[id], q = cart[id];
+      return '<div class="ci">' +
+        '<img src="' + p.img + '" alt="">' +
+        '<div class="ci-info">' +
+          '<div class="ci-name">' + p.name + '</div>' +
+          '<div class="ci-price">' + fmt(p.price*q) + '</div>' +
+          '<div class="ci-actions">' +
+            '<button class="qty-btn" onclick="changeQty(' + id + ',1)">+</button>' +
+            '<span style="font-weight:900;min-width:20px;text-align:center">' + q + '</span>' +
+            '<button class="qty-btn" onclick="changeQty(' + id + ',-1)">−</button>' +
+            '<button class="ci-remove" onclick="removeItem(' + id + ')">🗑 حذف</button>' +
+          '</div>' +
+        '</div></div>';
+    }).join('');
+  }
+  document.getElementById('cartTotal').textContent = fmt(cartPriceTotal());
+  document.getElementById('orderBtn').disabled = !ids.length;
+}
+
+function orderWhatsApp(){
+  const ids = Object.keys(cart);
+  if(!ids.length) return;
+  let lines = ['السلام Tanger Sport، بغيت نطلب هاد المنتجات:', ''];
+  ids.forEach(id=>{
+    const p = PRODUCTS[id], q = cart[id];
+    lines.push('• ' + p.name + ' × ' + q + ' — ' + fmt(p.price*q));
+  });
+  lines.push('');
+  lines.push('المجموع: ' + fmt(cartPriceTotal()));
+  lines.push('الدفع عند الاستلام. شكراً!');
+  lines.push('');
+  lines.push('الاسم:');
+  lines.push('رقم الهاتف:');
+  lines.push('المدينة:');
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank');
+}
+
+function openCart(){
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+}
+function closeCart(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+document.getElementById('burger').addEventListener('click', ()=>{
+  document.getElementById('mainNav').classList.toggle('open');
+});
+document.querySelectorAll('#mainNav a').forEach(a=>a.addEventListener('click', ()=>{
+  document.getElementById('mainNav').classList.remove('open');
+}));
+
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>

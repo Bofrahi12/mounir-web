@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>BURGRY — Burgers & Fast-Food · Tanger</title>
+<meta name="description" content="BURGRY, burgers généreux et fast-food de qualité à Tanger. Commandez en ligne, payez à la livraison.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --panel:#161616; --panel2:#1e1e1e; --line:#2a2a2a;
+  --yellow:#ffc01e; --green:#1fae5f; --red:#e03325; --green-d:#25d366;
+  --txt:#f5f2ea; --muted:#a8a29a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-serif;line-height:1.55}
+h1,h2,h3,.cond{font-family:'Oswald','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.5px}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.btn{display:inline-block;background:var(--yellow);color:#111;font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:600;letter-spacing:1px;padding:14px 30px;border-radius:8px;border:none;cursor:pointer;font-size:1rem;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,192,30,.35)}
+.btn-ghost{background:transparent;color:var(--txt);border:2px solid #444}
+.btn-ghost:hover{border-color:var(--yellow);color:var(--yellow);box-shadow:none}
+.sec{padding:84px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 44px}
+.sec-head .kick{color:var(--yellow);font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:3px;font-size:.85rem}
+.sec-head h2{font-size:clamp(1.9rem,4vw,2.7rem);margin:10px 0 12px}
+.sec-head p{color:var(--muted)}
+.underline{width:56px;height:4px;background:var(--yellow);border-radius:2px;margin:14px auto 0}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:60;background:rgba(10,10,10,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+.logo{font-family:'Oswald',sans-serif;font-size:1.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.logo span{color:var(--yellow)}
+.nav nav{display:flex;gap:26px}
+.nav nav a{font-weight:600;font-size:.95rem;color:#ddd6c9}
+.nav nav a:hover{color:var(--yellow)}
+.cart-btn{position:relative;background:var(--yellow);color:#111;border:none;border-radius:8px;padding:10px 18px;font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:600;cursor:pointer;font-size:.95rem}
+.cart-count{position:absolute;top:-9px;right:-9px;background:var(--red);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:.75rem;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0 5px}
+.bump{animation:bump .3s ease}
+@keyframes bump{40%{transform:scale(1.15)}}
+
+/* HERO */
+.hero{position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:72px 0 84px}
+.hero .tag{display:inline-block;background:#221a02;border:1px solid var(--yellow);color:var(--yellow);padding:6px 14px;border-radius:999px;font-size:.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+.hero h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.04;margin:20px 0 18px}
+.hero h1 em{font-style:normal;color:var(--yellow)}
+.hero p{color:var(--muted);font-size:1.08rem;max-width:480px;margin-bottom:30px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-feats{display:flex;gap:28px;margin-top:38px;flex-wrap:wrap}
+.hero-feats div{font-size:.9rem;color:#ddd6c9}
+.hero-feats b{display:block;font-family:'Oswald',sans-serif;font-size:1.15rem;color:var(--yellow);text-transform:uppercase}
+.hero-img{position:relative}
+.hero-img img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:24px;border:1px solid var(--line)}
+.hero-badge{position:absolute;bottom:18px;left:18px;background:var(--yellow);color:#111;font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:700;padding:10px 18px;border-radius:10px;font-size:.95rem;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+
+/* CATEGORIES */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cat{border-radius:16px;padding:26px;cursor:pointer;border:none;text-align:left;color:#111;transition:transform .15s;display:block;width:100%}
+.cat:hover{transform:translateY(-4px)}
+.cat h3{font-size:1.5rem}
+.cat p{font-size:.9rem;font-weight:600;opacity:.85;margin-top:4px}
+.cat .go{margin-top:12px;display:inline-block;font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.85rem;border-bottom:2px solid currentColor}
+.cat-y{background:var(--yellow)} .cat-g{background:#22b573;color:#06281a} .cat-r{background:#e03325;color:#fff}
+
+/* PROMO */
+.promo{background:linear-gradient(90deg,#191304,#0a0a0a);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.promo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.promo-card{background:var(--panel);border:1px dashed #57450a;border-radius:16px;padding:30px}
+.promo-card h3{font-size:1.6rem;color:var(--yellow)}
+.promo-card p{color:var(--muted);margin-top:6px}
+
+/* MENU */
+.tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.tab{background:var(--panel2);color:#ddd6c9;border:1px solid var(--line);padding:11px 26px;border-radius:999px;font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:600;letter-spacing:1px;cursor:pointer;font-size:.95rem}
+.tab.active{background:var(--yellow);color:#111;border-color:var(--yellow)}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-4px);border-color:#4a3d10}
+.card img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.card-body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:1.15rem}
+.card p{color:var(--muted);font-size:.88rem;flex:1}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.price{font-family:'Oswald',sans-serif;font-size:1.3rem;color:var(--yellow);font-weight:700}
+.add-btn{background:var(--yellow);color:#111;border:none;border-radius:8px;padding:9px 16px;font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:600;font-size:.85rem;cursor:pointer}
+.add-btn:hover{background:#ffd34d}
+.card.hidden{display:none}
+
+/* PHONE BAND */
+.phone-band{background:var(--yellow);color:#111}
+.phone-in{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:44px 0;flex-wrap:wrap}
+.phone-in h2{font-size:clamp(1.6rem,3.4vw,2.4rem)}
+.phone-in p{font-weight:600}
+.phone-num{font-family:'Oswald',sans-serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;background:#111;color:var(--yellow);padding:14px 28px;border-radius:12px;white-space:nowrap}
+
+/* GALLERY + REVIEWS */
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.gal img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;border:1px solid var(--line)}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px}
+.review .stars{color:var(--yellow);font-size:1.05rem;letter-spacing:3px}
+.review p{color:#e6e0d2;font-size:.95rem;margin:12px 0 16px}
+.review b{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.9rem}
+.review span{display:block;color:var(--muted);font-size:.8rem}
+
+/* FOOTER */
+footer{background:#060606;border-top:1px solid var(--line);padding:64px 0 34px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:40px}
+.foot-grid h3{font-size:1.05rem;margin-bottom:14px;color:var(--yellow)}
+.foot-grid p,.foot-grid li{color:var(--muted);font-size:.92rem}
+.foot-grid ul{list-style:none}
+.foot-grid li{margin-bottom:8px}
+.foot-grid a:hover{color:var(--yellow)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:22px;color:#6f6a61;font-size:.82rem;text-align:center}
+
+/* BADGE + CART */
+.demo-badge{position:fixed;left:14px;bottom:14px;z-index:80;background:rgba(10,10,10,.88);border:1px solid var(--yellow);color:var(--yellow);font-size:.78rem;font-weight:600;padding:8px 14px;border-radius:999px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:90;opacity:0;pointer-events:none;transition:opacity .25s}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100dvh;width:400px;max-width:92vw;background:#121212;border-left:1px solid var(--line);z-index:95;transform:translateX(105%);transition:transform .3s ease;display:flex;flex-direction:column}
+.drawer.open{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px;border-bottom:1px solid var(--line)}
+.drawer-head h3{font-size:1.3rem}
+.close-btn{background:none;border:none;color:var(--txt);font-size:1.6rem;cursor:pointer;line-height:1}
+.drawer-items{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px}
+.ci{display:flex;gap:12px;align-items:center;background:var(--panel2);border-radius:12px;padding:10px}
+.ci img{width:56px;height:56px;object-fit:cover;border-radius:8px}
+.ci-info{flex:1;min-width:0}
+.ci-info b{font-size:.9rem;display:block}
+.ci-info span{color:var(--yellow);font-weight:700;font-size:.88rem}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:26px;height:26px;border-radius:6px;border:1px solid #444;background:#0d0d0d;color:#fff;cursor:pointer;font-weight:700}
+.qty b{min-width:16px;text-align:center}
+.ci-remove{background:none;border:none;color:var(--red);cursor:pointer;font-size:1.05rem}
+.empty-cart{color:var(--muted);text-align:center;padding:36px 0}
+.drawer-foot{border-top:1px solid var(--line);padding:20px}
+.total-row{display:flex;justify-content:space-between;font-family:'Oswald',sans-serif;font-size:1.25rem;text-transform:uppercase;margin-bottom:14px}
+.total-row b{color:var(--yellow)}
+.wa-order{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--green-d);color:#fff;font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:600;letter-spacing:1px;padding:15px;border-radius:10px;font-size:1rem;border:none;cursor:pointer}
+.wa-order:disabled{background:#333;color:#888;cursor:not-allowed}
+.drawer-note{color:var(--muted);font-size:.8rem;text-align:center;margin-top:10px}
+
+@media(max-width:1020px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:820px){
+  .hero-grid{grid-template-columns:1fr;padding:48px 0 60px}
+  .cats,.promo-grid,.reviews,.foot-grid{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr}
+  .nav nav{display:none}
+  .sec{padding:60px 0}
+}
+@media(max-width:520px){.menu-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">BURG<span>RY</span></a>
+    <nav>
+      <a href="#categories">Catégories</a>
+      <a href="#menu">Menu</a>
+      <a href="#avis">Avis</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" id="cartOpen">🛒 Panier <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag">Fast-food · Tanger</span>
+      <h1>Le burger qui <em>rend heureux</em></h1>
+      <p>Un pain brioché toasté au beurre, un steak de bœuf frais grillé à la commande, du cheddar qui fond comme il faut. Chez BURGRY, chaque burger est monté à la minute, sans compromis.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#menu">Voir le menu</a>
+        <a class="btn btn-ghost" href="#promos">Nos promos</a>
+      </div>
+      <div class="hero-feats">
+        <div><b>Frais</b>Viande jamais congelée</div>
+        <div><b>Rapide</b>Prêt en 10 minutes</div>
+        <div><b>Livraison</b>Partout à Tanger</div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="demo-burger/img/hero.jpg" alt="Burger gourmand BURGRY">
+      <div class="hero-badge">⭐ Le préféré des clients</div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="sec" id="categories" style="padding-top:20px">
+  <div class="wrap">
+    <div class="cats">
+      <button class="cat cat-y" data-goto="burgers">
+        <h3>🍔 Burgers</h3>
+        <p>Six recettes généreuses, du classique au plus costaud.</p>
+        <span class="go">Commander →</span>
+      </button>
+      <button class="cat cat-g" data-goto="snacks">
+        <h3>🍟 Snacks</h3>
+        <p>Frites maison, croustillantes dehors, fondantes dedans.</p>
+        <span class="go">Commander →</span>
+      </button>
+      <button class="cat cat-r" data-goto="boissons">
+        <h3>🥤 Boissons</h3>
+        <p>Milkshakes crémeux préparés avec de la vraie glace.</p>
+        <span class="go">Commander →</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- PROMOS -->
+<section class="promo" id="promos">
+  <div class="wrap" style="padding-top:56px;padding-bottom:56px">
+    <div class="promo-grid">
+      <div class="promo-card">
+        <h3>−20% chaque vendredi</h3>
+        <p>Le vendredi, toute la carte burgers passe à −20%. L'excuse parfaite pour inviter la famille ou les collègues.</p>
+      </div>
+      <div class="promo-card">
+        <h3>1 boisson offerte dès 99 DH</h3>
+        <p>Pour toute commande de 99 DH ou plus, la boisson est pour nous. Ajoutez-la au panier, on s'occupe du reste en cuisine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="sec" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kick">Notre carte</div>
+      <h2>Le menu BURGRY</h2>
+      <p>Choisissez vos envies, ajoutez-les au panier et commandez en un clic sur WhatsApp. Simple, rapide, délicieux.</p>
+      <div class="underline"></div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-filter="tous">Tous</button>
+      <button class="tab" data-filter="burgers">Burgers</button>
+      <button class="tab" data-filter="snacks">Snacks</button>
+      <button class="tab" data-filter="boissons">Boissons</button>
+    </div>
+
+    <div class="menu-grid" id="menuGrid">
+      <article class="card" data-cat="burgers" data-id="classic">
+        <img src="demo-burger/img/classic.jpg" alt="Classic Beef">
+        <div class="card-body">
+          <h3>Classic Beef</h3>
+          <p>Steak de bœuf 150 g, cheddar, laitue, tomate, oignons et notre sauce maison.</p>
+          <div class="card-foot"><span class="price">49 DH</span><button class="add-btn" data-add="classic">+ Ajouter</button></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="burgers" data-id="double">
+        <img src="demo-burger/img/double.jpg" alt="Double Cheese">
+        <div class="card-body">
+          <h3>Double Cheese</h3>
+          <p>Deux steaks, double cheddar fondant, cornichons et sauce fumée. Pour les vraies faims.</p>
+          <div class="card-foot"><span class="price">69 DH</span><button class="add-btn" data-add="double">+ Ajouter</button></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="burgers" data-id="chicken">
+        <img src="demo-burger/img/chicken.jpg" alt="Chicken Crispy">
+        <div class="card-body">
+          <h3>Chicken Crispy</h3>
+          <p>Poulet mariné pané croustillant, laitue fraîche et mayonnaise à l'ail douce.</p>
+          <div class="card-foot"><span class="price">45 DH</span><button class="add-btn" data-add="chicken">+ Ajouter</button></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="burgers" data-id="bbq">
+        <img src="demo-burger/img/bbq.jpg" alt="BBQ Bacon">
+        <div class="card-body">
+          <h3>BBQ Bacon</h3>
+          <p>Bœuf grillé, bacon de dinde croustillant, oignons caramélisés et sauce barbecue.</p>
+          <div class="card-foot"><span class="price">65 DH</span><button class="add-btn" data-add="bbq">+ Ajouter</button></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="burgers" data-id="veggie">
+        <img src="demo-burger/img/veggie.jpg" alt="Veggie">
+        <div class="card-body">
+          <h3>Veggie</h3>
+          <p>Galette de légumes grillés, avocat, jeunes pousses et sauce yaourt aux herbes.</p>
+          <div class="card-foot"><span class="price">42 DH</span><button class="add-btn" data-add="veggie">+ Ajouter</button></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="burgers" data-id="fish">
+        <img src="demo-burger/img/fish.jpg" alt="Fish Burger">
+        <div class="card-body">
+          <h3>Fish Burger</h3>
+          <p>Filet de poisson pané doré, sauce tartare maison et laitue croquante.</p>
+          <div class="card-foot"><span class="price">48 DH</span><button class="add-btn" data-add="fish">+ Ajouter</button></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="snacks" data-id="frites">
+        <img src="demo-burger/img/frites.jpg" alt="Frites maison">
+        <div class="card-body">
+          <h3>Frites maison</h3>
+          <p>Pommes de terre fraîches, double cuisson, sel de mer et pointe de paprika.</p>
+          <div class="card-foot"><span class="price">19 DH</span><button class="add-btn" data-add="frites">+ Ajouter</button></div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="boissons" data-id="milkshake">
+        <img src="demo-burger/img/milkshake.jpg" alt="Milkshake">
+        <div class="card-body">
+          <h3>Milkshake</h3>
+          <p>Glace onctueuse mixée au lait frais, chantilly maison. Chocolat, vanille ou fraise.</p>
+          <div class="card-foot"><span class="price">29 DH</span><button class="add-btn" data-add="milkshake">+ Ajouter</button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PHONE BAND -->
+<section class="phone-band">
+  <div class="wrap phone-in">
+    <div>
+      <h2>Commandez par téléphone</h2>
+      <p>Pas envie d'attendre ? Appelez-nous, votre commande est prête en 10 minutes.</p>
+    </div>
+    <a class="phone-num" href="tel:+212693981822">📞 0693 98 18 22</a>
+  </div>
+</section>
+
+<!-- GALLERY + REVIEWS -->
+<section class="sec" id="avis">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kick">En images</div>
+      <h2>Ça donne faim, non ?</h2>
+      <div class="underline"></div>
+    </div>
+    <div class="gal" style="margin-bottom:56px">
+      <img src="demo-burger/img/gallery1.jpg" alt="Trio de burgers BURGRY">
+      <img src="demo-burger/img/gallery2.jpg" alt="Burger, frites et boisson">
+    </div>
+    <div class="sec-head">
+      <div class="kick">Ils ont goûté</div>
+      <h2>Ce que disent nos clients</h2>
+      <div class="underline"></div>
+    </div>
+    <div class="reviews">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Le Double Cheese est une tuerie. Viande juteuse, pain moelleux, et la commande WhatsApp est arrivée en 25 minutes. »</p>
+        <b>Yassine M.</b><span>Centre-ville, Tanger</span>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>« Enfin un fast-food propre et rapide à Tanger. Le Chicken Crispy porte bien son nom, on y retourne chaque week-end. »</p>
+        <b>Salma B.</b><span>Marshan, Tanger</span>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★☆</div>
+        <p>« Les frites maison changent tout. Rapport qualité-prix imbattable, surtout avec la promo du vendredi. »</p>
+        <b>Omar E.</b><span>Iberia, Tanger</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#">BURG<span>RY</span></a>
+        <p style="margin-top:14px">Burgers généreux et fast-food de qualité au cœur de Tanger. Tout est préparé à la commande, avec des produits frais du marché.</p>
+      </div>
+      <div>
+        <h3>Horaires</h3>
+        <ul>
+          <li>Lundi – Samedi : 11h00 – 23h00</li>
+          <li>Dimanche : 12h00 – 23h00</li>
+          <li>Livraison jusqu'à 22h30</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li>📍 Avenue Mohammed V, Tanger</li>
+          <li>📞 <a href="tel:+212693981822">0693 98 18 22</a></li>
+          <li>💬 Commandes via WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      © 2026 BURGRY — Burgers & Fast-Food · Tanger. Site de démonstration : photos, prix et avis sont indicatifs et ne correspondent pas à un établissement réel.
+    </div>
+  </div>
+</footer>
+
+<div class="demo-badge">Site de démonstration — photos et prix indicatifs</div>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Panier">
+  <div class="drawer-head">
+    <h3>🛒 Mon panier</h3>
+    <button class="close-btn" id="cartClose" aria-label="Fermer">✕</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>Total</span><b id="cartTotal">0 DH</b></div>
+    <button class="wa-order" id="waOrder" disabled>Commander sur WhatsApp</button>
+    <p class="drawer-note">Paiement à la livraison · Espèces ou carte</p>
+  </div>
+</aside>
+
+<script>
+(function(){
+  "use strict";
+  var PRODUCTS = {
+    classic:  {name:"Classic Beef",  price:49, img:"demo-burger/img/classic.jpg"},
+    double:   {name:"Double Cheese", price:69, img:"demo-burger/img/double.jpg"},
+    chicken:  {name:"Chicken Crispy",price:45, img:"demo-burger/img/chicken.jpg"},
+    bbq:      {name:"BBQ Bacon",     price:65, img:"demo-burger/img/bbq.jpg"},
+    veggie:   {name:"Veggie",        price:42, img:"demo-burger/img/veggie.jpg"},
+    fish:     {name:"Fish Burger",   price:48, img:"demo-burger/img/fish.jpg"},
+    frites:   {name:"Frites maison", price:19, img:"demo-burger/img/frites.jpg"},
+    milkshake:{name:"Milkshake",     price:29, img:"demo-burger/img/milkshake.jpg"}
+  };
+  var WA_NUMBER = "212693981822";
+  var cart = {}; // id -> qty
+
+  var drawer = document.getElementById('drawer');
+  var overlay = document.getElementById('overlay');
+  var itemsEl = document.getElementById('drawerItems');
+  var totalEl = document.getElementById('cartTotal');
+  var countEl = document.getElementById('cartCount');
+  var orderBtn = document.getElementById('waOrder');
+  var cartBtn = document.getElementById('cartOpen');
+
+  function cartCount(){
+    var n = 0; for (var id in cart) n += cart[id]; return n;
+  }
+  function cartTotal(){
+    var t = 0; for (var id in cart) t += PRODUCTS[id].price * cart[id]; return t;
+  }
+
+  function renderCart(){
+    countEl.textContent = cartCount();
+    totalEl.textContent = cartTotal() + " DH";
+    var ids = Object.keys(cart);
+    if (!ids.length){
+      itemsEl.innerHTML = '<p class="empty-cart">Votre panier est vide.<br>Ajoutez un burger pour commencer 🍔</p>';
+      orderBtn.disabled = true;
+      return;
+    }
+    orderBtn.disabled = false;
+    var html = "";
+    ids.forEach(function(id){
+      var p = PRODUCTS[id], q = cart[id];
+      html += '<div class="ci">' +
+        '<img src="' + p.img + '" alt="">' +
+        '<div class="ci-info"><b>' + p.name + '</b><span>' + (p.price*q) + ' DH</span></div>' +
+        '<div class="qty">' +
+          '<button data-dec="' + id + '" aria-label="Moins">−</button><b>' + q + '</b><button data-inc="' + id + '" aria-label="Plus">+</button>' +
+        '</div>' +
+        '<button class="ci-remove" data-remove="' + id + '" aria-label="Retirer">🗑</button>' +
+      '</div>';
+    });
+    itemsEl.innerHTML = html;
+  }
+
+  function addToCart(id){
+    cart[id] = (cart[id] || 0) + 1;
+    renderCart();
+    cartBtn.classList.remove('bump'); void cartBtn.offsetWidth; cartBtn.classList.add('bump');
+  }
+  function setQty(id, q){
+    if (q <= 0) delete cart[id]; else cart[id] = q;
+    renderCart();
+  }
+
+  document.querySelectorAll('[data-add]').forEach(function(btn){
+    btn.addEventListener('click', function(){ addToCart(btn.getAttribute('data-add')); });
+  });
+  itemsEl.addEventListener('click', function(e){
+    var inc = e.target.closest('[data-inc]');
+    var dec = e.target.closest('[data-dec]');
+    var rem = e.target.closest('[data-remove]');
+    if (inc) setQty(inc.getAttribute('data-inc'), (cart[inc.getAttribute('data-inc')]||0) + 1);
+    else if (dec) setQty(dec.getAttribute('data-dec'), (cart[dec.getAttribute('data-dec')]||0) - 1);
+    else if (rem) setQty(rem.getAttribute('data-remove'), 0);
+  });
+
+  function openCart(){ drawer.classList.add('open'); overlay.classList.add('open'); }
+  function closeCart(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
+  cartBtn.addEventListener('click', openCart);
+  document.getElementById('cartClose').addEventListener('click', closeCart);
+  overlay.addEventListener('click', closeCart);
+
+  orderBtn.addEventListener('click', function(){
+    var ids = Object.keys(cart);
+    if (!ids.length) return;
+    var lines = ["Bonjour BURGRY, je souhaite commander :"];
+    ids.forEach(function(id){
+      var p = PRODUCTS[id];
+      lines.push("• " + cart[id] + " × " + p.name + " — " + (p.price*cart[id]) + " DH");
+    });
+    lines.push("Total : " + cartTotal() + " DH");
+    lines.push("Nom : ");
+    lines.push("Adresse de livraison : ");
+    window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(lines.join("\n")), "_blank");
+  });
+
+  // Category tabs
+  var tabs = document.querySelectorAll('.tab');
+  var cards = document.querySelectorAll('#menuGrid .card');
+  function applyFilter(f){
+    tabs.forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-filter') === f); });
+    cards.forEach(function(c){
+      c.classList.toggle('hidden', f !== 'tous' && c.getAttribute('data-cat') !== f);
+    });
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ applyFilter(t.getAttribute('data-filter')); });
+  });
+  // Category tiles jump to menu with the right filter
+  document.querySelectorAll('[data-goto]').forEach(function(tile){
+    tile.addEventListener('click', function(){
+      applyFilter(tile.getAttribute('data-goto'));
+      document.getElementById('menu').scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  renderCart();
+})();
+</script>
+</body>
+</html>
