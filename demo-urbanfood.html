@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>URBAN FOOD — Street-Food Moderne à Tanger</title>
+<meta name="description" content="URBAN FOOD — la street-food comme à New York, à Tanger. Smash burgers, bowls, poke et tacos, livrés en 30 minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#141414; --bg2:#1c1c1c; --card:#202020; --line:#2e2e2e;
+    --orange:#FF7A18; --orange2:#ff9a4d; --cream:#FFF4E4; --txt:#f3ede2; --muted:#b9b0a0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-serif;line-height:1.6}
+  h1,h2,h3,.brand,.price,.btn{font-family:'Archivo',sans-serif}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* Demo badge */
+  .demo-badge{position:fixed;top:14px;left:14px;z-index:200;background:var(--orange);color:#141414;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+    padding:7px 13px;border-radius:50px;box-shadow:0 6px 20px rgba(0,0,0,.45)}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:100;background:rgba(20,20,20,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{font-size:1.5rem;font-weight:900;letter-spacing:.02em}
+  .brand span{color:var(--orange)}
+  .nav nav{display:flex;gap:30px;font-weight:600;font-size:.95rem}
+  .nav nav a{color:var(--muted);transition:color .2s}
+  .nav nav a:hover{color:var(--cream)}
+  .nav-actions{display:flex;align-items:center;gap:12px}
+  .cart-btn{position:relative;background:var(--orange);color:#141414;border:none;cursor:pointer;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:.9rem;padding:11px 20px;border-radius:50px;transition:transform .15s,background .2s}
+  .cart-btn:hover{background:var(--orange2);transform:translateY(-1px)}
+  .cart-count{position:absolute;top:-7px;right:-7px;background:var(--cream);color:#141414;border-radius:50%;
+    width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;border:2px solid var(--bg)}
+  @media(max-width:760px){.nav nav{display:none}}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden}
+  .hero-img{width:100%;aspect-ratio:21/9;object-fit:cover;filter:brightness(.5)}
+  @media(max-width:760px){.hero-img{aspect-ratio:4/3}}
+  .hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+  .hero-tag{display:inline-block;background:rgba(255,122,24,.16);border:1px solid var(--orange);color:var(--orange2);
+    font-weight:700;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;padding:7px 14px;border-radius:50px;margin-bottom:18px}
+  .hero h1{font-size:clamp(2.1rem,5.4vw,4.2rem);font-weight:900;line-height:1.04;text-transform:uppercase;max-width:760px}
+  .hero h1 em{font-style:normal;color:var(--orange)}
+  .hero p{margin:18px 0 28px;max-width:540px;color:#e8e0cf;font-size:1.06rem}
+  .btn{display:inline-block;background:var(--orange);color:#141414;font-weight:800;padding:15px 32px;border-radius:50px;
+    text-transform:uppercase;letter-spacing:.05em;font-size:.95rem;transition:transform .15s,background .2s;border:none;cursor:pointer}
+  .btn:hover{background:var(--orange2);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--cream);border:2px solid rgba(255,244,228,.5);margin-left:12px}
+  .btn.ghost:hover{border-color:var(--cream)}
+  .hero-stats{display:flex;gap:34px;margin-top:34px;flex-wrap:wrap}
+  .hero-stats div strong{display:block;font-family:'Archivo',sans-serif;font-size:1.5rem;color:var(--orange)}
+  .hero-stats div span{font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+  section{padding:84px 0}
+  .kicker{color:var(--orange);font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:.78rem;text-align:center}
+  .sec-title{font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:900;text-transform:uppercase;text-align:center;margin:10px 0 14px}
+  .sec-sub{text-align:center;color:var(--muted);max-width:560px;margin:0 auto 46px}
+
+  /* Signature cards */
+  .sig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:900px){.sig-grid{grid-template-columns:1fr}}
+  .sig-card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .25s,border-color .25s}
+  .sig-card:hover{transform:translateY(-6px);border-color:var(--orange)}
+  .sig-card img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .sig-body{padding:24px}
+  .sig-body h3{font-size:1.3rem;font-weight:800;text-transform:uppercase}
+  .sig-body p{color:var(--muted);font-size:.94rem;margin:8px 0 18px}
+  .sig-foot{display:flex;align-items:center;justify-content:space-between}
+  .price{font-size:1.45rem;font-weight:900;color:var(--orange)}
+  .price small{font-size:.8rem;color:var(--muted);font-weight:600}
+  .add-btn{background:var(--orange);color:#141414;border:none;cursor:pointer;font-family:'Archivo',sans-serif;font-weight:800;
+    padding:11px 20px;border-radius:50px;font-size:.88rem;transition:background .2s,transform .15s}
+  .add-btn:hover{background:var(--orange2);transform:scale(1.04)}
+
+  /* Menu */
+  #menu{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  @media(max-width:1000px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.menu-grid{grid-template-columns:1fr}}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .2s,transform .2s}
+  .item:hover{border-color:var(--orange);transform:translateY(-4px)}
+  .item img{width:100%;aspect-ratio:16/10;object-fit:cover}
+  .item-body{padding:16px 18px 18px}
+  .item-body h3{font-size:1.02rem;font-weight:800}
+  .item-body p{color:var(--muted);font-size:.85rem;margin:5px 0 14px;min-height:40px}
+  .item-foot{display:flex;align-items:center;justify-content:space-between}
+  .item .price{font-size:1.15rem}
+  .item .add-btn{padding:8px 15px;font-size:.8rem}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:900px){.steps{grid-template-columns:1fr}}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px 28px;text-align:center}
+  .step .num{width:60px;height:60px;margin:0 auto 18px;border-radius:50%;background:var(--orange);color:#141414;
+    display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:900;font-size:1.5rem}
+  .step h3{font-size:1.15rem;font-weight:800;text-transform:uppercase;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.93rem}
+
+  /* Reviews */
+  #avis{background:var(--bg2);border-top:1px solid var(--line)}
+  .avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:900px){.avis-grid{grid-template-columns:1fr}}
+  .avis{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px}
+  .stars{color:var(--orange);letter-spacing:3px;font-size:1.05rem;margin-bottom:12px}
+  .avis p{font-size:.96rem;color:#e6ddcb}
+  .avis .who{margin-top:16px;display:flex;align-items:center;gap:12px}
+  .avatar{width:42px;height:42px;border-radius:50%;background:var(--orange);color:#141414;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:900}
+  .who strong{display:block;font-size:.92rem}
+  .who span{color:var(--muted);font-size:.8rem}
+
+  /* CTA band */
+  .cta-band{background:linear-gradient(120deg,#ff7a18,#ff5e3a);border-radius:24px;padding:48px 40px;text-align:center;color:#181205}
+  .cta-band h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:900;text-transform:uppercase}
+  .cta-band p{margin:10px auto 24px;max-width:480px;font-weight:500}
+  .cta-band .btn{background:#141414;color:var(--cream)}
+  .cta-band .btn:hover{background:#000}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line);padding:54px 0 30px;background:#101010}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:34px;margin-bottom:36px}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+  footer h4{font-family:'Archivo',sans-serif;text-transform:uppercase;font-size:.95rem;margin-bottom:14px;color:var(--cream)}
+  footer p,footer li{color:var(--muted);font-size:.92rem}
+  footer ul{list-style:none}
+  footer li{margin-bottom:8px}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:22px;text-align:center;color:var(--muted);font-size:.85rem}
+  .foot-bottom strong{color:var(--orange)}
+
+  /* Cart drawer */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);opacity:0;pointer-events:none;transition:opacity .3s;z-index:300}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100dvh;width:min(420px,92vw);background:#1a1a1a;z-index:301;
+    transform:translateX(105%);transition:transform .35s ease;display:flex;flex-direction:column;border-left:1px solid var(--line)}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line)}
+  .drawer-head h3{font-size:1.15rem;font-weight:900;text-transform:uppercase}
+  .close-btn{background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer;line-height:1}
+  .drawer-items{flex:1;overflow-y:auto;padding:18px 22px}
+  .empty{color:var(--muted);text-align:center;padding:40px 0}
+  .citem{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .citem img{width:62px;aspect-ratio:1;object-fit:cover;border-radius:10px}
+  .citem-info{flex:1}
+  .citem-info strong{display:block;font-size:.92rem}
+  .citem-info span{color:var(--orange);font-weight:700;font-size:.88rem}
+  .qty{display:flex;align-items:center;gap:9px;margin-top:7px}
+  .qty button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--cream);cursor:pointer;font-weight:800;line-height:1}
+  .qty button:hover{border-color:var(--orange);color:var(--orange)}
+  .remove{background:none;border:none;color:#ff6b5e;cursor:pointer;font-size:.78rem;margin-top:5px;padding:0}
+  .drawer-foot{padding:20px 22px;border-top:1px solid var(--line)}
+  .total-row{display:flex;justify-content:space-between;font-family:'Archivo',sans-serif;font-weight:900;font-size:1.2rem;margin-bottom:16px}
+  .total-row span:last-child{color:var(--orange)}
+  .order-btn{width:100%;text-align:center}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,90px);background:var(--orange);color:#141414;
+    font-weight:700;padding:13px 26px;border-radius:50px;z-index:400;transition:transform .35s;font-size:.92rem;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .toast.show{transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<div class="demo-badge">Modèle de démonstration</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">URBAN<span>FOOD</span></a>
+    <nav>
+      <a href="#signatures">Signatures</a>
+      <a href="#menu">Menu</a>
+      <a href="#concept">Concept</a>
+      <a href="#avis">Avis</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="cart-btn" onclick="toggleCart(true)">🛒 Panier <span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img" src="urbanfood/photo-1504674900247-0877df9cc836.jpg" alt="Assiette street-food généreuse chez URBAN FOOD Tanger">
+  <div class="hero-content wrap">
+    <span class="hero-tag">Tanger · Livraison 30 min</span>
+    <h1>La street-food comme à <em>New York</em>, à Tanger</h1>
+    <p>Smash burgers écrasés à la plancha, bowls frais, poke saumon et tacos urbains — préparés minute, livrés chauds partout à Tanger.</p>
+    <div>
+      <a class="btn" href="#menu">Voir le menu</a>
+      <a class="btn ghost" href="https://wa.me/212693981822?text=Bonjour%20URBAN%20FOOD%20!%20Je%20veux%20commander." target="_blank" rel="noopener">Commander</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong>30 min</strong><span>Livraison moyenne</span></div>
+      <div><strong>4,9/5</strong><span>Note clients</span></div>
+      <div><strong>100%</strong><span>Fait maison</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SIGNATURES -->
+<section id="signatures">
+  <div class="wrap">
+    <p class="kicker">Nos best-sellers</p>
+    <h2 class="sec-title">Plats signatures</h2>
+    <p class="sec-sub">Les trois assiettes qui ont fait la réputation d'URBAN FOOD à Tanger.</p>
+    <div class="sig-grid">
+      <article class="sig-card">
+        <img src="urbanfood/photo-1551782450-a2132b4ba21d.jpg" alt="Smash Burger URBAN FOOD">
+        <div class="sig-body">
+          <h3>Smash Burger</h3>
+          <p>Double steak de bœuf écrasé à la plancha, cheddar fondu, sauce urbaine secrète, bun brioché toasté.</p>
+          <div class="sig-foot">
+            <span class="price">55 <small>DH</small></span>
+            <button class="add-btn" onclick="addToCart('Smash Burger',55)">Ajouter +</button>
+          </div>
+        </div>
+      </article>
+      <article class="sig-card">
+        <img src="urbanfood/photo-1540189549336-e6e99c3679fe.jpg" alt="Poke Saumon URBAN FOOD">
+        <div class="sig-body">
+          <h3>Poke Saumon</h3>
+          <p>Saumon frais mariné, riz vinaigré, avocat, edamame, mangue et sauce ponzu — le bowl fraîcheur.</p>
+          <div class="sig-foot">
+            <span class="price">75 <small>DH</small></span>
+            <button class="add-btn" onclick="addToCart('Poke Saumon',75)">Ajouter +</button>
+          </div>
+        </div>
+      </article>
+      <article class="sig-card">
+        <img src="urbanfood/photo-1504674900247-0877df9cc836.jpg" alt="Assiette Mixte URBAN FOOD">
+        <div class="sig-body">
+          <h3>Assiette Mixte</h3>
+          <p>Le festin à partager : viandes grillées, accompagnements chauds et sauces maison, généreux et copieux.</p>
+          <div class="sig-foot">
+            <span class="price">85 <small>DH</small></span>
+            <button class="add-btn" onclick="addToCart('Assiette Mixte',85)">Ajouter +</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <p class="kicker">À la carte</p>
+    <h2 class="sec-title">Menu complet</h2>
+    <p class="sec-sub">Ajoutez vos plats au panier et commandez en un clic sur WhatsApp.</p>
+    <div class="menu-grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section id="concept">
+  <div class="wrap">
+    <p class="kicker">Simple &amp; rapide</p>
+    <h2 class="sec-title">Comment ça marche</h2>
+    <p class="sec-sub">De l'envie à la première bouchée, en trois étapes.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Choisis</h3>
+        <p>Parcourez le menu, ajoutez vos plats préférés au panier et validez votre sélection.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Commande WhatsApp</h3>
+        <p>Votre commande part directement sur notre WhatsApp — confirmation immédiate, sans application à télécharger.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Livré en 30 min</h3>
+        <p>Préparation minute et livraison express partout à Tanger. Paiement à la livraison.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section id="avis">
+  <div class="wrap">
+    <p class="kicker">Ils ont goûté</p>
+    <h2 class="sec-title">Avis clients</h2>
+    <p class="sec-sub">Ce que les Tangérois disent d'URBAN FOOD.</p>
+    <div class="avis-grid">
+      <div class="avis">
+        <div class="stars">★★★★★</div>
+        <p>« Le meilleur smash burger de Tanger, sans hésiter. La viande est écrasée minute, ça change tout. Livraison en 25 minutes chrono. »</p>
+        <div class="who"><span class="avatar">Y</span><div><strong>Yasmine B.</strong><span>Centre-ville</span></div></div>
+      </div>
+      <div class="avis">
+        <div class="stars">★★★★★</div>
+        <p>« Le poke saumon est d'une fraîcheur incroyable pour de la livraison. Les portions sont généreuses et la commande WhatsApp est ultra simple. »</p>
+        <div class="who"><span class="avatar">O</span><div><strong>Omar E.</strong><span>Malabata</span></div></div>
+      </div>
+      <div class="avis">
+        <div class="stars">★★★★★</div>
+        <p>« On commande l'assiette mixte tous les vendredis au bureau. Copieux, chaud, et toujours à l'heure. C'est devenu notre rituel. »</p>
+        <div class="who"><span class="avatar">S</span><div><strong>Salma R.</strong><span>Marshan</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Une petite faim ?</h2>
+      <p>Commandez maintenant et recevez votre repas en 30 minutes, partout à Tanger.</p>
+      <a class="btn" href="https://wa.me/212693981822?text=Bonjour%20URBAN%20FOOD%20!%20Je%20veux%20commander." target="_blank" rel="noopener">Commander sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#">URBAN<span>FOOD</span></a>
+        <p style="margin-top:14px">Street-food moderne au cœur de Tanger. Des recettes inspirées de New York, des produits frais du marché, une livraison express.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#signatures">Plats signatures</a></li>
+          <li><a href="#menu">Menu complet</a></li>
+          <li><a href="#concept">Concept</a></li>
+          <li><a href="#avis">Avis clients</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>📍 Centre-ville, Tanger</li>
+          <li>🕐 Tous les jours · 11h30 – 23h30</li>
+          <li>📱 WhatsApp : 0693 981 822</li>
+          <li>🚴 Livraison partout à Tanger</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 URBAN FOOD — Tanger. Tous droits réservés.</p>
+      <p style="margin-top:6px">Démonstration réalisée par <strong>Tanja Web — Tanger</strong></p>
+    </div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
+<aside class="drawer" id="drawer" aria-label="Panier">
+  <div class="drawer-head">
+    <h3>🛒 Mon panier</h3>
+    <button class="close-btn" onclick="toggleCart(false)" aria-label="Fermer">×</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>Total</span><span id="cartTotal">0 DH</span></div>
+    <button class="btn order-btn" onclick="orderWhatsApp()">Commander via WhatsApp</button>
+  </div>
+</aside>
+<div class="toast" id="toast">Ajouté au panier ✓</div>
+
+<script>
+const MENU = [
+  {name:"Smash Burger",       price:55, img:"urbanfood/photo-1551782450-a2132b4ba21d.jpg", desc:"Double bœuf écrasé, cheddar, sauce urbaine, bun brioché."},
+  {name:"Bowl Poulet Grillé", price:65, img:"urbanfood/photo-1546069901-ba9599a7e63c.jpg", desc:"Poulet grillé mariné, riz parfumé, légumes croquants, sauce yaourt-herbes."},
+  {name:"Salade César",       price:45, img:"urbanfood/photo-1512621776951-a57141f2eefd.jpg", desc:"Laitue croquante, poulet, parmesan, croûtons dorés, sauce césar maison."},
+  {name:"Assiette Mixte",     price:85, img:"urbanfood/photo-1504674900247-0877df9cc836.jpg", desc:"Grillades mixtes, accompagnements chauds et sauces maison à partager."},
+  {name:"Bowl Vegan",         price:59, img:"urbanfood/photo-1540189549336-e6e99c3679fe.jpg", desc:"Quinoa, légumes rôtis, houmous, avocat et graines toastées — 100% végétal."},
+  {name:"Tacos Urbain",       price:49, img:"urbanfood/photo-1553979459-d2229ba7433b.jpg", desc:"Tortilla garnie façon street, viande épicée, fromage fondu, sauce piquante douce."},
+  {name:"Cheesecake",         price:35, img:"urbanfood/photo-1565958011703-44f9829ba187.jpg", desc:"Cheesecake crémeux aux fruits rouges, le final sucré parfait."},
+  {name:"Poke Saumon",        price:75, img:"urbanfood/photo-1540189549336-e6e99c3679fe.jpg", desc:"Saumon frais, riz vinaigré, avocat, edamame, mangue, sauce ponzu."}
+];
+
+const grid = document.getElementById('menuGrid');
+MENU.forEach(it => {
+  const el = document.createElement('article');
+  el.className = 'item';
+  el.innerHTML = `<img src="${it.img}" alt="${it.name} — URBAN FOOD Tanger">
+    <div class="item-body">
+      <h3>${it.name}</h3><p>${it.desc}</p>
+      <div class="item-foot">
+        <span class="price">${it.price} <small>DH</small></span>
+        <button class="add-btn" onclick="addToCart('${it.name}',${it.price})">Ajouter +</button>
+      </div>
+    </div>`;
+  grid.appendChild(el);
+});
+
+let cart = {}; // name -> {price, qty, img}
+const IMG_OF = {};
+MENU.forEach(m => IMG_OF[m.name] = m.img);
+IMG_OF["Smash Burger"] = MENU[0].img; IMG_OF["Poke Saumon"] = MENU[7].img; IMG_OF["Assiette Mixte"] = MENU[3].img;
+
+function addToCart(name, price){
+  if(!cart[name]) cart[name] = {price, qty:0, img:IMG_OF[name] || MENU[0].img};
+  cart[name].qty++;
+  renderCart();
+  const t = document.getElementById('toast');
+  t.textContent = name + " ajouté au panier ✓";
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 1600);
+}
+function changeQty(name, d){
+  if(!cart[name]) return;
+  cart[name].qty += d;
+  if(cart[name].qty <= 0) delete cart[name];
+  renderCart();
+}
+function removeItem(name){ delete cart[name]; renderCart(); }
+
+function renderCart(){
+  const box = document.getElementById('drawerItems');
+  const names = Object.keys(cart);
+  let total = 0, count = 0;
+  if(!names.length){
+    box.innerHTML = '<p class="empty">Votre panier est vide.<br>Ajoutez un plat du menu pour commencer 🍔</p>';
+  } else {
+    box.innerHTML = names.map(n => {
+      const c = cart[n]; total += c.price * c.qty; count += c.qty;
+      return `<div class="citem">
+        <img src="${c.img}" alt="${n}">
+        <div class="citem-info">
+          <strong>${n}</strong><span>${c.price} DH</span>
+          <div class="qty">
+            <button onclick="changeQty('${n}',-1)">−</button><b>${c.qty}</b><button onclick="changeQty('${n}',1)">+</button>
+          </div>
+          <button class="remove" onclick="removeItem('${n}')">Retirer</button>
+        </div>
+        <strong>${c.price * c.qty} DH</strong>
+      </div>`;
+    }).join('');
+    document.getElementById('cartTotal').textContent = total + ' DH';
+    document.getElementById('cartCount').textContent = count;
+    return;
+  }
+  document.getElementById('cartTotal').textContent = '0 DH';
+  document.getElementById('cartCount').textContent = 0;
+}
+renderCart();
+
+function toggleCart(open){
+  document.getElementById('drawer').classList.toggle('open', open);
+  document.getElementById('overlay').classList.toggle('open', open);
+}
+
+function orderWhatsApp(){
+  const names = Object.keys(cart);
+  if(!names.length){ alert("Votre panier est vide — ajoutez d'abord un plat du menu."); return; }
+  let total = 0;
+  const lines = names.map(n => { const c = cart[n]; total += c.price * c.qty; return `• ${n} × ${c.qty} — ${c.price * c.qty} DH`; });
+  const msg = `Bonjour URBAN FOOD ! Je souhaite commander :\n${lines.join('\n')}\nTotal : ${total} DH\nNom : \nAdresse de livraison (Tanger) : `;
+  window.open('https://wa.me/212693981822?text=' + encodeURIComponent(msg), '_blank');
+}
+</script>
+</body>
+</html>

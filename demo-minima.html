@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>MINIMA — Mode Minimaliste · Tanger</title>
+<style>
+  :root{
+    --noir:#111; --gris:#888; --gris-clair:#D9D9D9; --bg:#fff; --bg-alt:#F7F7F7;
+    --bord:#EAEAEA;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Roboto","Helvetica Neue",Arial,system-ui,-apple-system,sans-serif;color:var(--noir);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer}
+
+  /* Bandeau démo */
+  .demo-badge{background:var(--noir);color:#fff;text-align:center;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--bord)}
+  .header-in{max-width:1200px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-size:1.55rem;font-weight:700;letter-spacing:.42em;text-indent:.42em}
+  nav{display:flex;gap:34px}
+  nav a{font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--noir)}
+  nav a:hover{color:var(--gris)}
+  .cart-btn{position:relative;background:var(--noir);color:#fff;border:none;padding:11px 22px;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .cart-btn:hover{background:#333}
+  .cart-count{background:#fff;color:var(--noir);border-radius:50%;min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;padding:0 5px}
+
+  /* Hero */
+  .hero{max-width:1200px;margin:0 auto;padding:56px 24px 64px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .hero-txt .sur{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gris);margin-bottom:18px}
+  .hero-txt h1{font-size:3rem;font-weight:300;line-height:1.15;letter-spacing:.01em;margin-bottom:20px}
+  .hero-txt h1 strong{font-weight:700}
+  .hero-txt p{color:var(--gris);font-size:1.02rem;max-width:44ch;margin-bottom:32px}
+  .btn{display:inline-block;background:var(--noir);color:#fff;padding:15px 36px;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--noir);transition:.2s}
+  .btn:hover{background:#fff;color:var(--noir)}
+  .btn.ghost{background:#fff;color:var(--noir)}
+  .btn.ghost:hover{background:var(--noir);color:#fff}
+  .hero-img{aspect-ratio:4/3;overflow:hidden;background:var(--bg-alt)}
+  .hero-img img{width:100%;height:100%;object-fit:cover}
+
+  /* Catégories */
+  .cats{border-top:1px solid var(--bord);border-bottom:1px solid var(--bord)}
+  .cats-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+  .cat{padding:30px 24px;text-align:center;border-inline-end:1px solid var(--bord)}
+  .cat:last-child{border-inline-end:none}
+  .cat .n{font-size:.72rem;color:var(--gris);letter-spacing:.2em}
+  .cat .t{font-size:1.05rem;letter-spacing:.22em;text-transform:uppercase;margin-top:4px}
+  .cat:hover{background:var(--bg-alt)}
+
+  /* Produits */
+  .section{max-width:1200px;margin:0 auto;padding:72px 24px}
+  .section-head{text-align:center;margin-bottom:44px}
+  .section-head .sur{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gris)}
+  .section-head h2{font-size:2rem;font-weight:300;letter-spacing:.04em;margin-top:8px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+  .card{display:flex;flex-direction:column}
+  .card-img{aspect-ratio:3/4;overflow:hidden;background:var(--bg-alt)}
+  .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .card:hover .card-img img{transform:scale(1.045)}
+  .card-body{padding:16px 2px 0;display:flex;flex-direction:column;gap:4px;flex:1}
+  .card-body h3{font-size:.98rem;font-weight:500;letter-spacing:.03em}
+  .price{color:var(--gris);font-size:.95rem;margin-bottom:10px}
+  .add-btn{margin-top:auto;background:#fff;border:1px solid var(--noir);color:var(--noir);padding:11px 0;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;transition:.2s;width:100%}
+  .add-btn:hover{background:var(--noir);color:#fff}
+  .add-btn.added{background:var(--noir);color:#fff}
+
+  /* Avantages */
+  .features{background:var(--bg-alt);border-top:1px solid var(--bord);border-bottom:1px solid var(--bord)}
+  .features-in{max-width:1200px;margin:0 auto;padding:52px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:36px;text-align:center}
+  .feat .ic{font-size:1.7rem;margin-bottom:10px}
+  .feat h3{font-size:.9rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+  .feat p{color:var(--gris);font-size:.92rem}
+
+  /* Newsletter */
+  .news{text-align:center}
+  .news p{color:var(--gris);max-width:52ch;margin:0 auto 26px}
+  .news form{display:flex;justify-content:center;gap:0;max-width:480px;margin:0 auto}
+  .news input{flex:1;border:1px solid var(--gris-clair);border-inline-end:none;padding:14px 16px;font-size:.95rem;font-family:inherit;outline:none}
+  .news input:focus{border-color:var(--noir)}
+  .news button{background:var(--noir);color:#fff;border:1px solid var(--noir);padding:14px 28px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+  .news .ok{color:var(--noir);font-size:.9rem;margin-top:14px;min-height:1.2em}
+
+  /* Footer */
+  footer{background:var(--noir);color:#fff}
+  .foot-in{max-width:1200px;margin:0 auto;padding:56px 24px 34px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+  .foot-in .logo{color:#fff}
+  .foot-in p{color:#AAA;font-size:.92rem;margin-top:12px;max-width:38ch}
+  .foot-in h4{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+  .foot-in ul{list-style:none}
+  .foot-in li{margin-bottom:9px}
+  .foot-in li a{color:#AAA;font-size:.93rem}
+  .foot-in li a:hover{color:#fff}
+  .foot-bottom{border-top:1px solid #2A2A2A;padding:20px 24px;text-align:center;color:#999;font-size:.85rem}
+
+  /* Panier (drawer) */
+  .overlay{position:fixed;inset:0;background:rgba(17,17,17,.45);opacity:0;pointer-events:none;transition:.25s;z-index:90}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;inset-inline-end:0;height:100dvh;width:min(420px,92vw);background:#fff;z-index:100;transform:translateX(105%);transition:transform .3s ease;display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(0,0,0,.12)}
+  html[dir="rtl"] .drawer{transform:translateX(-105%)}
+  .drawer.open{transform:translateX(0)!important}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--bord)}
+  .drawer-head h3{font-size:.95rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+  .close-btn{background:none;border:none;font-size:1.4rem;line-height:1;color:var(--noir)}
+  .drawer-items{flex:1;overflow-y:auto;padding:10px 22px}
+  .empty{color:var(--gris);text-align:center;padding:44px 0;font-size:.95rem}
+  .item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--bord)}
+  .item img{width:64px;height:84px;object-fit:cover;background:var(--bg-alt)}
+  .item-info{flex:1;display:flex;flex-direction:column}
+  .item-info .nm{font-size:.92rem;font-weight:500}
+  .item-info .pr{color:var(--gris);font-size:.88rem}
+  .qty{display:flex;align-items:center;gap:12px;margin-top:8px}
+  .qty button{width:26px;height:26px;border:1px solid var(--gris-clair);background:#fff;font-size:1rem;line-height:1}
+  .qty button:hover{border-color:var(--noir)}
+  .qty span{min-width:16px;text-align:center;font-size:.9rem}
+  .rm{background:none;border:none;color:var(--gris);font-size:.8rem;text-decoration:underline;margin-top:6px;align-self:flex-start;padding:0}
+  .rm:hover{color:var(--noir)}
+  .drawer-foot{border-top:1px solid var(--bord);padding:20px 22px}
+  .total-row{display:flex;justify-content:space-between;font-size:1.02rem;margin-bottom:16px}
+  .total-row strong{font-weight:700}
+  .order-btn{display:block;width:100%;background:var(--noir);color:#fff;text-align:center;padding:15px 0;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;border:none}
+  .order-btn:hover{background:#333}
+  .order-btn:disabled{background:var(--gris-clair);color:var(--gris);cursor:not-allowed}
+
+  @media (max-width:960px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .hero{grid-template-columns:1fr;gap:34px;padding-top:40px}
+    .hero-txt h1{font-size:2.3rem}
+    .features-in{grid-template-columns:1fr;gap:26px}
+    .foot-in{grid-template-columns:1fr}
+    nav{display:none}
+  }
+  @media (max-width:520px){
+    .cats-in{grid-template-columns:1fr}
+    .cat{border-inline-end:none;border-bottom:1px solid var(--bord)}
+    .cat:last-child{border-bottom:none}
+    .logo{font-size:1.25rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-badge">Modèle de démonstration</div>
+
+<header>
+  <div class="header-in">
+    <a class="logo" href="#">MINIMA</a>
+    <nav>
+      <a href="#collection">Collection</a>
+      <a href="#avantages">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" id="openCart" aria-label="Ouvrir le panier">Panier <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-txt">
+    <p class="sur">Nouvelle collection — Tanger</p>
+    <h1>L'élégance dans <strong>la simplicité</strong></h1>
+    <p>Des pièces essentielles, des lignes pures et des matières choisies. Une garde-robe minimaliste pensée pour durer, livrée partout au Maroc.</p>
+    <a class="btn" href="#collection">Découvrir la collection</a>
+  </div>
+  <div class="hero-img">
+    <img src="minima/hero.jpg" alt="Collection de mode minimaliste MINIMA à Tanger">
+  </div>
+</section>
+
+<div class="cats">
+  <div class="cats-in">
+    <a class="cat" href="#collection"><div class="n">01</div><div class="t">Vestes</div></a>
+    <a class="cat" href="#collection"><div class="n">02</div><div class="t">Essentiels</div></a>
+    <a class="cat" href="#collection"><div class="n">03</div><div class="t">Nouveautés</div></a>
+  </div>
+</div>
+
+<section class="section" id="collection">
+  <div class="section-head">
+    <p class="sur">La collection</p>
+    <h2>Pièces essentielles</h2>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<div class="features" id="avantages">
+  <div class="features-in">
+    <div class="feat">
+      <div class="ic">◐</div>
+      <h3>Livraison 24–48h</h3>
+      <p>Expédition rapide depuis Tanger, partout au Maroc.</p>
+    </div>
+    <div class="feat">
+      <div class="ic">◎</div>
+      <h3>Paiement à la livraison</h3>
+      <p>Payez en espèces uniquement à la réception de votre commande.</p>
+    </div>
+    <div class="feat">
+      <div class="ic">↺</div>
+      <h3>Retours 14 jours</h3>
+      <p>Échange ou retour simple sous 14 jours, sans frais cachés.</p>
+    </div>
+  </div>
+</div>
+
+<section class="section news">
+  <div class="section-head" style="margin-bottom:18px">
+    <p class="sur">Newsletter</p>
+    <h2>Restez informé</h2>
+  </div>
+  <p>Recevez nos nouvelles pièces et offres privées, une fois par mois. Aucun spam.</p>
+  <form id="newsForm">
+    <input type="email" id="newsEmail" placeholder="Votre adresse e-mail" required aria-label="Votre adresse e-mail">
+    <button type="submit">S'inscrire</button>
+  </form>
+  <p class="ok" id="newsOk"></p>
+</section>
+
+<footer id="contact">
+  <div class="foot-in">
+    <div>
+      <span class="logo">MINIMA</span>
+      <p>Mode minimaliste à Tanger. Des essentiels intemporels, conçus avec soin et livrés chez vous.</p>
+    </div>
+    <div>
+      <h4>Boutique</h4>
+      <ul>
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#collection">Vestes</a></li>
+        <li><a href="#collection">Essentiels</a></li>
+        <li><a href="#collection">Nouveautés</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/212693981822?text=Bonjour%20MINIMA%2C%20je%20souhaite%20des%20informations%20sur%20vos%20produits." target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="#avantages">Livraison &amp; retours</a></li>
+        <li><a href="#collection">Guide des tailles</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">Démonstration réalisée par Tanja Web — Tanger</div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Panier">
+  <div class="drawer-head">
+    <h3>Votre panier</h3>
+    <button class="close-btn" id="closeCart" aria-label="Fermer le panier">×</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>Total</span><strong id="totalEl">0 DH</strong></div>
+    <button class="order-btn" id="orderBtn">Commander via WhatsApp</button>
+  </div>
+</aside>
+
+<script>
+  var PRODUCTS = [
+    {id:1, name:"Veste Structurée",   price:890,  img:"minima/p1.jpg", alt:"Veste structurée homme"},
+    {id:2, name:"Veste en Cuir",      price:1890, img:"minima/p2.jpg", alt:"Veste en cuir homme"},
+    {id:3, name:"Blazer Moderne",     price:990,  img:"minima/p3.jpg", alt:"Blazer moderne homme"},
+    {id:4, name:"T-Shirt Premium",    price:190,  img:"minima/p4.jpg", alt:"T-shirt premium"},
+    {id:5, name:"Hoodie Essentiel",   price:450,  img:"minima/p5.jpg", alt:"Hoodie essentiel"},
+    {id:6, name:"Chemise Oxford",     price:390,  img:"minima/p6.jpg", alt:"Chemise oxford"},
+    {id:7, name:"Look Complet Homme", price:1290, img:"minima/p7.jpg", alt:"Look complet homme"},
+    {id:8, name:"T-Shirt Blanc",      price:170,  img:"minima/p8.jpg", alt:"T-shirt blanc"}
+  ];
+  var WHATSAPP = "212693981822";
+  var cart = {}; // id -> quantité
+
+  function fmt(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g," ") + " DH"; }
+
+  // Grille produits
+  var grid = document.getElementById("grid");
+  PRODUCTS.forEach(function(p){
+    var card = document.createElement("article");
+    card.className = "card";
+    card.innerHTML =
+      '<div class="card-img"><img src="'+p.img+'" alt="'+p.alt+'" loading="lazy"></div>' +
+      '<div class="card-body"><h3>'+p.name+'</h3><p class="price">'+fmt(p.price)+'</p>' +
+      '<button class="add-btn" data-add="'+p.id+'">Ajouter au panier</button></div>';
+    grid.appendChild(card);
+  });
+
+  var drawer = document.getElementById("drawer"),
+      overlay = document.getElementById("overlay"),
+      itemsEl = document.getElementById("drawerItems"),
+      totalEl = document.getElementById("totalEl"),
+      countEl = document.getElementById("cartCount"),
+      orderBtn = document.getElementById("orderBtn");
+
+  function cartEntries(){
+    return Object.keys(cart).map(function(id){
+      var p = PRODUCTS.find(function(x){ return x.id == id; });
+      return {p:p, qty:cart[id]};
+    }).filter(function(e){ return e.qty > 0; });
+  }
+  function cartTotal(){
+    return cartEntries().reduce(function(s,e){ return s + e.p.price * e.qty; }, 0);
+  }
+  function cartCount(){
+    return cartEntries().reduce(function(s,e){ return s + e.qty; }, 0);
+  }
+
+  function renderCart(){
+    var entries = cartEntries();
+    countEl.textContent = cartCount();
+    totalEl.textContent = fmt(cartTotal());
+    orderBtn.disabled = entries.length === 0;
+    if(entries.length === 0){
+      itemsEl.innerHTML = '<p class="empty">Votre panier est vide.</p>';
+      return;
+    }
+    itemsEl.innerHTML = "";
+    entries.forEach(function(e){
+      var row = document.createElement("div");
+      row.className = "item";
+      row.innerHTML =
+        '<img src="'+e.p.img+'" alt="'+e.p.alt+'">' +
+        '<div class="item-info"><span class="nm">'+e.p.name+'</span>' +
+        '<span class="pr">'+fmt(e.p.price)+'</span>' +
+        '<div class="qty"><button data-dec="'+e.p.id+'" aria-label="Diminuer">−</button><span>'+e.qty+'</span><button data-inc="'+e.p.id+'" aria-label="Augmenter">+</button></div>' +
+        '<button class="rm" data-rm="'+e.p.id+'">Retirer</button></div>';
+      itemsEl.appendChild(row);
+    });
+  }
+
+  function openCart(){ drawer.classList.add("open"); overlay.classList.add("open"); }
+  function closeCart(){ drawer.classList.remove("open"); overlay.classList.remove("open"); }
+  document.getElementById("openCart").addEventListener("click", openCart);
+  document.getElementById("closeCart").addEventListener("click", closeCart);
+  overlay.addEventListener("click", closeCart);
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeCart(); });
+
+  document.addEventListener("click", function(e){
+    var add = e.target.closest("[data-add]");
+    if(add){
+      var id = add.getAttribute("data-add");
+      cart[id] = (cart[id] || 0) + 1;
+      renderCart();
+      add.classList.add("added");
+      var old = add.textContent;
+      add.textContent = "Ajouté ✓";
+      setTimeout(function(){ add.textContent = old; add.classList.remove("added"); }, 1100);
+      return;
+    }
+    var inc = e.target.closest("[data-inc]");
+    if(inc){ cart[inc.getAttribute("data-inc")]++; renderCart(); return; }
+    var dec = e.target.closest("[data-dec]");
+    if(dec){
+      var d = dec.getAttribute("data-dec");
+      cart[d]--;
+      if(cart[d] <= 0) delete cart[d];
+      renderCart(); return;
+    }
+    var rm = e.target.closest("[data-rm]");
+    if(rm){ delete cart[rm.getAttribute("data-rm")]; renderCart(); return; }
+  });
+
+  orderBtn.addEventListener("click", function(){
+    var entries = cartEntries();
+    if(entries.length === 0) return;
+    var lines = ["Bonjour MINIMA, je souhaite commander :"];
+    entries.forEach(function(e){
+      lines.push("• " + e.p.name + " × " + e.qty + " — " + fmt(e.p.price * e.qty));
+    });
+    lines.push("Total : " + fmt(cartTotal()));
+    lines.push("Merci de me confirmer la disponibilité et la livraison.");
+    window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(lines.join("\n")), "_blank");
+  });
+
+  // Newsletter
+  document.getElementById("newsForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    document.getElementById("newsOk").textContent = "Merci ! Votre inscription est bien notée.";
+    document.getElementById("newsEmail").value = "";
+  });
+
+  renderCart();
+</script>
+</body>
+</html>

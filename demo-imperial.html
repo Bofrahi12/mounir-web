@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>IMPERIAL MOTORS — Voitures Premium à Tanger</title>
+<meta name="description" content="IMPERIAL MOTORS, concessionnaire de voitures premium à Tanger : véhicules certifiés, financement et reprise. Réservez votre essai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noir:#08080a; --noir2:#101013; --noir3:#17171c;
+    --accent:#FF3B1F; --accent2:#ff6a4d;
+    --txt:#f4f4f6; --mut:#a7a7b3; --line:rgba(255,255,255,.09);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--noir);color:var(--txt);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+  h1,h2,h3,.disp{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.02em;line-height:1.08}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+  .hexbg{
+    background-color:var(--noir);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 2 L54 17 L54 47 L28 62 L2 47 L2 17 Z M28 62 L28 98 M54 47 L54 82 L28 98 M2 47 L2 82 L28 98' fill='none' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1.4'/%3E%3C/svg%3E");
+    background-size:56px 100px;
+  }
+  /* badge */
+  .demo-badge{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:200;background:var(--accent);color:#fff;font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 18px;border-radius:50px;box-shadow:0 8px 30px rgba(255,59,31,.45);white-space:nowrap}
+  /* header */
+  header{position:sticky;top:0;z-index:100;background:rgba(8,8,10,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .hrow{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0}
+  .logo{font-family:'Oswald',sans-serif;font-size:1.45rem;font-weight:700;letter-spacing:.06em}
+  .logo span{color:var(--accent)}
+  .logo small{display:block;font-family:'Inter',sans-serif;font-size:.6rem;letter-spacing:.34em;color:var(--mut);font-weight:600}
+  nav.main{display:flex;gap:28px;font-size:.92rem;font-weight:500;color:var(--mut)}
+  nav.main a:hover{color:#fff}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;font-weight:700;padding:13px 26px;border-radius:6px;font-size:.95rem;transition:.25s;border:1px solid var(--accent);cursor:pointer}
+  .btn:hover{background:transparent;color:var(--accent2);border-color:var(--accent2)}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent2)}
+  .btn.sm{padding:10px 20px;font-size:.88rem}
+  /* hero */
+  .hero{position:relative;padding:96px 0 84px;overflow:hidden}
+  .hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:center;position:relative;z-index:2}
+  .kicker{color:var(--accent);font-weight:700;letter-spacing:.3em;font-size:.78rem;text-transform:uppercase;margin-bottom:18px}
+  .hero h1{font-size:clamp(2.6rem,5.4vw,4.4rem);font-weight:700}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p{color:var(--mut);font-size:1.08rem;margin:22px 0 30px;max-width:520px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-img{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 90px rgba(0,0,0,.6)}
+  .hero-img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .stats{display:flex;gap:0;margin-top:54px;border:1px solid var(--line);border-radius:12px;overflow:hidden;max-width:640px;background:rgba(255,255,255,.02)}
+  .stat{flex:1;padding:18px 10px;text-align:center;border-inline-end:1px solid var(--line)}
+  .stat:last-child{border-inline-end:none}
+  .stat strong{display:block;font-family:'Oswald',sans-serif;font-size:1.7rem;color:#fff}
+  .stat span{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .chip{border:1px solid var(--line);border-radius:50px;padding:7px 16px;font-size:.82rem;color:var(--mut);background:rgba(255,255,255,.02)}
+  /* marquee */
+  .marquee{background:var(--accent);color:#fff;overflow:hidden;padding:13px 0;transform:rotate(-.6deg) scale(1.02)}
+  .marquee .track{display:flex;gap:0;white-space:nowrap;font-family:'Oswald',sans-serif;font-size:1.25rem;font-weight:600;letter-spacing:.14em;animation:scroll 26s linear infinite;width:max-content}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  /* sections */
+  section{padding:88px 0}
+  .sec-head{max-width:720px;margin-bottom:46px}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.9rem);margin:10px 0 12px}
+  .sec-head h2 em{font-style:normal;color:var(--accent)}
+  .sec-head p{color:var(--mut)}
+  /* inventory */
+  .inv{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .car{background:var(--noir2);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.3s;display:flex;flex-direction:column}
+  .car:hover{transform:translateY(-6px);border-color:rgba(255,59,31,.55)}
+  .car .ph{overflow:hidden}
+  .car .ph img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:.5s}
+  .car:hover .ph img{transform:scale(1.06)}
+  .car .bd{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1}
+  .car .tag{align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(255,59,31,.5);padding:4px 10px;border-radius:50px;margin-bottom:12px}
+  .car h3{font-size:1.28rem;margin-bottom:8px}
+  .specs{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--mut);font-size:.86rem;margin-bottom:16px}
+  .price{font-family:'Oswald',sans-serif;font-size:1.55rem;color:#fff;margin-top:auto}
+  .price small{font-size:.8rem;color:var(--mut);font-family:'Inter',sans-serif}
+  .car .btn{margin-top:14px;justify-content:center}
+  /* services */
+  .svc{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .sv{background:var(--noir2);border:1px solid var(--line);border-radius:14px;padding:30px 24px;transition:.3s}
+  .sv:hover{border-color:rgba(255,59,31,.55);transform:translateY(-4px)}
+  .sv .ic{font-size:1.9rem;margin-bottom:14px}
+  .sv h3{font-size:1.12rem;margin-bottom:9px}
+  .sv p{color:var(--mut);font-size:.92rem}
+  .sv .num{float:right;font-family:'Oswald',sans-serif;color:rgba(255,255,255,.16);font-size:1.3rem}
+  /* why */
+  .why{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  .why-img{border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .why-img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .feat{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .feat:last-child{border-bottom:none}
+  .feat .n{font-family:'Oswald',sans-serif;font-size:1.5rem;color:var(--accent);min-width:52px}
+  .feat h3{font-size:1.08rem;margin-bottom:4px}
+  .feat p{color:var(--mut);font-size:.93rem}
+  /* form */
+  .formbox{background:linear-gradient(160deg,var(--noir3),var(--noir2));border:1px solid var(--line);border-radius:18px;padding:44px;display:grid;grid-template-columns:1fr 1.1fr;gap:44px;align-items:center}
+  form{display:grid;gap:14px}
+  label{font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+  input,select{width:100%;background:#0b0b0e;border:1px solid var(--line);border-radius:8px;color:#fff;padding:13px 14px;font:inherit;font-size:.95rem;margin-top:6px}
+  input:focus,select:focus{outline:none;border-color:var(--accent)}
+  /* footer */
+  footer{border-top:1px solid var(--line);background:#050506;padding:56px 0 30px}
+  .frow{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:36px}
+  footer p,footer a{color:var(--mut);font-size:.93rem}
+  footer h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;font-size:1rem}
+  .fnav{display:grid;gap:9px}
+  .fnav a:hover{color:#fff}
+  .legal{border-top:1px solid var(--line);padding-top:22px;text-align:center;color:var(--mut);font-size:.86rem}
+  /* whatsapp float */
+  .wa-float{position:fixed;bottom:22px;inset-inline-end:22px;z-index:150;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 12px 32px rgba(0,0,0,.5)}
+  @media(max-width:1020px){
+    .inv{grid-template-columns:repeat(2,1fr)} .svc{grid-template-columns:repeat(2,1fr)}
+    .hero .grid,.why,.formbox{grid-template-columns:1fr}
+    nav.main{display:none}
+  }
+  @media(max-width:620px){
+    .inv,.svc,.frow{grid-template-columns:1fr}
+    .stats{flex-direction:column} .stat{border-inline-end:none;border-bottom:1px solid var(--line)}
+    .formbox{padding:28px 20px} section{padding:60px 0}
+  }
+</style>
+</head>
+<body class="hexbg">
+
+<div class="demo-badge">Modèle de démonstration</div>
+
+<header>
+  <div class="wrap hrow">
+    <a class="logo" href="#">IMPERIAL <span>MOTORS</span><small>TANGER · PREMIUM AUTO</small></a>
+    <nav class="main">
+      <a href="#inventaire">Inventaire</a>
+      <a href="#services">Services</a>
+      <a href="#pourquoi">Pourquoi nous</a>
+      <a href="#essai">Essai</a>
+    </nav>
+    <a class="btn sm" href="https://wa.me/212693981822?text=Bonjour%20IMPERIAL%20MOTORS%2C%20je%20cherche%20un%20v%C3%A9hicule%20premium%20%C3%A0%20Tanger." target="_blank" rel="noopener">Nous contacter</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap grid">
+    <div>
+      <div class="kicker">Concessionnaire premium — Tanger</div>
+      <h1>Voitures premium,<br><em>valeur exceptionnelle</em></h1>
+      <p>Berlines, SUV et sportives sélectionnés un à un, inspectés sur 150 points et garantis 12 mois. À Tanger, l'exigence automobile a enfin une adresse.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#inventaire">Voir l'inventaire</a>
+        <a class="btn ghost" href="#essai">Réserver un essai</a>
+      </div>
+      <div class="chips">
+        <span class="chip">Mercedes-Benz</span><span class="chip">BMW</span><span class="chip">Audi</span><span class="chip">Porsche</span><span class="chip">Range Rover</span><span class="chip">Tesla</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>150+</strong><span>Véhicules en stock</span></div>
+        <div class="stat"><strong>98%</strong><span>Clients satisfaits</span></div>
+        <div class="stat"><strong>12</strong><span>Mois de garantie</span></div>
+      </div>
+    </div>
+    <div class="hero-img"><img src="imperial/hero.jpg" alt="Voiture de sport premium chez IMPERIAL MOTORS Tanger"></div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>&nbsp;VÉHICULES PREMIUM ✦ QUALITÉ CERTIFIÉE ✦ GARANTIE 12 MOIS ✦ FINANCEMENT SUR MESURE ✦ REPRISE IMMÉDIATE ✦</span>
+    <span>&nbsp;VÉHICULES PREMIUM ✦ QUALITÉ CERTIFIÉE ✦ GARANTIE 12 MOIS ✦ FINANCEMENT SUR MESURE ✦ REPRISE IMMÉDIATE ✦</span>
+  </div>
+</div>
+
+<!-- INVENTAIRE -->
+<section id="inventaire">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Inventaire du moment</div>
+      <h2>Nos véhicules <em>premium</em></h2>
+      <p>Chaque véhicule est certifié après une inspection complète de 150 points, avec historique vérifié et kilométrage garanti.</p>
+    </div>
+    <div class="inv">
+
+      <article class="car">
+        <div class="ph"><img src="imperial/v1.jpg" alt="Coupé Élégance V6 rouge"></div>
+        <div class="bd">
+          <span class="tag">Coupé</span>
+          <h3>Coupé Élégance V6</h3>
+          <div class="specs"><span>📅 2023</span><span>🛣️ 18 500 km</span><span>⛽ Essence</span><span>⚙️ Automatique</span></div>
+          <div class="price">845 000 DH</div>
+          <a class="btn sm" href="https://wa.me/212693981822?text=Bonjour%20IMPERIAL%20MOTORS%2C%20je%20veux%20r%C3%A9server%20un%20essai%20du%20Coup%C3%A9%20%C3%89l%C3%A9gance%20V6%20(845%20000%20DH)." target="_blank" rel="noopener">Réserver un essai</a>
+        </div>
+      </article>
+
+      <article class="car">
+        <div class="ph"><img src="imperial/v2.jpg" alt="Berline Sport GT sur route"></div>
+        <div class="bd">
+          <span class="tag">Berline</span>
+          <h3>Berline Sport GT 2.0</h3>
+          <div class="specs"><span>📅 2022</span><span>🛣️ 34 200 km</span><span>⛽ Essence</span><span>⚙️ Automatique</span></div>
+          <div class="price">465 000 DH</div>
+          <a class="btn sm" href="https://wa.me/212693981822?text=Bonjour%20IMPERIAL%20MOTORS%2C%20je%20veux%20r%C3%A9server%20un%20essai%20de%20la%20Berline%20Sport%20GT%202.0%20(465%20000%20DH)." target="_blank" rel="noopener">Réserver un essai</a>
+        </div>
+      </article>
+
+      <article class="car">
+        <div class="ph"><img src="imperial/v3.jpg" alt="Roadster Héritage décapotable"></div>
+        <div class="bd">
+          <span class="tag">Roadster</span>
+          <h3>Roadster Héritage</h3>
+          <div class="specs"><span>📅 2021</span><span>🛣️ 41 800 km</span><span>⛽ Essence</span><span>⚙️ Manuelle</span></div>
+          <div class="price">620 000 DH</div>
+          <a class="btn sm" href="https://wa.me/212693981822?text=Bonjour%20IMPERIAL%20MOTORS%2C%20je%20veux%20r%C3%A9server%20un%20essai%20du%20Roadster%20H%C3%A9ritage%20(620%20000%20DH)." target="_blank" rel="noopener">Réserver un essai</a>
+        </div>
+      </article>
+
+      <article class="car">
+        <div class="ph"><img src="imperial/v4.jpg" alt="SUV Prestige 4x4 en ville"></div>
+        <div class="bd">
+          <span class="tag">SUV</span>
+          <h3>SUV Prestige 4×4</h3>
+          <div class="specs"><span>📅 2024</span><span>🛣️ 9 600 km</span><span>⛽ Diesel</span><span>⚙️ Automatique</span></div>
+          <div class="price">1 150 000 DH</div>
+          <a class="btn sm" href="https://wa.me/212693981822?text=Bonjour%20IMPERIAL%20MOTORS%2C%20je%20veux%20r%C3%A9server%20un%20essai%20du%20SUV%20Prestige%204x4%20(1%20150%20000%20DH)." target="_blank" rel="noopener">Réserver un essai</a>
+        </div>
+      </article>
+
+      <article class="car">
+        <div class="ph"><img src="imperial/v5.jpg" alt="Limousine Affaires hybride de nuit"></div>
+        <div class="bd">
+          <span class="tag">Limousine</span>
+          <h3>Limousine Affaires Hybride</h3>
+          <div class="specs"><span>📅 2023</span><span>🛣️ 22 300 km</span><span>⛽ Hybride</span><span>⚙️ Automatique</span></div>
+          <div class="price">980 000 DH</div>
+          <a class="btn sm" href="https://wa.me/212693981822?text=Bonjour%20IMPERIAL%20MOTORS%2C%20je%20veux%20r%C3%A9server%20un%20essai%20de%20la%20Limousine%20Affaires%20Hybride%20(980%20000%20DH)." target="_blank" rel="noopener">Réserver un essai</a>
+        </div>
+      </article>
+
+      <article class="car">
+        <div class="ph"><img src="imperial/v6.jpg" alt="Cabriolet Riviera bleu"></div>
+        <div class="bd">
+          <span class="tag">Cabriolet</span>
+          <h3>Cabriolet Riviera</h3>
+          <div class="specs"><span>📅 2022</span><span>🛣️ 27 900 km</span><span>⛽ Essence</span><span>⚙️ Automatique</span></div>
+          <div class="price">545 000 DH</div>
+          <a class="btn sm" href="https://wa.me/212693981822?text=Bonjour%20IMPERIAL%20MOTORS%2C%20je%20veux%20r%C3%A9server%20un%20essai%20du%20Cabriolet%20Riviera%20(545%20000%20DH)." target="_blank" rel="noopener">Réserver un essai</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Nos services</div>
+      <h2>Bien plus que <em>la vente</em></h2>
+      <p>Un accompagnement complet, de la sélection du véhicule à son financement — et la reprise de votre voiture actuelle au meilleur prix.</p>
+    </div>
+    <div class="svc">
+      <div class="sv"><span class="num">01</span><div class="ic">🏎️</div><h3>Vente de véhicules neufs</h3><p>Les derniers modèles des grandes marques, commandés selon vos options et livrés avec garantie constructeur.</p></div>
+      <div class="sv"><span class="num">02</span><div class="ic">✅</div><h3>Occasions certifiées</h3><p>Inspection 150 points, historique vérifié, kilométrage garanti et 12 mois de garantie incluse.</p></div>
+      <div class="sv"><span class="num">03</span><div class="ic">💳</div><h3>Financement sur mesure</h3><p>Crédit auto et leasing avec réponse en 24 h, mensualités adaptées à votre budget, sans paperasse interminable.</p></div>
+      <div class="sv"><span class="num">04</span><div class="ic">🔄</div><h3>Reprise immédiate</h3><p>Estimation gratuite de votre véhicule en 30 minutes et offre ferme le jour même, sans obligation d'achat.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI NOUS -->
+<section id="pourquoi" style="padding-top:20px">
+  <div class="wrap why">
+    <div class="why-img"><img src="imperial/v3.jpg" alt="Véhicule premium certifié IMPERIAL MOTORS"></div>
+    <div>
+      <div class="kicker">Pourquoi nous</div>
+      <h2 style="font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:clamp(1.9rem,3.4vw,2.7rem);margin-bottom:14px">La confiance, <span style="color:var(--accent)">certifiée</span></h2>
+      <div class="feat"><div class="n">150</div><div><h3>Points de contrôle</h3><p>Moteur, châssis, électronique, carrosserie : chaque véhicule passe un examen complet avant d'entrer au showroom.</p></div></div>
+      <div class="feat"><div class="n">12</div><div><h3>Mois de garantie</h3><p>Toutes nos occasions certifiées sont couvertes 12 mois, pièces et main-d'œuvre, sans surcoût.</p></div></div>
+      <div class="feat"><div class="n">98%</div><div><h3>Clients satisfaits</h3><p>Plus de 900 clients à Tanger et dans tout le Nord nous ont confié l'achat de leur voiture premium.</p></div></div>
+      <div class="feat"><div class="n">0</div><div><h3>Surprise après l'achat</h3><p>Historique transparent, prix ferme annoncé à l'avance et essai sans engagement avant toute décision.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ESSAI -->
+<section id="essai" style="padding-top:20px">
+  <div class="wrap">
+    <div class="formbox">
+      <div>
+        <div class="kicker">Essai gratuit</div>
+        <h2 style="font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:clamp(1.8rem,3.2vw,2.6rem);margin-bottom:14px">Réservez votre <span style="color:var(--accent)">essai</span></h2>
+        <p style="color:var(--mut)">Choisissez le véhicule et la date qui vous conviennent : votre demande part directement sur notre WhatsApp, nous confirmons en quelques minutes. Showroom ouvert du lundi au samedi, 9 h – 19 h, Tanger.</p>
+      </div>
+      <form id="essaiForm">
+        <div>
+          <label for="f-veh">Véhicule souhaité</label>
+          <select id="f-veh" required>
+            <option>Coupé Élégance V6 — 845 000 DH</option>
+            <option>Berline Sport GT 2.0 — 465 000 DH</option>
+            <option>Roadster Héritage — 620 000 DH</option>
+            <option>SUV Prestige 4×4 — 1 150 000 DH</option>
+            <option>Limousine Affaires Hybride — 980 000 DH</option>
+            <option>Cabriolet Riviera — 545 000 DH</option>
+            <option>Autre véhicule premium</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-date">Date de l'essai</label>
+          <input type="date" id="f-date" required>
+        </div>
+        <div>
+          <label for="f-nom">Votre nom</label>
+          <input type="text" id="f-nom" placeholder="Nom complet" required>
+        </div>
+        <div>
+          <label for="f-tel">Téléphone</label>
+          <input type="tel" id="f-tel" placeholder="06 XX XX XX XX" required>
+        </div>
+        <button class="btn" type="submit" style="justify-content:center">Envoyer ma demande sur WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="frow">
+      <div>
+        <a class="logo" href="#">IMPERIAL <span>MOTORS</span><small>TANGER · PREMIUM AUTO</small></a>
+        <p style="margin-top:16px">Concessionnaire de voitures premium à Tanger : véhicules neufs et occasions certifiées, financement et reprise, avec 12 mois de garantie.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <div class="fnav">
+          <a href="#inventaire">Inventaire</a>
+          <a href="#services">Services</a>
+          <a href="#pourquoi">Pourquoi nous</a>
+          <a href="#essai">Réserver un essai</a>
+        </div>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="fnav">
+          <span>📍 Zone automobile, Tanger</span>
+          <span>🕘 Lun – Sam : 9 h – 19 h</span>
+          <a href="https://wa.me/212693981822" target="_blank" rel="noopener">💬 WhatsApp : +212 693 981 822</a>
+        </div>
+      </div>
+    </div>
+    <div class="legal">© 2026 IMPERIAL MOTORS — Tanger. Démonstration réalisée par Tanja Web — Tanger. Véhicules et prix fictifs, présentés à titre d'exemple.</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/212693981822?text=Bonjour%20IMPERIAL%20MOTORS%2C%20je%20cherche%20un%20v%C3%A9hicule%20premium%20%C3%A0%20Tanger." target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script>
+document.getElementById('essaiForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var veh = document.getElementById('f-veh').value;
+  var date = document.getElementById('f-date').value;
+  var nom = document.getElementById('f-nom').value.trim();
+  var tel = document.getElementById('f-tel').value.trim();
+  var msg = "Bonjour IMPERIAL MOTORS, je souhaite réserver un essai.\n" +
+            "• Véhicule : " + veh + "\n" +
+            "• Date souhaitée : " + date + "\n" +
+            "• Nom : " + nom + "\n" +
+            "• Téléphone : " + tel;
+  window.open("https://wa.me/212693981822?text=" + encodeURIComponent(msg), "_blank");
+});
+</script>
+</body>
+</html>

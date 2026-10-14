@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>NUIT DE RÊVE — Wedding Planner & Événements à Tanger</title>
+<meta name="description" content="NUIT DE RÊVE — organisation de mariages et événements haut de gamme à Tanger. Décoration, traiteur, photographie, animation et coordination jour J.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivoire:#FAF6F0; --blanc:#FFFDF9; --or:#C2A059; --or-doux:#D9BE8C;
+    --rose:#EAD3CB; --rose-fonce:#C79A8E; --encre:#3B352F; --gris:#7A7268;
+    --ligne:rgba(194,160,89,.28);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Jost',sans-serif;background:var(--ivoire);color:var(--encre);font-weight:300;line-height:1.65}
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  .badge-demo{position:fixed;top:14px;left:14px;z-index:200;background:rgba(59,53,47,.88);color:#F3E7CE;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:8px 14px;border-radius:50px;backdrop-filter:blur(4px)}
+  /* Header */
+  header{position:absolute;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:26px 5vw;color:#FFF9F0}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.65rem;letter-spacing:.28em;font-weight:600}
+  .logo span{color:var(--or-doux)}
+  nav{display:flex;gap:34px;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase}
+  nav a{opacity:.92;transition:.25s}
+  nav a:hover{color:var(--or-doux);opacity:1}
+  .btn-cta{border:1px solid rgba(255,249,240,.75);padding:11px 24px;border-radius:50px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s}
+  .btn-cta:hover{background:var(--or);border-color:var(--or);color:#fff}
+  /* Hero */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;justify-content:center;text-align:center;color:#FFF9F0;overflow:hidden}
+  .hero-bg{position:absolute;inset:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover}
+  .hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,36,30,.42) 0%,rgba(43,36,30,.12) 40%,rgba(43,36,30,.55) 100%)}
+  .hero-content{position:relative;padding:120px 6vw 90px;max-width:900px}
+  .hero-sur{font-size:.8rem;letter-spacing:.42em;text-transform:uppercase;color:var(--or-doux);margin-bottom:22px}
+  .hero h1{font-size:clamp(2.5rem,6.2vw,4.6rem);line-height:1.08;font-weight:500}
+  .hero h1 em{font-style:italic;color:#F6E3C5}
+  .hero p{margin:24px auto 36px;max-width:560px;font-size:1.05rem;color:rgba(255,249,240,.92)}
+  .btn-or{display:inline-block;background:var(--or);color:#fff;padding:16px 40px;border-radius:50px;font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;transition:.3s;box-shadow:0 12px 30px rgba(59,53,47,.3)}
+  .btn-or:hover{background:#AC8A45;transform:translateY(-2px)}
+  .hero-orn{font-size:1.3rem;color:var(--or-doux);letter-spacing:.6em;margin-top:44px}
+  /* Sections */
+  section{padding:100px 6vw}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 56px}
+  .sec-sur{font-size:.75rem;letter-spacing:.4em;text-transform:uppercase;color:var(--or);margin-bottom:14px}
+  .sec-head h2{font-size:clamp(2rem,4.4vw,3rem);line-height:1.15}
+  .sec-head p{color:var(--gris);margin-top:14px}
+  .orn{color:var(--or);letter-spacing:.55em;font-size:.95rem;margin-top:18px}
+  /* Services */
+  .services{background:var(--blanc)}
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px;max-width:1180px;margin:0 auto}
+  .svc{border:1px solid var(--ligne);border-radius:18px;padding:38px 26px;text-align:center;background:var(--ivoire);transition:.35s}
+  .svc:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(194,160,89,.16);border-color:var(--or)}
+  .svc .ico{font-size:2rem;margin-bottom:16px}
+  .svc h3{font-size:1.35rem;margin-bottom:10px}
+  .svc p{font-size:.92rem;color:var(--gris)}
+  /* Galerie */
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1180px;margin:0 auto}
+  .gal-grid figure{border-radius:16px;overflow:hidden;aspect-ratio:3/4}
+  .gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .gal-grid figure:hover img{transform:scale(1.06)}
+  /* Formules */
+  .formules{background:linear-gradient(180deg,var(--ivoire),#F5EDE0)}
+  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;max-width:1120px;margin:0 auto;align-items:stretch}
+  .plan{background:var(--blanc);border:1px solid var(--ligne);border-radius:22px;padding:44px 34px;display:flex;flex-direction:column;text-align:center;transition:.35s}
+  .plan:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(194,160,89,.18)}
+  .plan.pop{border:2px solid var(--or);position:relative}
+  .plan .tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--or);color:#fff;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;padding:6px 18px;border-radius:50px;white-space:nowrap}
+  .plan h3{font-size:1.7rem;letter-spacing:.06em}
+  .plan .prix{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gris);margin-top:8px}
+  .plan .prix strong{display:block;font-size:2.3rem;color:var(--or);font-weight:600;margin-top:2px}
+  .plan ul{list-style:none;margin:26px 0 32px;text-align:left;font-size:.94rem}
+  .plan li{padding:8px 0;border-bottom:1px dashed var(--ligne);color:#554C43}
+  .plan li::before{content:"✦ ";color:var(--rose-fonce)}
+  .plan .btn-plan{margin-top:auto;border:1px solid var(--or);color:var(--or);padding:13px 0;border-radius:50px;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s;display:block}
+  .plan .btn-plan:hover,.plan.pop .btn-plan{background:var(--or);color:#fff}
+  /* Témoignages */
+  .temo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;max-width:1000px;margin:0 auto}
+  .temo{background:var(--blanc);border:1px solid var(--ligne);border-radius:22px;padding:42px 36px;text-align:center}
+  .temo .stars{color:var(--or);letter-spacing:.3em;margin-bottom:18px}
+  .temo blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;line-height:1.5;color:#4A4239}
+  .temo .qui{margin-top:20px;font-size:.82rem;letter-spacing:.24em;text-transform:uppercase;color:var(--rose-fonce)}
+  /* Devis */
+  .devis{background:#37312B;color:#F5EDDF}
+  .devis .sec-head h2{color:#FFF9F0}
+  .devis .sec-head p{color:rgba(245,237,223,.72)}
+  .devis-wrap{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:54px;align-items:center}
+  .devis-img{border-radius:20px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+  .devis-img img{width:100%;height:100%;object-fit:cover}
+  form{display:grid;gap:18px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  label{font-size:.75rem;letter-spacing:.26em;text-transform:uppercase;color:var(--or-doux);display:block;margin-bottom:8px}
+  input,select{width:100%;background:rgba(255,249,240,.06);border:1px solid rgba(217,190,140,.4);border-radius:12px;padding:14px 16px;color:#FFF9F0;font-family:'Jost',sans-serif;font-size:.98rem}
+  input:focus,select:focus{outline:none;border-color:var(--or)}
+  select option{color:#3B352F}
+  input[type="date"]{color-scheme:dark}
+  .btn-submit{background:var(--or);color:#fff;border:none;cursor:pointer;padding:17px;border-radius:50px;font-family:'Jost',sans-serif;font-size:.88rem;letter-spacing:.22em;text-transform:uppercase;transition:.3s;margin-top:6px}
+  .btn-submit:hover{background:#AC8A45}
+  .devis-note{font-size:.85rem;color:rgba(245,237,223,.6);text-align:center}
+  /* Footer */
+  footer{background:#2B2620;color:rgba(245,237,223,.75);text-align:center;padding:64px 6vw 34px}
+  footer .logo{color:#FFF9F0;margin-bottom:14px}
+  footer .f-nav{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;margin:22px 0 30px}
+  footer .f-nav a:hover{color:var(--or-doux)}
+  .credit{border-top:1px solid rgba(217,190,140,.22);padding-top:24px;font-size:.85rem;color:rgba(245,237,223,.55)}
+  @media(max-width:900px){
+    nav{display:none}
+    .gal-grid{grid-template-columns:repeat(2,1fr)}
+    .devis-wrap{grid-template-columns:1fr}
+    .devis-img{aspect-ratio:16/10}
+    section{padding:70px 6vw}
+  }
+  @media(max-width:520px){
+    .frow{grid-template-columns:1fr}
+    .logo{font-size:1.25rem}
+    .btn-cta{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="badge-demo">Modèle de démonstration</div>
+
+<header>
+  <a class="logo" href="#">NUIT <span>DE RÊVE</span></a>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#formules">Formules</a>
+    <a href="#temoignages">Témoignages</a>
+  </nav>
+  <a class="btn-cta" href="#devis">Demander un devis</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"><img src="reve/photo-1519741497674-611481863552.jpg" alt="Couple de mariés main dans la main"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <div class="hero-sur">Wedding Planner — Tanger</div>
+    <h1>VOTRE PLUS BEAU JOUR, <em>ORCHESTRÉ</em> DANS LES MOINDRES DÉTAILS</h1>
+    <p>De la première esquisse à la dernière danse, notre équipe compose des mariages d'exception à Tanger et dans tout le nord du Maroc — vous n'avez qu'à vivre l'instant.</p>
+    <a class="btn-or" href="#devis">Planifier mon mariage</a>
+    <div class="hero-orn">✦ ✦ ✦</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-head">
+    <div class="sec-sur">Nos Services</div>
+    <h2>Un savoir-faire complet, une seule équipe</h2>
+    <p>Chaque détail est pensé, coordonné et sublimé par nos spécialistes — décorateurs, chefs partenaires, photographes et animateurs triés sur le volet.</p>
+    <div class="orn">✦ ✦ ✦</div>
+  </div>
+  <div class="svc-grid">
+    <div class="svc">
+      <div class="ico">🌸</div>
+      <h3>Décoration</h3>
+      <p>Scénographie florale sur mesure, arche de cérémonie, centres de table et éclairage d'ambiance dans les tons de votre thème.</p>
+    </div>
+    <div class="svc">
+      <div class="ico">🍽️</div>
+      <h3>Traiteur partenaire</h3>
+      <p>Menus dégustation avec nos traiteurs partenaires : cuisine marocaine raffinée, gastronomie internationale et pâtisserie fine.</p>
+    </div>
+    <div class="svc">
+      <div class="ico">📷</div>
+      <h3>Photographie</h3>
+      <p>Reportage photo et film cinématographique de vos préparatifs jusqu'à la soirée, album prestige et galerie privée en ligne.</p>
+    </div>
+    <div class="svc">
+      <div class="ico">🎶</div>
+      <h3>Animation</h3>
+      <p>Orchestre, DJ, troupe andalouse ou violonistes : une programmation musicale qui fait vibrer vos invités toute la nuit.</p>
+    </div>
+    <div class="svc">
+      <div class="ico">🕊️</div>
+      <h3>Coordination jour J</h3>
+      <p>Planning minute par minute, gestion des prestataires et des imprévus — vous profitez, nous veillons à tout, en toute discrétion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section id="galerie">
+  <div class="sec-head">
+    <div class="sec-sur">Galerie</div>
+    <h2>Des instants qui restent gravés</h2>
+    <p>Quelques fragments de célébrations que nous avons eu l'honneur d'orchestrer.</p>
+    <div class="orn">✦ ✦ ✦</div>
+  </div>
+  <div class="gal-grid">
+    <figure><img src="reve/photo-1522673607200-164d1b6ce486.jpg" alt="Mains des mariés et alliances" loading="lazy"></figure>
+    <figure><img src="reve/photo-1469371670807-013ccf25f16a.jpg" alt="Table de réception dressée en plein air" loading="lazy"></figure>
+    <figure><img src="reve/photo-1520854221256-17451cc331bf.jpg" alt="Mariée en robe blanche" loading="lazy"></figure>
+    <figure><img src="reve/photo-1465495976277-4387d4b0b4c6.jpg" alt="Mariés sous les étincelles de la soirée" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- FORMULES -->
+<section class="formules" id="formules">
+  <div class="sec-head">
+    <div class="sec-sur">Nos Formules</div>
+    <h2>Trois formules, un même niveau d'exigence</h2>
+    <p>Des tarifs transparents, adaptables à votre lieu, votre nombre d'invités et vos envies.</p>
+    <div class="orn">✦ ✦ ✦</div>
+  </div>
+  <div class="plans">
+    <div class="plan">
+      <h3>Essentielle</h3>
+      <div class="prix">à partir de <strong>19 900 DH</strong></div>
+      <ul>
+        <li>Coordination jour J (jusqu'à 150 invités)</li>
+        <li>Décoration de la salle et des tables</li>
+        <li>Arche de cérémonie florale</li>
+        <li>DJ et sonorisation de la soirée</li>
+        <li>Planning détaillé des prestataires</li>
+      </ul>
+      <a class="btn-plan" href="#devis">Choisir Essentielle</a>
+    </div>
+    <div class="plan pop">
+      <div class="tag">La plus demandée</div>
+      <h3>Signature</h3>
+      <div class="prix">à partir de <strong>39 900 DH</strong></div>
+      <ul>
+        <li>Toute la formule Essentielle, jusqu'à 300 invités</li>
+        <li>Scénographie florale complète sur mesure</li>
+        <li>Photographe et vidéaste professionnels</li>
+        <li>Orchestre live ou troupe andalouse</li>
+        <li>Dégustation traiteur pour les mariés</li>
+        <li>Voiture de cérémonie décorée</li>
+      </ul>
+      <a class="btn-plan" href="#devis">Choisir Signature</a>
+    </div>
+    <div class="plan">
+      <h3>Royale</h3>
+      <div class="prix">à partir de <strong>79 900 DH</strong></div>
+      <ul>
+        <li>Toute la formule Signature, invités illimités</li>
+        <li>Organisation complète de A à Z</li>
+        <li>Lieu d'exception privatisé (villa, palais, bord de mer)</li>
+        <li>Film cinématographique et drone</li>
+        <li>Animation internationale et feu d'artifice</li>
+        <li>Conciergerie invités et hébergement</li>
+      </ul>
+      <a class="btn-plan" href="#devis">Choisir Royale</a>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section id="temoignages">
+  <div class="sec-head">
+    <div class="sec-sur">Témoignages</div>
+    <h2>Ils ont vécu leur nuit de rêve</h2>
+    <div class="orn">✦ ✦ ✦</div>
+  </div>
+  <div class="temo-grid">
+    <div class="temo">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <blockquote>« Nous n'avons eu à penser à rien. La décoration était digne d'un magazine, la soirée a coulé comme un rêve du début à la fin. Nos invités en parlent encore, six mois après. »</blockquote>
+      <div class="qui">Salma &amp; Youssef — Villa à Tanger</div>
+    </div>
+    <div class="temo">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <blockquote>« Une équipe d'un calme et d'un goût incroyables. Chaque détail — des fleurs à la musique — racontait notre histoire. Le plus beau jour de notre vie, sans une minute de stress. »</blockquote>
+      <div class="qui">Lina &amp; Omar — Bord de mer, Achakar</div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVIS -->
+<section class="devis" id="devis">
+  <div class="sec-head">
+    <div class="sec-sur">Devis gratuit</div>
+    <h2>Demander un devis</h2>
+    <p>Dites-nous en quelques mots le mariage dont vous rêvez — nous revenons vers vous sous 24 h avec une première proposition.</p>
+  </div>
+  <div class="devis-wrap">
+    <div class="devis-img"><img src="reve/photo-1583939003579-730e3918a45a.jpg" alt="Couple de mariés élégants" loading="lazy"></div>
+    <form id="devisForm">
+      <div class="frow">
+        <div>
+          <label for="f-nom">Vos noms</label>
+          <input id="f-nom" type="text" placeholder="Ex. Salma & Youssef" required>
+        </div>
+        <div>
+          <label for="f-date">Date du mariage</label>
+          <input id="f-date" type="date" required>
+        </div>
+      </div>
+      <div class="frow">
+        <div>
+          <label for="f-lieu">Lieu envisagé</label>
+          <input id="f-lieu" type="text" placeholder="Ex. Villa, hôtel, bord de mer à Tanger…" required>
+        </div>
+        <div>
+          <label for="f-invites">Nombre d'invités</label>
+          <input id="f-invites" type="number" min="20" step="10" placeholder="Ex. 250" required>
+        </div>
+      </div>
+      <div>
+        <label for="f-formule">Formule souhaitée</label>
+        <select id="f-formule">
+          <option>Essentielle — dès 19 900 DH</option>
+          <option selected>Signature — dès 39 900 DH</option>
+          <option>Royale — dès 79 900 DH</option>
+          <option>Je ne sais pas encore, conseillez-moi</option>
+        </select>
+      </div>
+      <button class="btn-submit" type="submit">Recevoir mon devis sur WhatsApp</button>
+      <div class="devis-note">Réponse sous 24 h — sans aucun engagement.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">NUIT <span style="color:var(--or-doux)">DE RÊVE</span></div>
+  <p>Wedding planner &amp; organisateur d'événements — Tanger, Maroc</p>
+  <div class="f-nav">
+    <a href="#services">Services</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#formules">Formules</a>
+    <a href="#devis">Devis</a>
+  </div>
+  <div class="credit">Démonstration réalisée par Tanja Web — Tanger</div>
+</footer>
+
+<script>
+  document.getElementById('devisForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var nom = document.getElementById('f-nom').value.trim();
+    var date = document.getElementById('f-date').value;
+    var lieu = document.getElementById('f-lieu').value.trim();
+    var invites = document.getElementById('f-invites').value;
+    var formule = document.getElementById('f-formule').value;
+    var msg = "Bonjour NUIT DE RÊVE, nous sommes " + nom + ". "
+      + "Nous préparons notre mariage prévu le " + date + " à " + lieu + " "
+      + "(environ " + invites + " invités). "
+      + "Nous sommes intéressés par la formule : " + formule + ". "
+      + "Pouvez-vous nous envoyer un devis ? Merci !";
+    window.open("https://wa.me/212693981822?text=" + encodeURIComponent(msg), "_blank");
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>AZURA BAY — Resort & Spa · Tanger</title>
+<meta name="description" content="AZURA BAY, resort & spa en bord de mer à Tanger. Suites vue océan, villa privée, spa signature et dîners sur la plage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#014C3E;--deep2:#0B262A;--gold:#D4A559;--ivory:#FFFCF9;--beige:#DFD3C7;--ink:#22302c}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;color:var(--ink);background:var(--ivory);line-height:1.6}
+h1,h2,h3,.serif{font-family:'Playfair Display',serif}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.badge{position:fixed;top:14px;left:14px;z-index:60;background:var(--deep2);color:var(--gold);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:8px 14px;border:1px solid rgba(212,165,89,.5);border-radius:50px}
+/* header */
+header{position:absolute;top:0;left:0;right:0;z-index:50;color:#fff}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;letter-spacing:.22em;color:#fff}
+.logo span{color:var(--gold)}
+.nav nav{display:flex;gap:34px;font-size:.86rem;letter-spacing:.14em;text-transform:uppercase}
+.nav nav a{opacity:.92}.nav nav a:hover{color:var(--gold)}
+.btn{display:inline-block;background:var(--gold);color:var(--deep2);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:.82rem;padding:14px 30px;border-radius:50px;transition:.25s;border:1px solid var(--gold);cursor:pointer}
+.btn:hover{background:transparent;color:var(--gold)}
+.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+/* hero */
+.hero{position:relative;min-height:96vh;display:flex;align-items:flex-end;color:#fff;background:var(--deep2)}
+.hero .bg{position:absolute;inset:0}
+.hero .bg img{width:100%;height:100%;object-fit:cover}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,38,42,.45),rgba(11,38,42,.15) 45%,rgba(11,38,42,.78))}
+.hero-in{position:relative;z-index:2;padding:150px 0 120px;width:100%}
+.kicker{letter-spacing:.34em;text-transform:uppercase;font-size:.78rem;color:var(--gold);margin-bottom:18px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.6rem);line-height:1.08;font-weight:600;max-width:820px}
+.hero p{max-width:560px;font-weight:300;font-size:1.12rem;margin:22px 0 34px;color:#f2ead9}
+/* booking bar */
+.booking{position:relative;z-index:5;margin-top:-58px}
+.book-card{background:#fff;border:1px solid var(--beige);box-shadow:0 30px 60px rgba(11,38,42,.16);border-radius:18px;padding:26px;display:grid;grid-template-columns:repeat(4,1fr) auto;gap:16px;align-items:end}
+.field label{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--deep);font-weight:600;margin-bottom:8px}
+.field input,.field select{width:100%;border:1px solid var(--beige);border-radius:10px;padding:13px 14px;font-family:inherit;font-size:.98rem;background:var(--ivory);color:var(--ink)}
+.book-card .btn{white-space:nowrap}
+/* sections */
+section{padding:96px 0}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 54px}
+.sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--deep2);font-weight:600}
+.sec-head p{color:#5c6a64;margin-top:12px;font-weight:300;font-size:1.06rem}
+.rule{width:64px;height:2px;background:var(--gold);margin:18px auto 0}
+/* suites */
+.suites{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.suite{background:#fff;border:1px solid var(--beige);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.suite:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(11,38,42,.14)}
+.suite .ph{aspect-ratio:4/3;overflow:hidden}
+.suite .ph img{width:100%;height:100%;object-fit:cover}
+.suite .bd{padding:26px;display:flex;flex-direction:column;flex:1}
+.suite h3{font-size:1.4rem;color:var(--deep2)}
+.suite .meta{font-size:.86rem;color:#7a857f;letter-spacing:.06em;margin:6px 0 12px}
+.suite p{font-weight:300;color:#4c5a54;flex:1}
+.price{display:flex;align-items:baseline;gap:8px;margin:18px 0}
+.price strong{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--deep)}
+.price span{color:#7a857f;font-size:.9rem}
+.suite .btn{text-align:center}
+/* experiences */
+.exp-sec{background:var(--deep2);color:var(--ivory)}
+.exp-sec .sec-head h2{color:#fff}
+.exp-sec .sec-head p{color:#cfd8cf}
+.exp{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.exp-card{border:1px solid rgba(212,165,89,.35);border-radius:16px;padding:30px 24px;background:rgba(255,252,249,.03)}
+.exp-card .ic{font-size:1.7rem;margin-bottom:14px}
+.exp-card h3{font-size:1.18rem;color:var(--gold);margin-bottom:8px}
+.exp-card p{font-weight:300;color:#d9dfd5;font-size:.96rem}
+/* galerie */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gal figure{border-radius:14px;overflow:hidden;aspect-ratio:1/1}
+.gal figure.wide{grid-column:span 2;aspect-ratio:2/1}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal figure:hover img{transform:scale(1.06)}
+/* témoignage */
+.testi{background:var(--beige);text-align:center}
+.testi blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.3rem,2.6vw,1.8rem);color:var(--deep2);max-width:820px;margin:0 auto;line-height:1.5}
+.testi .who{margin-top:22px;letter-spacing:.18em;text-transform:uppercase;font-size:.8rem;color:var(--deep)}
+.stars{color:var(--gold);font-size:1.1rem;letter-spacing:.3em;margin-bottom:24px}
+/* cta */
+.cta{background:var(--deep);color:#fff;text-align:center}
+.cta h2{font-size:clamp(2rem,4vw,3rem);font-weight:600}
+.cta p{color:#d8e2d8;font-weight:300;margin:14px auto 30px;max-width:520px}
+/* footer */
+footer{background:var(--deep2);color:#cfe0d6;padding:64px 0 30px}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;margin-bottom:44px}
+footer .logo{margin-bottom:14px}
+footer p{font-weight:300;font-size:.95rem;color:#aebfb2}
+footer h4{color:var(--gold);font-family:'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;margin-bottom:16px}
+footer li{list-style:none;margin-bottom:10px;font-weight:300}
+footer li a:hover{color:var(--gold)}
+.fbot{border-top:1px solid rgba(212,165,89,.25);padding-top:22px;text-align:center;font-size:.85rem;color:#93a89a}
+@media(max-width:960px){
+ .book-card{grid-template-columns:1fr 1fr}
+ .suites,.exp{grid-template-columns:1fr 1fr}
+ .gal{grid-template-columns:1fr 1fr}
+ .fgrid{grid-template-columns:1fr}
+ .nav nav{display:none}
+}
+@media(max-width:560px){
+ .book-card,.suites,.exp{grid-template-columns:1fr}
+ section{padding:64px 0}
+}
+</style>
+</head>
+<body>
+<div class="badge">Modèle de démonstration</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">AZURA <span>BAY</span></a>
+    <nav>
+      <a href="#suites">Suites</a>
+      <a href="#experiences">Expériences</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn ghost" href="https://wa.me/212693981822?text=Bonjour%20AZURA%20BAY%2C%20je%20souhaite%20des%20informations%20pour%20un%20s%C3%A9jour%20%C3%A0%20Tanger." target="_blank" rel="noopener">Réserver</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="bg"><img src="azura/beach.jpg" alt="Plage turquoise d'AZURA BAY à Tanger"></div>
+  <div class="wrap hero-in">
+    <div class="kicker">Resort & Spa · Bord de mer · Tanger</div>
+    <h1>LE LUXE AU RYTHME DE L'OCÉAN</h1>
+    <p>Les pieds dans le sable, face à l'Atlantique. Suites ouvertes sur l'horizon, spa signature et soirées privées sur la plage — AZURA BAY compose votre séjour comme une parenthèse rare.</p>
+    <a class="btn" href="#reservation">Vérifier les disponibilités</a>
+  </div>
+</div>
+
+<div class="wrap booking" id="reservation">
+  <form class="book-card" id="bookForm">
+    <div class="field"><label for="in">Arrivée</label><input type="date" id="in" required></div>
+    <div class="field"><label for="out">Départ</label><input type="date" id="out" required></div>
+    <div class="field"><label for="guests">Voyageurs</label>
+      <select id="guests"><option>1 personne</option><option selected>2 personnes</option><option>3 personnes</option><option>4 personnes</option><option>5 personnes et +</option></select></div>
+    <div class="field"><label for="suite">Hébergement</label>
+      <select id="suite"><option>Suite Jardin — 1 890 DH/nuit</option><option selected>Suite Océan — 3 200 DH/nuit</option><option>Villa Azura privée — 7 500 DH/nuit</option></select></div>
+    <button class="btn" type="submit">Réserver sur WhatsApp</button>
+  </form>
+</div>
+
+<section id="suites">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Hébergements</div>
+      <h2>Suites & villa privée</h2>
+      <p>Trois adresses, une même exigence : la lumière, l'espace et le murmure de l'océan dès le réveil.</p>
+      <div class="rule"></div>
+    </div>
+    <div class="suites">
+      <article class="suite">
+        <div class="ph"><img src="azura/shore.jpg" alt="Suite Jardin AZURA BAY"></div>
+        <div class="bd">
+          <h3>Suite Jardin</h3>
+          <div class="meta">55 m² · Terrasse privée · 2 personnes</div>
+          <p>Ouverte sur les jardins parfumés du resort, avec terrasse ombragée et accès direct à la piscine lagon.</p>
+          <div class="price"><strong>1 890 DH</strong><span>/ nuit</span></div>
+          <a class="btn" href="https://wa.me/212693981822?text=Bonjour%20AZURA%20BAY%2C%20je%20souhaite%20r%C3%A9server%20la%20Suite%20Jardin%20(1%20890%20DH%2Fnuit)." target="_blank" rel="noopener">Réserver</a>
+        </div>
+      </article>
+      <article class="suite">
+        <div class="ph"><img src="azura/resort.jpg" alt="Suite Océan AZURA BAY"></div>
+        <div class="bd">
+          <h3>Suite Océan</h3>
+          <div class="meta">78 m² · Balcon face mer · 2–3 personnes</div>
+          <p>Vue panoramique sur l'Atlantique, baignoire face à l'horizon et petit-déjeuner servi sur votre balcon.</p>
+          <div class="price"><strong>3 200 DH</strong><span>/ nuit</span></div>
+          <a class="btn" href="https://wa.me/212693981822?text=Bonjour%20AZURA%20BAY%2C%20je%20souhaite%20r%C3%A9server%20la%20Suite%20Oc%C3%A9an%20(3%20200%20DH%2Fnuit)." target="_blank" rel="noopener">Réserver</a>
+        </div>
+      </article>
+      <article class="suite">
+        <div class="ph"><img src="azura/villa.jpg" alt="Villa Azura privée avec piscine"></div>
+        <div class="bd">
+          <h3>Villa Azura privée</h3>
+          <div class="meta">240 m² · Piscine privée · Jusqu'à 6 personnes</div>
+          <p>Notre adresse la plus exclusive : piscine privée, majordome dédié et dîner du chef servi en villa.</p>
+          <div class="price"><strong>7 500 DH</strong><span>/ nuit</span></div>
+          <a class="btn" href="https://wa.me/212693981822?text=Bonjour%20AZURA%20BAY%2C%20je%20souhaite%20r%C3%A9server%20la%20Villa%20Azura%20priv%C3%A9e%20(7%20500%20DH%2Fnuit)." target="_blank" rel="noopener">Réserver</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="exp-sec" id="experiences">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Expériences</div>
+      <h2>Des journées composées pour vous</h2>
+      <p>Du premier rayon de soleil au dîner les pieds dans le sable, chaque moment devient un souvenir.</p>
+      <div class="rule"></div>
+    </div>
+    <div class="exp">
+      <div class="exp-card"><div class="ic">🌿</div><h3>Spa signature</h3><p>Rituels au sel de mer et aux huiles d'argan, hammam privatif et massages face à l'océan.</p></div>
+      <div class="exp-card"><div class="ic">💧</div><h3>Piscine lagon</h3><p>Un lagon d'eau turquoise bordé de palmiers, cabanas privées et service au transat.</p></div>
+      <div class="exp-card"><div class="ic">🧘</div><h3>Yoga au lever du soleil</h3><p>Séances quotidiennes sur la terrasse panoramique, bercées par le bruit des vagues.</p></div>
+      <div class="exp-card"><div class="ic">🕯️</div><h3>Dîner privé sur la plage</h3><p>Une table dressée rien que pour vous sur le sable, menu du chef et ciel étoilé en décor.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="galerie">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Galerie</div>
+      <h2>AZURA BAY en images</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="gal">
+      <figure class="wide"><img src="azura/beach.jpg" alt="Plage turquoise"></figure>
+      <figure><img src="azura/spa.jpg" alt="Spa signature"></figure>
+      <figure><img src="azura/villa.jpg" alt="Villa privée et sa piscine"></figure>
+      <figure><img src="azura/shore.jpg" alt="Rivage au coucher du soleil"></figure>
+      <figure class="wide"><img src="azura/resort.jpg" alt="Le resort vu du ciel"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="testi">
+  <div class="wrap">
+    <div class="stars">★ ★ ★ ★ ★</div>
+    <blockquote>« Trois nuits face à l'océan et nous avons oublié le monde. Le dîner privé sur la plage restera le plus beau souvenir de notre voyage au Maroc. »</blockquote>
+    <div class="who">Claire & Mehdi — Paris · Suite Océan</div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2>Votre parenthèse océan commence ici</h2>
+    <p>Écrivez-nous sur WhatsApp : notre conciergerie vous répond en quelques minutes et compose votre séjour sur mesure.</p>
+    <a class="btn" href="https://wa.me/212693981822?text=Bonjour%20AZURA%20BAY%2C%20je%20souhaite%20composer%20mon%20s%C3%A9jour%20%C3%A0%20Tanger." target="_blank" rel="noopener">Nous écrire sur WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="logo">AZURA <span>BAY</span></div>
+        <p>Resort & spa en bord de mer à Tanger. Suites vue océan, villa privée, spa signature et expériences composées sur mesure, face à l'Atlantique.</p>
+      </div>
+      <div>
+        <h4>Le resort</h4>
+        <ul><li><a href="#suites">Suites & villa</a></li><li><a href="#experiences">Expériences</a></li><li><a href="#galerie">Galerie</a></li><li><a href="#reservation">Réservation</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul><li>Route de la plage, Tanger</li><li>WhatsApp : +212 6 93 98 18 22</li><li>Conciergerie 7j/7 · 8h – 23h</li></ul>
+      </div>
+    </div>
+    <div class="fbot">Démonstration réalisée par Tanja Web — Tanger</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('bookForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var d1=document.getElementById('in').value, d2=document.getElementById('out').value,
+      g=document.getElementById('guests').value, s=document.getElementById('suite').value;
+  function fr(d){ if(!d) return 'à définir'; var p=d.split('-'); return p[2]+'/'+p[1]+'/'+p[0]; }
+  var msg='Bonjour AZURA BAY, je souhaite réserver :\n• Hébergement : '+s+'\n• Arrivée : '+fr(d1)+'\n• Départ : '+fr(d2)+'\n• Voyageurs : '+g+'\nMerci de me confirmer la disponibilité.';
+  window.open('https://wa.me/212693981822?text='+encodeURIComponent(msg),'_blank');
+});
+</script>
+</body>
+</html>

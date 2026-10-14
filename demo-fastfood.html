@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>CRISPY HOUSE — Fast-Food à Tanger | Burgers, Pizza, Poulet Crispy</title>
+<meta name="description" content="CRISPY HOUSE — fast-food à Tanger. Burgers généreux, poulet crispy, pizza et frites maison. Livraison en 30 minutes, ouvert 7j/7 de 11h à 23h.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E4002B; --red-dark:#B00020; --yellow:#FFC72C; --black:#111111; --dark:#1B1B1B;
+    --grey:#6f6f6f; --bg:#FFF9F0; --card:#ffffff; --radius:18px;
+    --shadow:0 10px 30px rgba(17,17,17,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Barlow',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--black);line-height:1.55}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+  h1,h2,h3,.cond{font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;text-transform:uppercase;letter-spacing:.5px;line-height:1.02}
+
+  /* Demo badge */
+  .demo-badge{background:var(--black);color:#fff;text-align:center;font-weight:700;font-size:.82rem;letter-spacing:2.5px;text-transform:uppercase;padding:8px 12px}
+  .demo-badge span{color:var(--yellow)}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:60;background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.08)}
+  .header-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+  .logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;letter-spacing:.5px;line-height:1}
+  .logo .c{color:var(--red)} .logo .h{color:var(--black)}
+  .logo small{display:block;font-family:'Barlow',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:4px;color:var(--grey);text-transform:uppercase;margin-top:2px}
+  nav.main{display:flex;gap:28px;font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.6px}
+  nav.main a{position:relative;padding:4px 0}
+  nav.main a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:3px;background:var(--red);transition:width .25s}
+  nav.main a:hover::after{width:100%}
+  .cart-btn{position:relative;background:var(--red);color:#fff;border:none;cursor:pointer;font:inherit;font-weight:800;text-transform:uppercase;letter-spacing:.6px;padding:12px 20px;border-radius:50px;display:flex;align-items:center;gap:9px;transition:background .2s,transform .15s}
+  .cart-btn:hover{background:var(--red-dark);transform:translateY(-1px)}
+  .cart-count{background:var(--yellow);color:var(--black);min-width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;padding:0 5px}
+
+  /* Hero */
+  .hero{background:var(--black);color:#fff;overflow:hidden;position:relative}
+  .hero::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(620px 340px at 85% 30%,rgba(228,0,43,.45),transparent 60%),
+    radial-gradient(500px 300px at 8% 90%,rgba(255,199,44,.20),transparent 60%)}
+  .hero-in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center;padding:64px 0 72px}
+  .hero .kicker{display:inline-block;background:var(--yellow);color:var(--black);font-weight:800;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;padding:7px 14px;border-radius:50px;margin-bottom:18px}
+  .hero h1{font-size:clamp(3rem,7.5vw,5.6rem);font-weight:800}
+  .hero h1 .r{color:var(--red)} .hero h1 .y{color:var(--yellow)}
+  .hero p{color:#d9d9d9;font-size:1.12rem;max-width:480px;margin:18px 0 26px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;padding:15px 28px;border-radius:50px;border:none;cursor:pointer;font-size:.95rem;transition:transform .15s,background .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red-dark)}
+  .btn-wa{background:#25D366;color:#08351a}.btn-wa:hover{background:#1eb857}
+  .btn-ghost{background:transparent;color:#fff;border:2px solid #fff}
+  .hero-media{position:relative}
+  .hero-media .frame{border-radius:28px;overflow:hidden;border:6px solid var(--yellow);box-shadow:0 30px 60px rgba(0,0,0,.5);transform:rotate(2deg)}
+  .hero-media img{width:100%;aspect-ratio:4/3.4;object-fit:cover}
+  .offer-chip{position:absolute;left:-14px;bottom:26px;background:var(--red);color:#fff;border-radius:16px;padding:14px 18px;box-shadow:var(--shadow);transform:rotate(-3deg)}
+  .offer-chip strong{font-family:'Barlow Condensed',sans-serif;font-size:1.9rem;display:block;line-height:1}
+  .offer-chip span{font-size:.82rem;font-weight:600;opacity:.92}
+  .offer-chip code{background:#fff;color:var(--red);font-weight:800;padding:1px 8px;border-radius:6px;font-size:.85rem}
+
+  /* Strip */
+  .strip{background:var(--yellow);color:var(--black);overflow:hidden;white-space:nowrap;padding:10px 0;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:2px;text-transform:uppercase}
+  .strip div{display:inline-block;animation:slide 22s linear infinite}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  section{padding:70px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 42px}
+  .sec-head .tag{color:var(--red);font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:.8rem}
+  .sec-head h2{font-size:clamp(2.1rem,4.5vw,3.1rem);font-weight:800;margin-top:6px}
+  .sec-head p{color:var(--grey);margin-top:10px}
+
+  /* Categories */
+  .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .cat{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;box-shadow:var(--shadow);border:none;padding:0;background:none;text-align:left;font:inherit;width:100%}
+  .cat img{width:100%;aspect-ratio:1/1.05;object-fit:cover;transition:transform .4s}
+  .cat:hover img{transform:scale(1.07)}
+  .cat span{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 16px;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.55rem;text-transform:uppercase;letter-spacing:1px;background:linear-gradient(transparent,rgba(0,0,0,.78))}
+  .cat em{position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-style:normal;font-weight:800;font-size:.72rem;letter-spacing:1.5px;padding:5px 11px;border-radius:50px;text-transform:uppercase}
+
+  /* Menu */
+  #menu{background:#fff}
+  .filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+  .filters button{font:inherit;font-weight:800;text-transform:uppercase;letter-spacing:.6px;font-size:.85rem;padding:10px 22px;border-radius:50px;border:2px solid var(--black);background:#fff;cursor:pointer;transition:.2s}
+  .filters button.active,.filters button:hover{background:var(--black);color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;border:1px solid #f0e9dd;transition:transform .25s}
+  .card:hover{transform:translateY(-5px)}
+  .card .ph{position:relative}
+  .card .ph img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .price{position:absolute;top:12px;left:12px;background:var(--yellow);color:var(--black);font-weight:800;padding:6px 13px;border-radius:50px;font-size:1rem;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+  .card .body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .card h3{font-size:1.45rem;font-weight:700}
+  .card p{color:var(--grey);font-size:.92rem;flex:1}
+  .add-btn{margin-top:6px;background:var(--red);color:#fff;border:none;cursor:pointer;font:inherit;font-weight:800;text-transform:uppercase;letter-spacing:.6px;padding:12px;border-radius:12px;transition:background .2s}
+  .add-btn:hover{background:var(--red-dark)}
+
+  /* Avantages */
+  .perks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .perk{background:var(--black);color:#fff;border-radius:var(--radius);padding:32px 26px;text-align:center}
+  .perk .ic{font-size:2.5rem;display:block;margin-bottom:12px}
+  .perk h3{font-size:1.6rem;color:var(--yellow);margin-bottom:8px}
+  .perk p{color:#cfcfcf;font-size:.95rem}
+
+  /* CTA band */
+  .cta-band{background:var(--red);color:#fff;text-align:center;border-radius:26px;padding:46px 26px}
+  .cta-band h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:800}
+  .cta-band p{opacity:.92;margin:10px auto 24px;max-width:520px}
+  .cta-band .btn{background:#fff;color:var(--red)}
+  .cta-band .btn:hover{background:var(--yellow);color:var(--black)}
+
+  /* Footer */
+  footer{background:var(--black);color:#bbb;padding:52px 0 0;margin-top:70px}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px;padding-bottom:36px}
+  footer h4{color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+  footer a:hover{color:var(--yellow)}
+  footer li{list-style:none;margin-bottom:8px;font-size:.95rem}
+  .foot-bottom{border-top:1px solid #2c2c2c;padding:20px 0;text-align:center;font-size:.9rem;color:#999}
+  .foot-bottom strong{color:#fff}
+
+  /* Cart drawer */
+  .overlay{position:fixed;inset:0;background:rgba(10,10,10,.55);opacity:0;pointer-events:none;transition:opacity .3s;z-index:80}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100dvh;width:min(420px,94vw);background:#fff;z-index:90;transform:translateX(105%);transition:transform .35s cubic-bezier(.2,.8,.25,1);display:flex;flex-direction:column;box-shadow:-12px 0 40px rgba(0,0,0,.25)}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;background:var(--black);color:#fff}
+  .drawer-head h3{font-size:1.5rem}
+  .drawer-head h3 span{color:var(--yellow)}
+  .close-x{background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;line-height:1;padding:4px}
+  .drawer-items{flex:1;overflow-y:auto;padding:18px 22px;display:flex;flex-direction:column;gap:14px}
+  .empty{color:var(--grey);text-align:center;padding:38px 10px}
+  .line{display:flex;gap:12px;align-items:center;border:1px solid #eee3d2;border-radius:14px;padding:10px}
+  .line img{width:64px;aspect-ratio:1;object-fit:cover;border-radius:10px}
+  .line .info{flex:1;min-width:0}
+  .line .info strong{display:block;font-size:.98rem}
+  .line .info small{color:var(--grey)}
+  .qty{display:flex;align-items:center;gap:8px}
+  .qty button{width:28px;height:28px;border-radius:50%;border:2px solid var(--black);background:#fff;font-weight:800;cursor:pointer;line-height:1}
+  .qty b{min-width:18px;text-align:center}
+  .rm{background:none;border:none;color:var(--red);font-weight:700;cursor:pointer;font-size:.82rem;padding:2px 0}
+  .drawer-foot{padding:20px 22px;border-top:2px dashed #e7dcc8;background:#fffdf7}
+  .total-row{display:flex;justify-content:space-between;font-weight:800;font-size:1.2rem;margin-bottom:14px}
+  .total-row span:last-child{color:var(--red)}
+  .order-btn{width:100%;background:#25D366;color:#07351a;border:none;cursor:pointer;font:inherit;font-weight:800;text-transform:uppercase;letter-spacing:.6px;padding:16px;border-radius:14px;font-size:1rem;transition:background .2s}
+  .order-btn:hover{background:#1eb857}
+  .order-btn:disabled{background:#c9c9c9;color:#777;cursor:not-allowed}
+
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,90px);background:var(--black);color:#fff;font-weight:700;padding:13px 24px;border-radius:50px;z-index:120;transition:transform .35s;box-shadow:var(--shadow)}
+  .toast.show{transform:translate(-50%,0)}
+  .toast span{color:var(--yellow)}
+
+  @media(max-width:980px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .cats{grid-template-columns:repeat(2,1fr)}
+    .hero-in{grid-template-columns:1fr;padding:48px 0 60px}
+    .hero-media{max-width:520px}
+    nav.main{display:none}
+  }
+  @media(max-width:560px){
+    .grid{grid-template-columns:1fr}
+    .perks{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .offer-chip{left:6px}
+    section{padding:52px 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-badge">Modèle de <span>démonstration</span></div>
+
+<header>
+  <div class="wrap header-in">
+    <a class="logo" href="#"><span class="c">CRISPY</span> <span class="h">HOUSE</span><small>Fast-Food · Tanger</small></a>
+    <nav class="main">
+      <a href="#accueil">Accueil</a>
+      <a href="#categories">Catégories</a>
+      <a href="#menu">Menu</a>
+      <a href="#avantages">Avantages</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" id="openCart" aria-label="Ouvrir le panier">🛒 Panier <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="accueil">
+  <div class="wrap hero-in">
+    <div>
+      <span class="kicker">🔥 Le fast-food préféré de Tanger</span>
+      <h1>LE GOÛT<br>QUI <span class="r">DÉ</span><span class="y">CHIRE</span></h1>
+      <p>Des burgers XXL, un poulet crispy mariné 24h, des frites maison dorées à la perfection. Préparé à la commande, livré chaud chez vous en 30 minutes.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-red" href="#menu">Voir le menu</a>
+        <a class="btn btn-wa" href="https://wa.me/212693981822?text=Bonjour%20CRISPY%20HOUSE%20!%20Je%20veux%20passer%20une%20commande." target="_blank" rel="noopener">Commander sur WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="frame"><img src="crispy/burger1.jpg" alt="Burger signature CRISPY HOUSE"></div>
+      <div class="offer-chip"><strong>-20%</strong><span>sur votre 1<sup>re</sup> commande avec le code</span> <code>CRISPY20</code></div>
+    </div>
+  </div>
+</div>
+
+<div class="strip" aria-hidden="true"><div>Burgers • Poulet Crispy • Pizza • Frites Maison • Livraison 30 min • Tanger •&nbsp;Burgers • Poulet Crispy • Pizza • Frites Maison • Livraison 30 min • Tanger •&nbsp;</div></div>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">Nos catégories</div>
+      <h2>Choisissez votre plaisir</h2>
+      <p>Quatre univers, une seule obsession : le goût. Cliquez sur une catégorie pour filtrer le menu.</p>
+    </div>
+    <div class="cats">
+      <button class="cat" data-filter="burgers"><img src="crispy/burger3.jpg" alt="Burgers"><em>Top ventes</em><span>Burgers</span></button>
+      <button class="cat" data-filter="pizza"><img src="crispy/pizza.jpg" alt="Pizza"><span>Pizza</span></button>
+      <button class="cat" data-filter="poulet"><img src="crispy/tenders.jpg" alt="Poulet crispy"><em>Crispy</em><span>Poulet</span></button>
+      <button class="cat" data-filter="sides"><img src="crispy/frites.jpg" alt="Accompagnements"><span>Sides</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">Le menu</div>
+      <h2>Les stars de la maison</h2>
+      <p>Ajoutez vos plats au panier et commandez en un clic sur WhatsApp. Prix en dirhams, sans frais cachés.</p>
+    </div>
+    <div class="filters" id="filters">
+      <button class="active" data-filter="all">Tout</button>
+      <button data-filter="burgers">Burgers</button>
+      <button data-filter="pizza">Pizza</button>
+      <button data-filter="poulet">Poulet</button>
+      <button data-filter="sides">Sides</button>
+    </div>
+    <div class="grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<!-- AVANTAGES -->
+<section id="avantages" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">Pourquoi nous ?</div>
+      <h2>Simple, rapide, délicieux</h2>
+    </div>
+    <div class="perks">
+      <div class="perk"><span class="ic">🛵</span><h3>Livraison 30 min</h3><p>Commandez, on s'occupe du reste. Votre repas arrive chaud et croustillant, partout à Tanger, en 30 minutes chrono.</p></div>
+      <div class="perk"><span class="ic">👨‍🍳</span><h3>Fait maison</h3><p>Pains briochés du jour, sauces secrètes préparées chaque matin, viande 100% bœuf et poulet mariné maison.</p></div>
+      <div class="perk"><span class="ic">🕚</span><h3>Ouvert 7j/7</h3><p>De 11h à 23h, tous les jours, même les week-ends et jours fériés. La faim n'attend pas, nous non plus.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Une petite faim ?</h2>
+      <p>Composez votre commande dans le panier ou écrivez-nous directement — on vous répond en quelques minutes.</p>
+      <a class="btn" href="https://wa.me/212693981822?text=Bonjour%20CRISPY%20HOUSE%20!%20Je%20veux%20passer%20une%20commande." target="_blank" rel="noopener">💬 Commander sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#" style="margin-bottom:12px;display:inline-block"><span style="color:var(--red)">CRISPY</span> <span style="color:#fff">HOUSE</span></a>
+        <p style="font-size:.95rem;max-width:340px">Le fast-food qui déchire à Tanger : burgers généreux, poulet crispy, pizza et frites maison, préparés à la commande.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#categories">Catégories</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#avantages">Avantages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>📍 Centre-ville, Tanger</li>
+          <li>🕚 Ouvert 7j/7 · 11h – 23h</li>
+          <li>📱 <a href="https://wa.me/212693981822" target="_blank" rel="noopener">WhatsApp : +212 6 93 98 18 22</a></li>
+          <li>🛵 Livraison partout à Tanger</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 <strong>CRISPY HOUSE</strong> — Tous droits réservés · Démonstration réalisée par <strong>Tanja Web — Tanger</strong></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Panier">
+  <div class="drawer-head">
+    <h3>Votre <span>panier</span> 🛒</h3>
+    <button class="close-x" id="closeCart" aria-label="Fermer">✕</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>Total</span><span id="cartTotal">0 DH</span></div>
+    <button class="order-btn" id="orderBtn" disabled>Commander sur WhatsApp</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast">Ajouté au panier <span>✓</span></div>
+
+<script>
+const PRODUCTS = [
+  {id:1, name:"Classic Burger",        cat:"burgers", price:49, img:"crispy/burger3.jpg", desc:"Steak de bœuf 150g, cheddar fondu, salade, tomate, oignons et sauce maison."},
+  {id:2, name:"Double Cheese",         cat:"burgers", price:69, img:"crispy/burger1.jpg", desc:"Double steak, double cheddar, cornichons et notre sauce fumée irrésistible."},
+  {id:3, name:"Crispy Chicken Burger", cat:"poulet",  price:59, img:"crispy/tenders.jpg", desc:"Filet de poulet mariné 24h, panure extra-croustillante, coleslaw et mayo épicée."},
+  {id:4, name:"Pizza Regina",          cat:"pizza",   price:79, img:"crispy/pizza.jpg",   desc:"Pâte fine maison, sauce tomate, mozzarella, jambon de dinde, champignons et olives."},
+  {id:5, name:"Tenders x6",            cat:"poulet",  price:45, img:"crispy/poulet.jpg",  desc:"Six tenders dorés et croustillants, servis avec deux sauces au choix."},
+  {id:6, name:"Frites Maison",         cat:"sides",   price:19, img:"crispy/frites.jpg",  desc:"Pommes de terre fraîches, double cuisson, sel de mer et herbes. L'accompagnement parfait."},
+  {id:7, name:"Wings x8",              cat:"poulet",  price:55, img:"crispy/wings.jpg",   desc:"Huit ailes de poulet marinées, sauce barbecue ou piquante, ultra tendres."},
+  {id:8, name:"Menu Duo",              cat:"burgers", price:99, img:"crispy/menu.jpg",    desc:"2 burgers au choix + grandes frites maison + 2 boissons. Le deal des duos affamés."}
+];
+const WA = "212693981822";
+const cart = new Map();
+const grid = document.getElementById('menuGrid');
+const drawer = document.getElementById('drawer');
+const overlay = document.getElementById('overlay');
+const itemsEl = document.getElementById('drawerItems');
+const totalEl = document.getElementById('cartTotal');
+const countEl = document.getElementById('cartCount');
+const orderBtn = document.getElementById('orderBtn');
+const toast = document.getElementById('toast');
+let toastTimer;
+
+function renderMenu(filter){
+  grid.innerHTML = PRODUCTS.filter(p => filter==='all' || p.cat===filter).map(p => `
+    <article class="card">
+      <div class="ph"><img src="${p.img}" alt="${p.name}" loading="lazy"><span class="price">${p.price} DH</span></div>
+      <div class="body">
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <button class="add-btn" data-add="${p.id}">+ Ajouter au panier</button>
+      </div>
+    </article>`).join('');
+}
+function cartQty(){ let n=0; cart.forEach(q=>n+=q); return n; }
+function cartTotal(){ let t=0; cart.forEach((q,id)=>{ t += PRODUCTS.find(p=>p.id===id).price*q; }); return t; }
+
+function renderCart(){
+  const n = cartQty(), total = cartTotal();
+  countEl.textContent = n;
+  totalEl.textContent = total + " DH";
+  orderBtn.disabled = n===0;
+  if(n===0){
+    itemsEl.innerHTML = `<div class="empty">🛒<br>Votre panier est vide.<br>Ajoutez un plat du menu pour commencer !</div>`;
+    return;
+  }
+  itemsEl.innerHTML = [...cart.entries()].map(([id,q])=>{
+    const p = PRODUCTS.find(x=>x.id===id);
+    return `<div class="line">
+      <img src="${p.img}" alt="${p.name}">
+      <div class="info">
+        <strong>${p.name}</strong>
+        <small>${p.price} DH × ${q} = ${p.price*q} DH</small>
+        <div><button class="rm" data-rm="${id}">Retirer</button></div>
+      </div>
+      <div class="qty">
+        <button data-dec="${id}" aria-label="Moins">−</button><b>${q}</b><button data-inc="${id}" aria-label="Plus">+</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function showToast(name){
+  toast.innerHTML = `« ${name} » ajouté au panier <span>✓</span>`;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>toast.classList.remove('show'), 2200);
+}
+function openCart(){ drawer.classList.add('open'); overlay.classList.add('open'); }
+function closeCart(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+document.addEventListener('click', e=>{
+  const add = e.target.closest('[data-add]');
+  if(add){ const id=+add.dataset.add; cart.set(id,(cart.get(id)||0)+1); renderCart(); showToast(PRODUCTS.find(p=>p.id===id).name); return; }
+  const inc = e.target.closest('[data-inc]');
+  if(inc){ const id=+inc.dataset.inc; cart.set(id, cart.get(id)+1); renderCart(); return; }
+  const dec = e.target.closest('[data-dec]');
+  if(dec){ const id=+dec.dataset.dec; const q=cart.get(id)-1; q<=0 ? cart.delete(id) : cart.set(id,q); renderCart(); return; }
+  const rm = e.target.closest('[data-rm]');
+  if(rm){ cart.delete(+rm.dataset.rm); renderCart(); return; }
+  const f = e.target.closest('[data-filter]');
+  if(f){
+    const val = f.dataset.filter;
+    document.querySelectorAll('#filters button').forEach(b=>b.classList.toggle('active', b.dataset.filter===val));
+    renderMenu(val);
+    if(f.classList.contains('cat')) document.getElementById('menu').scrollIntoView({behavior:'smooth'});
+  }
+});
+document.getElementById('openCart').addEventListener('click', openCart);
+document.getElementById('closeCart').addEventListener('click', closeCart);
+overlay.addEventListener('click', closeCart);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeCart(); });
+
+orderBtn.addEventListener('click', ()=>{
+  if(cartQty()===0) return;
+  let msg = "Bonjour CRISPY HOUSE ! Je souhaite commander :\n";
+  cart.forEach((q,id)=>{ const p=PRODUCTS.find(x=>x.id===id); msg += `• ${p.name} x${q} — ${p.price*q} DH\n`; });
+  msg += `\nTotal : ${cartTotal()} DH\nMerci !`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
+});
+
+renderMenu('all');
+renderCart();
+</script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>MIAM EXPRESS — Livraison de repas à Tanger</title>
+<meta name="description" content="Miam Express : vos plats préférés livrés en 30 minutes à Tanger. 120+ restaurants partenaires, paiement à la livraison.">
+<style>
+  :root{--or:#FF6B35;--or2:#e8551f;--teal:#2EC4B6;--ink:#26221f;--mut:#6f6a64;--cream:#FFFBF4;--card:#fff;--line:#f0e6da;--rad:26px}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  .badge{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--ink);color:#fff;text-align:center;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px}
+  header{position:sticky;top:23px;z-index:50;max-width:1200px;margin:14px auto 0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:60px;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 8px 26px rgba(80,50,10,.07)}
+  .logo{font-weight:900;font-size:1.32rem;letter-spacing:-.02em}.logo span{color:var(--or)}
+  nav{display:flex;gap:22px;font-weight:600;font-size:.95rem;color:#4c463f}
+  nav a:hover{color:var(--or)}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--or);color:#fff;font-weight:800;padding:12px 24px;border-radius:50px;transition:.2s;border:0;cursor:pointer;font-size:1rem}
+  .btn:hover{background:var(--or2);transform:translateY(-1px)}
+  .btn.teal{background:var(--teal)}.btn.teal:hover{background:#22a696}
+  .btn.ghost{background:#fff;color:var(--ink);border:2px solid var(--line)}
+  .btn.sm{padding:9px 18px;font-size:.9rem}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:64px 0 30px}
+  .kicker{display:inline-block;background:#ffe9df;color:var(--or2);font-weight:800;font-size:.82rem;padding:6px 15px;border-radius:50px;letter-spacing:.04em}
+  h1{font-size:clamp(2.3rem,5vw,3.6rem);line-height:1.08;letter-spacing:-.02em;margin:18px 0 16px}
+  h1 em{font-style:normal;color:var(--or)}
+  .hero p.lead{font-size:1.14rem;color:var(--mut);max-width:480px}
+  .stores{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 14px}
+  .store{display:flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border-radius:16px;padding:9px 18px;font-size:.82rem;line-height:1.25}
+  .store b{font-size:1rem;display:block}
+  .hero .mini{color:var(--mut);font-size:.9rem}
+  /* PHONE MOCKUP */
+  .phone-zone{display:flex;justify-content:center;position:relative}
+  .blob{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffd9c7,#ffbfa3 60%,#ffa582);opacity:.55;filter:blur(6px)}
+  .phone{position:relative;width:300px;background:#111;border-radius:44px;padding:12px;box-shadow:0 34px 70px rgba(60,30,5,.32)}
+  .screen{background:#fffdf9;border-radius:34px;overflow:hidden;height:600px;display:flex;flex-direction:column}
+  .notch{width:110px;height:22px;background:#111;border-radius:0 0 14px 14px;margin:0 auto}
+  .app-head{padding:12px 16px 4px;display:flex;justify-content:space-between;align-items:center}
+  .app-head .loc{font-size:.72rem;color:var(--mut)}
+  .app-head .loc b{display:block;color:var(--ink);font-size:.84rem}
+  .avatar{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.84rem}
+  .app-search{margin:8px 16px;background:#f6efe6;border-radius:14px;padding:9px 13px;font-size:.8rem;color:#9a9186}
+  .chips{display:flex;gap:7px;padding:4px 16px 10px;overflow:hidden}
+  .chip{font-size:.72rem;font-weight:700;padding:6px 12px;border-radius:50px;background:#f6efe6;color:#6f6a64;white-space:nowrap}
+  .chip.on{background:var(--or);color:#fff}
+  .app-list{padding:2px 14px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+  .dish{display:flex;gap:11px;background:#fff;border:1px solid #f3e9dc;border-radius:18px;padding:9px;box-shadow:0 4px 14px rgba(90,55,10,.05)}
+  .dish img{width:64px;height:64px;object-fit:cover;border-radius:13px}
+  .dish h4{font-size:.86rem;line-height:1.25}
+  .dish .cat{font-size:.7rem;color:var(--mut)}
+  .dish .row{display:flex;justify-content:space-between;align-items:center;margin-top:4px}
+  .dish .price{font-weight:900;color:var(--or);font-size:.9rem}
+  .dish .plus{background:var(--teal);color:#fff;border-radius:10px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.95rem}
+  .stars{color:#ffb703;font-size:.72rem}
+  .app-cta{margin:auto 14px 14px;background:var(--or);color:#fff;text-align:center;font-weight:800;border-radius:18px;padding:13px;font-size:.95rem;box-shadow:0 10px 22px rgba(255,107,53,.35)}
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:44px 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:26px;text-align:center}
+  .stat strong{display:block;font-size:2.1rem;color:var(--or);letter-spacing:-.02em}
+  .stat span{color:var(--mut);font-weight:600}
+  section{padding:52px 0}
+  h2{font-size:clamp(1.7rem,3.4vw,2.4rem);letter-spacing:-.02em;text-align:center}
+  .sub{text-align:center;color:var(--mut);max-width:560px;margin:10px auto 36px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:28px}
+  .step .n{width:46px;height:46px;border-radius:16px;background:#ffe9df;color:var(--or2);font-weight:900;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .step h3{margin-bottom:6px}.step p{color:var(--mut);font-size:.95rem}
+  .restos{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .resto{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;transition:.25s}
+  .resto:hover{transform:translateY(-5px);box-shadow:0 18px 36px rgba(80,50,10,.12)}
+  .resto .im{aspect-ratio:4/3;overflow:hidden}
+  .resto .im img{width:100%;height:100%;object-fit:cover}
+  .resto .bd{padding:16px 18px 18px}
+  .resto h3{font-size:1.06rem}
+  .resto .meta{color:var(--mut);font-size:.86rem;display:flex;justify-content:space-between;margin-top:5px}
+  .tag{display:inline-block;background:#e7faf7;color:#12836f;font-size:.72rem;font-weight:800;padding:3px 10px;border-radius:50px;margin-top:9px}
+  .feats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:26px;text-align:center}
+  .feat .ic{font-size:2rem;margin-bottom:10px}
+  .feat h3{font-size:1.05rem;margin-bottom:5px}.feat p{color:var(--mut);font-size:.9rem}
+  .temo{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tcard{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:26px}
+  .tcard p{color:#4c463f;font-size:.97rem}
+  .tcard .who{margin-top:14px;font-weight:800}.tcard .who span{display:block;color:var(--mut);font-weight:600;font-size:.84rem}
+  .join{background:linear-gradient(120deg,var(--or),#ff8a3d);border-radius:34px;padding:48px 40px;color:#fff;display:grid;grid-template-columns:1.3fr .7fr;gap:26px;align-items:center}
+  .join h2{text-align:left;color:#fff}
+  .join p{opacity:.94;margin-top:8px;max-width:480px}
+  .join .cta{text-align:right}
+  .join .btn{background:#fff;color:var(--or2)}
+  footer{margin-top:60px;background:var(--ink);color:#cfc9c2;border-radius:34px 34px 0 0}
+  .fin{max-width:1180px;margin:0 auto;padding:38px 20px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  footer .fl{font-weight:900;font-size:1.25rem;color:#fff}footer .fl span{color:var(--or)}
+  @media(max-width:960px){.hero{grid-template-columns:1fr;padding-top:40px}.restos,.feats{grid-template-columns:repeat(2,1fr)}.temo,.steps{grid-template-columns:1fr}.join{grid-template-columns:1fr}.join .cta{text-align:left}nav{display:none}}
+  @media(max-width:540px){.stats{grid-template-columns:1fr}.restos,.feats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="badge">Modèle de démonstration</div>
+
+<header>
+  <div class="logo">MIAM<span>EXPRESS</span></div>
+  <nav>
+    <a href="#restaurants">Restaurants</a>
+    <a href="#comment">Comment ça marche</a>
+    <a href="#avis">Avis</a>
+    <a href="#restaurateurs">Restaurateurs</a>
+  </nav>
+  <a class="btn sm" href="https://wa.me/212693981822?text=Bonjour%2C%20je%20veux%20la%20d%C3%A9mo%20de%20l%27application%20Miam%20Express." target="_blank" rel="noopener">Demander la démo</a>
+</header>
+
+<div class="wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="kicker">🍔 Livraison de repas — Tanger</span>
+      <h1>Vos plats préférés, livrés en <em>30 minutes</em></h1>
+      <p class="lead">Commandez auprès de plus de 120 restaurants à Tanger, suivez votre livreur en direct et payez à la livraison. Simple, rapide, délicieux.</p>
+      <div class="stores">
+        <div class="store"> <span></span><span>Télécharger sur<b>App Store — bientôt</b></span></div>
+        <div class="store"><span>▶</span><span>Disponible sur<b>Google Play — bientôt</b></span></div>
+      </div>
+      <p class="mini">Vous voulez la même application pour votre restaurant ou votre ville ?</p>
+      <p style="margin-top:12px"><a class="btn teal" href="https://wa.me/212693981822?text=Bonjour%2C%20je%20veux%20la%20d%C3%A9mo%20de%20l%27application%20Miam%20Express." target="_blank" rel="noopener">📲 Demander la démo de l'app</a></p>
+    </div>
+    <div class="phone-zone">
+      <div class="blob"></div>
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="app-head">
+            <div class="loc">Livrer à<b>📍 Centre-ville, Tanger</b></div>
+            <div class="avatar">M</div>
+          </div>
+          <div class="app-search">🔍 Rechercher un plat, un restaurant…</div>
+          <div class="chips"><span class="chip on">Tous</span><span class="chip">Burgers</span><span class="chip">Pizza</span><span class="chip">Marocain</span><span class="chip">Sushi</span></div>
+          <div class="app-list">
+            <div class="dish">
+              <img src="miam/f4.jpg" alt="Burger signature">
+              <div style="flex:1">
+                <h4>Burger Signature</h4>
+                <div class="cat">Grill House • <span class="stars">★ 4.9</span> • 20 min</div>
+                <div class="row"><span class="price">65 DH</span><span class="plus">+</span></div>
+              </div>
+            </div>
+            <div class="dish">
+              <img src="miam/f5.jpg" alt="Assiette méditerranéenne">
+              <div style="flex:1">
+                <h4>Assiette Méditerranéenne</h4>
+                <div class="cat">Le Comptoir • <span class="stars">★ 4.8</span> • 25 min</div>
+                <div class="row"><span class="price">85 DH</span><span class="plus">+</span></div>
+              </div>
+            </div>
+            <div class="dish">
+              <img src="miam/f6.jpg" alt="Petit-déjeuner complet">
+              <div style="flex:1">
+                <h4>Petit-déjeuner Complet</h4>
+                <div class="cat">Café Matin • <span class="stars">★ 4.9</span> • 15 min</div>
+                <div class="row"><span class="price">45 DH</span><span class="plus">+</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="app-cta">Commander • 195 DH</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><strong>120+</strong><span>restaurants partenaires</span></div>
+    <div class="stat"><strong>30 min</strong><span>livraison moyenne</span></div>
+    <div class="stat"><strong>4.9/5</strong><span>note des clients</span></div>
+  </div>
+
+  <!-- COMMENT CA MARCHE -->
+  <section id="comment">
+    <h2>Comment ça marche</h2>
+    <p class="sub">Trois étapes, et votre repas est en route.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Choisissez vos plats</h3><p>Parcourez les menus de plus de 120 restaurants de Tanger : burgers, pizzas, plats marocains, sushis, desserts…</p></div>
+      <div class="step"><div class="n">2</div><h3>Commandez en 1 minute</h3><p>Validez votre panier, confirmez l'adresse — aucun prépaiement : vous payez en espèces à la livraison.</p></div>
+      <div class="step"><div class="n">3</div><h3>Suivez votre livreur</h3><p>Suivez la livraison en direct sur la carte et recevez votre commande chaude en 30 minutes en moyenne.</p></div>
+    </div>
+  </section>
+
+  <!-- RESTAURANTS -->
+  <section id="restaurants">
+    <h2>Restaurants partenaires</h2>
+    <p class="sub">Les meilleures tables de Tanger, déjà sur Miam Express.</p>
+    <div class="restos">
+      <article class="resto">
+        <div class="im"><img src="miam/f1.jpg" alt="Grill House — restaurant"></div>
+        <div class="bd"><h3>Grill House</h3><div class="meta"><span>Burgers • Grillades</span><span>★ 4.9</span></div><span class="tag">Livraison 15 DH</span></div>
+      </article>
+      <article class="resto">
+        <div class="im"><img src="miam/f2.jpg" alt="La Table d'Or — restaurant gastronomique"></div>
+        <div class="bd"><h3>La Table d'Or</h3><div class="meta"><span>Gastronomie</span><span>★ 4.8</span></div><span class="tag">Livraison offerte</span></div>
+      </article>
+      <article class="resto">
+        <div class="im"><img src="miam/f3.jpg" alt="Sakura — cuisine asiatique"></div>
+        <div class="bd"><h3>Sakura</h3><div class="meta"><span>Asiatique • Sushi</span><span>★ 4.9</span></div><span class="tag">Livraison 10 DH</span></div>
+      </article>
+      <article class="resto">
+        <div class="im"><img src="miam/f4.jpg" alt="Chez Marco — trattoria"></div>
+        <div class="bd"><h3>Chez Marco</h3><div class="meta"><span>Italien • Pizza</span><span>★ 4.7</span></div><span class="tag">Livraison 12 DH</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FONCTIONNALITÉS -->
+  <section>
+    <h2>Pensée pour vous régaler</h2>
+    <p class="sub">Tout ce qu'il faut pour commander sans y penser.</p>
+    <div class="feats">
+      <div class="feat"><div class="ic">🛰️</div><h3>Suivi en direct</h3><p>Voyez votre livreur arriver sur la carte, minute par minute.</p></div>
+      <div class="feat"><div class="ic">💵</div><h3>Paiement à la livraison</h3><p>Payez en espèces ou par carte à la réception de votre commande.</p></div>
+      <div class="feat"><div class="ic">🎁</div><h3>Offres quotidiennes</h3><p>−30 %, livraison offerte, menus duo : une promo chaque jour.</p></div>
+      <div class="feat"><div class="ic">💬</div><h3>Support 7j/7</h3><p>Une équipe à Tanger qui répond en quelques minutes, 7j/7.</p></div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section id="avis">
+    <h2>Ils commandent avec Miam Express</h2>
+    <p class="sub">Des clients de Tanger qui ont adopté l'app.</p>
+    <div class="temo">
+      <div class="tcard"><div class="stars">★★★★★</div><p>« Commandé à 20h05, livré à 20h31, encore chaud. Le suivi en direct, c'est exactement ce qui manquait à Tanger. »</p><div class="who">Salma B.<span>Cliente — Marshan</span></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>« Les promos chaque jour et le paiement à la livraison : je ne commande plus autrement pour toute la famille. »</p><div class="who">Youssef E.<span>Client — Centre-ville</span></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>« Interface simple, même ma mère l'utilise. Et le support répond vraiment en quelques minutes. »</p><div class="who">Khadija M.<span>Cliente — Malabata</span></div></div>
+    </div>
+  </section>
+
+  <!-- RESTAURATEURS -->
+  <section id="restaurateurs">
+    <div class="join">
+      <div>
+        <h2>Vous avez un restaurant ?</h2>
+        <p>Rejoignez Miam Express et recevez des commandes dès cette semaine : 0 DH de frais d'inscription, un tableau de bord simple et des paiements rapides.</p>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://wa.me/212693981822?text=Bonjour%2C%20j%27ai%20un%20restaurant%20%C3%A0%20Tanger%20et%20je%20veux%20rejoindre%20Miam%20Express." target="_blank" rel="noopener">Rejoindre Miam Express →</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="fin">
+    <div>
+      <div class="fl">MIAM<span>EXPRESS</span></div>
+      <div style="font-size:.88rem;margin-top:5px">Livraison de repas à Tanger — 7j/7, de 10h à 23h.</div>
+    </div>
+    <div style="font-size:.9rem">Démonstration réalisée par Tanja Web — Tanger</div>
+  </div>
+</footer>
+</body>
+</html>
