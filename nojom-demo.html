@@ -1,156 +1,660 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio Nojom — ستوديو تصوير احترافي بطنجة</title>
-<meta name="description" content="عينة تجريبية — موقع ستوديو تصوير: أعراس، بورتريه، مناسبات، منتجات. حجز الجلسات عبر واتساب.">
-<meta name="robots" content="noindex, nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Studio Nojom — Studio de photographie à Tanger | Mariages, Portraits, Événements</title>
+    <meta name="description" content="Studio Nojom, studio de photographie à Tanger : mariages, portraits, événements et photographie de marque. Réservez votre séance sur WhatsApp.">
+    <meta name="keywords" content="photography, portfolio, photo studio, wedding photography, fashion photographer, model portfolio, makeup photography, photo blog, gallery, bootstrap 5, owl carousel, creative agency, responsive, duruthemes, dan template">
+    <meta name="author" content="Studio Nojom">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" href="studio-nojom/img/favicon.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Didact+Gothic&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="studio-nojom/css/bootstrap.min.css">
+    <link rel="stylesheet" href="studio-nojom/css/animate.css">
+    <link rel="stylesheet" href="studio-nojom/css/themify-icons.css">
+    <link rel="stylesheet" href="studio-nojom/css/magnific-popup.css">
+    <link rel="stylesheet" href="studio-nojom/css/owl.carousel.css">
+    <link rel="stylesheet" href="studio-nojom/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="studio-nojom/css/style.css">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0c;--card:#141418;--line:#26262e;--gold:#d4af37;--gold2:#f2c66d;--txt:#f4f1ea;--mut:#a9a49a;--wa:#25d366}
-html{scroll-behavior:smooth}
-body{font-family:'Cairo',Tahoma,sans-serif;background:var(--bg);color:var(--txt);line-height:1.8}
-img{max-width:100%;display:block}
-.demo-bar{background:linear-gradient(90deg,#1a1a10,#241f0d,#1a1a10);color:var(--gold2);text-align:center;font-size:.85rem;font-weight:700;padding:9px 14px;border-bottom:1px solid #3a3312}
-header{position:sticky;top:0;z-index:50;background:rgba(10,10,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav{max-width:1060px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:13px 18px}
-.logo{font-size:1.3rem;font-weight:900;letter-spacing:.5px}
-.logo span{color:var(--gold)}
-.nav nav{display:flex;gap:20px;font-size:.95rem}
-.nav nav a{color:var(--mut);text-decoration:none;font-weight:700}
-.nav nav a:hover{color:var(--gold2)}
-.hero{position:relative;text-align:center;padding:96px 18px 84px;background:linear-gradient(rgba(5,5,8,.72),rgba(5,5,8,.86)),url('demo-nojom/img/hero.webp') center/cover no-repeat}
-.hero h1{font-size:2.5rem;font-weight:900;line-height:1.35;max-width:760px;margin:0 auto 14px}
-.hero h1 em{font-style:normal;color:var(--gold)}
-.hero p{color:#d8d2c4;max-width:600px;margin:0 auto 28px;font-size:1.08rem}
-.btn{display:inline-block;background:var(--wa);color:#052b16;font-weight:900;text-decoration:none;border-radius:999px;padding:14px 34px;font-size:1.08rem;box-shadow:0 8px 26px rgba(37,211,102,.35)}
-.btn:active{transform:scale(.97)}
-.btn.gold{background:var(--gold);color:#221a02;box-shadow:0 8px 26px rgba(212,175,55,.3)}
-.wrap{max-width:1060px;margin:0 auto;padding:56px 18px}
-h2.sec{text-align:center;font-size:1.7rem;font-weight:900;margin-bottom:8px}
-.sec-sub{text-align:center;color:var(--mut);margin-bottom:34px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.g-item{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
-.g-item img{height:270px;width:100%;object-fit:cover;transition:transform .5s}
-.g-item:hover img{transform:scale(1.06)}
-.g-cap{position:absolute;bottom:0;right:0;left:0;padding:26px 16px 12px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-weight:800;font-size:1.05rem}
-.g-cap small{display:block;color:var(--gold2);font-weight:700;font-size:.82rem}
-.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:6px}
-.feat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
-.feat .ic{font-size:1.7rem}
-.feat strong{display:block;margin:6px 0 2px}
-.feat p{color:var(--mut);font-size:.92rem}
-.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.pack{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 22px;text-align:center;position:relative}
-.pack.hot{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 14px 34px rgba(212,175,55,.12)}
-.tag{position:absolute;top:-13px;right:50%;transform:translateX(50%);background:var(--gold);color:#221a02;font-size:.78rem;font-weight:900;border-radius:999px;padding:3px 14px}
-.pack h3{font-size:1.2rem;font-weight:900}
-.price{font-size:2rem;font-weight:900;color:var(--gold);margin:8px 0}
-.price small{font-size:.9rem;color:var(--mut);font-weight:700}
-.pack ul{list-style:none;color:var(--mut);font-size:.95rem;margin:0 0 20px;text-align:right}
-.pack ul li{padding:4px 0;border-bottom:1px dashed #232329}
-.pack ul li:last-child{border:0}
-.pack .btn{padding:11px 26px;font-size:1rem}
-.cta-end{text-align:center;background:linear-gradient(160deg,#171408,#0d0d10);border:1px solid #3a3312;border-radius:20px;padding:38px 20px;margin-top:56px}
-.cta-end h2{font-size:1.55rem;font-weight:900;margin-bottom:8px}
-.cta-end p{color:var(--mut);margin-bottom:22px}
-footer{border-top:1px solid var(--line);padding:26px 18px;text-align:center;color:var(--mut);font-size:.9rem}
-footer .fname{color:var(--txt);font-weight:900;font-size:1.05rem}
-@media(max-width:560px){.hero h1{font-size:1.8rem}.nav nav{display:none}}
+.nojom-logo{font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:500;letter-spacing:3px;color:#fff;text-transform:uppercase}
+.nojom-logo b{font-weight:700;color:#d6a94f}
+.nojom-logo.dark{color:#141414}
+.demo-badge{position:fixed;left:14px;bottom:14px;z-index:999;background:rgba(10,10,10,.82);color:#f2c66d;border:1px solid rgba(214,169,79,.5);font-size:12px;font-weight:600;padding:7px 14px;border-radius:50px;backdrop-filter:blur(4px)}
+.wa-float2{position:fixed;left:14px;bottom:56px;z-index:999;width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.35)}
 </style>
 </head>
 <body>
-<div class="demo-bar">📌 عينة تجريبية — هكا غتبان الصفحة الرسمية ديال الستوديو</div>
-<header>
-  <div class="nav">
-    <div class="logo">Studio <span>Nojom</span> 📸</div>
-    <nav>
-      <a href="#works">أعمالنا</a>
-      <a href="#packs">الباقات</a>
-      <a href="#book">احجز جلستك</a>
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="loading">
+            <div></div>
+        </div>
+    </div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo-wrapper">
+                <a class="logo" href="#"> <span class="nojom-logo">STUDIO <b>NOJOM</b></span> </a>
+                
+            </div>
+            <!-- Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="ti-menu"></i></span> </button>
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#" data-scroll-nav="0">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-scroll-nav="1">Le Studio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-scroll-nav="2">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-scroll-nav="3">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-scroll-nav="4">Avis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-scroll-nav="5">Équipe</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-scroll-nav="6">Tarifs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-scroll-nav="7">Journal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-scroll-nav="8">Contact</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-  </div>
-</header>
+    <!-- Header -->
+    <header class="header valign pos-pre bg-img parallaxie" data-scroll-index="0" data-overlay-dark="4" data-background="studio-nojom/img/slider/6.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 caption">
+                    <div class="frame-inner">
+                        <h5 class="animate-box" data-animate-effect="fadeInUp">TANGER · MAROC</h5>
+                        <h1 class="animate-box" data-animate-effect="fadeInUp">Studio Nojom</h1>
+                        <h5 class="animate-box" data-animate-effect="fadeInUp">Mariages · Portraits · Événements</h5> <span class="frame-1 animate-box" data-animate-effect="fadeInLeft"></span> <span class="frame-2 animate-box" data-animate-effect="fadeInRight"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="arrow bounce text-center">
+                        <a href="#" data-scroll-nav="1" class=""> <i class="ti-angle-double-down"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- About -->
+    <section id="about" class="about clear section-padding" data-scroll-index="1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-center">
+                    <div class="title"> <span>Le Studio</span>
+                        <h2>Studio Nojom</h2>
+                    </div>
+                    <p>Studio Nojom est un studio de photographie basé à Tanger, dédié aux moments qui comptent : mariages, portraits, événements et images de marque. Notre signature : une lumière maîtrisée, des émotions vraies et un rendu éditorial intemporel.</p>
+                    <p class="mb-30">Du premier rendez-vous à la livraison de votre galerie privée en ligne, nous vous accompagnons à chaque étape : conseils avant la séance, direction douce pendant les prises de vue et retouche soignée de chaque image sélectionnée.</p>
+                    </div>
+        </div>
+    </section>
+    <div class="line-vr-section"></div>
+    <!-- Services -->
+    <section id="services" class="services section-padding bg-grey" data-scroll-index="2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title mb-30"> <span>Nos Services</span>
+                        <h2>Services</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="owl-carousel owl-theme text-center">
+                        <div class="item">
+                            <div class="position-re o-hidden img-grayscale item-inner"> <img src="studio-nojom/img/services/2.jpg" alt=""> </div>
+                            <div class="con"> <span class="category">
+                                    <a href="#portfolio">Découvrir</a>
+                                </span>
+                                <h5><a href="#portfolio">Photographie de Portrait</a></h5> <a href="#portfolio"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="position-re o-hidden img-grayscale item-inner"> <img src="studio-nojom/img/services/1.jpg" alt=""> </div>
+                            <div class="con"> <span class="category">
+                                    <a href="#portfolio">Découvrir</a>
+                                </span>
+                                <h5><a href="#portfolio">Photographie de Mariage</a></h5> <a href="#portfolio"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="position-re o-hidden img-grayscale item-inner"> <img src="studio-nojom/img/services/3.jpg" alt=""> </div>
+                            <div class="con"> <span class="category">
+                                    <a href="#portfolio">Découvrir</a>
+                                </span>
+                                <h5><a href="#portfolio">Événements & Reportages</a></h5> <a href="#portfolio"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="position-re o-hidden img-grayscale item-inner"> <img src="studio-nojom/img/services/4.jpg" alt=""> </div>
+                            <div class="con"> <span class="category">
+                                    <a href="#portfolio">Découvrir</a>
+                                </span>
+                                <h5><a href="#portfolio">Produits & Marques</a></h5> <a href="#portfolio"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="position-re o-hidden img-grayscale item-inner"> <img src="studio-nojom/img/services/5.jpg" alt=""> </div>
+                            <div class="con"> <span class="category">
+                                    <a href="#portfolio">Découvrir</a>
+                                </span>
+                                <h5><a href="#portfolio">Mode & Éditorial</a></h5> <a href="#portfolio"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="position-re o-hidden img-grayscale item-inner"> <img src="studio-nojom/img/services/6.jpg" alt=""> </div>
+                            <div class="con"> <span class="category">
+                                    <a href="#portfolio">Découvrir</a>
+                                </span>
+                                <h5><a href="#portfolio">Famille & Enfants</a></h5> <a href="#portfolio"><i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right"> <a class="underline-text" href="#pricing">Voir les tarifs</a> </div>
+            </div>
+        </div>
+    </section>
+    <!-- hr line -->
+    <div class="line-vr-section"></div>
+    <!-- Portfolio -->
+    <section id="portfolio" class="section-padding" data-scroll-index="3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title mb-30"> <span>Galerie</span>
+                        <h2>Portfolio</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-30">
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <div class="gallery-item-inner">
+                            <a href="studio-nojom/img/gallery/01.jpg" title="Mode" class="img-grayscale img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="studio-nojom/img/gallery/01.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <div class="gallery-item-inner">
+                            <a href="studio-nojom/img/gallery/02.jpg" title="Photographie de Mariage" class="img-grayscale img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="studio-nojom/img/gallery/02.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <div class="gallery-item-inner">
+                            <a href="studio-nojom/img/gallery/03.jpg" title="Photographie de Portrait" class="img-grayscale img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="studio-nojom/img/gallery/03.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <div class="gallery-item-inner">
+                            <a href="studio-nojom/img/gallery/04.jpg" title="Événements & Reportages" class="img-grayscale img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="studio-nojom/img/gallery/04.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <div class="gallery-item-inner">
+                            <a href="studio-nojom/img/gallery/05.jpg" title="Famille" class="img-grayscale img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="studio-nojom/img/gallery/05.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item">
+                        <div class="gallery-item-inner">
+                            <a href="studio-nojom/img/gallery/06.jpg" title="Famille & Enfants" class="img-grayscale img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="studio-nojom/img/gallery/06.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                        <div class="gallery-item">
+                            <div class="gallery-item-inner">
+                                <a href="studio-nojom/img/gallery/07.jpg" title="Photographie de Portrait" class="img-grayscale img-zoom">
+                                    <div class="gallery-box">
+                                        <div class="gallery-img"> <img src="studio-nojom/img/gallery/07.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-md-4">
+                        <div class="gallery-item">
+                            <div class="gallery-item-inner">
+                                <a href="studio-nojom/img/gallery/08.jpg" title="Produit" class="img-grayscale img-zoom">
+                                    <div class="gallery-box">
+                                        <div class="gallery-img"> <img src="studio-nojom/img/gallery/08.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-md-4">
+                        <div class="gallery-item">
+                            <div class="gallery-item-inner">
+                                <a href="studio-nojom/img/gallery/09.jpg" title="Produits & Marques" class="img-grayscale img-zoom">
+                                    <div class="gallery-box">
+                                        <div class="gallery-img"> <img src="studio-nojom/img/gallery/09.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials section-padding bg-img" data-scroll-index="4" data-overlay-dark="3" data-background="studio-nojom/img/slider/4.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="owl-carousel owl-theme col-md-12">
+                    <div class="item-box"><span class="quote"><img src="studio-nojom/img/quot.png" alt=""></span>
+                        <p>« Une équipe discrète et très professionnelle. Les photos de notre mariage à Tanger sont magnifiques — naturelles et lumineuses, exactement ce que nous espérions. »</p>
+                        <div class="info">
+                            <div class="author-img"> <img src="studio-nojom/img/team/5.jpeg" alt=""> </div>
+                            <div class="cont">
+                                <h6>Salma & Youssef</h6> <span>Mariage à Tanger</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-box"> <span class="quote"><img src="studio-nojom/img/quot.png" alt=""></span>
+                        <p>« Séance portrait pour mon entreprise : rapide, efficace, et un résultat que j'utilise partout. Je recommande vivement. »</p>
+                        <div class="info">
+                            <div class="author-img"> <img src="studio-nojom/img/team/6.jpeg" alt=""> </div>
+                            <div class="cont">
+                                <h6>Adam B.</h6> <span>Portrait corporate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-box"> <span class="quote"><img src="studio-nojom/img/quot.png" alt=""></span>
+                        <p>« Ils ont su mettre nos enfants à l'aise en quelques minutes. Les photos de famille sont superbes. »</p>
+                        <div class="info">
+                            <div class="author-img"> <img src="studio-nojom/img/team/7.jpeg" alt=""> </div>
+                            <div class="cont">
+                                <h6>Famille El Amrani</h6> <span>Séance famille</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-box"> <span class="quote"><img src="studio-nojom/img/quot.png" alt=""></span>
+                        <p>« Ils ont su mettre nos enfants à l'aise en quelques minutes. Les photos de famille sont superbes. »</p>
+                        <div class="info">
+                            <div class="author-img"> <img src="studio-nojom/img/team/6.jpeg" alt=""> </div>
+                            <div class="cont">
+                                <h6>Adam B.</h6> <span>Séance famille</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Our Team -->
+    <section id="team" class="team section-padding bg-grey" data-scroll-index="5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title mb-30"> <span>L'équipe</span>
+                        <h2>Nos photographes</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 owl-carousel owl-theme">
+                    <div class="item">
+                        <div class="img img-grayscale item-inner">
+                            <a href="#team"><img src="studio-nojom/img/team/2.jpg" alt=""></a>
+                        </div>
+                        <div class="info">
+                            <h5>Yasmine El Fassi</h5>
+                            <h6>Photographe mariages</h6>
+                            <div class="social valign">
+                                <div class="full-width"> <a href="#"><i class="ti-facebook"></i></a> <a href="#"><i class="ti-twitter"></i></a> <a href="#"><i class="ti-linkedin"></i></a>
+                                    <p>Studio Nojom — Tanger</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img img-grayscale item-inner">
+                            <a href="#team"><img src="studio-nojom/img/team/1.jpg" alt=""></a>
+                        </div>
+                        <div class="info">
+                            <h5>Omar Benali</h5>
+                            <h6>Portraits & éditorial</h6>
+                            <div class="social valign">
+                                <div class="full-width"> <a href="#"><i class="ti-facebook"></i></a> <a href="#"><i class="ti-twitter"></i></a> <a href="#"><i class="ti-linkedin"></i></a>
+                                    <p>Studio Nojom — Tanger</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img img-grayscale item-inner">
+                            <a href="#team"><img src="studio-nojom/img/team/3.jpg" alt=""></a>
+                        </div>
+                        <div class="info">
+                            <h5>Salma Idrissi</h5>
+                            <h6>Retouche & production</h6>
+                            <div class="social valign">
+                                <div class="full-width"> <a href="#"><i class="ti-facebook"></i></a> <a href="#"><i class="ti-twitter"></i></a> <a href="#"><i class="ti-linkedin"></i></a>
+                                    <p>Studio Nojom — Tanger</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- hr line -->
+    <div class="line-vr-section"></div>
+    <!-- Pricing -->
+    <section id="pricing" class="section-padding" data-scroll-index="6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title mb-30"> <span>Formules</span>
+                        <h2>Nos tarifs</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="price-box">
+                        <div class="price-box-inner img-grayscale" style="background-image: url(studio-nojom/img/price/1.jpg)">
+                            <ul>
+                                <li class="pricing-title">
+                                    <h3 class="pricing-pt-title">Essentiel</h3>
+                                </li>
+                                <li class="pricing-prices"> <span class="pricing-price" style="color: #ffffff">499 <small style="font-size:45%">DH</small></span> </li>
+                                <li class="pricing-content">
+                                    <ul>
+                                        <li>Séance d'1 heure</li>
+                                        <li>Retouche professionnelle</li>
+                                        <li>30 photos numériques</li>
+                                        <li>Galerie en ligne</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-top:14px"><a class="btn flat-btn float-btn" style="display:inline-block;padding:10px 22px" target="_blank" rel="noopener" href="https://wa.me/212667682868">Réserver sur WhatsApp</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="price-box">
+                        <div class="price-box-inner" style="background-image: url(studio-nojom/img/price/2.jpg)">
+                            <ul>
+                                <li class="pricing-title">
+                                    <h3 class="pricing-pt-title">Signature</h3>
+                                </li>
+                                <li class="pricing-prices">  <span class="pricing-price" style="color: #ffffff">1 490 <small style="font-size:45%">DH</small></span> </li>
+                                <li class="pricing-content">
+                                    <ul>
+                                        <li>Séance de 3 heures</li>
+                                        <li>Retouche premium</li>
+                                        <li>80 photos numériques</li>
+                                        <li>Galerie en ligne + mini album</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-top:14px"><a class="btn flat-btn float-btn" style="display:inline-block;padding:10px 22px" target="_blank" rel="noopener" href="https://wa.me/212667682868">Réserver sur WhatsApp</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="price-box">
+                        <div class="price-box-inner" style="background-image: url(studio-nojom/img/price/3.jpg)">
+                            <ul>
+                                <li class="pricing-title">
+                                    <h3 class="pricing-pt-title">Mariage</h3>
+                                </li>
+                                <li class="pricing-prices">  <span class="pricing-price" style="color: #ffffff">4 900 <small style="font-size:45%">DH</small></span> </li>
+                                <li class="pricing-content">
+                                    <ul>
+                                        <li>Couverture complète (12 h)</li>
+                                        <li>Deux photographes</li>
+                                        <li>300+ photos retouchées</li>
+                                        <li>Galerie privée en ligne</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-top:14px"><a class="btn flat-btn float-btn" style="display:inline-block;padding:10px 22px" target="_blank" rel="noopener" href="https://wa.me/212667682868">Réserver sur WhatsApp</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- hr line -->
+    <div class="line-vr-section"></div>
+    <!-- Blog -->
+    <section id="blog" class="blog section-padding bg-grey" data-scroll-index="7">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title mb-30"> <span>Journal</span>
+                        <h2>Derniers articles</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="cover">
+                        <div class="cover-inner item bg-img" data-background="studio-nojom/img/services/3.jpg">
+                            <div class="content">
+                                <div class="info">
+                                    <a href="#blog"> <span><i class="ti-time" aria-hidden="true"></i>12 novembre 2026</span> <span><i class="ti-comment-alt" aria-hidden="true"></i>Studio Nojom</span> </a>
+                                </div>
+                                <a href="#blog">
+                                    <h5>L'art du noir & blanc</h5>
+                                </a>
+                                <p>Pourquoi les images en noir et blanc traversent le temps — et quand les choisir pour votre séance.</p> <a class="underline-text" href="#blog">Lire la suite</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="cover">
+                        <div class="cover-inner item bg-img" data-background="studio-nojom/img/services/1.jpg">
+                            <div class="content">
+                                <div class="info">
+                                    <a href="#blog"> <span><i class="ti-time" aria-hidden="true"></i>28 novembre 2026</span> <span><i class="ti-comment-alt" aria-hidden="true"></i>Studio Nojom</span> </a>
+                                </div>
+                                <a href="#blog">
+                                    <h5>Un mariage à Tanger</h5>
+                                </a>
+                                <p>Lumière de la médina, vent de la corniche : nos lieux préférés pour un reportage de mariage à Tanger.</p> <a class="underline-text" href="#blog">Lire la suite</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="cover">
+                        <div class="cover-inner item bg-img" data-background="studio-nojom/img/services/4.jpg">
+                            <div class="content">
+                                <div class="info">
+                                    <a href="#blog"> <span><i class="ti-time" aria-hidden="true"></i>5 décembre 2026</span> <span><i class="ti-comment-alt" aria-hidden="true"></i>Studio Nojom</span> </a>
+                                </div>
+                                <a href="#blog">
+                                    <h5>Photographier vos produits</h5>
+                                </a>
+                                <p>Fond, lumière, cadrage : les trois réglages qui changent tout pour vos photos e-commerce.</p> <a class="underline-text" href="#blog">Lire la suite</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- hr line -->
+    <div class="line-vr-section"></div>
+    <!-- Contact -->
+    <section id="contact" class="contact section-padding" data-scroll-index="8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title"> <span>Tanger, Maroc</span>
+                        <h2 class="">Contactez-nous</h2>
+                    </div>
+                </div>
+                <div class="col-md-5 info mb-30">
+                    <p>Un projet, une date, une envie d'images ? Écrivez-nous : réponse rapide sur WhatsApp, ou via le formulaire — il ouvre directement WhatsApp avec votre message.</p>
+                    <div class="item">
+                        <p><b>Téléphone / WhatsApp</b> : +212 667-682 868</p>
+                    </div>
+                    <div class="item">
+                        <p><b>Adresse</b> : Tanger, Maroc</p>
+                    </div>
+                    <div class="item">
+                        <p><b>Horaires</b> : Lun – Sam, 10h00 – 19h00</p>
+                    </div>
+                    <div class="item">
+                        <p><b>Google Map</b> : <a href="https://www.google.com/maps/search/?api=1&query=Tanger" target="_blank">Itinéraire</a></p>
+                    </div>
+                </div>
+                <div class="col-md-5 offset-md-2 ">
+                    <p><b>Écrivez-nous</b></p>
+                    <form class="row" id="nojomForm">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Votre nom *" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Votre téléphone">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <textarea name="message" id="message" cols="30" rows="4" class="form-control" placeholder="Votre message (type de séance, date souhaitée…)"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <button class="btn float-btn flat-btn" type="submit">Envoyer via WhatsApp</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- hr line -->
+    <div class="line-vr-section"></div>
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="brand"> <span class="nojom-logo dark">STUDIO <b>NOJOM</b></span>
+                        <p>Studio de photographie à Tanger — mariages, portraits, événements et photographie de marque.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 offset-md-1">
+                    <p><b>Contact</b>
+                        <br> Tél / WhatsApp : +212 667-682 868
+                        <br> Adresse : Tanger, Maroc
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <p class="mb-0"><b>Follow Us</b></p>
+                    <p>Suivez-nous pour découvrir nos derniers reportages et les coulisses du studio.</p>
+                    <ul class="footer-social-link">
+                        <li><a href="index.html#"><i class="ti-facebook"></i></a></li>
+                        <li><a href="index.html#"><i class="ti-instagram"></i></a></li>
+                        <li><a href="index.html#"><i class="ti-pinterest"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="text-left">
+                            <p>© 2026 Studio Nojom — Tanger. Tous droits réservés. · Site de démonstration : photos, avis et tarifs indicatifs.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-right-left">
+                            <p><a href="#contact">Réserver une séance</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="studio-nojom/js/jquery-1.12.4.min.js"></script>
+    <script src="studio-nojom/js/modernizr-2.6.2.min.js"></script>
+    <script src="studio-nojom/js/bootstrap.min.js"></script>
+    <script src="studio-nojom/js/jquery.waypoints.min.js"></script>
+    <script src="studio-nojom/js/scrollIt.min.js"></script>
+    <script src="studio-nojom/js/imagesloaded.pkgd.min.js"></script>
+    <script src="studio-nojom/js/owl.carousel.min.js"></script>
+    <script src="studio-nojom/js/jquery.magnific-popup.min.js"></script>
+    <script src="studio-nojom/js/smooth-scroll.min.js"></script>
+    <script src="studio-nojom/js/main.js"></script>
 
-<section class="hero">
-  <h1>كنوثّقو أجمل لحظاتكم <em>بعدسة احترافية</em></h1>
-  <p>ستوديو تصوير فطنجة: أعراس، بورتريه، مناسبات عائلية وتصوير منتجات — جودة عالية وتسليم سريع، والحجز مباشرة بواتساب.</p>
-  <a class="btn" href="https://wa.me/212667682868?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20%D8%AA%D8%B5%D9%88%D9%8A%D8%B1" target="_blank" rel="noopener">📲 احجز جلستك دابا</a>
-</section>
-
-<div class="wrap" id="works">
-  <h2 class="sec">🎞️ من أعمالنا</h2>
-  <p class="sec-sub">نماذج من أساليب التصوير اللي كنقدمو — اضغط على أي خدمة فالباقات باش تحجز</p>
-  <div class="grid">
-    <div class="g-item"><img src="demo-nojom/img/wedding.webp" alt="تصوير أعراس مغربية"><div class="g-cap">أعراس مغربية<small>تغطية كاملة + جلسة عرسان</small></div></div>
-    <div class="g-item"><img src="demo-nojom/img/portrait.webp" alt="بورتريه احترافي"><div class="g-cap">بورتريه<small>جلسات شخصية بإضاءة سينمائية</small></div></div>
-    <div class="g-item"><img src="demo-nojom/img/event.webp" alt="تغطية مناسبات"><div class="g-cap">مناسبات وحفلات<small>أعياد ميلاد، خطوبة، حفلات</small></div></div>
-    <div class="g-item"><img src="demo-nojom/img/fashion.webp" alt="تصوير موضة"><div class="g-cap">موضة وأزياء<small>للماركات والمؤثرين</small></div></div>
-    <div class="g-item"><img src="demo-nojom/img/products.webp" alt="تصوير منتجات"><div class="g-cap">تصوير منتجات<small>عطور، مجوهرات، إعلانات</small></div></div>
-    <div class="g-item"><img src="demo-nojom/img/hero.webp" alt="داخل الستوديو"><div class="g-cap">داخل الستوديو<small>معدات وإضاءة احترافية</small></div></div>
-  </div>
-
-  <div class="feats" style="margin-top:34px">
-    <div class="feat"><div class="ic">⚡</div><strong>تسليم سريع</strong><p>صورك معدّلة وجاهزة فـ48 حتى 72 ساعة</p></div>
-    <div class="feat"><div class="ic">🎨</div><strong>تعديل احترافي</strong><p>رتوش وألوان سينمائية بلا ما يتبدل الشكل الطبيعي</p></div>
-    <div class="feat"><div class="ic">📍</div><strong>ستوديو + خارجي</strong><p>تصوير داخل الستوديو ولا فالمكان اللي تختاروه</p></div>
-    <div class="feat"><div class="ic">📲</div><strong>حجز ساهل</strong><p>احجز التاريخ ديالك بواتساب فدقيقة وحدة</p></div>
-  </div>
-</div>
-
-<div class="wrap" id="packs" style="padding-top:6px">
-  <h2 class="sec">💼 الباقات</h2>
-  <p class="sec-sub">أثمنة توضيحية للعينة — الأثمنة الحقيقية كتتحدد مع الستوديو</p>
-  <div class="packs">
-    <div class="pack">
-      <h3>جلسة بورتريه</h3>
-      <div class="price">299 <small>درهم</small></div>
-      <ul>
-        <li>جلسة 45 دقيقة فالستوديو</li>
-        <li>10 صور معدّلة بجودة عالية</li>
-        <li>خلفيتان مختلفتان</li>
-        <li>التسليم فـ48 ساعة</li>
-      </ul>
-      <a class="btn" href="https://wa.me/212667682868?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20%D8%A8%D9%88%D8%B1%D8%AA%D8%B1%D9%8A%D9%87" target="_blank" rel="noopener">احجز هاد الباقة</a>
-    </div>
-    <div class="pack hot">
-      <div class="tag">الأكثر طلباً ⭐</div>
-      <h3>جلسة عرسان</h3>
-      <div class="price">899 <small>درهم</small></div>
-      <ul>
-        <li>جلسة ساعتين (ستوديو + خارجي)</li>
-        <li>25 صورة معدّلة بجودة عالية</li>
-        <li>ألبوم صور فاخر</li>
-        <li>معرض أونلاين خاص بيكم</li>
-      </ul>
-      <a class="btn" href="https://wa.me/212667682868?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20%D8%B9%D8%B1%D8%B3%D8%A7%D9%86" target="_blank" rel="noopener">احجز هاد الباقة</a>
-    </div>
-    <div class="pack">
-      <h3>تغطية عرس كاملة</h3>
-      <div class="price"><small>من</small> 2.900 <small>درهم</small></div>
-      <ul>
-        <li>تغطية اليوم كامل: صور + فيديو</li>
-        <li>+200 صورة معدّلة</li>
-        <li>فيديو ملخص احترافي</li>
-        <li>ألبوم + نسخة رقمية</li>
-      </ul>
-      <a class="btn" href="https://wa.me/212667682868?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D8%AA%D8%BA%D8%B7%D9%8A%D8%A9%20%D8%B9%D8%B1%D8%B3%20%D9%83%D8%A7%D9%85%D9%84%D8%A9" target="_blank" rel="noopener">اطلب عرض الثمن</a>
-    </div>
-  </div>
-
-  <div class="cta-end" id="book">
-    <h2>📅 التاريخ ديالك كيتسنى</h2>
-    <p>الأعراس والمناسبات كتحجز بسرعة — أكد التاريخ ديالك اليوم بواتساب</p>
-    <a class="btn gold" href="https://wa.me/212667682868?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%AD%D8%AC%D8%B2%20%D9%81%D9%80%20Studio%20Nojom" target="_blank" rel="noopener">📲 واتساب الستوديو</a>
-  </div>
-</div>
-
-<footer>
-  <div class="fname">Studio Nojom 📸 — طنجة</div>
-  <p>📌 عينة تجريبية للتوضيح فقط — الصور والأثمنة توضيحية</p>
-</footer>
+<div class="demo-badge">Site de démonstration — photos et tarifs indicatifs</div>
+<a class="wa-float2" href="https://wa.me/212667682868?text=Bonjour%20Studio%20Nojom%2C%20je%20veux%20des%20informations%20sur%20vos%20s%C3%A9ances%20photo." target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+<script>
+document.getElementById('nojomForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var inputs = this.querySelectorAll('input, textarea');
+  var name = inputs[0].value || '';
+  var msg = this.querySelector('textarea').value || '';
+  var text = 'Bonjour Studio Nojom, je suis ' + name + '. ' + msg;
+  window.open('https://wa.me/212667682868?text=' + encodeURIComponent(text), '_blank');
+});
+</script>
 </body>
 </html>
