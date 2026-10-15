@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Studio 31 — Salon de beauté · Socco Alto, Tanger</title>
+<meta name="description" content="Studio 31, salon de beauté haut de gamme au Socco Alto Mall à Tanger. Coiffure, coloration, soins du visage, maquillage, onglerie et bien-être — sur rendez-vous.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --bg:#0d0a07; --bg2:#16110a; --panel:#1c1610; --line:rgba(201,169,106,.25); --hair:rgba(242,234,217,.13);
+  --acc:#c9a96a; --acc2:#e6d3a3; --txt:#f2ead9; --mut:#b3a68c;
+  --serif:'Playfair Display',Georgia,serif; --sans:'Jost',Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+::selection{background:var(--acc);color:#171307}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.demobar{background:#000;color:#e9dfc9;text-align:center;font-size:.82rem;letter-spacing:.14em;padding:8px 14px;border-bottom:1px solid var(--line);position:relative;z-index:200;text-transform:uppercase}
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0;z-index:150}
+header{position:fixed;top:35px;left:0;right:0;z-index:140;transition:background .3s,border-color .3s}
+header .bar{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1180px;margin:0 auto}
+header.scrolled{background:rgba(13,10,7,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{font-family:var(--serif);font-size:1.3rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.logo b{color:var(--acc);font-weight:600}
+nav.chaps{display:flex;gap:22px;font-size:12.5px;color:var(--mut);letter-spacing:1.5px;text-transform:uppercase}
+nav.chaps a:hover{color:var(--acc2)}
+.btn{display:inline-block;background:var(--acc);color:#171307;padding:13px 28px;border-radius:2px;font-weight:600;font-size:.95rem;letter-spacing:.05em;transition:transform .25s,background .25s;will-change:transform;border:1px solid var(--acc)}
+.btn:hover{background:var(--acc2)}
+.btn-wa{background:#22c064;border-color:#22c064;color:#fff}
+.btn-ghost{background:transparent;border:1px solid rgba(242,234,217,.4);color:var(--txt)}
+.btn-ghost:hover{background:transparent;border-color:var(--acc);color:var(--acc2)}
+.eyebrow{font-family:'Arial Narrow',Arial,sans-serif;color:var(--acc);font-weight:700;letter-spacing:4px;font-size:13px;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.85)}
+#ov2 p,#ov4 p{text-shadow:0 2px 14px rgba(0,0,0,.9)}
+.micro{font-family:'Courier New',monospace;font-size:11px;letter-spacing:1.5px;color:var(--mut);text-transform:uppercase}
+#rail{position:fixed;inset-inline-end:20px;top:50%;transform:translateY(-50%);z-index:130;display:flex;flex-direction:column;gap:16px;align-items:center}
+#rail .rdot{display:flex;flex-direction:column;align-items:center;gap:5px;color:#6b5f4c;font-family:'Courier New',monospace;font-size:10.5px;transition:color .3s}
+#rail .rdot i{width:7px;height:7px;border-radius:50%;border:1px solid #6b5f4c;display:block;transition:.3s}
+#rail .rdot.on{color:var(--acc2)}
+#rail .rdot.on i{background:var(--acc);border-color:var(--acc);box-shadow:0 0 12px rgba(201,169,106,.8)}
+#rail .rline{width:1px;height:44px;background:var(--hair);position:relative;overflow:hidden}
+#rail .rline b{position:absolute;top:0;left:0;width:100%;background:var(--acc);height:0}
+#grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:120;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");animation:gr 7s steps(8) infinite}
+@keyframes gr{0%,100%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(-1%,2%)}}
+#cur,#curR{position:fixed;top:0;left:0;pointer-events:none;z-index:300;border-radius:50%;display:none}
+@media(pointer:fine){#cur,#curR{display:block}}
+#cur{width:6px;height:6px;background:var(--acc);transform:translate(-50%,-50%)}
+#curR{width:34px;height:34px;border:1px solid rgba(242,234,217,.4);transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
+#curR.big{width:58px;height:58px;border-color:var(--acc)}
+/* ---------- STAGE ---------- */
+.stage{position:relative}
+.pin{position:relative;height:100svh;overflow:hidden;background:radial-gradient(1000px 520px at 66% 44%,rgba(201,169,106,.10),transparent 65%),var(--bg)}
+.pin .grid-bg{position:absolute;inset:0;z-index:0;background:
+  linear-gradient(rgba(242,234,217,.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(242,234,217,.04) 1px,transparent 1px);
+  background-size:72px 72px;mask-image:radial-gradient(80% 70% at 50% 45%,#000 30%,transparent 78%)}
+.pin .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 52%,rgba(0,0,0,.6));z-index:3}
+.pin .frame{position:absolute;inset:14px;border:1px solid var(--hair);pointer-events:none;z-index:3}
+.pin .corner{position:absolute;width:18px;height:18px;z-index:4;pointer-events:none;border-color:var(--acc2);border-style:solid;border-width:0}
+.corner.tl{top:22px;inset-inline-start:22px;border-top-width:1.5px;border-inline-start-width:1.5px}
+.corner.tr{top:22px;inset-inline-end:22px;border-top-width:1.5px;border-inline-end-width:1.5px}
+.corner.bl{bottom:22px;inset-inline-start:22px;border-bottom-width:1.5px;border-inline-start-width:1.5px}
+.corner.br{bottom:22px;inset-inline-end:22px;border-bottom-width:1.5px;border-inline-end-width:1.5px}
+#glwrap{position:absolute;inset:0;z-index:2}
+#gl{position:absolute;inset:0;width:100%;height:100%}
+#glwrap.trans{filter:blur(1px) drop-shadow(2px 0 rgba(255,0,70,.28)) drop-shadow(-2px 0 rgba(0,210,255,.28))}
+#fallback3d{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:2}
+#fallback3d img{height:84svh;object-fit:contain}
+#loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mut);letter-spacing:3px;font-size:13px;z-index:5;font-family:'Courier New',monospace}
+.ovl{position:absolute;z-index:6;pointer-events:none}
+.ovl a{pointer-events:auto}
+#ov1{inset-inline-start:0;top:15svh;padding:0 38px;max-width:700px}
+#ov1 h1{font-family:var(--serif);font-size:clamp(44px,7.2vw,88px);font-weight:600;line-height:1.05;margin:14px 0 12px;letter-spacing:.04em;text-transform:uppercase;text-shadow:0 4px 44px rgba(0,0,0,.6)}
+#ov1 h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--acc)}
+#ov1 p{color:#ece2cd;max-width:440px;font-size:17px;font-weight:300;line-height:1.65;text-shadow:0 2px 16px rgba(0,0,0,.85)}
+#ov1 .meta{display:flex;gap:18px;margin-top:20px;flex-wrap:wrap}
+#ov2{inset-inline-end:0;top:16svh;padding:0 38px;text-align:end;max-width:480px}
+#ov2 h2{font-family:var(--serif);font-size:clamp(26px,3.6vw,42px);font-weight:600;line-height:1.2;margin:10px 0 10px}
+#ov2 p{color:var(--mut);font-size:16px;font-weight:300;line-height:1.6}
+#ov2 .ticks{margin-top:18px;display:grid;gap:7px;justify-items:end}
+#ov3{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:10svh;text-align:center}
+#ov3 .statement{font-family:var(--serif);font-size:clamp(34px,6.4vw,76px);font-weight:600;line-height:1.12;position:relative;padding:0 20px}
+#ov3 .statement .sh{position:absolute;inset:0;padding:0 20px;color:transparent;-webkit-text-stroke:1.5px rgba(201,169,106,.55);transform:translate(7px,7px);z-index:-1}
+#ov3 p{color:#ece2cd;margin-top:12px;font-size:16.5px;font-weight:300;text-shadow:0 2px 18px rgba(0,0,0,.8)}
+#ov4{inset-inline-start:0;top:13svh;padding:0 38px}
+#ov4 h2{font-family:var(--serif);font-size:clamp(28px,4vw,46px);font-weight:600;line-height:1.15;margin:10px 0 8px}
+#ov4 p{color:var(--mut);font-size:16px;font-weight:300;line-height:1.6;max-width:380px}
+#ov5{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8.5svh;text-align:center}
+#ov5 h2{font-family:var(--serif);font-size:clamp(28px,4.4vw,46px);font-weight:600;margin:10px 0 12px;text-shadow:0 3px 34px rgba(0,0,0,.9);padding:0 20px}
+#ov5 p{color:#ece2cd;max-width:520px;font-size:16.5px;font-weight:300;margin-bottom:24px;padding:0 20px;line-height:1.65}
+#ov5 .mini-nav{display:flex;gap:22px;margin-top:28px;font-size:12.5px;letter-spacing:1.5px;color:var(--mut);text-transform:uppercase;flex-wrap:wrap;justify-content:center;padding:0 20px}
+#ov5 .mini-nav a:hover{color:#fff}
+#ov5 .techfoot{margin-top:16px}
+#scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:6;color:var(--mut);font-size:11px;letter-spacing:4px;text-align:center}
+#scrollcue i{display:block;width:1px;height:42px;background:linear-gradient(var(--acc),transparent);margin:8px auto 0;animation:cue 1.8s infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+#debug{position:fixed;bottom:14px;left:14px;z-index:400;background:#000;border:1px solid var(--acc);color:#ffd977;font-family:'Courier New',monospace;font-size:12px;padding:8px 12px;display:none}
+/* ---------- MARQUEE ---------- */
+.marquee{border-block:1px solid var(--line);background:#0a0806;overflow:hidden;padding:14px 0}
+.marquee .track{display:flex;gap:44px;width:max-content;animation:mq 24s linear infinite;font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:.08em;white-space:nowrap;text-transform:uppercase}
+.marquee .track span i{color:var(--acc);font-style:normal}
+@keyframes mq{to{transform:translateX(-50%)}}
+.js .rv{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+/* ---------- LEGACY (sections Studio 31, portées sous .legacy) ---------- */
+.legacy{
+  --ivory:#faf7f1; --ivory-2:#f3ede2; --paper:#fffdf9;
+  --ink:#171310; --ink-2:#241d16; --soft:#5d554b; --line2:#e5dccb;
+  --gold:#b08d57; --gold-2:#c9a96a; --gold-soft:#efe6d2;
+  --wa:#1faa55;
+  background:var(--ivory);color:var(--ink);font-weight:300;line-height:1.65;font-size:17px;
+}
+.legacy .wrap{max-width:1200px;padding:0 24px}
+.legacy h2,.legacy h3{font-family:var(--serif);font-weight:600;line-height:1.15}
+.legacy .kick{letter-spacing:4px;text-transform:uppercase;font-size:12px;font-weight:500;color:var(--gold);margin-bottom:16px}
+.legacy .sec{padding:110px 0}
+.legacy .sec-head{max-width:680px;margin-bottom:56px}
+.legacy .sec-head.center{margin-inline:auto;text-align:center}
+.legacy .sec-head h2{font-size:clamp(30px,4vw,44px);margin-bottom:14px}
+.legacy .sec-head p{color:var(--soft);font-size:18px}
+.legacy .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:999px;font-weight:500;font-size:16px;letter-spacing:.4px;transition:.3s;border:1px solid transparent;cursor:pointer}
+.legacy .btn-wa{background:var(--wa);color:#fff;box-shadow:0 12px 30px rgba(31,170,85,.28)}
+.legacy .btn-wa:hover{transform:translateY(-2px);box-shadow:0 18px 36px rgba(31,170,85,.34);background:var(--wa)}
+.legacy .btn-dark{background:var(--ink);color:#fff}
+.legacy .btn-dark:hover{background:var(--ink-2);transform:translateY(-2px)}
+.legacy .btn-gold{background:var(--gold);color:#fff}
+.legacy .btn-gold:hover{background:var(--gold-2);transform:translateY(-2px)}
+.legacy .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.legacy .card{background:var(--paper);border:1px solid var(--line2);border-radius:20px;overflow:hidden;transition:.35s;display:flex;flex-direction:column}
+.legacy .card:hover{transform:translateY(-7px);box-shadow:0 26px 48px rgba(23,19,16,.11);border-color:var(--gold-2)}
+.legacy .card .ph{overflow:hidden}
+.legacy .card img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:.6s}
+.legacy .card:hover img{transform:scale(1.06)}
+.legacy .card .in{padding:26px 26px 28px;display:flex;flex-direction:column;gap:9px;flex:1}
+.legacy .card h3{font-size:23px}
+.legacy .card p{color:var(--soft);font-size:15.5px;flex:1}
+.legacy .card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:16px;border-top:1px solid var(--line2)}
+.legacy .tarif{font-size:13.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold);font-weight:500}
+.legacy .book{font-weight:500;font-size:15.5px;color:var(--ink);display:inline-flex;align-items:center;gap:7px}
+.legacy .book:hover{color:var(--wa)}
+.legacy .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.legacy .gal figure{border-radius:16px;overflow:hidden;position:relative}
+.legacy .gal img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;transition:.6s}
+.legacy .gal figure:hover img{transform:scale(1.07)}
+.legacy .gal figure.tall{grid-row:span 2}
+.legacy .gal figure.tall img{aspect-ratio:1/2.06}
+.legacy .gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 13px;color:#fff;font-size:14.5px;letter-spacing:.6px;background:linear-gradient(transparent,rgba(10,8,5,.72));opacity:0;transition:.35s}
+.legacy .gal figure:hover figcaption{opacity:1}
+.legacy .dark{background:var(--ink);color:#f2ead9}
+.legacy .dark .sec-head p{color:#cbbfa8}
+.legacy .dark .kick{color:var(--gold-2)}
+.legacy .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:54px}
+.legacy .pillar{border:1px solid rgba(201,169,106,.32);border-radius:20px;padding:32px 28px;background:rgba(255,255,255,.03);transition:.35s}
+.legacy .pillar:hover{transform:translateY(-5px);border-color:var(--gold)}
+.legacy .pillar .ic{font-size:30px;margin-bottom:14px}
+.legacy .pillar h3{font-size:22px;margin-bottom:9px;color:#fff}
+.legacy .pillar p{color:#cbbfa8;font-size:15.5px}
+.legacy .gbadge{display:inline-flex;align-items:center;gap:14px;background:#fff;color:var(--ink);border-radius:999px;padding:12px 24px;font-weight:500;margin-bottom:44px}
+.legacy .gbadge .g{font-family:var(--serif);font-weight:700;font-size:21px;color:#4285f4}
+.legacy .gbadge b{font-weight:600}
+.legacy .stars{color:#f5b942;letter-spacing:2px;font-size:15px}
+.legacy .review-zone{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
+.legacy .review-card{background:#fff;color:var(--ink);border-radius:20px;padding:30px;position:relative;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.legacy .review-card .tag{position:absolute;top:-13px;right:22px;background:var(--gold);color:#fff;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;padding:6px 14px;border-radius:999px;font-weight:500}
+.legacy .review-card .who{display:flex;align-items:center;gap:13px;margin-bottom:12px}
+.legacy .avatar{width:46px;height:46px;border-radius:50%;background:var(--gold-soft);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:20px;font-weight:700}
+.legacy .review-card .who b{display:block;font-weight:600;font-size:16px}
+.legacy .review-card .who span{font-size:13px;color:var(--soft)}
+.legacy .review-card .txt{color:#3d362c;font-size:15.5px}
+.legacy .review-card .resp{margin-top:18px;border-left:3px solid var(--gold);background:var(--ivory-2);border-radius:0 12px 12px 0;padding:14px 16px}
+.legacy .review-card .resp b{font-size:13.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px}
+.legacy .review-card .resp p{font-size:14.5px;color:#4a4234}
+.legacy .how{display:flex;flex-direction:column;gap:16px}
+.legacy .step{display:flex;gap:18px;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,106,.25);border-radius:18px;padding:22px}
+.legacy .step .n{font-family:var(--serif);font-size:30px;color:var(--gold-2);line-height:1;min-width:38px}
+.legacy .step h3{color:#fff;font-size:19px;margin-bottom:4px}
+.legacy .step p{color:#cbbfa8;font-size:15px}
+.legacy .exp{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+.legacy .exp .ph{border-radius:22px;overflow:hidden;position:relative}
+.legacy .exp .ph img{width:100%;aspect-ratio:4/4.6;object-fit:cover}
+.legacy .exp .ph::after{content:"";position:absolute;inset:14px;border:1px solid rgba(255,255,255,.5);border-radius:16px;pointer-events:none}
+.legacy .pts{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.legacy .pt{display:flex;gap:20px;padding:20px 4px;border-bottom:1px solid var(--line2)}
+.legacy .pt:last-child{border-bottom:none}
+.legacy .pt .ic{font-size:24px;line-height:1.3}
+.legacy .pt h3{font-size:21px;margin-bottom:4px}
+.legacy .pt p{color:var(--soft);font-size:15.5px}
+.legacy .key{background:var(--ivory-2)}
+.legacy .key-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 44px;max-width:920px;margin:0 auto}
+.legacy .key-item{display:flex;gap:15px;align-items:flex-start;background:var(--paper);border:1px solid var(--line2);border-radius:14px;padding:18px 20px;transition:.3s}
+.legacy .key-item:hover{border-color:var(--gold-2);transform:translateY(-3px);box-shadow:0 14px 28px rgba(23,19,16,.07)}
+.legacy .check{flex:none;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;margin-top:2px}
+.legacy .key-item p{font-size:16.5px;font-weight:400}
+.legacy .key-item p span{display:block;color:var(--soft);font-size:14.5px;font-weight:300}
+.legacy .key-note{text-align:center;margin-top:44px;color:var(--soft);font-family:var(--serif);font-style:italic;font-size:19px}
+.legacy .contact{display:grid;grid-template-columns:1fr 1.2fr;gap:60px}
+.legacy .info-row{display:flex;gap:17px;padding:18px 0;border-bottom:1px solid var(--line2);align-items:flex-start}
+.legacy .info-row:last-child{border-bottom:none}
+.legacy .info-row .ic{font-size:22px;line-height:1.4}
+.legacy .info-row h3{font-size:18px;margin-bottom:2px}
+.legacy .info-row p,.legacy .info-row a.lnk{color:var(--soft);font-size:16px}
+.legacy .info-row a.lnk:hover{color:var(--wa)}
+.legacy form{background:var(--paper);border:1px solid var(--line2);border-radius:22px;padding:36px;box-shadow:0 24px 50px rgba(23,19,16,.06)}
+.legacy form h3{font-size:25px;margin-bottom:6px}
+.legacy form .sub{color:var(--soft);font-size:15.5px;margin-bottom:24px}
+.legacy .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.legacy label{display:block;font-size:13.5px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;color:var(--soft);margin-bottom:7px}
+.legacy .f-group{margin-bottom:16px}
+.legacy input,.legacy select,.legacy textarea{width:100%;padding:14px 16px;border:1px solid var(--line2);border-radius:12px;font-family:var(--sans);font-size:16px;background:var(--ivory);color:var(--ink);transition:.25s}
+.legacy input:focus,.legacy select:focus,.legacy textarea:focus{outline:none;border-color:var(--gold);background:#fff;box-shadow:0 0 0 4px var(--gold-soft)}
+.legacy textarea{resize:vertical;min-height:96px}
+.legacy form .btn{width:100%;justify-content:center;font-size:17px}
+.legacy .f-note{text-align:center;color:var(--soft);font-size:13.5px;margin-top:14px}
+.legacy footer{background:var(--ink);color:#cbbfa8;padding:64px 0 34px}
+.legacy footer .logo{color:#fff;font-family:var(--serif);font-size:25px;font-weight:700;letter-spacing:3px}
+.legacy footer .logo span{color:var(--gold)}
+.legacy footer .logo small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:4.5px;font-weight:500;color:#a5937a;margin-top:-3px}
+.legacy footer .cols{display:flex;justify-content:space-between;gap:34px;flex-wrap:wrap;margin-bottom:42px}
+.legacy footer nav{display:flex;gap:24px;flex-wrap:wrap;font-size:15px}
+.legacy footer nav a:hover{color:var(--gold-2)}
+.legacy footer .base{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;font-size:13.5px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.legacy .waf{position:fixed;bottom:22px;right:22px;z-index:80;width:60px;height:60px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 32px rgba(31,170,85,.42);transition:.3s}
+.legacy .waf:hover{transform:scale(1.08)}
+.legacy .waf svg{width:31px;height:31px;fill:#fff}
+.legacy .waf::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(31,170,85,.45);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{transform:scale(.85);opacity:1}100%{transform:scale(1.25);opacity:0}}
+.legacy .rv.d1{transition-delay:.1s}.legacy .rv.d2{transition-delay:.2s}.legacy .rv.d3{transition-delay:.3s}
+@media(max-width:960px){
+  .legacy .grid{grid-template-columns:repeat(2,1fr)}
+  .legacy .pillars{grid-template-columns:1fr}
+}
+@media(max-width:900px){
+  .legacy .exp{grid-template-columns:1fr}
+  .legacy .contact{grid-template-columns:1fr}
+}
+@media(max-width:860px){
+  .legacy .gal{grid-template-columns:repeat(2,1fr)}
+  .legacy .review-zone{grid-template-columns:1fr}
+}
+@media(max-width:700px){.legacy .key-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.legacy .grid{grid-template-columns:1fr}}
+@media(max-width:560px){.legacy .f-row{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .legacy .sec{padding:72px 0}
+  .legacy form{padding:28px 20px}
+}
+@media(max-width:820px){
+  nav.chaps,#rail{display:none}
+  #ov1{top:auto;bottom:12svh}
+  #ov2{top:auto;bottom:10svh;text-align:start}
+  #ov2 .ticks{justify-items:start}
+  #ov4{top:auto;bottom:11svh}
+}
+@media(prefers-reduced-motion:reduce){.marquee .track{animation:none}#grain{animation:none}#scrollcue i{animation:none}.legacy .waf::after{animation:none}}
+</style>
+<script type="importmap">{"imports":{"three":"./demo-burger/gl/three.module.js"}}</script>
+</head>
+<body>
+<div class="demobar">Démonstration personnalisée réalisée pour Studio 31</div>
+<div id="progress"></div>
+<div id="grain"></div>
+<div id="cur"></div><div id="curR"></div>
+<div id="debug"></div>
+
+<header id="hdr"><div class="bar">
+  <div class="logo">Studio <b>31</b></div>
+  <nav class="chaps"><a href="#prestations">01 · Prestations</a><a href="#galerie">02 · Galerie</a><a href="#google">03 · Réputation Google</a><a href="#projet">04 · Clé en main</a></nav>
+  <a class="btn" data-mag style="padding:10px 22px" target="_blank" rel="noopener" href="https://wa.me/212665959312?text=Bonjour%20Studio%2031%2C%20je%20souhaite%20prendre%20rendez-vous.">Prendre rendez-vous</a>
+</div></header>
+
+<div id="rail" aria-hidden="true">
+  <div class="rdot" data-s="0"><i></i>01</div><div class="rline"><b id="rfill"></b></div>
+  <div class="rdot" data-s="1"><i></i>02</div><div class="rline"></div>
+  <div class="rdot" data-s="2"><i></i>03</div><div class="rline"></div>
+  <div class="rdot" data-s="3"><i></i>04</div><div class="rline"></div>
+  <div class="rdot" data-s="4"><i></i>05</div>
+</div>
+
+<!-- ================= PINNED EDITORIAL 3D STAGE ================= -->
+<section class="stage" id="stage">
+ <div class="pin" id="pin">
+  <div class="grid-bg"></div>
+  <div id="glwrap"><canvas id="gl"></canvas></div>
+  <div id="fallback3d"><img src="studio31-demo/img/hero.jpg" alt="L'intérieur du salon Studio 31 au Socco Alto Mall, Tanger"></div>
+  <div class="vig"></div><div class="frame"></div>
+  <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+  <div id="loader">STUDIO 31 — TANGER…</div>
+
+  <div class="ovl" id="ov1">
+    <div class="eyebrow">Salon de beauté · Socco Alto Mall · Tanger</div>
+    <h1>Studio<br><span class="stroke">31</span></h1>
+    <p>L'art de la beauté, au cœur de Tanger. Coiffure, coloration, soins du visage, maquillage et onglerie — faites défiler : le salon se révèle en profondeur.</p>
+    <div class="meta"><span class="micro">★★★★★ 117 avis sur Google</span><span class="micro">Sur rendez-vous</span></div>
+  </div>
+
+  <div class="ovl" id="ov2" style="opacity:0">
+    <div class="eyebrow">Le salon, en profondeur</div>
+    <h2>Chaque geste,<br>sa lumière.</h2>
+    <p>L'écran du salon, ses images et son savoir-faire flottent en couches — chaque univers avance à sa profondeur, comme dans le salon.</p>
+    <div class="ticks">
+      <span class="micro">Coiffure &amp; brushing</span>
+      <span class="micro">Coloration &amp; balayage</span>
+      <span class="micro">Soins du visage</span>
+    </div>
+  </div>
+
+  <div class="ovl" id="ov3" style="opacity:0">
+    <div class="statement"><span class="sh" aria-hidden="true">La beauté, en signature.</span>La beauté, en signature.</div>
+    <p>Le salon en plein cadre — l'élégance Studio 31, à chaque rendez-vous.</p>
+  </div>
+
+  <div class="ovl" id="ov4" style="opacity:0">
+    <div class="eyebrow">Nos univers</div>
+    <h2>Six univers,<br>une exigence.</h2>
+    <p>Chaque carte est un savoir-faire à part entière — la coiffure au centre, la coloration, le visage et le maquillage autour, en suspension.</p>
+  </div>
+
+  <div class="ovl" id="ov5" style="opacity:0">
+    <div class="eyebrow">À vous</div>
+    <h2>Votre moment beauté commence ici</h2>
+    <p>Réservez votre rendez-vous sur WhatsApp : réponse rapide, accueil personnalisé et sans attente, au cœur de Socco Alto Mall.</p>
+    <a class="btn" data-mag target="_blank" rel="noopener" href="https://wa.me/212665959312?text=Bonjour%20Studio%2031%2C%20je%20souhaite%20prendre%20rendez-vous.">Prendre rendez-vous</a>
+    <div class="mini-nav"><a href="#prestations">Prestations</a><a href="#galerie">Galerie</a><a href="#google">Réputation Google</a><a href="#projet">Clé en main</a><a href="#contact">Rendez-vous</a><a href="#stage">Haut de page ↑</a></div>
+    <div class="micro techfoot">Studio 31 © 2026 · Socco Alto Mall — Tanger</div>
+  </div>
+
+  <div id="scrollcue">DÉFILER<i></i></div>
+ </div>
+</section>
+
+<div class="marquee"><div class="track">
+  <span>Coiffure <i>✦</i> Coloration &amp; Balayage <i>✦</i> Soins du visage <i>✦</i> Maquillage <i>✦</i> Onglerie <i>✦</i> Bien-être <i>✦</i></span>
+  <span>Coiffure <i>✦</i> Coloration &amp; Balayage <i>✦</i> Soins du visage <i>✦</i> Maquillage <i>✦</i> Onglerie <i>✦</i> Bien-être <i>✦</i></span>
+</div></div>
+
+<div class="legacy">
+<!-- ================= PRESTATIONS ================= -->
+<section class="sec" id="prestations">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <div class="kick">Nos prestations</div>
+      <h2>Un univers dédié à votre beauté</h2>
+      <p>Six univers de soins, une seule exigence : l'excellence. Tarifs communiqués sur simple demande, rendez-vous confirmé en quelques instants sur WhatsApp.</p>
+    </div>
+    <div class="grid">
+      <article class="card rv">
+        <div class="ph"><img src="studio31-demo/img/svc-coiffure.jpg" alt="Coiffure et brushing au Studio 31" loading="lazy"></div>
+        <div class="in">
+          <h3>Coiffure &amp; brushing</h3>
+          <p>Coupes signature, brushings soyeux et coiffages d'exception, pensés pour votre visage et votre style de vie.</p>
+          <div class="foot"><span class="tarif">Tarifs sur demande</span>
+          <a class="book" target="_blank" rel="noopener" href="https://wa.me/212665959312?text=Bonjour%20Studio%2031%2C%20je%20souhaite%20un%20rendez-vous%20pour%20%3A%20Coiffure%20%26%20brushing.">Réserver →</a></div>
+        </div>
+      </article>
+      <article class="card rv d1">
+        <div class="ph"><img src="studio31-demo/img/svc-coloration.jpg" alt="Coloration et balayage au Studio 31" loading="lazy"></div>
+        <div class="in">
+          <h3>Coloration &amp; balayage</h3>
+          <p>Colorations lumineuses, balayages fondus et gloss éclat, réalisés avec des produits qui respectent la fibre capillaire.</p>
+          <div class="foot"><span class="tarif">Tarifs sur demande</span>
+          <a class="book" target="_blank" rel="noopener" href="https://wa.me/212665959312?text=Bonjour%20Studio%2031%2C%20je%20souhaite%20un%20rendez-vous%20pour%20%3A%20Coloration%20%26%20balayage.">Réserver →</a></div>
+        </div>
+      </article>
+      <article class="card rv d2">
+        <div class="ph"><img src="studio31-demo/img/svc-visage.jpg" alt="Soin du visage au Studio 31" loading="lazy"></div>
+        <div class="in">
+          <h3>Soins du visage</h3>
+          <p>Des rituels visage sur mesure pour une peau reposée, hydratée et lumineuse, dès la première séance.</p>
+          <div class="foot"><span class="tarif">Tarifs sur demande</span>
+          <a class="book" target="_blank" rel="noopener" href="https://wa.me/212665959312?text=Bonjour%20Studio%2031%2C%20je%20souhaite%20un%20rendez-vous%20pour%20%3A%20Soins%20du%20visage.">Réserver →</a></div>
+        </div>
+      </article>
+      <article class="card rv">
+        <div class="ph"><img src="studio31-demo/img/svc-maquillage.jpg" alt="Maquillage professionnel au Studio 31" loading="lazy"></div>
+        <div class="in">
+          <h3>Maquillage</h3>
+          <p>Maquillage de jour, de soirée ou de mariée : un teint parfait et un regard sublimé, qui tiennent toute la journée.</p>
+          <div class="foot"><span class="tarif">Tarifs sur demande</span>
+          <a class="book" target="_blank" rel="noopener" href="https://wa.me/212665959312?text=Bonjour%20Studio%2031%2C%20je%20souhaite%20un%20rendez-vous%20pour%20%3A%20Maquillage.">Réserver →</a></div>
+        </div>
+      </article>
+      <article class="card rv d1">
+        <div class="ph"><img src="studio31-demo/img/svc-onglerie.jpg" alt="Onglerie au Studio 31" loading="lazy"></div>
+        <div class="in">
+          <h3>Onglerie</h3>
+          <p>Manucure et pédicure soignées, pose de vernis semi-permanent et finitions impeccables, dans les moindres détails.</p>
+          <div class="foot"><span class="tarif">Tarifs sur demande</span>
+          <a class="book" target="_blank" rel="noopener" href="https://wa.me/212665959312?text=Bonjour%20Studio%2031%2C%20je%20souhaite%20un%20rendez-vous%20pour%20%3A%20Onglerie.">Réserver →</a></div>
+        </div>
+      </article>
+      <article class="card rv d2">
+        <div class="ph"><img src="studio31-demo/img/svc-bienetre.jpg" alt="Espace bien-être au Studio 31" loading="lazy"></div>
+        <div class="in">
+          <h3>Bien-être</h3>
+          <p>Une parenthèse de calme au cœur de Tanger : des soins relaxants pour le corps et l'esprit, loin du rythme de la ville.</p>
+          <div class="foot"><span class="tarif">Tarifs sur demande</span>
+          <a class="book" target="_blank" rel="noopener" href="https://wa.me/212665959312?text=Bonjour%20Studio%2031%2C%20je%20souhaite%20un%20rendez-vous%20pour%20%3A%20Bien-%C3%AAtre.">Réserver →</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALERIE ================= -->
+<section class="sec" id="galerie" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <div class="kick">Galerie</div>
+      <h2>L'atmosphère Studio 31</h2>
+      <p>Un aperçu de nos gestes, de nos espaces et de notre savoir-faire.</p>
+    </div>
+    <div class="gal">
+      <figure class="rv"><img src="studio31-demo/img/gal-consultation.jpg" alt="Consultation personnalisée au salon" loading="lazy"><figcaption>Consultation personnalisée</figcaption></figure>
+      <figure class="rv d1 tall"><img src="studio31-demo/img/gal-coloration.jpg" alt="Coloration réalisée par nos coloristes" loading="lazy"><figcaption>Coloration par nos coloristes</figcaption></figure>
+      <figure class="rv d2"><img src="studio31-demo/img/gal-maquillage.jpg" alt="Séance de maquillage professionnel" loading="lazy"><figcaption>Maquillage professionnel</figcaption></figure>
+      <figure class="rv d3"><img src="studio31-demo/img/gal-coupe.jpg" alt="Coupe et coiffage au salon" loading="lazy"><figcaption>Coupe &amp; coiffage</figcaption></figure>
+      <figure class="rv"><img src="studio31-demo/img/gal-sourcils.jpg" alt="Soin et mise en beauté des sourcils" loading="lazy"><figcaption>Mise en beauté des sourcils</figcaption></figure>
+      <figure class="rv d1"><img src="studio31-demo/img/gal-spa.jpg" alt="Espace bien-être et spa du salon" loading="lazy"><figcaption>Espace bien-être &amp; spa</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RÉPUTATION GOOGLE ================= -->
+<section class="sec dark" id="google">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick">Votre réputation Google</div>
+      <h2>Vos clientes vous adorent.<br>Google doit le savoir.</h2>
+      <p>Vous comptez déjà <b style="color:#fff">117 avis sur Google</b> — un trésor que la plupart des salons n'ont pas. Votre futur site transforme cette réputation en nouvelles clientes, automatiquement.</p>
+    </div>
+    <div class="gbadge rv"><span class="g">G</span><span class="stars">★★★★★</span><span><b>117 avis</b> sur Google — et ce n'est qu'un début</span></div>
+    <div class="pillars">
+      <div class="pillar rv">
+        <div class="ic">✦</div>
+        <h3>Une fiche Google optimisée</h3>
+        <p>Photos professionnelles, prestations à jour, description qui vous place en tête des salons de Tanger lorsqu'une cliente cherche « salon de beauté Tanger ».</p>
+      </div>
+      <div class="pillar rv d1">
+        <div class="ic">✎</div>
+        <h3>Une réponse à chaque avis</h3>
+        <p>Chaque avis reçoit une réponse professionnelle et personnalisée. Les clientes lisent les réponses autant que les avis — une belle réponse transforme même un avis moyen en argument de confiance.</p>
+      </div>
+      <div class="pillar rv d2">
+        <div class="ic">★</div>
+        <h3>Plus d'avis positifs, naturellement</h3>
+        <p>Un QR code élégant au salon et un lien envoyé sur WhatsApp après chaque prestation : vos clientes satisfaites laissent un avis en 30 secondes, sans effort.</p>
+      </div>
+    </div>
+    <div class="review-zone">
+      <div class="review-card rv">
+        <span class="tag">Aperçu illustratif</span>
+        <div class="who">
+          <div class="avatar">C</div>
+          <div><b>Cliente Studio 31</b><span>Avis Google · ★★★★★</span></div>
+        </div>
+        <p class="txt">Ici s'affichera l'avis de votre cliente, recueilli juste après sa prestation grâce au QR code du salon ou au lien WhatsApp — pendant que son expérience est encore toute fraîche.</p>
+        <div class="resp">
+          <b>Réponse de Studio 31</b>
+          <p>« Merci infiniment pour votre confiance. Toute l'équipe Studio 31 est ravie de vous avoir accueillie — à très bientôt à Socco Alto. »</p>
+        </div>
+      </div>
+      <div class="how">
+        <div class="step rv"><div class="n">1</div><div><h3>Elle vit son moment</h3><p>Votre cliente profite de sa prestation dans votre écrin de Socco Alto.</p></div></div>
+        <div class="step rv d1"><div class="n">2</div><div><h3>Elle scanne, elle raconte</h3><p>Le QR code sur le comptoir — ou le lien reçu sur WhatsApp — l'amène directement sur votre page d'avis Google.</p></div></div>
+        <div class="step rv d2"><div class="n">3</div><div><h3>Google vous récompense</h3><p>Des avis récents, nombreux et bien répondus : Google vous affiche devant vos concurrents, et les nouvelles clientes vous trouvent en premier.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPÉRIENCE ================= -->
+<section class="sec" id="experience">
+  <div class="wrap exp">
+    <div class="ph rv"><img src="studio31-demo/img/experience.jpg" alt="Cliente profitant d'un moment au Studio 31" loading="lazy"></div>
+    <div>
+      <div class="sec-head rv" style="margin-bottom:26px">
+        <div class="kick">L'expérience Studio 31</div>
+        <h2>Plus qu'un salon,<br>un rendez-vous avec soi-même</h2>
+      </div>
+      <div class="pts">
+        <div class="pt rv"><div class="ic">✦</div><div><h3>Une expertise reconnue</h3><p>Une équipe de spécialistes formées aux dernières techniques, à l'écoute de chaque cliente et de chaque envie.</p></div></div>
+        <div class="pt rv d1"><div class="ic">❋</div><div><h3>Des produits premium</h3><p>Des marques professionnelles sélectionnées avec soin, pour la santé de vos cheveux et l'éclat de votre peau.</p></div></div>
+        <div class="pt rv d2"><div class="ic">⌂</div><div><h3>Un cadre d'exception</h3><p>Au cœur de Socco Alto Mall, un écrin lumineux et raffiné, pensé pour votre confort et votre intimité.</p></div></div>
+        <div class="pt rv d3"><div class="ic">◷</div><div><h3>Sur rendez-vous</h3><p>Un accueil personnalisé et sans attente : votre moment commence à l'heure, et il n'appartient qu'à vous.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLÉ EN MAIN ================= -->
+<section class="sec key" id="projet">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <div class="kick">Votre projet</div>
+      <h2>Votre projet, clé en main</h2>
+      <p>Tout ce que comprendra votre futur site — pensé pour transformer vos visiteuses en clientes, pendant que vous vous occupez de votre salon.</p>
+    </div>
+    <div class="key-grid">
+      <div class="key-item rv"><span class="check">✓</span><p>Un site complet, aux couleurs de Studio 31<span>Design sur mesure, fidèle à l'univers haut de gamme de votre salon.</span></p></div>
+      <div class="key-item rv d1"><span class="check">✓</span><p>Vos services et votre galerie photos<span>Chaque prestation présentée avec élégance, vos plus belles images en vitrine.</span></p></div>
+      <div class="key-item rv"><span class="check">✓</span><p>Réservation WhatsApp directe<span>Vos clientes réservent en un clic, sans intermédiaire ni commission.</span></p></div>
+      <div class="key-item rv d1"><span class="check">✓</span><p>Votre fiche Google optimisée<span>Photos, prestations et informations à jour pour apparaître en tête des recherches.</span></p></div>
+      <div class="key-item rv"><span class="check">✓</span><p>Des réponses professionnelles à vos avis<span>Chaque avis Google reçoit une réponse soignée qui inspire confiance.</span></p></div>
+      <div class="key-item rv d1"><span class="check">✓</span><p>Un système de collecte d'avis positifs<span>QR code au salon et lien après chaque prestation : vos 117 avis ne sont qu'un début.</span></p></div>
+      <div class="key-item rv"><span class="check">✓</span><p>Un site rapide, pensé pour le téléphone<span>Vos clientes naviguent depuis leur mobile : le site est conçu d'abord pour elles.</span></p></div>
+      <div class="key-item rv d1"><span class="check">✓</span><p>Visible sur Google 24h/24<span>Votre salon accueille des clientes même quand vos portes sont fermées.</span></p></div>
+    </div>
+    <p class="key-note rv">De la première maquette à la mise en ligne, un seul interlocuteur s'occupe de tout — vous n'avez qu'à accueillir vos clientes.</p>
+  </div>
+</section>
+
+<!-- ================= INFOS + RDV ================= -->
+<section class="sec" id="contact" style="padding-top:80px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick">Rendez-vous</div>
+      <h2>Réservez votre moment</h2>
+      <p>Écrivez-nous sur WhatsApp ou complétez le formulaire : votre demande arrive directement au salon.</p>
+    </div>
+    <div class="contact">
+      <div class="rv">
+        <div class="info-row"><div class="ic">⌂</div><div><h3>Adresse</h3><p>Socco Alto Mall<br>Tanger, Maroc</p></div></div>
+        <div class="info-row"><div class="ic">✆</div><div><h3>WhatsApp</h3><a class="lnk" href="https://wa.me/212665959312?text=Bonjour%20Studio%2031%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" rel="noopener">+212 665-959312</a></div></div>
+        <div class="info-row"><div class="ic">◷</div><div><h3>Accueil</h3><p>Sur rendez-vous — pour vous recevoir sans attente, dans le calme.</p></div></div>
+        <div class="info-row"><div class="ic">★</div><div><h3>Réputation</h3><p>117 avis de clientes sur Google.</p></div></div>
+        <a class="btn btn-dark" style="margin-top:28px" target="_blank" rel="noopener" href="https://wa.me/212665959312?text=Bonjour%20Studio%2031%2C%20je%20souhaite%20des%20informations%20sur%20vos%20prestations.">Écrire au salon sur WhatsApp</a>
+      </div>
+      <form id="rdvForm" class="rv d1">
+        <h3>Demande de rendez-vous</h3>
+        <p class="sub">Complétez, puis confirmez : WhatsApp s'ouvre avec votre demande déjà rédigée.</p>
+        <div class="f-row">
+          <div class="f-group"><label for="fName">Votre nom</label><input id="fName" type="text" required placeholder="Votre nom complet"></div>
+          <div class="f-group"><label for="fService">Prestation souhaitée</label>
+            <select id="fService" required>
+              <option value="" disabled selected>Choisissez une prestation</option>
+              <option>Coiffure &amp; brushing</option>
+              <option>Coloration &amp; balayage</option>
+              <option>Soins du visage</option>
+              <option>Maquillage</option>
+              <option>Onglerie</option>
+              <option>Bien-être</option>
+              <option>Autre demande</option>
+            </select>
+          </div>
+        </div>
+        <div class="f-group"><label for="fDate">Date souhaitée</label><input id="fDate" type="date"></div>
+        <div class="f-group"><label for="fMsg">Message (optionnel)</label><textarea id="fMsg" placeholder="Précisez vos envies, l'occasion, une préférence d'horaire…"></textarea></div>
+        <button type="submit" class="btn btn-wa">Confirmer sur WhatsApp</button>
+        <p class="f-note">Réponse rapide du salon, directement dans votre WhatsApp.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="logo">STUDIO <span>31</span><small>Socco Alto · Tanger</small></div>
+        <p style="margin-top:14px;max-width:340px;font-size:15px">Salon de beauté haut de gamme au Socco Alto Mall, Tanger. Coiffure, coloration, soins, maquillage, onglerie et bien-être — sur rendez-vous.</p>
+      </div>
+      <nav>
+        <a href="#prestations">Prestations</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#google">Réputation Google</a>
+        <a href="#experience">L'expérience</a>
+        <a href="#projet">Clé en main</a>
+        <a href="#contact">Rendez-vous</a>
+      </nav>
+    </div>
+    <div class="base">
+      <span>© 2026 Studio 31 — Socco Alto Mall, Tanger. Tous droits réservés.</span>
+      <span>WhatsApp : +212 665-959312</span>
+    </div>
+  </div>
+</footer>
+
+<a class="waf" href="https://wa.me/212665959312?text=Bonjour%20Studio%2031%2C%20je%20souhaite%20prendre%20rendez-vous." target="_blank" rel="noopener" aria-label="Contacter Studio 31 sur WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.3 2 7.6L.8 31.2l7.8-2A15 15 0 0 0 16 31.2C24.4 31.2 31.2 24.4 31.2 16S24.4.8 16 .8zm0 27.4c-2.3 0-4.5-.6-6.4-1.8l-.5-.3-4.6 1.2 1.2-4.5-.3-.5A12.2 12.2 0 0 1 3.8 16C3.8 9.3 9.3 3.8 16 3.8S28.2 9.3 28.2 16 22.7 28.2 16 28.2zm6.7-9c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.5-.2-.8.2-.2.4-.9 1.1-1.1 1.3-.2.2-.4.2-.8.1a9.9 9.9 0 0 1-4.9-4.3c-.4-.6.4-.6 1.1-2 .1-.2 0-.4 0-.5l-1.1-2.7c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.2-1.3 3.2s1.3 3.8 1.5 4.1c.2.3 2.6 4 6.4 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.2-.9 2.6-1.8.4-.9.4-1.6.3-1.8-.1-.2-.4-.3-.8-.5z"/></svg>
+</a>
+</div><!-- /legacy -->
+
+<script src="demo-burger/gl/lib/gsap.min.js"></script>
+<script src="demo-burger/gl/lib/ScrollTrigger.min.js"></script>
+<script src="demo-burger/gl/lib/lenis.min.js"></script>
+<script>
+/* ================================================================
+   SCENES — système de couches éditorial : remplacez src / positions
+   ici uniquement. Chaque couche a un keyframe par scène :
+   x, y, z (profondeur), s (échelle), rz/ry (rotation), o (opacité), dk (assombrissement)
+   ================================================================ */
+const KF = (x,y,z,s,rz,ry,o,dk) => ({x,y,z,s,rz,ry,o,dk:dk||0});
+const SCENES = [
+  { id:'opening', cam:{x:0, y:0, z:10.6}, layers:{
+    glow:      KF(0, .2, -3.5, 1,    0, 0, .9),
+    screen:    KF(-.55, -.05, 0,  1,    0, .06, 1),
+    box:       KF(-3.6, -2.2, -1.2, .34, -.06, .2, 0),
+    wide2:     KF(3.6, 2.4, -2.4, .5, 0, -.15, 0),
+    cardA:     KF(3.4, -2.4, -1.6, .5, .05, -.2, 0),
+    cardB:     KF(-3.9, 2.3, -2, .5, -.04, .15, 0),
+    cardC:     KF(3.8, 2.2, -2.2, .5, .03, -.18, 0),
+    cardD:     KF(-3.4, -2.6, -2.4, .5, .04, .18, 0),
+    cardE:     KF(0, -3.1, -2.6, .5, 0, 0, 0)
+  }},
+  { id:'layers', cam:{x:0, y:0, z:9.6}, layers:{
+    glow:      KF(.5, .3, -3.5, 1.05, 0, 0, .8),
+    screen:    KF(2.5, .3, -.6, .7, -.03, -.22, 1, .5),
+    box:       KF(-2.7, -.4, .3, .7, .03, .18, 1),
+    wide2:     KF(0, 0, -3, 1, 0, 0, 0),
+    cardA:     KF(-.4, -.9, 1.6, .62, -.05, .1, 1),
+    cardB:     KF(3.4, -2.2, -.8, .55, .05, -.2, .9),
+    cardC:     KF(3.9, 2.4, -2.2, .5, .03, -.18, 0),
+    cardD:     KF(-3.9, 2.4, -2, .5, -.04, .15, 0),
+    cardE:     KF(-3.3, 2.2, -1, .55, -.04, .15, .9)
+  }},
+  { id:'reveal', cam:{x:0, y:0, z:8.2}, layers:{
+    glow:      KF(0, 0, -3.5, 1.1, 0, 0, .55),
+    screen:    KF(3.4, 1.8, -1.8, .5, -.05, -.3, .28, .5),
+    box:       KF(0, .1, .4, 1.85, 0, 0, 1),
+    wide2:     KF(0, 0, -3, 1, 0, 0, 0),
+    cardA:     KF(3.8, -2.2, -2, .5, .06, -.25, .2, .55),
+    cardB:     KF(-3.9, 2.2, -2.2, .5, -.05, .2, .2, .55),
+    cardC:     KF(3.9, -2.4, -2.4, .5, .04, -.2, .15, .6),
+    cardD:     KF(-2.9, -2, .8, .5, -.04, .15, .3, .4),
+    cardE:     KF(-3.8, -2.4, -2.4, .5, 0, .2, .15, .6)
+  }},
+  { id:'works', cam:{x:.7, y:.35, z:9.8}, layers:{
+    glow:      KF(-.4, 0, -3.5, 1.05, 0, 0, .7),
+    screen:    KF(3.1, 2.3, -1.6, .5, -.04, -.2, .7, .35),
+    box:       KF(-3.2, 2.2, -1.6, .55, .03, .16, .7, .35),
+    wide2:     KF(0, -3.2, -3, .6, 0, 0, 0),
+    cardA:     KF(-.2, -.2, .9, 1.06, .02, .05, 1),
+    cardB:     KF(3.1, -1.7, -.4, .72, -.05, -.14, .85, .3),
+    cardC:     KF(-3.2, -1.6, -.6, .74, .05, .12, .85, .3),
+    cardD:     KF(.3, -2.5, -1, .58, .02, 0, .85, .25),
+    cardE:     KF(0, 3, -2.6, .5, 0, 0, 0)
+  }},
+  { id:'closing', cam:{x:0, y:0, z:10.4}, layers:{
+    glow:      KF(0, .4, -3.5, 1, 0, 0, .8),
+    screen:    KF(0, 3.6, -2.5, .5, 0, 0, 0),
+    box:       KF(-3.6, -2.2, -1.4, .4, -.05, .2, 0),
+    wide2:     KF(0, .35, .1, 1.05, 0, 0, 1, .12),
+    cardA:     KF(3.5, -2.3, -1.8, .5, .05, -.2, 0),
+    cardB:     KF(-3.9, 2.3, -2.2, .5, -.04, .15, 0),
+    cardC:     KF(3.8, 2.2, -2.4, .5, .03, -.18, 0),
+    cardD:     KF(-3.4, -2.6, -2.4, .5, .04, .18, 0),
+    cardE:     KF(0, -3.1, -2.6, .5, 0, 0, 0)
+  }}
+];
+const LAYER_SRC = {
+  screen: { make:'screen', src:'studio31-demo/img/hero.webp',          url:'studio31.tanger', w:6.6 },
+  box:    { make:'photo',  src:'studio31-demo/img/gal-maquillage.webp', w:5.4 },
+  wide2:  { make:'photo',  src:'studio31-demo/img/experience.webp',     w:4.6 },
+  cardA:  { make:'card',   src:'studio31-demo/img/svc-coiffure.webp',   label:'COIFFURE & BRUSHING',   w:3.5 },
+  cardB:  { make:'card',   src:'studio31-demo/img/gal-coloration.webp', label:'COLORATION & BALAYAGE', w:3.5 },
+  cardC:  { make:'card',   src:'studio31-demo/img/svc-visage.webp',     label:'SOINS DU VISAGE',       w:3.5 },
+  cardD:  { make:'card',   src:'studio31-demo/img/svc-maquillage.webp', label:'MAQUILLAGE',            w:3.5 },
+  cardE:  { make:'card',   src:'studio31-demo/img/gal-coupe.webp',      label:'COIFFURE — LE GESTE',   w:3.5 }
+};
+window.STAGE = { layers:{}, cam:{...SCENES[0].cam}, ready:false };
+Object.keys(SCENES[0].layers).forEach(k => { window.STAGE.layers[k] = {...SCENES[0].layers[k]}; });
+
+const qs = new URLSearchParams(location.search);
+const DEBUG = qs.get('debug') === '1';
+const FORCED_P = parseFloat(qs.get('p'));
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ================== reveals ================== */
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ================== smooth scroll + master timeline ================== */
+gsap.registerPlugin(ScrollTrigger);
+let lenis = null;
+if (!REDUCED && window.Lenis && isNaN(FORCED_P)){
+  lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const href=a.getAttribute('href');
+    if(!href || href.length<2) return;
+    const t=document.querySelector(href);
+    if(t){ e.preventDefault(); lenis ? lenis.scrollTo(t) : t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+
+const ST = window.STAGE;
+const railDots = document.querySelectorAll('#rail .rdot');
+const dbg = document.getElementById('debug');
+if (DEBUG) dbg.style.display='block';
+const tl = gsap.timeline({
+  defaults:{ease:'power1.inOut'},
+  scrollTrigger:{
+    id:'stage', trigger:'#stage', start:'top top', end:'+=460%',
+    pin:'#pin', scrub: isNaN(FORCED_P) ? .6 : true, anticipatePin:1,
+    onUpdate(self){
+      const p = self.progress;
+      document.getElementById('progress').style.width = (p*100)+'%';
+      const rf = document.getElementById('rfill'); if (rf) rf.style.height = (p*100)+'%';
+      const scene = Math.min(Math.floor(p * 5), 4);
+      railDots.forEach((d,i)=>d.classList.toggle('on', i===scene));
+      const near = [.2,.4,.6,.8].some(b => Math.abs(p-b) < .007);
+      document.getElementById('glwrap').classList.toggle('trans', near && ST.ready);
+      if (DEBUG) dbg.textContent = 'scene: '+(scene+1)+'/5 · progress: '+(p*100).toFixed(1)+'%';
+    }
+  }
+});
+/* keyframe segments: scene i → i+1 over units [i*20, (i+1)*20] */
+for (let i = 0; i < SCENES.length - 1; i++){
+  const at = i * 20, dur = 20;
+  tl.to(ST.cam, {...SCENES[i+1].cam, duration:dur}, at);
+  Object.keys(SCENES[i].layers).forEach(k => {
+    tl.to(ST.layers[k], {...SCENES[i+1].layers[k], duration:dur}, at);
+  });
+}
+/* overlays — ov1 entre en load-play (jamais en scrub) */
+gsap.fromTo('#ov1', {opacity:0, x:-46}, {opacity:1, x:0, duration:1.15, delay:.25, ease:'power3.out'});
+tl.to('#scrollcue', {opacity:0, duration:3}, 15)
+  .to('#ov1', {opacity:0, x:-30, duration:4}, 16.5)
+  .fromTo('#ov2', {opacity:0, x:40}, {opacity:1, x:0, duration:4}, 19.5)
+  .to('#ov2', {opacity:0, duration:4}, 36.5)
+  .fromTo('#ov3', {opacity:0}, {opacity:1, duration:4}, 41.5)
+  .fromTo('#ov3 .statement', {y:56}, {y:0, duration:7, ease:'power2.out'}, 41.5)
+  .to('#ov3', {opacity:0, duration:4}, 56.5)
+  .fromTo('#ov4', {opacity:0, y:30}, {opacity:1, y:0, duration:4}, 60.5)
+  .to('#ov4', {opacity:0, duration:4}, 76.5)
+  .fromTo('#ov5', {opacity:0, y:30}, {opacity:1, y:0, duration:5}, 82.5)
+  .to({}, {duration:3}, 97);
+if (!isNaN(FORCED_P)){
+  setTimeout(()=>{ const st = ScrollTrigger.getById('stage'); st.scroll(st.start + Math.min(Math.max(FORCED_P,0),1)*(st.end - st.start)); ScrollTrigger.update(); }, 80);
+}
+addEventListener('scroll', ()=>{ document.getElementById('hdr').classList.toggle('scrolled', scrollY>40); }, {passive:true});
+
+/* ================== custom cursor + magnetic ================== */
+if (matchMedia('(pointer:fine)').matches && !REDUCED){
+  const cur=document.getElementById('cur'), ring=document.getElementById('curR');
+  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';},{passive:true});
+  (function loop(){ rx+=(mx-rx)*.14; ry+=(my-ry)*.14; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
+  document.querySelectorAll('a,.card,.pillar,.key-item,.gal figure').forEach(el=>{
+    el.addEventListener('pointerenter',()=>ring.classList.add('big'));
+    el.addEventListener('pointerleave',()=>ring.classList.remove('big'));
+  });
+  document.querySelectorAll('[data-mag]').forEach(el=>{
+    el.addEventListener('pointermove',e=>{ const r=el.getBoundingClientRect();
+      const dx=e.clientX-(r.left+r.width/2), dy=e.clientY-(r.top+r.height/2);
+      el.style.transform='translate('+dx*.22+'px,'+dy*.28+'px)'; });
+    el.addEventListener('pointerleave',()=>{ el.style.transform=''; });
+  });
+}
+</script>
+
+<script>
+/* formulaire RDV → WhatsApp du salon */
+document.getElementById('rdvForm').addEventListener('submit',function(ev){
+  ev.preventDefault();
+  var name=document.getElementById('fName').value.trim();
+  var svc=document.getElementById('fService').value;
+  var date=document.getElementById('fDate').value;
+  var msg=document.getElementById('fMsg').value.trim();
+  var lines=['Bonjour Studio 31, je souhaite prendre rendez-vous.','','Nom : '+name,'Prestation : '+svc];
+  if(date){var d=new Date(date+'T00:00:00');lines.push('Date souhaitée : '+d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}));}
+  if(msg){lines.push('Message : '+msg);}
+  lines.push('','Merci de me confirmer la disponibilité.');
+  window.open('https://wa.me/212665959312?text='+encodeURIComponent(lines.join('\n')),'_blank');
+});
+</script>
+
+<script type="module">
+/* ================== WebGL: layered editorial composition ================== */
+try {
+  const THREE = await import('three');
+  const ST = window.STAGE;
+  const canvas = document.getElementById('gl');
+  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth < 820 ? 1.6 : 2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
+
+  const loadImg = src => new Promise((res, rej)=>{
+    const img = new Image(); if (location.protocol.indexOf('http')===0) img.crossOrigin='anonymous';
+    img.onload = ()=>res(img); img.onerror = rej; img.src = src;
+  });
+  function cover(ctx, img, x, y, w, h, fy){
+    const ir = img.naturalWidth/img.naturalHeight, r = w/h;
+    let sw, sh, sx, sy;
+    if (ir > r){ sh = img.naturalHeight; sw = sh*r; sx = (img.naturalWidth-sw)/2; sy = 0; }
+    else { sw = img.naturalWidth; sh = sw/r; sx = 0; sy = (img.naturalHeight-sh) * (fy==null ? .5 : fy); }
+    ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+  }
+  function rr(ctx, x, y, w, h, r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+  async function screenTexture(src, url){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 1100; c.height = 730;
+    const x = c.getContext('2d');
+    x.fillStyle = '#14100b'; rr(x, 4, 4, 1092, 722, 26); x.fill();
+    x.fillStyle = '#1e1811'; rr(x, 4, 4, 1092, 74, 26); x.fill(); x.fillRect(4, 52, 1092, 26);
+    ['#e0654f','#e6d3a3','#7fb069'].forEach((col, i)=>{ x.fillStyle = col; x.beginPath(); x.arc(44+i*34, 41, 10, 0, 7); x.fill(); });
+    x.fillStyle = '#2b2113'; rr(x, 200, 22, 560, 38, 19); x.fill();
+    x.fillStyle = '#b3a68c'; x.font = '24px Courier New'; x.fillText('https://' + url, 224, 49);
+    x.fillStyle = '#b3a68c'; x.font = '22px Courier New'; x.fillText('≡', 1030, 50);
+    x.save(); rr(x, 22, 96, 1056, 612, 14); x.clip(); cover(x, img, 22, 96, 1056, 612);
+    /* grade champagne : voile sombre léger pour poser la photo claire sur la scène sombre */
+    const g = x.createLinearGradient(0, 96, 0, 708);
+    g.addColorStop(0, 'rgba(16,10,4,.10)'); g.addColorStop(1, 'rgba(16,10,4,.26)');
+    x.fillStyle = g; x.fillRect(22, 96, 1056, 612); x.restore();
+    x.strokeStyle = 'rgba(201,169,106,.35)'; x.lineWidth = 2; rr(x, 4, 4, 1092, 722, 26); x.stroke();
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: 730/1100};
+  }
+  async function cardTexture(src, label){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 800; c.height = 600;
+    const x = c.getContext('2d');
+    x.fillStyle = '#0e0a06'; x.fillRect(0, 0, 800, 600);
+    cover(x, img, 0, 0, 800, 492, .25);
+    /* grade : brightness ~.8 + dégradé sombre bas (photos claires sur scène sombre) */
+    const g = x.createLinearGradient(0, 0, 0, 492);
+    g.addColorStop(0, 'rgba(14,9,3,.16)'); g.addColorStop(.62, 'rgba(14,9,3,.20)'); g.addColorStop(1, 'rgba(14,9,3,.38)');
+    x.fillStyle = g; x.fillRect(0, 0, 800, 492);
+    x.fillStyle = '#14100b'; x.fillRect(0, 492, 800, 108);
+    x.fillStyle = '#c9a96a'; x.fillRect(28, 522, 34, 4);
+    x.fillStyle = '#f2ead9'; x.font = '700 30px Courier New'; x.fillText(label, 28, 570);
+    x.strokeStyle = 'rgba(201,169,106,.3)'; x.lineWidth = 2; x.strokeRect(1, 1, 798, 598);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: 600/800};
+  }
+  async function photoTexture(src){
+    const img = await loadImg(src);
+    const portrait = img.naturalHeight > img.naturalWidth;
+    const c = document.createElement('canvas');
+    c.width = portrait ? 960 : 1280; c.height = portrait ? 1280 : 800;
+    const x = c.getContext('2d'); cover(x, img, 0, 0, c.width, c.height, .3);
+    const g = x.createLinearGradient(0, 0, 0, c.height);
+    g.addColorStop(0, 'rgba(14,9,3,.12)'); g.addColorStop(1, 'rgba(14,9,3,.28)');
+    x.fillStyle = g; x.fillRect(0, 0, c.width, c.height);
+    x.strokeStyle = 'rgba(242,234,217,.18)'; x.lineWidth = 3; x.strokeRect(2, 2, c.width-4, c.height-4);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: c.height/c.width};
+  }
+  function glowTexture(){
+    const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+    const x = c.getContext('2d');
+    const g = x.createRadialGradient(256, 256, 20, 256, 256, 256);
+    g.addColorStop(0, 'rgba(201,169,106,.32)'); g.addColorStop(.55, 'rgba(201,169,106,.09)'); g.addColorStop(1, 'rgba(201,169,106,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 512, 512);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+    return {tex: t, aspect: 1};
+  }
+
+  const defs = {
+    glow:   { make:'glow' },
+    screen: LAYER_SRC.screen, box: LAYER_SRC.box, wide2: LAYER_SRC.wide2,
+    cardA: LAYER_SRC.cardA, cardB: LAYER_SRC.cardB,
+    cardC: LAYER_SRC.cardC, cardD: LAYER_SRC.cardD, cardE: LAYER_SRC.cardE
+  };
+  const meshes = {};
+  for (const [key, d] of Object.entries(defs)){
+    let r;
+    if (d.make === 'screen') r = await screenTexture(d.src, d.url);
+    else if (d.make === 'card') r = await cardTexture(d.src, d.label);
+    else if (d.make === 'photo') r = await photoTexture(d.src);
+    else r = glowTexture();
+    const w = key === 'glow' ? 15 : d.w;
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, w * r.aspect),
+      new THREE.MeshBasicMaterial({ map: r.tex, transparent: true, depthWrite: false }));
+    m.renderOrder = key === 'glow' ? 0 : 5;
+    scene.add(m); meshes[key] = m;
+  }
+  document.getElementById('loader').style.display = 'none';
+  ST.ready = true;
+  (window.__meshes = window.__meshes || []).push(meshes);
+
+  let mx = 0, my = 0, visible = true;
+  if (matchMedia('(pointer:fine)').matches)
+    addEventListener('pointermove', e=>{ mx = e.clientX/innerWidth - .5; my = e.clientY/innerHeight - .5; }, {passive:true});
+  new IntersectionObserver(es=>{ visible = es[0].isIntersecting; }).observe(document.getElementById('stage'));
+  function resize(){
+    const w = canvas.clientWidth || innerWidth, h = canvas.clientHeight || innerHeight;
+    renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix();
+  }
+  resize(); addEventListener('resize', resize);
+
+  function tick(t){
+    requestAnimationFrame(tick);
+    if (!visible) return;
+    const ms = innerWidth < 820 ? .62 : 1;
+    for (const [key, m] of Object.entries(meshes)){
+      const L = ST.layers[key]; if (!L) continue;
+      m.position.set(L.x * (innerWidth < 820 ? .45 : 1), L.y, L.z);
+      m.rotation.set(0, L.ry + mx * .12, L.rz);
+      const sc = L.s * ms; m.scale.set(sc, sc, 1);
+      m.material.opacity = L.o;
+      m.renderOrder = 5 + L.z * 2;
+      const dk = 1 - (L.dk || 0) * .75;
+      m.material.color.setScalar(dk);
+    }
+    camera.position.set(ST.cam.x + mx * .35, ST.cam.y - my * .25 + Math.sin(t*.0004)*.04, ST.cam.z);
+    camera.lookAt(ST.cam.x * .6, ST.cam.y * .6, 0);
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(tick);
+} catch(e) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('fallback3d').style.display = 'flex';
+  const g = document.getElementById('gl'); if (g) g.style.display = 'none';
+}
+</script>
+</body>
+</html>
