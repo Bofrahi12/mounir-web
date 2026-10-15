@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>LAME D'OR — Barber Club Tanger | نموذج تجريبي</title>
+<meta name="description" content="نموذج تجريبي من طنجة ويب: موقع نادٍ فاخر للحلاقة الرجالية بطنجة — قصّ شعر، تحديد لحية، حلاقة ملكية وحجز عبر واتساب. أثمنة وأسماء توضيحية.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23141110'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23C9A227' font-family='Georgia'>L</text></svg>">
+<style>
+:root{
+  --bg:#141110; --bg2:#1C1917; --card:rgba(34,30,26,.78); --card-solid:#221E1A;
+  --line:rgba(201,162,39,.22); --hair:rgba(245,240,232,.09);
+  --gold:#C9A227; --gold-hi:#E3C565; --gold-deep:#A16207;
+  --txt:#F5F0E8; --mut:#B8AEA2; --err:#F0B4B4;
+  --r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Cairo','Segoe UI',Tahoma,sans-serif;overflow-x:hidden;line-height:1.75}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+::selection{background:var(--gold);color:#141110}
+.latin{font-family:'Cormorant Garamond',Georgia,serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+section{padding:84px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 46px}
+.sec-head .kicker{color:var(--gold);font-weight:800;letter-spacing:.5px;font-size:14px}
+.sec-head h2{font-size:clamp(28px,4.4vw,40px);font-weight:900;line-height:1.35;margin:6px 0 8px}
+.sec-head p{color:var(--mut);font-size:16.5px}
+.gold-rule{width:64px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto 0}
+/* reveal */
+.js .rv{opacity:0;transform:translateY(24px) scale(.985);transition:opacity .42s ease,transform .45s ease}
+.js .rv.in{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}.d5{transition-delay:.35s}
+/* demobar */
+.demobar{background:#0B0908;color:#E3C565;text-align:center;font-size:13.5px;font-weight:700;padding:9px 14px;border-bottom:1px solid rgba(201,162,39,.35);position:relative;z-index:60}
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(20,17,16,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--hair)}
+.hbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 22px;max-width:1180px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;min-height:44px}
+.brand .mark{width:44px;height:44px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:24px;line-height:1}
+.brand .bname{font-family:'Cormorant Garamond',Georgia,serif;font-size:23px;font-weight:700;letter-spacing:2.5px;color:var(--txt);line-height:1.1}
+.brand .bsub{font-size:11.5px;color:var(--mut);letter-spacing:1px}
+nav.main{display:flex;gap:26px;font-size:15px;font-weight:700;color:var(--mut)}
+nav.main a{padding:10px 2px;transition:color .2s}
+nav.main a:hover{color:var(--gold-hi)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--gold);color:#171310;padding:13px 26px;border-radius:10px;font-weight:800;font-size:16px;border:1px solid var(--gold);min-height:48px;transition:background .22s,transform .22s,border-color .22s}
+.btn:hover{background:var(--gold-deep);border-color:var(--gold-deep);color:#FFF7E0;transform:translateY(-2px)}
+.btn.ghost{background:rgba(20,17,16,.45);color:var(--txt);border-color:rgba(245,240,232,.4);backdrop-filter:blur(6px)}
+.btn.ghost:hover{background:rgba(245,240,232,.14);border-color:var(--gold);color:var(--gold-hi)}
+.btn.sm{padding:10px 20px;min-height:44px;font-size:15px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+/* hero */
+.hero{position:relative;padding:0;min-height:92vh;display:flex;align-items:flex-end;isolation:isolate}
+.hero .bg{position:absolute;inset:0;z-index:-2}
+.hero .bg img{width:100%;height:100%;object-fit:cover;aspect-ratio:auto}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,17,16,.55) 0%,rgba(20,17,16,.38) 40%,rgba(20,17,16,.93) 88%,var(--bg) 100%)}
+.hero-in{padding:120px 0 64px;width:100%}
+.eyebrow{font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:5px;font-size:16px;color:var(--gold-hi);font-weight:600}
+.hero h1{font-size:clamp(34px,6vw,58px);font-weight:900;line-height:1.3;margin:14px 0 10px;max-width:720px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .sub{color:#E7DFD2;font-size:clamp(16px,2.2vw,19px);max-width:600px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.stats{display:flex;gap:0;flex-wrap:wrap;margin-top:48px;border:1px solid var(--hair);border-radius:var(--r);background:rgba(28,25,23,.55);backdrop-filter:blur(10px);max-width:640px}
+.stat{flex:1 1 150px;padding:16px 20px;text-align:center}
+.stat + .stat{border-inline-start:1px solid var(--hair)}
+.stat .num{font-family:'Cormorant Garamond',Georgia,serif;font-size:36px;font-weight:700;color:var(--gold-hi);line-height:1}
+.stat .lab{font-size:13.5px;color:var(--mut)}
+/* services */
+#services{background:var(--bg2)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.scard{background:var(--card);border:1px solid var(--hair);border-radius:var(--r);padding:28px 24px;transition:transform .25s,border-color .25s,background .25s}
+.scard:hover{transform:translateY(-5px);border-color:var(--line);background:rgba(40,35,30,.85)}
+.scard .ic{width:56px;height:56px;border-radius:14px;background:rgba(201,162,39,.12);border:1px solid var(--line);display:grid;place-items:center;color:var(--gold);margin-bottom:16px}
+.scard h3{font-size:19px;font-weight:800;margin-bottom:6px}
+.scard p{color:var(--mut);font-size:15px}
+.scard .price{margin-top:16px;display:flex;align-items:baseline;gap:7px;color:var(--gold-hi)}
+.scard .price .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:32px;font-weight:700;line-height:1}
+.scard .price .u{font-size:14px;color:var(--mut)}
+.mid-cta{text-align:center;margin-top:44px}
+/* barbers */
+.bcard{background:var(--card-solid);border:1px solid var(--hair);border-radius:var(--r);overflow:hidden;transition:transform .25s,border-color .25s}
+.bcard:hover{transform:translateY(-5px);border-color:var(--line)}
+.bcard .ph{aspect-ratio:4/3.4;overflow:hidden}
+.bcard .ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.bcard:hover .ph img{transform:scale(1.05)}
+.bcard .bd{padding:22px 24px 26px}
+.bcard h3{font-size:20px;font-weight:800}
+.bcard .spec{color:var(--gold-hi);font-weight:700;font-size:15px}
+.bcard p{color:var(--mut);font-size:15px;margin-top:6px}
+.bcard .exp{display:inline-block;margin-top:14px;font-size:13.5px;color:var(--mut);border:1px solid var(--hair);border-radius:999px;padding:5px 14px}
+.bcard .exp b{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;color:var(--gold-hi)}
+/* pricing */
+#pricing{background:var(--bg2)}
+.pcard{background:var(--card);border:1px solid var(--hair);border-radius:18px;padding:34px 28px;text-align:center;position:relative;transition:transform .25s,border-color .25s}
+.pcard:hover{transform:translateY(-5px)}
+.pcard.hot{border-color:var(--gold);background:linear-gradient(180deg,rgba(201,162,39,.13),rgba(34,30,26,.85) 55%);box-shadow:0 24px 50px rgba(0,0,0,.45)}
+.pcard .tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#171310;font-weight:800;font-size:13px;padding:4px 16px;border-radius:999px;white-space:nowrap}
+.pcard h3{font-size:21px;font-weight:900}
+.pcard .pnum{font-family:'Cormorant Garamond',Georgia,serif;font-size:58px;font-weight:700;color:var(--gold-hi);line-height:1.1}
+.pcard .per{color:var(--mut);font-size:14px}
+.pcard ul{list-style:none;text-align:start;margin:22px 0 26px;display:grid;gap:11px}
+.pcard li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:#EDE6D8}
+.pcard li svg{flex:0 0 auto;margin-top:5px;color:var(--gold)}
+.pcard li.off{color:var(--mut);opacity:.75}
+/* gallery */
+.ggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gitem{border-radius:var(--r);overflow:hidden;border:1px solid var(--hair);aspect-ratio:4/3}
+.gitem img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
+.gitem:hover img{transform:scale(1.06)}
+.gitem.wide{grid-column:span 2;aspect-ratio:auto}
+/* testimonials */
+#reviews{background:var(--bg2)}
+.tcard{background:var(--card);border:1px solid var(--hair);border-radius:var(--r);padding:28px 24px}
+.tcard .stars{color:var(--gold);display:flex;gap:3px;margin-bottom:14px}
+.tcard p{font-size:16px;color:#EDE6D8}
+.tcard .who{margin-top:16px;color:var(--mut);font-size:14.5px}
+.tcard .who b{color:var(--txt);font-size:15.5px}
+/* booking */
+.book-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:34px;align-items:start}
+.book-side h2{font-size:clamp(26px,3.6vw,36px);font-weight:900;line-height:1.4}
+.book-side p{color:var(--mut);margin-top:10px}
+.info-list{list-style:none;margin-top:26px;display:grid;gap:16px}
+.info-list li{display:flex;gap:13px;align-items:flex-start}
+.info-list .ic{width:46px;height:46px;flex:0 0 auto;border-radius:12px;background:rgba(201,162,39,.12);border:1px solid var(--line);display:grid;place-items:center;color:var(--gold)}
+.info-list b{display:block;font-size:16px}
+.info-list span{color:var(--mut);font-size:15px}
+form{background:var(--card);border:1px solid var(--hair);border-radius:18px;padding:30px 28px;backdrop-filter:blur(8px)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:700;font-size:15px;margin-bottom:7px}
+.field .hint{font-weight:400;color:var(--mut);font-size:13px}
+.field input,.field select{width:100%;background:#171310;border:1px solid rgba(245,240,232,.18);color:var(--txt);border-radius:10px;padding:12px 14px;font-family:inherit;font-size:16px;min-height:48px;transition:border-color .2s}
+.field input:focus,.field select:focus{border-color:var(--gold);outline:none}
+.field select option{background:#1C1917}
+.field .msg{display:none;color:var(--err);font-size:13.5px;margin-top:6px;font-weight:700}
+.field.bad input,.field.bad select{border-color:var(--err)}
+.field.bad .msg{display:block}
+form .btn{width:100%;font-size:17px}
+.fnote{text-align:center;color:var(--mut);font-size:13.5px;margin-top:14px}
+/* footer */
+footer{background:#0E0B0A;border-top:1px solid var(--hair);padding:52px 0 30px}
+.fgrid{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap}
+footer .bname{font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;letter-spacing:2.5px;font-weight:700}
+footer p{color:var(--mut);font-size:14.5px;max-width:460px;margin-top:8px}
+.fbot{border-top:1px solid var(--hair);margin-top:34px;padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--mut);font-size:13.5px}
+.fbot b{color:var(--gold-hi)}
+/* responsive */
+@media(max-width:1024px){.grid3{grid-template-columns:repeat(2,1fr)}.ggrid{grid-template-columns:repeat(2,1fr)}.gitem.wide{grid-column:span 2}}
+@media(max-width:820px){nav.main{display:none}.book-grid{grid-template-columns:1fr}section{padding:64px 0}}
+@media(max-width:560px){.grid3{grid-template-columns:1fr}.ggrid{grid-template-columns:1fr}.gitem.wide{grid-column:span 1;aspect-ratio:4/3}.frow{grid-template-columns:1fr}.hero{min-height:86vh}.stat{flex:1 1 100px;padding:13px 8px}.hbar .btn{display:none}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demobar">📌 نموذج تجريبي — أثمنة توضيحية</div>
+
+<header>
+  <div class="hbar">
+    <a class="brand" href="#top" aria-label="LAME D'OR — Barber Club">
+      <span class="mark latin">L</span>
+      <span><span class="bname">LAME D'OR</span><br><span class="bsub">BARBER CLUB — TANGER</span></span>
+    </a>
+    <nav class="main" aria-label="التنقل الرئيسي">
+      <a href="#services">الخدمات</a>
+      <a href="#barbers">الحلاقون</a>
+      <a href="#pricing">الأثمنة</a>
+      <a href="#gallery">المعرض</a>
+      <a href="#booking">الحجز</a>
+    </nav>
+    <a class="btn sm" href="#booking">احجز موعدك</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="bg"><img src="demo-barber/img/hero.webp" alt="حلاق محترف واقف داخل نادي حلاقة فاخر بأجواء داكنة أنيقة" fetchpriority="high"></div>
+  <div class="wrap hero-in">
+    <p class="eyebrow rv">BARBER CLUB — TANGER</p>
+    <h1 class="rv d1">فنّ الحلاقة الرجالية… <em>بدقّة تليق بك</em></h1>
+    <p class="sub rv d2">قصّات كلاسيكية وعصرية، تحديد لحية بالموس، وحلاقة ملكية بالمنشفة الساخنة — تجربة هادئة وفاخرة في قلب طنجة، بأيدي حلاقين يتقنون التفاصيل.</p>
+    <div class="hero-cta rv d3">
+      <a class="btn" href="https://wa.me/212693981822?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D8%AD%D9%84%D8%A7%D9%82%D8%A9" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg>
+        احجز عبر واتساب
+      </a>
+      <a class="btn ghost" href="#services">اكتشف الخدمات</a>
+    </div>
+    <div class="stats rv d4">
+      <div class="stat"><div class="num">4.9</div><div class="lab">تقييم الزبناء من 5</div></div>
+      <div class="stat"><div class="num">12+</div><div class="lab">سنة من الخبرة</div></div>
+      <div class="stat"><div class="num">8,500+</div><div class="lab">قصّة وحلاقة منجزة</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">خدماتنا</p>
+      <h2>خدمات مصممة للرجل الأنيق</h2>
+      <p>من القصّة اليومية إلى طقس الحلاقة الملكية الكامل — كل خدمة تبدأ باستشارة قصيرة وتنتهي بلمسة عطرية.</p>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="grid3">
+      <article class="scard rv">
+        <div class="ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><path d="M8.2 7.8 20 19M8.2 16.2 20 5M13.5 12.5l1 1"/></svg></div>
+        <h3>قصّ شعر كلاسيكي</h3>
+        <p>قصّة مضبوطة بالمقص والماكينة حسب شكل الوجه، مع غسل وتصفيف نهائي.</p>
+        <div class="price"><span class="n">80</span><span class="u">درهم</span></div>
+      </article>
+      <article class="scard rv d1">
+        <div class="ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 17.5 6.5a2.1 2.1 0 0 1 3 3L10 20H4v-6z"/><path d="M14.5 6.5l3 3M3 21h18" stroke-dasharray="0"/><path d="M4 20l1-4L17.5 3.5"/></svg></div>
+        <h3>تحديد لحية</h3>
+        <p>رسم خطوط نظيفة بالموس، زيوت مغذية ومنشفة دافئة لنتيجة حادة ومريحة.</p>
+        <div class="price"><span class="n">50</span><span class="u">درهم</span></div>
+      </article>
+      <article class="scard rv d2">
+        <div class="ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.3L18.5 8l-3.4 3.1 1 4.6L12 13.4 7.9 15.7l1-4.6L5.5 8l4.6-.7z"/><path d="M5 20.5h14"/></svg></div>
+        <h3>قصّ + لحية</h3>
+        <p>الباقة الأكثر طلباً: قصّة كاملة مع تحديد اللحية وتناسق تام بينهما.</p>
+        <div class="price"><span class="n">120</span><span class="u">درهم</span></div>
+      </article>
+      <article class="scard rv">
+        <div class="ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5C6 5 9.5 3.5 12 3.5S18 5 21 8.5c-3 3.5-6.5 5-9 5s-6-1.5-9-5z"/><path d="M4 15.5c2.5 2 5.2 3 8 3s5.5-1 8-3M12 13.5v3"/></svg></div>
+        <h3>حلاقة ملكية بالمنشفة الساخنة</h3>
+        <p>طقس كامل: منشفة ساخنة، رغوة تقليدية، حلاقة بالموس، زيوت باردة وتدليك.</p>
+        <div class="price"><span class="n">150</span><span class="u">درهم</span></div>
+      </article>
+      <article class="scard rv d1">
+        <div class="ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5s6 6.6 6 11a6 6 0 1 1-12 0c0-4.4 6-11 6-11z"/><path d="M9.5 14.5a2.8 2.8 0 0 0 2 3.2"/></svg></div>
+        <h3>صبغة / تغطية الشيب</h3>
+        <p>تغطية طبيعية للشيب بدرجات تناسب لون شعرك، دون مظهر مصطنع.</p>
+        <div class="price"><span class="n">100</span><span class="u">درهم</span></div>
+      </article>
+      <article class="scard rv d2">
+        <div class="ic"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17 3 7l5.5 4L12 5l3.5 6L21 7l-1 10z"/><path d="M5 21h14M12 13.2a1.4 1.4 0 1 0 0 .01"/></svg></div>
+        <h3>باقة العريس</h3>
+        <p>قصّ + لحية + حلاقة ملكية + عناية بالبشرة في جلسة خاصة قبل يومك الكبير.</p>
+        <div class="price"><span class="n">350</span><span class="u">درهم</span></div>
+      </article>
+    </div>
+    <div class="mid-cta rv"><a class="btn" href="#booking">احجز خدمتك الآن</a></div>
+  </div>
+</section>
+
+<!-- BARBERS -->
+<section id="barbers">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">فريقنا</p>
+      <h2>حلاقون… حرفيون</h2>
+      <p>ثلاثة أسماء، شغف واحد: أن تخرج من عندنا بأفضل نسخة منك.</p>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="grid3">
+      <article class="bcard rv">
+        <div class="ph"><img src="demo-barber/img/b1.webp" alt="الحلاق ياسين العلمي واقف بمئزره داخل المحل" loading="lazy"></div>
+        <div class="bd">
+          <h3>ياسين العلمي</h3>
+          <p class="spec">حلاق رئيسي — القصّات الكلاسيكية</p>
+          <p>مدرسة قديمة بروح عصرية: قصّات نظيفة تدوم أسابيع وتبقى مرتبة وهي تطول.</p>
+          <span class="exp"><b>12</b> سنة خبرة</span>
+        </div>
+      </article>
+      <article class="bcard rv d1">
+        <div class="ph"><img src="demo-barber/img/b2.webp" alt="الحلاق عمر بناني مبتسم بمئزره الجلدي" loading="lazy"></div>
+        <div class="bd">
+          <h3>عمر بناني</h3>
+          <p class="spec">مختص اللحية والحلاقة الملكية</p>
+          <p>خطوط لحية مرسومة بالملّيم، وطقس منشفة ساخنة يحوّل الحلاقة إلى استراحة.</p>
+          <span class="exp"><b>9</b> سنوات خبرة</span>
+        </div>
+      </article>
+      <article class="bcard rv d2">
+        <div class="ph"><img src="demo-barber/img/b3.webp" alt="الحلاق سفيان الإدريسي أثناء قصّ شعر زبون" loading="lazy"></div>
+        <div class="bd">
+          <h3>سفيان الإدريسي</h3>
+          <p class="spec">مختص التدرّج (Fade) والصبغة</p>
+          <p>تدرّجات حادة وانتقالات ناعمة، ودرجات صبغة طبيعية لا تُكتشف.</p>
+          <span class="exp"><b>7</b> سنوات خبرة</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">الباقات</p>
+      <h2>باقات واضحة، بلا مفاجآت</h2>
+      <p>اختر مستوى العناية الذي يناسبك — الثمن الذي تراه هو الثمن الذي تدفعه.</p>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="grid3">
+      <article class="pcard rv">
+        <h3>الأساسي</h3>
+        <div class="pnum">80</div>
+        <p class="per">درهم / للجلسة</p>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>قصّ شعر كامل</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>غسل وتصفيف</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>مشروب ترحيبي</li>
+          <li class="off"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>تحديد لحية</li>
+          <li class="off"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>منشفة ساخنة</li>
+        </ul>
+        <a class="btn ghost" href="#booking" data-pack="باقة الأساسي — 80 درهم">اختر الأساسي</a>
+      </article>
+      <article class="pcard hot rv d1">
+        <span class="tag">الأكثر طلباً</span>
+        <h3>المميز</h3>
+        <div class="pnum">120</div>
+        <p class="per">درهم / للجلسة</p>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>قصّ شعر + تحديد لحية</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>منشفة ساخنة وزيوت طبيعية</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>تدليك خفيف لفروة الرأس</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>تصفيف بمنتجات فاخرة</li>
+          <li class="off"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>عناية بالبشرة</li>
+        </ul>
+        <a class="btn" href="#booking" data-pack="باقة المميز — 120 درهم">اختر المميز</a>
+      </article>
+      <article class="pcard rv d2">
+        <h3>الملكي</h3>
+        <div class="pnum">199</div>
+        <p class="per">درهم / للجلسة</p>
+        <ul>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>كل مزايا باقة المميز</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>حلاقة ملكية كاملة بالموس</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>عناية بالبشرة وقناع منقٍّ</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>جلسة أطول وأولوية في الحجز</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>لمسة أخيرة: عطر وكولونيا</li>
+        </ul>
+        <a class="btn ghost" href="#booking" data-pack="باقة الملكي — 199 درهم">اختر الملكي</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">المعرض</p>
+      <h2>داخل النادي</h2>
+      <p>أجواء داكنة، خشب وجلد، وأدوات تحكي حرفة قديمة بروح اليوم.</p>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="ggrid">
+      <figure class="gitem wide rv"><img src="demo-barber/img/g4.webp" alt="موس حلاقة ذهبي تقليدي على قماش داكن" loading="lazy"></figure>
+      <figure class="gitem rv d1"><img src="demo-barber/img/g1.webp" alt="حلاق يقصّ شعر زبون بالماكينة عن قرب" loading="lazy"></figure>
+      <figure class="gitem rv"><img src="demo-barber/img/g2.webp" alt="تحديد لحية زبون بالمقص بدقة" loading="lazy"></figure>
+      <figure class="gitem rv d1"><img src="demo-barber/img/g3.webp" alt="كرسي حلاقة كلاسيكي داخل محل بأجواء تراثية" loading="lazy"></figure>
+      <figure class="gitem rv d2"><img src="demo-barber/img/g5.webp" alt="مقصات وأدوات حلاقة مرتبة على طاولة خشبية" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">آراء الزبناء</p>
+      <h2>شنو قالوا علينا؟</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="grid3">
+      <article class="tcard rv">
+        <div class="stars" aria-label="5 من 5 نجوم"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg></div>
+        <p>«أحسن تدرّج جرّبتو فطنجة. بلاصة نظيفة، استقبال زوين، وخرجت بالضبط كيف ما تصوّرت.»</p>
+        <p class="who"><b>يوسف</b> — زبون</p>
+      </article>
+      <article class="tcard rv d1">
+        <div class="stars" aria-label="5 من 5 نجوم"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg></div>
+        <p>«الحلاقة الملكية بالمنشفة الساخنة تجربة أخرى تماماً. وليت كنحجز كل جمعة قبل الصلاة.»</p>
+        <p class="who"><b>حمزة</b> — زبون</p>
+      </article>
+      <article class="tcard rv d2">
+        <div class="stars" aria-label="5 من 5 نجوم"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 17.4 6.1 20.6l1.3-6.5L2.5 9.5l6.6-.8z"/></svg></div>
+        <p>«حجزت باقة العريس نهار عرسي: فريق محترم وهدوء تام. الصور خرجات رائعة والفضل للتفاصيل.»</p>
+        <p class="who"><b>أيوب</b> — زبون</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="wrap">
+    <div class="book-grid">
+      <div class="book-side rv">
+        <p class="kicker" style="color:var(--gold);font-weight:800">الحجز</p>
+        <h2>احجز مقعدك في دقيقة</h2>
+        <p>عمّر الاستمارة وغادي توصلك رسالة واتساب جاهزة بالإرسال — كنأكدو الموعد في أقل من ساعة خلال أوقات العمل.</p>
+        <ul class="info-list">
+          <li>
+            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+            <span><b>أوقات العمل</b><span>الاثنين – السبت: 9:00 – 21:00<br>الأحد: 10:00 – 18:00</span></span>
+          </li>
+          <li>
+            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+            <span><b>العنوان</b><span>وسط المدينة، طنجة</span></span>
+          </li>
+          <li>
+            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+            <span><b>الهاتف / واتساب</b><span dir="ltr">+212 693-981822</span></span>
+          </li>
+        </ul>
+      </div>
+      <form id="bookForm" class="rv d1" novalidate>
+        <div class="field" data-req>
+          <label for="fName">الاسم الكامل <span class="hint">(مطلوب)</span></label>
+          <input type="text" id="fName" name="name" autocomplete="name" placeholder="مثال: محمد العلوي">
+          <p class="msg">المرجو إدخال الاسم الكامل.</p>
+        </div>
+        <div class="frow">
+          <div class="field" data-req>
+            <label for="fService">الخدمة <span class="hint">(مطلوب)</span></label>
+            <select id="fService" name="service">
+              <option value="">— اختر الخدمة —</option>
+              <option>قصّ شعر كلاسيكي — 80 درهم</option>
+              <option>تحديد لحية — 50 درهم</option>
+              <option>قصّ + لحية — 120 درهم</option>
+              <option>حلاقة ملكية بالمنشفة الساخنة — 150 درهم</option>
+              <option>صبغة / تغطية الشيب — 100 درهم</option>
+              <option>باقة العريس — 350 درهم</option>
+              <option>باقة الأساسي — 80 درهم</option>
+              <option>باقة المميز — 120 درهم</option>
+              <option>باقة الملكي — 199 درهم</option>
+            </select>
+            <p class="msg">المرجو اختيار خدمة.</p>
+          </div>
+          <div class="field">
+            <label for="fBarber">الحلاق <span class="hint">(اختياري)</span></label>
+            <select id="fBarber" name="barber">
+              <option value="">أول حلاق متاح</option>
+              <option>ياسين العلمي</option>
+              <option>عمر بناني</option>
+              <option>سفيان الإدريسي</option>
+            </select>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="field" data-req>
+            <label for="fDate">التاريخ <span class="hint">(مطلوب)</span></label>
+            <input type="date" id="fDate" name="date">
+            <p class="msg">المرجو اختيار تاريخ الموعد.</p>
+          </div>
+          <div class="field" data-req>
+            <label for="fTime">الوقت <span class="hint">(مطلوب)</span></label>
+            <input type="time" id="fTime" name="time" min="09:00" max="21:00">
+            <p class="msg">المرجو اختيار وقت الموعد.</p>
+          </div>
+        </div>
+        <button type="submit" class="btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg>
+          تأكيد الحجز عبر واتساب
+        </button>
+        <p class="fnote">بالضغط على الزر، كتفتح واتساب برسالة جاهزة — صيفطها وغادي نأكدو ليك الموعد.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <p class="bname">LAME D'OR</p>
+        <p>Barber Club — Tanger. نادي حلاقة رجالية فاخر: قصّ، لحية وحلاقة ملكية في قلب طنجة.</p>
+      </div>
+      <div>
+        <p><b style="color:var(--txt)">روابط سريعة</b></p>
+        <p><a href="#services">الخدمات</a> · <a href="#barbers">الحلاقون</a> · <a href="#pricing">الأثمنة</a> · <a href="#booking">الحجز</a></p>
+        <p style="margin-top:10px">الاثنين – السبت 9:00 – 21:00 · الأحد 10:00 – 18:00<br>وسط المدينة، طنجة · <span dir="ltr">+212 693-981822</span></p>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>نموذج تجريبي للعرض فقط — الأسماء والأثمنة استرشادية ولا تمثل محلاً حقيقياً.</span>
+      <span>صُنع بواسطة <b>طنجة ويب — TANJA WEB</b></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Staggered reveal on scroll
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  },{threshold:.12});
+  els.forEach(function(e){ io.observe(e); });
+})();
+// Pack buttons preselect the matching service in the form
+document.querySelectorAll('[data-pack]').forEach(function(a){
+  a.addEventListener('click', function(){
+    var sel = document.getElementById('fService');
+    for(var i=0;i<sel.options.length;i++){ if(sel.options[i].text === a.getAttribute('data-pack')){ sel.selectedIndex = i; break; } }
+  });
+});
+// Booking form -> WhatsApp
+document.getElementById('bookForm').addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var ok = true, firstBad = null;
+  this.querySelectorAll('[data-req]').forEach(function(f){
+    var inp = f.querySelector('input,select');
+    var bad = !inp.value || !inp.value.trim();
+    f.classList.toggle('bad', bad);
+    if(bad){ ok = false; if(!firstBad) firstBad = inp; }
+  });
+  if(!ok){ firstBad.focus(); return; }
+  var name = document.getElementById('fName').value.trim();
+  var service = document.getElementById('fService').value;
+  var barber = document.getElementById('fBarber').value || 'أول حلاق متاح';
+  var date = document.getElementById('fDate').value;
+  var time = document.getElementById('fTime').value;
+  var lines = [
+    'طلب حجز — LAME D\'OR Barber Club',
+    'الاسم: ' + name,
+    'الخدمة: ' + service,
+    'الحلاق: ' + barber,
+    'التاريخ: ' + date,
+    'الوقت: ' + time
+  ];
+  var url = 'https://wa.me/212693981822?text=' + encodeURIComponent(lines.join('\n'));
+  window.open(url, '_blank', 'noopener');
+});
+// Clear the error state as soon as a field is fixed
+document.querySelectorAll('#bookForm [data-req] input, #bookForm [data-req] select').forEach(function(inp){
+  inp.addEventListener('input', function(){ inp.closest('.field').classList.remove('bad'); });
+  inp.addEventListener('change', function(){ inp.closest('.field').classList.remove('bad'); });
+});
+</script>
+</body>
+</html>
