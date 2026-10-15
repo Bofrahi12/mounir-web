@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,181 +10,297 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
+<script>document.documentElement.classList.add('js');</script>
 <style>
-  :root{
-    --navy:#0d1526; --navy2:#131f38; --card:#16233d;
-    --paper:#f7f8fa; --white:#ffffff;
-    --amber:#f6a21e; --amber2:#ffb84d;
-    --ink:#1c2536; --muted:#68738a; --line:#e4e8ef;
-    --green:#25d366; --radius:16px;
-    --shadow:0 14px 34px rgba(13,21,38,.10);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:'Cairo',Tahoma,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7}
-  img{display:block;max-width:100%}
-  .container{max-width:1160px;margin:0 auto;padding:0 20px}
-
-  /* demo banner */
-  .demo-banner{background:var(--amber);color:#231600;text-align:center;font-size:.87rem;font-weight:800;padding:8px 14px;letter-spacing:.2px}
-
-  /* header */
-  header{position:sticky;top:0;z-index:60;background:rgba(13,21,38,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(246,162,30,.25)}
-  .hd-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
-  .logo{font-weight:900;font-size:1.45rem;color:#fff;text-decoration:none;letter-spacing:.4px;white-space:nowrap}
-  .logo span{color:var(--amber)}
-  .logo small{display:block;font-size:.62rem;letter-spacing:3.5px;color:#93a1bd;font-weight:700;line-height:1.1;text-transform:uppercase}
-  nav.main-nav{display:flex;gap:26px;align-items:center}
-  nav.main-nav a{color:#dbe2f0;text-decoration:none;font-weight:700;font-size:.98rem;transition:.2s}
-  nav.main-nav a:hover{color:var(--amber2)}
-  .btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:50px;padding:12px 28px;font-size:1rem;border:2px solid transparent;cursor:pointer;font-family:inherit;transition:.2s;text-align:center}
-  .btn-amber{background:var(--amber);color:#231600}
-  .btn-amber:hover{background:var(--amber2);transform:translateY(-2px)}
-  .btn-ghost{background:rgba(13,21,38,.3);color:#fff;border-color:rgba(255,255,255,.55)}
-  .btn-ghost:hover{border-color:var(--amber);color:var(--amber2)}
-  .btn-wa{background:var(--green);color:#06300f}
-  .btn-wa:hover{background:#1eb856;transform:translateY(-2px)}
-  .btn-sm{padding:9px 20px;font-size:.92rem}
-  .btn-block{width:100%}
-  .burger{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
-
-  /* hero */
-  .hero{position:relative;min-height:86vh;display:flex;align-items:center;background:url('demo-location/img/hero.webp') center 58%/cover no-repeat}
-  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,21,38,.88) 0%,rgba(13,21,38,.62) 46%,rgba(13,21,38,.18) 100%)}
-  .hero-inner{position:relative;padding:86px 20px 76px;width:100%}
-  .hero-badge{display:inline-block;background:rgba(246,162,30,.16);border:1px solid rgba(246,162,30,.65);color:var(--amber2);padding:6px 18px;border-radius:50px;font-size:.85rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px}
-  .hero h1{color:#fff;font-size:clamp(2.3rem,5.6vw,3.9rem);font-weight:900;line-height:1.22;max-width:640px;margin-bottom:16px}
-  .hero h1 em{font-style:normal;color:var(--amber)}
-  .hero p{color:#d7deeb;font-size:1.14rem;max-width:540px;margin-bottom:32px}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-  .hero-meta{margin-top:40px;color:#aebad0;font-size:.93rem;font-weight:600}
-
-  /* trust */
-  .trust{background:#fff;border-bottom:1px solid var(--line)}
-  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:24px 0}
-  .trust-item{display:flex;align-items:center;gap:12px;justify-content:center;font-weight:800;font-size:.97rem}
-  .trust-item .t-icon{font-size:1.65rem}
-  .trust-item small{display:block;color:var(--muted);font-weight:600;font-size:.82rem}
-
-  /* sections */
-  .section{padding:76px 0}
-  .section-dark{background:var(--navy);color:#e8edf6}
-  .sec-kicker{text-align:center;color:#c47f0d;letter-spacing:.26em;text-transform:uppercase;font-size:.78rem;font-weight:800;margin-bottom:10px}
-  .section-dark .sec-kicker{color:var(--amber)}
-  .sec-title{text-align:center;font-size:clamp(1.8rem,3.8vw,2.5rem);font-weight:900;margin-bottom:12px}
-  .sec-sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 46px;font-size:1.02rem}
-  .section-dark .sec-sub{color:#9fb0ca}
-
-  /* fleet */
-  .fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .car{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s;display:flex;flex-direction:column}
-  .car:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#f3cf8e}
-  .car-img{position:relative}
-  .car-img img{width:100%;height:220px;object-fit:cover}
-  .car-cat{position:absolute;top:12px;left:12px;background:var(--navy);color:#fff;font-weight:800;font-size:.78rem;padding:4px 13px;border-radius:50px;letter-spacing:.04em}
-  .car-body{padding:20px;display:flex;flex-direction:column;flex:1}
-  .car-body h3{font-size:1.18rem;font-weight:900;margin-bottom:8px}
-  .car-specs{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:.88rem;font-weight:600;margin-bottom:16px}
-  .car-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px dashed var(--line);padding-top:16px}
-  .car-price{font-weight:900;font-size:1.28rem;color:var(--navy)}
-  .car-price small{display:block;font-size:.74rem;color:var(--muted);font-weight:700}
-  .fleet-note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:30px}
-
-  /* services */
-  .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .srv{background:var(--card);border:1px solid rgba(246,162,30,.22);border-radius:var(--radius);padding:34px 26px;text-align:center}
-  .srv .ic{font-size:2.4rem;margin-bottom:14px}
-  .srv h3{font-size:1.22rem;font-weight:900;color:#fff;margin-bottom:10px}
-  .srv p{color:#a9b8d2;font-size:.97rem}
-
-  /* steps */
-  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:0 auto}
-  .step{text-align:center;padding:10px 16px}
-  .step .num{width:58px;height:58px;margin:0 auto 16px;border-radius:50%;background:var(--amber);color:#231600;font-weight:900;font-size:1.45rem;display:flex;align-items:center;justify-content:center}
-  .step h3{font-weight:900;font-size:1.12rem;margin-bottom:6px}
-  .step p{color:var(--muted);font-size:.95rem}
-
-  /* booking form */
-  .book-box{max-width:720px;margin:0 auto;background:#fff;border-radius:20px;padding:42px 38px;box-shadow:var(--shadow);border:1px solid var(--line)}
-  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  .field{margin-bottom:18px}
-  .field label{display:block;font-weight:800;margin-bottom:7px;font-size:.94rem}
-  .field input,.field select{width:100%;background:#fbfcfe;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:inherit;font-size:1rem;padding:12px 15px;transition:.2s}
-  .field input:focus,.field select:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(246,162,30,.18)}
-  .form-note{text-align:center;color:var(--muted);font-size:.88rem;margin-top:14px}
-  .form-err{color:#b3372a;font-weight:700;min-height:1.4em;font-size:.93rem}
-  .cond-note{max-width:720px;margin:22px auto 0;text-align:center;color:#9fb0ca;font-size:.88rem}
-
-  /* contact */
-  .infos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .info-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 26px;text-align:center}
-  .info-card .ic{font-size:2.1rem;margin-bottom:12px}
-  .info-card h3{font-size:1.18rem;font-weight:900;margin-bottom:8px}
-  .info-card p{color:var(--muted);font-size:.96rem}
-  .info-card a{color:#c47f0d;text-decoration:none;font-weight:800}
-  .info-card a:hover{text-decoration:underline}
-
-  /* footer */
-  footer{background:var(--navy2);color:#a9b8d2;padding:46px 0 36px;text-align:center;border-top:1px solid rgba(246,162,30,.2)}
-  footer .logo{font-size:1.6rem}
-  footer p{margin-top:10px;font-size:.94rem}
-  .foot-demo{max-width:640px;margin:18px auto 0;font-size:.83rem;color:#71809c;border-top:1px dashed rgba(246,162,30,.22);padding-top:18px}
-  .copy{font-size:.82rem}
-
-  .wa-float{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:60;transition:.2s}
-  .wa-float:hover{transform:scale(1.08)}
-
-  @media(max-width:1020px){
-    .fleet-grid{grid-template-columns:repeat(2,1fr)}
-    .trust-grid{grid-template-columns:repeat(2,1fr);gap:18px}
-  }
-  @media(max-width:760px){
-    nav.main-nav{position:fixed;top:70px;right:0;left:0;background:var(--navy2);flex-direction:column;padding:20px 22px;gap:14px;border-bottom:1px solid rgba(246,162,30,.25);display:none;z-index:55}
-    nav.main-nav.open{display:flex}
-    .burger{display:block}
-    .srv-grid,.steps-grid,.infos-grid{grid-template-columns:1fr}
-    .row-2{grid-template-columns:1fr}
-    .section{padding:56px 0}
-    .book-box{padding:30px 22px}
-    .hero{min-height:78vh}
-  }
-  @media(max-width:560px){
-    .fleet-grid{grid-template-columns:1fr}
-  }
+:root{
+  --bg:#060607; --panel:#0d0d0f; --line:#232327; --hair:rgba(244,241,234,.13);
+  --acc:#f6a21e; --acc2:#ffb84d; --txt:#f4f1ea; --mut:#a49e93;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--bg);color:var(--txt);font-family:'Cairo',Tahoma,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+::selection{background:var(--acc);color:#231600}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.demobar{background:#000;color:#ffd977;text-align:center;font-size:13.5px;padding:9px 14px;border-bottom:1px solid #3a2f10;position:relative;z-index:200}
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0;z-index:150}
+header{position:fixed;top:36px;left:0;right:0;z-index:140;transition:background .3s,border-color .3s}
+header .bar{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1180px;margin:0 auto}
+header.scrolled{background:rgba(6,6,7,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font-weight:900;font-size:21px;letter-spacing:.5px}.logo b{color:var(--acc)}
+nav.chaps{display:flex;gap:22px;font-size:12.5px;color:var(--mut);letter-spacing:1.5px}
+nav.chaps a:hover{color:#fff}
+#burgerBtn{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;line-height:1}
+.btn{display:inline-block;background:var(--acc);color:#231600;padding:13px 28px;border-radius:6px;font-weight:800;font-size:16px;transition:transform .25s,background .25s;will-change:transform}
+.btn:hover{background:#d98a0b}
+.btn-wa{background:#22c064;color:#06300f}.btn-ghost{background:transparent;border:1px solid #555;color:#fff}
+.eyebrow{font-family:'Arial Narrow',Arial,sans-serif;color:var(--acc2);font-weight:700;letter-spacing:4px;font-size:13px;text-transform:uppercase}
+.micro{font-family:'Courier New',monospace;font-size:11px;letter-spacing:1.5px;color:var(--mut);text-transform:uppercase}
+#rail{position:fixed;inset-inline-end:20px;top:50%;transform:translateY(-50%);z-index:130;display:flex;flex-direction:column;gap:16px;align-items:center}
+#rail .rdot{display:flex;flex-direction:column;align-items:center;gap:5px;color:#5c574f;font-family:'Courier New',monospace;font-size:10.5px;transition:color .3s}
+#rail .rdot i{width:7px;height:7px;border-radius:50%;border:1px solid #5c574f;display:block;transition:.3s}
+#rail .rdot.on{color:var(--acc2)}
+#rail .rdot.on i{background:var(--acc);border-color:var(--acc);box-shadow:0 0 12px rgba(246,162,30,.8)}
+#rail .rline{width:1px;height:44px;background:var(--hair);position:relative;overflow:hidden}
+#rail .rline b{position:absolute;top:0;left:0;width:100%;background:var(--acc);height:0}
+#grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:120;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");animation:gr 7s steps(8) infinite}
+@keyframes gr{0%,100%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(-1%,2%)}}
+#cur,#curR{position:fixed;top:0;left:0;pointer-events:none;z-index:300;border-radius:50%;display:none}
+@media(pointer:fine){#cur,#curR{display:block}}
+#cur{width:6px;height:6px;background:var(--acc);transform:translate(-50%,-50%)}
+#curR{width:34px;height:34px;border:1px solid rgba(244,241,234,.4);transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
+#curR.big{width:58px;height:58px;border-color:var(--acc)}
+/* ---------- STAGE ---------- */
+.stage{position:relative}
+.pin{position:relative;height:100svh;overflow:hidden;background:#060607}
+.pin .grid-bg{position:absolute;inset:0;z-index:0;background:
+  linear-gradient(rgba(244,241,234,.045) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(244,241,234,.045) 1px,transparent 1px);
+  background-size:72px 72px;mask-image:radial-gradient(80% 70% at 50% 45%,#000 30%,transparent 78%)}
+.pin .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 52%,rgba(0,0,0,.6));z-index:3}
+.pin .frame{position:absolute;inset:14px;border:1px solid var(--hair);pointer-events:none;z-index:3}
+.pin .corner{position:absolute;width:18px;height:18px;z-index:4;pointer-events:none;border-color:var(--acc2);border-style:solid;border-width:0}
+.corner.tl{top:22px;inset-inline-start:22px;border-top-width:1.5px;border-inline-start-width:1.5px}
+.corner.tr{top:22px;inset-inline-end:22px;border-top-width:1.5px;border-inline-end-width:1.5px}
+.corner.bl{bottom:22px;inset-inline-start:22px;border-bottom-width:1.5px;border-inline-start-width:1.5px}
+.corner.br{bottom:22px;inset-inline-end:22px;border-bottom-width:1.5px;border-inline-end-width:1.5px}
+#glwrap{position:absolute;inset:0;z-index:2}
+#gl{position:absolute;inset:0;width:100%;height:100%}
+#glwrap.trans{filter:blur(1px) drop-shadow(2px 0 rgba(255,0,70,.28)) drop-shadow(-2px 0 rgba(0,210,255,.28))}
+#fallback3d{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:2}
+#fallback3d img{height:84svh;object-fit:contain}
+#loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mut);letter-spacing:3px;font-size:13px;z-index:5;font-family:'Courier New',monospace}
+.ovl{position:absolute;z-index:6;pointer-events:none}
+.ovl a{pointer-events:auto}
+#ov1{inset-inline-start:0;top:15svh;padding:0 38px;max-width:760px}
+#ov1 h1{font-size:clamp(36px,5.4vw,72px);font-weight:900;line-height:1.08;margin:14px 0 12px;text-shadow:0 4px 44px rgba(0,0,0,.6)}
+#ov1 h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--acc2)}
+#ov1 p{color:#cfc9bd;max-width:430px;font-size:17px;text-shadow:0 2px 16px rgba(0,0,0,.85)}
+#ov1 .meta{display:flex;gap:18px;margin-top:20px;flex-wrap:wrap}
+#ov2{inset-inline-end:0;top:16svh;padding:0 38px;text-align:end;max-width:480px}
+#ov2 h2{font-size:clamp(26px,3.6vw,42px);font-weight:900;line-height:1.2;margin:10px 0 10px;text-shadow:0 3px 30px rgba(0,0,0,.85)}
+#ov2 p{color:#d8d2c4;font-size:16px;text-shadow:0 2px 14px rgba(0,0,0,.9)}
+#ov2 .ticks span{text-shadow:0 1px 10px rgba(0,0,0,.95)}
+#ov2 .ticks{margin-top:18px;display:grid;gap:7px;justify-items:end}
+#ov3{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:10svh;text-align:center}
+#ov3 .statement{font-size:clamp(34px,6vw,74px);font-weight:900;line-height:1.12;position:relative}
+#ov3 .statement .sh{position:absolute;inset:0;color:transparent;-webkit-text-stroke:1.5px rgba(255,184,77,.5);transform:translate(7px,7px);z-index:-1}
+#ov3 p{color:#ddd6c9;margin-top:12px;font-size:16.5px;text-shadow:0 2px 18px rgba(0,0,0,.8)}
+#ov4{inset-inline-start:0;top:13svh;padding:0 38px}
+#ov4 h2{font-size:clamp(28px,4vw,46px);font-weight:900;line-height:1.15;margin:10px 0 8px;text-shadow:0 3px 30px rgba(0,0,0,.8)}
+#ov4 p{color:#c9c3b6;font-size:16px;max-width:380px;text-shadow:0 2px 14px rgba(0,0,0,.9)}
+#ov5{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8.5svh;text-align:center}
+#ov5 h2{font-size:clamp(28px,4.4vw,46px);font-weight:900;margin:10px 0 12px;text-shadow:0 3px 34px rgba(0,0,0,.9)}
+#ov5 p{color:#cfc9bd;max-width:520px;font-size:16.5px;margin-bottom:24px}
+#ov5 .mini-nav{display:flex;gap:22px;margin-top:28px;font-size:12.5px;letter-spacing:1.5px;color:var(--mut)}
+#ov5 .mini-nav a:hover{color:#fff}
+#ov5 .techfoot{margin-top:16px}
+#scrollcue{position:absolute;bottom:26px;inset-inline-start:50%;transform:translateX(-50%);z-index:6;color:var(--mut);font-size:11px;letter-spacing:4px;text-align:center}
+#scrollcue i{display:block;width:1px;height:42px;background:linear-gradient(var(--acc2),transparent);margin:8px auto 0;animation:cue 1.8s infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+#debug{position:fixed;bottom:14px;left:14px;z-index:400;background:#000;border:1px solid var(--acc);color:#ffd977;font-family:'Courier New',monospace;font-size:12px;padding:8px 12px;display:none}
+/* ---------- SECTIONS ---------- */
+.marquee{border-block:1px solid var(--line);background:#0a0a0c;overflow:hidden;padding:14px 0}
+.marquee .track{display:flex;gap:44px;width:max-content;animation:mq 22s linear infinite;font-weight:900;font-size:19px;white-space:nowrap}
+.marquee .track span i{color:var(--acc);font-style:normal}
+@keyframes mq{to{transform:translateX(-50%)}}
+.sec{padding:96px 0}
+h2.big{font-size:clamp(30px,4.6vw,52px);font-weight:900;line-height:1.15;margin:8px 0 12px}
+.sub{color:var(--mut);max-width:560px;font-size:17px}
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-size:14px;text-align:center}
+.js .rv{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.1s}.js .rv.d2{transition-delay:.2s}.js .rv.d3{transition-delay:.3s}
+@media(max-width:820px){
+  #rail{display:none}
+  #burgerBtn{display:block}
+  nav.chaps{display:none}
+  nav.chaps.open{display:flex;position:fixed;top:78px;left:12px;right:12px;background:rgba(10,10,12,.97);flex-direction:column;gap:16px;padding:20px;border:1px solid var(--line);border-radius:10px;z-index:141;font-size:15px}
+  #ov1{top:auto;bottom:12svh}
+  #ov2{top:auto;bottom:10svh;text-align:start}
+  #ov2 .ticks{justify-items:start}
+  #ov4{top:auto;bottom:11svh}
+}
+@media(prefers-reduced-motion:reduce){.marquee .track{animation:none}#grain{animation:none}#scrollcue i{animation:none}}
+/* ================================================================
+   TANGIER DRIVE — sections d'origine (transplantées verbatim,
+   styles scopés sous .loc pour ne pas toucher à la scène 3D)
+   ================================================================ */
+.loc{
+  --navy:#0d1526; --navy2:#131f38; --card:#16233d;
+  --paper:#f7f8fa; --white:#ffffff;
+  --amber:#f6a21e; --amber2:#ffb84d;
+  --ink:#1c2536; --muted:#68738a; --line:#e4e8ef;
+  --green:#25d366; --radius:16px;
+  --shadow:0 14px 34px rgba(13,21,38,.10);
+  font-family:'Cairo',Tahoma,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;
+}
+.loc .container{max-width:1160px;margin:0 auto;padding:0 20px}
+.loc .btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:50px;padding:12px 28px;font-size:1rem;border:2px solid transparent;cursor:pointer;font-family:inherit;transition:.2s;text-align:center}
+.loc .btn-amber{background:var(--amber);color:#231600}
+.loc .btn-amber:hover{background:var(--amber2);transform:translateY(-2px)}
+.loc .btn-ghost{background:rgba(13,21,38,.3);color:#fff;border-color:rgba(255,255,255,.55)}
+.loc .btn-ghost:hover{border-color:var(--amber);color:var(--amber2)}
+.loc .btn-wa{background:var(--green);color:#06300f}
+.loc .btn-wa:hover{background:#1eb856;transform:translateY(-2px)}
+.loc .btn-sm{padding:9px 20px;font-size:.92rem}
+.loc .btn-block{width:100%}
+.loc .trust{background:#fff;border-bottom:1px solid var(--line)}
+.loc .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:24px 0}
+.loc .trust-item{display:flex;align-items:center;gap:12px;justify-content:center;font-weight:800;font-size:.97rem}
+.loc .trust-item .t-icon{font-size:1.65rem}
+.loc .trust-item small{display:block;color:var(--muted);font-weight:600;font-size:.82rem}
+.loc .section{padding:76px 0}
+.loc .section-dark{background:var(--navy);color:#e8edf6}
+.loc .sec-kicker{text-align:center;color:#c47f0d;letter-spacing:.26em;text-transform:uppercase;font-size:.78rem;font-weight:800;margin-bottom:10px}
+.loc .section-dark .sec-kicker{color:var(--amber)}
+.loc .sec-title{text-align:center;font-size:clamp(1.8rem,3.8vw,2.5rem);font-weight:900;margin-bottom:12px}
+.loc .sec-sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 46px;font-size:1.02rem}
+.loc .section-dark .sec-sub{color:#9fb0ca}
+.loc .fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.loc .car{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s;display:flex;flex-direction:column}
+.loc .car:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#f3cf8e}
+.loc .car-img{position:relative}
+.loc .car-img img{width:100%;height:220px;object-fit:cover}
+.loc .car-cat{position:absolute;top:12px;left:12px;background:var(--navy);color:#fff;font-weight:800;font-size:.78rem;padding:4px 13px;border-radius:50px;letter-spacing:.04em}
+.loc .car-body{padding:20px;display:flex;flex-direction:column;flex:1}
+.loc .car-body h3{font-size:1.18rem;font-weight:900;margin-bottom:8px}
+.loc .car-specs{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:.88rem;font-weight:600;margin-bottom:16px}
+.loc .car-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px dashed var(--line);padding-top:16px}
+.loc .car-price{font-weight:900;font-size:1.28rem;color:var(--navy)}
+.loc .car-price small{display:block;font-size:.74rem;color:var(--muted);font-weight:700}
+.loc .fleet-note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:30px}
+.loc .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.loc .srv{background:var(--card);border:1px solid rgba(246,162,30,.22);border-radius:var(--radius);padding:34px 26px;text-align:center}
+.loc .srv .ic{font-size:2.4rem;margin-bottom:14px}
+.loc .srv h3{font-size:1.22rem;font-weight:900;color:#fff;margin-bottom:10px}
+.loc .srv p{color:#a9b8d2;font-size:.97rem}
+.loc .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:0 auto}
+.loc .step{text-align:center;padding:10px 16px}
+.loc .step .num{width:58px;height:58px;margin:0 auto 16px;border-radius:50%;background:var(--amber);color:#231600;font-weight:900;font-size:1.45rem;display:flex;align-items:center;justify-content:center}
+.loc .step h3{font-weight:900;font-size:1.12rem;margin-bottom:6px}
+.loc .step p{color:var(--muted);font-size:.95rem}
+.loc .book-box{max-width:720px;margin:0 auto;background:#fff;border-radius:20px;padding:42px 38px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.loc .row-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.loc .field{margin-bottom:18px}
+.loc .field label{display:block;font-weight:800;margin-bottom:7px;font-size:.94rem}
+.loc .field input,.loc .field select{width:100%;background:#fbfcfe;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:inherit;font-size:1rem;padding:12px 15px;transition:.2s}
+.loc .field input:focus,.loc .field select:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(246,162,30,.18)}
+.loc .form-note{text-align:center;color:var(--muted);font-size:.88rem;margin-top:14px}
+.loc .form-err{color:#b3372a;font-weight:700;min-height:1.4em;font-size:.93rem}
+.loc .cond-note{max-width:720px;margin:22px auto 0;text-align:center;color:#9fb0ca;font-size:.88rem}
+.loc .infos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.loc .info-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 26px;text-align:center}
+.loc .info-card .ic{font-size:2.1rem;margin-bottom:12px}
+.loc .info-card h3{font-size:1.18rem;font-weight:900;margin-bottom:8px}
+.loc .info-card p{color:var(--muted);font-size:.96rem}
+.loc .info-card a{color:#c47f0d;text-decoration:none;font-weight:800}
+.loc .info-card a:hover{text-decoration:underline}
+.loc footer{background:var(--navy2);color:#a9b8d2;padding:46px 0 36px;text-align:center;border-top:1px solid rgba(246,162,30,.2)}
+.loc footer .logo{font-size:1.6rem;color:#fff}
+.loc footer .logo span{color:var(--amber)}
+.loc footer p{margin-top:10px;font-size:.94rem}
+.loc .foot-demo{max-width:640px;margin:18px auto 0;font-size:.83rem;color:#71809c;border-top:1px dashed rgba(246,162,30,.22);padding-top:18px}
+.loc .copy{font-size:.82rem}
+.loc .wa-float{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.4);z-index:60;transition:.2s}
+.loc .wa-float:hover{transform:scale(1.08)}
+@media(max-width:1020px){
+  .loc .fleet-grid{grid-template-columns:repeat(2,1fr)}
+  .loc .trust-grid{grid-template-columns:repeat(2,1fr);gap:18px}
+}
+@media(max-width:760px){
+  .loc .srv-grid,.loc .steps-grid,.loc .infos-grid{grid-template-columns:1fr}
+  .loc .row-2{grid-template-columns:1fr}
+  .loc .section{padding:56px 0}
+  .loc .book-box{padding:30px 22px}
+}
+@media(max-width:560px){
+  .loc .fleet-grid{grid-template-columns:1fr}
+}
 </style>
+<script type="importmap">{"imports":{"three":"./demo-burger/gl/three.module.js"}}</script>
 </head>
 <body>
+<div class="demobar">📌 Démonstration — photos et tarifs indicatifs</div>
+<div id="progress"></div>
+<div id="grain"></div>
+<div id="cur"></div><div id="curR"></div>
+<div id="debug"></div>
 
-<div class="demo-banner">📌 Démonstration — photos et tarifs indicatifs</div>
+<header id="hdr"><div class="bar">
+  <div class="logo">Tangier<b>Drive</b></div>
+  <nav class="chaps" id="mainNav"><a href="#stage">01 · L'expérience</a><a href="#flotte">02 · La flotte</a><a href="#services">03 · Services</a><a href="#reservation">04 · Réservation</a></nav>
+  <a class="btn btn-wa" data-mag style="padding:10px 20px" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20Tangier%20Drive%2C%20je%20souhaite%20louer%20une%20voiture%20%C3%A0%20Tanger.">Réserver</a>
+  <button id="burgerBtn" aria-label="Menu">☰</button>
+</div></header>
 
-<header>
-  <div class="container hd-inner">
-    <a href="#accueil" class="logo">Tangier<span>Drive</span><small>Location de voitures · Tanger</small></a>
-    <nav class="main-nav" id="mainNav">
-      <a href="#accueil">Accueil</a>
-      <a href="#flotte">Notre flotte</a>
-      <a href="#services">Services</a>
-      <a href="#reservation">Réservation</a>
-      <a href="#contact">Contact</a>
-      <a href="tel:+212693981822" class="btn btn-amber btn-sm">📞 06 93 98 18 22</a>
-    </nav>
-    <button class="burger" id="burger" aria-label="Menu">☰</button>
+<div id="rail" aria-hidden="true">
+  <div class="rdot" data-s="0"><i></i>01</div><div class="rline"><b id="rfill"></b></div>
+  <div class="rdot" data-s="1"><i></i>02</div><div class="rline"></div>
+  <div class="rdot" data-s="2"><i></i>03</div><div class="rline"></div>
+  <div class="rdot" data-s="3"><i></i>04</div><div class="rline"></div>
+  <div class="rdot" data-s="4"><i></i>05</div>
+</div>
+
+<!-- ================= PINNED EDITORIAL 3D STAGE ================= -->
+<section class="stage" id="stage">
+ <div class="pin" id="pin">
+  <div class="grid-bg"></div>
+  <div id="glwrap"><canvas id="gl"></canvas></div>
+  <div id="fallback3d"><img src="demo-location/img/hero.webp" alt="Tangier Drive — la corniche de Tanger"></div>
+  <div class="vig"></div><div class="frame"></div>
+  <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+  <div id="loader">LOADING COMPOSITION…</div>
+
+  <div class="ovl" id="ov1">
+    <div class="eyebrow">// Scene 01 — Écran d'ouverture</div>
+    <h1>La route du Nord<br><span class="stroke">commence à Tanger.</span></h1>
+    <p>Citadines économiques, SUV familiaux et berlines premium, entretenus et prêts à partir. Réservez en quelques minutes sur WhatsApp.</p>
+    <div class="meta"><span class="micro">AÉROPORT IBN BATTUTA</span><span class="micro">DÈS 250 DH / JOUR</span><span class="micro">LIVRAISON 24H/24</span></div>
   </div>
-</header>
 
-<!-- HERO -->
-<section class="hero" id="accueil">
-  <div class="container hero-inner">
-    <div class="hero-badge">Location de voitures · Tanger</div>
-    <h1>La route du Nord commence <em>à Tanger</em></h1>
-    <p>Citadines économiques, SUV familiaux et berlines premium, entretenus et prêts à partir. Réservez en quelques minutes sur WhatsApp, récupérez votre voiture où vous voulez à Tanger.</p>
-    <div class="hero-cta">
-      <a href="#flotte" class="btn btn-amber">🚗 Voir la flotte</a>
-      <a href="https://wa.me/212693981822?text=Bonjour%20Tangier%20Drive%2C%20je%20souhaite%20louer%20une%20voiture%20%C3%A0%20Tanger." target="_blank" rel="noopener" class="btn btn-ghost">💬 Réserver sur WhatsApp</a>
+  <div class="ovl" id="ov2" style="opacity:0">
+    <div class="eyebrow">// Scene 02 — Profondeurs</div>
+    <h2>Chaque voiture,<br>à sa profondeur.</h2>
+    <p>L'écran, la corniche et la berline premium avancent à des vitesses différentes — la profondeur est réelle, pas un effet.</p>
+    <div class="ticks">
+      <span class="micro">LAYER A · ÉCRAN — Z −0.4</span>
+      <span class="micro">LAYER B · CORNICHE — Z +0.3</span>
+      <span class="micro">LAYER C · PREMIUM — Z +1.6</span>
     </div>
-    <div class="hero-meta">✈️ Aéroport Ibn Battouta &nbsp;·&nbsp; 🚉 Gare de Tanger &nbsp;·&nbsp; 🏨 Livraison à votre hôtel</div>
   </div>
+
+  <div class="ovl" id="ov3" style="opacity:0">
+    <div class="statement"><span class="sh" aria-hidden="true">Choisissez. Réservez. Roulez.</span>Choisissez. Réservez. Roulez.</div>
+    <p>Trois étapes, quelques minutes — et la voiture est à vous.</p>
+  </div>
+
+  <div class="ovl" id="ov4" style="opacity:0">
+    <div class="eyebrow">// Scene 04 — La Flotte</div>
+    <h2>Une voiture pour<br>chaque trajet.</h2>
+    <p>De la citadine pour la médina au premium avec chauffeur. La carte au centre : la berline premium, dès 800 DH par jour.</p>
+  </div>
+
+  <div class="ovl" id="ov5" style="opacity:0">
+    <div class="eyebrow">// Scene 05 — À vous de rouler</div>
+    <h2>Votre voiture vous attend à Tanger.</h2>
+    <p>Assurance incluse, annulation flexible jusqu'à 24 h avant, assistance 7j/7. Récupérez-la à l'aéroport, à la gare ou à votre hôtel.</p>
+    <a class="btn btn-wa" data-mag target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20Tangier%20Drive%2C%20je%20souhaite%20louer%20une%20voiture%20%C3%A0%20Tanger.">Réserver sur WhatsApp</a>
+    <div class="mini-nav"><a href="#flotte">La flotte</a><a href="#services">Services</a><a href="#reservation">Réservation</a><a href="#stage">Retour ↑</a></div>
+    <div class="micro techfoot">TANGIER DRIVE © 2026 · TANJA WEB — WEBGL / GSAP / LENIS</div>
+  </div>
+
+  <div id="scrollcue">SCROLL<i></i></div>
+ </div>
 </section>
+
+<div class="marquee"><div class="track">
+  <span>Citadine <i>//</i> SUV <i>//</i> Premium <i>//</i> Chauffeur privé <i>//</i> Aéroport <i>//</i> Longue durée <i>//</i></span>
+  <span>Citadine <i>//</i> SUV <i>//</i> Premium <i>//</i> Chauffeur privé <i>//</i> Aéroport <i>//</i> Longue durée <i>//</i></span>
+</div></div>
+
+<div class="loc">
 
 <!-- TRUST -->
 <div class="trust">
@@ -409,9 +525,11 @@
 
 <a href="https://wa.me/212693981822?text=Bonjour%20Tangier%20Drive%2C%20je%20souhaite%20des%20informations%20pour%20louer%20une%20voiture%20%C3%A0%20Tanger." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
+</div><!-- /.loc -->
+
 <script>
-  // Menu mobile
-  var burger = document.getElementById('burger');
+  // Menu mobile (barre de la scène 3D)
+  var burger = document.getElementById('burgerBtn');
   var mainNav = document.getElementById('mainNav');
   burger.addEventListener('click', function(){ mainNav.classList.toggle('open'); });
   mainNav.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ mainNav.classList.remove('open'); } });
@@ -458,6 +576,312 @@
     msg += '\nMerci de me confirmer la disponibilité et le tarif total.';
     window.open('https://wa.me/212693981822?text=' + encodeURIComponent(msg), '_blank');
   });
+</script>
+
+<script src="demo-burger/gl/lib/gsap.min.js"></script>
+<script src="demo-burger/gl/lib/ScrollTrigger.min.js"></script>
+<script src="demo-burger/gl/lib/lenis.min.js"></script>
+<script>
+/* ================================================================
+   SCENES — نظام طبقات قابل للتبديل: بدّل src / المواضع / التوقيت
+   من هنا فقط. كل طبقة عندها keyframe في كل مشهد:
+   x, y, z (العمق), s (المقياس), rz/ry (الدوران), o (الشفافية), dk (التعتيم)
+   (Version LTR : signes x/ry/rz inversés par rapport au flagship RTL —
+   l'écran repose du côté opposé au titre.)
+   ================================================================ */
+const KF = (x,y,z,s,rz,ry,o,dk) => ({x,y,z,s,rz,ry,o,dk:dk||0});
+const SCENES = [
+  { id:'opening', cam:{x:0, y:0, z:10.6}, layers:{
+    glow:      KF(0, .2, -3.5, 1,    0, 0, .9),
+    screen:    KF(-.95, -.05, 0,  1,    0, .06, 1),
+    box:       KF(-3.6, -2.2, -1.2, .34, -.06, .2, 0),
+    cardPremium:KF(3.4, -2.4, -1.6, .5, .05, -.2, 0),
+    cardCitadine:KF(-3.9, 2.3, -2, .5, -.04, .15, 0),
+    cardSUV:   KF(3.8, 2.2, -2.2, .5, .03, -.18, 0),
+    carKey:    KF(2.6, 1.9, -1.4, .5, 0, -.1, 0)
+  }},
+  { id:'layers', cam:{x:0, y:0, z:9.6}, layers:{
+    glow:      KF(.5, .3, -3.5, 1.05, 0, 0, .8),
+    screen:    KF(2.3, .7, -.4, .74, -.03, -.22, 1),
+    box:       KF(-2.5, -.5, .3, .78, .03, .18, 1),
+    cardPremium:KF(3.6, -2.3, -1.6, .5, .05, -.2, 0),
+    cardCitadine:KF(-3.9, 2.4, -2, .5, -.04, .15, 0),
+    cardSUV:   KF(3.9, 2.4, -2.2, .5, -.03, -.18, 0),
+    carKey:    KF(-.4, -.9, 1.6, .62, -.05, .1, 1)
+  }},
+  { id:'reveal', cam:{x:0, y:0, z:8.2}, layers:{
+    glow:      KF(0, 0, -3.5, 1.1, 0, 0, .55),
+    screen:    KF(3.4, 1.8, -1.8, .5, -.05, -.3, .28, .5),
+    box:       KF(0, .1, .4, 1.85, 0, 0, 1),
+    cardPremium:KF(3.8, -2.2, -2, .5, .06, -.25, .2, .55),
+    cardCitadine:KF(-3.9, 2.2, -2.2, .5, -.05, .2, .2, .55),
+    cardSUV:   KF(3.9, -2.4, -2.4, .5, .04, -.2, .15, .6),
+    carKey:    KF(-2.9, -2, .8, .5, -.04, .15, .3, .4)
+  }},
+  { id:'works', cam:{x:.7, y:.35, z:9.8}, layers:{
+    glow:      KF(-.4, 0, -3.5, 1.05, 0, 0, .7),
+    screen:    KF(2.9, 1.5, -.8, .62, -.04, -.2, .85, .25),
+    box:       KF(-3, 1.7, -1.2, .66, .03, .16, .85, .25),
+    cardPremium:KF(-.2, -.2, .9, 1.06, .02, .05, 1),
+    cardCitadine:KF(3.1, -1.7, -.4, .72, -.05, -.14, .8, .3),
+    cardSUV:   KF(-3.2, -1.6, -.6, .74, .05, .12, .8, .3),
+    carKey:    KF(.4, 2.3, -1.8, .45, 0, -.1, 0)
+  }},
+  { id:'closing', cam:{x:0, y:0, z:10.4}, layers:{
+    glow:      KF(0, .4, -3.5, 1, 0, 0, .8),
+    screen:    KF(0, .85, 0, .82, 0, 0, 1),
+    box:       KF(-3.6, -2.2, -1.4, .4, -.05, .2, 0),
+    cardPremium:KF(3.5, -2.3, -1.8, .5, .05, -.2, 0),
+    cardCitadine:KF(-3.9, 2.3, -2.2, .5, -.04, .15, 0),
+    cardSUV:   KF(3.8, 2.2, -2.4, .5, .03, -.18, 0),
+    carKey:    KF(2.7, 2, -1.6, .5, 0, -.1, 0)
+  }}
+];
+const LAYER_SRC = {
+  screen:     { make:'screen', src:'demo-location/img/g2.webp',   url:'tangier-drive.ma',  w:6.6 },
+  box:        { make:'photo',  src:'demo-location/img/hero.webp', w:5.4 },
+  cardPremium:{ make:'card',   src:'demo-location/img/g3.webp',   label:'BERLINE PREMIUM — 800 DH/JOUR', w:3.5 },
+  cardCitadine:{ make:'card',  src:'demo-location/img/g1.webp',   label:'CITADINE ÉCO — 250 DH/JOUR',    w:3.5 },
+  cardSUV:    { make:'card',   src:'demo-location/img/g2.webp',   label:'SUV CONFORT — 450 DH/JOUR',     w:3.5 },
+  carKey:     { make:'card',   src:'demo-location/img/g3.webp',   label:'PREMIUM + CHAUFFEUR — 1 200 DH/JOUR', w:3.2 }
+};
+window.STAGE = { layers:{}, cam:{...SCENES[0].cam}, ready:false };
+Object.keys(SCENES[0].layers).forEach(k => { window.STAGE.layers[k] = {...SCENES[0].layers[k]}; });
+
+const qs = new URLSearchParams(location.search);
+const DEBUG = qs.get('debug') === '1';
+const FORCED_P = parseFloat(qs.get('p'));
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ================== reveals ================== */
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ================== smooth scroll + master timeline ================== */
+gsap.registerPlugin(ScrollTrigger);
+let lenis = null;
+if (!REDUCED && window.Lenis && isNaN(FORCED_P)){
+  lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); lenis ? lenis.scrollTo(t) : t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+
+const ST = window.STAGE;
+const railDots = document.querySelectorAll('#rail .rdot');
+const dbg = document.getElementById('debug');
+if (DEBUG) dbg.style.display='block';
+const tl = gsap.timeline({
+  defaults:{ease:'power1.inOut'},
+  scrollTrigger:{
+    id:'stage', trigger:'#stage', start:'top top', end:'+=460%',
+    pin:'#pin', scrub: isNaN(FORCED_P) ? .6 : true, anticipatePin:1,
+    onUpdate(self){
+      const p = self.progress;
+      document.getElementById('progress').style.width = (p*100)+'%';
+      const rf = document.getElementById('rfill'); if (rf) rf.style.height = (p*100)+'%';
+      const scene = Math.min(Math.floor(p * 5), 4);
+      railDots.forEach((d,i)=>d.classList.toggle('on', i===scene));
+      const near = [.2,.4,.6,.8].some(b => Math.abs(p-b) < .007);
+      document.getElementById('glwrap').classList.toggle('trans', near && ST.ready);
+      if (DEBUG) dbg.textContent = 'scene: '+(scene+1)+'/5 · progress: '+(p*100).toFixed(1)+'%';
+    }
+  }
+});
+/* keyframe segments: scene i → i+1 over units [i*20, (i+1)*20] */
+for (let i = 0; i < SCENES.length - 1; i++){
+  const at = i * 20, dur = 20;
+  tl.to(ST.cam, {...SCENES[i+1].cam, duration:dur}, at);
+  Object.keys(SCENES[i].layers).forEach(k => {
+    tl.to(ST.layers[k], {...SCENES[i+1].layers[k], duration:dur}, at);
+  });
+}
+/* overlays */
+gsap.fromTo('#ov1', {opacity:0, x:-46}, {opacity:1, x:0, duration:1.15, delay:.25, ease:'power3.out'});
+tl.to('#scrollcue', {opacity:0, duration:3}, 15)
+  .to('#ov1', {opacity:0, x:-30, duration:4}, 16.5)
+  .fromTo('#ov2', {opacity:0, x:40}, {opacity:1, x:0, duration:4}, 19.5)
+  .to('#ov2', {opacity:0, duration:4}, 36.5)
+  .fromTo('#ov3', {opacity:0}, {opacity:1, duration:4}, 41.5)
+  .fromTo('#ov3 .statement', {y:56}, {y:0, duration:7, ease:'power2.out'}, 41.5)
+  .to('#ov3', {opacity:0, duration:4}, 56.5)
+  .fromTo('#ov4', {opacity:0, y:30}, {opacity:1, y:0, duration:4}, 60.5)
+  .to('#ov4', {opacity:0, duration:4}, 76.5)
+  .fromTo('#ov5', {opacity:0, y:30}, {opacity:1, y:0, duration:5}, 82.5)
+  .to({}, {duration:3}, 97);
+if (!isNaN(FORCED_P)){
+  setTimeout(()=>{ const st = ScrollTrigger.getById('stage'); st.scroll(st.start + Math.min(Math.max(FORCED_P,0),1)*(st.end - st.start)); ScrollTrigger.update(); }, 80);
+}
+addEventListener('scroll', ()=>{ document.getElementById('hdr').classList.toggle('scrolled', scrollY>40); }, {passive:true});
+
+/* ================== custom cursor + magnetic ================== */
+if (matchMedia('(pointer:fine)').matches && !REDUCED){
+  const cur=document.getElementById('cur'), ring=document.getElementById('curR');
+  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';},{passive:true});
+  (function loop(){ rx+=(mx-rx)*.14; ry+=(my-ry)*.14; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); })();
+  document.querySelectorAll('a,.card,.car').forEach(el=>{
+    el.addEventListener('pointerenter',()=>ring.classList.add('big'));
+    el.addEventListener('pointerleave',()=>ring.classList.remove('big'));
+  });
+  document.querySelectorAll('[data-mag]').forEach(el=>{
+    el.addEventListener('pointermove',e=>{ const r=el.getBoundingClientRect();
+      const dx=e.clientX-(r.left+r.width/2), dy=e.clientY-(r.top+r.height/2);
+      el.style.transform='translate('+dx*.22+'px,'+dy*.28+'px)'; });
+    el.addEventListener('pointerleave',()=>{ el.style.transform=''; });
+  });
+}
+</script>
+
+<script type="module">
+/* ================== WebGL: layered editorial composition ================== */
+try {
+  const THREE = await import('three');
+  const ST = window.STAGE;
+  const canvas = document.getElementById('gl');
+  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth < 820 ? 1.6 : 2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
+
+  const loadImg = src => new Promise((res, rej)=>{
+    const img = new Image(); if (location.protocol.indexOf('http')===0) img.crossOrigin='anonymous';
+    img.onload = ()=>res(img); img.onerror = rej; img.src = src;
+  });
+  function cover(ctx, img, x, y, w, h){
+    const ir = img.naturalWidth/img.naturalHeight, r = w/h;
+    let sw, sh, sx, sy;
+    if (ir > r){ sh = img.naturalHeight; sw = sh*r; sx = (img.naturalWidth-sw)/2; sy = 0; }
+    else { sw = img.naturalWidth; sh = sw/r; sx = 0; sy = (img.naturalHeight-sh)/2; }
+    ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+  }
+  function rr(ctx, x, y, w, h, r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+  async function screenTexture(src, url){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 1100; c.height = 730;
+    const x = c.getContext('2d');
+    x.fillStyle = '#101013'; rr(x, 4, 4, 1092, 722, 26); x.fill();
+    x.fillStyle = '#17171b'; rr(x, 4, 4, 1092, 74, 26); x.fill(); x.fillRect(4, 52, 1092, 26);
+    ['#e8362a','#f5bf42','#39d353'].forEach((col, i)=>{ x.fillStyle = col; x.beginPath(); x.arc(44+i*34, 41, 10, 0, 7); x.fill(); });
+    x.fillStyle = '#232329'; rr(x, 200, 22, 560, 38, 19); x.fill();
+    x.fillStyle = '#9a958a'; x.font = '24px Courier New'; x.fillText('https://' + url, 224, 49);
+    x.fillStyle = '#9a958a'; x.font = '22px Courier New'; x.fillText('≡', 1030, 50);
+    x.save(); rr(x, 22, 96, 1056, 612, 14); x.clip(); cover(x, img, 22, 96, 1056, 612); x.restore();
+    x.strokeStyle = 'rgba(244,241,234,.16)'; x.lineWidth = 2; rr(x, 4, 4, 1092, 722, 26); x.stroke();
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: 730/1100};
+  }
+  async function cardTexture(src, label){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 800; c.height = 600;
+    const x = c.getContext('2d');
+    x.fillStyle = '#0c0c0e'; x.fillRect(0, 0, 800, 600);
+    cover(x, img, 0, 0, 800, 492);
+    x.fillStyle = '#101013'; x.fillRect(0, 492, 800, 108);
+    x.fillStyle = '#f6a21e'; x.fillRect(28, 522, 34, 4);
+    x.fillStyle = '#f4f1ea'; x.font = '700 30px Courier New'; x.fillText(label, 28, 570);
+    x.strokeStyle = 'rgba(244,241,234,.22)'; x.lineWidth = 2; x.strokeRect(1, 1, 798, 598);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: 600/800};
+  }
+  async function photoTexture(src){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 1024; c.height = 1024;
+    const x = c.getContext('2d'); cover(x, img, 0, 0, 1024, 1024);
+    x.strokeStyle = 'rgba(244,241,234,.18)'; x.lineWidth = 3; x.strokeRect(2, 2, 1020, 1020);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: 1};
+  }
+  async function alphaTexture(src){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight;
+    const x = c.getContext('2d'); x.drawImage(img, 0, 0);
+    const d = x.getImageData(0, 0, c.width, c.height), px = d.data;
+    let minX=c.width,minY=c.height,maxX=0,maxY=0;
+    for (let i=3;i<px.length;i+=16){ if (px[i]>12){ const n=(i-3)/4, X=n%c.width, Y=(n/c.width)|0;
+      if(X<minX)minX=X; if(X>maxX)maxX=X; if(Y<minY)minY=Y; if(Y>maxY)maxY=Y; } }
+    const pad=10; minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad);
+    maxX=Math.min(c.width-1,maxX+pad); maxY=Math.min(c.height-1,maxY+pad);
+    const cw=maxX-minX+1, ch=maxY-minY+1;
+    const cc=document.createElement('canvas'); cc.width=cw; cc.height=ch;
+    cc.getContext('2d').drawImage(c,minX,minY,cw,ch,0,0,cw,ch);
+    const t = new THREE.CanvasTexture(cc); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: ch/cw};
+  }
+  function glowTexture(){
+    const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+    const x = c.getContext('2d');
+    const g = x.createRadialGradient(256, 256, 20, 256, 256, 256);
+    g.addColorStop(0, 'rgba(246,162,30,.34)'); g.addColorStop(.55, 'rgba(246,162,30,.10)'); g.addColorStop(1, 'rgba(246,162,30,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 512, 512);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+    return {tex: t, aspect: 1};
+  }
+
+  const defs = {
+    glow:   { make:'glow' },
+    screen: LAYER_SRC.screen, box: LAYER_SRC.box,
+    cardPremium: LAYER_SRC.cardPremium, cardCitadine: LAYER_SRC.cardCitadine,
+    cardSUV: LAYER_SRC.cardSUV, carKey: LAYER_SRC.carKey
+  };
+  const meshes = {};
+  for (const [key, d] of Object.entries(defs)){
+    let r;
+    if (d.make === 'screen') r = await screenTexture(d.src, d.url);
+    else if (d.make === 'card') r = await cardTexture(d.src, d.label);
+    else if (d.make === 'photo') r = await photoTexture(d.src);
+    else if (d.make === 'alpha') r = await alphaTexture(d.src);
+    else r = glowTexture();
+    const w = key === 'glow' ? 15 : d.w;
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, w * r.aspect),
+      new THREE.MeshBasicMaterial({ map: r.tex, transparent: true, depthWrite: false }));
+    m.renderOrder = key === 'glow' ? 0 : 5;
+    scene.add(m); meshes[key] = m;
+  }
+  document.getElementById('loader').style.display = 'none';
+  ST.ready = true;
+  (window.__meshes = window.__meshes || []).push(meshes);
+
+  let mx = 0, my = 0, visible = true;
+  if (matchMedia('(pointer:fine)').matches)
+    addEventListener('pointermove', e=>{ mx = e.clientX/innerWidth - .5; my = e.clientY/innerHeight - .5; }, {passive:true});
+  new IntersectionObserver(es=>{ visible = es[0].isIntersecting; }).observe(document.getElementById('stage'));
+  function resize(){
+    const w = canvas.clientWidth || innerWidth, h = canvas.clientHeight || innerHeight;
+    renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix();
+  }
+  resize(); addEventListener('resize', resize);
+
+  function tick(t){
+    requestAnimationFrame(tick);
+    if (!visible) return;
+    const ms = innerWidth < 820 ? .62 : 1;
+    for (const [key, m] of Object.entries(meshes)){
+      const L = ST.layers[key]; if (!L) continue;
+      m.position.set(L.x * (innerWidth < 820 ? .45 : 1), L.y, L.z);
+      m.rotation.set(0, L.ry + mx * .12, L.rz);
+      const sc = L.s * ms; m.scale.set(sc, sc, 1);
+      m.material.opacity = L.o;
+      m.renderOrder = 5 + L.z * 2;
+      const dk = 1 - (L.dk || 0) * .75;
+      m.material.color.setScalar(dk);
+    }
+    camera.position.set(ST.cam.x + mx * .35, ST.cam.y - my * .25 + Math.sin(t*.0004)*.04, ST.cam.z);
+    camera.lookAt(ST.cam.x * .6, ST.cam.y * .6, 0);
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(tick);
+} catch(e) {
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('fallback3d').style.display = 'flex';
+  const g = document.getElementById('gl'); if (g) g.style.display = 'none';
+}
 </script>
 </body>
 </html>
