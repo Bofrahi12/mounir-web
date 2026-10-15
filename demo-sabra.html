@@ -18,7 +18,6 @@
     --ink-faint:rgba(244,241,232,.38);
     --magenta:#e0218a;
     --magenta-soft:#ff4fa8;
-    --green:#7fb069;
     --line:rgba(244,241,232,.16);
     --card:#111711;
   }
@@ -32,7 +31,6 @@
     -webkit-font-smoothing:antialiased;
   }
   ::selection{background:var(--magenta);color:#fff}
-  .mono{font-family:"IBM Plex Mono",monospace}
   img{display:block;max-width:100%}
 
   /* ---------- NAV ---------- */
@@ -63,84 +61,101 @@
   .nav-links a.cta:hover{background:#fff;color:#000}
   @media(max-width:760px){.nav-links a:not(.cta){display:none}}
 
-  /* ---------- PINNED HERO ---------- */
-  .hero{position:relative;height:340vh;background:var(--bg)}
+  /* ---------- FIXED DEMO BADGE ---------- */
+  .demo-fixed{
+    position:fixed;left:14px;bottom:14px;z-index:80;
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-dim);
+    border:1px dashed rgba(244,241,232,.4);border-radius:4px;
+    background:rgba(7,10,7,.72);backdrop-filter:blur(6px);
+    padding:7px 11px;pointer-events:none;
+  }
+
+  /* ---------- PINNED HERO (380vh loop) ---------- */
+  .hero{position:relative;height:380vh;background:var(--bg)}
   .hero-stage{
     position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
     background:var(--bg);
   }
-  .hero-scene{
-    position:absolute;inset:-4%;
-    will-change:transform;
-  }
-  .hero-scene img{
-    width:100%;height:100%;object-fit:cover;object-position:50% 42%;
-    filter:saturate(1.08) contrast(1.05);
+  /* ambient background layer */
+  .hero-bg{position:absolute;inset:-5%;z-index:0;will-change:transform}
+  .hero-bg img{
+    width:100%;height:100%;object-fit:cover;object-position:50% 45%;
+    filter:saturate(1.08) contrast(1.05) brightness(.92);
   }
   .hero-shade{
-    position:absolute;inset:0;pointer-events:none;
+    position:absolute;inset:0;z-index:1;pointer-events:none;
     background:
-      linear-gradient(180deg,rgba(10,15,10,.55) 0%,rgba(10,15,10,0) 26%,rgba(10,15,10,0) 58%,rgba(10,15,10,.72) 100%),
-      radial-gradient(120% 90% at 50% 45%,rgba(10,15,10,0) 40%,rgba(10,15,10,.5) 100%);
+      linear-gradient(180deg,rgba(10,15,10,.55) 0%,rgba(10,15,10,0) 26%,rgba(10,15,10,0) 55%,rgba(10,15,10,.66) 100%),
+      radial-gradient(120% 90% at 50% 45%,rgba(10,15,10,0) 42%,rgba(10,15,10,.48) 100%);
   }
+  /* magenta bloom behind the glass */
   .hero-glow{
-    position:absolute;left:50%;top:52%;width:62vmin;height:62vmin;
+    position:absolute;left:50%;top:52%;z-index:1;width:64vmin;height:64vmin;
     transform:translate(-50%,-50%);
-    background:radial-gradient(circle,rgba(224,33,138,.5) 0%,rgba(224,33,138,.18) 42%,rgba(224,33,138,0) 68%);
-    filter:blur(10px);opacity:.35;pointer-events:none;will-change:opacity,transform;
-  }
-  /* giant headline split around centre */
-  .hero-title{
-    position:absolute;inset:0;pointer-events:none;z-index:5;
-    font-family:"Archivo",sans-serif;font-weight:900;text-transform:uppercase;
-    line-height:.92;letter-spacing:-.01em;color:#fff;
-    text-shadow:0 4px 44px rgba(0,0,0,.45);
-  }
-  .hero-title .w{position:absolute;white-space:nowrap;will-change:transform}
-  .hero-title .w-buvez{left:clamp(16px,4vw,54px);top:15vh;font-size:clamp(52px,11.5vw,168px)}
-  .hero-title .w-le{right:clamp(16px,6vw,90px);top:15vh;font-size:clamp(52px,11.5vw,168px)}
-  .hero-title .w-desert{right:clamp(16px,4vw,54px);bottom:9vh;font-size:clamp(52px,12.5vw,184px)}
-  .hero-title .w-desert em{
-    font-family:"Space Grotesk",sans-serif;font-style:italic;font-weight:500;
-    text-transform:none;letter-spacing:0;color:var(--magenta-soft);
+    background:radial-gradient(circle,rgba(224,33,138,.62) 0%,rgba(224,33,138,.22) 42%,rgba(224,33,138,0) 68%);
+    filter:blur(12px);opacity:.3;pointer-events:none;will-change:opacity,transform;
   }
   /* the glass */
   .hero-glass{
-    position:absolute;left:50%;top:51%;z-index:4;
-    width:min(37vh,300px);aspect-ratio:1120/2240;
+    position:absolute;left:50%;top:51%;z-index:3;
+    width:min(38vh,310px);aspect-ratio:1120/2240;
     transform:translate(-50%,-50%);
     will-change:transform;
     pointer-events:none;
   }
   .hero-glass img{
     width:100%;height:100%;object-fit:contain;
-    filter:drop-shadow(0 24px 44px rgba(0,0,0,.55));
+    filter:drop-shadow(0 26px 46px rgba(0,0,0,.55));
   }
-  /* spec labels + leader lines */
-  .hero-specs{position:absolute;inset:0;z-index:6;pointer-events:none}
-  .hero-specs svg{position:absolute;inset:0;width:100%;height:100%}
-  .hero-specs path{
-    fill:none;stroke:rgba(244,241,232,.85);stroke-width:1.2;
-    stroke-dasharray:1;stroke-dashoffset:1;
+  /* cactus foreground framing (parallaxes against the glass) */
+  .hero-fg{
+    position:absolute;left:-6%;right:-6%;bottom:-14%;height:58%;z-index:4;
+    pointer-events:none;will-change:transform;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 46%);
+            mask-image:linear-gradient(180deg,transparent 0%,#000 46%);
   }
-  .hero-specs circle{fill:var(--magenta-soft);opacity:0}
-  .spec-label{
-    position:absolute;font-family:"IBM Plex Mono",monospace;font-size:11px;
-    letter-spacing:.18em;text-transform:uppercase;color:#fff;opacity:0;
+  .hero-fg img{
+    width:100%;height:100%;object-fit:cover;object-position:50% 88%;
+    filter:brightness(.72) saturate(1.12) contrast(1.05);
+  }
+  /* giant headline — three corners, fixed while the product moves */
+  .hero-title{
+    position:absolute;inset:0;pointer-events:none;z-index:5;
+    font-family:"Archivo",sans-serif;font-weight:900;text-transform:uppercase;
+    line-height:.9;letter-spacing:-.015em;color:#fff;
+    text-shadow:0 4px 44px rgba(0,0,0,.5);
+  }
+  .hero-title .w{position:absolute;white-space:nowrap}
+  .hero-title .w-gout{left:clamp(16px,4vw,54px);top:13.5vh;font-size:clamp(54px,11.5vw,172px)}
+  .hero-title .w-du{right:clamp(16px,4vw,54px);top:13.5vh;font-size:clamp(54px,11.5vw,172px)}
+  .hero-title .w-desert{right:clamp(16px,4vw,54px);bottom:11vh;font-size:clamp(58px,12.5vw,188px)}
+  /* spec pills at the diagonal peak */
+  .hero-pills{position:absolute;inset:0;z-index:6;pointer-events:none}
+  .pill{
+    position:absolute;display:flex;align-items:center;gap:0;opacity:0;will-change:transform,opacity;
+  }
+  .pill .pill-txt{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:#fff;white-space:nowrap;
     background:rgba(10,15,10,.55);border:1px solid var(--line);
-    padding:7px 11px;border-radius:3px;backdrop-filter:blur(4px);white-space:nowrap;
+    padding:8px 13px;border-radius:999px;backdrop-filter:blur(4px);
   }
-  .spec-label b{color:var(--magenta-soft);font-weight:500}
-  .spec-1{left:9%;top:33%}
-  .spec-2{right:8%;top:47%}
-  .spec-3{left:11%;top:64%}
+  .pill .pill-txt b{color:var(--magenta-soft);font-weight:500}
+  .pill .pill-line{width:56px;height:1px;flex:none;
+    background:linear-gradient(90deg,rgba(244,241,232,.15),rgba(244,241,232,.85));}
+  .pill-r .pill-line{background:linear-gradient(270deg,rgba(244,241,232,.15),rgba(244,241,232,.85))}
+  .pill .pill-dot{width:9px;height:9px;flex:none;border-radius:50%;
+    background:var(--magenta-soft);box-shadow:0 0 0 5px rgba(255,79,168,.18)}
+  .pill-l{left:7%;top:34%}
+  .pill-r{right:6%;top:57%}
   @media(max-width:760px){
-    .spec-1{left:4%;top:30%}
-    .spec-2{right:4%;top:44%}
-    .spec-3{left:5%;top:66%}
-    .spec-label{font-size:9.5px;letter-spacing:.12em}
+    .pill-l{left:4%;top:30%}
+    .pill-r{right:4%;top:60%}
+    .pill .pill-line{width:30px}
+    .pill .pill-txt{font-size:9.5px;letter-spacing:.12em;padding:7px 10px}
   }
-  /* hero bottom-left mono note + scroll hint */
+  /* hero bottom-left note + SCROLL bottom-right */
   .hero-note{
     position:absolute;left:clamp(16px,4vw,54px);bottom:8.5vh;z-index:7;max-width:300px;
     font-family:"IBM Plex Mono",monospace;font-size:11px;line-height:1.75;
@@ -148,21 +163,16 @@
   }
   .hero-note b{color:#fff;font-weight:500}
   .scroll-hint{
-    position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:7;
+    position:absolute;right:clamp(16px,4vw,54px);bottom:26px;z-index:7;
     font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.34em;
-    text-transform:uppercase;color:var(--ink-faint);text-align:center;
+    text-transform:uppercase;color:var(--ink-faint);text-align:right;
   }
   .scroll-hint::after{
-    content:"";display:block;width:1px;height:38px;margin:10px auto 0;
-    background:linear-gradient(180deg,var(--ink-faint),transparent);
-    animation:drip 2.2s ease-in-out infinite;transform-origin:top;
+    content:"";display:block;width:38px;height:1px;margin:10px 0 0 auto;
+    background:linear-gradient(270deg,var(--ink-faint),transparent);
+    animation:drip 2.2s ease-in-out infinite;transform-origin:right;
   }
-  @keyframes drip{0%,100%{transform:scaleY(.4);opacity:.4}50%{transform:scaleY(1);opacity:1}}
-  .hero-badge{
-    position:absolute;right:clamp(16px,4vw,54px);bottom:8.5vh;z-index:7;
-    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.24em;
-    color:var(--ink-faint);text-transform:uppercase;text-align:right;line-height:2;
-  }
+  @keyframes drip{0%,100%{transform:scaleX(.4);opacity:.4}50%{transform:scaleX(1);opacity:1}}
 
   /* ---------- SECTIONS ---------- */
   section{position:relative}
@@ -260,8 +270,12 @@
     font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;
     text-transform:uppercase;color:var(--ink-faint);
   }
-  .demo-badge{
-    border:1px dashed rgba(244,241,232,.4);border-radius:4px;padding:7px 12px;color:var(--ink-dim);
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .scroll-hint::after{animation:none}
+    .fruit-img img,.card{transition:none}
   }
 </style>
 </head>
@@ -271,18 +285,20 @@
   <a class="wordmark" href="#">SABRA<small>JUS DE FIGUE DE BARBARIE</small></a>
   <div class="nav-links">
     <a href="#fruit">Le Fruit</a>
-    <a href="#pressage">Le Pressage</a>
     <a href="#jus">Nos Jus</a>
+    <a href="#pressage">Le Pressage</a>
     <a href="#trouver">Trouver</a>
-    <a class="cta" href="https://wa.me/212693981822" target="_blank" rel="noopener">Commander</a>
+    <a class="cta" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20passer%20une%20commande.%20Merci%20!" target="_blank" rel="noopener">Commander</a>
   </div>
 </nav>
 
-<!-- ============ PINNED HERO ============ -->
+<div class="demo-fixed">Modèle de démonstration</div>
+
+<!-- ============ PINNED HERO — 380vh loop ============ -->
 <header class="hero" id="hero">
   <div class="hero-stage" id="heroStage">
-    <div class="hero-scene" id="heroScene">
-      <img src="sabra/hero.webp" alt="Un verre de jus de figue de Barbarie posé sur un rocher, parmi les cactus en fleurs">
+    <div class="hero-bg" id="heroBg">
+      <img src="sabra/hero.webp" alt="Figues de Barbarie et cactus en fleurs, à la tombée du jour">
     </div>
     <div class="hero-shade"></div>
     <div class="hero-glow" id="heroGlow"></div>
@@ -291,33 +307,35 @@
       <img src="sabra/glass-cut.webp" alt="Verre de jus de figue de Barbarie, couleur magenta">
     </figure>
 
-    <div class="hero-specs" aria-hidden="true">
-      <svg viewBox="0 0 1000 625" preserveAspectRatio="none">
-        <path id="line1" pathLength="1" d="M 415 250 L 250 208 L 128 208"/>
-        <path id="line2" pathLength="1" d="M 588 320 L 745 296 L 872 296"/>
-        <path id="line3" pathLength="1" d="M 420 415 L 268 402 L 148 402"/>
-        <circle id="dot1" cx="415" cy="250" r="4"/>
-        <circle id="dot2" cx="588" cy="320" r="4"/>
-        <circle id="dot3" cx="420" cy="415" r="4"/>
-      </svg>
-      <span class="spec-label spec-1" id="label1"><b>01</b>&nbsp; Pressé à froid</span>
-      <span class="spec-label spec-2" id="label2"><b>02</b>&nbsp; Cueilli à l'aube</span>
-      <span class="spec-label spec-3" id="label3"><b>03</b>&nbsp; 100 % figue de Barbarie</span>
+    <div class="hero-fg" id="heroFg" aria-hidden="true">
+      <img src="sabra/fruit.webp" alt="">
     </div>
 
     <h1 class="hero-title">
-      <span class="w w-buvez" id="wBuvez">Buvez</span>
-      <span class="w w-le" id="wLe">le</span>
-      <span class="w w-desert" id="wDesert">Désert<em>.</em></span>
+      <span class="w w-gout">Le Goût</span>
+      <span class="w w-du">Du</span>
+      <span class="w w-desert">Désert</span>
     </h1>
+
+    <div class="hero-pills" aria-hidden="true">
+      <div class="pill pill-l" id="pillL">
+        <span class="pill-txt"><b>01</b>&nbsp; Pressé à froid</span>
+        <span class="pill-line"></span>
+        <span class="pill-dot"></span>
+      </div>
+      <div class="pill pill-r" id="pillR">
+        <span class="pill-dot"></span>
+        <span class="pill-line"></span>
+        <span class="pill-txt"><b>02</b>&nbsp; 100 % fruit</span>
+      </div>
+    </div>
 
     <p class="hero-note">
       <b>Figue de Barbarie, pressée à froid.</b><br>
       Récoltée à la première lumière,<br>
       servie glacée pour les heures chaudes.
     </p>
-    <div class="hero-badge">Tanger — Maroc<br>Édition du désert</div>
-    <div class="scroll-hint" id="scrollHint">Défiler</div>
+    <div class="scroll-hint" id="scrollHint">Scroll</div>
   </div>
 </header>
 
@@ -335,7 +353,7 @@
         la figue de Barbarie attend des mois de soleil avant d'offrir sa chair
         magenta, douce et pleine d'eau. Nos fruits viennent des collines du
         Tafilalet et des plaines d'Aït Baâmrane, cueillis à la main avant que
-        la chaleur du jour ne réveille le sucre.</p>
+        la chaleur ne réveille le sucre.</p>
         <p>Aucun concentré, aucune poudre : un fruit, une presse, une bouteille.
         C'est tout — et c'est assez.</p>
         <div class="chips">
@@ -411,19 +429,19 @@
     <h2 class="reveal">De la raquette<br>au <em>verre</em>.</h2>
     <div class="steps">
       <div class="step reveal">
-        <span class="num">ÉTAPE — 01</span>
+        <span class="num">Étape — 01</span>
         <h3>Cueillette à l'aube</h3>
         <p>Les fruits sont récoltés à la première lumière, quand la chair est encore
         fraîche et le sucre endormi. Gants épais, gestes lents : les épines négocient.</p>
       </div>
       <div class="step reveal">
-        <span class="num">ÉTAPE — 02</span>
+        <span class="num">Étape — 02</span>
         <h3>Pressé à froid</h3>
         <p>Une presse lente, sans chaleur, qui garde la couleur, les fibres fines
         et tout ce que le fruit avait à dire. Rien n'est chauffé, rien n'est dilué.</p>
       </div>
       <div class="step reveal">
-        <span class="num">ÉTAPE — 03</span>
+        <span class="num">Étape — 03</span>
         <h3>Embouteillé sous 24 h</h3>
         <p>Du pressoir à la bouteille en moins d'un jour, puis direction Tanger.
         Un jus qui voyage peu et qui se boit vite — comme il se doit.</p>
@@ -436,12 +454,11 @@
 <footer id="trouver">
   <div class="foot-cta">
     <p class="kicker reveal" style="justify-content:center">Trouver SABRA</p>
-    <h2 class="reveal">Le désert se boit<br><em style="font-family:'Space Grotesk',sans-serif;font-style:italic;font-weight:500;text-transform:none;color:var(--magenta-soft)">glacé</em>.</h2>
+    <h2 class="reveal">Le désert se boit<br><em>glacé</em>.</h2>
     <a class="big-cta reveal" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20passer%20une%20commande.%20Merci%20!" target="_blank" rel="noopener">Commander sur WhatsApp</a>
   </div>
   <div class="foot-meta">
     <span>SABRA — Tanger, Maroc</span>
-    <span class="demo-badge">Modèle de démonstration</span>
     <span>Démonstration réalisée par Tanja Web — Tanger</span>
   </div>
 </footer>
@@ -450,87 +467,96 @@
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* --- section reveals --- */
+  /* --- section reveals (staggered via transition-delay per sibling group) --- */
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
   },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('.reveal').forEach(function(el, i){
+    el.style.transitionDelay = (i % 4) * 90 + 'ms';
+    io.observe(el);
+  });
 
-  /* --- pinned hero scroll engine --- */
-  var hero    = document.getElementById('hero');
-  var scene   = document.getElementById('heroScene');
-  var glow    = document.getElementById('heroGlow');
-  var glass   = document.getElementById('heroGlass');
-  var hint    = document.getElementById('scrollHint');
-  var wBuvez  = document.getElementById('wBuvez');
-  var wLe     = document.getElementById('wLe');
-  var wDesert = document.getElementById('wDesert');
-  var lines   = [document.getElementById('line1'), document.getElementById('line2'), document.getElementById('line3')];
-  var dots    = [document.getElementById('dot1'),  document.getElementById('dot2'),  document.getElementById('dot3')];
-  var labels  = [document.getElementById('label1'),document.getElementById('label2'),document.getElementById('label3')];
+  /* --- pinned hero: rAF-lerped scroll engine ---
+     One continuous motion out to a diagonal peak, then a full reverse
+     back to the exact rest state (loop feel). Beats over pin progress p:
+       0.00–0.25  rest (subtle idle float)
+       0.25–0.55  glass tilts to −38°, scales to 2.15×, drifts right/down,
+                  magenta glow blooms, foreground parallaxes
+       0.55–0.75  spec pills slide in at the peak
+       0.75–1.00  everything reverses smoothly back to rest            */
+  var hero  = document.getElementById('hero');
+  var bg    = document.getElementById('heroBg');
+  var fg    = document.getElementById('heroFg');
+  var glow  = document.getElementById('heroGlow');
+  var glass = document.getElementById('heroGlass');
+  var hint  = document.getElementById('scrollHint');
+  var pillL = document.getElementById('pillL');
+  var pillR = document.getElementById('pillR');
 
   function clamp(v,a,b){ return v<a?a : v>b?b : v; }
   function seg(p,a,b){ return clamp((p-a)/(b-a),0,1); }
-  function ease(t){ return t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
+  function easeIO(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
 
-  function render(p){
-    /* Phase 1 — slow push-in + glow (0 → .40) */
-    var p1 = ease(seg(p,0,.40));
-    scene.style.transform = 'scale(' + (1 + .18*p1) + ')';
-    glow.style.opacity = .35 + .55*p1;
-    glow.style.transform = 'translate(-50%,-50%) scale(' + (1 + .35*p1) + ')';
+  function render(p, t){
+    var mIn  = easeIO(seg(p,.25,.55));
+    var mOut = easeIO(seg(p,.75,1));
+    var m    = mIn * (1 - mOut);           /* 0 at rest → 1 at peak → 0 at end */
 
-    /* Glass lift & tilt — rises through Phase 2 (.40 → .75), settles in Phase 3 */
-    var liftT;
-    if(p < .40)      liftT = 0;
-    else if(p < .75) liftT = ease(seg(p,.40,.75));
-    else             liftT = 1 - ease(seg(p,.75,1));
-    var liftY  = -6 * liftT;              /* vh */
-    var tilt   = -10 * liftT;             /* deg */
-    var gScale = 1 + .08 * liftT;
+    /* idle float, only while near rest */
+    var floatY = reduce ? 0 : Math.sin(t/1500) * 7 * (1 - m);
+
+    /* the glass: tilt, scale, drift */
     glass.style.transform =
-      'translate(-50%,-50%) translateY(' + liftY + 'vh) rotate(' + tilt + 'deg) scale(' + gScale + ')';
+      'translate(-50%,-50%)' +
+      ' translate(' + (7*m) + 'vw,' + (5*m) + 'vh)' +
+      ' translateY(' + floatY.toFixed(2) + 'px)' +
+      ' rotate(' + (-38*m) + 'deg)' +
+      ' scale(' + (1 + 1.15*m) + ')';
 
-    /* Headline drift (subtle parallax, words breathe apart) */
-    wBuvez.style.transform  = 'translateX(' + (-26*p) + 'px)';
-    wLe.style.transform     = 'translateX(' + (26*p) + 'px)';
-    wDesert.style.transform = 'translateY(' + (-14*p) + 'px)';
+    /* magenta bloom follows the glass, swells at the peak */
+    glow.style.opacity = (.30 + .68*m).toFixed(3);
+    glow.style.transform =
+      'translate(-50%,-50%)' +
+      ' translate(' + (4.2*m) + 'vw,' + (3*m) + 'vh)' +
+      ' scale(' + (1 + .85*m) + ')';
 
-    /* Phase 3 — spec labels draw themselves (.76 → 1, staggered) */
-    for(var i=0;i<3;i++){
-      var lt = seg(p, .76 + i*.06, .94 + i*.04);
-      lines[i].style.strokeDashoffset = String(1 - lt);
-      dots[i].style.opacity = lt > .05 ? '1' : '0';
-      labels[i].style.opacity = String(clamp((lt-.35)/.65,0,1));
-      labels[i].style.transform = 'translateY(' + (8*(1-lt)) + 'px)';
-    }
+    /* ambient layers parallax at different rates */
+    bg.style.transform = 'scale(' + (1 + .07*m) + ') translateY(' + (-1.6*m) + 'vh)';
+    fg.style.transform = 'translateY(' + (34*m) + 'px) scale(' + (1 + .03*m) + ')';
 
-    /* scroll hint fades once the film starts */
-    hint.style.opacity = String(1 - seg(p,0,.12));
+    /* spec pills: in during .55–.68, out during .78–.92 */
+    var pin  = easeIO(seg(p,.55,.68));
+    var pout = easeIO(seg(p,.78,.92));
+    var s    = clamp(pin - pout, 0, 1);
+    pillL.style.opacity = s.toFixed(3);
+    pillL.style.transform = 'translateX(' + (-18*(1-s)) + 'px)';
+    pillR.style.opacity = s.toFixed(3);
+    pillR.style.transform = 'translateX(' + (18*(1-s)) + 'px)';
+
+    /* scroll hint bows out as soon as the film starts */
+    hint.style.opacity = String(1 - seg(p,0,.07));
   }
 
   if(reduce){
-    /* static end-state: labels drawn, glass at rest */
-    render(1);
-    lines.forEach(function(l){ l.style.strokeDashoffset = '0'; });
-    labels.forEach(function(l){ l.style.opacity = '1'; l.style.transform = 'none'; });
-    glass.style.transform = 'translate(-50%,-50%)';
+    render(0, 0);
   } else {
-    var ticking = false;
-    function update(){
-      ticking = false;
-      var rect = hero.getBoundingClientRect();
+    var target = 0, cur = 0;
+    function measure(){
       var total = hero.offsetHeight - window.innerHeight;
-      var p = total > 0 ? clamp(-rect.top/total, 0, 1) : 0;
-      render(p);
+      var rect  = hero.getBoundingClientRect();
+      target = total > 0 ? clamp(-rect.top/total, 0, 1) : 0;
     }
-    window.addEventListener('scroll', function(){
-      if(!ticking){ ticking = true; requestAnimationFrame(update); }
-    }, {passive:true});
-    window.addEventListener('resize', update);
-    update();
+    window.addEventListener('scroll', measure, {passive:true});
+    window.addEventListener('resize', measure);
+    measure();
+    (function frame(t){
+      cur += (target - cur) * .085;
+      if(Math.abs(target - cur) < .0004) cur = target;
+      render(cur, t || 0);
+      requestAnimationFrame(frame);
+    })(0);
   }
 })();
 </script>
