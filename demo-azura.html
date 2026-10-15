@@ -271,5 +271,58 @@ document.getElementById('bookForm').addEventListener('submit', function(e){
   window.open('https://wa.me/212693981822?text='+encodeURIComponent(msg),'_blank');
 });
 </script>
+
+<style id="tw-motion-css">
+.tw-rv{opacity:0;transform:translateY(30px) perspective(900px) rotateX(5deg);transition:opacity .9s cubic-bezier(.16,.7,.24,1),transform .9s cubic-bezier(.16,.7,.24,1)}
+.tw-rv.tw-in{opacity:1;transform:translateY(0) perspective(900px) rotateX(0deg)}
+.tw-tilt{transform-style:preserve-3d;will-change:transform;transition:transform .35s ease-out}
+.tw-tilt img{transition:transform .8s cubic-bezier(.16,.7,.24,1)}
+.tw-tilt:hover img{transform:scale(1.07)}
+@keyframes twkb{from{transform:scale(1)}to{transform:scale(1.09)}}
+.tw-kb{animation:twkb 16s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.tw-rv{opacity:1!important;transform:none!important;transition:none!important}.tw-kb{animation:none!important}}
+</style>
+<script id="tw-motion-js">
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var cardSel='[class*="card"],[class*="produit"],[class*="product"],[class*="room"],[class*="chambre"],[class*="plat"],[class*="dish"],[class*="item"],[class*="box"],[class*="tile"],article,figure';
+  function bad(el){return el.closest('[class*="slider"],[class*="rev"],[class*="swiper"],[class*="carousel"],[class*="marquee"]');}
+  // --- hero: gentle Ken Burns on first big image (if it has no own animation)
+  try{
+    var hero=document.querySelector('section,header,div');
+    var him=document.querySelector('section img, header img');
+    if(him && !bad(him) && getComputedStyle(him).animationName==='none' && him.getBoundingClientRect().width>500){ him.classList.add('tw-kb'); }
+  }catch(e){}
+  // --- collect reveal targets
+  var set=new Set();
+  document.querySelectorAll('section').forEach(function(el,i){ if(i>0) set.add(el); });
+  document.querySelectorAll('h2').forEach(function(el){ set.add(el); });
+  document.querySelectorAll(cardSel).forEach(function(el){ set.add(el); });
+  var list=[];
+  set.forEach(function(el){ if(!bad(el)) list.push(el); });
+  list=list.filter(function(el){ return !list.some(function(o){ return o!==el && el.contains(o) && el.tagName!=='SECTION'; }); });
+  function attachTilt(el){
+    if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    if(el.querySelector('form,input,select,textarea')) return;
+    var r=el.getBoundingClientRect(); if(r.width>640||r.width<110) return;
+    el.classList.add('tw-tilt');
+    el.addEventListener('pointermove',function(ev){
+      var b=el.getBoundingClientRect();
+      var x=(ev.clientX-b.left)/b.width-.5, y=(ev.clientY-b.top)/b.height-.5;
+      el.style.transform='perspective(850px) rotateX('+(-y*7).toFixed(2)+'deg) rotateY('+(x*9).toFixed(2)+'deg) translateY(-3px)';
+    });
+    el.addEventListener('pointerleave',function(){ el.style.transform=''; });
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('tw-in'); attachTilt(e.target); io.unobserve(e.target); } });
+  },{threshold:.08,rootMargin:'0px 0px -3% 0px'});
+  list.forEach(function(el){
+    el.classList.add('tw-rv');
+    var sib=el.parentNode?Array.prototype.indexOf.call(el.parentNode.children,el):0;
+    el.style.transitionDelay=Math.min((Math.max(sib,0)%4)*90,270)+'ms';
+    io.observe(el);
+  });
+})();
+</script>
 </body>
 </html>

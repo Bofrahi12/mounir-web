@@ -55,7 +55,7 @@ nav.chaps a:hover{color:#fff}
 .pin{position:relative;height:100svh;overflow:hidden;background:radial-gradient(1000px 520px at 66% 44%,rgba(232,54,42,.14),transparent 65%),var(--bg)}
 .pin .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 55%,rgba(0,0,0,.55));z-index:3}
 .pin .frame{position:absolute;inset:14px;border:1px solid var(--hair);pointer-events:none;z-index:3}
-#gl{position:absolute;inset:0;width:100%;height:100%;opacity:0;z-index:2}
+#gl{position:absolute;inset:0;width:100%;height:100%;opacity:1;z-index:2}
 #glwrap{position:absolute;inset:0;z-index:2}
 #glwrap.trans{filter:blur(1.3px) drop-shadow(2.5px 0 rgba(255,0,70,.28)) drop-shadow(-2.5px 0 rgba(0,210,255,.28))}
 #fallback3d{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:2}
@@ -106,6 +106,17 @@ nav.chaps a:hover{color:#fff}
 #ovEnd .mini-nav a:hover{color:#fff}
 #loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mut);letter-spacing:3px;font-size:13px;z-index:5}
 #debug{position:fixed;bottom:14px;left:14px;z-index:400;background:#000;border:1px solid var(--acc);color:#ffd977;font-family:'Courier New',monospace;font-size:12px;padding:8px 12px;display:none}
+/* ---------- MID-PAGE 3D PRODUCT ZONE ---------- */
+.zone3d{position:relative;background:radial-gradient(900px 480px at 34% 46%,rgba(232,54,42,.13),transparent 65%),#080809;border-block:1px solid var(--line)}
+.zone3d .zpin{position:relative;height:100svh;overflow:hidden}
+#gl2{position:absolute;inset:0;width:100%;height:100%}
+#zoneFallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none}
+.zone-txt{position:absolute;inset-inline-start:0;bottom:12svh;max-width:560px;padding:0 34px;z-index:6}
+.zone-txt h2{font-size:clamp(30px,4.8vw,54px);font-weight:900;line-height:1.15;margin:10px 0 12px;text-shadow:0 3px 34px rgba(0,0,0,.9)}
+.zone-txt p{color:#cfc9bd;font-size:17px;max-width:440px;text-shadow:0 2px 20px rgba(0,0,0,.9)}
+.zone-txt .chips{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.zone-txt .pr{font-size:26px;font-weight:900;color:var(--acc2)}
+@media(max-width:820px){.zone-txt{bottom:7svh}}
 /* ---------- SECTIONS ---------- */
 .marquee{border-block:1px solid var(--line);background:#0a0a0c;overflow:hidden;padding:14px 0}
 .marquee .track{display:flex;gap:44px;width:max-content;animation:mq 22s linear infinite;font-weight:900;font-size:19px;white-space:nowrap}
@@ -247,6 +258,20 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-siz
   <div class="grid" id="menuGrid"></div>
 </div></section>
 
+<section class="zone3d" id="zone3d">
+ <div class="zpin">
+  <canvas id="gl2"></canvas>
+  <img id="zoneFallback" src="demo-burger/img/exploded.webp" alt="دوبل سماش من كل زاوية">
+  <div class="vig"></div>
+  <div class="zone-txt">
+    <div class="eyebrow">// The Product — 360°</div>
+    <h2>الدوبل سماش…<br>من كل زاوية.</h2>
+    <p>سبع طبقات كتلتف قدام عينيك: بريوش محمّص، مخلل وصوص، جبن ذايب، وقطعتا لحم على مشواة 260°.</p>
+    <div class="chips"><span class="pr">65 درهم</span><a class="btn" data-mag target="_blank" rel="noopener" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%3A%20%D8%AF%D9%88%D8%A8%D9%84%20%D8%B3%D9%85%D8%A7%D8%B4">اطلبو دابا</a></div>
+  </div>
+ </div>
+</section>
+
 <section class="sec" id="numbers" style="background:#0a0a0c;border-block:1px solid var(--line)"><div class="wrap">
   <div class="eyebrow rv">// The Numbers</div>
   <h2 class="big rv">أرقام ما كتكذبش</h2>
@@ -290,7 +315,7 @@ const CONFIG = {
   }
 };
 /* ================== state shared with the WebGL module ================== */
-window.GLSTATE = { spread:.45, camZ:8.6, rotY:-.12, pattyPush:0, layersOpacity:1, gx:1.5, ready:false };
+window.GLSTATE = { spread:.45, camZ:8.6, rotY:-.25, pattyPush:0, layersOpacity:1, gx:-1.15, ready:false };
 const qs = new URLSearchParams(location.search);
 const DEBUG = qs.get('debug') === '1';
 const FORCED_P = parseFloat(qs.get('p'));
@@ -366,16 +391,16 @@ const tl = gsap.timeline({
   }
 });
 /* S01 · opening (0–20%) */
-tl.fromTo('#heroImg', {scale:1.16, filter:'brightness(.55)'}, {scale:1.03, filter:'brightness(.92)', duration:20}, 0)
+tl.fromTo('#heroImg', {scale:1.16, filter:'brightness(.5)'}, {scale:1.05, filter:'brightness(.72)', duration:20}, 0)
+  .to(S, {spread:.6, rotY:-.05, duration:18, ease:'power1.inOut'}, 1)
   .to('#ovHero .mask>span', {y:0, duration:6, stagger:1.2, ease:'power3.out'}, 1)
   .to('#heroSub', {opacity:1, duration:5}, 6)
   .to('#heroTags', {opacity:1, duration:5}, 8)
   .to('#scrollcue', {opacity:0, duration:3}, 15)
   .to('#ovHero', {opacity:0, y:-40, duration:5}, 16)
-  .to('#heroImg', {opacity:0, scale:1.1, duration:5}, 16);
+  .to('#heroImg', {opacity:0, scale:1.12, duration:5}, 13);
 /* S02 · layers (20–40%) */
-tl.to('#gl', {opacity:1, duration:4}, 18)
-  .to(S, {spread:1, rotY:.35, camZ:11.2, gx:-1.15, duration:20, ease:'power1.inOut',
+tl.to(S, {spread:1, rotY:.35, camZ:11.2, duration:20, ease:'power1.inOut',
       onUpdate(){ const lp=(S.spread-.45)/.55; const act=Math.min(Math.floor(Math.max(lp,0)*4.4),3);
         labels.forEach((l,i)=>l.classList.toggle('on', act>=i)); }}, 20)
   .to('#ovLayers', {opacity:1, duration:4}, 21)
@@ -408,6 +433,13 @@ if (!isNaN(FORCED_P)){
 }
 /* header state */
 addEventListener('scroll', ()=>{ document.getElementById('hdr').classList.toggle('scrolled', scrollY>40); }, {passive:true});
+
+/* ================== mid-page 3D zone state ================== */
+window.ZSTATE = { rot: 0, spread: 1 };
+gsap.to(window.ZSTATE, { rot: 5.24, spread: .45, ease: 'none',
+  scrollTrigger: { trigger: '#zone3d', start: 'top top', end: '+=170%', pin: true, scrub: .6, anticipatePin: 1 } });
+gsap.fromTo('.zone-txt', {opacity: 0, y: 40}, {opacity: 1, y: 0, ease: 'power2.out',
+  scrollTrigger: { trigger: '#zone3d', start: 'top 55%' } });
 
 /* ================== custom cursor + magnetic (desktop) ================== */
 if (matchMedia('(pointer:fine)').matches && !REDUCED){
@@ -467,7 +499,7 @@ try {
     {src:'demo-burger/gl/patty-alpha.webp',      w:4.35, z: .15, y0: .42,  y1: .55},
     {src:'demo-burger/gl/bun-bottom-alpha.webp', w:4.30, z:-.30, y0: -.88, y1: -1.75}
   ];
-  const group = new THREE.Group(); scene.add(group);
+  const group = new THREE.Group(); scene.add(group); (window.__groups = window.__groups || []).push(group);
   const layers = [];
   for (const d of LCONF){
     const {tex, aspect} = await loadTex(d.src);
@@ -521,6 +553,80 @@ try {
   document.getElementById('loader').style.display = 'none';
   document.getElementById('fallback3d').style.display = 'flex';
   const g = document.getElementById('gl'); if (g) g.style.display = 'none';
+}
+</script>
+
+<script type="module">
+/* ================== WebGL zone 2: the product, 360° ================== */
+try {
+  const THREE = await import('three');
+  const Z = window.ZSTATE;
+  const canvas = document.getElementById('gl2');
+  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth < 820 ? 1.6 : 2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
+  camera.position.set(0, .1, 9.6);
+  function loadTex(url){
+    return new Promise((res, rej)=>{
+      const img = new Image(); if (location.protocol.indexOf('http')===0) img.crossOrigin='anonymous';
+      img.onload = ()=>{
+        const c=document.createElement('canvas'); c.width=img.naturalWidth; c.height=img.naturalHeight;
+        const x=c.getContext('2d'); x.drawImage(img,0,0);
+        const d=x.getImageData(0,0,c.width,c.height), px=d.data;
+        let minX=c.width,minY=c.height,maxX=0,maxY=0;
+        for (let i=3;i<px.length;i+=16){ if (px[i]>12){ const n=(i-3)/4, X=n%c.width, Y=(n/c.width)|0;
+          if(X<minX)minX=X; if(X>maxX)maxX=X; if(Y<minY)minY=Y; if(Y>maxY)maxY=Y; } }
+        const pad=10; minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad);
+        maxX=Math.min(c.width-1,maxX+pad); maxY=Math.min(c.height-1,maxY+pad);
+        const cw=maxX-minX+1, ch=maxY-minY+1;
+        const cc=document.createElement('canvas'); cc.width=cw; cc.height=ch;
+        cc.getContext('2d').drawImage(c,minX,minY,cw,ch,0,0,cw,ch);
+        const t=new THREE.CanvasTexture(cc); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=4;
+        res({tex:t, aspect:ch/cw});
+      };
+      img.onerror=rej; img.src=url;
+    });
+  }
+  const LCONF = [
+    {src:'demo-burger/gl/bun-top-alpha.webp',    w:4.30, z: .25, y0: 1.62, y1: 2.50},
+    {src:'demo-burger/gl/toppings-alpha.webp',   w:4.05, z: .45, y0: .98,  y1: 1.50},
+    {src:'demo-burger/gl/patty-alpha.webp',      w:4.35, z: .15, y0: .42,  y1: .55},
+    {src:'demo-burger/gl/bun-bottom-alpha.webp', w:4.30, z:-.30, y0: -.88, y1: -1.75}
+  ];
+  const group = new THREE.Group(); scene.add(group); (window.__groups = window.__groups || []).push(group);
+  const layers = [];
+  for (const d of LCONF){
+    const {tex, aspect} = await loadTex(d.src);
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(d.w, d.w*aspect),
+      new THREE.MeshBasicMaterial({map:tex, transparent:true, side:THREE.DoubleSide, depthWrite:false}));
+    m.position.set(0, d.y1, d.z); m.renderOrder = 10 - layers.length;
+    group.add(m); layers.push({m, ...d});
+  }
+  function place(){
+    const mob = innerWidth < 820;
+    group.position.x = mob ? 0 : -1.5;
+    group.position.y = mob ? .8 : .1;
+    group.scale.setScalar(mob ? .8 : .98);
+    const w = canvas.clientWidth || innerWidth, h = canvas.clientHeight || innerHeight;
+    renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix();
+  }
+  place(); addEventListener('resize', place);
+  let visible = false;
+  new IntersectionObserver(es=>{ visible = es[0].isIntersecting; }).observe(document.getElementById('zone3d'));
+  function tick(t){
+    requestAnimationFrame(tick);
+    if (!visible) return;
+    const k = (Z.spread - .45) / .55;
+    layers.forEach(L => { L.m.position.y = L.y0 + (L.y1 - L.y0) * k; });
+    group.rotation.y = Z.rot + Math.sin(t*.0004)*.05;
+    group.rotation.x = Math.sin(t*.0005)*.03;
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(tick);
+} catch(e) {
+  const f = document.getElementById('zoneFallback'); if (f) f.style.display = 'block';
+  const g = document.getElementById('gl2'); if (g) g.style.display = 'none';
 }
 </script>
 </body>
