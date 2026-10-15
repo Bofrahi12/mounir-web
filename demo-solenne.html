@@ -258,12 +258,134 @@
   }
   .foot-credit b{color:var(--ivory-dim);font-weight:400}
 
+  /* ---------- CARD SPECS ---------- */
+  .specs{list-style:none;margin-top:4px;border-top:1px solid var(--line)}
+  .specs li{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    padding:8px 0;border-bottom:1px solid rgba(236,231,221,.08);font-size:12.5px;
+  }
+  .specs li span:first-child{
+    font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--ivory-faint);flex:none;
+  }
+  .specs li span:last-child{color:var(--ivory);text-align:right;letter-spacing:.03em}
+
+  /* ---------- MANUFACTURE ---------- */
+  #manufacture{background:var(--navy)}
+  .manu-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(34px,6vw,90px);align-items:start}
+  .manu-copy p{color:var(--ivory-dim);line-height:1.85;font-size:15.5px;margin-bottom:18px;max-width:52ch}
+  .manu-copy p b{color:var(--ivory);font-weight:400}
+  .manu-side{border-left:1px solid var(--line);padding-left:clamp(24px,3vw,44px)}
+  .manu-side .quote{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(24px,2.6vw,32px);line-height:1.35;color:var(--ivory);
+  }
+  .manu-side .who{margin-top:16px;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+  .stats{
+    max-width:1240px;margin:clamp(54px,7vw,84px) auto 0;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .stat{padding:34px 22px;text-align:center;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:0}
+  .stat b{
+    display:block;font-family:var(--serif);font-weight:500;
+    font-size:clamp(38px,4.4vw,56px);line-height:1;color:var(--ivory);
+  }
+  .stat b i{font-style:normal;color:var(--gold);font-size:.55em;vertical-align:.5em}
+  .stat span{
+    display:block;margin-top:10px;font-size:10px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--ivory-dim);line-height:1.7;
+  }
+
+  /* ---------- SAVOIR-FAIRE ---------- */
+  #savoirfaire{background:linear-gradient(to bottom, var(--navy) 0%, var(--navy-2) 60%, var(--navy) 100%)}
+  .steps{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .step{border:1px solid var(--line);background:rgba(14,22,40,.5);padding:34px 28px 30px;position:relative;overflow:hidden}
+  .step .bignum{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:76px;line-height:.9;color:transparent;
+    -webkit-text-stroke:1px var(--gold-dim);
+  }
+  .step h3{font-family:var(--serif);font-weight:500;font-size:27px;margin:18px 0 10px}
+  .step p{font-size:14px;line-height:1.75;color:var(--ivory-dim)}
+  .step .dur{
+    display:inline-block;margin-top:18px;border:1px solid var(--line);border-radius:999px;
+    padding:7px 15px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+  }
+
+  /* ---------- SERVICE STRIP ---------- */
+  .strip{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    max-width:1240px;margin:0 auto;
+  }
+  .strip div{padding:30px 22px;text-align:center;border-left:1px solid var(--line)}
+  .strip div:first-child{border-left:0}
+  .strip svg{width:24px;height:24px;margin:0 auto 12px;color:var(--gold)}
+  .strip b{display:block;font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.04em;color:var(--ivory);margin-bottom:6px}
+  .strip span{font-size:11px;letter-spacing:.14em;color:var(--ivory-dim);line-height:1.7;text-transform:uppercase}
+
+  /* ---------- TÉMOIGNAGES ---------- */
+  #avis{background:var(--navy)}
+  .avis-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .avis{border:1px solid var(--line);background:var(--navy-3);padding:30px 28px}
+  .avis .stars{color:var(--gold);font-size:14px;letter-spacing:.35em;margin-bottom:16px}
+  .avis p{font-family:var(--serif);font-size:20px;font-style:italic;line-height:1.5;color:var(--ivory)}
+  .avis .who{margin-top:18px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--ivory-dim)}
+  .avis-note{max-width:1240px;margin:22px auto 0;font-size:11.5px;letter-spacing:.1em;color:var(--ivory-faint)}
+
+  /* ---------- FAQ ---------- */
+  #faq{background:linear-gradient(to bottom, var(--navy), #04070d)}
+  .faq-list{max-width:880px;margin:0 auto}
+  .faq-list details{border-top:1px solid var(--line)}
+  .faq-list details:last-child{border-bottom:1px solid var(--line)}
+  .faq-list summary{
+    cursor:pointer;list-style:none;padding:24px 6px;
+    font-family:var(--serif);font-size:clamp(21px,2.4vw,26px);font-weight:500;
+    display:flex;justify-content:space-between;align-items:center;gap:18px;
+  }
+  .faq-list summary::-webkit-details-marker{display:none}
+  .faq-list summary::after{content:"+";font-family:var(--sans);font-weight:300;color:var(--gold);font-size:26px;line-height:1}
+  .faq-list details[open ] summary::after{content:"–"}
+  .faq-list details p{padding:0 6px 26px;color:var(--ivory-dim);line-height:1.8;font-size:14.5px;max-width:62ch}
+  .faq-list details p a{color:var(--gold);border-bottom:1px solid var(--gold-dim)}
+
+  /* ---------- STAGE GHOST NUMERAL + CARD TILT ---------- */
+  .stage-ghost{
+    position:absolute;right:clamp(8px,3vw,40px);top:50%;
+    transform:translateY(-50%);
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(180px,30vw,420px);line-height:1;
+    color:transparent;-webkit-text-stroke:1px rgba(201,163,95,.30);
+    pointer-events:none;user-select:none;will-change:transform,opacity;
+  }
+  #scrub{will-change:transform}
+  .card{transform-style:preserve-3d}
+  .card .ph img{will-change:transform}
+
+  @media (max-width:1080px){
+    .manu-grid{grid-template-columns:1fr}
+    .manu-side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:28px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .stat{border-top:1px solid var(--line)}
+    .steps{grid-template-columns:1fr}
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip div{border-top:1px solid var(--line)}
+    .avis-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    .stage-ghost{font-size:150px;right:0;opacity:.6}
+  }
+
   /* ---------- REDUCED MOTION / STATIC ---------- */
   body.reduced #stage{height:auto}
   body.reduced .stage-sticky{position:relative;height:auto;min-height:100vh;display:flex;flex-direction:column}
   body.reduced #scrub{position:relative;flex:1;min-height:52vh}
   body.reduced .chapter{position:relative;left:0;top:0;transform:none;opacity:1 !important;pointer-events:auto;padding:34px clamp(20px,7vw,110px) 6px}
   body.reduced .stage-hud, body.reduced .scroll-hint{display:none}
+  body.reduced .stage-ghost{display:none}
+  body.reduced .chapter .kicker, body.reduced .chapter h2,
+  body.reduced .chapter p, body.reduced .chapter .chips{transform:none !important}
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:1080px){
@@ -317,6 +439,7 @@
   <div class="stage-sticky">
     <canvas id="scrub"></canvas>
     <div class="stage-veil"></div>
+    <div class="stage-ghost" id="stageGhost" aria-hidden="true">01</div>
 
     <article class="chapter" id="ch1">
       <div class="kicker">Chapitre 01 — Le Boîtier</div>
@@ -368,6 +491,12 @@
         <div class="ref">Réf. SL-2041 · Calibre S.72</div>
         <h3>Abyssale 300</h3>
         <p class="desc">Plongeuse en acier 904L, cadran bleu profond soleillé, lunette céramique unidirectionnelle. Étanchéité éprouvée à 300 mètres.</p>
+        <ul class="specs">
+          <li><span>Calibre</span><span>S.72 automatique</span></li>
+          <li><span>Réserve de marche</span><span>72 heures</span></li>
+          <li><span>Étanchéité</span><span>300 m</span></li>
+          <li><span>Boîtier</span><span>42 mm · acier 904L</span></li>
+        </ul>
         <div class="avail"><span class="dot ok"></span>Disponible</div>
         <div class="price">84 000 <small>DH</small></div>
         <a class="ask" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%2C%20je%20souhaite%20demander%20la%20%C2%AB%C2%A0Abyssale%20300%C2%A0%C2%BB%20(R%C3%A9f.%20SL-2041)%20vue%20sur%20le%20site%20SOLENNE.">Demander</a>
@@ -380,6 +509,12 @@
         <div class="ref">Réf. SL-1187 · Calibre S.41</div>
         <h3>Héritage Or</h3>
         <p class="desc">Boîtier en or jaune poli main, cadran laqué crème et index appliqués. L'élégance des grandes maisons, sans jamais hausser le ton.</p>
+        <ul class="specs">
+          <li><span>Calibre</span><span>S.41 automatique</span></li>
+          <li><span>Réserve de marche</span><span>48 heures</span></li>
+          <li><span>Étanchéité</span><span>30 m</span></li>
+          <li><span>Boîtier</span><span>38 mm · or jaune 18 k</span></li>
+        </ul>
         <div class="avail"><span class="dot last"></span>Dernière pièce</div>
         <div class="price">132 000 <small>DH</small></div>
         <a class="ask" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%2C%20je%20souhaite%20demander%20la%20%C2%AB%C2%A0H%C3%A9ritage%20Or%C2%A0%C2%BB%20(R%C3%A9f.%20SL-1187)%20vue%20sur%20le%20site%20SOLENNE.">Demander</a>
@@ -392,6 +527,12 @@
         <div class="ref">Réf. SL-3305 · Calibre S.88</div>
         <h3>Chronographe Riviera</h3>
         <p class="desc">Chronographe acier au cadran blanc laqué, compteurs azurés et échelle tachymétrique. Pensez régates, routes de corniche, arrivées serrées.</p>
+        <ul class="specs">
+          <li><span>Calibre</span><span>S.88 chronographe</span></li>
+          <li><span>Réserve de marche</span><span>60 heures</span></li>
+          <li><span>Étanchéité</span><span>100 m</span></li>
+          <li><span>Boîtier</span><span>41 mm · acier 316L</span></li>
+        </ul>
         <div class="avail"><span class="dot ok"></span>Disponible</div>
         <div class="price">96 500 <small>DH</small></div>
         <a class="ask" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%2C%20je%20souhaite%20demander%20le%20%C2%AB%C2%A0Chronographe%20Riviera%C2%A0%C2%BB%20(R%C3%A9f.%20SL-3305)%20vu%20sur%20le%20site%20SOLENNE.">Demander</a>
@@ -404,12 +545,72 @@
         <div class="ref">Réf. SL-0926 · Calibre S.19</div>
         <h3>Tank Classique</h3>
         <p class="desc">Boîtier rectangulaire aux brancards droits, chiffres romains peints main et couronne sertie d'un cabochon bleu. Une ligne qui ne date pas.</p>
+        <ul class="specs">
+          <li><span>Calibre</span><span>S.19 manuel</span></li>
+          <li><span>Réserve de marche</span><span>38 heures</span></li>
+          <li><span>Étanchéité</span><span>30 m</span></li>
+          <li><span>Boîtier</span><span>33 × 25 mm · acier poli</span></li>
+        </ul>
         <div class="avail"><span class="dot order"></span>Sur commande</div>
         <div class="price">71 000 <small>DH</small></div>
         <a class="ask" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%2C%20je%20souhaite%20demander%20la%20%C2%AB%C2%A0Tank%20Classique%C2%A0%C2%BB%20(R%C3%A9f.%20SL-0926)%20vue%20sur%20le%20site%20SOLENNE.">Demander</a>
       </div>
     </article>
 
+  </div>
+</section>
+
+<!-- ================= LA MANUFACTURE ================= -->
+<section class="blk" id="manufacture">
+  <div class="sec-head">
+    <div class="sec-kicker">La Manufacture</div>
+    <h2>Une maison, <em>deux rives</em>, un seul standard.</h2>
+  </div>
+  <div class="manu-grid">
+    <div class="manu-copy">
+      <p>Fondée en <b>1968</b>, SOLENNE assemble ses mouvements entre Genève et Tanger, dans deux ateliers qui partagent les mêmes établis, les mêmes tolérances et la même obsession : <b>une montre qui se transmet</b>, pas une montre qui se remplace.</p>
+      <p>Chaque calibre est <b>assemblé entièrement à la main</b> par un seul horloger, de la première roue au spiral. Il signe le pont de son poinçon ; son nom voyage avec la montre, dans le certificat comme dans les archives de la maison.</p>
+      <p>Nous ne produisons que des <b>séries limitées et numérotées</b> — trois cents pièces par référence, jamais rééditées. Quand une série s'éteint, elle s'éteint : c'est ce qui fait sa valeur, et la vôtre.</p>
+    </div>
+    <aside class="manu-side">
+      <p class="quote">« Une montre réussie est celle qu'on oublie au poignet — et qu'on retrouve, intacte, trente ans plus tard. »</p>
+      <p class="who">Maître horloger — Atelier de Tanger</p>
+    </aside>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>5 <i>ans</i></b><span>Garantie internationale</span></div>
+    <div class="stat"><b>100 <i>%</i></b><span>Mouvements assemblés à la main</span></div>
+    <div class="stat"><b>300</b><span>Pièces numérotées par série, jamais rééditées</span></div>
+    <div class="stat"><b>58</b><span>Contrôles avant certification</span></div>
+  </div>
+</section>
+
+<!-- ================= LE SAVOIR-FAIRE ================= -->
+<section class="blk" id="savoirfaire">
+  <div class="sec-head">
+    <div class="sec-kicker">Le Savoir-Faire</div>
+    <h2>Trois gestes, <em>des semaines</em> de travail.</h2>
+    <p>Avant de quitter l'atelier, chaque montre traverse les mêmes trois épreuves. Aucune ne se court-circuite, aucune ne se délègue.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="bignum">01</div>
+      <h3>L'Assemblage</h3>
+      <p>Deux cent treize composants posés un à un sous la loupe, à la brucelle, sans une rayure. Un seul horloger, du premier pont au spiral — il en répond de son poinçon.</p>
+      <span class="dur">11 jours d'établi</span>
+    </div>
+    <div class="step">
+      <div class="bignum">02</div>
+      <h3>Le Réglage</h3>
+      <p>La marche est réglée en cinq positions, puis la montre repose soixante-douze heures sur banc d'essai. Si l'écart dépasse quatre secondes par jour, on recommence.</p>
+      <span class="dur">72 h de banc d'essai</span>
+    </div>
+    <div class="step">
+      <div class="bignum">03</div>
+      <h3>La Finition</h3>
+      <p>Polissage à la main, emboîtage, gravure du numéro de série au dos du boîtier. La dernière main qui touche la montre est celle qui signe son certificat.</p>
+      <span class="dur">Numéro gravé main</span>
+    </div>
   </div>
 </section>
 
@@ -438,6 +639,84 @@
         <p>Après réglage, chaque pièce repose soixante-douze heures sur banc d'essai, relevés à l'appui, avant de recevoir le certificat maison.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="blk" style="padding-top:0;padding-bottom:0">
+  <div class="strip">
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z"/><path d="M14.5 6.5l3 3"/></svg>
+      <b>Gravure offerte</b>
+      <span>Vos initiales au dos du boîtier, gravées main</span>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3l2.1 2.4 3.1-.4 1 3 3 1-.4 3.1L23 14l-2.2 1.9.4 3.1-3 1-1 3-3.1-.4L12 25l-2.1-2.4-3.1.4-1-3-3-1 .4-3.1L1 14l2.2-1.9L2.8 9l3-1 1-3 3.1.4z" transform="scale(.92) translate(1 0)"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+      <b>Certificat d'authenticité</b>
+      <span>Signé par l'horloger, numéro de série archivé</span>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+      <b>Entretien pris en charge</b>
+      <span>Première révision offerte à 5 ans, puis à vie à tarif atelier</span>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 8l9-4 9 4v8l-9 4-9-4V8z"/><path d="M3 8l9 4 9-4M12 12v8"/></svg>
+      <b>Livraison assurée</b>
+      <span>Écrin scellé, transport assuré, remise en main propre</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TÉMOIGNAGES ================= -->
+<section class="blk" id="avis">
+  <div class="sec-head">
+    <div class="sec-kicker">Témoignages</div>
+    <h2>Ils portent <em>la leur</em> chaque jour.</h2>
+  </div>
+  <div class="avis-grid">
+    <article class="avis">
+      <div class="stars">★★★★★</div>
+      <p>« L'Abyssale est arrivée avec son certificat signé et son numéro gravé. On sent la pièce d'atelier, pas le produit d'usine — je ne la quitte plus, même en réunion. »</p>
+      <div class="who">Karim B. — Casablanca</div>
+    </article>
+    <article class="avis">
+      <div class="stars">★★★★★</div>
+      <p>« J'ai fait graver les initiales de mon père au dos de l'Héritage Or. La maison a pris le temps de m'appeler pour valider la gravure avant de l'exécuter. Classe, du début à la fin. »</p>
+      <div class="who">Claire D. — Bruxelles</div>
+    </article>
+    <article class="avis">
+      <div class="stars">★★★★★</div>
+      <p>« Chronographe reçu en une semaine, réglage impeccable après trois mois de port quotidien. Le suivi par WhatsApp est d'une simplicité rare pour ce niveau de prix. »</p>
+      <div class="who">Youssef E. — Marrakech</div>
+    </article>
+  </div>
+  <p class="avis-note">Témoignages de démonstration — avis présentés à titre d'exemple.</p>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="blk" id="faq">
+  <div class="sec-head">
+    <div class="sec-kicker">Questions fréquentes</div>
+    <h2>Avant de <em>vous décider</em>.</h2>
+  </div>
+  <div class="faq-list">
+    <details>
+      <summary>Quelle garantie couvre ma montre ?</summary>
+      <p>Chaque SOLENNE est couverte par une <b>garantie internationale de 5 ans</b>, mouvement, étanchéité et finition compris. La première révision complète, à cinq ans, est offerte par la maison ; ensuite, l'entretien reste assuré à vie au tarif atelier.</p>
+    </details>
+    <details>
+      <summary>Comment être sûr de son authenticité ?</summary>
+      <p>Chaque pièce porte un <b>numéro de série unique gravé au dos du boîtier</b> et s'accompagne d'un certificat d'authenticité signé par l'horloger qui l'a assemblée. Le numéro est archivé à vie : un simple message suffit pour faire vérifier une montre, où qu'elle se trouve.</p>
+    </details>
+    <details>
+      <summary>Quels sont les délais de livraison ?</summary>
+      <p>Les pièces marquées « Disponible » partent sous <b>48 heures</b>, en écrin scellé et transport assuré, avec remise en main propre à Tanger. Les références « Sur commande » demandent <b>6 à 8 semaines</b> d'atelier — assemblage et réglage compris — et leur avancée vous est confirmée étape par étape.</p>
+    </details>
+    <details>
+      <summary>Comment se règle le paiement ?</summary>
+      <p>Par virement, carte bancaire ou en boutique à Tanger. Pour les pièces sur commande, un <b>acompte de 30 %</b> lance l'assemblage, le solde n'est dû qu'à la livraison, montre en main et certificat signé. Écrivez-nous sur <a href="https://wa.me/212693981822?text=Bonjour%2C%20je%20souhaite%20des%20pr%C3%A9cisions%20sur%20le%20paiement%20d%27une%20montre%20SOLENNE." target="_blank" rel="noopener">WhatsApp</a> pour un devis détaillé.</p>
+    </details>
   </div>
 </section>
 
@@ -508,14 +787,25 @@
     frameNow.textContent = pad(idx);
   }
 
-  /* ---------- chapters crossfade ---------- */
+  /* ---------- chapters crossfade + layered parallax ---------- */
+  var ghost = document.getElementById("stageGhost");
+  var ghostIdx = -1;
+  var layerSets = chapters.map(function(ch){
+    return {
+      kicker: ch.el.querySelector(".kicker"),
+      title:  ch.el.querySelector("h2"),
+      body:   ch.el.querySelector("p"),
+      chips:  ch.el.querySelector(".chips")
+    };
+  });
+
   function chapterState(p, i){
     var c = p * 3 - i;               // 0..1 across this chapter's third
     var fadeIn = (i === 0) ? 1 : Math.min(Math.max(c / 0.22, 0), 1);
     var fadeOut = Math.min(Math.max((1 - c) / 0.22, 0), 1);
     var o = Math.min(fadeIn, fadeOut);
     var y = (1 - Math.min(Math.max(c, 0), 1)) * 26 - 13;
-    return { o: o, y: y };
+    return { o: o, y: y, c: Math.min(Math.max(c, 0), 1) };
   }
 
   function render(){
@@ -527,14 +817,29 @@
     progress = p;
     var idx = Math.min(TOTAL - 1, Math.floor(p * TOTAL));
     draw(idx);
+    /* subtle push-in on the film itself */
+    canvas.style.transform = "scale(" + (1 + p * 0.055).toFixed(4) + ")";
     for(var i = 0; i < 3; i++){
       var s = chapterState(p, i);
       chapters[i].el.style.opacity = s.o.toFixed(3);
       chapters[i].el.style.transform = "translateY(calc(-50% + " + s.y.toFixed(1) + "px))";
+      /* layered depth inside the chapter: kicker leads, chips trail */
+      var L = layerSets[i], d = (s.c - 0.5);   // -0.5 .. 0.5 across the chapter
+      if(L.kicker) L.kicker.style.transform = "translateY(" + (d * -26).toFixed(1) + "px)";
+      if(L.title)  L.title.style.transform  = "translateY(" + (d * -13).toFixed(1) + "px)";
+      if(L.body)   L.body.style.transform   = "translateY(" + (d * 10).toFixed(1) + "px)";
+      if(L.chips)  L.chips.style.transform  = "translateY(" + (d * 20).toFixed(1) + "px)";
     }
     hudFill.style.width = (p * 100).toFixed(2) + "%";
     var ci = Math.min(2, Math.floor(p * 3));
     if(hudChapter.textContent !== chapters[ci].label) hudChapter.textContent = chapters[ci].label;
+    /* ghost numeral: slow background parallax, swaps with the chapter */
+    if(ghost){
+      if(ci !== ghostIdx){ ghostIdx = ci; ghost.textContent = "0" + (ci + 1); }
+      var within = (p * 3 - ci);            // 0..1 inside the active chapter
+      ghost.style.transform = "translateY(calc(-50% + " + ((0.5 - within) * 90).toFixed(1) + "px))";
+      ghost.style.opacity = (0.35 + Math.sin(Math.min(Math.max(within, 0), 1) * Math.PI) * 0.65).toFixed(3);
+    }
   }
 
   function onScroll(){
@@ -589,6 +894,33 @@
     window.addEventListener("resize", function(){ sizeCanvas(); draw(MIDDLE, true); });
   }
   sizeCanvas();
+
+  /* ---------- pointer parallax on collection cards (fine pointers only) ---------- */
+  var finePointer = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+  if(!reduced && finePointer){
+    document.querySelectorAll(".card").forEach(function(card){
+      var img = card.querySelector(".ph img");
+      var raf = null;
+      card.addEventListener("pointermove", function(e){
+        if(raf) return;
+        raf = requestAnimationFrame(function(){
+          raf = null;
+          var r = card.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width - 0.5;    // -0.5 .. 0.5
+          var y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform =
+            "translateY(-6px) perspective(900px) rotateY(" + (x * 5).toFixed(2) + "deg) rotateX(" + (-y * 5).toFixed(2) + "deg)";
+          if(img) img.style.transform =
+            "scale(1.1) translate(" + (x * -12).toFixed(1) + "px," + (y * -9).toFixed(1) + "px)";
+        });
+      });
+      card.addEventListener("pointerleave", function(){
+        if(raf){ cancelAnimationFrame(raf); raf = null; }
+        card.style.transform = "";
+        if(img) img.style.transform = "";
+      });
+    });
+  }
 })();
 </script>
 </body>

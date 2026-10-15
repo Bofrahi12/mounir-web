@@ -269,6 +269,115 @@ footer .fnav a:hover{color:var(--bone)}
   .card,.reveal{opacity:1;transform:none}
 }
 </style>
+<style>
+/* ---------- hero depth layers ---------- */
+.ghost-word{
+  position:absolute;z-index:0;top:50%;right:-4vw;transform:translateY(-50%);
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(10rem,27vw,24rem);line-height:1;white-space:nowrap;
+  color:transparent;-webkit-text-stroke:1px rgba(236,229,216,.08);
+  pointer-events:none;will-change:transform;
+}
+.hero-glow{
+  position:absolute;z-index:1;top:8%;right:-8%;width:62vmin;height:62vmin;border-radius:50%;
+  background:radial-gradient(circle,rgba(163,22,33,.34) 0%,rgba(163,22,33,.12) 42%,rgba(163,22,33,0) 68%);
+  filter:blur(12px);opacity:.3;pointer-events:none;will-change:transform,opacity;
+}
+.embers{position:absolute;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+.embers span{
+  position:absolute;width:5px;height:5px;border-radius:50%;
+  background:radial-gradient(circle,#e8b4a0 0%,rgba(163,22,33,.85) 55%,rgba(163,22,33,0) 100%);
+  filter:blur(.4px);opacity:0;will-change:transform,opacity;
+}
+.embers span:nth-child(1){left:58%;top:66%}
+.embers span:nth-child(2){left:74%;top:78%;width:4px;height:4px}
+.embers span:nth-child(3){left:44%;top:82%;width:3px;height:3px}
+.embers span:nth-child(4){left:86%;top:58%;width:6px;height:6px}
+.embers span:nth-child(5){left:66%;top:88%;width:3px;height:3px}
+
+/* ---------- macro depth chip ---------- */
+.macro-stage{perspective:1200px}
+.macro-chip{top:16%;left:6%;opacity:0;will-change:transform,opacity;text-align:left}
+@media (max-width:700px){.macro-chip{display:none}}
+
+/* ---------- ring specs ---------- */
+.specs{margin-top:1.1rem;border-top:1px solid var(--line)}
+.specs>div{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px solid rgba(236,229,216,.07)}
+.specs dt{font-family:var(--mono);font-size:.54rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-faint);padding-top:.2rem;white-space:nowrap}
+.specs dd{font-size:.86rem;color:var(--bone-dim);text-align:right;font-weight:300}
+
+/* ---------- la maison ---------- */
+.maison-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.maison-txt p{font-size:1.06rem;line-height:1.8;color:var(--bone-dim);font-weight:300;margin-bottom:1.3rem;max-width:56ch}
+.maison-txt p:first-child{color:var(--bone);font-family:var(--serif);font-size:1.45rem;line-height:1.5}
+.maison-txt .pill{margin-top:.6rem}
+.trust{list-style:none;border-top:1px solid var(--line)}
+.trust li{display:flex;align-items:baseline;gap:1.4rem;padding:1.15rem 0;border-bottom:1px solid var(--line)}
+.trust .tv{font-family:var(--serif);font-size:2rem;line-height:1;color:var(--crimson);min-width:5.6rem;white-space:nowrap}
+.trust .tl{color:var(--bone-dim);font-size:.94rem;line-height:1.55;font-weight:300}
+
+/* ---------- guide des tailles ---------- */
+.tailles{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.taille-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.tstep{display:flex;gap:1.3rem;margin-bottom:1.9rem}
+.tstep .tn{font-family:var(--serif);font-style:italic;font-size:1.9rem;color:var(--crimson);line-height:1}
+.tstep h3{font-family:var(--serif);font-weight:500;font-size:1.4rem;margin-bottom:.45rem}
+.tstep p{color:var(--bone-dim);line-height:1.7;font-size:.95rem;font-weight:300}
+.taille-table table{width:100%;border-collapse:collapse;font-size:.95rem}
+.taille-table th{font-family:var(--mono);font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-faint);text-align:left;padding:.8rem .9rem;border-bottom:1px solid var(--line)}
+.taille-table td{padding:.8rem .9rem;border-bottom:1px solid rgba(236,229,216,.07);color:var(--bone-dim);font-weight:300}
+.taille-table td:first-child{font-family:var(--serif);font-size:1.25rem;color:var(--bone)}
+.taille-table tbody tr{transition:background .3s}
+.taille-table tbody tr:hover{background:rgba(163,22,33,.07)}
+.tnote{margin-top:1.1rem;color:var(--bone-faint);font-size:.86rem;line-height:1.6;font-weight:300}
+
+/* ---------- services strip ---------- */
+.services{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.svc{display:flex;gap:1.1rem;align-items:flex-start;padding:clamp(1.6rem,3.5vw,2.6rem) clamp(1.2rem,3vw,2.4rem);border-right:1px solid var(--line)}
+.svc:last-child{border-right:0}
+.svc .si{color:var(--crimson);font-size:1rem;margin-top:.15rem}
+.svc h3{font-family:var(--serif);font-weight:500;font-size:1.22rem;line-height:1.2}
+.svc p{color:var(--bone-faint);font-size:.84rem;line-height:1.55;margin-top:.35rem;font-weight:300}
+
+/* ---------- témoignages ---------- */
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.4vw,2rem)}
+.avis-card{
+  background:linear-gradient(180deg,#0e0b0c,#090708);
+  border:1px solid var(--line);border-radius:20px;padding:1.8rem 1.7rem 1.6rem;
+  display:flex;flex-direction:column;gap:1.1rem;
+}
+.avis-card .stars{color:var(--crimson);letter-spacing:.35em;font-size:.8rem}
+.avis-card blockquote{font-family:var(--serif);font-size:1.28rem;line-height:1.45;font-weight:400;flex:1}
+.avis-card figcaption{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim)}
+.avis-card figcaption span{display:block;margin-top:.4rem;color:var(--bone-faint)}
+.avis-note{margin-top:1.6rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint)}
+
+/* ---------- faq ---------- */
+.faq{background:var(--bg2);border-top:1px solid var(--line)}
+.faq-list{border-top:1px solid var(--line);max-width:56rem}
+.faq-list details{border-bottom:1px solid var(--line)}
+.faq-list summary{
+  cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;
+  font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,1.7rem);font-weight:500;
+  padding:1.45rem .2rem;transition:color .3s;
+}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";font-family:var(--serif);color:var(--crimson);font-size:1.6rem;line-height:1;transition:transform .35s}
+.faq-list details[open ] summary::after{transform:rotate(45deg)}
+.faq-list summary:hover{color:#fff}
+.faq-list details p{color:var(--bone-dim);line-height:1.75;font-weight:300;padding:0 .2rem 1.6rem;max-width:62ch}
+
+@media (max-width:900px){
+  .maison-grid,.taille-grid{grid-template-columns:1fr}
+  .avis-grid{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr 1fr}
+  .svc{border-bottom:1px solid var(--line)}
+}
+@media (max-width:560px){
+  .services{grid-template-columns:1fr}
+  .ghost-word{font-size:11rem}
+}
+</style>
 </head>
 <body>
 
@@ -277,8 +386,10 @@ footer .fnav a:hover{color:var(--bone)}
 <nav id="nav">
   <a class="logo" href="#"><span class="star">✦</span>NOCTIS</a>
   <div class="nav-links">
+    <a href="#maison">La Maison</a>
     <a href="#collection">Collection</a>
-    <a href="#savoir-faire">Savoir-faire</a>
+    <a href="#tailles">Tailles</a>
+    <a href="#faq">FAQ</a>
   </div>
   <a class="cart" href="#collection">Panier&nbsp;0</a>
 </nav>
@@ -286,6 +397,8 @@ footer .fnav a:hover{color:var(--bone)}
 <!-- ============ HERO ============ -->
 <header class="hero" id="hero">
   <div class="hero-stage">
+    <div class="ghost-word" data-ghost aria-hidden="true">Noctis</div>
+    <div class="hero-glow" data-glow aria-hidden="true"></div>
     <div class="headline-stack" data-headline>
       <div class="hero-kicker">Joaillerie — Tanger</div>
       <h1>Portée comme<br><span class="l2">un <em>serment</em>.</span></h1>
@@ -311,6 +424,10 @@ footer .fnav a:hover{color:var(--bone)}
       <div class="v">Argent oxydé <i>925</i></div>
     </div>
 
+    <div class="embers" aria-hidden="true">
+      <span data-ember="1.5"></span><span data-ember="2.3"></span><span data-ember="1.1"></span><span data-ember="2.8"></span><span data-ember="1.8"></span>
+    </div>
+
     <div class="hero-foot">
       <span class="season">Automne — Hiver</span>
       <a class="pill" href="#collection">Découvrir <span class="arr">↓</span></a>
@@ -332,6 +449,31 @@ footer .fnav a:hover{color:var(--bone)}
       <div class="mono">Le détail — Nº 01</div>
       <p>Chaque pierre, <em>sertie</em> à la main.</p>
     </div>
+    <div class="glass-chip macro-chip" data-macro-chip>
+      <div class="k">Sertissage</div>
+      <div class="v">Griffes <i>—</i> main</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA MAISON ============ -->
+<section class="section maison" id="maison">
+  <div class="sec-head reveal">
+    <h2>La <em>maison</em></h2>
+    <div class="mono">Tanger — Atelier &amp; boutique</div>
+  </div>
+  <div class="maison-grid">
+    <div class="maison-txt reveal">
+      <p>NOCTIS est née d'une conviction simple : une bague ne devrait jamais ressembler à une autre. Dans notre atelier de Tanger, chaque pièce commence par une pierre choisie à la loupe, puis un anneau forgé, limé et oxydé entièrement à la main.</p>
+      <p>Nous ne produisons pas de séries. Quand une pièce est vendue, son dessin est retiré : celle que vous portez est la seule, et elle le restera. C'est ce que nos clientes appellent un serment — nous, nous appelons cela notre manière de travailler.</p>
+      <a class="pill" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20NOCTIS%2C%20je%20souhaite%20d%C3%A9couvrir%20la%20maison%20et%20ses%20pi%C3%A8ces%20uniques.%20Pouvez-vous%20me%20conseiller%20%3F">Écrire à la maison <span class="arr">→</span></a>
+    </div>
+    <ul class="trust reveal">
+      <li><span class="tv">100 %</span><span class="tl">Grenats naturels, jamais synthétiques</span></li>
+      <li><span class="tv">925</span><span class="tl">Argent sterling poinçonné, certifié à la livraison</span></li>
+      <li><span class="tv">1 / 1</span><span class="tl">Pièces uniques numérotées — aucune réédition</span></li>
+      <li><span class="tv">14 j</span><span class="tl">Pour changer d'avis, sans justification</span></li>
+    </ul>
   </div>
 </section>
 
@@ -351,6 +493,12 @@ footer .fnav a:hover{color:var(--bone)}
       <div class="body">
         <h3>Serment Cramoisi</h3>
         <div class="mat">Grenat · Argent oxydé</div>
+        <dl class="specs">
+          <div><dt>Pierre</dt><dd>Grenat naturel, taille cœur</dd></div>
+          <div><dt>Carats</dt><dd>8,4 ct</dd></div>
+          <div><dt>Métal</dt><dd>Argent 925 oxydé</dd></div>
+          <div><dt>Finition</dt><dd>Ornementale, gravée main</dd></div>
+        </dl>
         <div class="row">
           <div class="price">8 900<small>DH</small></div>
           <a class="add" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20NOCTIS%2C%20je%20souhaite%20commander%20la%20bague%20%C2%AB%20Serment%20Cramoisi%20%C2%BB%20%E2%80%94%20grenat%2C%20argent%20oxyd%C3%A9%20%E2%80%94%208%20900%20DH.%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9.">Ajouter</a>
@@ -366,6 +514,12 @@ footer .fnav a:hover{color:var(--bone)}
       <div class="body">
         <h3>Éclipse Mate</h3>
         <div class="mat">Bronze noirci brossé</div>
+        <dl class="specs">
+          <div><dt>Pierre</dt><dd>Aucune — le métal seul</dd></div>
+          <div><dt>Poids</dt><dd>Anneau plein, 18 g</dd></div>
+          <div><dt>Métal</dt><dd>Bronze noirci</dd></div>
+          <div><dt>Finition</dt><dd>Brossée mate, bords adoucis</dd></div>
+        </dl>
         <div class="row">
           <div class="price">3 500<small>DH</small></div>
           <a class="add" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20NOCTIS%2C%20je%20souhaite%20commander%20la%20bague%20%C2%AB%20%C3%89clipse%20Mate%20%C2%BB%20%E2%80%94%20bronze%20noirci%20bross%C3%A9%20%E2%80%94%203%20500%20DH.%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9.">Ajouter</a>
@@ -381,6 +535,12 @@ footer .fnav a:hover{color:var(--bone)}
       <div class="body">
         <h3>Halo d'Onyx</h3>
         <div class="mat">Pavé noir · Argent</div>
+        <dl class="specs">
+          <div><dt>Pierre</dt><dd>Onyx noirs, pavé intégral</dd></div>
+          <div><dt>Carats</dt><dd>24 pierres — 2,1 ct au total</dd></div>
+          <div><dt>Métal</dt><dd>Argent 925</dd></div>
+          <div><dt>Finition</dt><dd>Intérieur poli miroir</dd></div>
+        </dl>
         <div class="row">
           <div class="price">6 400<small>DH</small></div>
           <a class="add" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20NOCTIS%2C%20je%20souhaite%20commander%20la%20bague%20%C2%AB%20Halo%20d%E2%80%99Onyx%20%C2%BB%20%E2%80%94%20pav%C3%A9%20noir%2C%20argent%20%E2%80%94%206%20400%20DH.%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9.">Ajouter</a>
@@ -417,13 +577,105 @@ footer .fnav a:hover{color:var(--bone)}
   </div>
 </section>
 
+<!-- ============ GUIDE DES TAILLES ============ -->
+<section class="section tailles" id="tailles">
+  <div class="sec-head reveal">
+    <h2>Guide des <em>tailles</em></h2>
+    <div class="mono">Deux minutes — Un ruban suffit</div>
+  </div>
+  <div class="taille-grid">
+    <div class="taille-steps reveal">
+      <div class="tstep"><span class="tn">01</span><div><h3>Mesurez le doigt</h3><p>Entourez le doigt d'un fil ou d'une fine bande de papier, marquez le point de jonction, puis mesurez la longueur en millimètres : c'est votre circonférence.</p></div></div>
+      <div class="tstep"><span class="tn">02</span><div><h3>Ou une bague existante</h3><p>Posez une bague qui vous va sur une règle et relevez son diamètre intérieur, d'un bord interne à l'autre.</p></div></div>
+      <div class="tstep"><span class="tn">03</span><div><h3>Entre deux tailles ?</h3><p>Prenez la plus grande : nos anneaux larges se portent mieux avec une demi-teinte d'aisance. Et la première mise à taille est offerte, quoi qu'il arrive.</p></div></div>
+      <a class="pill" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20NOCTIS%2C%20j%E2%80%99ai%20un%20doute%20sur%20ma%20taille%20de%20bague.%20Pouvez-vous%20m%E2%80%99aider%20%C3%A0%20la%20d%C3%A9terminer%20%3F">Un doute ? Écrivez-nous <span class="arr">→</span></a>
+    </div>
+    <div class="taille-table reveal">
+      <table>
+        <thead><tr><th>Taille FR</th><th>Circonférence</th><th>Diamètre intérieur</th></tr></thead>
+        <tbody>
+          <tr><td>52</td><td>52 mm</td><td>16,6 mm</td></tr>
+          <tr><td>54</td><td>54 mm</td><td>17,2 mm</td></tr>
+          <tr><td>56</td><td>56 mm</td><td>17,8 mm</td></tr>
+          <tr><td>58</td><td>58 mm</td><td>18,5 mm</td></tr>
+          <tr><td>60</td><td>60 mm</td><td>19,1 mm</td></tr>
+          <tr><td>62</td><td>62 mm</td><td>19,7 mm</td></tr>
+        </tbody>
+      </table>
+      <p class="tnote">Tailles 52 à 62 disponibles sur chaque pièce. Au-delà, l'atelier forge sur mesure — demandez-nous.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" aria-label="Services de la maison">
+  <div class="svc reveal"><span class="si">✦</span><div><h3>Mise à taille gratuite</h3><p>Premier ajustement offert, à vie</p></div></div>
+  <div class="svc reveal"><span class="si">✦</span><div><h3>Certificat d'authenticité</h3><p>Pierre, métal et numéro de pièce</p></div></div>
+  <div class="svc reveal"><span class="si">✦</span><div><h3>Écrin signature</h3><p>Coffret noir mat, offert avec chaque bague</p></div></div>
+  <div class="svc reveal"><span class="si">✦</span><div><h3>Retours 14 jours</h3><p>Échange ou remboursement, sans justification</p></div></div>
+</section>
+
+<!-- ============ TÉMOIGNAGES ============ -->
+<section class="section avis" id="avis">
+  <div class="sec-head reveal">
+    <h2>Elles la <em>portent</em></h2>
+    <div class="mono">Paroles de clientes</div>
+  </div>
+  <div class="avis-grid">
+    <figure class="avis-card reveal">
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <blockquote>« Le grenat change de couleur selon la lumière — on me demande d'où elle vient chaque semaine. C'est simple : il n'y en a pas deux. »</blockquote>
+      <figcaption>Yasmine B. — Casablanca <span>Serment Cramoisi</span></figcaption>
+    </figure>
+    <figure class="avis-card reveal">
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <blockquote>« Je craignais la taille à distance. Mesurée avec le guide, ajustée gratuitement à l'arrivée : elle ne quitte plus mon doigt. »</blockquote>
+      <figcaption>Karim E. — Rabat <span>Éclipse Mate</span></figcaption>
+    </figure>
+    <figure class="avis-card reveal">
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <blockquote>« Commandée depuis Bruxelles pour ma mère à Tanger. L'écrin, le certificat, le mot manuscrit… on se croirait dans une grande maison. »</blockquote>
+      <figcaption>Sofia M. — Bruxelles <span>Halo d'Onyx</span></figcaption>
+    </figure>
+  </div>
+  <p class="avis-note reveal">Témoignages de démonstration — situations présentées à titre d'exemple.</p>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section faq" id="faq">
+  <div class="sec-head reveal">
+    <h2>Questions <em>fréquentes</em></h2>
+    <div class="mono">Avant de commander</div>
+  </div>
+  <div class="faq-list reveal">
+    <details>
+      <summary>Comment connaître ma taille de bague ?</summary>
+      <p>Mesurez la circonférence de votre doigt avec un fil, ou le diamètre intérieur d'une bague qui vous va, puis reportez-vous à notre guide des tailles ci-dessus. En cas de doute, écrivez-nous sur WhatsApp : nous vous guidons pas à pas, et la première mise à taille est de toute façon gratuite.</p>
+    </details>
+    <details>
+      <summary>Le grenat est-il vraiment naturel ?</summary>
+      <p>Oui. Chaque grenat est une pierre naturelle, choisie à la loupe et jamais synthétique ni traitée en couleur. Son certificat d'authenticité, livré avec la bague, précise la pierre, son poids en carats et le numéro unique de votre pièce.</p>
+    </details>
+    <details>
+      <summary>Quels sont les délais de fabrication et de livraison ?</summary>
+      <p>Les pièces de la collection présentées ici sont disponibles sous 5 à 7 jours ouvrés (sertissage et finitions à la commande). Une création sur mesure demande 3 à 4 semaines. La livraison est offerte à Tanger ; comptez 48 h pour le reste du Maroc.</p>
+    </details>
+    <details>
+      <summary>Comment entretenir l'argent oxydé ?</summary>
+      <p>L'oxydation est une patine vivante : elle s'approfondit avec le temps, c'est sa beauté. Nettoyez la bague avec un chiffon doux et sec, évitez les produits chimiques et retirez-la pour la piscine. Repolissage et réoxydation sont offerts à vie par la maison.</p>
+    </details>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="flogo"><span class="star">✦</span>NOCTIS</div>
   <div class="ftag">Des bagues qui se portent comme des serments.</div>
   <div class="fnav">
+    <a href="#maison">La Maison</a>
     <a href="#collection">Collection</a>
-    <a href="#savoir-faire">Savoir-faire</a>
+    <a href="#tailles">Tailles</a>
+    <a href="#faq">FAQ</a>
     <a href="#hero">Haut de page</a>
   </div>
   <div class="credit">
@@ -447,6 +699,11 @@ footer .fnav a:hover{color:var(--bone)}
   var macro = document.getElementById("macro");
   var macroImg = document.querySelector("[data-macro-img]");
   var macroCap = document.querySelector("[data-macro-cap]");
+  var ghost = document.querySelector("[data-ghost]");
+  var glow = document.querySelector("[data-glow]");
+  var embers = Array.prototype.slice.call(document.querySelectorAll("[data-ember]"));
+  var macroChip = document.querySelector("[data-macro-chip]");
+  embers.forEach(function(s){ s._depth = parseFloat(s.getAttribute("data-ember")) || 1; });
 
   var clamp01 = function(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); };
   var lerp = function(a,b,t){ return a + (b - a) * t; };
@@ -479,13 +736,34 @@ footer .fnav a:hover{color:var(--bone)}
     var hp = clamp01(-hRect.top / (hTotal || 1));
 
     var handScale = reduced ? 1 : lerp(1, 1.28, hp);
-    hand.style.transform = "scale(" + handScale.toFixed(4) + ")";
+    var handRot = reduced ? 0 : lerp(0, -1.3, hp);
+    hand.style.transform = "scale(" + handScale.toFixed(4) + ") rotate(" + handRot.toFixed(3) + "deg)";
 
-    var headY = reduced ? 0 : -hp * vh * 0.35;
+    /* layered type: the back copy drifts slower than the clipped front copy,
+       so the two separate around the hand as the scroll deepens */
     var headO = 1 - clamp01((hp - .55) / .4);
-    headlines.forEach(function(h){
+    headlines.forEach(function(h, i){
+      var rate = i === 0 ? 0.24 : 0.42;
+      var headY = reduced ? 0 : -hp * vh * rate;
       h.style.transform = "translate3d(0," + headY.toFixed(1) + "px,0)";
       h.style.opacity = headO.toFixed(3);
+    });
+
+    /* depth layers: ghost word, crimson glow, embers */
+    if (ghost) {
+      var gX = reduced ? 0 : lerp(3, -7, hp);
+      ghost.style.transform = "translateY(-50%) translate3d(" + (gX + px * -1.4).toFixed(2) + "vw," + (py * -8).toFixed(1) + "px,0)";
+    }
+    if (glow) {
+      glow.style.opacity = reduced ? .3 : (.3 + .45 * hp).toFixed(3);
+      glow.style.transform = "translate3d(" + (px * -20).toFixed(1) + "px," + (py * -14 + (reduced ? 0 : hp * 26)).toFixed(1) + "px,0) scale(" + (reduced ? 1 : lerp(1, 1.18, hp)).toFixed(3) + ")";
+    }
+    embers.forEach(function(s){
+      var rise = reduced ? 0 : hp * -120 * s._depth;
+      var sway = px * 16 * s._depth;
+      var eo = reduced ? 0 : Math.sin(clamp01((hp - .08) / .84) * Math.PI) * .95;
+      s.style.transform = "translate3d(" + sway.toFixed(1) + "px," + rise.toFixed(1) + "px,0)";
+      s.style.opacity = eo.toFixed(3);
     });
     if (progressFill) progressFill.style.transform = "scaleX(" + hp.toFixed(4) + ")";
 
@@ -502,11 +780,21 @@ footer .fnav a:hover{color:var(--bone)}
     var mTotal = macro.offsetHeight - vh;
     var mp = clamp01(-mRect.top / (mTotal || 1));
     if (!reduced) {
-      macroImg.style.transform = "scale(" + lerp(1.02, 1.24, mp).toFixed(4) + ") translateY(" + lerp(1.5, -1.5, mp).toFixed(2) + "%)";
+      /* Ken Burns + horizontal pan + pointer-tracked 3D tilt */
+      macroImg.style.transform =
+        "scale(" + lerp(1.06, 1.28, mp).toFixed(4) + ")" +
+        " translate(" + lerp(1.6, -1.6, mp).toFixed(2) + "%," + lerp(1.5, -1.5, mp).toFixed(2) + "%)" +
+        " rotateX(" + (py * -2.4).toFixed(2) + "deg) rotateY(" + (px * 3).toFixed(2) + "deg)";
     }
     var capIn = clamp01((mp - .18) / .3);
     macroCap.style.opacity = capIn.toFixed(3);
-    macroCap.style.transform = "translateY(" + ((1 - capIn) * 26).toFixed(1) + "px)";
+    var capDepth = reduced ? 0 : mp * -34 + py * -6;
+    macroCap.style.transform = "translateY(" + ((1 - capIn) * 26 + capDepth).toFixed(1) + "px)";
+    if (macroChip) {
+      var chipIn = clamp01((mp - .3) / .3) * (1 - clamp01((mp - .88) / .12));
+      macroChip.style.opacity = reduced ? 0 : chipIn.toFixed(3);
+      macroChip.style.transform = "translate3d(" + (px * 22).toFixed(1) + "px," + ((reduced ? 0 : mp * 46) + py * 12).toFixed(1) + "px,0)";
+    }
 
     if (finePointer && !reduced && (Math.abs(tx - px) > .001 || Math.abs(ty - py) > .001)) {
       requestAnimationFrame(frame); ticking = true;

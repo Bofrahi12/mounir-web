@@ -295,6 +295,102 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
   color:var(--cream-faint);font-size:.84rem;
 }
 
+/* ---------- carte complète ---------- */
+.menu-panel{
+  margin-top:54px;background:rgba(21,13,7,.55);border:1px solid rgba(243,233,215,.08);
+  border-radius:var(--radius);padding:clamp(26px,4vw,44px);
+}
+.menu-panel h3{font-size:1.35rem;font-weight:800;text-align:center;margin-bottom:6px}
+.menu-panel .mp-sub{text-align:center;color:var(--cream-faint);font-size:.88rem;margin-bottom:30px}
+.menu-list{display:grid;grid-template-columns:1fr 1fr;gap:6px clamp(30px,5vw,64px)}
+.mitem{display:flex;align-items:baseline;gap:12px;padding:11px 4px;border-radius:10px;transition:background .6s var(--ease)}
+.mitem:hover{background:rgba(243,233,215,.04)}
+.mitem .mi-txt{flex:0 1 auto;min-width:0}
+.mitem .mi-txt b{display:block;font-size:1.02rem;font-weight:700;line-height:1.3}
+.mitem .mi-txt span{display:block;color:var(--cream-faint);font-size:.82rem;line-height:1.45}
+.mitem .dots{flex:1;border-bottom:2px dotted rgba(201,143,61,.35);transform:translateY(-4px);min-width:18px}
+.mitem .price{font-size:1.08rem;white-space:nowrap}
+.mitem .mini-plus{
+  flex:none;width:34px;height:34px;border-radius:50%;background:rgba(125,139,106,.2);color:#b3c19e;
+  display:grid;place-items:center;font-size:1.15rem;font-weight:600;align-self:center;
+  transition:background .6s var(--ease),transform .6s var(--ease),color .6s var(--ease);
+}
+.mitem .mini-plus:hover{background:var(--sage);color:#141a10;transform:rotate(90deg)}
+@media(max-width:760px){.menu-list{grid-template-columns:1fr}}
+
+/* ---------- grains à emporter ---------- */
+.grains-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.gcard{
+  background:var(--card);border:1px solid rgba(243,233,215,.07);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;transform-style:preserve-3d;
+  transition:border-color 1s var(--ease),box-shadow 1s var(--ease);
+}
+.gcard:hover{border-color:var(--card-line);box-shadow:0 30px 60px rgba(0,0,0,.42)}
+.gcard .thumb{aspect-ratio:16/9;overflow:hidden;position:relative}
+.gcard .thumb img{width:100%;height:100%;object-fit:cover}
+.gcard .bag{
+  position:absolute;top:14px;left:14px;background:rgba(21,13,7,.85);backdrop-filter:blur(6px);
+  border:1px solid var(--card-line);color:var(--caramel-soft);border-radius:999px;
+  padding:6px 13px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+}
+.gcard .body{padding:24px 26px 26px;display:flex;flex-direction:column;gap:9px;flex:1}
+.gcard h3{font-size:1.25rem;font-weight:700}
+.gcard .origin{color:var(--caramel-soft);font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.gcard p{color:var(--cream-dim);font-size:.92rem;flex:1}
+.gcard .notes{display:flex;flex-wrap:wrap;gap:7px}
+.gcard .notes span{border:1px solid rgba(243,233,215,.14);border-radius:999px;padding:4px 11px;font-size:.74rem;color:var(--cream-dim)}
+.gcard .foot{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.abo{
+  margin-top:26px;border-radius:var(--radius);padding:clamp(28px,4.5vw,46px);
+  background:linear-gradient(115deg,rgba(201,143,61,.16),rgba(125,139,106,.13) 55%,rgba(21,13,7,.4));
+  border:1px solid var(--card-line);
+  display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(22px,4vw,50px);align-items:center;
+}
+.abo h3{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:800;line-height:1.2;margin-bottom:10px}
+.abo h3 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--caramel)}
+.abo p{color:var(--cream-dim);font-size:.96rem;max-width:480px}
+.abo ul{list-style:none;margin-top:18px;display:grid;gap:9px}
+.abo li{color:var(--cream-dim);font-size:.94rem;display:flex;gap:10px;align-items:baseline}
+.abo li::before{content:"✦";color:var(--caramel);font-size:.72rem}
+.abo-price{text-align:center;background:rgba(21,13,7,.55);border:1px solid rgba(243,233,215,.1);border-radius:20px;padding:28px 22px}
+.abo-price b{display:block;font-size:2.3rem;font-weight:800;color:var(--cream);line-height:1}
+.abo-price b small{font-size:.85rem;color:var(--cream-faint);font-weight:600}
+.abo-price .old{display:block;color:var(--cream-faint);text-decoration:line-through;font-size:.95rem;margin-bottom:6px}
+.abo-price span{display:block;color:var(--caramel-soft);font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin:8px 0 18px}
+@media(max-width:900px){.grains-grid{grid-template-columns:1fr}.abo{grid-template-columns:1fr}}
+
+/* ---------- pratique & faq ---------- */
+.infos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.icard{
+  background:var(--card);border:1px solid rgba(243,233,215,.07);border-radius:var(--radius);
+  padding:30px 28px;transition:transform 1s var(--ease),border-color 1s var(--ease);
+}
+.icard:hover{transform:translateY(-6px);border-color:var(--card-line)}
+.icard .ico{width:46px;height:46px;border-radius:14px;background:rgba(201,143,61,.15);display:grid;place-items:center;color:var(--caramel-soft);margin-bottom:18px}
+.icard h3{font-size:1.14rem;font-weight:700;margin-bottom:8px}
+.icard p{color:var(--cream-dim);font-size:.93rem}
+.icard p b{color:var(--cream)}
+@media(max-width:900px){.infos-grid{grid-template-columns:1fr}}
+.faq-list{max-width:820px;margin:0 auto;display:grid;gap:14px}
+.faq-list details{
+  background:var(--card);border:1px solid rgba(243,233,215,.08);border-radius:18px;
+  padding:22px 26px;transition:border-color .8s var(--ease);
+}
+.faq-list details[open]{border-color:var(--card-line)}
+.faq-list summary{
+  cursor:pointer;font-weight:700;font-size:1.04rem;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";color:var(--caramel);font-size:1.5rem;font-weight:600;flex:none;transition:transform .7s var(--ease)}
+.faq-list details[open] summary::after{transform:rotate(45deg)}
+.faq-list details p{color:var(--cream-dim);font-size:.94rem;margin-top:12px;max-width:62ch}
+.faq-list details p a{color:var(--caramel-soft);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- ken burns wrappers ---------- */
+.kbwrap{overflow:hidden}
+.kbwrap img.kb{will-change:transform}
+
 /* ---------- responsive ---------- */
 @media(max-width:1060px){
   .navpill{display:none}
@@ -330,6 +426,7 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
     <a href="#accueil">Accueil</a>
     <a href="#carte">La Carte</a>
     <a href="#maison">La Maison</a>
+    <a href="#grains">Grains</a>
     <a href="#avis">Avis</a>
     <a href="#promotions">Promotions</a>
   </nav>
@@ -426,8 +523,55 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
       </article>
     </div>
 
+    <div class="menu-panel reveal">
+      <h3>La carte complète</h3>
+      <p class="mp-sub">Huit boissons, pas une de plus — chacune travaillée jusqu'à trouver sa juste place. Touchez le + pour commander.</p>
+      <div class="menu-list">
+        <div class="mitem">
+          <div class="mi-txt"><b>Espresso</b><span>Court et dense, le lot du jour en 30 ml</span></div>
+          <span class="dots"></span><span class="price">14 <small>DH</small></span>
+          <a class="mini-plus" aria-label="Commander un Espresso" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20commande%20un%20Espresso%20(14%20DH)." target="_blank" rel="noopener">+</a>
+        </div>
+        <div class="mitem">
+          <div class="mi-txt"><b>Espresso double</b><span>Le même, en version qui réveille pour de bon</span></div>
+          <span class="dots"></span><span class="price">18 <small>DH</small></span>
+          <a class="mini-plus" aria-label="Commander un Espresso double" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20commande%20un%20Espresso%20double%20(18%20DH)." target="_blank" rel="noopener">+</a>
+        </div>
+        <div class="mitem">
+          <div class="mi-txt"><b>Café noisette</b><span>Espresso adouci d'une larme de lait chaud</span></div>
+          <span class="dots"></span><span class="price">17 <small>DH</small></span>
+          <a class="mini-plus" aria-label="Commander un Café noisette" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20commande%20un%20Caf%C3%A9%20noisette%20(17%20DH)." target="_blank" rel="noopener">+</a>
+        </div>
+        <div class="mitem">
+          <div class="mi-txt"><b>Cappuccino</b><span>Mousse soyeuse, voile de cacao, équilibre net</span></div>
+          <span class="dots"></span><span class="price">22 <small>DH</small></span>
+          <a class="mini-plus" aria-label="Commander un Cappuccino" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20commande%20un%20Cappuccino%20(22%20DH)." target="_blank" rel="noopener">+</a>
+        </div>
+        <div class="mitem">
+          <div class="mi-txt"><b>Café Latte</b><span>Lait fermier vapeur et latte art à main levée</span></div>
+          <span class="dots"></span><span class="price">24 <small>DH</small></span>
+          <a class="mini-plus" aria-label="Commander un Café Latte" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20commande%20un%20Caf%C3%A9%20Latte%20(24%20DH)." target="_blank" rel="noopener">+</a>
+        </div>
+        <div class="mitem">
+          <div class="mi-txt"><b>Flat White</b><span>Double ristretto, micro-mousse veloutée</span></div>
+          <span class="dots"></span><span class="price">25 <small>DH</small></span>
+          <a class="mini-plus" aria-label="Commander un Flat White" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20commande%20un%20Flat%20White%20(25%20DH)." target="_blank" rel="noopener">+</a>
+        </div>
+        <div class="mitem">
+          <div class="mi-txt"><b>Moka</b><span>Espresso signature et chocolat noir fondant</span></div>
+          <span class="dots"></span><span class="price">26 <small>DH</small></span>
+          <a class="mini-plus" aria-label="Commander un Moka" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20commande%20un%20Moka%20(26%20DH)." target="_blank" rel="noopener">+</a>
+        </div>
+        <div class="mitem">
+          <div class="mi-txt"><b>Signature TORRA</b><span>Espresso glacé, zeste d'orange, pointe de romarin</span></div>
+          <span class="dots"></span><span class="price">32 <small>DH</small></span>
+          <a class="mini-plus" aria-label="Commander le Signature TORRA" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20commande%20le%20Signature%20TORRA%20(32%20DH)." target="_blank" rel="noopener">+</a>
+        </div>
+      </div>
+    </div>
+
     <div class="carte-more reveal">
-      <a class="btn btn-ghost" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20pouvez-vous%20m%27envoyer%20toute%20la%20carte%20%3F" target="_blank" rel="noopener">Voir toute la carte</a>
+      <a class="btn btn-ghost" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20souhaite%20passer%20une%20commande." target="_blank" rel="noopener">Commander sur WhatsApp</a>
     </div>
   </div>
 </section>
@@ -453,8 +597,8 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
         </div>
       </div>
 
-      <div class="maison-img reveal">
-        <img src="torra/cup.webp" alt="Cappuccino TORRA dans la lumière du matin, accompagné d'un croissant" loading="lazy">
+      <div class="maison-img reveal kbwrap">
+        <img class="kb" src="torra/cup.webp" alt="Cappuccino TORRA dans la lumière du matin, accompagné d'un croissant" loading="lazy">
       </div>
 
       <div class="points right">
@@ -473,10 +617,82 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
   </div>
 </section>
 
+<!-- ======================= GRAINS À EMPORTER ======================= -->
+<section id="grains" style="background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 55%,var(--bg) 100%)">
+  <div class="wrap">
+    <p class="kicker reveal">À emporter</p>
+    <h2 class="sec-title reveal">Nos grains, <em>chez vous</em></h2>
+    <p class="sec-sub reveal">Les mêmes lots que ceux du comptoir, torréfiés ici même chaque semaine. En grains entiers ou moulus sur place, selon votre machine — le sachet part avec la date de torréfaction écrite à la main.</p>
+
+    <div class="grains-grid">
+      <article class="gcard reveal tilt">
+        <div class="thumb"><img src="torra/beans.webp" alt="Grains de café fraîchement torréfiés" loading="lazy"><span class="bag">Sachet · 250 g</span></div>
+        <div class="body">
+          <span class="origin">Éthiopie · Yirgacheffe</span>
+          <h3>Le Floral</h3>
+          <p>Le plus lumineux de nos lots : une tasse claire, presque thé, qui s'ouvre sur les fleurs blanches et finit sur une pointe d'agrumes. Superbe en filtre, délicat en espresso.</p>
+          <div class="notes"><span>Jasmin</span><span>Bergamote</span><span>Miel clair</span></div>
+          <div class="foot">
+            <span class="price">95 <small>DH</small></span>
+            <a class="plus" aria-label="Commander le sachet Éthiopie 250 g" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20commande%20un%20sachet%20%C3%89thiopie%20Yirgacheffe%20250%20g%20(95%20DH)." target="_blank" rel="noopener">+</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="gcard reveal tilt">
+        <div class="thumb"><img src="torra/hero.webp" alt="Cafés TORRA et grains torréfiés maison" loading="lazy"><span class="bag">Sachet · 250 g</span></div>
+        <div class="body">
+          <span class="origin">Brésil · Cerrado</span>
+          <h3>Le Gourmand</h3>
+          <p>Rond, doux, jamais agressif : le café des matins pressés comme des dimanches lents. Beaucoup de corps, une amertume sage, et ce fond de chocolat qui plaît à tout le monde.</p>
+          <div class="notes"><span>Chocolat au lait</span><span>Noisette</span><span>Caramel</span></div>
+          <div class="foot">
+            <span class="price">85 <small>DH</small></span>
+            <a class="plus" aria-label="Commander le sachet Brésil 250 g" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20commande%20un%20sachet%20Br%C3%A9sil%20Cerrado%20250%20g%20(85%20DH)." target="_blank" rel="noopener">+</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="gcard reveal tilt">
+        <div class="thumb"><img src="torra/barista.webp" alt="Barista TORRA au travail derrière le comptoir" loading="lazy"><span class="bag">Sachet · 250 g</span></div>
+        <div class="body">
+          <span class="origin">Assemblage maison</span>
+          <h3>Mélange TORRA</h3>
+          <p>Notre signature, celle que vous buvez au comptoir : trois origines assemblées après torréfaction pour tenir l'équilibre en espresso comme en lait. Le choix sûr, semaine après semaine.</p>
+          <div class="notes"><span>Cacao</span><span>Fruits secs</span><span>Épices douces</span></div>
+          <div class="foot">
+            <span class="price">90 <small>DH</small></span>
+            <a class="plus" aria-label="Commander le sachet Mélange TORRA 250 g" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20commande%20un%20sachet%20M%C3%A9lange%20TORRA%20250%20g%20(90%20DH)." target="_blank" rel="noopener">+</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="abo reveal">
+      <div>
+        <h3>L'Abonnement Café, <em>sans y penser</em></h3>
+        <p>Deux sachets de 250 g chaque mois, torréfiés la semaine même et livrés chez vous à Tanger. Vous choisissez les origines — ou vous nous laissez vous surprendre.</p>
+        <ul>
+          <li>−15 % par rapport à l'achat à l'unité</li>
+          <li>Livraison offerte partout à Tanger</li>
+          <li>Mouture adaptée à votre machine, sur simple demande</li>
+          <li>Pause ou arrêt à tout moment, sans engagement</li>
+        </ul>
+      </div>
+      <div class="abo-price">
+        <span class="old">180 DH / mois</span>
+        <b>153 <small>DH / mois</small></b>
+        <span>2 sachets · 250 g</span>
+        <a class="btn btn-caramel" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20souhaite%20m%27abonner%20%C3%A0%20l%27Abonnement%20Caf%C3%A9%20(2%20sachets%20par%20mois%2C%20153%20DH)." target="_blank" rel="noopener">S'abonner</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= QUIZ ======================= -->
 <div class="quiz-sec" id="promotions">
   <div class="quiz reveal">
-    <div class="quiz-bg"><img src="torra/beans.webp" alt="" aria-hidden="true" loading="lazy"></div>
+    <div class="quiz-bg"><img class="kb" src="torra/beans.webp" alt="" aria-hidden="true" loading="lazy"></div>
     <div class="quiz-inner">
       <h2>Quel café est <em>fait pour vous</em> ?</h2>
       <p class="q-sub">Trois questions, trente secondes, et la tasse qui vous ressemble — à commander dans la foulée si elle vous parle.</p>
@@ -574,6 +790,61 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
   </div>
 </section>
 
+<!-- ======================= PRATIQUE ======================= -->
+<section id="pratique">
+  <div class="wrap" style="padding-top:40px">
+    <p class="kicker reveal">Pratique</p>
+    <h2 class="sec-title reveal">Nous trouver, <em>nous rejoindre</em></h2>
+    <p class="sec-sub reveal">À deux rues de la corniche, là où l'odeur de torréfaction commence à se sentir dès le trottoir d'en face.</p>
+
+    <div class="infos-grid">
+      <article class="icard reveal">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+        <h3>L'adresse</h3>
+        <p><b>Quartier Marshan, Tanger</b><br>À quelques minutes à pied de la corniche et du port. Un mot sur WhatsApp et on vous guide jusqu'à la porte.</p>
+      </article>
+      <article class="icard reveal">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+        <h3>Les horaires</h3>
+        <p><b>Ouvert 7 j/7 · 7h00 – 23h00</b><br>Le petit-déjeuner se sert dès 7h00 : croissants encore tièdes, pain grillé, jus d'orange pressé minute — et le premier espresso du jour.</p>
+      </article>
+      <article class="icard reveal">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a12 12 0 0 1 16 0"/><path d="M6.8 13.4a7.5 7.5 0 0 1 10.4 0"/><circle cx="12" cy="17.2" r="1.4" fill="currentColor" stroke="none"/></svg></span>
+        <h3>L'espace</h3>
+        <p><b>Wifi gratuit et prises à chaque table.</b><br>Une terrasse au soleil le matin, un fond de salle calme l'après-midi — pensé aussi pour celles et ceux qui viennent travailler.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FAQ ======================= -->
+<section id="faq">
+  <div class="wrap" style="padding-top:20px">
+    <p class="kicker reveal">Questions</p>
+    <h2 class="sec-title reveal">Ce qu'on nous demande <em>souvent</em></h2>
+    <p class="sec-sub reveal">Et si votre question n'y est pas, le bouton WhatsApp n'est jamais loin.</p>
+
+    <div class="faq-list">
+      <details class="reveal">
+        <summary>Puis-je venir travailler chez TORRA ?</summary>
+        <p>Bien sûr — c'est même une de nos habitudes préférées du matin. Le wifi est gratuit, chaque table a sa prise, et la salle reste calme jusqu'à midi. On vous demande juste une consommation de temps en temps, et le tour est joué.</p>
+      </details>
+      <details class="reveal">
+        <summary>Peut-on réserver une table ?</summary>
+        <p>Oui, à partir de quatre personnes — un anniversaire, une réunion d'équipe ou un petit-déjeuner de famille. Écrivez-nous sur <a href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20souhaite%20r%C3%A9server%20une%20table." target="_blank" rel="noopener">WhatsApp</a> avec le jour et l'heure, on vous garde la table près de la fenêtre si elle est libre.</p>
+      </details>
+      <details class="reveal">
+        <summary>Moudrez-vous les grains sur place ?</summary>
+        <p>Avec plaisir, et sans supplément. Dites-nous votre machine — espresso, filtre, piston ou cafetière italienne — et on règle la mouture en conséquence, au moment de l'achat, pour garder le plus d'arômes possible.</p>
+      </details>
+      <details class="reveal">
+        <summary>Organisez-vous des événements privés ?</summary>
+        <p>Oui, en privatisation partielle jusqu'à une trentaine de personnes : soirées, lancements, clubs de lecture ou dégustations de nos lots du moment. Racontez-nous votre idée sur <a href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20souhaite%20organiser%20un%20%C3%A9v%C3%A9nement%20priv%C3%A9%20chez%20vous." target="_blank" rel="noopener">WhatsApp</a>, on revient vers vous avec une proposition et un devis.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= FOOTER ======================= -->
 <footer>
   <div class="foot-wrap">
@@ -651,6 +922,56 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
     els.forEach(function(el){ io.observe(el); });
   } else {
     els.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  /* ---- smoother staggered reveals: auto-delay inside groups ---- */
+  document.querySelectorAll(".cards,.avis-grid,.grains-grid,.infos-grid,.faq-list,.menu-list").forEach(function(group){
+    group.querySelectorAll(".reveal").forEach(function(el, i){
+      if(!el.style.transitionDelay) el.style.transitionDelay = (i * 0.09) + "s";
+    });
+  });
+
+  /* ---- scroll-driven Ken Burns + parallax on section images ---- */
+  var kbImgs = document.querySelectorAll("img.kb");
+  var kbTick = false;
+  function kbUpdate(){
+    kbTick = false;
+    if(reduced) return;
+    var vh = window.innerHeight;
+    kbImgs.forEach(function(img){
+      var r = img.parentElement.getBoundingClientRect();
+      if(r.bottom < -80 || r.top > vh + 80) return;
+      var p = (r.top + r.height / 2 - vh / 2) / vh;   /* -0.5 → +0.5 through the viewport */
+      p = Math.max(-1, Math.min(1, p));
+      img.style.transform = "scale(1.16) translateY(" + (p * -22) + "px)";
+    });
+  }
+  function kbRequest(){
+    if(!kbTick){ kbTick = true; requestAnimationFrame(kbUpdate); }
+  }
+  if(kbImgs.length && !reduced){
+    window.addEventListener("scroll", kbRequest, {passive:true});
+    window.addEventListener("resize", kbRequest);
+    kbUpdate();
+  }
+
+  /* ---- pointer tilt on menu + grain cards ---- */
+  if(!reduced && window.matchMedia("(pointer:fine)").matches){
+    document.querySelectorAll(".dcard,.gcard").forEach(function(card){
+      card.addEventListener("pointerenter", function(){
+        card.style.transition = "transform .14s ease-out, border-color 1s var(--ease), box-shadow 1s var(--ease)";
+      });
+      card.addEventListener("pointermove", function(e){
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - .5;
+        var y = (e.clientY - r.top) / r.height - .5;
+        card.style.transform = "perspective(950px) rotateX(" + (-y * 7) + "deg) rotateY(" + (x * 9) + "deg) translateY(-6px)";
+      });
+      card.addEventListener("pointerleave", function(){
+        card.style.transition = "";
+        card.style.transform = "";
+      });
+    });
   }
 
   /* ---- quiz ---- */

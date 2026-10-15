@@ -219,6 +219,90 @@ a{color:inherit}
 .btn:hover{background:linear-gradient(92deg,var(--amber),var(--magenta));color:#160a12}
 @media(max-width:900px){.cards{grid-template-columns:1fr}}
 
+/* ---------- depth layers (film) ---------- */
+.ridge-layer{z-index:2;pointer-events:none}
+.ridge{position:absolute;bottom:-2px;width:58vw;height:30vh;will-change:transform}
+.ridge svg{width:100%;height:100%;display:block}
+.ridge-l{left:-4vw}
+.ridge-r{right:-4vw}
+.snow-layer{z-index:2;pointer-events:none}
+.snow-dot{position:absolute;border-radius:50%;background:radial-gradient(circle,#fff 0%,rgba(255,255,255,0) 70%);filter:blur(1px)}
+.glow-layer{
+  z-index:2;pointer-events:none;inset:auto;left:50%;top:48%;width:92vmin;height:92vmin;
+  transform:translate(-50%,-50%);opacity:0;
+  background:radial-gradient(circle,rgba(150,90,255,.34) 0%,rgba(255,77,141,.15) 46%,rgba(255,77,141,0) 68%);
+  filter:blur(8px);
+}
+.shadow-layer{
+  z-index:2;pointer-events:none;inset:auto;left:50%;top:65%;width:58vmin;height:11vmin;
+  transform:translate(-50%,-50%);opacity:0;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 68%);
+  filter:blur(10px);
+}
+.buy{perspective:1200px}
+.buy-inner{transform-style:preserve-3d;will-change:transform}
+.buy .col-txt{transform:translateZ(26px)}
+.buy-card{transform:translateZ(48px)}
+.rm .ridge-layer,.rm .snow-layer,.rm .glow-layer,.rm .shadow-layer{display:none}
+
+/* ---------- trust strip ---------- */
+.trust{max-width:1180px;margin:0 auto;padding:64px 5vw 0}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.trust .t{
+  border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px 20px;
+  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0));
+}
+.trust .t b{display:block;font-size:.95rem;font-weight:800;margin-bottom:6px}
+.trust .t span{font-size:.8rem;line-height:1.5;color:#a9b6c2}
+.trust .t .ic{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.24em;color:var(--amber);display:block;margin-bottom:12px}
+@media(max-width:900px){.trust-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.trust-grid{grid-template-columns:1fr}}
+
+/* ---------- generic content sections ---------- */
+.sec{max-width:1180px;margin:0 auto;padding:84px 5vw 10px}
+.sec .sub{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.26em;color:#8b98a5;margin-bottom:14px}
+.sec h3{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.sec h3 em{font-style:italic;background:linear-gradient(92deg,var(--amber),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec .lead{color:#a9b6c2;font-size:.95rem;line-height:1.65;max-width:640px;margin-bottom:40px}
+
+/* spec sheet */
+.spec-sheet{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;border-top:1px solid rgba(255,255,255,.1)}
+.spec-row{display:flex;justify-content:space-between;gap:24px;padding:16px 2px;border-bottom:1px solid rgba(255,255,255,.08)}
+.spec-row dt{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.22em;color:#8b98a5;padding-top:3px;white-space:nowrap}
+.spec-row dd{font-size:.92rem;font-weight:600;text-align:right}
+@media(max-width:760px){.spec-sheet{grid-template-columns:1fr}}
+
+/* weather guide */
+.guide-rows{display:flex;flex-direction:column;gap:14px}
+.grow-row{
+  display:grid;grid-template-columns:220px 170px 1fr;gap:22px;align-items:center;
+  border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px 26px;background:rgba(255,255,255,.02);
+}
+.grow-row .w b{display:block;font-size:1.05rem;font-weight:800;margin-bottom:5px}
+.grow-row .w span{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.2em;color:#8b98a5}
+.grow-row .cat{font-weight:800;font-size:1.5rem}
+.grow-row .cat small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:.62rem;letter-spacing:.2em;color:var(--amber);margin-top:5px}
+.grow-row p{font-size:.88rem;line-height:1.6;color:#a9b6c2}
+@media(max-width:860px){.grow-row{grid-template-columns:1fr}}
+
+/* testimonials */
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.avis-card{border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:26px 24px;background:#0b0e13}
+.avis-card .stars{color:var(--amber);letter-spacing:3px;font-size:.85rem;margin-bottom:16px}
+.avis-card p{font-size:.94rem;line-height:1.65;color:#d7e0e8}
+.avis-card .who{margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.2em;color:#8b98a5}
+.avis-note{margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.18em;color:#67737f}
+@media(max-width:900px){.avis-grid{grid-template-columns:1fr}}
+
+/* faq */
+.faq-list{display:flex;flex-direction:column;gap:12px;max-width:860px}
+.faq-list details{border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.02);padding:0 24px}
+.faq-list summary{cursor:pointer;font-weight:700;font-size:1rem;padding:20px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";font-weight:400;font-size:1.3rem;color:var(--amber)}
+.faq-list details[open] summary::after{content:"–"}
+.faq-list details p{padding:0 0 22px;font-size:.9rem;line-height:1.65;color:#a9b6c2;max-width:62ch}
+
 footer{background:#05070a;border-top:1px solid rgba(255,255,255,.08);padding:56px 5vw 40px;color:#8b98a5}
 footer .fbrand{font-weight:900;letter-spacing:.22em;color:#fff;font-size:1.05rem;margin-bottom:12px}
 footer p{font-size:.85rem;line-height:1.6;max-width:520px}
@@ -254,9 +338,10 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
 <header class="topbar">
   <a class="brand" href="#">POLAIRE</a>
   <nav>
-    <a href="#tech">Optiques</a>
-    <a href="#coloris">Journal</a>
-    <a href="#histoire">Notre histoire</a>
+    <a href="#tech">Technologie</a>
+    <a href="#gamme">Gamme</a>
+    <a href="#guide">Guide météo</a>
+    <a href="#faq">FAQ</a>
   </nav>
   <div class="cart">Panier (0)</div>
 </header>
@@ -268,6 +353,16 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
     <div class="layer skier-layer" id="lySkier">
       <img src="polaire/skier.webp" alt="Skieur en tenue blanche ajustant son masque POLAIRE sur une pente ensoleillée">
     </div>
+
+    <div class="layer ridge-layer" id="lyRidge" aria-hidden="true">
+      <div class="ridge ridge-l" id="ridgeL"><svg viewBox="0 0 600 220" preserveAspectRatio="none"><path d="M0,220 L0,168 L64,138 L128,158 L204,110 L286,140 L352,116 L436,150 L516,128 L600,160 L600,220 Z" fill="#13202e" opacity="0.55"/></svg></div>
+      <div class="ridge ridge-r" id="ridgeR"><svg viewBox="0 0 600 220" preserveAspectRatio="none"><path d="M0,220 L0,150 L84,124 L168,146 L248,104 L330,134 L408,112 L486,142 L552,122 L600,148 L600,220 Z" fill="#0a141f" opacity="0.7"/></svg></div>
+    </div>
+
+    <div class="layer snow-layer" id="snowLayer" aria-hidden="true"></div>
+
+    <div class="layer glow-layer" id="lyGlow" aria-hidden="true"></div>
+    <div class="layer shadow-layer" id="lyShadow" aria-hidden="true"></div>
 
     <div class="layer front-layer" id="lyFront">
       <figure><img src="polaire/front.webp" alt="Masque POLAIRE à monture blanche et écran miroir arc-en-ciel sur fond noir"></figure>
@@ -309,8 +404,8 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
     </div>
 
     <div class="buy" id="buyPanel">
-      <div class="buy-inner">
-        <div>
+      <div class="buy-inner" id="buyInner">
+        <div class="col-txt">
           <span class="k">MODÈLE 01 — WHITEOUT · DISPONIBLE</span>
           <h2>Voyez la descente<br>avant de la <span class="grad">descendre.</span></h2>
           <div class="price">1 450 DH<small>PAIEMENT À LA LIVRAISON</small></div>
@@ -336,6 +431,15 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
 
 <!-- ================= BELOW ================= -->
 <main class="below" id="histoire">
+
+  <section class="trust" aria-label="Nos garanties">
+    <div class="trust-grid">
+      <div class="t"><span class="ic">GARANTIE</span><b>2 ans, sans conditions</b><span>Monture et écran couverts deux années pleines, y compris l'usure normale d'utilisation.</span></div>
+      <div class="t"><span class="ic">RETOURS</span><b>30 jours pour essayer</b><span>Testez-le sur la neige, pas seulement au salon. S'il ne convainc pas, nous le reprenons.</span></div>
+      <div class="t"><span class="ic">CASQUE</span><b>Compatible casque</b><span>Sangle large siliconée pensée pour les casques — et mousse creusée pour les porteurs de lunettes.</span></div>
+      <div class="t"><span class="ic">PAIEMENT</span><b>À la livraison</b><span>Vous payez uniquement lorsque le masque est entre vos mains, partout au Maroc.</span></div>
+    </div>
+  </section>
 
   <section class="tech" id="tech">
     <div class="sub">FICHE TECHNIQUE — MODÈLE 01</div>
@@ -365,52 +469,141 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
     </div>
   </section>
 
+  <section class="sec" id="specs">
+    <div class="sub">FICHE TECHNIQUE COMPLÈTE</div>
+    <h3>Les chiffres derrière <em>la vision</em></h3>
+    <p class="lead">Tous les modèles POLAIRE partagent la même base technique : une double paroi ventilée contre la buée, une protection totale contre les UV et un champ de vision qui ne négocie pas avec la périphérie.</p>
+    <dl class="spec-sheet">
+      <div class="spec-row"><dt>ÉCRAN</dt><dd>Torique, double paroi ventilée</dd></div>
+      <div class="spec-row"><dt>CATÉGORIES DE VERRES</dt><dd>S1 · S2 · S3 — VLT de 8 % à 72 %</dd></div>
+      <div class="spec-row"><dt>PROTECTION UV</dt><dd>UV400 — 100 % des UVA / UVB bloqués</dd></div>
+      <div class="spec-row"><dt>CHAMP DE VISION</dt><dd>180° à l'horizontale</dd></div>
+      <div class="spec-row"><dt>ANTI-BUÉE</dt><dd>Double paroi + traitement hydrophobe intérieur</dd></div>
+      <div class="spec-row"><dt>MONTURE</dt><dd>TPU souple, flexible jusqu'à −30 °C</dd></div>
+      <div class="spec-row"><dt>MOUSSE</dt><dd>Triple densité, hypoallergénique</dd></div>
+      <div class="spec-row"><dt>SANGLE</dt><dd>45 mm, bande silicone antidérapante</dd></div>
+      <div class="spec-row"><dt>POIDS</dt><dd>128 g, écran compris</dd></div>
+      <div class="spec-row"><dt>COMPATIBILITÉ</dt><dd>Casques toutes marques · lunettes (OTG)</dd></div>
+    </dl>
+  </section>
+
   <div class="band">
     <img id="bandImg" src="polaire/strap.webp" alt="La sangle POLAIRE en gros plan">
     <div class="band-cap">SANGLE 45 MM — TISSÉE, SILICONÉE, RÉGLABLE D'UNE MAIN</div>
   </div>
 
-  <section class="coloris" id="coloris">
-    <div class="sub">TROIS LUMIÈRES, UN MÊME MASQUE</div>
-    <h3>Les coloris du Modèle 01</h3>
+  <section class="sec" id="guide">
+    <div class="sub">GUIDE — BIEN CHOISIR SON ÉCRAN</div>
+    <h3>Quel verre pour <em>quelle météo</em> ?</h3>
+    <p class="lead">La catégorie d'un verre se lit de S1 à S3 : plus le chiffre monte, plus l'écran filtre la lumière. La bonne paire dépend du ciel du matin, pas de la mode.</p>
+    <div class="guide-rows">
+      <div class="grow-row">
+        <div class="w"><b>Grand soleil</b><span>CIEL DÉGAGÉ · ALTITUDE</span></div>
+        <div class="cat">S3<small>VLT 8 – 18 %</small></div>
+        <p>Le miroir plein renvoie l'éblouissement de la neige fraîche et garde les reliefs nets, même à midi passé. C'est l'écran du Modèle 01 Whiteout.</p>
+      </div>
+      <div class="grow-row">
+        <div class="w"><b>Temps changeant</b><span>NUAGES · OMBRES DE SAPINS</span></div>
+        <div class="cat">S2<small>VLT 18 – 43 %</small></div>
+        <p>Une teinte à contraste renforcé qui continue de lire la pente quand le soleil joue à cache-cache avec les nuages. C'est l'écran du Modèle 02 Braise.</p>
+      </div>
+      <div class="grow-row">
+        <div class="w"><b>Jour blanc</b><span>NEIGE QUI TOMBE · BROUILLARD</span></div>
+        <div class="cat">S1<small>VLT 43 – 80 %</small></div>
+        <p>La teinte claire illumine le blanc sur blanc et révèle bosses et plaques de glace. Un écran S1 de rechange est d'ailleurs inclus avec chaque modèle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="coloris" id="gamme">
+    <div class="sub">LA GAMME — TROIS MODÈLES, TROIS LUMIÈRES</div>
+    <h3>Choisissez votre Modèle</h3>
     <div style="height:36px"></div>
     <div class="cards">
       <article class="card">
-        <div class="ph"><img src="polaire/front.webp" alt="Coloris Arc-en-ciel — écran miroir multicolore"></div>
+        <div class="ph"><img src="polaire/front.webp" alt="Modèle 01 Whiteout — écran miroir multicolore"></div>
         <div class="body">
-          <span class="k">ÉCRAN MIROIR — VLT 12 %</span>
-          <h4>Arc-en-ciel</h4>
-          <p>Le miroir complet pour les journées de grand soleil en altitude, quand la neige renvoie tout.</p>
+          <span class="k">MODÈLE 01 · ÉCRAN TORIQUE S3 — VLT 12 %</span>
+          <h4>Whiteout</h4>
+          <p>Le vaisseau amiral : double paroi torique, champ de vision total et miroir complet pour les journées de grand soleil en altitude.</p>
           <div class="row">
             <span class="prix">1 450 DH</span>
-            <a class="btn wa-order" data-msg="Bonjour, je veux commander le masque POLAIRE Modèle 01, coloris Arc-en-ciel (1 450 DH)." href="https://wa.me/212693981822" target="_blank" rel="noopener">Commander</a>
+            <a class="btn wa-order" data-msg="Bonjour, je veux commander le masque POLAIRE Modèle 01 — Whiteout (1 450 DH)." href="https://wa.me/212693981822" target="_blank" rel="noopener">Commander</a>
           </div>
         </div>
       </article>
       <article class="card">
         <div class="ph"><img src="polaire/ember.webp" alt="Coloris Braise — écran miroir orange sur monture noire"></div>
         <div class="body">
-          <span class="k">ÉCRAN MIROIR — VLT 14 %</span>
+          <span class="k">MODÈLE 02 · ÉCRAN TORIQUE S2 — VLT 24 %</span>
           <h4>Braise</h4>
-          <p>Une teinte chaude qui relève les reliefs dès que le ciel se voile et que la pente s'aplatit.</p>
+          <p>Une teinte chaude à contraste renforcé qui relève les reliefs dès que le ciel se voile et que la pente s'aplatit.</p>
           <div class="row">
-            <span class="prix">1 450 DH</span>
-            <a class="btn wa-order" data-msg="Bonjour, je veux commander le masque POLAIRE Modèle 01, coloris Braise (1 450 DH)." href="https://wa.me/212693981822" target="_blank" rel="noopener">Commander</a>
+            <span class="prix">1 290 DH</span>
+            <a class="btn wa-order" data-msg="Bonjour, je veux commander le masque POLAIRE Modèle 02 — Braise (1 290 DH)." href="https://wa.me/212693981822" target="_blank" rel="noopener">Commander</a>
           </div>
         </div>
       </article>
       <article class="card">
-        <div class="ph"><img src="polaire/skier.webp" alt="Coloris Whiteout — le masque porté sur la neige"></div>
+        <div class="ph"><img src="polaire/skier.webp" alt="Modèle 03 Sommet — le masque porté sur la neige"></div>
         <div class="body">
-          <span class="k">MONTURE BLANCHE — VLT 12 %</span>
-          <h4>Whiteout</h4>
-          <p>La monture blanche d'origine, celle du film. Sobre de loin, impossible à manquer de près.</p>
+          <span class="k">MODÈLE 03 · ÉCRAN CYLINDRIQUE S1–S2 — VLT 38 %</span>
+          <h4>Sommet</h4>
+          <p>Plus léger, écran cylindrique et teinte claire : pensé pour enchaîner les journées, du premier télésiège à la dernière descente.</p>
           <div class="row">
-            <span class="prix">1 450 DH</span>
-            <a class="btn wa-order" data-msg="Bonjour, je veux commander le masque POLAIRE Modèle 01, coloris Whiteout (1 450 DH)." href="https://wa.me/212693981822" target="_blank" rel="noopener">Commander</a>
+            <span class="prix">1 190 DH</span>
+            <a class="btn wa-order" data-msg="Bonjour, je veux commander le masque POLAIRE Modèle 03 — Sommet (1 190 DH)." href="https://wa.me/212693981822" target="_blank" rel="noopener">Commander</a>
           </div>
         </div>
       </article>
+    </div>
+  </section>
+
+  <section class="sec" id="avis">
+    <div class="sub">SUR LES PISTES</div>
+    <h3>Ce que les riders <em>en disent</em></h3>
+    <div style="height:26px"></div>
+    <div class="avis-grid">
+      <article class="avis-card">
+        <div class="stars">★★★★★</div>
+        <p>« Premier jour blanc à Oukaïmeden : je voyais les bosses que les autres devinaient. Aucune buée, même pendant la montée au télésiège. »</p>
+        <div class="who">YASMINE B. — OUKAÏMEDEN</div>
+      </article>
+      <article class="avis-card">
+        <div class="stars">★★★★★</div>
+        <p>« Je porte des lunettes au quotidien. C'est le premier masque qui ne me les plaque pas contre le nez au bout de vingt minutes. »</p>
+        <div class="who">MEHDI R. — IFRANE</div>
+      </article>
+      <article class="avis-card">
+        <div class="stars">★★★★★</div>
+        <p>« Chute tête la première dans la poudreuse : la sangle n'a pas bougé, l'écran est intact. Je suis reparti avec le lendemain matin. »</p>
+        <div class="who">SOFIA L. — TOUBKAL</div>
+      </article>
+    </div>
+    <div class="avis-note">AVIS DE DÉMONSTRATION — RETOURS PRÉSENTÉS À TITRE D'EXEMPLE</div>
+  </section>
+
+  <section class="sec" id="faq" style="padding-bottom:110px">
+    <div class="sub">QUESTIONS FRÉQUENTES</div>
+    <h3>Avant de <em>chausser</em></h3>
+    <div style="height:26px"></div>
+    <div class="faq-list">
+      <details>
+        <summary>Le masque fait-il de la buée ?</summary>
+        <p>Non, à condition de le laisser travailler : la double paroi crée un matelas d'air isolant et les canaux de ventilation chassent l'humidité en continu. Deux réflexes à éviter : essuyer la face intérieure, qui porte le traitement anti-buée, et garder le masque sur le front pendant les pauses.</p>
+      </details>
+      <details>
+        <summary>Est-il compatible avec mon casque ?</summary>
+        <p>Oui. La sangle de 45 mm à bande silicone se règle d'une main et reste en place sur les casques de toutes les marques. La monture est aussi pensée pour les porteurs de lunettes : le volume intérieur (OTG) laisse passer la plupart des montures.</p>
+      </details>
+      <details>
+        <summary>Comment entretenir l'écran ?</summary>
+        <p>Rangez le masque dans la housse microfibre fournie, jamais en vrac dans le sac. Pour le nettoyer : soufflez les grains, passez-le sous l'eau claire tiède, puis tamponnez avec la microfibre sans frotter. Ni essuie-tout ni produits ménagers — ils attaquent le miroir et le traitement anti-buée.</p>
+      </details>
+      <details>
+        <summary>Quels sont les délais et frais de livraison ?</summary>
+        <p>Livraison en 48 h partout au Maroc, offerte dès 900 DH d'achat ; en dessous, comptez 30 DH forfaitaires. Le paiement se fait à la livraison, et les retours sont gratuits sous 30 jours si le masque ne vous convainc pas sur la neige.</p>
+      </details>
     </div>
   </section>
 
@@ -469,6 +662,26 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
   var t3specs = document.getElementById('t3specs');
   var buy = document.getElementById('buyPanel');
   var bandImg = document.getElementById('bandImg');
+  var lyRidge = document.getElementById('lyRidge');
+  var ridgeL = document.getElementById('ridgeL');
+  var ridgeR = document.getElementById('ridgeR');
+  var snowLayer = document.getElementById('snowLayer');
+  var lyGlow = document.getElementById('lyGlow');
+  var lyShadow = document.getElementById('lyShadow');
+  var buyInner = document.getElementById('buyInner');
+
+  /* snow specks — the fast near layer of Act 1 */
+  var snowPos = [[10,16],[22,62],[36,28],[50,80],[61,14],[70,50],[82,32],[90,68],[16,86],[44,8],[57,44],[78,88],[28,40],[66,74],[88,10],[6,48]];
+  snowPos.forEach(function(pt){
+    var s = document.createElement('span');
+    s.className = 'snow-dot';
+    s.style.left = pt[0] + '%';
+    s.style.top = pt[1] + '%';
+    var sz = 4 + (pt[0] % 5) * 2;
+    s.style.width = sz + 'px';
+    s.style.height = sz + 'px';
+    snowLayer.appendChild(s);
+  });
 
   function clamp01(x){ return x < 0 ? 0 : (x > 1 ? 1 : x); }
   function seg(p,a,b){ return clamp01((p - a) / (b - a)); }
@@ -507,6 +720,15 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
     lySkier.style.transform = 'scale(' + skScale.toFixed(4) + ')';
     lySkier.style.opacity = skOp.toFixed(3);
 
+    /* depth — foreground ridges sweep past the camera, snow drifts faster than the scene */
+    var rgT = seg(p, 0, 0.34);
+    lyRidge.style.transform = 'translateY(' + (rgT * 15).toFixed(2) + '%) scale(' + (1 + rgT * 0.05).toFixed(3) + ')';
+    lyRidge.style.opacity = (1 - seg(p, 0.26, 0.44)).toFixed(3);
+    ridgeL.style.transform = 'translateX(' + (-rgT * 5).toFixed(2) + '%)';
+    ridgeR.style.transform = 'translateX(' + (rgT * 5).toFixed(2) + '%)';
+    snowLayer.style.transform = 'translate(' + (-rgT * 4).toFixed(2) + '%, ' + (rgT * 9).toFixed(2) + '%)';
+    snowLayer.style.opacity = (0.85 * (1 - seg(p, 0.24, 0.42))).toFixed(3);
+
     var t1op = 1 - seg(p, 0.20, 0.30);
     var t1y = lerp(0, -46, seg(p, 0.20, 0.30));
     t1word.style.opacity = t1op.toFixed(3);
@@ -523,7 +745,15 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
     var frRot = lerp(0, -3, seg(p, 0.55, 0.75));
     var frOp = frIn * (1 - seg(p, 0.70, 0.80));
     lyFront.style.opacity = frOp.toFixed(3);
-    lyFront.style.transform = 'scale(' + frScale.toFixed(4) + ') rotate(' + frRot.toFixed(2) + 'deg)';
+    var frY = lerp(16, -4, seg(p, 0.34, 0.55)) + lerp(0, -16, seg(p, 0.55, 0.75));
+    lyFront.style.transform = 'translateY(' + frY.toFixed(1) + 'px) scale(' + frScale.toFixed(4) + ') rotate(' + frRot.toFixed(2) + 'deg)';
+
+    /* depth — a glow blooms behind the product, its ground shadow tracks the float */
+    var glT = seg(p, 0.30, 0.75);
+    lyGlow.style.opacity = (seg(p, 0.36, 0.52) * (1 - seg(p, 0.80, 0.90)) * 0.95).toFixed(3);
+    lyGlow.style.transform = 'translate(-50%,-50%) scale(' + lerp(0.82, 1.14, glT).toFixed(3) + ') rotate(' + (glT * 16).toFixed(1) + 'deg)';
+    lyShadow.style.opacity = (frOp * 0.55).toFixed(3);
+    lyShadow.style.transform = 'translate(-50%,-50%) translateY(' + (frY * 0.35).toFixed(1) + 'px) scaleX(' + lerp(0.72, 1.28, glT).toFixed(3) + ')';
 
     /* annotation + indicator */
     var nOp = seg(p, 0.42, 0.50) * (1 - seg(p, 0.56, 0.64));
@@ -538,12 +768,13 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
     var stX = lerp(12, 0, ease(seg(p, 0.55, 0.72)));
     var stOp = stIn * (1 - seg(p, 0.80, 0.90));
     lyStrap.style.opacity = stOp.toFixed(3);
-    lyStrap.style.transform = 'translateX(' + stX.toFixed(2) + '%)';
+    lyStrap.style.transform = 'translateX(' + stX.toFixed(2) + '%) scale(' + lerp(1.07, 1, ease(seg(p, 0.55, 0.74))).toFixed(3) + ')';
 
     var cOp = seg(p, 0.62, 0.70) * (1 - seg(p, 0.76, 0.84));
     t3cap.style.opacity = cOp.toFixed(3);
     t3cap.style.transform = 'translateY(' + lerp(24, 0, seg(p, 0.62, 0.70)).toFixed(1) + 'px)';
     t3specs.style.opacity = (seg(p, 0.66, 0.74) * (1 - seg(p, 0.76, 0.84))).toFixed(3);
+    t3specs.style.transform = 'translateY(' + lerp(16, 0, seg(p, 0.66, 0.74)).toFixed(1) + 'px)';
 
     /* ACTE 4 — buy panel lands */
     var bOp = seg(p, 0.84, 0.94);
@@ -557,6 +788,15 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
     apply(0);
   } else {
     var target = 0, cur = 0;
+    /* pointer tilt for the buy panel (fine pointers only) */
+    var tiltX = 0, tiltY = 0, tiltCX = 0, tiltCY = 0;
+    if (window.matchMedia('(pointer: fine)').matches){
+      stage.addEventListener('pointermove', function(e){
+        tiltX = (e.clientX / window.innerWidth) * 2 - 1;
+        tiltY = (e.clientY / window.innerHeight) * 2 - 1;
+      });
+      stage.addEventListener('pointerleave', function(){ tiltX = 0; tiltY = 0; });
+    }
     function measure(){
       var r = film.getBoundingClientRect();
       var total = film.offsetHeight - window.innerHeight;
@@ -570,6 +810,12 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
       cur += (target - cur) * 0.085;
       if (Math.abs(target - cur) < 0.0004) cur = target;
       apply(cur);
+      tiltCX += (tiltX - tiltCX) * 0.06;
+      tiltCY += (tiltY - tiltCY) * 0.06;
+      if (buyInner){
+        var tiltF = seg(cur, 0.84, 0.96);
+        buyInner.style.transform = 'perspective(1200px) rotateX(' + (-tiltCY * 5 * tiltF).toFixed(2) + 'deg) rotateY(' + (tiltCX * 7 * tiltF).toFixed(2) + 'deg)';
+      }
       requestAnimationFrame(loop);
     })();
   }

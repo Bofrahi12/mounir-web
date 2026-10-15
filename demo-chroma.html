@@ -235,6 +235,8 @@ h2 .serif-i{color:var(--fuchsia)}
       <a href="#boutique">Boutique</a>
       <a href="#collections">Collections</a>
       <a href="#lookbook">Lookbook</a>
+      <a href="#tailles">Tailles</a>
+      <a href="#faq">FAQ</a>
     </nav>
     <div class="icons">
       <a href="#boutique" aria-label="Rechercher"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></a>
@@ -246,6 +248,7 @@ h2 .serif-i{color:var(--fuchsia)}
 
 <!-- HERO -->
 <div class="hero" id="accueil">
+  <div class="hero-blob" data-plx="-70" aria-hidden="true"></div>
   <div class="hero-copy">
     <span class="kicker"><i></i> Nouvelle collection · Tanger</span>
     <h1>
@@ -266,7 +269,7 @@ h2 .serif-i{color:var(--fuchsia)}
     </div>
   </div>
   <figure class="hero-arch">
-    <img id="heroImg" src="chroma/hero.webp" alt="Modèle en tailleur agrume devant un décor cobalt et jaune">
+    <img id="heroImg" data-plx="34" data-plx-scale="0.05" src="chroma/hero.webp" alt="Modèle en tailleur agrume devant un décor cobalt et jaune">
   </figure>
 </div>
 
@@ -304,6 +307,61 @@ h2 .serif-i{color:var(--fuchsia)}
   </div>
 </section>
 
+<!-- LA BOUTIQUE — HISTOIRE -->
+<section id="histoire">
+  <div class="story">
+    <figure class="simg"><img id="storyImg" data-plx="22" data-plx-scale="0.06" src="chroma/hero.webp" alt="Atelier CHROMA — tailleur agrume"></figure>
+    <div>
+      <h2>La Boutique, <span class="serif-i">née</span> d'un pari</h2>
+      <p>CHROMA est née à Tanger d'un pari simple : une garde-robe entièrement pensée en couleurs franches peut être aussi élégante qu'une garde-robe de neutres — et infiniment plus vivante. Chaque pièce est dessinée à l'atelier, coupée dans des étoffes choisies pour leur tombé et pour la tenue de leur teinte, puis produite en séries courtes.</p>
+      <p>Pas de stock qui dort, pas de couleur « tendance » copiée-collée : quatre collections par an, des teintes signées, et une obsession — que la pièce portée dans deux ans ait exactement la même lumière que le premier jour.</p>
+    </div>
+  </div>
+  <div class="statband">
+    <div><b>46</b><small>Pièces par collection</small></div>
+    <div><b>2 400+</b><small>Clientes habillées</small></div>
+    <div><b>14 jours</b><small>Retours gratuits</small></div>
+    <div><b>4</b><small>Collections par an</small></div>
+  </div>
+</section>
+
+<!-- COLLECTIONS PHARES -->
+<section id="phares" style="padding-top:0">
+  <div class="sec-head">
+    <h2>Collections <span class="serif-i">phares</span></h2>
+    <p>Trois univers, trois températures de couleur. Chaque capsule se commande pièce par pièce sur WhatsApp : dites-nous la taille, nous nous occupons du reste.</p>
+  </div>
+  <div class="phares">
+    <article class="phare blk-sun">
+      <div class="pimg2"><img src="chroma/lime.webp" alt="Capsule Agrume — tailleur lin citron"></div>
+      <div class="pbody">
+        <h3>Capsule Agrume</h3>
+        <p>Lins et crêpes aux jaunes et oranges mûrs — la lumière du matin, portée en tailleur.</p>
+        <div class="from"><small>À partir de</small>3 100 DH</div>
+        <a class="cmd" href="https://wa.me/212693981822" data-msg="Bonjour CHROMA, je souhaite découvrir la Capsule Agrume (à partir de 3 100 DH). Merci !">Découvrir la capsule</a>
+      </div>
+    </article>
+    <article class="phare blk-lav">
+      <div class="pimg2"><img src="chroma/cobalt.webp" alt="Capsule Soir Cobalt — robe satin cobalt"></div>
+      <div class="pbody">
+        <h3>Soir Cobalt</h3>
+        <p>Soies profondes et satins électriques pour les soirées où le bleu remplace le noir.</p>
+        <div class="from"><small>À partir de</small>2 600 DH</div>
+        <a class="cmd" href="https://wa.me/212693981822" data-msg="Bonjour CHROMA, je souhaite découvrir la capsule Soir Cobalt (à partir de 2 600 DH). Merci !">Découvrir la capsule</a>
+      </div>
+    </article>
+    <article class="phare blk-rose">
+      <div class="pimg2"><img src="chroma/petal.webp" alt="Capsule Douceur Pétale — ensemble bouclé rose"></div>
+      <div class="pbody">
+        <h3>Douceur Pétale</h3>
+        <p>Bouclés poudrés et roses tendres sur fonds menthe — la douceur, avec des épaules.</p>
+        <div class="from"><small>À partir de</small>3 400 DH</div>
+        <a class="cmd" href="https://wa.me/212693981822" data-msg="Bonjour CHROMA, je souhaite découvrir la capsule Douceur Pétale (à partir de 3 400 DH). Merci !">Découvrir la capsule</a>
+      </div>
+    </article>
+  </div>
+</section>
+
 <!-- 3D CAROUSEL -->
 <section class="carousel-sec" id="signatures">
   <div class="inner">
@@ -316,22 +374,27 @@ h2 .serif-i{color:var(--fuchsia)}
         <article class="panel3d p-cobalt">
           <div class="pimg"><img src="chroma/cobalt.webp" alt="Robe satin cobalt"></div>
           <div class="pcap"><b>Robe satin cobalt</b><span>2 600 DH</span></div>
+          <a class="porder" href="https://wa.me/212693981822?text=Bonjour%20CHROMA%2C%20je%20souhaite%20commander%20la%20Robe%20satin%20cobalt%20(2%20600%20DH).%20Merci%20!">Commander</a>
         </article>
         <article class="panel3d p-fuchsia">
           <div class="pimg"><img src="chroma/fuchsia.webp" alt="Robe portefeuille fuchsia"></div>
           <div class="pcap"><b>Robe fuchsia</b><span>2 900 DH</span></div>
+          <a class="porder" href="https://wa.me/212693981822?text=Bonjour%20CHROMA%2C%20je%20souhaite%20commander%20la%20Robe%20fuchsia%20(2%20900%20DH).%20Merci%20!">Commander</a>
         </article>
         <article class="panel3d p-petal">
           <div class="pimg"><img src="chroma/petal.webp" alt="Ensemble bouclé pétale"></div>
           <div class="pcap"><b>Ensemble pétale</b><span>3 400 DH</span></div>
+          <a class="porder" href="https://wa.me/212693981822?text=Bonjour%20CHROMA%2C%20je%20souhaite%20commander%20l%27Ensemble%20p%C3%A9tale%20(3%20400%20DH).%20Merci%20!">Commander</a>
         </article>
         <article class="panel3d p-lime">
           <div class="pimg"><img src="chroma/lime.webp" alt="Tailleur lin citron"></div>
           <div class="pcap"><b>Tailleur citron</b><span>3 100 DH</span></div>
+          <a class="porder" href="https://wa.me/212693981822?text=Bonjour%20CHROMA%2C%20je%20souhaite%20commander%20le%20Tailleur%20citron%20(3%20100%20DH).%20Merci%20!">Commander</a>
         </article>
         <article class="panel3d p-hero">
           <div class="pimg"><img src="chroma/hero.webp" alt="Tailleur agrume"></div>
           <div class="pcap"><b>Tailleur agrume</b><span>3 600 DH</span></div>
+          <a class="porder" href="https://wa.me/212693981822?text=Bonjour%20CHROMA%2C%20je%20souhaite%20commander%20le%20Tailleur%20agrume%20(3%20600%20DH).%20Merci%20!">Commander</a>
         </article>
       </div>
     </div>
@@ -456,6 +519,99 @@ footer{background:var(--ink);color:var(--cream);margin-top:2rem}
   h1 .w > span{transform:none}
   #preloader{display:none}
 }
+
+/* ---------- V2 : PARALLAXE LISSÉ / TILT / NOUVELLES SECTIONS ---------- */
+.hero{position:relative}
+.hero-blob{
+  position:absolute;width:62vmin;height:62vmin;border-radius:50%;
+  right:-8%;top:2%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(245,185,33,.55) 0%,rgba(216,17,125,.28) 52%,rgba(216,17,125,0) 72%);
+  filter:blur(6px);will-change:transform;
+}
+.hero-copy,.hero-arch{position:relative;z-index:1}
+[data-plx]{will-change:transform}
+
+/* La Boutique — histoire */
+.story{display:grid;grid-template-columns:.92fr 1.08fr;gap:3rem;align-items:center}
+.story .simg{border-radius:var(--radius-arch);overflow:hidden;aspect-ratio:4/4.7;box-shadow:0 26px 50px rgba(23,19,14,.18)}
+.story .simg img{width:100%;height:100%;object-fit:cover}
+.story p{line-height:1.7;color:#3d362c;margin-top:1rem}
+.statband{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.4rem}
+.statband div{border:1.5px solid rgba(23,19,14,.16);border-radius:18px;padding:1.1rem 1rem;text-align:center;background:rgba(255,255,255,.5)}
+.statband b{display:block;font-size:1.7rem;font-weight:900}
+.statband small{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6d6355}
+
+/* Collections phares */
+.phares{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.phare{border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transform-style:preserve-3d;transition:transform .35s ease}
+.phare .pimg2{aspect-ratio:4/3.4;overflow:hidden}
+.phare .pimg2 img{width:100%;height:100%;object-fit:cover}
+.phare .pbody{padding:1.2rem 1.25rem 1.35rem;display:flex;flex-direction:column;gap:.55rem;flex:1;background:rgba(255,255,255,.45)}
+.phare h3{font-size:1.15rem;font-weight:800;text-transform:uppercase}
+.phare p{font-size:.9rem;line-height:1.55;color:#5c5344}
+.phare .from{font-weight:900;font-size:1.15rem}
+.phare .from small{display:block;color:var(--fuchsia);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.15rem}
+.phare .cmd{margin-top:auto}
+
+/* Carrousel — lien commander par pièce */
+.porder{
+  display:block;text-align:center;background:var(--fuchsia);color:#fff;
+  font-weight:800;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.7rem 1rem;transition:background .25s ease;
+}
+.porder:hover{background:#1faa55}
+
+/* Guide des tailles */
+.tscroll{overflow-x:auto;border:1.5px solid rgba(23,19,14,.16);border-radius:20px;background:rgba(255,255,255,.55)}
+table.tailles{width:100%;border-collapse:collapse;min-width:560px;font-size:.95rem}
+table.tailles th,table.tailles td{padding:.85rem 1rem;text-align:left;border-bottom:1px solid rgba(23,19,14,.1)}
+table.tailles th{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(23,19,14,.05)}
+table.tailles tr:last-child td{border-bottom:none}
+table.tailles td b{font-weight:900}
+.tnote{margin-top:1rem;font-size:.92rem;color:#5c5344;line-height:1.6}
+.tnote a{font-weight:800;text-decoration:underline}
+
+/* Bandeau livraison & retours */
+.strip-sec{background:var(--cobalt);color:var(--cream);max-width:none}
+.strip-sec .inner{max-width:1240px;margin:0 auto}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+.strip div b{display:block;font-size:1.45rem;font-weight:900;margin-bottom:.35rem}
+.strip div span{font-size:.88rem;line-height:1.55;color:#dfe3fa;display:block}
+
+/* Avis clientes */
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.avis{border:1.5px solid rgba(23,19,14,.14);border-radius:22px;padding:1.5rem;background:rgba(255,255,255,.55)}
+.avis .stars{color:var(--sun);letter-spacing:.25em;font-size:1rem;margin-bottom:.8rem}
+.avis p{line-height:1.65;color:#3d362c;font-size:.96rem}
+.avis .who{margin-top:1rem;font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em}
+.avis .who small{display:block;font-weight:600;text-transform:none;letter-spacing:0;color:#6d6355;margin-top:.15rem}
+.avis-note{margin-top:1.2rem;font-size:.8rem;color:#6d6355}
+
+/* FAQ */
+.faq details{border-bottom:1.5px solid rgba(23,19,14,.14);padding:1.15rem 0}
+.faq summary{font-weight:800;font-size:1.05rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.4rem;font-weight:900;color:var(--fuchsia)}
+.faq details[open] summary::after{content:"\2013"}
+.faq details p{margin-top:.7rem;line-height:1.65;color:#3d362c;max-width:46rem}
+.faq details p a{font-weight:800;text-decoration:underline}
+
+/* Lookbook — pile d'images synchronisée */
+.lb-frame{position:relative}
+.lb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
+.lb-img.on{opacity:1}
+
+@media (max-width:1020px){
+  .story{grid-template-columns:1fr}
+  .phares{grid-template-columns:1fr 1fr}
+  .statband{grid-template-columns:repeat(2,1fr)}
+  .strip{grid-template-columns:repeat(2,1fr)}
+  .avis-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .phares{grid-template-columns:1fr}
+  .strip{grid-template-columns:1fr}
+}
 </style>
 
 <!-- BOUTIQUE -->
@@ -539,6 +695,29 @@ footer{background:var(--ink);color:var(--cream);margin-top:2rem}
   </div>
 </section>
 
+<!-- GUIDE DES TAILLES -->
+<section id="tailles">
+  <div class="sec-head">
+    <h2>Guide des <span class="serif-i">tailles</span></h2>
+    <p>Nos coupes taillent juste. Mesurez-vous à plat, comparez au tableau, et pour les pièces en soie, entre deux tailles, prenez la plus grande.</p>
+  </div>
+  <div class="tscroll">
+    <table class="tailles">
+      <thead>
+        <tr><th>Taille CHROMA</th><th>Équiv. FR</th><th>Poitrine (cm)</th><th>Taille (cm)</th><th>Hanches (cm)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>XS</b></td><td>34–36</td><td>78–82</td><td>60–64</td><td>86–90</td></tr>
+        <tr><td><b>S</b></td><td>36–38</td><td>82–86</td><td>64–68</td><td>90–94</td></tr>
+        <tr><td><b>M</b></td><td>38–40</td><td>86–90</td><td>68–72</td><td>94–98</td></tr>
+        <tr><td><b>L</b></td><td>40–42</td><td>90–96</td><td>72–78</td><td>98–104</td></tr>
+        <tr><td><b>XL</b></td><td>42–44</td><td>96–102</td><td>78–84</td><td>104–110</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tnote">Entre deux tailles ? Écrivez-nous sur <a href="https://wa.me/212693981822?text=Bonjour%20CHROMA%2C%20je%20h%C3%A9site%20entre%20deux%20tailles%2C%20pouvez-vous%20me%20conseiller%20%3F">WhatsApp</a> avec vos mensurations : nous vous conseillons la coupe exacte, pièce par pièce. Et si la taille ne convient pas, l'échange est gratuit sous 14 jours.</p>
+</section>
+
 <!-- LOOKBOOK -->
 <section id="lookbook">
   <div class="sec-head">
@@ -547,7 +726,11 @@ footer{background:var(--ink);color:var(--cream);margin-top:2rem}
   </div>
   <div class="lookbook">
     <div class="lb-sticky">
-      <figure class="lb-frame"><img src="chroma/hero.webp" alt="Lookbook CHROMA — tailleur agrume"></figure>
+      <figure class="lb-frame" data-plx="12">
+        <img class="lb-img on" src="chroma/hero.webp" alt="Lookbook CHROMA — tailleur agrume">
+        <img class="lb-img" src="chroma/cobalt.webp" alt="Lookbook CHROMA — robe cobalt">
+        <img class="lb-img" src="chroma/petal.webp" alt="Lookbook CHROMA — ensemble pétale">
+      </figure>
       <p class="lb-note">Photographié à Tanger, entre lumière de la médina et murs chaulés. Toutes les pièces du lookbook sont disponibles à la boutique, dans la limite des tailles.</p>
     </div>
     <div class="looks">
@@ -573,6 +756,68 @@ footer{background:var(--ink);color:var(--cream);margin-top:2rem}
   </div>
 </section>
 
+<!-- LIVRAISON & RETOURS -->
+<section class="strip-sec">
+  <div class="inner">
+    <div class="strip">
+      <div><b>24–48 h</b><span>Livraison à Tanger et dans tout le Maroc, suivie par message à chaque étape.</span></div>
+      <div><b>14 jours</b><span>Échange de taille ou de couleur gratuit, sans condition, sous 14 jours.</span></div>
+      <div><b>Retours gratuits</b><span>Retour pris en charge par la boutique pendant 14 jours ; remboursement sous 5 jours ouvrés.</span></div>
+      <div><b>À la livraison</b><span>Payez uniquement quand votre pièce est entre vos mains — espèces ou carte.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS CLIENTES -->
+<section id="avis">
+  <div class="sec-head">
+    <h2>Elles ont <span class="serif-i">osé</span></h2>
+    <p>Ce que nos clientes racontent après la première couleur portée en plein jour.</p>
+  </div>
+  <div class="avis-grid">
+    <article class="avis">
+      <div class="stars">★★★★★</div>
+      <p>« La robe cobalt est encore plus profonde en vrai qu'en photo. Livrée en 24 heures, essayée à la maison — et gardée sans une seconde d'hésitation. »</p>
+      <div class="who">Salma B.<small>Tanger — Robe satin cobalt</small></div>
+    </article>
+    <article class="avis">
+      <div class="stars">★★★★★</div>
+      <p>« Je redoutais l'orange en tailleur ; c'est devenu ma tenue préférée pour les rendez-vous qui comptent. La coupe est nette, et la couleur ne bouge pas au lavage. »</p>
+      <div class="who">Yasmine E.<small>Casablanca — Tailleur agrume</small></div>
+    </article>
+    <article class="avis">
+      <div class="stars">★★★★★</div>
+      <p>« Mauvaise taille commandée, échange reçu quatre jours plus tard, sans frais et sans paperasse. Et l'ensemble bouclé est d'une douceur rare. »</p>
+      <div class="who">Khadija R.<small>Tétouan — Ensemble bouclé pétale</small></div>
+    </article>
+  </div>
+  <p class="avis-note">Avis de démonstration — témoignages présentés à titre d'exemple sur ce modèle de site.</p>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq" style="padding-top:0">
+  <div class="sec-head">
+    <h2>Questions <span class="serif-i">fréquentes</span></h2>
+    <p>Tout ce qu'il faut savoir avant de commander — pour le reste, on vous répond sur WhatsApp.</p>
+  </div>
+  <details>
+    <summary>Comment choisir ma taille ?</summary>
+    <p>Consultez le <a href="#tailles">guide des tailles</a> : nos coupes taillent juste. Entre deux tailles, prenez la plus grande pour les pièces en soie. Et si la taille ne convient pas, l'échange est gratuit sous 14 jours.</p>
+  </details>
+  <details>
+    <summary>Quels sont les délais de livraison ?</summary>
+    <p>24 à 48 h à Tanger, 2 à 4 jours dans le reste du Maroc. Livraison offerte dès 1 500 DH d'achat, sinon 30 DH. Chaque commande est suivie par message jusqu'à la remise en main propre.</p>
+  </details>
+  <details>
+    <summary>Puis-je échanger ou retourner une pièce ?</summary>
+    <p>Oui : échange de taille ou de couleur gratuit sous 14 jours, et retours gratuits pendant la même période, pièce non portée et étiquettes intactes. Remboursement sous 5 jours ouvrés après réception du retour.</p>
+  </details>
+  <details>
+    <summary>Comment se fait le paiement ?</summary>
+    <p>À la livraison, en espèces ou par carte — vous ne payez que lorsque votre pièce est entre vos mains. Un acompte peut être demandé pour les commandes hors Tanger supérieures à 3 000 DH.</p>
+  </details>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="foot">
@@ -587,7 +832,7 @@ footer{background:var(--ink);color:var(--cream);margin-top:2rem}
       <div>
         <h4>La maison</h4>
         <a href="#lookbook">Lookbook nº 04</a>
-        <a href="#accueil">Notre histoire</a>
+        <a href="#histoire">Notre histoire</a>
         <a href="#collections">Six humeurs</a>
       </div>
       <div>
@@ -638,23 +883,7 @@ footer{background:var(--ink);color:var(--cream);margin-top:2rem}
     });
   });
 
-  /* ----- Hero scroll scale ----- */
-  var heroImg = document.getElementById("heroImg");
-  var hero = document.querySelector(".hero");
-  if(heroImg && hero && !reduced){
-    var ticking = false;
-    function upd(){
-      var r = hero.getBoundingClientRect();
-      var total = r.height + window.innerHeight;
-      var p = Math.min(1, Math.max(0, (window.innerHeight - r.top) / total));
-      heroImg.style.transform = "scale(" + (1 + p * 0.06).toFixed(4) + ")";
-      ticking = false;
-    }
-    window.addEventListener("scroll", function(){
-      if(!ticking){ ticking = true; requestAnimationFrame(upd); }
-    }, {passive:true});
-    upd();
-  }
+  /* ----- Hero : parallaxe assurée par le moteur lissé en fin de page ----- */
 
   /* ----- 3D concave carousel ----- */
   var ring = document.getElementById("ring");
@@ -667,21 +896,22 @@ footer{background:var(--ink);color:var(--cream);margin-top:2rem}
       ring.children[i].style.transform =
         "rotateY(" + (i * step) + "deg) translateZ(" + radius + "px)";
     }
-    var rot = 0, dragging = false, startX = 0, startRot = 0, auto = !reduced;
-    function render(){ ring.style.transform = "translateZ(-" + radius + "px) rotateY(" + rot + "deg)"; }
+    var rot = 0, target = 0, dragging = false, startX = 0, startTarget = 0, auto = !reduced;
+    function render(){ ring.style.transform = "translateZ(-" + radius + "px) rotateY(" + rot.toFixed(3) + "deg)"; }
     render();
     (function loop(){
-      if(auto && !dragging){ rot -= 0.12; render(); }
+      if(auto && !dragging){ target -= 0.12; }
+      rot += (target - rot) * (dragging ? 0.35 : 0.075);
+      render();
       requestAnimationFrame(loop);
     })();
     stage.addEventListener("pointerdown", function(e){
-      dragging = true; startX = e.clientX; startRot = rot;
+      dragging = true; startX = e.clientX; startTarget = target;
       stage.setPointerCapture(e.pointerId);
     });
     stage.addEventListener("pointermove", function(e){
       if(!dragging) return;
-      rot = startRot + (e.clientX - startX) * 0.25;
-      render();
+      target = startTarget + (e.clientX - startX) * 0.25;
     });
     ["pointerup","pointercancel","pointerleave"].forEach(function(ev){
       stage.addEventListener(ev, function(){ dragging = false; });
@@ -728,6 +958,68 @@ footer{background:var(--ink);color:var(--cream);margin-top:2rem}
     looks.forEach(function(l){ io.observe(l); });
   } else {
     looks.forEach(function(l){ l.classList.add("active"); });
+  }
+})();
+</script>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduced) return;
+  var fine = window.matchMedia("(pointer: fine)").matches;
+
+  /* ----- Moteur de parallaxe lissé (lerp par couche) ----- */
+  var layers = [];
+  document.querySelectorAll("[data-plx]").forEach(function(el){
+    layers.push({
+      el: el,
+      host: el.closest("section") || el.closest(".hero") || el.parentElement,
+      amt: parseFloat(el.getAttribute("data-plx")) || 0,
+      sc: parseFloat(el.getAttribute("data-plx-scale")) || 0,
+      cur: -1
+    });
+  });
+  function clamp01(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function tick(){
+    layers.forEach(function(L){
+      var r = L.host.getBoundingClientRect();
+      var p = clamp01((window.innerHeight - r.top) / (window.innerHeight + r.height));
+      if(L.cur < 0) L.cur = p;
+      L.cur += (p - L.cur) * 0.085;
+      var t = "translateY(" + ((L.cur - 0.5) * L.amt).toFixed(2) + "px)";
+      if(L.sc){ t += " scale(" + (1 + L.sc + L.cur * L.sc).toFixed(4) + ")"; }
+      L.el.style.transform = t;
+    });
+    requestAnimationFrame(tick);
+  }
+  if(layers.length) requestAnimationFrame(tick);
+
+  /* ----- Inclinaison suivie au pointeur (cartes produit) ----- */
+  if(fine){
+    document.querySelectorAll(".card, .phare").forEach(function(el){
+      el.addEventListener("pointermove", function(e){
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = "perspective(950px) rotateX(" + (-py * 6).toFixed(2) + "deg) rotateY(" + (px * 8).toFixed(2) + "deg)";
+      });
+      el.addEventListener("pointerleave", function(){ el.style.transform = ""; });
+    });
+  }
+
+  /* ----- Lookbook : l'image suit le look actif ----- */
+  var lbImgs = document.querySelectorAll(".lb-img");
+  var lookEls = document.querySelectorAll("[data-look]");
+  if(lbImgs.length && lookEls.length && "IntersectionObserver" in window){
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var idx = Array.prototype.indexOf.call(lookEls, en.target);
+        lbImgs.forEach(function(img, i){ img.classList.toggle("on", i === idx); });
+      });
+    }, {threshold: 0.45});
+    lookEls.forEach(function(l){ io2.observe(l); });
   }
 })();
 </script>
