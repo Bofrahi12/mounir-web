@@ -4,15 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Smash House — سماش هاوس · تجربة 3D تفاعلية · طنجة</title>
+<title>Smash House — سماش هاوس · تجربة افتتاحية 3D · طنجة</title>
 <script>document.documentElement.classList.add('js');</script>
 <style>
 :root{
-  --bg:#060607; --panel:#0d0d0f; --line:#232327; --hair:rgba(244,241,234,.14);
-  --acc:#e8362a; --acc2:#ff5a3c; --txt:#f4f1ea; --mut:#a49e93;
+  --bg:#060607; --panel:#0d0d0f; --line:#232327; --hair:rgba(244,241,234,.13);
+  --acc:#e8362a; --acc2:#ff5a7a; --txt:#f4f1ea; --mut:#a49e93;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:auto}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',Tahoma,Arial,sans-serif;overflow-x:hidden}
@@ -20,8 +19,7 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 ::selection{background:var(--acc);color:#fff}
 .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
 .demobar{background:#000;color:#ffd977;text-align:center;font-size:13.5px;padding:9px 14px;border-bottom:1px solid #3a2f10;position:relative;z-index:200}
-/* ---------- chrome ---------- */
-#progress{position:fixed;top:0;right:0;height:2px;background:var(--acc);width:0;z-index:150}
+#progress{position:fixed;top:0;right:0;height:2px;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0;z-index:150}
 header{position:fixed;top:36px;left:0;right:0;z-index:140;transition:background .3s,border-color .3s}
 header .bar{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1180px;margin:0 auto}
 header.scrolled{background:rgba(6,6,7,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
@@ -29,11 +27,10 @@ header.scrolled{background:rgba(6,6,7,.9);backdrop-filter:blur(10px);border-bott
 nav.chaps{display:flex;gap:22px;font-size:12.5px;color:var(--mut);letter-spacing:1.5px}
 nav.chaps a:hover{color:#fff}
 .btn{display:inline-block;background:var(--acc);color:#fff;padding:13px 28px;border-radius:6px;font-weight:800;font-size:16px;transition:transform .25s,background .25s;will-change:transform}
-.btn:hover{background:var(--acc2)}
+.btn:hover{background:#c22a20}
 .btn-wa{background:#22c064}.btn-ghost{background:transparent;border:1px solid #555}
-.eyebrow{font-family:'Arial Narrow',Arial,sans-serif;color:var(--acc);font-weight:700;letter-spacing:4px;font-size:13px;text-transform:uppercase}
+.eyebrow{font-family:'Arial Narrow',Arial,sans-serif;color:var(--acc2);font-weight:700;letter-spacing:4px;font-size:13px;text-transform:uppercase}
 .micro{font-family:'Courier New',monospace;font-size:11px;letter-spacing:1.5px;color:var(--mut);text-transform:uppercase}
-/* progress rail */
 #rail{position:fixed;inset-inline-end:20px;top:50%;transform:translateY(-50%);z-index:130;display:flex;flex-direction:column;gap:16px;align-items:center}
 #rail .rdot{display:flex;flex-direction:column;align-items:center;gap:5px;color:#5c574f;font-family:'Courier New',monospace;font-size:10.5px;transition:color .3s}
 #rail .rdot i{width:7px;height:7px;border-radius:50%;border:1px solid #5c574f;display:block;transition:.3s}
@@ -41,10 +38,8 @@ nav.chaps a:hover{color:#fff}
 #rail .rdot.on i{background:var(--acc);border-color:var(--acc);box-shadow:0 0 12px rgba(232,54,42,.8)}
 #rail .rline{width:1px;height:44px;background:var(--hair);position:relative;overflow:hidden}
 #rail .rline b{position:absolute;top:0;left:0;width:100%;background:var(--acc);height:0}
-/* grain + vignette */
 #grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:120;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");animation:gr 7s steps(8) infinite}
 @keyframes gr{0%,100%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(-1%,2%)}}
-/* cursor */
 #cur,#curR{position:fixed;top:0;left:0;pointer-events:none;z-index:300;border-radius:50%;display:none}
 @media(pointer:fine){#cur,#curR{display:block}}
 #cur{width:6px;height:6px;background:var(--acc);transform:translate(-50%,-50%)}
@@ -52,80 +47,52 @@ nav.chaps a:hover{color:#fff}
 #curR.big{width:58px;height:58px;border-color:var(--acc)}
 /* ---------- STAGE ---------- */
 .stage{position:relative}
-.pin{position:relative;height:100svh;overflow:hidden;background:radial-gradient(1000px 520px at 66% 44%,rgba(232,54,42,.14),transparent 65%),var(--bg)}
-.pin .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 55%,rgba(0,0,0,.55));z-index:3}
+.pin{position:relative;height:100svh;overflow:hidden;background:#060607}
+.pin .grid-bg{position:absolute;inset:0;z-index:0;background:
+  linear-gradient(rgba(244,241,234,.045) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(244,241,234,.045) 1px,transparent 1px);
+  background-size:72px 72px;mask-image:radial-gradient(80% 70% at 50% 45%,#000 30%,transparent 78%)}
+.pin .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 52%,rgba(0,0,0,.6));z-index:3}
 .pin .frame{position:absolute;inset:14px;border:1px solid var(--hair);pointer-events:none;z-index:3}
-#gl{position:absolute;inset:0;width:100%;height:100%;opacity:1;z-index:2}
+.pin .corner{position:absolute;width:18px;height:18px;z-index:4;pointer-events:none;border-color:var(--acc2);border-style:solid;border-width:0}
+.corner.tl{top:22px;inset-inline-start:22px;border-top-width:1.5px;border-inline-start-width:1.5px}
+.corner.tr{top:22px;inset-inline-end:22px;border-top-width:1.5px;border-inline-end-width:1.5px}
+.corner.bl{bottom:22px;inset-inline-start:22px;border-bottom-width:1.5px;border-inline-start-width:1.5px}
+.corner.br{bottom:22px;inset-inline-end:22px;border-bottom-width:1.5px;border-inline-end-width:1.5px}
 #glwrap{position:absolute;inset:0;z-index:2}
-#glwrap.trans{filter:blur(1.3px) drop-shadow(2.5px 0 rgba(255,0,70,.28)) drop-shadow(-2.5px 0 rgba(0,210,255,.28))}
+#gl{position:absolute;inset:0;width:100%;height:100%}
+#glwrap.trans{filter:blur(1px) drop-shadow(2px 0 rgba(255,0,70,.28)) drop-shadow(-2px 0 rgba(0,210,255,.28))}
 #fallback3d{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:2}
 #fallback3d img{height:84svh;object-fit:contain}
-#heroImg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;z-index:1;will-change:transform,filter}
-#boxImg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1;opacity:0;will-change:transform;filter:brightness(1.07)}
-.flare{position:absolute;top:0;bottom:0;width:34%;z-index:2;background:linear-gradient(100deg,transparent,rgba(255,214,170,.13),transparent);transform:translateX(-140%) skewX(-8deg);pointer-events:none}
+#loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mut);letter-spacing:3px;font-size:13px;z-index:5;font-family:'Courier New',monospace}
 .ovl{position:absolute;z-index:6;pointer-events:none}
 .ovl a{pointer-events:auto}
-.mask{display:block;overflow:hidden}
-@keyframes riseIn{from{transform:translateY(112%)}to{transform:translateY(0)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-#ovHero .mask>span{animation:riseIn 1.05s cubic-bezier(.2,.7,.2,1) both}
-#ovHero .eyebrow.mask>span{animation-delay:.15s}
-#ovHero h1 .mask:nth-child(1)>span{animation-delay:.32s}
-#ovHero h1 .mask:nth-child(2)>span{animation-delay:.48s}
-#heroSub{animation:fadeUp .9s ease .95s both}
-#heroTags{animation:fadeUp .9s ease 1.15s both}
-.pin .shad{position:absolute;inset:0;z-index:1;background:linear-gradient(270deg,rgba(0,0,0,.5),transparent 58%);pointer-events:none}
-.mask>span{display:block;transform:translateY(112%)}
-/* scene 1 */
-#ovHero{inset-inline-start:0;top:50%;transform:translateY(-52%);max-width:640px;padding:0 34px}
-#ovHero h1{font-size:clamp(46px,8.4vw,100px);font-weight:900;line-height:1.04;margin:16px 0 8px}
-#ovHero h1 .lat{font-family:'Arial Black',Arial,sans-serif;letter-spacing:.5px}
-#ovHero h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--acc)}
-#ovHero p{color:#ddd6c9;max-width:450px;font-size:18px;margin:14px 0 26px;opacity:0}
-#ovHero .tags{display:flex;gap:10px;flex-wrap:wrap;opacity:0}
-#ovHero .tags span{border:1px solid #4a4a50;border-radius:30px;padding:6px 16px;font-size:14px;color:#e8e2d4;background:rgba(0,0,0,.4)}
-#scrollcue{position:absolute;bottom:30px;inset-inline-start:50%;transform:translateX(50%);z-index:6;color:var(--mut);font-size:11px;letter-spacing:4px;text-align:center}
-#scrollcue i{display:block;width:1px;height:44px;background:linear-gradient(var(--acc),transparent);margin:8px auto 0;animation:cue 1.8s infinite}
+#ov1{inset-inline-start:0;top:15svh;padding:0 38px;max-width:700px}
+#ov1 h1{font-size:clamp(40px,6.6vw,84px);font-weight:900;line-height:1.05;margin:14px 0 12px;text-shadow:0 4px 44px rgba(0,0,0,.6)}
+#ov1 h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--acc2)}
+#ov1 p{color:#cfc9bd;max-width:430px;font-size:17px;text-shadow:0 2px 16px rgba(0,0,0,.85)}
+#ov1 .meta{display:flex;gap:18px;margin-top:20px;flex-wrap:wrap}
+#ov2{inset-inline-end:0;top:16svh;padding:0 38px;text-align:end;max-width:480px}
+#ov2 h2{font-size:clamp(26px,3.6vw,42px);font-weight:900;line-height:1.2;margin:10px 0 10px}
+#ov2 p{color:var(--mut);font-size:16px}
+#ov2 .ticks{margin-top:18px;display:grid;gap:7px;justify-items:end}
+#ov3{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:10svh;text-align:center}
+#ov3 .statement{font-size:clamp(38px,7vw,84px);font-weight:900;line-height:1.12;position:relative}
+#ov3 .statement .sh{position:absolute;inset:0;color:transparent;-webkit-text-stroke:1.5px rgba(255,90,122,.5);transform:translate(7px,7px);z-index:-1}
+#ov3 p{color:#ddd6c9;margin-top:12px;font-size:16.5px;text-shadow:0 2px 18px rgba(0,0,0,.8)}
+#ov4{inset-inline-start:0;top:13svh;padding:0 38px}
+#ov4 h2{font-size:clamp(28px,4vw,46px);font-weight:900;line-height:1.15;margin:10px 0 8px}
+#ov4 p{color:var(--mut);font-size:16px;max-width:380px}
+#ov5{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8.5svh;text-align:center}
+#ov5 h2{font-size:clamp(28px,4.4vw,46px);font-weight:900;margin:10px 0 12px;text-shadow:0 3px 34px rgba(0,0,0,.9)}
+#ov5 p{color:#cfc9bd;max-width:520px;font-size:16.5px;margin-bottom:24px}
+#ov5 .mini-nav{display:flex;gap:22px;margin-top:28px;font-size:12.5px;letter-spacing:1.5px;color:var(--mut)}
+#ov5 .mini-nav a:hover{color:#fff}
+#ov5 .techfoot{margin-top:16px}
+#scrollcue{position:absolute;bottom:26px;inset-inline-start:50%;transform:translateX(50%);z-index:6;color:var(--mut);font-size:11px;letter-spacing:4px;text-align:center}
+#scrollcue i{display:block;width:1px;height:42px;background:linear-gradient(var(--acc2),transparent);margin:8px auto 0;animation:cue 1.8s infinite}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-/* scene 2 */
-#ovLayers{inset-inline-start:0;top:50%;transform:translateY(-50%);width:min(440px,90vw);padding:0 34px;opacity:0}
-#ovLayers p.intro{color:var(--mut);font-size:15.5px;margin:10px 0 20px}
-.layer-label{border-inline-start:2px solid #2c2c31;padding:11px 16px;margin-bottom:10px;opacity:.16;transform:translateX(16px);transition:.45s;background:rgba(8,8,10,.55);backdrop-filter:blur(3px)}
-.layer-label.on{opacity:1;transform:none;border-color:var(--acc)}
-.layer-label h3{font-size:19px;margin-bottom:2px}
-.layer-label p{color:var(--mut);font-size:14px}
-.layer-label .micro{color:var(--acc2)}
-#techlabels{position:absolute;inset-inline-end:34px;bottom:110px;z-index:6;text-align:end;opacity:0}
-#techlabels div{margin-top:6px}
-/* scene 3 */
-#ovBig{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:11svh;text-align:center;opacity:0}
-#ovBig .statement{font-size:clamp(40px,7.5vw,88px);font-weight:900;line-height:1.1;position:relative}
-#ovBig .statement .sh{position:absolute;inset:0;color:transparent;-webkit-text-stroke:1.5px rgba(232,54,42,.55);transform:translate(7px,7px);z-index:-1}
-#ovBig p{color:var(--mut);margin-top:14px;font-size:16.5px}
-/* scene 4 */
-#ovBox{inset-inline-start:0;bottom:12svh;max-width:600px;padding:0 34px;opacity:0}
-#ovBox h2{font-size:clamp(30px,4.6vw,50px);font-weight:900;line-height:1.15;margin:10px 0 12px;color:#fff;text-shadow:0 3px 34px rgba(0,0,0,.85)}
-#ovBox p{color:#ddd6c9;max-width:480px;font-size:17px}
-#ovBox .chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-/* scene 5 */
-#ovEnd{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:9svh;text-align:center;opacity:0}
-#ovEnd h2{font-size:clamp(28px,4.4vw,46px);font-weight:900;margin:10px 0 12px;text-shadow:0 3px 34px rgba(0,0,0,.9)}
-#ovEnd p{color:#cfc9bd;max-width:520px;font-size:16.5px;margin-bottom:24px;text-shadow:0 2px 20px rgba(0,0,0,.9)}
-#ovEnd .mini-nav{display:flex;gap:22px;margin-top:30px;font-size:12.5px;letter-spacing:1.5px;color:var(--mut)}
-#ovEnd .mini-nav a:hover{color:#fff}
-#loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mut);letter-spacing:3px;font-size:13px;z-index:5}
 #debug{position:fixed;bottom:14px;left:14px;z-index:400;background:#000;border:1px solid var(--acc);color:#ffd977;font-family:'Courier New',monospace;font-size:12px;padding:8px 12px;display:none}
-/* ---------- MID-PAGE 3D PRODUCT ZONE ---------- */
-.zone3d{position:relative;background:radial-gradient(900px 480px at 34% 46%,rgba(232,54,42,.13),transparent 65%),#080809;border-block:1px solid var(--line)}
-.zone3d .zpin{position:relative;height:100svh;overflow:hidden}
-#gl2{position:absolute;inset:0;width:100%;height:100%}
-#zoneFallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none}
-.zone-txt{position:absolute;inset-inline-start:0;bottom:12svh;max-width:560px;padding:0 34px;z-index:6}
-.zone-txt h2{font-size:clamp(30px,4.8vw,54px);font-weight:900;line-height:1.15;margin:10px 0 12px;text-shadow:0 3px 34px rgba(0,0,0,.9)}
-.zone-txt p{color:#cfc9bd;font-size:17px;max-width:440px;text-shadow:0 2px 20px rgba(0,0,0,.9)}
-.zone-txt .chips{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:22px}
-.zone-txt .pr{font-size:26px;font-weight:900;color:var(--acc2)}
-@media(max-width:820px){.zone-txt{bottom:7svh}}
 /* ---------- SECTIONS ---------- */
 .marquee{border-block:1px solid var(--line);background:#0a0a0c;overflow:hidden;padding:14px 0}
 .marquee .track{display:flex;gap:44px;width:max-content;animation:mq 22s linear infinite;font-weight:900;font-size:19px;white-space:nowrap}
@@ -158,17 +125,12 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-siz
 .js .rv.d1{transition-delay:.1s}.js .rv.d2{transition-delay:.2s}.js .rv.d3{transition-delay:.3s}
 @media(max-width:820px){
   nav.chaps,#rail{display:none}
-  #ovHero{top:auto;bottom:11svh;transform:none}
-  #ovLayers{top:auto;bottom:3.5svh;transform:none;width:100%}
-  #ovLayers p.intro{display:none}
-  .layer-label{padding:7px 13px;margin-bottom:7px}
-  .layer-label p{display:none}
-  #techlabels{display:none}
-  #ovBox{bottom:9svh}
+  #ov1{top:auto;bottom:12svh}
+  #ov2{top:auto;bottom:10svh;text-align:start}
+  #ov2 .ticks{justify-items:start}
+  #ov4{top:auto;bottom:11svh}
 }
-@media(prefers-reduced-motion:reduce){
-  .marquee .track{animation:none}#grain{animation:none}#scrollcue i{animation:none}
-}
+@media(prefers-reduced-motion:reduce){.marquee .track{animation:none}#grain{animation:none}#scrollcue i{animation:none}}
 </style>
 <script type="importmap">{"imports":{"three":"./demo-burger/gl/three.module.js"}}</script>
 </head>
@@ -181,7 +143,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-siz
 
 <header id="hdr"><div class="bar">
   <div class="logo">SMASH <b>HOUSE</b></div>
-  <nav class="chaps"><a href="#stage">01 · البداية</a><a href="#menu">02 · القائمة</a><a href="#numbers">03 · الأرقام</a></nav>
+  <nav class="chaps"><a href="#stage">01 · التجربة</a><a href="#menu">02 · القائمة</a><a href="#numbers">03 · الأرقام</a></nav>
   <a class="btn btn-wa" data-mag style="padding:10px 20px" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B3%D9%85%D8%A7%D8%B4%20%D9%87%D8%A7%D9%88%D8%B3">اطلب دابا</a>
 </div></header>
 
@@ -193,66 +155,55 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-siz
   <div class="rdot" data-s="4"><i></i>05</div>
 </div>
 
-<!-- ================= PINNED 3D SHOWCASE (5 SCENES) ================= -->
+<!-- ================= PINNED EDITORIAL 3D STAGE ================= -->
 <section class="stage" id="stage">
  <div class="pin" id="pin">
-  <img id="heroImg" src="demo-burger/img/hero.webp" alt="دوبل سماش برغر">
-  <img id="boxImg" src="demo-burger/img/box.webp" alt="علبة سماش هاوس">
-  <div class="shad"></div>
+  <div class="grid-bg"></div>
   <div id="glwrap"><canvas id="gl"></canvas></div>
-  <div id="fallback3d"><img src="demo-burger/img/exploded.webp" alt="طبقات البرغر"></div>
-  <div class="flare" id="flare"></div>
+  <div id="fallback3d"><img src="demo-burger/img/exploded.webp" alt="سماش هاوس"></div>
   <div class="vig"></div><div class="frame"></div>
-  <div id="loader">… LOADING EXPERIENCE</div>
+  <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+  <div id="loader">LOADING COMPOSITION…</div>
 
-  <!-- SCENE 01 -->
-  <div class="ovl" id="ovHero">
-    <div class="eyebrow mask"><span>// Scene 01 — The Smash · Tanger</span></div>
-    <h1>
-      <span class="mask"><span>سماش هاوس</span></span>
-      <span class="mask"><span><span class="lat">DOUBLE</span> <span class="stroke">SMASH</span></span></span>
-    </h1>
-    <p id="heroSub">قطعتان لحم بقري مسحوقتان على مشواة 260°، جبن ذايب حتى للأطراف، وصوص الدار. مرّر — البرغر غادي يتفكك قدام عينيك.</p>
-    <div class="tags" id="heroTags"><span>🔥 مشواة 260°</span><span>🧀 جبن ذايب</span><span>🥩 100% لحم بقري</span></div>
-  </div>
-  <div id="scrollcue">SCROLL<i></i></div>
-
-  <!-- SCENE 02 -->
-  <div class="ovl" id="ovLayers">
-    <div class="eyebrow">// Scene 02 — The Layers</div>
-    <p class="intro">أربع طبقات، كل وحدة في عمق مختلف في فضاء 3D — كيتحركو بسرعات مختلفة مع التمرير ومع فأرتك.</p>
-    <div class="layer-label" data-l="0"><div class="micro">Layer 01 · Z +0.25</div><h3>بريوش محمّص</h3><p>محمّص بالزبدة — ذهبي ومقرمش من الأطراف.</p></div>
-    <div class="layer-label" data-l="1"><div class="micro">Layer 02 · Z +0.45</div><h3>مخلل وبصل وصوص</h3><p>مقرمش وحامض — التوازن ديال كل قضمة.</p></div>
-    <div class="layer-label" data-l="2"><div class="micro">Layer 03 · Z +0.15</div><h3>جبن أمريكي ذايب</h3><p>كيغطي اللحم حتى للأطراف.</p></div>
-    <div class="layer-label" data-l="3"><div class="micro">Layer 04 · Z −0.30</div><h3>قطعتا سماش 260°</h3><p>قشرة مكرملة، قلب طري وعصيري.</p></div>
-  </div>
-  <div id="techlabels"><div class="micro">CAM · DOLLY 8.6 → 10.5</div><div class="micro">PARALLAX · 4 LAYERS / 3 Z-DEPTHS</div><div class="micro">SCRUB · SCROLL-LINKED</div></div>
-
-  <!-- SCENE 03 -->
-  <div class="ovl" id="ovBig">
-    <div class="statement"><span class="sh" aria-hidden="true">مكدّس. ذايب. خطير.</span>مكدّس. ذايب. خطير.</div>
-    <p>قطعة وحدة كتقرب من الكاميرا — والباقي كيرجع للخلف.</p>
+  <div class="ovl" id="ov1">
+    <div class="eyebrow">// Scene 01 — Opening Screen</div>
+    <h1>موقعٌ يُشبه<br><span class="stroke">لا شيء</span> آخر.</h1>
+    <p>سماش هاوس — تجربة ويب افتتاحية: شاشات وبطاقات وكلمات كتطفو في فضاء ثلاثي الأبعاد، ونتا كتمرّر كتسافر بيناتهم.</p>
+    <div class="meta"><span class="micro">EST. 2026 — TANGER</span><span class="micro">DOUBLE SMASH · 65 DH</span><span class="micro">GRILL · 260°</span></div>
   </div>
 
-  <!-- SCENE 04 -->
-  <div class="ovl" id="ovBox">
-    <div class="eyebrow">// Scene 04 — In The Box</div>
-    <h2>العلبة كاملة،<br>بلا ما ينقص والو.</h2>
-    <p>برغر + بطاطس ذهبية + حلقات بصل + مشروب — ساخنة حتى لبابك.</p>
-    <div class="chips">
-      <a class="btn" data-mag target="_blank" rel="noopener" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%83%D9%88%D9%85%D8%A8%D9%88%20%D8%AF%D9%8A%D9%88%20(99%20%D8%AF%D8%B1%D9%87%D9%85)">كومبو ديو — 99 درهم</a>
-      <a class="btn btn-ghost" data-mag target="_blank" rel="noopener" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%83%D9%88%D9%85%D8%A8%D9%88%20%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9%20(179%20%D8%AF%D8%B1%D9%87%D9%85)">كومبو العائلة — 179 درهم</a>
+  <div class="ovl" id="ov2" style="opacity:0">
+    <div class="eyebrow">// Scene 02 — Layers</div>
+    <h2>كل عنصر في<br>عمقٍ مختلف.</h2>
+    <p>الشاشة الرئيسية، صورة المنتج، والطبقة الحرة — كيتحركو بسرعات مختلفة حيت العمق حقيقي، ماشي وهمي.</p>
+    <div class="ticks">
+      <span class="micro">LAYER A · SCREEN — Z 0.0</span>
+      <span class="micro">LAYER B · PRODUCT — Z +0.8</span>
+      <span class="micro">LAYER C · FREE — Z +1.6</span>
     </div>
   </div>
 
-  <!-- SCENE 05 -->
-  <div class="ovl" id="ovEnd">
-    <div class="eyebrow">// Scene 05 — Your Move</div>
-    <h2>شفتيه كامل… دابا ذوقو.</h2>
-    <p>دوبل سماش هو توقيع الدار: طبقات حقيقية، لحم طازج كل نهار، وتوصيل داخل طنجة في ~25 دقيقة.</p>
-    <a class="btn" data-mag href="#menu">اطلب دوبل سماش — 65 درهم</a>
-    <div class="mini-nav"><a href="#menu">القائمة</a><a href="#numbers">الأرقام</a><a href="#stage">من الأول ↑</a></div>
+  <div class="ovl" id="ov3" style="opacity:0">
+    <div class="statement"><span class="sh" aria-hidden="true">مكدّس. ذايب. خطير.</span>مكدّس. ذايب. خطير.</div>
+    <p>العلبة كاملة — برغر، بطاطس، حلقات بصل ومشروب.</p>
   </div>
+
+  <div class="ovl" id="ov4" style="opacity:0">
+    <div class="eyebrow">// Scene 04 — The Works</div>
+    <h2>التشكيلة كاملة،<br>قدام عينيك.</h2>
+    <p>بطاقات كتطفو في العمق — كل وحدة مشروع قائم بذاتو. البطاقة اللي في الوسط هي النجمة.</p>
+  </div>
+
+  <div class="ovl" id="ov5" style="opacity:0">
+    <div class="eyebrow">// Scene 05 — Your Move</div>
+    <h2>شفتي التجربة… دابا ذوقها.</h2>
+    <p>دوبل سماش: قطعتا لحم بقري، جبن ذايب، صوص الدار — وتوصيل داخل طنجة في ~25 دقيقة.</p>
+    <a class="btn" data-mag target="_blank" rel="noopener" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%3A%20%D8%AF%D9%88%D8%A8%D9%84%20%D8%B3%D9%85%D8%A7%D8%B4">اطلب دوبل سماش — 65 درهم</a>
+    <div class="mini-nav"><a href="#menu">القائمة</a><a href="#numbers">الأرقام</a><a href="#stage">من الأول ↑</a></div>
+    <div class="micro techfoot">SMASH HOUSE © 2026 · TANJA WEB — WEBGL / GSAP / LENIS</div>
+  </div>
+
+  <div id="scrollcue">SCROLL<i></i></div>
  </div>
 </section>
 
@@ -267,20 +218,6 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-siz
   <p class="sub rv">كل برغر كيتصايب عند الطلب — اختار وصيفط طلبك في واتساب.</p>
   <div class="grid" id="menuGrid"></div>
 </div></section>
-
-<section class="zone3d" id="zone3d">
- <div class="zpin">
-  <canvas id="gl2"></canvas>
-  <img id="zoneFallback" src="demo-burger/img/exploded.webp" alt="دوبل سماش من كل زاوية">
-  <div class="vig"></div>
-  <div class="zone-txt">
-    <div class="eyebrow">// The Product — 360°</div>
-    <h2>الدوبل سماش…<br>من كل زاوية.</h2>
-    <p>سبع طبقات كتلتف قدام عينيك: بريوش محمّص، مخلل وصوص، جبن ذايب، وقطعتا لحم على مشواة 260°.</p>
-    <div class="chips"><span class="pr">65 درهم</span><a class="btn" data-mag target="_blank" rel="noopener" href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B7%D9%84%D8%A8%3A%20%D8%AF%D9%88%D8%A8%D9%84%20%D8%B3%D9%85%D8%A7%D8%B4">اطلبو دابا</a></div>
-  </div>
- </div>
-</section>
 
 <section class="sec" id="numbers" style="background:#0a0a0c;border-block:1px solid var(--line)"><div class="wrap">
   <div class="eyebrow rv">// The Numbers</div>
@@ -307,25 +244,69 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-siz
 <script src="demo-burger/gl/lib/lenis.min.js"></script>
 <script>
 /* ================================================================
-   CONFIG — عدّل من هنا فقط: النصوص، الصور، الألوان (CSS vars)،
-   توقيت المشاهد (stageLength)، وبيانات المشاهد. منطق الحركة تحت.
+   SCENES — نظام طبقات قابل للتبديل: بدّل src / المواضع / التوقيت
+   من هنا فقط. كل طبقة عندها keyframe في كل مشهد:
+   x, y, z (العمق), s (المقياس), rz/ry (الدوران), o (الشفافية), dk (التعتيم)
    ================================================================ */
-const CONFIG = {
-  stageLength: 460,               // طول التمرير ديال العرض (% ديال الشاشة)
-  scenes: 5,
-  gl: {
-    layers: [                     // ترتيب من الأعلى للأسفل — w = العرض في عالم 3D
-      {src:'demo-burger/gl/bun-top-alpha.webp',    w:4.30, z: .25, y0: 1.62, y1: 2.50},
-      {src:'demo-burger/gl/toppings-alpha.webp',   w:4.05, z: .45, y0: .98,  y1: 1.50},
-      {src:'demo-burger/gl/patty-alpha.webp',      w:4.35, z: .15, y0: .42,  y1: .55},
-      {src:'demo-burger/gl/bun-bottom-alpha.webp', w:4.30, z:-.30, y0: -.88, y1: -1.75}
-    ],
-    camZ: [8.6, 10.5],            // dolly: من → إلى
-    mobileScale: .78
-  }
+const KF = (x,y,z,s,rz,ry,o,dk) => ({x,y,z,s,rz,ry,o,dk:dk||0});
+const SCENES = [
+  { id:'opening', cam:{x:0, y:0, z:10.6}, layers:{
+    glow:      KF(0, .2, -3.5, 1,    0, 0, .9),
+    screen:    KF(.95, -.05, 0,  1,    0, -.06, 1),
+    box:       KF(3.6, -2.2, -1.2, .34, .06, -.2, 0),
+    cardDouble:KF(-3.4, -2.4, -1.6, .5, -.05, .2, 0),
+    cardClassic:KF(3.9, 2.3, -2, .5, .04, -.15, 0),
+    cardExp:   KF(-3.8, 2.2, -2.2, .5, -.03, .18, 0),
+    patty:     KF(-2.6, 1.9, -1.4, .5, 0, .1, 0)
+  }},
+  { id:'layers', cam:{x:0, y:0, z:9.6}, layers:{
+    glow:      KF(-.5, .3, -3.5, 1.05, 0, 0, .8),
+    screen:    KF(-2.3, .7, -.4, .74, .03, .22, 1),
+    box:       KF(2.5, -.5, .3, .78, -.03, -.18, 1),
+    cardDouble:KF(-3.6, -2.3, -1.6, .5, -.05, .2, 0),
+    cardClassic:KF(3.9, 2.4, -2, .5, .04, -.15, 0),
+    cardExp:   KF(-3.9, 2.4, -2.2, .5, -.03, .18, 0),
+    patty:     KF(.4, -.9, 1.6, .62, .05, -.1, 1)
+  }},
+  { id:'reveal', cam:{x:0, y:0, z:8.2}, layers:{
+    glow:      KF(0, 0, -3.5, 1.1, 0, 0, .55),
+    screen:    KF(-3.4, 1.8, -1.8, .5, .05, .3, .28, .5),
+    box:       KF(0, .1, .4, 1.85, 0, 0, 1),
+    cardDouble:KF(-3.8, -2.2, -2, .5, -.06, .25, .2, .55),
+    cardClassic:KF(3.9, 2.2, -2.2, .5, .05, -.2, .2, .55),
+    cardExp:   KF(-3.9, -2.4, -2.4, .5, -.04, .2, .15, .6),
+    patty:     KF(2.9, -2, .8, .5, .04, -.15, .3, .4)
+  }},
+  { id:'works', cam:{x:-.7, y:.35, z:9.8}, layers:{
+    glow:      KF(.4, 0, -3.5, 1.05, 0, 0, .7),
+    screen:    KF(-2.9, 1.5, -.8, .62, .04, .2, .85, .25),
+    box:       KF(3, 1.7, -1.2, .66, -.03, -.16, .85, .25),
+    cardDouble:KF(.2, -.2, .9, 1.06, -.02, -.05, 1),
+    cardClassic:KF(-3.1, -1.7, -.4, .72, .05, .14, .8, .3),
+    cardExp:   KF(3.2, -1.6, -.6, .74, -.05, -.12, .8, .3),
+    patty:     KF(-.4, 2.3, -1.8, .45, 0, .1, 0)
+  }},
+  { id:'closing', cam:{x:0, y:0, z:10.4}, layers:{
+    glow:      KF(0, .4, -3.5, 1, 0, 0, .8),
+    screen:    KF(0, .85, 0, .82, 0, 0, 1),
+    box:       KF(3.6, -2.2, -1.4, .4, .05, -.2, 0),
+    cardDouble:KF(-3.5, -2.3, -1.8, .5, -.05, .2, 0),
+    cardClassic:KF(3.9, 2.3, -2.2, .5, .04, -.15, 0),
+    cardExp:   KF(-3.8, 2.2, -2.4, .5, -.03, .18, 0),
+    patty:     KF(-2.7, 2, -1.6, .5, 0, .1, 0)
+  }}
+];
+const LAYER_SRC = {
+  screen:     { make:'screen', src:'demo-burger/img/hero.webp',     url:'smash.house',  w:6.6 },
+  box:        { make:'photo',  src:'demo-burger/img/box.webp',      w:5.4 },
+  cardDouble: { make:'card',   src:'demo-burger/img/double.jpg',    label:'DOUBLE SMASH — 65 DH', w:3.5 },
+  cardClassic:{ make:'card',   src:'demo-burger/img/classic.jpg',   label:'CLASSIC — 45 DH',      w:3.5 },
+  cardExp:    { make:'card',   src:'demo-burger/img/exploded.webp', label:'THE LAYERS — 7',       w:3.5 },
+  patty:      { make:'alpha',  src:'demo-burger/gl/patty-alpha.webp', w:3.0 }
 };
-/* ================== state shared with the WebGL module ================== */
-window.GLSTATE = { spread:.45, camZ:8.6, rotY:-.25, pattyPush:0, layersOpacity:1, gx:-1.15, ready:false };
+window.STAGE = { layers:{}, cam:{...SCENES[0].cam}, ready:false };
+Object.keys(SCENES[0].layers).forEach(k => { window.STAGE.layers[k] = {...SCENES[0].layers[k]}; });
+
 const qs = new URLSearchParams(location.search);
 const DEBUG = qs.get('debug') === '1';
 const FORCED_P = parseFloat(qs.get('p'));
@@ -358,7 +339,7 @@ const cio=new IntersectionObserver(es=>{es.forEach(e=>{
 })},{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 
-/* ================== smooth scroll (Lenis) + GSAP ================== */
+/* ================== smooth scroll + master timeline ================== */
 gsap.registerPlugin(ScrollTrigger);
 let lenis = null;
 if (!REDUCED && window.Lenis && isNaN(FORCED_P)){
@@ -374,81 +355,54 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-/* ================== the 5-scene timeline ================== */
-const S = window.GLSTATE;
-const labels = document.querySelectorAll('.layer-label');
+const ST = window.STAGE;
 const railDots = document.querySelectorAll('#rail .rdot');
 const dbg = document.getElementById('debug');
 if (DEBUG) dbg.style.display='block';
-
 const tl = gsap.timeline({
-  defaults:{ease:'none'},
+  defaults:{ease:'power1.inOut'},
   scrollTrigger:{
-    id:'stage', trigger:'#stage', start:'top top',
-    end:'+=' + CONFIG.stageLength + '%',
+    id:'stage', trigger:'#stage', start:'top top', end:'+=460%',
     pin:'#pin', scrub: isNaN(FORCED_P) ? .6 : true, anticipatePin:1,
     onUpdate(self){
       const p = self.progress;
       document.getElementById('progress').style.width = (p*100)+'%';
-      document.getElementById('rfill').style.height = (p*100)+'%';
-      const scene = Math.min(Math.floor(p * CONFIG.scenes), CONFIG.scenes-1);
+      const rf = document.getElementById('rfill'); if (rf) rf.style.height = (p*100)+'%';
+      const scene = Math.min(Math.floor(p * 5), 4);
       railDots.forEach((d,i)=>d.classList.toggle('on', i===scene));
-      const wrap = document.getElementById('glwrap');
-      const near = [.2,.4,.6,.8].some(b => Math.abs(p-b) < .012);
-      wrap.classList.toggle('trans', near && S.ready);
-      if (DEBUG) dbg.textContent = 'scene: '+(scene+1)+'/5 · progress: '+(p*100).toFixed(1)+'% · spread: '+S.spread.toFixed(2);
+      const near = [.2,.4,.6,.8].some(b => Math.abs(p-b) < .007);
+      document.getElementById('glwrap').classList.toggle('trans', near && ST.ready);
+      if (DEBUG) dbg.textContent = 'scene: '+(scene+1)+'/5 · progress: '+(p*100).toFixed(1)+'%';
     }
   }
 });
-/* S01 · opening (0–20%) */
-tl.fromTo('#heroImg', {scale:1.16, filter:'brightness(.34)'}, {scale:1.05, filter:'brightness(.58)', duration:20}, 0)
-  .to(S, {spread:.6, rotY:-.05, duration:18, ease:'power1.inOut'}, 1)
-  .to('#scrollcue', {opacity:0, duration:3}, 15)
-  .to('#ovHero', {opacity:0, y:-40, duration:5}, 16)
-  .to('#heroImg', {opacity:0, scale:1.12, duration:5}, 13);
-/* S02 · layers (20–40%) */
-tl.to(S, {spread:1, rotY:.35, camZ:11.2, duration:20, ease:'power1.inOut',
-      onUpdate(){ const lp=(S.spread-.45)/.55; const act=Math.min(Math.floor(Math.max(lp,0)*4.4),3);
-        labels.forEach((l,i)=>l.classList.toggle('on', act>=i)); }}, 20)
-  .to('#ovLayers', {opacity:1, duration:4}, 21)
-  .to('#techlabels', {opacity:1, duration:5}, 30)
-  .to('#ovLayers', {opacity:0, duration:4}, 37)
-  .to('#techlabels', {opacity:0, duration:3}, 37);
-/* S03 · detail push-in (40–60%) */
-tl.to(S, {pattyPush:1, camZ:7.4, spread:1.12, gx:1.5, duration:18, ease:'power1.inOut'}, 41)
-  .fromTo('#ovBig', {opacity:0}, {opacity:1, duration:4}, 44)
-  .fromTo('#ovBig .statement', {y:60}, {y:0, duration:8, ease:'power2.out'}, 44)
-  .to('#ovBig', {opacity:0, duration:4}, 56)
-  .to(S, {pattyPush:0, camZ:10.2, spread:1, duration:5}, 57)
-  .to('#gl', {opacity:0, duration:4}, 58);
-/* S04 · full-width box (60–80%) */
-tl.fromTo('#boxImg', {opacity:0, scale:1.14, xPercent:-1.5}, {opacity:1, scale:1.02, xPercent:1, duration:20, ease:'power1.inOut'}, 60)
-  .fromTo('#flare', {xPercent:-140}, {xPercent:420, duration:7, ease:'power2.inOut'}, 63)
-  .to('#ovBox', {opacity:1, duration:5}, 66)
-  .to('#ovBox', {opacity:0, duration:4}, 76)
-  .to('#boxImg', {opacity:0, duration:5}, 77);
-/* S05 · closing (80–100%) */
-tl.to('#gl', {opacity:1, duration:4}, 79)
-  .to(S, {spread:.64, rotY:-.2, camZ:9.4, duration:16, ease:'power1.inOut'}, 80)
-  .to('#ovEnd', {opacity:1, duration:5}, 85)
-  .to({}, {duration:4}, 96);
-
-if (!isNaN(FORCED_P)){
-  if (lenis) lenis.stop();
-  const fp = Math.min(Math.max(FORCED_P,0),1);
-  setTimeout(()=>{ const st = ScrollTrigger.getById('stage'); st.scroll(st.start + fp*(st.end - st.start)); ScrollTrigger.update(); }, 80);
+/* keyframe segments: scene i → i+1 over units [i*20, (i+1)*20] */
+for (let i = 0; i < SCENES.length - 1; i++){
+  const at = i * 20, dur = 20;
+  tl.to(ST.cam, {...SCENES[i+1].cam, duration:dur}, at);
+  Object.keys(SCENES[i].layers).forEach(k => {
+    tl.to(ST.layers[k], {...SCENES[i+1].layers[k], duration:dur}, at);
+  });
 }
-/* header state */
+/* overlays */
+gsap.fromTo('#ov1', {opacity:0, x:-46}, {opacity:1, x:0, duration:1.15, delay:.25, ease:'power3.out'});
+tl.to('#scrollcue', {opacity:0, duration:3}, 15)
+  .to('#ov1', {opacity:0, x:-30, duration:4}, 16.5)
+  .fromTo('#ov2', {opacity:0, x:40}, {opacity:1, x:0, duration:4}, 19.5)
+  .to('#ov2', {opacity:0, duration:4}, 36.5)
+  .fromTo('#ov3', {opacity:0}, {opacity:1, duration:4}, 41.5)
+  .fromTo('#ov3 .statement', {y:56}, {y:0, duration:7, ease:'power2.out'}, 41.5)
+  .to('#ov3', {opacity:0, duration:4}, 56.5)
+  .fromTo('#ov4', {opacity:0, y:30}, {opacity:1, y:0, duration:4}, 60.5)
+  .to('#ov4', {opacity:0, duration:4}, 76.5)
+  .fromTo('#ov5', {opacity:0, y:30}, {opacity:1, y:0, duration:5}, 82.5)
+  .to({}, {duration:3}, 97);
+if (!isNaN(FORCED_P)){
+  setTimeout(()=>{ const st = ScrollTrigger.getById('stage'); st.scroll(st.start + Math.min(Math.max(FORCED_P,0),1)*(st.end - st.start)); ScrollTrigger.update(); }, 80);
+}
 addEventListener('scroll', ()=>{ document.getElementById('hdr').classList.toggle('scrolled', scrollY>40); }, {passive:true});
 
-/* ================== mid-page 3D zone state ================== */
-window.ZSTATE = { rot: 0, spread: 1 };
-gsap.to(window.ZSTATE, { rot: 6.28, spread: .45, ease: 'none',
-  scrollTrigger: { trigger: '#zone3d', start: 'top top', end: '+=170%', pin: true, scrub: .6, anticipatePin: 1 } });
-gsap.fromTo('.zone-txt', {opacity: 0, y: 40}, {opacity: 1, y: 0, ease: 'power2.out',
-  scrollTrigger: { trigger: '#zone3d', start: 'top 55%' } });
-
-/* ================== custom cursor + magnetic (desktop) ================== */
+/* ================== custom cursor + magnetic ================== */
 if (matchMedia('(pointer:fine)').matches && !REDUCED){
   const cur=document.getElementById('cur'), ring=document.getElementById('curR');
   let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
@@ -468,91 +422,140 @@ if (matchMedia('(pointer:fine)').matches && !REDUCED){
 </script>
 
 <script type="module">
-/* ================== WebGL: real Z-depth layers (Three.js) ================== */
+/* ================== WebGL: layered editorial composition ================== */
 try {
   const THREE = await import('three');
-  const S = window.GLSTATE, CFG = window.CONFIG ?? null;
+  const ST = window.STAGE;
   const canvas = document.getElementById('gl');
   const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
   renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth < 820 ? 1.6 : 2));
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
 
-  function loadTex(url){
-    return new Promise((res, rej)=>{
-      const img = new Image(); if (location.protocol.indexOf('http')===0) img.crossOrigin='anonymous';
-      img.onload = ()=>{
-        const c=document.createElement('canvas'); c.width=img.naturalWidth; c.height=img.naturalHeight;
-        const x=c.getContext('2d'); x.drawImage(img,0,0);
-        const d=x.getImageData(0,0,c.width,c.height), px=d.data;
-        let minX=c.width,minY=c.height,maxX=0,maxY=0;
-        for (let i=3;i<px.length;i+=16){ if (px[i]>12){ const n=(i-3)/4, X=n%c.width, Y=(n/c.width)|0;
-          if(X<minX)minX=X; if(X>maxX)maxX=X; if(Y<minY)minY=Y; if(Y>maxY)maxY=Y; } }
-        const pad=10; minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad);
-        maxX=Math.min(c.width-1,maxX+pad); maxY=Math.min(c.height-1,maxY+pad);
-        const cw=maxX-minX+1, ch=maxY-minY+1;
-        const cc=document.createElement('canvas'); cc.width=cw; cc.height=ch;
-        cc.getContext('2d').drawImage(c,minX,minY,cw,ch,0,0,cw,ch);
-        const t=new THREE.CanvasTexture(cc); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=4;
-        res({tex:t, aspect:ch/cw});
-      };
-      img.onerror=rej; img.src=url;
-    });
+  const loadImg = src => new Promise((res, rej)=>{
+    const img = new Image(); if (location.protocol.indexOf('http')===0) img.crossOrigin='anonymous';
+    img.onload = ()=>res(img); img.onerror = rej; img.src = src;
+  });
+  function cover(ctx, img, x, y, w, h){
+    const ir = img.naturalWidth/img.naturalHeight, r = w/h;
+    let sw, sh, sx, sy;
+    if (ir > r){ sh = img.naturalHeight; sw = sh*r; sx = (img.naturalWidth-sw)/2; sy = 0; }
+    else { sw = img.naturalWidth; sh = sw/r; sx = 0; sy = (img.naturalHeight-sh)/2; }
+    ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+  }
+  function rr(ctx, x, y, w, h, r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+  async function screenTexture(src, url){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 1100; c.height = 730;
+    const x = c.getContext('2d');
+    x.fillStyle = '#101013'; rr(x, 4, 4, 1092, 722, 26); x.fill();
+    x.fillStyle = '#17171b'; rr(x, 4, 4, 1092, 74, 26); x.fill(); x.fillRect(4, 52, 1092, 26);
+    ['#e8362a','#f5bf42','#39d353'].forEach((col, i)=>{ x.fillStyle = col; x.beginPath(); x.arc(44+i*34, 41, 10, 0, 7); x.fill(); });
+    x.fillStyle = '#232329'; rr(x, 200, 22, 560, 38, 19); x.fill();
+    x.fillStyle = '#9a958a'; x.font = '24px Courier New'; x.fillText('https://' + url, 224, 49);
+    x.fillStyle = '#9a958a'; x.font = '22px Courier New'; x.fillText('≡', 1030, 50);
+    x.save(); rr(x, 22, 96, 1056, 612, 14); x.clip(); cover(x, img, 22, 96, 1056, 612); x.restore();
+    x.strokeStyle = 'rgba(244,241,234,.16)'; x.lineWidth = 2; rr(x, 4, 4, 1092, 722, 26); x.stroke();
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: 730/1100};
+  }
+  async function cardTexture(src, label){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 800; c.height = 600;
+    const x = c.getContext('2d');
+    x.fillStyle = '#0c0c0e'; x.fillRect(0, 0, 800, 600);
+    cover(x, img, 0, 0, 800, 492);
+    x.fillStyle = '#101013'; x.fillRect(0, 492, 800, 108);
+    x.fillStyle = '#e8362a'; x.fillRect(28, 522, 34, 4);
+    x.fillStyle = '#f4f1ea'; x.font = '700 30px Courier New'; x.fillText(label, 28, 570);
+    x.strokeStyle = 'rgba(244,241,234,.22)'; x.lineWidth = 2; x.strokeRect(1, 1, 798, 598);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: 600/800};
+  }
+  async function photoTexture(src){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 1024; c.height = 1024;
+    const x = c.getContext('2d'); cover(x, img, 0, 0, 1024, 1024);
+    x.strokeStyle = 'rgba(244,241,234,.18)'; x.lineWidth = 3; x.strokeRect(2, 2, 1020, 1020);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: 1};
+  }
+  async function alphaTexture(src){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight;
+    const x = c.getContext('2d'); x.drawImage(img, 0, 0);
+    const d = x.getImageData(0, 0, c.width, c.height), px = d.data;
+    let minX=c.width,minY=c.height,maxX=0,maxY=0;
+    for (let i=3;i<px.length;i+=16){ if (px[i]>12){ const n=(i-3)/4, X=n%c.width, Y=(n/c.width)|0;
+      if(X<minX)minX=X; if(X>maxX)maxX=X; if(Y<minY)minY=Y; if(Y>maxY)maxY=Y; } }
+    const pad=10; minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad);
+    maxX=Math.min(c.width-1,maxX+pad); maxY=Math.min(c.height-1,maxY+pad);
+    const cw=maxX-minX+1, ch=maxY-minY+1;
+    const cc=document.createElement('canvas'); cc.width=cw; cc.height=ch;
+    cc.getContext('2d').drawImage(c,minX,minY,cw,ch,0,0,cw,ch);
+    const t = new THREE.CanvasTexture(cc); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: ch/cw};
+  }
+  function glowTexture(){
+    const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+    const x = c.getContext('2d');
+    const g = x.createRadialGradient(256, 256, 20, 256, 256, 256);
+    g.addColorStop(0, 'rgba(232,54,42,.34)'); g.addColorStop(.55, 'rgba(232,54,42,.10)'); g.addColorStop(1, 'rgba(232,54,42,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 512, 512);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+    return {tex: t, aspect: 1};
   }
 
-  const LCONF = [
-    {src:'demo-burger/gl/bun-top-alpha.webp',    w:4.30, z: .25, y0: 1.62, y1: 2.50},
-    {src:'demo-burger/gl/toppings-alpha.webp',   w:4.05, z: .45, y0: .98,  y1: 1.50},
-    {src:'demo-burger/gl/patty-alpha.webp',      w:4.35, z: .15, y0: .42,  y1: .55},
-    {src:'demo-burger/gl/bun-bottom-alpha.webp', w:4.30, z:-.30, y0: -.88, y1: -1.75}
-  ];
-  const group = new THREE.Group(); scene.add(group); (window.__groups = window.__groups || []).push(group);
-  const layers = [];
-  for (const d of LCONF){
-    const {tex, aspect} = await loadTex(d.src);
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(d.w, d.w*aspect),
-      new THREE.MeshBasicMaterial({map:tex, transparent:true, side:THREE.DoubleSide, depthWrite:false}));
-    m.position.set(0, d.y0, d.z); m.renderOrder = 10 - layers.length;
-    group.add(m); layers.push({m, ...d});
+  const defs = {
+    glow:   { make:'glow' },
+    screen: LAYER_SRC.screen, box: LAYER_SRC.box,
+    cardDouble: LAYER_SRC.cardDouble, cardClassic: LAYER_SRC.cardClassic,
+    cardExp: LAYER_SRC.cardExp, patty: LAYER_SRC.patty
+  };
+  const meshes = {};
+  for (const [key, d] of Object.entries(defs)){
+    let r;
+    if (d.make === 'screen') r = await screenTexture(d.src, d.url);
+    else if (d.make === 'card') r = await cardTexture(d.src, d.label);
+    else if (d.make === 'photo') r = await photoTexture(d.src);
+    else if (d.make === 'alpha') r = await alphaTexture(d.src);
+    else r = glowTexture();
+    const w = key === 'glow' ? 15 : d.w;
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, w * r.aspect),
+      new THREE.MeshBasicMaterial({ map: r.tex, transparent: true, depthWrite: false }));
+    m.renderOrder = key === 'glow' ? 0 : 5;
+    scene.add(m); meshes[key] = m;
   }
-  const patty = layers[2].m, pattyBaseZ = LCONF[2].z, pattyBaseY = LCONF[2].y0 + (LCONF[2].y1-LCONF[2].y0)*0;
+  document.getElementById('loader').style.display = 'none';
+  ST.ready = true;
+  (window.__meshes = window.__meshes || []).push(meshes);
 
-  function place(){
-    const mob = innerWidth < 820;
-    group.position.x = mob ? 0 : S.gx;
-    group.position.y = mob ? .72 : -.05;
-    group.scale.setScalar(mob ? .78 : .94);
+  let mx = 0, my = 0, visible = true;
+  if (matchMedia('(pointer:fine)').matches)
+    addEventListener('pointermove', e=>{ mx = e.clientX/innerWidth - .5; my = e.clientY/innerHeight - .5; }, {passive:true});
+  new IntersectionObserver(es=>{ visible = es[0].isIntersecting; }).observe(document.getElementById('stage'));
+  function resize(){
     const w = canvas.clientWidth || innerWidth, h = canvas.clientHeight || innerHeight;
     renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix();
   }
-  place(); addEventListener('resize', place);
+  resize(); addEventListener('resize', resize);
 
-  document.getElementById('loader').style.display = 'none';
-  S.ready = true;
-
-  let mx=0, my=0, visible=true;
-  if (matchMedia('(pointer:fine)').matches)
-    addEventListener('pointermove', e=>{ mx=e.clientX/innerWidth-.5; my=e.clientY/innerHeight-.5; }, {passive:true});
-  new IntersectionObserver(es=>{ visible = es[0].isIntersecting; }).observe(document.getElementById('stage'));
-
-  const lerp=(a,b,t)=>a+(b-a)*t;
   function tick(t){
     requestAnimationFrame(tick);
     if (!visible) return;
-    const s = S.spread;
-    layers.forEach((L,i)=>{
-      L.m.position.y = lerp(L.y0, L.y1, (s-.45)/.55);
-      L.m.material.opacity = S.layersOpacity;
-    });
-    /* scene 03: patty pushes toward camera */
-    patty.position.z = pattyBaseZ + S.pattyPush * .95;
-    const ps = 1 + S.pattyPush * .16; patty.scale.set(ps, ps, 1);
-    layers.forEach((L,i)=>{ if (i!==2) L.m.material.opacity = S.layersOpacity * (1 - S.pattyPush*.45); });
-    group.position.x += ((innerWidth < 820 ? 0 : S.gx) - group.position.x) * .08;
-    group.rotation.y = S.rotY + Math.sin(t*.00035)*.05 + mx*.3;
-    group.rotation.x = Math.sin(t*.0005)*.025 + my*.15;
-    camera.position.z = S.camZ;
-    camera.position.y = .1 + my*-.2;
+    const ms = innerWidth < 820 ? .62 : 1;
+    for (const [key, m] of Object.entries(meshes)){
+      const L = ST.layers[key]; if (!L) continue;
+      m.position.set(L.x * (innerWidth < 820 ? .45 : 1), L.y, L.z);
+      m.rotation.set(0, L.ry + mx * .12, L.rz);
+      const sc = L.s * ms; m.scale.set(sc, sc, 1);
+      m.material.opacity = L.o;
+      m.renderOrder = 5 + L.z * 2;
+      const dk = 1 - (L.dk || 0) * .75;
+      m.material.color.setScalar(dk);
+    }
+    camera.position.set(ST.cam.x + mx * .35, ST.cam.y - my * .25 + Math.sin(t*.0004)*.04, ST.cam.z);
+    camera.lookAt(ST.cam.x * .6, ST.cam.y * .6, 0);
     renderer.render(scene, camera);
   }
   requestAnimationFrame(tick);
@@ -560,80 +563,6 @@ try {
   document.getElementById('loader').style.display = 'none';
   document.getElementById('fallback3d').style.display = 'flex';
   const g = document.getElementById('gl'); if (g) g.style.display = 'none';
-}
-</script>
-
-<script type="module">
-/* ================== WebGL zone 2: the product, 360° ================== */
-try {
-  const THREE = await import('three');
-  const Z = window.ZSTATE;
-  const canvas = document.getElementById('gl2');
-  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth < 820 ? 1.6 : 2));
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
-  camera.position.set(0, .1, 9.6);
-  function loadTex(url){
-    return new Promise((res, rej)=>{
-      const img = new Image(); if (location.protocol.indexOf('http')===0) img.crossOrigin='anonymous';
-      img.onload = ()=>{
-        const c=document.createElement('canvas'); c.width=img.naturalWidth; c.height=img.naturalHeight;
-        const x=c.getContext('2d'); x.drawImage(img,0,0);
-        const d=x.getImageData(0,0,c.width,c.height), px=d.data;
-        let minX=c.width,minY=c.height,maxX=0,maxY=0;
-        for (let i=3;i<px.length;i+=16){ if (px[i]>12){ const n=(i-3)/4, X=n%c.width, Y=(n/c.width)|0;
-          if(X<minX)minX=X; if(X>maxX)maxX=X; if(Y<minY)minY=Y; if(Y>maxY)maxY=Y; } }
-        const pad=10; minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad);
-        maxX=Math.min(c.width-1,maxX+pad); maxY=Math.min(c.height-1,maxY+pad);
-        const cw=maxX-minX+1, ch=maxY-minY+1;
-        const cc=document.createElement('canvas'); cc.width=cw; cc.height=ch;
-        cc.getContext('2d').drawImage(c,minX,minY,cw,ch,0,0,cw,ch);
-        const t=new THREE.CanvasTexture(cc); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=4;
-        res({tex:t, aspect:ch/cw});
-      };
-      img.onerror=rej; img.src=url;
-    });
-  }
-  const LCONF = [
-    {src:'demo-burger/gl/bun-top-alpha.webp',    w:4.30, z: .25, y0: 1.62, y1: 2.50},
-    {src:'demo-burger/gl/toppings-alpha.webp',   w:4.05, z: .45, y0: .98,  y1: 1.50},
-    {src:'demo-burger/gl/patty-alpha.webp',      w:4.35, z: .15, y0: .42,  y1: .55},
-    {src:'demo-burger/gl/bun-bottom-alpha.webp', w:4.30, z:-.30, y0: -.88, y1: -1.75}
-  ];
-  const group = new THREE.Group(); scene.add(group); (window.__groups = window.__groups || []).push(group);
-  const layers = [];
-  for (const d of LCONF){
-    const {tex, aspect} = await loadTex(d.src);
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(d.w, d.w*aspect),
-      new THREE.MeshBasicMaterial({map:tex, transparent:true, side:THREE.DoubleSide, depthWrite:false}));
-    m.position.set(0, d.y1, d.z); m.renderOrder = 10 - layers.length;
-    group.add(m); layers.push({m, ...d});
-  }
-  function place(){
-    const mob = innerWidth < 820;
-    group.position.x = mob ? 0 : -1.5;
-    group.position.y = mob ? .8 : .1;
-    group.scale.setScalar(mob ? .8 : .98);
-    const w = canvas.clientWidth || innerWidth, h = canvas.clientHeight || innerHeight;
-    renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix();
-  }
-  place(); addEventListener('resize', place);
-  let visible = false;
-  new IntersectionObserver(es=>{ visible = es[0].isIntersecting; }).observe(document.getElementById('zone3d'));
-  function tick(t){
-    requestAnimationFrame(tick);
-    if (!visible) return;
-    const k = (Z.spread - .45) / .55;
-    layers.forEach(L => { L.m.position.y = L.y0 + (L.y1 - L.y0) * k; });
-    group.rotation.y = Z.rot + Math.sin(t*.0004)*.05;
-    group.rotation.x = Math.sin(t*.0005)*.03;
-    renderer.render(scene, camera);
-  }
-  requestAnimationFrame(tick);
-} catch(e) {
-  const f = document.getElementById('zoneFallback'); if (f) f.style.display = 'block';
-  const g = document.getElementById('gl2'); if (g) g.style.display = 'none';
 }
 </script>
 </body>
