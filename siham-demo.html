@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Pâtisserie Siham — Pâtisserie artisanale à Tanger</title>
+<meta name="description" content="Pâtisserie Siham à Tanger : gâteaux artisanaux, desserts et pièces montées faits maison. Commandez sur WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --creme:#FCFCF4; --caramel:#D0A270; --caramel-light:#E9D5BC; --vert:#034337; --vert-dark:#023528;
+  --brun:#412000; --brun-dark:#2E1600; --ink:#2B1A08; --muted:#7A6A55; --line:#E8DCC8;
+  --shadow:0 18px 45px rgba(65,32,0,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--creme);color:var(--ink);line-height:1.65;font-weight:300}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.script{font-family:'Great Vibes',cursive;font-weight:400}
+h1,h2,h3{font-family:'Playfair Display',serif;color:var(--brun);line-height:1.15}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--brun);color:#FFF7EA;padding:15px 32px;border-radius:60px;font-weight:500;letter-spacing:.04em;font-size:.98rem;transition:.3s;border:1px solid var(--brun)}
+.btn:hover{background:var(--vert);border-color:var(--vert);transform:translateY(-2px)}
+.btn.light{background:transparent;color:var(--brun)}
+.btn.light:hover{background:var(--brun);color:#FFF7EA}
+.btn.wa svg{flex:none}
+/* Badge démo */
+.demo-badge{position:fixed;top:14px;left:14px;z-index:200;background:var(--vert);color:#F3E9D2;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:40px;box-shadow:0 8px 20px rgba(3,67,55,.35)}
+/* Header */
+header{position:sticky;top:0;z-index:100;background:rgba(252,252,244,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.header-in{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0}
+.logo{font-family:'Great Vibes',cursive;font-size:2.1rem;color:var(--brun);line-height:1}
+.logo span{color:var(--vert)}
+nav.main{display:flex;gap:34px}
+nav.main a{font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;font-weight:400;color:var(--ink);position:relative;padding:4px 0}
+nav.main a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--caramel);transition:.3s}
+nav.main a:hover::after{width:100%}
+.header-cta{background:var(--brun);color:#FFF7EA;padding:11px 24px;border-radius:50px;font-size:.9rem;font-weight:500;letter-spacing:.03em;transition:.3s;white-space:nowrap}
+.header-cta:hover{background:var(--vert)}
+.burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:6px}
+.burger i{display:block;width:26px;height:2px;background:var(--brun)}
+/* Hero */
+.hero{background:var(--caramel);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(252,252,244,.35),transparent 45%),radial-gradient(circle at 8% 90%,rgba(65,32,0,.12),transparent 40%)}
+.hero-in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:84px 0 96px}
+.hero .over{font-size:2.2rem;color:var(--vert-dark);margin-bottom:6px}
+.hero h1{font-size:clamp(2.6rem,5.4vw,4.3rem);font-weight:600;color:var(--brun-dark);margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--vert-dark)}
+.hero p{font-size:1.13rem;color:#4A3416;max-width:480px;margin-bottom:34px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.hero-note{margin-top:22px;font-size:.9rem;color:#5A4225;letter-spacing:.02em}
+.hero-photo{position:relative}
+.hero-photo .frame{border-radius:200px 200px 18px 18px;overflow:hidden;box-shadow:var(--shadow);border:10px solid var(--creme)}
+.hero-photo img{aspect-ratio:4/4.6;object-fit:cover;width:100%}
+.hero-photo .stamp{position:absolute;bottom:26px;left:-24px;background:var(--vert);color:#F6EDD8;border-radius:50%;width:128px;height:128px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-10deg);box-shadow:0 14px 30px rgba(3,67,55,.35);padding:12px}
+.hero-photo .stamp b{font-family:'Playfair Display',serif;font-size:1.35rem;line-height:1.1}
+.hero-photo .stamp small{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase}
+/* Bande verte */
+.band{background:var(--vert);color:#F1E7CF}
+.band-in{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:34px;padding:44px 0;align-items:center}
+.band .big{font-family:'Playfair Display',serif;font-size:2rem;color:#fff;line-height:1.2}
+.band .big span{color:var(--caramel);font-style:italic}
+.atout{display:flex;gap:14px;align-items:flex-start}
+.atout .ic{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid rgba(208,162,112,.6);display:flex;align-items:center;justify-content:center;color:var(--caramel)}
+.atout h4{font-family:'Playfair Display',serif;font-size:1.05rem;color:#fff;margin-bottom:2px}
+.atout p{font-size:.88rem;color:#D9CBA9}
+/* Citation */
+.quote{padding:88px 0 70px;text-align:center}
+.quote .script{font-size:2.4rem;color:var(--caramel);display:block;margin-bottom:10px}
+.quote blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.5rem,3.2vw,2.2rem);color:var(--brun);max-width:820px;margin:0 auto;line-height:1.45}
+.quote .stars{color:var(--caramel);letter-spacing:6px;font-size:1.1rem;margin-top:20px}
+/* Sections */
+section.bloc{padding:84px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 52px}
+.sec-head .script{font-size:2.1rem;color:var(--caramel);display:block}
+.sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:4px 0 12px}
+.sec-head p{color:var(--muted)}
+/* À propos */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-photos{position:relative;padding:0 34px 40px 0}
+.about-photos .back{position:absolute;top:34px;right:0;width:78%;height:82%;background:var(--caramel);border-radius:18px}
+.about-photos .p1{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);width:82%}
+.about-photos .p1 img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.about-photos .p2{position:absolute;bottom:0;right:6px;width:46%;border-radius:14px;overflow:hidden;border:8px solid var(--creme);box-shadow:var(--shadow)}
+.about-photos .p2 img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.about .script{font-size:2.1rem;color:var(--caramel)}
+.about h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin:2px 0 16px}
+.about p{color:var(--muted);margin-bottom:16px}
+.puces{list-style:none;margin:24px 0 32px;display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
+.puces li{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.98rem}
+.puces li::before{content:"✦";color:var(--vert);font-size:.8rem;margin-top:4px}
+/* Onglets créations */
+.tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:44px}
+.tab{border:1px solid var(--brun);background:transparent;color:var(--brun);font-family:'Jost',sans-serif;font-size:.95rem;font-weight:500;letter-spacing:.05em;padding:12px 30px;border-radius:50px;cursor:pointer;transition:.3s}
+.tab:hover{background:var(--caramel-light)}
+.tab.active{background:var(--vert);border-color:var(--vert);color:#F6EDD8}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.35s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--caramel)}
+.card .ph{overflow:hidden;position:relative}
+.card .ph img{aspect-ratio:4/3;object-fit:cover;width:100%;transition:.5s}
+.card:hover .ph img{transform:scale(1.06)}
+.card .badge{position:absolute;top:14px;left:14px;background:var(--vert);color:#F3E9D2;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:30px}
+.card .body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:1.28rem;margin-bottom:6px}
+.card p{color:var(--muted);font-size:.93rem;flex:1}
+.card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:18px}
+.price{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--vert);font-weight:700}
+.price small{font-size:.75rem;font-family:'Jost',sans-serif;font-weight:400;color:var(--muted)}
+.order{display:inline-flex;align-items:center;gap:7px;background:var(--brun);color:#FFF7EA;font-size:.85rem;font-weight:500;padding:10px 18px;border-radius:40px;transition:.3s}
+.order:hover{background:var(--vert)}
+.panel{display:none}
+.panel.active{display:grid;animation:fade .45s ease}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="demo-badge">Site de démonstration</div>
+
+<header>
+  <div class="wrap header-in">
+    <a class="logo" href="#">Pâtisserie <span>Siham</span></a>
+    <nav class="main" id="mainNav">
+      <a href="#apropos">À propos</a>
+      <a href="#creations">Nos créations</a>
+      <a href="#occasions">Occasions</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#sur-mesure">Sur mesure</a>
+    </nav>
+    <a class="header-cta" href="https://wa.me/212693981822?text=Bonjour%20P%C3%A2tisserie%20Siham%2C%20je%20souhaite%20passer%20une%20commande." target="_blank" rel="noopener">Commander</a>
+    <button class="burger" id="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <span class="script over">Douceur artisanale à Tanger</span>
+      <h1>La douceur qui va droit <em>au cœur</em></h1>
+      <p>Des gâteaux faits maison chaque matin, des ingrédients naturels et quinze ans de savoir-faire au service de vos plus beaux moments, à Tanger.</p>
+      <div class="hero-actions">
+        <a class="btn wa" href="https://wa.me/212693981822?text=Bonjour%20P%C3%A2tisserie%20Siham%2C%20je%20souhaite%20commander%20un%20g%C3%A2teau." target="_blank" rel="noopener">Commander sur WhatsApp</a>
+        <a class="btn light" href="#creations">Découvrir nos créations</a>
+      </div>
+      <p class="hero-note">✦ Commande 24 h à l'avance pour les pièces montées · Livraison à Tanger</p>
+    </div>
+    <div class="hero-photo">
+      <div class="frame"><img src="siham/cake.jpg" alt="Gâteau signature de la Pâtisserie Siham"></div>
+      <div class="stamp"><b>100%</b><small>Fait maison</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- BANDE VERTE -->
+<div class="band">
+  <div class="wrap band-in">
+    <div class="big">15 ans<br><span>d'expérience</span></div>
+    <div class="atout"><div class="ic">❧</div><div><h4>Ingrédients naturels</h4><p>Beurre fin, fruits frais et chocolat de qualité, sans compromis.</p></div></div>
+    <div class="atout"><div class="ic">✿</div><div><h4>Fait maison chaque matin</h4><p>Nos fournées partent à l'aube pour une fraîcheur incomparable.</p></div></div>
+    <div class="atout"><div class="ic">➤</div><div><h4>Livraison à Tanger</h4><p>Livraison soignée à domicile, partout à Tanger, 7 j/7.</p></div></div>
+  </div>
+</div>
+
+<!-- CITATION -->
+<div class="quote wrap">
+  <span class="script">Notre philosophie</span>
+  <blockquote>« Un gâteau réussi n'est pas seulement beau : il raconte une émotion, et chaque bouchée doit faire sourire. »</blockquote>
+  <div class="stars">★ ★ ★ ★ ★</div>
+</div>
+
+<!-- À PROPOS -->
+<section class="bloc" id="apropos" style="padding-top:30px">
+  <div class="wrap about">
+    <div class="about-photos">
+      <div class="back"></div>
+      <div class="p1"><img src="siham/pastry.jpg" alt="Pâtisseries fines de la maison Siham"></div>
+      <div class="p2"><img src="siham/bread.jpg" alt="Viennoiseries et pains maison"></div>
+    </div>
+    <div>
+      <span class="script">Notre Histoire</span>
+      <h2>Une passion née dans une cuisine de Tanger</h2>
+      <p>Tout a commencé par un four familial et une recette transmise avec amour. Quinze ans plus tard, la Pâtisserie Siham est devenue l'adresse des gourmands de Tanger, sans jamais renoncer à l'essentiel : le fait maison.</p>
+      <p>Chaque pièce est façonnée à la main, décorée avec patience et pensée pour célébrer vos moments les plus précieux.</p>
+      <ul class="puces">
+        <li>Recettes artisanales exclusives</li>
+        <li>Décorations 100% personnalisées</li>
+        <li>Produits frais du marché, chaque jour</li>
+        <li>Commandes spéciales en 24 h</li>
+      </ul>
+      <a class="btn" href="https://wa.me/212693981822?text=Bonjour%20P%C3%A2tisserie%20Siham%2C%20j%27aimerais%20en%20savoir%20plus%20sur%20vos%20cr%C3%A9ations." target="_blank" rel="noopener">Discuter avec nous</a>
+    </div>
+  </div>
+</section>
+
+<!-- NOS CRÉATIONS -->
+<section class="bloc" id="creations" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="script">Nos Créations</span>
+      <h2>Des douceurs pour tous les goûts</h2>
+      <p>Choisissez une catégorie, trouvez votre bonheur et commandez en un clic sur WhatsApp.</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="gateaux" role="tab">Gâteaux</button>
+      <button class="tab" data-tab="desserts" role="tab">Desserts</button>
+      <button class="tab" data-tab="montees" role="tab">Pièces montées</button>
+    </div>
+
+    <!-- GÂTEAUX -->
+    <div class="grid panel active" id="panel-gateaux">
+      <article class="card"><div class="ph"><img src="siham/cake.jpg" alt="Gâteau signature Siham"><span class="badge">Signature</span></div><div class="body"><h3>Gâteau Signature Siham</h3><p>Notre création emblème : génoise vanille, crème légère et fruits de saison.</p><div class="foot"><span class="price">260 <small>DH</small></span><a class="order" data-order="Gâteau Signature Siham — 260 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/cake-dark.jpg" alt="Fondant chocolat noir"></div><div class="body"><h3>Fondant Chocolat Noir</h3><p>Ganache intense au chocolat noir 70% et cœur fondant irrésistible.</p><div class="foot"><span class="price">250 <small>DH</small></span><a class="order" data-order="Fondant Chocolat Noir — 250 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/coffee-cake.jpg" alt="Gâteau café et noisettes"></div><div class="body"><h3>Café &amp; Noisettes</h3><p>Biscuit noisette, crème au café doux et éclats caramélisés.</p><div class="foot"><span class="price">230 <small>DH</small></span><a class="order" data-order="Gâteau Café & Noisettes — 230 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/birthday.jpg" alt="Gâteau d'anniversaire personnalisé"><span class="badge">Personnalisable</span></div><div class="body"><h3>Anniversaire Personnalisé</h3><p>Thème, couleurs et message au choix pour un anniversaire unique.</p><div class="foot"><span class="price">280 <small>DH</small></span><a class="order" data-order="Gâteau Anniversaire Personnalisé — 280 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/pastry.jpg" alt="Tarte fine aux fruits"></div><div class="body"><h3>Tarte Fine aux Fruits</h3><p>Sablé croustillant, crème d'amande et fruits frais du marché.</p><div class="foot"><span class="price">190 <small>DH</small></span><a class="order" data-order="Tarte Fine aux Fruits — 190 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/cupcakes.jpg" alt="Coffret de cupcakes"></div><div class="body"><h3>Coffret Cupcakes × 12</h3><p>Douze cupcakes moelleux aux parfums assortis, décorés à la main.</p><div class="foot"><span class="price">150 <small>DH</small></span><a class="order" data-order="Coffret Cupcakes × 12 — 150 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="grid panel" id="panel-desserts">
+      <article class="card"><div class="ph"><img src="siham/dessert.jpg" alt="Dessert en verrine"><span class="badge">Frais du jour</span></div><div class="body"><h3>Verrine Douceur</h3><p>Mousse légère, coulis de fruits et croustillant praliné en verrine.</p><div class="foot"><span class="price">45 <small>DH</small></span><a class="order" data-order="Verrine Douceur — 45 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/cupcakes.jpg" alt="Cupcake individuel"></div><div class="body"><h3>Cupcake Gourmand</h3><p>Moelleux vanille ou chocolat, glaçage onctueux et touche dorée.</p><div class="foot"><span class="price">15 <small>DH</small></span><a class="order" data-order="Cupcake Gourmand — 15 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/muffins.jpg" alt="Muffins assortis"></div><div class="body"><h3>Muffins Assortis × 6</h3><p>Myrtilles, pépites de chocolat ou citron : le goûter parfait.</p><div class="foot"><span class="price">60 <small>DH</small></span><a class="order" data-order="Muffins Assortis × 6 — 60 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/pastry.jpg" alt="Millefeuille maison"></div><div class="body"><h3>Millefeuille Maison</h3><p>Feuilletage caramélisé et crème légère à la vanille bourbon.</p><div class="foot"><span class="price">35 <small>DH</small></span><a class="order" data-order="Millefeuille Maison — 35 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/coffee-cake.jpg" alt="Tiramisu au café"></div><div class="body"><h3>Tiramisu Café</h3><p>Mascarpone onctueux, café corsé et cacao amer, à l'italienne.</p><div class="foot"><span class="price">40 <small>DH</small></span><a class="order" data-order="Tiramisu Café — 40 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/bread.jpg" alt="Brioche maison"></div><div class="body"><h3>Brioche Maison</h3><p>Brioche filante au beurre fin, nature ou aux pépites de chocolat.</p><div class="foot"><span class="price">30 <small>DH</small></span><a class="order" data-order="Brioche Maison — 30 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+    </div>
+
+    <!-- PIÈCES MONTÉES -->
+    <div class="grid panel" id="panel-montees">
+      <article class="card"><div class="ph"><img src="siham/wedding.jpg" alt="Pièce montée de mariage"><span class="badge">Mariage</span></div><div class="body"><h3>Pièce Montée Mariage</h3><p>Plusieurs étages, fleurs fraîches et finition nacrée pour le grand jour.</p><div class="foot"><span class="price">1 200 <small>DH</small></span><a class="order" data-order="Pièce Montée Mariage — à partir de 1 200 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/cake.jpg" alt="Pièce montée aux fruits"></div><div class="body"><h3>Montée aux Fruits</h3><p>Étages généreux garnis de fruits frais et de crème légère vanillée.</p><div class="foot"><span class="price">850 <small>DH</small></span><a class="order" data-order="Pièce Montée aux Fruits — 850 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/birthday.jpg" alt="Pièce montée anniversaire"></div><div class="body"><h3>Montée Anniversaire</h3><p>Deux étages festifs aux couleurs de votre thème, bougies offertes.</p><div class="foot"><span class="price">650 <small>DH</small></span><a class="order" data-order="Pièce Montée Anniversaire — 650 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/cake-dark.jpg" alt="Pièce montée chocolat"></div><div class="body"><h3>Montée Tout Chocolat</h3><p>Pour les puristes : chocolat noir, lait et blanc en dégradé gourmand.</p><div class="foot"><span class="price">900 <small>DH</small></span><a class="order" data-order="Pièce Montée Tout Chocolat — 900 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/cupcakes.jpg" alt="Tour de cupcakes"></div><div class="body"><h3>Tour de Cupcakes</h3><p>Une pyramide de cupcakes assortis, effet garanti sur vos photos.</p><div class="foot"><span class="price">450 <small>DH</small></span><a class="order" data-order="Tour de Cupcakes — 450 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+      <article class="card"><div class="ph"><img src="siham/coffee-cake.jpg" alt="Pièce montée café noisette"></div><div class="body"><h3>Montée Café-Noisette</h3><p>Élégante et raffinée, pour les amateurs de saveurs torréfiées.</p><div class="foot"><span class="price">780 <small>DH</small></span><a class="order" data-order="Pièce Montée Café-Noisette — 780 DH" href="#" target="_blank" rel="noopener">Commander</a></div></div></article>
+    </div>
+  </div>
+</section>
+<style>
+/* Occasions */
+.occasions{background:var(--brun-dark);padding:84px 0}
+.occasions .sec-head h2{color:#FBF3E2}
+.occasions .sec-head .script{color:var(--caramel)}
+.occasions .sec-head p{color:#D9CBA9}
+.occ-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.occ{background:var(--vert);border-radius:18px;padding:38px 30px;color:#EDE3C8;transition:.35s;border:1px solid rgba(208,162,112,.35)}
+.occ:hover{transform:translateY(-6px);background:var(--vert-dark)}
+.occ .n{font-family:'Great Vibes',cursive;font-size:1.7rem;color:var(--caramel)}
+.occ h3{color:#fff;font-size:1.5rem;margin:6px 0 10px}
+.occ p{font-size:.95rem;color:#D9CBA9;margin-bottom:20px}
+.occ a{color:var(--caramel);font-weight:500;letter-spacing:.04em;font-size:.92rem}
+.occ a:hover{color:#fff}
+/* Tarifs */
+.menu-list{display:grid;grid-template-columns:1fr 1fr;gap:14px 56px;max-width:920px;margin:0 auto}
+.menu-item{display:flex;align-items:baseline;gap:12px;padding:12px 4px;border-bottom:1px dashed var(--line)}
+.menu-item .nm{font-family:'Playfair Display',serif;font-size:1.12rem;color:var(--brun)}
+.menu-item .dots{flex:1;border-bottom:2px dotted var(--caramel);transform:translateY(-4px)}
+.menu-item .pr{font-weight:600;color:var(--vert);white-space:nowrap}
+.menu-item small{display:block;font-family:'Jost',sans-serif;color:var(--muted);font-size:.82rem;font-weight:300}
+/* Formulaire sur mesure */
+.custom{background:var(--caramel-light);padding:84px 0}
+.custom-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.custom .script{font-size:2.1rem;color:var(--vert)}
+.custom h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin:2px 0 14px}
+.custom p{color:#5A4225}
+form.cake-form{background:var(--creme);border-radius:20px;padding:36px;box-shadow:var(--shadow)}
+form.cake-form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fgroup{margin-bottom:16px}
+.fgroup label{display:block;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--brun);margin-bottom:7px}
+.fgroup input,.fgroup select,.fgroup textarea{width:100%;font-family:'Jost',sans-serif;font-size:.98rem;padding:13px 15px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);transition:.25s}
+.fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{outline:none;border-color:var(--caramel);box-shadow:0 0 0 3px rgba(208,162,112,.25)}
+form.cake-form .btn{width:100%;justify-content:center;cursor:pointer;font-family:'Jost',sans-serif}
+/* Témoignage */
+.testi{padding:88px 0;text-align:center}
+.testi .avatar{width:86px;height:86px;border-radius:50%;object-fit:cover;margin:0 auto 20px;border:4px solid var(--caramel-light)}
+.testi blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.3rem,2.8vw,1.8rem);color:var(--brun);max-width:760px;margin:0 auto 18px;line-height:1.5}
+.testi .who{letter-spacing:.1em;text-transform:uppercase;font-size:.82rem;color:var(--vert);font-weight:500}
+.testi .stars{color:var(--caramel);letter-spacing:6px;margin-bottom:22px}
+/* Footer */
+footer{background:var(--brun);color:#EAD9BE;padding:64px 0 0;margin-top:0}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;padding-bottom:48px}
+footer .logo{color:#FFF3DC}
+footer .logo span{color:var(--caramel)}
+footer p{font-size:.93rem;color:#C9AE83}
+footer h4{font-family:'Playfair Display',serif;color:#FFF3DC;font-size:1.15rem;margin-bottom:16px}
+footer ul{list-style:none}
+footer ul li{margin-bottom:9px;font-size:.93rem}
+footer ul a{color:#C9AE83;transition:.25s}
+footer ul a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(208,162,112,.3);padding:20px 0;text-align:center;font-size:.86rem;color:#C9AE83}
+.foot-bottom .credit{color:#A8895C;font-size:.8rem;margin-top:5px;letter-spacing:.03em}
+/* Responsive */
+@media(max-width:960px){
+  .band-in{grid-template-columns:1fr 1fr}
+  .grid,.occ-grid{grid-template-columns:1fr 1fr}
+  .hero-in{grid-template-columns:1fr;padding:60px 0 72px}
+  .hero-photo{max-width:440px}
+  .about,.custom-grid{grid-template-columns:1fr;gap:44px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  nav.main{position:absolute;top:100%;left:0;right:0;background:var(--creme);flex-direction:column;gap:0;padding:10px 24px 18px;border-bottom:1px solid var(--line);display:none}
+  nav.main.open{display:flex}
+  nav.main a{padding:10px 0;border-bottom:1px dashed var(--line)}
+  .burger{display:flex}
+  .header-cta{display:none}
+  .grid,.occ-grid,.menu-list,.foot-grid,.puces,form.cake-form .row{grid-template-columns:1fr}
+  .band-in{grid-template-columns:1fr;gap:22px}
+  form.cake-form{padding:26px 20px}
+  .hero-photo .stamp{left:auto;right:8px;width:104px;height:104px}
+  section.bloc,.occasions,.custom{padding:60px 0}
+}
+</style>
+
+<!-- OCCASIONS -->
+<div class="occasions" id="occasions">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="script">Nos occasions</span>
+      <h2>Un gâteau pour chaque occasion</h2>
+      <p>Anniversaires, mariages, fiançailles ou événements d'entreprise : nous créons la pièce qui rendra votre fête inoubliable.</p>
+    </div>
+    <div class="occ-grid">
+      <div class="occ"><span class="n">01</span><h3>Anniversaires</h3><p>Des créations joyeuses et personnalisées, du premier anniversaire aux 100 ans, avec le message de votre choix.</p><a href="https://wa.me/212693981822?text=Bonjour%20P%C3%A2tisserie%20Siham%2C%20je%20souhaite%20un%20g%C3%A2teau%20d%27anniversaire." target="_blank" rel="noopener">Demander un devis →</a></div>
+      <div class="occ"><span class="n">02</span><h3>Mariages</h3><p>Pièces montées majestueuses et dégustation offerte aux futurs mariés pour choisir leurs parfums en toute sérénité.</p><a href="https://wa.me/212693981822?text=Bonjour%20P%C3%A2tisserie%20Siham%2C%20je%20pr%C3%A9pare%20mon%20mariage%20et%20je%20souhaite%20un%20devis%20pour%20une%20pi%C3%A8ce%20mont%C3%A9e." target="_blank" rel="noopener">Demander un devis →</a></div>
+      <div class="occ"><span class="n">03</span><h3>Événements</h3><p>Fiançailles, baptêmes, soirées d'entreprise : buffets sucrés complets, livrés et installés sur votre lieu de réception.</p><a href="https://wa.me/212693981822?text=Bonjour%20P%C3%A2tisserie%20Siham%2C%20j%27organise%20un%20%C3%A9v%C3%A9nement%20et%20je%20souhaite%20un%20devis%20sucr%C3%A9." target="_blank" rel="noopener">Demander un devis →</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- TARIFS -->
+<section class="bloc" id="tarifs">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="script">Menu &amp; Prix</span>
+      <h2>Nos prix doux</h2>
+      <p>Des tarifs clairs et honnêtes, pour le plaisir au quotidien comme pour les grandes occasions.</p>
+    </div>
+    <div class="menu-list">
+      <div class="menu-item"><span class="nm">Gâteau Signature Siham<small>Vanille, crème légère, fruits de saison</small></span><span class="dots"></span><span class="pr">260 DH</span></div>
+      <div class="menu-item"><span class="nm">Fondant Chocolat Noir<small>Chocolat 70%, cœur fondant</small></span><span class="dots"></span><span class="pr">250 DH</span></div>
+      <div class="menu-item"><span class="nm">Tarte Fine aux Fruits<small>Sablé croustillant, fruits frais</small></span><span class="dots"></span><span class="pr">190 DH</span></div>
+      <div class="menu-item"><span class="nm">Millefeuille Maison<small>Vanille bourbon, feuilletage caramélisé</small></span><span class="dots"></span><span class="pr">35 DH</span></div>
+      <div class="menu-item"><span class="nm">Tiramisu Café<small>Mascarpone, café corsé, cacao</small></span><span class="dots"></span><span class="pr">40 DH</span></div>
+      <div class="menu-item"><span class="nm">Coffret Cupcakes × 12<small>Parfums assortis, décorés main</small></span><span class="dots"></span><span class="pr">150 DH</span></div>
+      <div class="menu-item"><span class="nm">Brioche Maison<small>Beurre fin, nature ou chocolat</small></span><span class="dots"></span><span class="pr">30 DH</span></div>
+      <div class="menu-item"><span class="nm">Pièce Montée Mariage<small>Sur devis selon étages et décoration</small></span><span class="dots"></span><span class="pr">dès 1 200 DH</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUR MESURE -->
+<div class="custom" id="sur-mesure">
+  <div class="wrap custom-grid">
+    <div>
+      <span class="script">Gâteau sur mesure</span>
+      <h2>Imaginez-le, nous le créons</h2>
+      <p>Dites-nous l'occasion, la date, le nombre de parts et votre parfum préféré : nous composons un message WhatsApp prêt à envoyer, et nous revenons vers vous avec un devis détaillé et des idées de décoration.</p>
+      <p style="margin-top:14px">✦ Dégustation offerte pour les mariages · Acompte de 30% seulement à la commande.</p>
+    </div>
+    <form class="cake-form" id="cakeForm">
+      <div class="row">
+        <div class="fgroup"><label for="f-occasion">Occasion</label>
+          <select id="f-occasion" required>
+            <option value="Anniversaire">Anniversaire</option>
+            <option value="Mariage">Mariage</option>
+            <option value="Fiançailles">Fiançailles</option>
+            <option value="Baptême">Baptême</option>
+            <option value="Événement d'entreprise">Événement d'entreprise</option>
+            <option value="Autre">Autre</option>
+          </select></div>
+        <div class="fgroup"><label for="f-date">Date souhaitée</label><input type="date" id="f-date" required></div>
+      </div>
+      <div class="row">
+        <div class="fgroup"><label for="f-parts">Nombre de parts</label>
+          <select id="f-parts" required>
+            <option value="8 à 10 parts">8 à 10 parts</option>
+            <option value="12 à 15 parts">12 à 15 parts</option>
+            <option value="20 à 25 parts">20 à 25 parts</option>
+            <option value="30 à 40 parts">30 à 40 parts</option>
+            <option value="50 parts et plus">50 parts et plus</option>
+          </select></div>
+        <div class="fgroup"><label for="f-parfum">Parfum</label>
+          <select id="f-parfum" required>
+            <option value="Chocolat">Chocolat</option>
+            <option value="Vanille-fruits">Vanille &amp; fruits</option>
+            <option value="Café-noisette">Café &amp; noisette</option>
+            <option value="Citron">Citron</option>
+            <option value="Pistache">Pistache</option>
+            <option value="À définir ensemble">À définir ensemble</option>
+          </select></div>
+      </div>
+      <div class="fgroup"><label for="f-message">Votre message / précisions</label><textarea id="f-message" rows="3" placeholder="Thème, couleurs, message à écrire sur le gâteau…"></textarea></div>
+      <button type="submit" class="btn">Envoyer ma demande sur WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<!-- TÉMOIGNAGE -->
+<div class="testi wrap">
+  <div class="stars">★ ★ ★ ★ ★</div>
+  <img class="avatar" src="siham/dessert.jpg" alt="Création de la Pâtisserie Siham">
+  <blockquote>« La pièce montée de notre mariage a laissé tous nos invités sans voix. Belle comme une œuvre d'art, et ce goût… On se serait crus dans une grande maison parisienne, en plein Tanger. »</blockquote>
+  <div class="who">Salma &amp; Youssef — Mariage à Tanger</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#">Pâtisserie <span>Siham</span></a>
+        <p style="margin-top:14px">Pâtisserie artisanale à Tanger depuis 15 ans. Gâteaux, desserts et pièces montées faits maison, chaque matin, avec des ingrédients naturels.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#creations">Nos créations</a></li>
+          <li><a href="#occasions">Occasions</a></li>
+          <li><a href="#tarifs">Tarifs</a></li>
+          <li><a href="#sur-mesure">Gâteau sur mesure</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nous trouver</h4>
+        <ul>
+          <li>📍 Centre-ville, Tanger</li>
+          <li>🕗 Tous les jours : 7 h 30 – 21 h</li>
+          <li>💬 Commandes : WhatsApp</li>
+          <li>🚗 Livraison partout à Tanger</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Pâtisserie Siham — Tanger. Tous droits réservés.</div>
+      <div class="credit">Démonstration réalisée par Tanja Web — Tanger</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Onglets Créations
+document.querySelectorAll('.tab').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  });
+});
+// Boutons commander par article → WhatsApp pré-rempli
+document.querySelectorAll('.order').forEach(function(a){
+  var item = a.getAttribute('data-order');
+  var msg = 'Bonjour Pâtisserie Siham, je souhaite commander : ' + item + '. Merci de me confirmer la disponibilité.';
+  a.href = 'https://wa.me/212693981822?text=' + encodeURIComponent(msg);
+});
+// Menu mobile
+var burger = document.getElementById('burger'), nav = document.getElementById('mainNav');
+burger.addEventListener('click', function(){ nav.classList.toggle('open'); });
+nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ nav.classList.remove('open'); }); });
+// Formulaire gâteau sur mesure → WhatsApp pré-rempli
+document.getElementById('cakeForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var occ = document.getElementById('f-occasion').value;
+  var date = document.getElementById('f-date').value;
+  var parts = document.getElementById('f-parts').value;
+  var parfum = document.getElementById('f-parfum').value;
+  var extra = document.getElementById('f-message').value.trim();
+  var lines = [
+    'Bonjour Pâtisserie Siham, je souhaite un gâteau sur mesure :',
+    '• Occasion : ' + occ,
+    '• Date souhaitée : ' + date,
+    '• Nombre de parts : ' + parts,
+    '• Parfum : ' + parfum
+  ];
+  if(extra) lines.push('• Précisions : ' + extra);
+  lines.push('Merci de me faire un devis.');
+  window.open('https://wa.me/212693981822?text=' + encodeURIComponent(lines.join('\n')), '_blank');
+});
+</script>
+
+<style id="tw-motion-css">
+.tw-rv{opacity:0;transform:translateY(30px) perspective(900px) rotateX(5deg);transition:opacity .9s cubic-bezier(.16,.7,.24,1),transform .9s cubic-bezier(.16,.7,.24,1)}
+.tw-rv.tw-in{opacity:1;transform:translateY(0) perspective(900px) rotateX(0deg)}
+.tw-tilt{transform-style:preserve-3d;will-change:transform;transition:transform .35s ease-out}
+.tw-tilt img{transition:transform .8s cubic-bezier(.16,.7,.24,1)}
+.tw-tilt:hover img{transform:scale(1.07)}
+@keyframes twkb{from{transform:scale(1)}to{transform:scale(1.09)}}
+.tw-kb{animation:twkb 16s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.tw-rv{opacity:1!important;transform:none!important;transition:none!important}.tw-kb{animation:none!important}}
+</style>
+<script id="tw-motion-js">
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var cardSel='[class*="card"],[class*="produit"],[class*="product"],[class*="room"],[class*="chambre"],[class*="plat"],[class*="dish"],[class*="item"],[class*="box"],[class*="tile"],article,figure';
+  function bad(el){return el.closest('[class*="slider"],[class*="rev"],[class*="swiper"],[class*="carousel"],[class*="marquee"]');}
+  // --- hero: gentle Ken Burns on first big image (if it has no own animation)
+  try{
+    var hero=document.querySelector('section,header,div');
+    var him=document.querySelector('section img, header img');
+    if(him && !bad(him) && getComputedStyle(him).animationName==='none' && him.getBoundingClientRect().width>500){ him.classList.add('tw-kb'); }
+  }catch(e){}
+  // --- collect reveal targets
+  var set=new Set();
+  document.querySelectorAll('section').forEach(function(el,i){ if(i>0) set.add(el); });
+  document.querySelectorAll('h2').forEach(function(el){ set.add(el); });
+  document.querySelectorAll(cardSel).forEach(function(el){ set.add(el); });
+  var list=[];
+  set.forEach(function(el){ if(!bad(el)) list.push(el); });
+  list=list.filter(function(el){ return !list.some(function(o){ return o!==el && el.contains(o) && el.tagName!=='SECTION'; }); });
+  function attachTilt(el){
+    if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    if(el.querySelector('form,input,select,textarea')) return;
+    var r=el.getBoundingClientRect(); if(r.width>640||r.width<110) return;
+    el.classList.add('tw-tilt');
+    el.addEventListener('pointermove',function(ev){
+      var b=el.getBoundingClientRect();
+      var x=(ev.clientX-b.left)/b.width-.5, y=(ev.clientY-b.top)/b.height-.5;
+      el.style.transform='perspective(850px) rotateX('+(-y*7).toFixed(2)+'deg) rotateY('+(x*9).toFixed(2)+'deg) translateY(-3px)';
+    });
+    el.addEventListener('pointerleave',function(){ el.style.transform=''; });
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('tw-in'); attachTilt(e.target); io.unobserve(e.target); } });
+  },{threshold:.08,rootMargin:'0px 0px -3% 0px'});
+  list.forEach(function(el){
+    el.classList.add('tw-rv');
+    var sib=el.parentNode?Array.prototype.indexOf.call(el.parentNode.children,el):0;
+    el.style.transitionDelay=Math.min((Math.max(sib,0)%4)*90,270)+'ms';
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
