@@ -252,6 +252,109 @@
   .step h3{font-family:"Archivo",sans-serif;font-weight:700;font-size:23px;text-transform:uppercase;margin-bottom:12px}
   .step p{color:var(--ink-dim);line-height:1.7;font-size:15.5px}
 
+  /* BIENFAITS */
+  #bienfaits{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .bf-intro{color:var(--ink-dim);font-size:16.5px;line-height:1.75;max-width:56ch;margin-top:24px}
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:clamp(36px,5vw,52px)}
+  @media(max-width:1020px){.stats{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:540px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{
+    border:1px solid var(--line);border-radius:8px;padding:24px 16px;text-align:center;
+    background:var(--card);
+  }
+  .stat .val{font-family:"Archivo",sans-serif;font-weight:800;font-size:clamp(26px,3vw,36px);line-height:1}
+  .stat .val small{font-size:.48em;color:var(--magenta-soft);font-weight:700}
+  .stat .lab{
+    display:block;margin-top:11px;font-family:"IBM Plex Mono",monospace;font-size:10px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  .stats-note{margin-top:16px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;color:var(--ink-faint);text-transform:uppercase}
+  .b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+  @media(max-width:860px){.b-grid{grid-template-columns:1fr}}
+  .b-card{
+    border:1px solid var(--line);border-radius:8px;padding:30px 26px;
+    background:linear-gradient(180deg,rgba(244,241,232,.03),rgba(244,241,232,0));
+  }
+  .b-card h3{font-family:"Archivo",sans-serif;font-weight:700;font-size:22px;text-transform:uppercase;margin-bottom:12px}
+  .b-card p{color:var(--ink-dim);line-height:1.7;font-size:15.5px}
+
+  /* PACKS & ABONNEMENT */
+  .pack-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(44px,5vw,64px);align-items:stretch}
+  @media(max-width:960px){.pack-cards{grid-template-columns:1fr}}
+  .pack{
+    position:relative;background:var(--card);border:1px solid var(--line);border-radius:8px;
+    padding:34px 26px 26px;display:flex;flex-direction:column;gap:12px;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .5s;
+  }
+  .pack:hover{transform:translateY(-6px);border-color:rgba(244,241,232,.4)}
+  .pack.hot{border-color:var(--magenta);background:linear-gradient(180deg,rgba(224,33,138,.10),var(--card) 58%)}
+  .pack .flag{
+    position:absolute;top:-13px;left:26px;background:var(--magenta);color:#fff;
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+    padding:6px 12px;border-radius:999px;
+  }
+  .pack .p-name{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--magenta-soft)}
+  .pack h3{font-family:"Archivo",sans-serif;font-weight:800;font-size:26px;text-transform:uppercase;line-height:1.1}
+  .pack .p-desc{color:var(--ink-dim);font-size:15px;line-height:1.65}
+  .pack ul{list-style:none;display:flex;flex-direction:column;gap:8px;flex:1;margin-top:4px}
+  .pack li{color:var(--ink-dim);font-size:14.5px;line-height:1.55;padding-left:20px;position:relative}
+  .pack li::before{content:"+";position:absolute;left:0;color:var(--magenta-soft);font-family:"IBM Plex Mono",monospace}
+  .pack .p-price{font-family:"Archivo",sans-serif;font-weight:800;font-size:34px;margin-top:10px;line-height:1}
+  .pack .p-price small{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:11px;color:var(--ink-faint);letter-spacing:.1em}
+  .pack .p-per{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;color:var(--ink-faint);text-transform:uppercase}
+  .pack .order{align-self:flex-start;margin-top:10px}
+  .pack.hot .order{background:var(--magenta);border-color:var(--magenta)}
+  .pack.hot .order:hover{background:var(--magenta-soft);border-color:var(--magenta-soft)}
+
+  /* OÙ TROUVER */
+  #trouver{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .spots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(36px,5vw,56px)}
+  @media(max-width:860px){.spots{grid-template-columns:1fr}}
+  .spot{border:1px solid var(--line);border-radius:8px;padding:28px 24px;background:var(--card)}
+  .spot .q{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--magenta-soft);display:block;margin-bottom:14px}
+  .spot h3{font-family:"Archivo",sans-serif;font-weight:700;font-size:21px;text-transform:uppercase;line-height:1.2;margin-bottom:10px}
+  .spot p{color:var(--ink-dim);font-size:14.5px;line-height:1.65}
+  .livraison{
+    margin-top:16px;border:1px dashed rgba(224,33,138,.55);border-radius:8px;padding:28px 26px;
+    display:flex;flex-wrap:wrap;gap:18px 34px;align-items:center;justify-content:space-between;
+  }
+  .livraison .l-txt{max-width:60ch}
+  .livraison h3{font-family:"Archivo",sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;margin-bottom:8px}
+  .livraison p{color:var(--ink-dim);font-size:15px;line-height:1.7}
+  .livraison p b{color:var(--ink)}
+
+  /* ILS ONT GOÛTÉ */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(36px,5vw,56px)}
+  @media(max-width:860px){.quotes{grid-template-columns:1fr}}
+  .quote{
+    border:1px solid var(--line);border-radius:8px;padding:30px 26px;background:var(--card);
+    display:flex;flex-direction:column;gap:16px;
+  }
+  .quote .stars{color:var(--magenta-soft);font-size:14px;letter-spacing:.32em}
+  .quote p{font-size:16.5px;line-height:1.7;color:var(--ink);flex:1}
+  .quote .who{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .quote .who b{color:#fff;font-weight:500}
+  .avis-note{margin-top:18px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+
+  /* FAQ */
+  .faq-list{margin-top:clamp(36px,5vw,52px);border-top:1px solid var(--line)}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-item summary{
+    cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;
+    padding:24px 4px;font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,22px);
+    text-transform:uppercase;letter-spacing:.01em;
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary .plus{
+    flex:none;width:34px;height:34px;border:1px solid var(--line);border-radius:50%;
+    display:grid;place-items:center;color:var(--magenta-soft);font-family:"IBM Plex Mono",monospace;
+    font-size:16px;font-weight:400;transition:transform .35s,background .35s;
+  }
+  .faq-item[open ] summary .plus{transform:rotate(45deg);background:rgba(224,33,138,.14)}
+  .faq-item .faq-body{padding:0 4px 28px;color:var(--ink-dim);font-size:15.5px;line-height:1.75;max-width:68ch}
+  .faq-item .faq-body b{color:var(--ink)}
+  .faq-item .order{display:inline-block;margin-top:14px}
+
   /* FOOTER */
   footer{border-top:1px solid var(--line);background:#070a07}
   .foot-cta{text-align:center;padding:clamp(80px,12vh,130px) 20px 60px}
@@ -450,8 +553,215 @@
   </div>
 </section>
 
+<!-- ============ BIENFAITS ============ -->
+<section id="bienfaits">
+  <div class="wrap">
+    <p class="kicker reveal">Bienfaits</p>
+    <h2 class="reveal">Ce qu'un verre<br>vous <em>apporte</em>.</h2>
+    <p class="bf-intro reveal">Un verre de 33 cl de jus SABRA, c'est le fruit entier, pressé à froid,
+    sans rien d'autre. Voici ce qu'il contient — ni plus, ni moins.</p>
+    <div class="stats">
+      <div class="stat reveal"><span class="val">34<small> mg</small></span><span class="lab">Vitamine C</span></div>
+      <div class="stat reveal"><span class="val">3,6<small> g</small></span><span class="lab">Fibres</span></div>
+      <div class="stat reveal"><span class="val">410<small> mg</small></span><span class="lab">Potassium</span></div>
+      <div class="stat reveal"><span class="val">92<small> kcal</small></span><span class="lab">Énergie</span></div>
+      <div class="stat reveal"><span class="val">0<small> g</small></span><span class="lab">Sucre ajouté</span></div>
+    </div>
+    <p class="stats-note reveal">Valeurs moyennes par verre de 33 cl — jus de figue de Barbarie pur</p>
+    <div class="b-grid">
+      <div class="b-card reveal">
+        <h3>Hydratation</h3>
+        <p>La figue de Barbarie pousse en plein désert parce qu'elle sait garder l'eau.
+        Son jus, naturellement riche en eau et en potassium, désaltère profondément —
+        le verre qu'on finit d'une traite après la corniche, le sport ou le souk.</p>
+      </div>
+      <div class="b-card reveal">
+        <h3>Peau</h3>
+        <p>La couleur magenta vient des bétacyanines, des pigments antioxydants
+        que le fruit fabrique lui-même. Avec sa vitamine C, ils accompagnent
+        l'éclat de la peau — sans promesse miracle : juste du fruit, régulièrement.</p>
+      </div>
+      <div class="b-card reveal">
+        <h3>Digestion</h3>
+        <p>Les fibres fines du fruit, conservées par le pressage à froid, participent
+        au confort digestif au quotidien. Un verre au petit-déjeuner,
+        et la journée commence léger.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PACKS & ABONNEMENT ============ -->
+<section id="packs">
+  <div class="wrap">
+    <p class="kicker reveal">Packs &amp; Abonnement</p>
+    <h2 class="reveal">Le désert,<br>en <em>formule</em>.</h2>
+    <div class="pack-cards">
+      <article class="pack reveal">
+        <span class="p-name">Pack — 01</span>
+        <h3>Découverte</h3>
+        <p class="p-desc">Pour goûter la gamme sans s'engager, un verre de chaque recette.</p>
+        <ul>
+          <li>4 verres — les 4 recettes de la maison</li>
+          <li>Pressés le matin même de la livraison</li>
+          <li>Idéal pour une première dégustation</li>
+        </ul>
+        <div>
+          <div class="p-price">160 <small>DH</small></div>
+          <span class="p-per">Soit 40 DH le verre</span>
+        </div>
+        <a class="order" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20commander%20le%20Pack%20D%C3%A9couverte%20(4%20verres%20-%20160%20DH).%20Merci%20!">Commander le pack</a>
+      </article>
+      <article class="pack hot reveal">
+        <span class="flag">Le plus choisi</span>
+        <span class="p-name">Pack — 02</span>
+        <h3>Famille</h3>
+        <p class="p-desc">Le format des maisons qui en redemandent — pour la semaine et les invités du week-end.</p>
+        <ul>
+          <li>8 verres, recettes au choix</li>
+          <li>Livraison offerte partout à Tanger</li>
+          <li>Pressés le matin même de la livraison</li>
+        </ul>
+        <div>
+          <div class="p-price">290 <small>DH</small></div>
+          <span class="p-per">Soit ≈ 36 DH le verre</span>
+        </div>
+        <a class="order" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20commander%20le%20Pack%20Famille%20(8%20verres%20-%20290%20DH).%20Merci%20!">Commander le pack</a>
+      </article>
+      <article class="pack reveal">
+        <span class="p-name">Formule — 03</span>
+        <h3>Abonnement Hebdo</h3>
+        <p class="p-desc">Votre jus vous attend chaque semaine, sans y penser, au jour que vous choisissez.</p>
+        <ul>
+          <li>4 verres par semaine, recettes au choix</li>
+          <li>Livraison incluse, jour fixe</li>
+          <li>Pause ou arrêt à tout moment, sans frais</li>
+        </ul>
+        <div>
+          <div class="p-price">590 <small>DH / mois</small></div>
+          <span class="p-per">Livraison incluse</span>
+        </div>
+        <a class="order" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20souscrire%20%C3%A0%20l%27Abonnement%20Hebdo%20(4%20verres%20par%20semaine%20-%20590%20DH%2Fmois%2C%20livraison%20incluse).%20Merci%20!">S'abonner</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OÙ TROUVER SABRA ============ -->
+<section id="trouver">
+  <div class="wrap">
+    <p class="kicker reveal">Où trouver SABRA</p>
+    <h2 class="reveal">Déjà servi<br>à <em>Tanger</em>.</h2>
+    <div class="spots">
+      <div class="spot reveal">
+        <span class="q">Marina — Centre-ville</span>
+        <h3>Épicerie du Port</h3>
+        <p>À deux pas de la marina, au rayon frais. Les bouteilles arrivent
+        chaque matin avant 9 h — les premières partent avec les pêcheurs.</p>
+      </div>
+      <div class="spot reveal">
+        <span class="q">La Corniche</span>
+        <h3>Café de la Corniche</h3>
+        <p>Servi glacé en terrasse, face à la baie. Le verre magenta qu'on voit
+        passer de table en table quand le soleil tape.</p>
+      </div>
+      <div class="spot reveal">
+        <span class="q">Beni Makada</span>
+        <h3>Marché de gros</h3>
+        <p>Le rendez-vous des cafés et épiceries de quartier : casiers de
+        12 bouteilles, commande la veille par WhatsApp, enlèvement dès 7 h.</p>
+      </div>
+    </div>
+    <div class="livraison reveal">
+      <div class="l-txt">
+        <h3>Livraison à Tanger</h3>
+        <p>Commandez avant 14 h, recevez votre jus le lendemain matin, bien frais.
+        <b>Livraison gratuite dès 200 DH d'achat</b> (15 DH en dessous).
+        Zones desservies : centre-ville, Marina, Marshan, Malabata, Iberia, Val Fleuri, Beni Makada et environs.</p>
+      </div>
+      <a class="order" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20passer%20une%20commande%20en%20livraison%20%C3%A0%20Tanger.%20Merci%20!">Commander en livraison</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ILS ONT GOÛTÉ ============ -->
+<section id="avis">
+  <div class="wrap">
+    <p class="kicker reveal">Ils ont goûté</p>
+    <h2 class="reveal">Tanger<br>a <em>soif</em>.</h2>
+    <div class="quotes">
+      <article class="quote reveal">
+        <span class="stars">★★★★★</span>
+        <p>« Goûté par curiosité à la Marina — depuis, c'est le jus du week-end
+        à la maison. Le goût est franc, frais, pas trop sucré. »</p>
+        <span class="who"><b>Salma</b> — Marshan</span>
+      </article>
+      <article class="quote reveal">
+        <span class="stars">★★★★★</span>
+        <p>« Je le prends après le sport : il désaltère vraiment, et on sent
+        le fruit, pas le sirop. La bouteille ne survit jamais au trajet du retour. »</p>
+        <span class="who"><b>Yassine</b> — Centre-ville</span>
+      </article>
+      <article class="quote reveal">
+        <span class="stars">★★★★★</span>
+        <p>« Les enfants adorent la couleur ; moi, j'aime la liste d'ingrédients :
+        un fruit, c'est tout. Le pack famille part en trois jours. »</p>
+        <span class="who"><b>Khadija</b> — Malabata</span>
+      </article>
+    </div>
+    <p class="avis-note reveal">Avis de démonstration</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <p class="kicker reveal">Questions fréquentes</p>
+    <h2 class="reveal">Avant la<br>première <em>gorgée</em>.</h2>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>Combien de temps se conserve le jus ?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p><b>48 heures au réfrigérateur</b>, entre 2 et 6 °C, bouteille fermée.
+          Le jus est pressé le matin même de la livraison et ne contient ni conservateur
+          ni traitement thermique : une fois la bouteille ouverte, nous conseillons
+          de la finir dans la journée — elle n'attend jamais jusque-là, en général.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Le jus contient-il du sucre ajouté ?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p><b>Non : 0 g de sucre ajouté.</b> La douceur vient uniquement du fruit,
+          cueilli à maturité quand son sucre naturel est au plus haut. Pas de sirop,
+          pas de concentré, pas d'eau ajoutée — la liste d'ingrédients tient en un mot :
+          figue de Barbarie.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Quelles zones livrez-vous, et sous quel délai ?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>Nous livrons <b>tout Tanger en 24 h</b> : commande passée avant 14 h,
+          livraison le lendemain matin. La livraison est <b>gratuite dès 200 DH
+          d'achat</b> (15 DH en dessous). Zones desservies : centre-ville, Marina,
+          Marshan, Malabata, Iberia, Val Fleuri, Beni Makada et environs proches.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Je tiens un café ou un hôtel : avez-vous une offre professionnelle ?<span class="plus">+</span></summary>
+        <div class="faq-body">
+          <p>Oui. Pour les cafés, restaurants et hôtels, nous proposons des
+          <b>formats adaptés au service</b>, des tarifs dégressifs selon les volumes
+          et des livraisons programmées chaque matin. Écrivez-nous pour recevoir
+          la <b>carte professionnelle</b> et les conditions B2B.</p>
+          <a class="order" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20repr%C3%A9sente%20un%20caf%C3%A9%20%2F%20un%20h%C3%B4tel%20et%20je%20souhaite%20recevoir%20la%20carte%20professionnelle%20SABRA.%20Merci%20!">Demander la carte pro</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
-<footer id="trouver">
+<footer>
   <div class="foot-cta">
     <p class="kicker reveal" style="justify-content:center">Trouver SABRA</p>
     <h2 class="reveal">Le désert se boit<br><em>glacé</em>.</h2>

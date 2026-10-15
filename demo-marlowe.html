@@ -189,6 +189,67 @@ section{position:relative}
 .craft-txt{position:absolute;z-index:2;right:clamp(16px,3vw,36px);bottom:clamp(16px,2.4vw,26px);max-width:320px;text-align:right;color:var(--ivory-dim);font-size:13.5px;line-height:1.65}
 @media(max-width:820px){.craft-txt{display:none}.craft-card{aspect-ratio:16/11}}
 
+/* ================= AJOUTS — MAISON / SERVICES / PARCOURS / TÉMOIGNAGES / FAQ / PRATIQUE ================= */
+.maison-sec,.services-sec,.parcours-sec,.temo-sec,.faq-sec{background:var(--ink);padding-bottom:clamp(80px,10vw,130px)}
+.services-sec,.temo-sec{background:var(--ink2)}
+.sec-intro{max-width:820px;margin-top:clamp(10px,2vw,20px)}
+.sec-intro h2{font-size:clamp(32px,4.4vw,62px);font-weight:800;line-height:1.03}
+.sec-intro h2 em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--gold)}
+.sec-intro p{margin-top:18px;color:var(--ivory-dim);line-height:1.8;font-size:15.5px;max-width:62ch}
+.maison-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,54px);max-width:1060px}
+.maison-cols p{color:var(--ivory-dim);line-height:1.85;font-size:15.5px}
+.maison-cols p+p{margin-top:16px}
+.maison-cols p b{color:var(--ivory);font-weight:600}
+@media(max-width:820px){.maison-cols{grid-template-columns:1fr}}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:clamp(38px,5vw,64px)}
+.stat{background:var(--panel);padding:clamp(22px,3vw,36px)}
+.stat .n{font-family:var(--grot);font-weight:700;font-size:clamp(34px,4.6vw,58px);line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.stat .n span{color:var(--gold)}
+.stat .l{margin-top:10px;font-family:var(--grot);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ivory-faint);line-height:1.7}
+@media(max-width:820px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2.4vw,28px);margin-top:clamp(38px,5vw,60px)}
+@media(max-width:820px){.svc-grid{grid-template-columns:1fr}}
+.svc-card{border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,rgba(239,233,223,.03),rgba(239,233,223,0));padding:clamp(26px,3.4vw,42px);display:flex;flex-direction:column;gap:14px;transition:border-color .35s,transform .35s}
+.svc-card:hover{border-color:rgba(200,161,90,.55);transform:translateY(-3px)}
+.svc-card .k{font-family:var(--grot);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.svc-card h3{font-size:clamp(22px,2.6vw,30px);font-weight:800;line-height:1.08}
+.svc-card p{color:var(--ivory-dim);line-height:1.75;font-size:15px;flex:1}
+.svc-price{font-family:var(--grot);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ivory-faint)}
+.svc-price b{display:block;font-size:clamp(20px,2.2vw,26px);letter-spacing:0;color:#fff;font-weight:700;margin-top:4px}
+.svc-cta{align-self:flex-start;font-family:var(--grot);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--line);border-radius:99px;padding:11px 20px;color:var(--ivory);transition:border-color .3s,background .3s}
+.svc-cta:hover{border-color:var(--gold);background:rgba(200,161,90,.08)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.4vw,28px);margin-top:clamp(38px,5vw,60px)}
+@media(max-width:1020px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+.step{border-top:2px solid var(--oxblood);padding-top:22px;position:relative}
+.step .no{font-family:var(--serif);font-style:italic;font-size:44px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(239,233,223,.4)}
+.step h3{margin-top:14px;font-size:19px;font-weight:800;line-height:1.2}
+.step .dur{display:inline-block;margin-top:10px;font-family:var(--grot);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,161,90,.4);border-radius:99px;padding:5px 12px}
+.step p{margin-top:14px;color:var(--ivory-dim);line-height:1.75;font-size:14.5px}
+.temo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,28px);margin-top:clamp(38px,5vw,60px)}
+@media(max-width:900px){.temo-grid{grid-template-columns:1fr}}
+.temo-card{border:1px solid var(--line);border-radius:6px;padding:clamp(24px,3vw,36px);background:var(--panel);display:flex;flex-direction:column;gap:18px}
+.temo-card .stars{color:var(--gold);font-size:14px;letter-spacing:.3em}
+.temo-card blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(18px,1.9vw,21px);line-height:1.55;color:var(--ivory);flex:1}
+.temo-card .who{font-family:var(--grot);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ivory-faint);line-height:1.9}
+.temo-card .who b{color:var(--ivory);font-weight:700}
+.temo-note{margin-top:22px;font-family:var(--grot);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ivory-faint)}
+.faq-list{margin-top:clamp(34px,4.5vw,54px);max-width:920px;border-bottom:1px solid var(--line)}
+.faq-item{border-top:1px solid var(--line)}
+.faq-item summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 4px;font-size:clamp(17px,2vw,21px);font-weight:700}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";font-family:var(--grot);font-weight:400;font-size:24px;color:var(--gold);transition:transform .3s}
+.faq-item[open ] summary::after{transform:rotate(45deg)}
+.faq-item p{padding:0 4px 26px;color:var(--ivory-dim);line-height:1.8;font-size:15px;max-width:70ch}
+.pratique{background:var(--ink);border-top:1px solid var(--line)}
+.pratique-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px;padding:clamp(30px,4vw,44px) 0}
+.pratique .items{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,54px)}
+.pratique .it .k{font-family:var(--grot);font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.pratique .it .v{font-size:16px;font-weight:600}
+.pratique .it .v small{display:block;font-weight:400;color:var(--ivory-dim);font-size:13px;margin-top:3px}
+.pratique-cta{background:var(--oxblood);color:#fff;font-family:var(--grot);font-size:11px;letter-spacing:.22em;text-transform:uppercase;border-radius:99px;padding:16px 28px;transition:background .3s}
+.pratique-cta:hover{background:var(--oxblood-bright)}
+
 /* ================= FINALE ================= */
 .finale{background:var(--cream);color:#221a12;overflow:hidden}
 .finale .sec-head{color:rgba(34,26,18,.45)}
@@ -406,6 +467,193 @@ footer{background:#17110c;color:var(--ivory-faint);padding:34px 0 44px}
     </div>
   </div>
 </section>
+
+<!-- ================= 4b · LA MAISON ================= -->
+<section class="maison-sec" id="maison">
+  <div class="wrap">
+    <div class="sec-head"><b>La Maison</b><span>Tanger · Depuis plus de 25 ans</span></div>
+    <div class="sec-intro rv">
+      <h2>Une maison née à Tanger, <em>les mains dans la tôle.</em></h2>
+    </div>
+    <div class="maison-cols rv" style="margin-top:clamp(24px,3vw,38px)">
+      <div>
+        <p>L'atelier Marlowe est né à Tanger, dans un hangar de la zone industrielle, autour d'une conviction simple : <b>une voiture de collection ne se répare pas, elle se reconstruit</b> — à la main, comme au premier jour.</p>
+        <p>Depuis plus de vingt-cinq ans, nos tôliers, selliers et mécaniciens restaurent des grand tourisme européennes et des américaines d'époque pour des collectionneurs du Maroc, d'Europe et du Golfe.</p>
+      </div>
+      <div>
+        <p>Chaque voiture qui entre chez nous est <b>documentée, photographiée et suivie par un seul chef d'atelier</b>, du premier démontage à la livraison.</p>
+        <p>Pas d'intermédiaire, pas de surprise : un interlocuteur, un devis écrit, une parole tenue. C'est ainsi qu'une maison d'atelier devient une maison de confiance.</p>
+      </div>
+    </div>
+    <div class="stats-row rv">
+      <div class="stat"><div class="n">25<span>+</span></div><div class="l">Années d'expérience</div></div>
+      <div class="stat"><div class="n">140<span>+</span></div><div class="l">Voitures restaurées</div></div>
+      <div class="stat"><div class="n">1 200</div><div class="l">Heures par restauration</div></div>
+      <div class="stat"><div class="n">24<span> mois</span></div><div class="l">De garantie atelier</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4c · NOS SERVICES ================= -->
+<section class="services-sec" id="services">
+  <div class="wrap">
+    <div class="sec-head"><b>Nos Services</b><span>Devis gratuit sous 48 h</span></div>
+    <div class="sec-intro rv">
+      <h2>Quatre métiers, <em>une seule exigence.</em></h2>
+      <p>Vous pouvez nous confier la voiture entière, ou un seul métier. Dans tous les cas : un devis ferme, poste par poste, avant que le moindre outil ne touche votre voiture.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc-card rv">
+        <div class="k">Service — 01</div>
+        <h3>Restauration complète</h3>
+        <p>De l'épave au concours : carrosserie, mécanique, sellerie et électricité refaites à neuf, dans le respect strict de l'époque et de l'origine.</p>
+        <div class="svc-price">À partir de<b>450 000 DH</b></div>
+        <a class="svc-cta" href="https://wa.me/212693981822?text=Bonjour%20Atelier%20Marlowe%2C%20je%20souhaite%20un%20devis%20pour%20une%20restauration%20compl%C3%A8te%20de%20ma%20voiture%20de%20collection.%20Merci%20!" target="_blank" rel="noopener">Devis WhatsApp — Restauration</a>
+      </article>
+      <article class="svc-card rv">
+        <div class="k">Service — 02</div>
+        <h3>Carrosserie &amp; peinture</h3>
+        <p>Tôlerie battue à la main sur forme en bois, puis laque multicouche polie main, fidèle à la teinte d'origine — ou à celle dont vous rêvez.</p>
+        <div class="svc-price">À partir de<b>85 000 DH</b></div>
+        <a class="svc-cta" href="https://wa.me/212693981822?text=Bonjour%20Atelier%20Marlowe%2C%20je%20souhaite%20un%20devis%20carrosserie%20et%20peinture%20pour%20ma%20voiture%20ancienne.%20Merci%20!" target="_blank" rel="noopener">Devis WhatsApp — Carrosserie</a>
+      </article>
+      <article class="svc-card rv">
+        <div class="k">Service — 03</div>
+        <h3>Mécanique d'époque</h3>
+        <p>Moteurs, boîtes et trains roulants démontés, mesurés et révisés au banc, avec pièces d'origine ou refabriquées à l'identique.</p>
+        <div class="svc-price">À partir de<b>30 000 DH</b></div>
+        <a class="svc-cta" href="https://wa.me/212693981822?text=Bonjour%20Atelier%20Marlowe%2C%20je%20souhaite%20un%20devis%20de%20m%C3%A9canique%20d%27%C3%A9poque%20pour%20ma%20voiture%20de%20collection.%20Merci%20!" target="_blank" rel="noopener">Devis WhatsApp — Mécanique</a>
+      </article>
+      <article class="svc-card rv">
+        <div class="k">Service — 04</div>
+        <h3>Sellerie &amp; habitacle</h3>
+        <p>Cuirs pleine fleur cousus au fil de lin, moquettes bouclées et boiseries restaurées — un habitacle indiscernable de la sortie d'usine.</p>
+        <div class="svc-price">À partir de<b>45 000 DH</b></div>
+        <a class="svc-cta" href="https://wa.me/212693981822?text=Bonjour%20Atelier%20Marlowe%2C%20je%20souhaite%20un%20devis%20de%20sellerie%20et%20habitacle%20pour%20ma%20voiture%20ancienne.%20Merci%20!" target="_blank" rel="noopener">Devis WhatsApp — Sellerie</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4d · LE PARCOURS ================= -->
+<section class="parcours-sec" id="parcours">
+  <div class="wrap">
+    <div class="sec-head"><b>Le Parcours</b><span>De la première visite à la livraison</span></div>
+    <div class="sec-intro rv">
+      <h2>Vous savez tout, <em>à chaque étape.</em></h2>
+      <p>Une restauration dure des mois ; notre travail est aussi de vous les faire vivre sereinement. Voici comment se déroule chaque projet, sans zone d'ombre.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv">
+        <div class="no">01</div>
+        <h3>Expertise &amp; devis gratuit</h3>
+        <span class="dur">48 h</span>
+        <p>Nous examinons la voiture — à l'atelier ou sur dossier photo détaillé — et remettons un devis ferme, poste par poste, sous 48 h. Sans engagement.</p>
+      </div>
+      <div class="step rv">
+        <div class="no">02</div>
+        <h3>Démontage &amp; documentation</h3>
+        <span class="dur">2 semaines</span>
+        <p>Chaque pièce est démontée, photographiée, étiquetée et archivée. Vous recevez le dossier complet avant le premier coup de marteau.</p>
+      </div>
+      <div class="step rv">
+        <div class="no">03</div>
+        <h3>Restauration</h3>
+        <span class="dur">4 à 9 mois</span>
+        <p>Tôlerie, mécanique, sellerie et peinture avancent en parallèle sous un seul chef d'atelier — et vous recevez un reportage photo chaque vendredi.</p>
+      </div>
+      <div class="step rv">
+        <div class="no">04</div>
+        <h3>Contrôle &amp; livraison</h3>
+        <span class="dur">Garantie 24 mois</span>
+        <p>500 km d'essais, réglages finaux, puis la livraison : la voiture, son dossier de restauration complet et une garantie atelier de 24 mois.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4e · TÉMOIGNAGES ================= -->
+<section class="temo-sec" id="temoignages">
+  <div class="wrap">
+    <div class="sec-head"><b>Témoignages</b><span>Ils nous confient leurs voitures</span></div>
+    <div class="sec-intro rv">
+      <h2>Des collectionneurs, <em>des voitures, des promesses tenues.</em></h2>
+    </div>
+    <div class="temo-grid">
+      <article class="temo-card rv">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <blockquote>« Ma GT dormait depuis vingt ans dans un garage. L'atelier l'a rendue à la route en sept mois — et chaque vendredi, les photos arrivaient. On ne confie pas une telle voiture à n'importe qui. »</blockquote>
+        <div class="who"><b>Yassine B.</b><br>Collectionneur — Casablanca</div>
+      </article>
+      <article class="temo-card rv">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <blockquote>« Je collectionne depuis Bruxelles et je cherchais un atelier au soleil pour ma cabriolet italienne. Travail d'orfèvre, délais annoncés tenus, devis respecté au dirham près. »</blockquote>
+        <div class="who"><b>Marc D.</b><br>Collectionneur — Bruxelles</div>
+      </article>
+      <article class="temo-card rv">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <blockquote>« La sellerie refaite est indiscernable de l'origine — jusqu'à l'odeur du cuir. La voiture a pris la première place de sa catégorie au concours de Marrakech. »</blockquote>
+        <div class="who"><b>Salma R.</b><br>Collectionneuse — Marrakech</div>
+      </article>
+    </div>
+    <p class="temo-note">Témoignages de démonstration — situations présentées à titre d'exemple.</p>
+  </div>
+</section>
+
+<!-- ================= 4f · FAQ ================= -->
+<section class="faq-sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head"><b>Questions fréquentes</b><span>Avant de nous confier votre voiture</span></div>
+    <div class="sec-intro rv">
+      <h2>Ce que l'on nous demande <em>souvent.</em></h2>
+    </div>
+    <div class="faq-list rv">
+      <details class="faq-item">
+        <summary>Le devis est-il vraiment gratuit ?</summary>
+        <p>Oui, entièrement. Expertise de la voiture à l'atelier ou sur dossier photo, puis devis ferme détaillé poste par poste sous 48 h — sans aucun engagement de votre part. Vous repartez avec le document, que vous signiez ou non.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quels sont les délais d'une restauration ?</summary>
+        <p>Comptez 6 à 10 semaines pour une carrosserie-peinture, et 4 à 9 mois pour une restauration complète, selon l'état de départ et la rareté des pièces. Le planning exact est écrit noir sur blanc dans le devis, et chaque retard éventuel vous est annoncé — jamais découvert.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Pouvez-vous venir chercher ma voiture ?</summary>
+        <p>Oui. Enlèvement par plateau partout au Maroc, et transport en remorque fermée depuis l'Europe via Tanger Med pour nos clients étrangers. La voiture est assurée dès sa prise en charge et jusqu'à sa livraison.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Utilisez-vous des pièces d'origine ?</summary>
+        <p>Chaque fois qu'elles existent encore : stock neuf d'époque, pièces d'occasion contrôlées, réseaux de collectionneurs. Quand une pièce est introuvable, nous la refabriquons à l'identique dans nos ateliers — toujours avec votre accord écrit préalable et le prix annoncé avant fabrication.</p>
+      </details>
+      <details class="faq-item">
+        <summary>La restauration est-elle garantie ?</summary>
+        <p>Oui : 24 mois de garantie atelier sur la main-d'œuvre, kilométrage illimité, avec un contrôle complet offert à 1 000 km. La peinture et la sellerie bénéficient de la même couverture. Tout est écrit dans le dossier de livraison.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4g · PRATIQUE ================= -->
+<div class="pratique">
+  <div class="wrap">
+    <div class="pratique-in rv">
+      <div class="items">
+        <div class="it">
+          <div class="k">L'Atelier</div>
+          <div class="v">Zone industrielle, Tanger<small>Visites sur rendez-vous uniquement</small></div>
+        </div>
+        <div class="it">
+          <div class="k">Horaires</div>
+          <div class="v">Lun – Sam · 9h – 18h<small>Fermé le dimanche</small></div>
+        </div>
+        <div class="it">
+          <div class="k">Réponse</div>
+          <div class="v">Sous 24 h ouvrées<small>Devis ferme sous 48 h</small></div>
+        </div>
+      </div>
+      <a class="pratique-cta" href="https://wa.me/212693981822?text=Bonjour%20Atelier%20Marlowe%2C%20je%20souhaite%20des%20informations%20sur%20vos%20restaurations.%20Merci%20!" target="_blank" rel="noopener">Écrire à l'atelier · WhatsApp</a>
+    </div>
+  </div>
+</div>
 
 <!-- ================= 5 · FINALE / VISITE PRIVÉE ================= -->
 <section class="finale" id="visite">
