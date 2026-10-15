@@ -24,224 +24,488 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Archivo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="logo-icon.svg" type="image/svg+xml">
 <script type="importmap">{"imports":{"three":"./demo-burger/gl/three.module.js"}}</script>
 <style>
-.hero{position:relative;overflow:hidden}
-#heroGL{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.hero-inner{position:relative;z-index:2}
-.hero::after{content:'';position:absolute;inset:0;z-index:1;background:radial-gradient(62% 58% at 50% 40%,rgba(4,7,14,.66),transparent 72%);pointer-events:none}
+:root{
+  --bg:#07080c; --bg2:#0a0d14; --panel:#0c1017; --line:#1e2431; --hair:rgba(240,232,216,.13);
+  --gold:#d7a441; --gold2:#f0c569; --cyan:#57c7e3; --txt:#f2efe9; --mut:#a8a294; --wa:#22c064;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--bg);color:var(--txt);font-family:'Cairo','Segoe UI',Tahoma,sans-serif;overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+::selection{background:var(--gold);color:#0a0a0a}
+.container{max-width:1180px;margin:0 auto;padding:0 22px}
+.container.narrow{max-width:820px}
+.lat{font-family:'Archivo',sans-serif}
+.micro{font-family:'Courier New',monospace;font-size:11px;letter-spacing:1.5px;color:var(--mut);text-transform:uppercase}
+.eyebrow{font-family:'Archivo',sans-serif;color:var(--gold2);font-weight:700;letter-spacing:4px;font-size:12.5px;text-transform:uppercase}
+.btn{display:inline-block;background:var(--gold);color:#131313;padding:13px 28px;border-radius:6px;font-weight:800;font-size:16px;transition:transform .25s,background .25s;border:1px solid var(--gold)}
+.btn:hover{background:var(--gold2)}
+.btn-ghost{background:transparent;color:var(--txt);border:1px solid #4a5064}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(215,164,65,.08)}
+.btn-wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.btn-lg{padding:16px 34px;font-size:17.5px}
+.btn-block{display:block;text-align:center;width:100%}
+.btn-sm{padding:9px 18px;font-size:14.5px}
+/* ---------- LOADER ---------- */
+#intro{position:fixed;inset:0;z-index:500;background:#05060a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .6s ease,visibility .6s}
+#intro.done{opacity:0;visibility:hidden}
+#intro .wm{font-size:30px;font-weight:900}
+#intro .wm span{color:var(--gold)}
+#intro .wm small{display:block;text-align:center;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:6px;color:var(--mut);font-weight:700;margin-top:2px}
+#intro .bar{width:210px;height:2px;background:#232838;overflow:hidden}
+#intro .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--cyan));animation:load 1.3s cubic-bezier(.3,.7,.3,1) forwards}
+@keyframes load{to{width:100%}}
+#intro .tag{font-family:'Archivo',sans-serif;font-size:11.5px;letter-spacing:3px;color:var(--mut);text-transform:uppercase}
+/* ---------- CHROME ---------- */
+#progress{position:fixed;top:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--cyan));width:0;z-index:210}
+#grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:205;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");animation:gr 7s steps(8) infinite}
+@keyframes gr{0%,100%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(-1%,2%)}}
+header.nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .3s,border-color .3s}
+header.nav.scrolled{background:rgba(7,8,12,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;max-width:1180px;margin:0 auto;gap:14px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:20px}
+.logo span{color:var(--gold)}
+nav.links{display:flex;gap:24px;align-items:center;font-size:15px;font-weight:600}
+nav.links a{position:relative;padding:4px 0;color:#d8d2c4}
+nav.links a::after{content:'';position:absolute;bottom:-2px;inset-inline-start:0;width:0;height:2px;background:var(--gold);transition:width .3s}
+nav.links a:hover::after,nav.links a.act::after{width:100%}
+nav.links a.act{color:var(--gold2)}
+.langs{display:flex;gap:4px;border:1px solid var(--line);border-radius:50px;padding:3px}
+.langs button{background:transparent;border:0;color:var(--mut);font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:1px;padding:5px 11px;border-radius:50px;cursor:pointer}
+.langs button.on{background:var(--gold);color:#131313}
+#burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;color:var(--txt);font-size:19px;padding:6px 12px;cursor:pointer}
+#rail{position:fixed;inset-inline-end:18px;top:50%;transform:translateY(-50%);z-index:190;display:flex;flex-direction:column;gap:14px;align-items:center}
+#rail .rdot{display:flex;flex-direction:column;align-items:center;gap:5px;color:#5c574f;font-family:'Courier New',monospace;font-size:10.5px}
+#rail .rdot i{width:7px;height:7px;border-radius:50%;border:1px solid #5c574f;display:block;transition:.3s}
+#rail .rdot.on{color:var(--gold2)}
+#rail .rdot.on i{background:var(--gold);border-color:var(--gold);box-shadow:0 0 12px rgba(215,164,65,.8)}
+#rail .rline{width:1px;height:40px;background:var(--hair)}
+.waf{position:fixed;bottom:20px;inset-inline-end:20px;z-index:195;background:var(--wa);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#debug{position:fixed;bottom:14px;left:14px;z-index:400;background:#000;border:1px solid var(--gold);color:#ffd977;font-family:'Courier New',monospace;font-size:12px;padding:8px 12px;display:none}
+/* ---------- HERO STAGE ---------- */
+.stage{position:relative}
+.pin{position:relative;height:100svh;overflow:hidden;background:
+  radial-gradient(1000px 520px at 50% -60px,rgba(87,199,227,.10),transparent 60%),
+  radial-gradient(800px 480px at 85% 110%,rgba(215,164,65,.08),transparent 60%),var(--bg)}
+.pin .grid-bg{position:absolute;inset:0;z-index:0;background:
+  linear-gradient(rgba(240,232,216,.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(240,232,216,.04) 1px,transparent 1px);
+  background-size:76px 76px;mask-image:radial-gradient(82% 72% at 50% 44%,#000 25%,transparent 78%)}
+.pin .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 92% at 50% 45%,transparent 52%,rgba(0,0,0,.62));z-index:3}
+.pin .frame{position:absolute;inset:14px;border:1px solid var(--hair);pointer-events:none;z-index:3}
+.pin .corner{position:absolute;width:18px;height:18px;z-index:4;pointer-events:none;border-color:var(--gold2);border-style:solid;border-width:0}
+.corner.tl{top:22px;inset-inline-start:22px;border-top-width:1.5px;border-inline-start-width:1.5px}
+.corner.tr{top:22px;inset-inline-end:22px;border-top-width:1.5px;border-inline-end-width:1.5px}
+.corner.bl{bottom:22px;inset-inline-start:22px;border-bottom-width:1.5px;border-inline-start-width:1.5px}
+.corner.br{bottom:22px;inset-inline-end:22px;border-bottom-width:1.5px;border-inline-end-width:1.5px}
+#glwrap{position:absolute;inset:0;z-index:2}
+#gl{position:absolute;inset:0;width:100%;height:100%}
+#glwrap.trans{filter:blur(1px) drop-shadow(2px 0 rgba(215,164,65,.30)) drop-shadow(-2px 0 rgba(87,199,227,.30))}
+#fallback3d{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:2}
+#fallback3d img{width:min(880px,88vw);border:1px solid var(--line);border-radius:10px}
+#stageLoader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mut);letter-spacing:3px;font-size:12.5px;z-index:5;font-family:'Courier New',monospace}
+.ovl{position:absolute;z-index:6;pointer-events:none}
+.ovl a{pointer-events:auto}
+#ov1{inset-inline-start:0;top:16svh;padding:0 38px;max-width:600px}
+#ov1 h1{font-size:clamp(38px,6.2vw,78px);font-weight:900;line-height:1.18;margin:14px 0 12px;text-shadow:0 4px 44px rgba(0,0,0,.6)}
+#ov1 h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--gold2)}
+#ov1 h1 .lat{letter-spacing:.5px}
+#ov1 p{color:#d5cfc0;max-width:400px;font-size:17px;text-shadow:0 2px 16px rgba(0,0,0,.85)}
+#ov1 .cta-row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;pointer-events:auto}
+#ov1 .meta{display:flex;gap:10px 18px;margin-top:22px;flex-wrap:wrap;max-width:430px}
+#ov2{inset-inline-end:0;top:auto;bottom:12svh;padding:0 38px;text-align:end;max-width:470px}
+#ov2 h2{font-size:clamp(25px,3.4vw,40px);font-weight:900;line-height:1.25;margin:10px 0 10px}
+#ov2 p{color:var(--mut);font-size:15.5px}
+#ov2 .ticks{margin-top:16px;display:grid;gap:7px;justify-items:end}
+#ov3{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:10svh;text-align:center}
+#ov3 .statement{font-family:'Archivo',sans-serif;font-size:clamp(26px,4.6vw,54px);font-weight:900;line-height:1.2;position:relative;letter-spacing:1px}
+#ov3 .statement .sh{position:absolute;inset:0;color:transparent;-webkit-text-stroke:1.5px rgba(240,197,105,.55);transform:translate(6px,6px);z-index:-1}
+#ov3 p{color:#ddd6c9;margin-top:14px;font-size:16px;text-shadow:0 2px 18px rgba(0,0,0,.85)}
+#ov4{inset-inline-start:0;top:13svh;padding:0 38px}
+#ov4 h2{font-size:clamp(27px,3.8vw,44px);font-weight:900;line-height:1.2;margin:10px 0 8px}
+#ov4 p{color:var(--mut);font-size:15.5px;max-width:350px}
+#ov5{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8svh;text-align:center;padding-inline:20px}
+#ov5 h2{font-size:clamp(27px,4.2vw,44px);font-weight:900;margin:10px 0 12px;text-shadow:0 3px 34px rgba(0,0,0,.9)}
+#ov5 p{color:#d5cfc0;max-width:540px;font-size:16px;margin-bottom:24px}
+#ov5 .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+#ov5 .mini-nav{display:flex;gap:22px;margin-top:26px;font-size:12.5px;letter-spacing:1.5px;color:var(--mut)}
+#ov5 .mini-nav a:hover{color:#fff}
+#ov5 .techfoot{margin-top:14px}
+#scrollcue{position:absolute;bottom:24px;inset-inline-start:50%;transform:translateX(50%);z-index:6;color:var(--mut);font-size:11px;letter-spacing:4px;text-align:center;font-family:'Archivo',sans-serif}
+#scrollcue i{display:block;width:1px;height:40px;background:linear-gradient(var(--gold2),transparent);margin:8px auto 0;animation:cue 1.8s infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* ---------- SECTIONS ---------- */
+.section{padding:96px 0;position:relative}
+.section-alt{background:var(--bg2);border-block:1px solid var(--line)}
+.sec-head{margin-bottom:44px}
+.sec-title{font-size:clamp(29px,4.4vw,50px);font-weight:900;line-height:1.2;margin:10px 0 10px}
+.sec-sub{color:var(--mut);max-width:600px;font-size:16.5px}
+.marquee{border-block:1px solid var(--line);background:#090b10;overflow:hidden;padding:13px 0}
+.marquee .track{display:flex;gap:44px;width:max-content;animation:mq 24s linear infinite;font-weight:800;font-size:17.5px;white-space:nowrap}
+.marquee .track span i{color:var(--gold);font-style:normal}
+@keyframes mq{to{transform:translateX(50%)}}
+/* work — horizontal gallery */
+#work .hwrap{position:relative}
+#work .htrack{display:flex;gap:22px;width:max-content;padding:6px 22px 10px}
+.wcard{width:min(520px,82vw);flex:none;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .3s}
+.wcard:hover{border-color:var(--gold)}
+.wcard .framebar{display:flex;align-items:center;gap:6px;background:#11151f;padding:9px 13px;border-bottom:1px solid var(--line)}
+.wcard .dot{width:10px;height:10px;border-radius:50%}
+.wcard .dot.r{background:#ff5f57}.wcard .dot.y{background:#febc2e}.wcard .dot.g{background:#28c840}
+.wcard .urlpill{font-family:'Courier New',monospace;font-size:11px;color:#8b93a7;background:#0b0e14;border-radius:20px;padding:3px 12px;margin-inline-start:6px;direction:ltr}
+.wcard img.shot{width:100%;aspect-ratio:16/10;object-fit:cover}
+.wcard .cin{padding:20px 22px 24px}
+.wcard .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.wcard .tag{font-size:11.5px;border:1px solid var(--line);border-radius:20px;padding:3px 11px;color:var(--mut)}
+.wcard .tag.live{color:#7fe3a8;border-color:rgba(34,192,100,.4)}
+.wcard h3{font-size:21px;margin-bottom:5px}
+.wcard p{color:var(--mut);font-size:14.5px}
+.wcard .go{display:inline-block;margin-top:14px;color:var(--gold2);font-weight:700;font-size:14.5px}
+#work .hint{color:var(--mut);font-size:13px;margin-top:8px}
+/* services — editorial list */
+.svc-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:start}
+.svc-list{display:flex;flex-direction:column}
+.svc-row{display:grid;grid-template-columns:52px 1fr auto;gap:14px;align-items:center;width:100%;text-align:start;background:transparent;border:0;border-bottom:1px solid var(--line);padding:20px 8px;cursor:pointer;color:var(--txt);font-family:inherit;transition:background .25s,padding .25s}
+.svc-row:first-child{border-top:1px solid var(--line)}
+.svc-row .n{font-family:'Archivo',sans-serif;font-weight:800;color:#565d70;font-size:15px}
+.svc-row h3{font-size:clamp(18px,2.2vw,23px);font-weight:800}
+.svc-row .from{color:var(--mut);font-size:13.5px;white-space:nowrap}
+.svc-row.on{background:rgba(215,164,65,.05);padding-inline-start:16px}
+.svc-row.on .n{color:var(--gold)}
+.svc-row.on h3{color:var(--gold2)}
+.svc-panel{position:sticky;top:96px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
+.svc-panel .imgwrap{position:relative;aspect-ratio:16/10;overflow:hidden}
+.svc-panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease,transform 1.2s ease;transform:scale(1.06)}
+.svc-panel img.on{opacity:1;transform:scale(1)}
+.svc-panel .pin{padding:24px}
+.svc-panel h3{font-size:22px;margin-bottom:8px}
+.svc-panel p{color:var(--mut);font-size:15px}
+.svc-panel ul{list-style:none;margin:14px 0 18px;display:grid;gap:7px}
+.svc-panel li{font-size:14.5px;color:#d8d2c4}
+.svc-panel li::before{content:'✓ ';color:var(--gold)}
+/* pricing */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:28px 24px;transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(215,164,65,.55)}
+.card.price .amount{font-size:42px;font-weight:900;color:#fff;margin:8px 0 14px}
+.card.price .amount span{font-size:17px;color:var(--gold2)}
+.card.price ul{list-style:none;display:grid;gap:8px;margin-bottom:16px}
+.card.price li{font-size:14.5px;color:#d8d2c4}
+.card.price .excl{color:var(--mut);font-size:12.5px;line-height:1.7;margin-bottom:18px}
+.card.price.featured{border-color:var(--gold);position:relative;background:radial-gradient(500px 220px at 50% -60px,rgba(215,164,65,.16),transparent),var(--panel)}
+.card.price .flag{position:absolute;top:-13px;inset-inline-start:22px;background:var(--gold);color:#131313;font-size:12.5px;font-weight:800;border-radius:20px;padding:4px 13px}
+.pay-note{text-align:center;color:var(--mut);margin-top:26px;font-size:15px}
+/* process */
+.proc{position:relative;max-width:860px}
+.proc .line{position:absolute;inset-inline-start:25px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.proc .line i{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(var(--gold),var(--cyan));transform:scaleY(0);transform-origin:top;display:block}
+.proc .step{display:grid;grid-template-columns:52px 1fr;gap:20px;padding:22px 0;position:relative}
+.proc .step .n{width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);background:var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:900;color:var(--gold2);font-size:17px;z-index:1}
+.proc .step h3{font-size:21px;margin-bottom:5px}
+.proc .step h3 .lat{color:#565d70;font-size:13px;letter-spacing:2px;margin-inline-start:10px}
+.proc .step p{color:var(--mut);font-size:15.5px;max-width:640px}
+.proc .step p strong{color:#e8e2d2}
+/* numbers */
+.trust-band{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.trust-item{border:1px solid var(--line);border-radius:12px;padding:26px 14px;text-align:center;background:var(--panel)}
+.trust-item strong{display:block;font-size:36px;font-weight:900;color:#fff}
+.trust-item span{color:var(--mut);font-size:13.5px}
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about-vis{position:relative;height:440px}
+.about-vis img{position:absolute;border-radius:12px;border:1px solid var(--line);object-fit:cover}
+.about-vis .a1{width:78%;height:320px;top:0;inset-inline-start:0}
+.about-vis .a2{width:56%;height:250px;bottom:0;inset-inline-end:0;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.about-txt p{color:var(--mut);font-size:16.5px;margin-bottom:16px}
+.about-txt p strong{color:#e8e2d2}
+.about-pillars{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.about-pillars span{border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:14.5px;font-weight:700}
+/* testimonials */
+.avis-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:920px}
+.avis-card .mark{font-size:34px;color:var(--gold);font-family:'Archivo',sans-serif;line-height:1}
+.avis-card p.q{font-size:16px;line-height:1.95;margin:8px 0 16px}
+.avis-card .who strong{display:block}
+.avis-card .who span{color:var(--mut);font-size:13.5px}
+/* faq */
+.faq-item{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;background:var(--panel);overflow:hidden}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:0;color:var(--txt);font-family:inherit;font-size:16.5px;font-weight:700;text-align:start;padding:18px 20px;cursor:pointer}
+.faq-q span{color:var(--gold);font-size:22px;transition:transform .3s}
+.faq-item.open .faq-q span{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a p{padding:0 20px 18px;color:var(--mut);font-size:15px}
+/* contact form */
+.lead-form{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:30px}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:14px;font-weight:700;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;background:#0a0d13;border:1px solid var(--line);border-radius:8px;color:var(--txt);padding:12px 14px;font-family:inherit;font-size:15.5px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid rgba(215,164,65,.5);border-color:var(--gold)}
+.form-err{color:#ff8f7d;font-size:14.5px;min-height:22px;margin-bottom:8px}
+.form-note{color:var(--mut);font-size:13.5px;text-align:center;margin-top:12px}
+.form-ok{display:none;background:rgba(34,192,100,.1);border:1px solid rgba(34,192,100,.45);border-radius:10px;padding:16px;margin-top:16px;font-size:15px}
+.direct{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.direct-card{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.direct-card .d-icon{font-size:24px}
+.direct-card span{font-size:14px;color:var(--mut)}
+.direct-card strong{color:var(--txt);font-size:15px}
+/* final + footer */
+.final-cta{border:1px solid rgba(215,164,65,.5);border-radius:16px;padding:52px 30px;text-align:center;background:radial-gradient(640px 280px at 50% -70px,rgba(215,164,65,.18),transparent),var(--panel)}
+.final-cta h2{font-size:clamp(26px,3.6vw,38px);margin-bottom:10px}
+.final-cta p{color:var(--mut);margin-bottom:26px}
+.final-cta .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:44px 0 30px;text-align:center;color:var(--mut);font-size:14px}
+footer .wm{font-size:24px;font-weight:900;color:var(--txt)}
+footer .wm span{color:var(--gold)}
+footer .mline{width:180px;height:2px;margin:16px auto;background:linear-gradient(90deg,transparent,var(--gold),var(--cyan),transparent);background-size:200% 100%;animation:ml 3.2s linear infinite}
+@keyframes ml{to{background-position:200% 0}}
+footer .copy{font-size:13px;margin-top:8px}
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.1s}.js .rv.d2{transition-delay:.2s}
+@media(max-width:980px){
+  .grid-3{grid-template-columns:1fr}
+  .trust-band{grid-template-columns:repeat(2,1fr)}
+  .svc-layout{grid-template-columns:1fr}
+  .svc-panel{position:static}
+  .about-grid{grid-template-columns:1fr}
+  .avis-grid{grid-template-columns:1fr}
+  .direct{grid-template-columns:1fr}
+}
+@media(max-width:820px){
+  nav.links{position:fixed;inset:64px 14px auto 14px;background:rgba(9,11,16,.98);border:1px solid var(--line);border-radius:14px;flex-direction:column;align-items:stretch;padding:16px;gap:4px;display:none}
+  nav.links.open{display:flex}
+  nav.links a{padding:11px 8px}
+  #burger{display:block}
+  #rail{display:none}
+  #ov1{top:auto;bottom:0;inset-inline:0;padding:70px 22px 10svh;background:linear-gradient(transparent,rgba(5,6,10,.9) 34%)}
+  #ov2{top:auto;bottom:0;inset-inline:0;text-align:start;padding:70px 22px 9svh;background:linear-gradient(transparent,rgba(5,6,10,.9) 34%)}
+  #ov2 .ticks{justify-items:start}
+  #ov4{top:auto;bottom:0;inset-inline:0;padding:70px 22px 10svh;background:linear-gradient(transparent,rgba(5,6,10,.9) 34%)}
+  header .btn-sm{display:none}
+  .langs button{padding:5px 8px}
+  .btn-sm{padding:8px 12px;font-size:13px;white-space:nowrap}
+  .nav-inner{padding:11px 12px}
+  .row-2{grid-template-columns:1fr}
+  .proc .step{grid-template-columns:44px 1fr;gap:14px}
+  .proc .step .n{width:44px;height:44px}
+  .proc .line{inset-inline-start:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  .marquee .track{animation:none}#grain{animation:none}#scrollcue i{animation:none}
+  footer .mline{animation:none}#intro .bar i{animation-duration:.2s}
+}
 </style>
-<link rel="icon" href="logo-icon.svg" type="image/svg+xml">
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
 
-<header class="nav" id="top">
-  <div class="container nav-inner">
-    <a href="#top" class="logo"><img src="logo-icon.svg" alt="شعار طنجة ويب" width="35" height="35">طنجة <span>ويب</span></a>
+<div id="intro" aria-hidden="true">
+  <div class="wm">طنجة <span>ويب</span><small>TANJA WEB</small></div>
+  <div class="bar"><i></i></div>
+  <div class="tag">Digital experiences from Tangier</div>
+</div>
+<noscript><style>#intro{display:none}</style></noscript>
+
+<div id="progress"></div>
+<div id="grain"></div>
+<div id="debug"></div>
+
+<header class="nav" id="hdr">
+  <div class="nav-inner">
+    <a href="#stage" class="logo"><img src="logo-icon.svg" alt="شعار طنجة ويب" width="34" height="34">طنجة <span>ويب</span></a>
     <nav class="links" id="navLinks" aria-label="التنقل الرئيسي">
-      <a href="#services">خدماتنا</a>
-      <a href="portfolio.html">أعمالنا</a>
-      <a href="#pricing">الأسعار</a>
-      <a href="#process">طريقة العمل</a>
-      <a href="#faq">الأسئلة الشائعة</a>
-      <a href="#contact" class="btn btn-gold btn-sm">طلب عرض ثمن</a>
+      <a href="#work" data-i18n="navWork">أعمالنا</a>
+      <a href="#services" data-i18n="navServices">خدماتنا</a>
+      <a href="#process" data-i18n="navProcess">طريقة العمل</a>
+      <a href="#pricing" data-i18n="navPricing">الأسعار</a>
+      <a href="#faq" data-i18n="navFaq">الأسئلة</a>
     </nav>
-    <button class="burger" id="burger" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">☰</button>
+    <div style="display:flex;gap:10px;align-items:center">
+      <div class="langs" role="group" aria-label="Language">
+        <button type="button" data-lang="ar" class="on">عربي</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="#contact" class="btn btn-sm" data-i18n="navCta" data-mag>ابدأ مشروعك</a>
+      <button id="burger" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">☰</button>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-  <canvas id="heroGL" aria-hidden="true"></canvas>
-  <div class="container hero-inner">
-    <div class="hero-badge">🏙️ تصميم مواقع للمشاريع المغربية — طنجة والمغرب</div>
-    <h1>موقع احترافي لمشروعك في 7–14 يومًا — <span class="gold">مصمم باش يجيب لك الزبناء</span></h1>
-    <p class="hero-sub">كنصايب مواقع سريعة، عصرية ومتوافقة مع الهاتف للمطاعم، المتاجر، العقارات والخدمات في المغرب. شوف الأعمال الحية ديالي وخذ عرض ثمن مجاني عبر واتساب.</p>
-    <div class="hero-cta">
-      <a href="portfolio.html" class="btn btn-gold btn-lg" data-track="cta_works">📁 شوف الأعمال الحقيقية</a>
-      <a href="#contact" class="btn btn-ghost btn-lg" data-track="cta_quote">📩 خذ عرض ثمن مجاني</a>
+<div id="rail" aria-hidden="true">
+  <div class="rdot on"><i></i>01</div><div class="rline"></div>
+  <div class="rdot"><i></i>02</div><div class="rline"></div>
+  <div class="rdot"><i></i>03</div><div class="rline"></div>
+  <div class="rdot"><i></i>04</div><div class="rline"></div>
+  <div class="rdot"><i></i>05</div>
+</div>
+
+<!-- ================= CINEMATIC 3D HERO ================= -->
+<section class="stage" id="stage">
+ <div class="pin" id="pin">
+  <div class="grid-bg"></div>
+  <div id="glwrap"><canvas id="gl"></canvas></div>
+  <div id="fallback3d"><img src="shots/capimmo.webp" alt="منصة Cap Immo Tanger"></div>
+  <div class="vig"></div><div class="frame"></div>
+  <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+  <div id="stageLoader">LOADING EXPERIENCE…</div>
+
+  <div class="ovl" id="ov1">
+    <div class="eyebrow" data-i18n="heroEyebrow">Digital Studio · Tangier / Morocco</div>
+    <h1><span data-i18n="heroH1a">كنبنّيو مواقع</span><br><span class="stroke" data-i18n="heroH1b">كتتحرك.</span></h1>
+    <p data-i18n="heroSub">مواقع وهويات وتجارب رقمية مصممة باش مشروعك ما يتعاودش يتجاهل — من طنجة، بمعايير عالمية.</p>
+    <div class="cta-row">
+      <a class="btn" href="#contact" data-i18n="heroCta1" data-mag>ابدأ مشروعك</a>
+      <a class="btn btn-ghost" href="#work" data-i18n="heroCta2">شوف أعمالنا</a>
     </div>
-    <div class="trust">
-      <div class="trust-item"><strong>38</strong><span>مشروعاً منشوراً أو نموذجاً حياً</span></div>
-      <div class="trust-item"><strong>7–14</strong><span>يوماً للتسليم</span></div>
-      <div class="trust-item"><strong>30</strong><span>يوماً دعماً مجانياً</span></div>
-    </div>
-    <div class="hero-previews">
-      <a class="pv" href="portfolio.html" aria-label="معاينة منصة Cap Immo العقارية">
-        <div class="fb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
-        <img src="shots/capimmo.webp" alt="لقطة حقيقية من منصة Cap Immo Tanger العقارية" fetchpriority="high">
-        <span>🏠 Cap Immo — منصة عقارية حية</span>
-      </a>
-      <a class="pv" href="portfolio.html" aria-label="معاينة منصة TradePro Academy">
-        <div class="fb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
-        <img src="shots/tradepro.webp" alt="لقطة حقيقية من منصة TradePro Academy التعليمية">
-        <span>🎓 TradePro — منصة تعليمية كاملة</span>
-      </a>
-      <a class="pv" href="portfolio.html" aria-label="معاينة متجر Atlas Mode">
-        <div class="fb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
-        <img src="shots/mode.webp" alt="لقطة حقيقية من متجر Atlas Mode للملابس">
-        <span>👗 Atlas Mode — متجر ملابس متكامل</span>
-      </a>
+    <div class="meta"><span class="micro">EST. 2026 — TANGER</span><span class="micro">38 LIVE PROJECTS</span><span class="micro">7–14 DAYS DELIVERY</span></div>
+  </div>
+
+  <div class="ovl" id="ov2" style="opacity:0">
+    <div class="eyebrow">// Scene 02 — Interface</div>
+    <h2 data-i18n="s2Title">كنشكّلو الواجهة، طبقة فوق طبقة.</h2>
+    <p data-i18n="s2Sub">كل عنصر في عمقو الخاص: شاشات، بطاقات، وكلمات كتتحرك بسرعات مختلفة — حيت العمق الحقيقي كيتصنع، ما كيتقلّدش.</p>
+    <div class="ticks">
+      <span class="micro">LAYER A · MAIN SCREEN — Z 0.0</span>
+      <span class="micro">LAYER B · PANEL — Z −0.8</span>
+      <span class="micro">LAYER C · CARDS — Z +0.9</span>
     </div>
   </div>
+
+  <div class="ovl" id="ov3" style="opacity:0">
+    <div class="statement"><span class="sh" aria-hidden="true">DESIGN WITH INTENT.<br>MOTION WITH PURPOSE.</span>DESIGN WITH INTENT.<br>MOTION WITH PURPOSE.</div>
+    <p data-i18n="s3Sub">من الفكرة حتى المنتج الرقمي — كل حركة عندها سبب، وكل بكسل عندو وظيفة.</p>
+  </div>
+
+  <div class="ovl" id="ov4" style="opacity:0">
+    <div class="eyebrow">// Scene 04 — Selected Work</div>
+    <h2 data-i18n="s4Title">أعمال مختارة، في العمق.</h2>
+    <p data-i18n="s4Sub">مطعم، فندق، وعقارات — ثلاث شاشات كتطفو قدامك. اللي في الوسط هي نجمة المشهد.</p>
+  </div>
+
+  <div class="ovl" id="ov5" style="opacity:0">
+    <div class="eyebrow">// Scene 05 — The Promise</div>
+    <h2 data-i18n="s5Title">موقعك الجاي خاصو يحسّ بحال علامتك.</h2>
+    <p data-i18n="s5Sub">ماشي قالب جاهز — تجربة مصممة على قياس مشروعك، كتخلي الزائر يتواصل معاك في واتساب من أول زيارة.</p>
+    <div class="row">
+      <a class="btn" href="#contact" data-i18n="s5Cta" data-mag>ابدأ مشروعك</a>
+      <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=%D8%B3%D9%84%D8%A7%D9%85%20Tangier%20Web%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%A8%D8%AF%D8%A3%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A">💬 WhatsApp</a>
+    </div>
+    <div class="mini-nav"><a href="#work" data-i18n="navWork">أعمالنا</a><a href="#services" data-i18n="navServices">خدماتنا</a><a href="#contact" data-i18n="navCta">ابدأ مشروعك</a></div>
+    <div class="micro techfoot">TANJA WEB © 2026 · TANGIER — WEBGL / GSAP / LENIS</div>
+  </div>
+
+  <div id="scrollcue">SCROLL<i></i></div>
+ </div>
 </section>
 
-<section class="section" id="why">
+<div class="marquee"><div class="track">
+  <span>مواقع تعريفية <i>//</i> متاجر إلكترونية <i>//</i> هوية بصرية <i>//</i> تجارب 3D <i>//</i> صفحات هبوط <i>//</i> SEO تقني <i>//</i></span>
+  <span>مواقع تعريفية <i>//</i> متاجر إلكترونية <i>//</i> هوية بصرية <i>//</i> تجارب 3D <i>//</i> صفحات هبوط <i>//</i> SEO تقني <i>//</i></span>
+</div></div>
+
+<!-- ================= SELECTED WORK ================= -->
+<section class="section" id="work">
+  <div class="container sec-head rv">
+    <div class="eyebrow">// Selected Work</div>
+    <h2 class="sec-title" data-i18n="workTitle">أعمال حقيقية، شغالة دابا</h2>
+    <p class="sec-sub" data-i18n="workSub">مشاريع منشورة ونماذج كاملة — مرّر باش تسافر بيناتهم، والمعرض الكامل فيه 38 عملاً.</p>
+  </div>
+  <div class="hwrap" id="hwrap" dir="ltr">
+    <div class="htrack" id="htrack">
+      <article class="wcard">
+        <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">capimmo-tanger</span></div>
+        <img class="shot" src="shots/capimmo.webp" alt="منصة Cap Immo Tanger العقارية" loading="lazy">
+        <div class="cin"><div class="tags"><span class="tag live">● منصة حية</span><span class="tag">عقارات · طنجة</span></div>
+        <h3>Cap Immo Tanger</h3><p>سوق عقارات يتجدد يومياً — بحث وفلاتر وتواصل واتساب لكل عقار.</p>
+        <a class="go" href="https://bofrahi12.github.io/capimmo-tanger/" target="_blank" rel="noopener">زيارة المشروع ←</a></div>
+      </article>
+      <article class="wcard">
+        <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">tradeproacademy.pro</span></div>
+        <img class="shot" src="shots/tradepro.webp" alt="منصة TradePro Academy التعليمية" loading="lazy">
+        <div class="cin"><div class="tags"><span class="tag live">● منصة حية</span><span class="tag">تعليم · منصة كاملة</span></div>
+        <h3>TradePro Academy</h3><p>منصة دورات كاملة — حسابات طلاب، دفع، وشهادات.</p>
+        <a class="go" href="https://tradeproacademy.pro" target="_blank" rel="noopener">زيارة المشروع ←</a></div>
+      </article>
+      <article class="wcard">
+        <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">smash-house · 3d</span></div>
+        <img class="shot" src="shots/burger.webp" alt="تجربة Smash House التحريرية 3D" loading="lazy">
+        <div class="cin"><div class="tags"><span class="tag">تجربة 3D</span><span class="tag">مطعم · طنجة</span></div>
+        <h3>Smash House — Expérience 3D</h3><p>واجهة تحريرية سينمائية: شاشات وبطاقات في فضاء ثلاثي الأبعاد.</p>
+        <a class="go" href="demo-burger.html" target="_blank" rel="noopener">جرّب التجربة ←</a></div>
+      </article>
+      <article class="wcard">
+        <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">discover-islam</span></div>
+        <img class="shot" src="shots/islamic.webp" alt="موقع Discover Islam التعليمي" loading="lazy">
+        <div class="cin"><div class="tags"><span class="tag live">● مشروع منشور</span><span class="tag">تعليمي · إنجليزية</span></div>
+        <h3>Discover Islam</h3><p>موقع تعليمي تفاعلي بالإنجليزية — أكثر من 120 صفحة.</p>
+        <a class="go" href="https://bofrahi12.github.io/islamic-civilization-explorer/" target="_blank" rel="noopener">زيارة المشروع ←</a></div>
+      </article>
+      <article class="wcard">
+        <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">le-jasmin · restaurant</span></div>
+        <img class="shot" src="shots/resto.webp" alt="موقع مطعم Le Jasmin" loading="lazy">
+        <div class="cin"><div class="tags"><span class="tag">نموذج 3D</span><span class="tag">مطعم · طنجة</span></div>
+        <h3>Le Jasmin</h3><p>موقع مطعم كامل بتجربة 3D — منيو وحجز طاولة عبر واتساب.</p>
+        <a class="go" href="demo-resto.html" target="_blank" rel="noopener">شوف النموذج ←</a></div>
+      </article>
+      <article class="wcard">
+        <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">atlas-mode · shop</span></div>
+        <img class="shot" src="shots/mode.webp" alt="متجر Atlas Mode للملابس" loading="lazy">
+        <div class="cin"><div class="tags"><span class="tag">نموذج متجر</span><span class="tag">ملابس · تجارة إلكترونية</span></div>
+        <h3>Atlas Mode</h3><p>متجر ملابس متكامل — سلة شراء وطلب عبر واتساب.</p>
+        <a class="go" href="demo-mode.html" target="_blank" rel="noopener">شوف النموذج ←</a></div>
+      </article>
+    </div>
+  </div>
   <div class="container">
-    <h2 class="sec-title">علاش تختار طنجة ويب؟</h2>
-    <p class="sec-sub">ما كنبيعش «موقع» — كنبني ليك أداة كتجيب الزبناء، بتواصل مباشر وبلا وسطاء.</p>
-    <div class="why-grid">
-      <div class="card">
-        <div class="icon">🎨</div>
-        <h3>تصميم مخصص لنشاطك</h3>
-        <p>كل مشروع كيتصمم على حساب القطاع ديالو والزبناء ديالو — ماشي قالب جاهز كيتعاود على الجميع.</p>
-      </div>
-      <div class="card">
-        <div class="icon">📱</div>
-        <h3>سريع ومتوافق مع الهاتف</h3>
-        <p>أغلب زبنائك كيدخلو من الهاتف — الموقع كيتصمم للهاتف أولاً، خفيف وسريع في التحميل.</p>
-      </div>
-      <div class="card">
-        <div class="icon">💬</div>
-        <h3>تواصل مباشر عبر واتساب</h3>
-        <p>كتكلم مع اللي كيبني ليك الموقع نفسه — بلا وكالات، بلا انتظار، والرد عادة في نفس اليوم.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🚀</div>
-        <h3>تسليم سريع ودعم بعد الإطلاق</h3>
-        <p>التسليم في 7–14 يوماً، و30 يوم دعم مجاني من بعد النشر: تعديلات وإصلاحات وأي سؤال.</p>
-      </div>
+    <p class="hint" data-i18n="workHint">↔ مرّر عمودياً — المعرض كيتحرك أفقياً</p>
+    <div style="text-align:center;margin-top:26px">
+      <a href="portfolio.html" class="btn btn-ghost btn-lg" data-i18n="workCta">📁 المعرض الكامل — 38 موقعاً</a>
     </div>
   </div>
 </section>
 
+<!-- ================= SERVICES ================= -->
 <section class="section section-alt" id="services">
   <div class="container">
-    <h2 class="sec-title">خدماتنا</h2>
-    <p class="sec-sub">اختار النوع اللي كيناسب مشروعك — وكل خدمة عندها نموذج حي تقدر تشوفو في المعرض.</p>
-    <div class="grid-3">
-      <div class="card">
-        <div class="icon">🏢</div>
-        <h3>موقع تعريفي</h3>
-        <p class="svc-for">لمن؟ للشركات والخدمات والمهنيين اللي بغاو واجهة احترافية على الإنترنت.</p>
-        <ul class="svc-meta">
-          <li>حتى 5 صفحات: رئيسية، خدمات، من نحن، تواصل</li>
-          <li>بالعربية والفرنسية</li>
-          <li>نموذج تواصل + أزرار واتساب</li>
-        </ul>
-        <span class="svc-dur">⏱️ التسليم: 10 أيام · ابتداءً من 1,900 درهم</span>
-        <a href="#contact" class="btn btn-ghost btn-block svc-btn" data-service="موقع تعريفي لشركة أو خدمة">أريد هذا النوع</a>
-      </div>
-      <div class="card">
-        <div class="icon">🛍️</div>
-        <h3>متجر إلكتروني</h3>
-        <p class="svc-for">لمن؟ لمحلات الملابس والمنتجات اللي بغاو يبيعو أونلاين.</p>
-        <ul class="svc-meta">
-          <li>كتالوج منتجات بتصنيفات وصور</li>
-          <li>سلة شراء وطلب عبر واتساب أو دفع إلكتروني</li>
-          <li>تكوين على إضافة المنتجات بنفسك</li>
-        </ul>
-        <span class="svc-dur">⏱️ التسليم: 14 يوماً · ابتداءً من 4,900 درهم</span>
-        <a href="#contact" class="btn btn-ghost btn-block svc-btn" data-service="متجر إلكتروني">أريد هذا النوع</a>
-      </div>
-      <div class="card">
-        <div class="icon">🎯</div>
-        <h3>صفحة هبوط إعلانية</h3>
-        <p class="svc-for">لمن؟ للحملات الإعلانية على فيسبوك وإنستغرام وتيك توك.</p>
-        <ul class="svc-meta">
-          <li>صفحة وحدة مركزة على التحويل</li>
-          <li>رسالة بيع واضحة وزر إجراء واحد قوي</li>
-          <li>ربط مباشر بواتساب</li>
-        </ul>
-        <span class="svc-dur">⏱️ التسليم: 7 أيام · ابتداءً من 900 درهم</span>
-        <a href="#contact" class="btn btn-ghost btn-block svc-btn" data-service="صفحة هبوط إعلانية">أريد هذا النوع</a>
-      </div>
-      <div class="card">
-        <div class="icon">🍽️</div>
-        <h3>موقع مطعم أو مقهى</h3>
-        <p class="svc-for">لمن؟ للمطاعم والمقاهي والحلويات اللي بغاو حجوزات وطلبات.</p>
-        <ul class="svc-meta">
-          <li>منيو كامل بالصور والأثمنة</li>
-          <li>حجز طاولة أو طلب عبر واتساب</li>
-          <li>أوقات العمل والموقع على الخريطة</li>
-        </ul>
-        <span class="svc-dur">⏱️ التسليم: 10 أيام · ابتداءً من 1,900 درهم</span>
-        <a href="#contact" class="btn btn-ghost btn-block svc-btn" data-service="موقع مطعم أو مقهى">أريد هذا النوع</a>
-      </div>
-      <div class="card">
-        <div class="icon">🏠</div>
-        <h3>موقع وكالة عقارية</h3>
-        <p class="svc-for">لمن؟ للوكالات والوسطاء اللي بغاو يعرضو العقارات باحتراف.</p>
-        <ul class="svc-meta">
-          <li>عرض العقارات بالصور والتفاصيل</li>
-          <li>بحث وفلاتر حسب الثمن والحي والمساحة</li>
-          <li>تواصل فوري عبر واتساب لكل عقار</li>
-        </ul>
-        <span class="svc-dur">⏱️ التسليم: 14 يوماً · الثمن حسب حجم الكتالوج</span>
-        <a href="#contact" class="btn btn-ghost btn-block svc-btn" data-service="موقع وكالة عقارية">أريد هذا النوع</a>
-      </div>
-      <div class="card">
-        <div class="icon">✨</div>
-        <h3>تحسين موقع موجود</h3>
-        <p class="svc-for">لمن؟ عندك موقع قديم أو بطيء وبغيتي تجددو.</p>
-        <ul class="svc-meta">
-          <li>إعادة تصميم عصرية كاملة</li>
-          <li>تحسين السرعة وتجربة الهاتف</li>
-          <li>تحسين الظهور في Google</li>
-        </ul>
-        <span class="svc-dur">⏱️ التسليم: 7–10 أيام · الثمن حسب حالة الموقع</span>
-        <a href="#contact" class="btn btn-ghost btn-block svc-btn" data-service="تحسين موقع موجود">أريد هذا النوع</a>
+    <div class="sec-head rv">
+      <div class="eyebrow">// Services</div>
+      <h2 class="sec-title" data-i18n="svcTitle">خدماتنا — اختار وحدة</h2>
+      <p class="sec-sub" data-i18n="svcSub">مرّر أو ضغط على أي خدمة باش تشوف التفاصيل والمثال الحي ديالها.</p>
+    </div>
+    <div class="svc-layout">
+      <div class="svc-list" id="svcList" role="tablist" aria-label="الخدمات"></div>
+      <div class="svc-panel rv">
+        <div class="imgwrap"><img id="svcImg" src="shots/capimmo.webp" alt="مثال على الخدمة المختارة"></div>
+        <div class="pin">
+          <h3 id="svcName">موقع تعريفي</h3>
+          <p id="svcDesc"></p>
+          <ul id="svcFeat"></ul>
+          <a href="#contact" class="btn btn-block" id="svcCta" data-service="موقع تعريفي لشركة أو خدمة">أريد هذا النوع</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="work">
+<!-- ================= PRICING ================= -->
+<section class="section" id="pricing">
   <div class="container">
-    <h2 class="sec-title">أعمال حقيقية، شغالة دابا</h2>
-    <p class="sec-sub">لقطات حقيقية من مشاريع منشورة ونماذج كاملة — المعرض الكامل فيه 38 عملاً بفلتر حسب القطاع.</p>
-    <div class="grid-3">
-      <a class="pv" href="https://bofrahi12.github.io/capimmo-tanger/" target="_blank" rel="noopener" data-track="work_card">
-        <img class="work-shot" src="shots/capimmo.webp" alt="منصة Cap Immo Tanger العقارية" loading="lazy">
-        <span><span class="status status-live">منصة حية</span><br><strong>Cap Immo Tanger</strong> — سوق عقارات يتجدد يومياً، بحث وفلاتر وتواصل واتساب.</span>
-      </a>
-      <a class="pv" href="https://tradeproacademy.pro" target="_blank" rel="noopener" data-track="work_card">
-        <img class="work-shot" src="shots/tradepro.webp" alt="منصة TradePro Academy التعليمية" loading="lazy">
-        <span><span class="status status-live">منصة حية</span><br><strong>TradePro Academy</strong> — منصة دورات كاملة بحسابات ودفع وشهادات.</span>
-      </a>
-      <a class="pv" href="https://bofrahi12.github.io/islamic-civilization-explorer/" target="_blank" rel="noopener" data-track="work_card">
-        <img class="work-shot" src="shots/islamic.webp" alt="موقع Discover Islam التعليمي" loading="lazy">
-        <span><span class="status status-live">مشروع منشور</span><br><strong>Discover Islam</strong> — موقع تعليمي تفاعلي بالإنجليزية، +120 صفحة.</span>
-      </a>
-      <a class="pv" href="https://bofrahi12.github.io/localboost-ai-site/" target="_blank" rel="noopener" data-track="work_card">
-        <img class="work-shot" src="shots/localboost.webp" alt="موقع LocalBoost AI التسويقي" loading="lazy">
-        <span><span class="status status-live">مشروع منشور</span><br><strong>LocalBoost AI</strong> — موقع تسويقي بنسختين عربية وإنجليزية.</span>
-      </a>
-      <a class="pv" href="demo-mode.html" target="_blank" rel="noopener" data-track="work_card">
-        <img class="work-shot" src="shots/mode.webp" alt="متجر Atlas Mode للملابس — نموذج تجريبي" loading="lazy">
-        <span><span class="status status-demo">نموذج تجريبي</span><br><strong>Atlas Mode</strong> — متجر ملابس متكامل بسلة شراء وطلب واتساب.</span>
-      </a>
-      <a class="pv" href="demo-resto.html" target="_blank" rel="noopener" data-track="work_card">
-        <img class="work-shot" src="shots/resto.webp" alt="موقع مطعم Le Jasmin — نموذج تجريبي" loading="lazy">
-        <span><span class="status status-demo">نموذج تجريبي</span><br><strong>Le Jasmin</strong> — موقع مطعم كامل: منيو وحجز طاولة عبر واتساب.</span>
-      </a>
+    <div class="sec-head rv">
+      <div class="eyebrow">// Pricing</div>
+      <h2 class="sec-title" data-i18n="priceTitle">أسعار واضحة، بلا مفاجآت</h2>
+      <p class="sec-sub">الثمن النهائي كيتحدد حسب حجم المشروع والوظائف المطلوبة — هادو نقط البداية بكل شفافية.</p>
     </div>
-    <div style="text-align:center;margin-top:34px">
-      <a href="portfolio.html" class="btn btn-gold btn-lg" data-track="cta_portfolio">📁 شوف معرض الأعمال الكامل — 38 موقعاً</a>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt" id="pricing">
-  <div class="container">
-    <h2 class="sec-title">أسعار واضحة، بلا مفاجآت</h2>
-    <p class="sec-sub">الثمن النهائي كيتحدد حسب حجم المشروع والوظائف المطلوبة — هادو نقط البداية بكل شفافية.</p>
     <div class="grid-3">
-      <div class="card price">
+      <div class="card price rv">
         <h3>صفحة هبوط</h3>
         <div class="amount">900 <span>درهم</span></div>
-        <ul class="incl">
+        <ul>
           <li>✓ صفحة واحدة مركزة على هدف واحد</li>
           <li>✓ تصميم مخصص 100% ومتوافق مع الهاتف</li>
           <li>✓ زر واتساب مباشر + نموذج طلب</li>
@@ -250,13 +514,13 @@
           <li>✓ دعم مجاني 30 يوماً</li>
         </ul>
         <p class="excl">الاستضافة الأساسية مشمولة · الدومين على العميل (حوالي 100–150 درهم/سنة)<br>ما لا تتضمنه: كتابة محتوى إعلاني احترافي وتصوير المنتجات.</p>
-        <a href="#contact" class="btn btn-ghost btn-block" data-service="صفحة هبوط إعلانية" data-track="pricing_cta">اختار هاد العرض</a>
+        <a href="#contact" class="btn btn-ghost btn-block" data-service="صفحة هبوط إعلانية">اختار هاد العرض</a>
       </div>
-      <div class="card price featured">
+      <div class="card price featured rv d1">
         <div class="flag">الأكثر طلباً 🔥</div>
         <h3>موقع تعريفي</h3>
         <div class="amount">1,900 <span>درهم</span></div>
-        <ul class="incl">
+        <ul>
           <li>✓ حتى 5 صفحات كاملة</li>
           <li>✓ بالعربية والفرنسية</li>
           <li>✓ نموذج تواصل + أزرار واتساب</li>
@@ -266,12 +530,12 @@
           <li>✓ دعم مجاني 30 يوماً</li>
         </ul>
         <p class="excl">الاستضافة الأساسية مشمولة · الدومين على العميل (حوالي 100–150 درهم/سنة)<br>ما لا تتضمنه: تصوير احترافي وكتابة محتوى مطوّلة.</p>
-        <a href="#contact" class="btn btn-gold btn-block" data-service="موقع تعريفي لشركة أو خدمة" data-track="pricing_cta">اختار هاد العرض</a>
+        <a href="#contact" class="btn btn-block" data-service="موقع تعريفي لشركة أو خدمة">اختار هاد العرض</a>
       </div>
-      <div class="card price">
+      <div class="card price rv d2">
         <h3>متجر إلكتروني</h3>
         <div class="amount">4,900 <span>درهم</span></div>
-        <ul class="incl">
+        <ul>
           <li>✓ كتالوج منتجات بتصنيفات وبحث</li>
           <li>✓ سلة شراء وطلب عبر واتساب</li>
           <li>✓ إمكانية الدفع الإلكتروني</li>
@@ -281,111 +545,136 @@
           <li>✓ دعم مجاني 30 يوماً</li>
         </ul>
         <p class="excl">الاستضافة الأساسية مشمولة · الدومين على العميل (حوالي 100–150 درهم/سنة)<br>ما لا تتضمنه: إدخال كتالوج كبير كاملاً وتصوير المنتجات.</p>
-        <a href="#contact" class="btn btn-ghost btn-block" data-service="متجر إلكتروني" data-track="pricing_cta">اختار هاد العرض</a>
+        <a href="#contact" class="btn btn-ghost btn-block" data-service="متجر إلكتروني">اختار هاد العرض</a>
       </div>
     </div>
     <p class="pay-note">💳 طريقة الدفع: <strong>50% عند بداية العمل و50% بعد التسليم</strong> — والثمن النهائي كيتحدد حسب حجم المشروع والوظائف المطلوبة.</p>
   </div>
 </section>
 
-<section class="section" id="process">
+<!-- ================= PROCESS ================= -->
+<section class="section section-alt" id="process">
   <div class="container">
-    <h2 class="sec-title">طريقة العمل</h2>
-    <p class="sec-sub">4 خطوات واضحة — وفي كل خطوة كتعرف بالضبط شنو غادي تحصل عليه.</p>
-    <div class="grid-4">
-      <div class="card step"><div class="step-n">1</div><h3>تواصل عبر واتساب</h3><p>كتصيفط فكرة المشروع ديالك. <strong>غادي تحصل على:</strong> رد في نفس اليوم وأسئلة دقيقة على النشاط والهدف.</p></div>
-      <div class="card step"><div class="step-n">2</div><h3>فهم المشروع والهدف</h3><p>كنحددو الصفحات والوظائف واللغة. <strong>غادي تحصل على:</strong> عرض ثمن واضح ومكتوب قبل أي التزام.</p></div>
-      <div class="card step"><div class="step-n">3</div><h3>التصميم والبناء والمراجعة</h3><p>كنبنيو الموقع وكتشوف التقدم. <strong>غادي تحصل على:</strong> رابط معاينة حي وجولة تعديلات قبل الإطلاق.</p></div>
-      <div class="card step"><div class="step-n">4</div><h3>الإطلاق والدعم</h3><p>كننشرو الموقع على الاستضافة. <strong>غادي تحصل على:</strong> موقع حي + تكوين على الاستعمال + 30 يوم دعم مجاني.</p></div>
+    <div class="sec-head rv">
+      <div class="eyebrow">// Process</div>
+      <h2 class="sec-title" data-i18n="procTitle">طريقة العمل</h2>
+      <p class="sec-sub">4 خطوات واضحة — وفي كل خطوة كتعرف بالضبط شنو غادي تحصل عليه.</p>
+    </div>
+    <div class="proc">
+      <div class="line"><i id="procFill"></i></div>
+      <div class="step rv"><div class="n">01</div><div>
+        <h3>الاكتشاف<span class="lat">DISCOVER</span></h3>
+        <p>كنفهمو النشاط ديالك، الجمهور، العرض والهدف — كتصيفط فكرة المشروع في واتساب. <strong>غادي تحصل على:</strong> رد في نفس اليوم وأسئلة دقيقة على النشاط والهدف.</p>
+      </div></div>
+      <div class="step rv"><div class="n">02</div><div>
+        <h3>التصميم<span class="lat">DESIGN</span></h3>
+        <p>كنصايبو الاتجاه البصري، البنية، التفاعل ونظام المحتوى، وكنحددو الصفحات والوظائف واللغة. <strong>غادي تحصل على:</strong> عرض ثمن واضح ومكتوب قبل أي التزام.</p>
+      </div></div>
+      <div class="step rv"><div class="n">03</div><div>
+        <h3>البناء<span class="lat">BUILD</span></h3>
+        <p>كنطوّرو موقعاً سريعاً ومتجاوباً بكود نظيف وحركة عندها معنى، وكتشوف التقدم بعينيك. <strong>غادي تحصل على:</strong> رابط معاينة حي وجولة تعديلات قبل الإطلاق.</p>
+      </div></div>
+      <div class="step rv"><div class="n">04</div><div>
+        <h3>الإطلاق<span class="lat">LAUNCH</span></h3>
+        <p>كنختبرو، كنحسّنو وكننشرو الموقع على الاستضافة، وكنبقاو معاك في النسخة الجاية. <strong>غادي تحصل على:</strong> موقع حي + تكوين على الاستعمال + 30 يوم دعم مجاني.</p>
+      </div></div>
     </div>
   </div>
 </section>
 
-<section class="section section-alt" id="trust">
+<!-- ================= NUMBERS ================= -->
+<section class="section" id="numbers">
   <div class="container">
-    <h2 class="sec-title">أرقام موحّدة، بلا مبالغة</h2>
-    <p class="sec-sub">38 مشروعاً منشوراً أو نموذجاً حياً، منها مشاريع حقيقية ومنصات ونماذج حسب قطاعات مختلفة — وكلها تقدر تدخل وتشوفها بعينيك في المعرض.</p>
+    <div class="sec-head rv">
+      <div class="eyebrow">// Numbers</div>
+      <h2 class="sec-title" data-i18n="numTitle">أرقام موحّدة، بلا مبالغة</h2>
+      <p class="sec-sub">كل رقم هنا تقدر تتحقق منو بعينيك في المعرض — مشاريع منشورة ونماذج حية حسب قطاعات مختلفة.</p>
+    </div>
     <div class="trust-band">
-      <div class="trust-item"><strong>38</strong><span>مشروعاً ونموذجاً حياً</span></div>
-      <div class="trust-item"><strong>15</strong><span>قطاعاً مختلفاً</span></div>
-      <div class="trust-item"><strong>3</strong><span>لغات: عربية · فرنسية · إنجليزية</span></div>
-      <div class="trust-item"><strong>7–14</strong><span>يوماً للتسليم</span></div>
-      <div class="trust-item"><strong>30</strong><span>يوماً دعماً مجانياً</span></div>
+      <div class="trust-item rv"><strong data-count="38">0</strong><span>مشروعاً ونموذجاً حياً</span></div>
+      <div class="trust-item rv d1"><strong data-count="15">0</strong><span>قطاعاً مختلفاً</span></div>
+      <div class="trust-item rv d2"><strong data-count="3">0</strong><span>لغات: عربية · فرنسية · إنجليزية</span></div>
+      <div class="trust-item rv"><strong>7–14</strong><span>يوماً للتسليم</span></div>
+      <div class="trust-item rv d1"><strong data-count="30">0</strong><span>يوماً دعماً مجانياً</span></div>
     </div>
   </div>
 </section>
 
+<!-- ================= ABOUT ================= -->
+<section class="section section-alt" id="about">
+  <div class="container about-grid">
+    <div class="about-vis rv" aria-hidden="true">
+      <img class="a1" id="aboutA" src="shots/burger.webp" alt="" loading="lazy">
+      <img class="a2" id="aboutB" src="shots/photo.webp" alt="" loading="lazy">
+    </div>
+    <div class="about-txt rv d1">
+      <div class="eyebrow">// The Studio</div>
+      <h2 class="sec-title" data-i18n="aboutTitle">استوديو من طنجة، بمعايير العالم</h2>
+      <p>طنجة ويب استوديو رقمي كيجمع بين <strong>الاستراتيجية، التصميم البصري، التكنولوجيا والحركة</strong> — وكنفهمو السوق المحلي بعمق حيت عايشين فيه: الزبون المغربي كيفاش كيقلب، كيفاش كيثق، وكيفاش كيشري.</p>
+      <p>ما كنبيعوش قوالب جاهزة. كل موقع كيتبنى على قياس المشروع: هدف واضح، تجربة سريعة على الهاتف، وطريق قصير بين الزائر وزر واتساب. والنتيجة: <strong>مواقع كتخدم كأدوات بيع، ماشي كبطاقات زيارة رقمية.</strong></p>
+      <div class="about-pillars">
+        <span>🎯 استراتيجية قبل التصميم</span>
+        <span>🎨 اتجاه فني خاص بكل علامة</span>
+        <span>⚡ أداء وسرعة بلا تنازل</span>
+        <span>🎬 حركة و3D عندها معنى</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
 <section class="section" id="avis">
   <div class="container">
-    <h2 class="sec-title">شنو قالوا علينا؟</h2>
-    <p class="sec-sub">آراء حقيقية من أصحاب مشاريع بنينا ليهم مواقعهم ومنصاتهم.</p>
-    <div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(290px,1fr));max-width:900px;margin:0 auto">
-      <div class="card">
-        <div class="icon" aria-hidden="true">»</div>
-        <p style="font-size:1.02rem;line-height:1.9">خدمة احترافية من الأول حتى الآخر. المنصة تسلّمات كاملة — حسابات الطلاب، الدفع، والشهادات — وكلشي خدام كما اتفقنا عليه. شكراً على الجدية والمتابعة في كل مرحلة.</p>
-        <p style="margin-top:14px"><strong>صاحب منصة TradePro Academy</strong><br><span style="color:#9aa7c2;font-size:.88rem">منصة تعليمية — مشروع منشور</span></p>
+    <div class="sec-head rv">
+      <div class="eyebrow">// Proof</div>
+      <h2 class="sec-title" data-i18n="avisTitle">شنو قالوا علينا؟</h2>
+      <p class="sec-sub">آراء حقيقية من أصحاب مشاريع بنينا ليهم مواقعهم ومنصاتهم.</p>
+    </div>
+    <div class="avis-grid">
+      <div class="card avis-card rv">
+        <div class="mark">”</div>
+        <p class="q">خدمة احترافية من الأول حتى الآخر. المنصة تسلّمات كاملة — حسابات الطلاب، الدفع، والشهادات — وكلشي خدام كما اتفقنا عليه. شكراً على الجدية والمتابعة في كل مرحلة.</p>
+        <div class="who"><strong>صاحب منصة TradePro Academy</strong><span>منصة تعليمية — مشروع منشور</span></div>
       </div>
-      <div class="card">
-        <div class="icon" aria-hidden="true">»</div>
-        <p style="font-size:1.02rem;line-height:1.9">تعامل راقٍ وخدمة احترافية. الموقع تصايب بالهوية ديال الشركة ديالنا وبجودة فاقت التوقع، والتسليم كان منظماً وواضحاً من أول نهار. شكراً، وأنصح أي صاحب مشروع يتعامل معاك.</p>
-        <p style="margin-top:14px"><strong>أيوب الجرتي — AWAB CLIM</strong><br><span style="color:#9aa7c2;font-size:.88rem">شركة تكييف وتبريد — طنجة</span></p>
+      <div class="card avis-card rv d1">
+        <div class="mark">”</div>
+        <p class="q">تعامل راقٍ وخدمة احترافية. الموقع تصايب بالهوية ديال الشركة ديالنا وبجودة فاقت التوقع، والتسليم كان منظماً وواضحاً من أول نهار. شكراً، وأنصح أي صاحب مشروع يتعامل معاك.</p>
+        <div class="who"><strong>أيوب الجرتي — AWAB CLIM</strong><span>شركة تكييف وتبريد — طنجة</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="faq">
+<!-- ================= FAQ ================= -->
+<section class="section section-alt" id="faq">
   <div class="container narrow">
-    <h2 class="sec-title">الأسئلة الشائعة</h2>
+    <div class="sec-head rv">
+      <div class="eyebrow">// FAQ</div>
+      <h2 class="sec-title" data-i18n="faqTitle">الأسئلة الشائعة</h2>
+    </div>
     <div class="faq">
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">شحال كيدير الوقت باش يوجد الموقع؟ <span>+</span></button>
-        <div class="faq-a"><p>من 7 حتى 14 يوماً حسب النوع: صفحة الهبوط 7 أيام، الموقع التعريفي 10 أيام، والمتجر الإلكتروني 14 يوماً.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">واش الموقع كيخدم مزيان فالتلفون؟ <span>+</span></button>
-        <div class="faq-a"><p>نعم — كنصممو للهاتف أولاً حيت أغلب الزبناء كيدخلو منو، وكنجربو الموقع على الهاتف والحاسوب قبل التسليم.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">واش الموقع بالعربية والفرنسية؟ <span>+</span></button>
-        <div class="faq-a"><p>بجوج — كنصايبو الموقع باللغة اللي كتناسب زبنائك: العربية، الفرنسية، ولا نسختين مع بعض.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">واش المتجر كيدعم واتساب؟ <span>+</span></button>
-        <div class="faq-a"><p>نعم — الطلب عبر واتساب هو الأساس في متاجرنا حيت هو اللي خدام مزيان في المغرب: الزبون كيختار المنتج والطلب كيوصلك مرتباً في واتساب.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">واش الدفع الإلكتروني ممكن؟ <span>+</span></button>
-        <div class="faq-a"><p>نعم — كنربطو المتجر بوسائل الدفع الإلكتروني المتاحة، إضافة إلى الدفع عند الاستلام والطلب عبر واتساب.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">شكون كيخلص الدومين والاستضافة؟ <span>+</span></button>
-        <div class="faq-a"><p>الاستضافة الأساسية مشمولة في الثمن. الدومين (اسم النطاق) كيكون على العميل وكيبقى ملكو: حوالي 100–150 درهم في السنة، وكنعاونوك في اختيارو وربطو.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">واش كاين دعم من بعد التسليم؟ <span>+</span></button>
-        <div class="faq-a"><p>أكيد — 30 يوم دعم مجاني من بعد الإطلاق: إصلاحات، تعديلات بسيطة، وأي سؤال عندك على الاستعمال.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">شحال من تعديل داخل فالثمن؟ <span>+</span></button>
-        <div class="faq-a"><p>جولة تعديلات كاملة على التصميم والمحتوى قبل الإطلاق، وزيد تعديلات بسيطة خلال 30 يوم الدعم المجاني.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">كيفاش كنخلص؟ <span>+</span></button>
-        <div class="faq-a"><p>بكل بساطة: 50% عند بداية العمل و50% بعد التسليم — بلا ما تخلص الباقي حتى تشوف الموقع حي ويعجبك.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">واش نقدر نطلب موقع شبيه بأحد النماذج؟ <span>+</span></button>
-        <div class="faq-a"><p>نعم — هادي هي فكرة المعرض: شوف النموذج ديال القطاع ديالك، وصيفط لينا «بغيت بحال هادا» وغنصايبوه ليك ببيانات مشروعك وهويتك.</p></div>
-      </div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">شحال كيدير الوقت باش يوجد الموقع؟ <span>+</span></button><div class="faq-a"><p>من 7 حتى 14 يوماً حسب النوع: صفحة الهبوط 7 أيام، الموقع التعريفي 10 أيام، والمتجر الإلكتروني 14 يوماً.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">واش كتخدمو مع مشاريع خارج طنجة؟ <span>+</span></button><div class="faq-a"><p>نعم — كنخدمو مع مشاريع في المغرب كامل وعن بعد: التواصل والمتابعة كيكونو عبر واتساب ومكالمات، والتسليم بنفس الطريقة المنظمة.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">واش تقدرو تعاودو تصميم موقع موجود؟ <span>+</span></button><div class="faq-a"><p>نعم — خدمة «تحسين موقع موجود» كتشمل إعادة تصميم عصرية كاملة، تحسين السرعة وتجربة الهاتف، وتحسين الظهور في Google.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">واش كتوفرو المحتوى والصور؟ <span>+</span></button><div class="faq-a"><p>كنعاونوك في تنظيم المحتوى واختيار الصور المناسبة، وكنوجّهو بالضبط شنو نحتاجو منك (نصوص، صور، أثمنة) باش الموقع يوجد بسرعة وبلا تعطيل.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">واش الموقع بالعربية والفرنسية؟ <span>+</span></button><div class="faq-a"><p>بجوج — كنصايبو الموقع باللغة اللي كتناسب زبنائك: العربية، الفرنسية، ولا نسختين مع بعض.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">واش المتجر كيدعم واتساب والدفع الإلكتروني؟ <span>+</span></button><div class="faq-a"><p>نعم — الطلب عبر واتساب هو الأساس في متاجرنا حيت هو اللي خدام مزيان في المغرب، وكنربطو حتى وسائل الدفع الإلكتروني المتاحة إضافة للدفع عند الاستلام.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">شكون كيخلص الدومين والاستضافة؟ <span>+</span></button><div class="faq-a"><p>الاستضافة الأساسية مشمولة في الثمن. الدومين (اسم النطاق) كيكون على العميل وكيبقى ملكو: حوالي 100–150 درهم في السنة، وكنعاونوك في اختيارو وربطو.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">واش نقدر نسير الموقع بنفسي من بعد الإطلاق؟ <span>+</span></button><div class="faq-a"><p>نعم — كتحصل على تكوين على الاستعمال عند التسليم، وزيد 30 يوم دعم مجاني: إصلاحات، تعديلات بسيطة، وأي سؤال عندك.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">كيفاش كنخلص؟ <span>+</span></button><div class="faq-a"><p>بكل بساطة: 50% عند بداية العمل و50% بعد التسليم — بلا ما تخلص الباقي حتى تشوف الموقع حي ويعجبك.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">كيفاش كنبداو مشروع؟ <span>+</span></button><div class="faq-a"><p>عمر استمارة «طلب عرض ثمن» أو صيفط لينا في واتساب فكرة المشروع — وغادي نجاوبوك في نفس اليوم بأسئلة دقيقة ثم عرض ثمن واضح ومكتوب، بلا التزام.</p></div></div>
     </div>
   </div>
 </section>
 
-<section class="section section-alt" id="contact">
+<!-- ================= CONTACT ================= -->
+<section class="section" id="contact">
   <div class="container narrow">
-    <h2 class="sec-title">طلب عرض ثمن مجاني</h2>
-    <p class="sec-sub">عمر الاستمارة — الطلب كيوصلني <strong>مباشرة فواتساب</strong> وكنجاوبك في نفس اليوم.</p>
+    <div class="sec-head rv">
+      <div class="eyebrow">// Contact</div>
+      <h2 class="sec-title" data-i18n="contactTitle">طلب عرض ثمن مجاني</h2>
+      <p class="sec-sub">عمر الاستمارة — الطلب كيوصلني <strong>مباشرة فواتساب</strong> وكنجاوبك في نفس اليوم.</p>
+    </div>
     <form id="leadForm" class="lead-form" novalidate>
       <div class="row-2">
         <div class="field">
@@ -427,144 +716,533 @@
         <textarea id="fMsg" name="message" rows="4" placeholder="حكي لينا شوية على المشروع ديالك: شنو كتبيع؟ شكون الزبناء ديالك؟"></textarea>
       </div>
       <p class="form-err" id="formErr" aria-live="polite"></p>
-      <button type="submit" class="btn btn-gold btn-lg btn-block" data-track="form_submit_btn">📲 صيفط الطلب عبر واتساب</button>
-      <p class="form-note">بالضغط على الزر، كيتحل واتساب برسالة جاهزة فيها المعلومات ديالك — غير ضغط "إرسال".</p>
+      <button type="submit" class="btn btn-lg btn-block">📲 صيفط الطلب عبر واتساب</button>
+      <p class="form-note">بالضغط على الزر، كيتحل واتساب برسالة جاهزة فيها المعلومات ديالك — غير ضغط «إرسال». أو راسلنا على <a href="mailto:mounir.boufrahi90@gmail.com" style="color:var(--gold2)">mounir.boufrahi90@gmail.com</a></p>
       <div class="form-ok" id="formOk" aria-live="polite"></div>
     </form>
     <div class="direct">
       <a class="direct-card" href="https://wa.me/212693981822" target="_blank" rel="noopener"><span class="d-icon">💬</span><span><strong>واتساب مباشر</strong><br>0693981822 · الرد عادة في نفس اليوم</span></a>
       <a class="direct-card" href="mailto:mounir.boufrahi90@gmail.com?subject=%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B1%D8%B6%20%D8%AB%D9%85%D9%86%20%D9%84%D9%85%D9%88%D9%82%D8%B9%20%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A"><span class="d-icon">✉️</span><span><strong>البريد الإلكتروني</strong><br>mounir.boufrahi90@gmail.com</span></a>
-      <div class="direct-card"><span class="d-icon">📍</span><span><strong>الموقع</strong><br>طنجة، المغرب</span></div>
+      <div class="direct-card"><span class="d-icon">📍</span><span><strong>الموقع</strong><br>طنجة، المغرب — ونخدمو عن بعد</span></div>
     </div>
   </div>
 </section>
 
-<section class="section" id="final">
+<!-- ================= FINAL ================= -->
+<section class="section" id="final" style="padding-top:0">
   <div class="container">
-    <div class="final-cta">
+    <div class="final-cta rv">
       <h2>عندك مشروع وبغيتي موقع كيظهر احترافي؟</h2>
       <p>صيفط لينا فكرة المشروع ديالك، وغادي نجاوبوك بعرض واضح ومناسب — بلا التزام.</p>
       <div class="row">
-        <a href="#contact" class="btn btn-gold btn-lg" data-track="final_quote">📩 طلب عرض ثمن مجاني</a>
+        <a href="#contact" class="btn btn-lg">📩 طلب عرض ثمن مجاني</a>
         <a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%20%D9%84%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D8%AF%D9%8A%D8%A7%D9%84%D9%8A" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">💬 تواصل عبر واتساب</a>
-        <a href="mailto:mounir.boufrahi90@gmail.com?subject=%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%84%D9%89%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A" class="btn btn-ghost btn-lg">✉️ إرسال بريد إلكتروني</a>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="container foot-inner">
-    <div class="logo"><img src="logo-icon.svg" alt="شعار طنجة ويب" width="40" height="40">طنجة <span>ويب</span></div>
+  <div class="container">
+    <div class="wm">طنجة <span>ويب</span> · TANJA WEB</div>
+    <div class="mline"></div>
     <p>تصميم مواقع إلكترونية احترافية — طنجة، المغرب</p>
     <p class="copy">© 2026 طنجة ويب — جميع الحقوق محفوظة · أسّسها منير بوفري، مصمم مواقع بطنجة</p>
   </div>
 </footer>
 
-<a href="https://wa.me/212693981822?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%20%D9%84%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D8%AF%D9%8A%D8%A7%D9%84%D9%8A" class="wa-float" target="_blank" rel="noopener" aria-label="تواصل واتساب">💬</a>
+<a class="waf" target="_blank" rel="noopener" href="https://wa.me/212693981822" aria-label="WhatsApp">✆</a>
 
-<script src="script.js"></script>
+<script src="demo-burger/gl/lib/gsap.min.js"></script>
+<script src="demo-burger/gl/lib/ScrollTrigger.min.js"></script>
+<script src="demo-burger/gl/lib/lenis.min.js"></script>
+
+<style>@media(max-width:820px){#work .hwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}}</style>
+<script>
+/* ================================================================
+   siteConfig — كل النصوص والبيانات القابلة للتحرير في بلاصة وحدة.
+   بدّل الأرقام/الروابط/النصوص من هنا فقط — بلا ما تمسّ منطق الحركة.
+   ================================================================ */
+const siteConfig = {
+  brand: { name:'طنجة ويب', latin:'TANJA WEB', whatsapp:'212693981822', phone:'0693981822',
+           email:'mounir.boufrahi90@gmail.com', city:'Tangier, Morocco', accent:'#d7a441' },
+  i18n: {
+    ar: { navWork:'أعمالنا', navServices:'خدماتنا', navProcess:'طريقة العمل', navPricing:'الأسعار', navFaq:'الأسئلة', navCta:'ابدأ مشروعك',
+      heroEyebrow:'Digital Studio · Tangier / Morocco', heroH1a:'كنبنّيو مواقع', heroH1b:'كتتحرك.',
+      heroSub:'مواقع وهويات وتجارب رقمية مصممة باش مشروعك ما يتعاودش يتجاهل — من طنجة، بمعايير عالمية.',
+      heroCta1:'ابدأ مشروعك', heroCta2:'شوف أعمالنا',
+      s2Title:'كنشكّلو الواجهة، طبقة فوق طبقة.', s2Sub:'كل عنصر في عمقو الخاص: شاشات، بطاقات، وكلمات كتتحرك بسرعات مختلفة — حيت العمق الحقيقي كيتصنع، ما كيتقلّدش.',
+      s3Sub:'من الفكرة حتى المنتج الرقمي — كل حركة عندها سبب، وكل بكسل عندو وظيفة.',
+      s4Title:'أعمال مختارة، في العمق.', s4Sub:'مطعم، فندق، وعقارات — ثلاث شاشات كتطفو قدامك. اللي في الوسط هي نجمة المشهد.',
+      s5Title:'موقعك الجاي خاصو يحسّ بحال علامتك.', s5Sub:'ماشي قالب جاهز — تجربة مصممة على قياس مشروعك، كتخلي الزائر يتواصل معاك في واتساب من أول زيارة.', s5Cta:'ابدأ مشروعك',
+      workTitle:'أعمال حقيقية، شغالة دابا', workSub:'مشاريع منشورة ونماذج كاملة — مرّر باش تسافر بيناتهم، والمعرض الكامل فيه 38 عملاً.',
+      workHint:'↔ مرّر عمودياً — المعرض كيتحرك أفقياً', workCta:'📁 المعرض الكامل — 38 موقعاً',
+      svcTitle:'خدماتنا — اختار وحدة', svcSub:'مرّر أو ضغط على أي خدمة باش تشوف التفاصيل والمثال الحي ديالها.',
+      priceTitle:'أسعار واضحة، بلا مفاجآت', procTitle:'طريقة العمل', numTitle:'أرقام موحّدة، بلا مبالغة',
+      aboutTitle:'استوديو من طنجة، بمعايير العالم', avisTitle:'شنو قالوا علينا؟', faqTitle:'الأسئلة الشائعة', contactTitle:'طلب عرض ثمن مجاني' },
+    fr: { navWork:'Réalisations', navServices:'Services', navProcess:'Processus', navPricing:'Tarifs', navFaq:'FAQ', navCta:'Démarrer un projet',
+      heroEyebrow:'Digital Studio · Tanger / Maroc', heroH1a:'NOUS CRÉONS DES SITES', heroH1b:'QUI BOUGENT.',
+      heroSub:'Sites, marques et expériences digitales conçus pour rendre votre entreprise impossible à ignorer.',
+      heroCta1:'Démarrer un projet', heroCta2:'Voir nos réalisations',
+      s2Title:'Nous façonnons l’interface, couche par couche.', s2Sub:'Chaque élément vit à sa propre profondeur : écrans, cartes et mots se déplacent à des vitesses différentes.',
+      s3Sub:'De l’idée au produit digital — chaque mouvement a une raison, chaque pixel une fonction.',
+      s4Title:'Travaux sélectionnés, en profondeur.', s4Sub:'Restaurant, hôtel et immobilier — trois écrans flottent devant vous. Celui du centre est la star.',
+      s5Title:'Votre prochain site doit ressembler à votre marque.', s5Sub:'Pas un modèle générique — une expérience sur mesure qui pousse le visiteur vers WhatsApp dès la première visite.', s5Cta:'Démarrer un projet',
+      workTitle:'Des projets réels, en ligne', workSub:'Projets publiés et démos complètes — faites défiler pour voyager entre eux ; la galerie complète en compte 38.',
+      workHint:'↔ Faites défiler — la galerie avance horizontalement', workCta:'📁 Galerie complète — 38 sites',
+      svcTitle:'Nos services — choisissez-en un', svcSub:'Survolez ou touchez un service pour voir ses détails et un exemple réel.',
+      priceTitle:'Des prix clairs, sans surprises', procTitle:'Notre processus', numTitle:'Des chiffres vérifiables',
+      aboutTitle:'Un studio de Tanger, aux standards du monde', avisTitle:'Ce qu’ils disent de nous', faqTitle:'Questions fréquentes', contactTitle:'Devis gratuit' },
+    en: { navWork:'Work', navServices:'Services', navProcess:'Process', navPricing:'Pricing', navFaq:'FAQ', navCta:'Start a project',
+      heroEyebrow:'Digital Studio · Tangier / Morocco', heroH1a:'WE BUILD WEBSITES', heroH1b:'THAT MOVE.',
+      heroSub:'Websites, brands, and digital experiences designed to make your business impossible to ignore.',
+      heroCta1:'Start a project', heroCta2:'Explore our work',
+      s2Title:'We shape the interface, layer by layer.', s2Sub:'Every element lives at its own depth: screens, cards, and words moving at different speeds — real depth is built, not faked.',
+      s3Sub:'From idea to digital product — every motion has a reason, every pixel a job.',
+      s4Title:'Selected work, in depth.', s4Sub:'Restaurant, hotel, and real estate — three screens floating in front of you. The one in the middle is the star.',
+      s5Title:'Your next website should feel like your brand.', s5Sub:'Not a generic template — a tailored experience that turns a first visit into a WhatsApp conversation.', s5Cta:'Start a project',
+      workTitle:'Real projects, live now', workSub:'Published projects and complete demos — scroll to travel through them; the full gallery holds 38 works.',
+      workHint:'↔ Keep scrolling — the gallery moves horizontally', workCta:'📁 Full gallery — 38 websites',
+      svcTitle:'Our services — pick one', svcSub:'Hover or tap any service to see its details and a live example.',
+      priceTitle:'Clear pricing, no surprises', procTitle:'How we work', numTitle:'Numbers you can verify',
+      aboutTitle:'A Tangier studio, world-class standards', avisTitle:'What clients say', faqTitle:'Frequently asked questions', contactTitle:'Free project quote' }
+  },
+  services: [
+    { name:'موقع تعريفي', from:'ابتداءً من 1,900 درهم', img:'shots/capimmo.webp', form:'موقع تعريفي لشركة أو خدمة',
+      desc:'لمن؟ للشركات والخدمات والمهنيين اللي بغاو واجهة احترافية على الإنترنت.',
+      feats:['حتى 5 صفحات: رئيسية، خدمات، من نحن، تواصل','بالعربية والفرنسية','نموذج تواصل + أزرار واتساب','⏱️ التسليم: 10 أيام'] },
+    { name:'متجر إلكتروني', from:'ابتداءً من 4,900 درهم', img:'shots/mode.webp', form:'متجر إلكتروني',
+      desc:'لمن؟ لمحلات الملابس والمنتجات اللي بغاو يبيعو أونلاين.',
+      feats:['كتالوج منتجات بتصنيفات وصور','سلة شراء وطلب عبر واتساب أو دفع إلكتروني','تكوين على إضافة المنتجات بنفسك','⏱️ التسليم: 14 يوماً'] },
+    { name:'صفحة هبوط إعلانية', from:'ابتداءً من 900 درهم', img:'shots/burger.webp', form:'صفحة هبوط إعلانية',
+      desc:'لمن؟ للحملات الإعلانية على فيسبوك وإنستغرام وتيك توك.',
+      feats:['صفحة وحدة مركزة على التحويل','رسالة بيع واضحة وزر إجراء واحد قوي','ربط مباشر بواتساب','⏱️ التسليم: 7 أيام'] },
+    { name:'موقع مطعم أو مقهى', from:'ابتداءً من 1,900 درهم', img:'shots/resto.webp', form:'موقع مطعم أو مقهى',
+      desc:'لمن؟ للمطاعم والمقاهي والحلويات اللي بغاو حجوزات وطلبات.',
+      feats:['منيو كامل بالصور والأثمنة','حجز طاولة أو طلب عبر واتساب','أوقات العمل والموقع على الخريطة','⏱️ التسليم: 10 أيام'] },
+    { name:'موقع وكالة عقارية', from:'الثمن حسب حجم الكتالوج', img:'shots/immo-luxe.webp', form:'موقع وكالة عقارية',
+      desc:'لمن؟ للوكالات والوسطاء اللي بغاو يعرضو العقارات باحتراف.',
+      feats:['عرض العقارات بالصور والتفاصيل','بحث وفلاتر حسب الثمن والحي والمساحة','تواصل فوري عبر واتساب لكل عقار','⏱️ التسليم: 14 يوماً'] },
+    { name:'هوية بصرية وتجارب 3D', from:'الثمن حسب المشروع', img:'shots/photo.webp', form:'مشروع آخر',
+      desc:'لمن؟ للعلامات اللي بغات حضور بصري وتجربة ويب ما كتتنساش.',
+      feats:['اتجاه فني وهوية بصرية خاصة','واجهات تحريرية بحركة وعمق 3D','تصوير واتجاه تصويري للمشروع','⏱️ التوقيت حسب النطاق'] },
+    { name:'تحسين موقع موجود', from:'الثمن حسب حالة الموقع', img:'shots/islamic.webp', form:'تحسين موقع موجود',
+      desc:'لمن؟ عندك موقع قديم أو بطيء وبغيتي تجددو.',
+      feats:['إعادة تصميم عصرية كاملة','تحسين السرعة وتجربة الهاتف','تحسين الظهور في Google (SEO)','⏱️ التسليم: 7–10 أيام'] }
+  ]
+};
+
+/* ================================================================
+   SCENES — نظام الطبقات ديال الهيرو (نفس محرك الـ3D التحريري):
+   screen = Cap Immo · panel = TradePro · box = Smash House 3D ·
+   cards = Restaurant / Hôtel / Immobilier
+   ================================================================ */
+const KF = (x,y,z,s,rz,ry,o,dk) => ({x,y,z,s,rz,ry,o,dk:dk||0});
+const SCENES = [
+  { id:'opening', cam:{x:0, y:0, z:10.6}, layers:{
+    glow:      KF(0, .2, -3.5, 1,    0, 0, .9),
+    screen:    KF(-.9, -.05, 0,  .82,   0, -.05, 1),
+    panel:     KF(-3.6, -2.2, -1.6, .5, -.05, .2, 0),
+    box:       KF(3.6, -2.4, -1.2, .34, .06, -.2, 0),
+    cardResto: KF(-3.8, 2.2, -2.2, .5, -.03, .18, 0),
+    cardHotel: KF(3.9, 2.3, -2, .5, .04, -.15, 0),
+    cardImmo:  KF(-3.4, -2.4, -1.8, .5, -.04, .16, 0)
+  }},
+  { id:'interface', cam:{x:0, y:0, z:9.6}, layers:{
+    glow:      KF(-.5, .3, -3.5, 1.05, 0, 0, .8),
+    screen:    KF(-2.6, 1.05, -.4, .62, .03, .22, 1),
+    panel:     KF(2.7, 1.15, -.8, .56, -.02, -.2, 1),
+    box:       KF(.2, -1.75, .9, .56, .02, -.06, 1),
+    cardResto: KF(-3.9, 2.4, -2.2, .5, -.03, .18, 0),
+    cardHotel: KF(3.9, 2.4, -2, .5, .04, -.15, 0),
+    cardImmo:  KF(-3.6, -2.3, -1.8, .5, -.04, .16, 0)
+  }},
+  { id:'reveal', cam:{x:0, y:0, z:8.4}, layers:{
+    glow:      KF(0, 0, -3.5, 1.1, 0, 0, .55),
+    screen:    KF(-3.4, 1.8, -1.8, .5, .05, .3, .26, .5),
+    panel:     KF(3.5, 1.9, -2, .5, -.04, -.26, .22, .55),
+    box:       KF(0, .15, .3, 2.55, 0, 0, 1),
+    cardResto: KF(-3.9, -2.4, -2.4, .5, -.04, .2, .14, .6),
+    cardHotel: KF(3.9, 2.2, -2.2, .5, .05, -.2, .14, .6),
+    cardImmo:  KF(-3.8, -2.2, -2, .5, -.05, .25, .18, .55)
+  }},
+  { id:'work', cam:{x:-.7, y:.35, z:9.8}, layers:{
+    glow:      KF(.4, 0, -3.5, 1.05, 0, 0, .7),
+    screen:    KF(-2.9, 1.5, -.8, .62, .04, .2, .85, .25),
+    panel:     KF(-3.1, -1.7, -.4, .66, .05, .14, .8, .3),
+    box:       KF(3, 1.7, -1.2, .6, -.03, -.16, .8, .3),
+    cardResto: KF(.2, -.2, .9, 1.06, -.02, -.05, 1),
+    cardHotel: KF(3.2, -1.6, -.6, .74, -.05, -.12, .8, .3),
+    cardImmo:  KF(-.4, 2.3, -1.8, .5, 0, .1, 0)
+  }},
+  { id:'closing', cam:{x:0, y:0, z:10.4}, layers:{
+    glow:      KF(0, .4, -3.5, 1, 0, 0, .8),
+    screen:    KF(0, 1.4, 0, .66, 0, 0, 1),
+    panel:     KF(-3.6, -2.3, -1.8, .5, -.05, .2, 0),
+    box:       KF(3.6, -2.2, -1.4, .4, .05, -.2, 0),
+    cardResto: KF(-3.8, 2.2, -2.4, .5, -.03, .18, 0),
+    cardHotel: KF(3.9, 2.3, -2.2, .5, .04, -.15, 0),
+    cardImmo:  KF(-3.4, -2.4, -2, .5, -.04, .16, 0)
+  }}
+];
+const LAYER_SRC = {
+  screen:    { make:'screen', src:'shots/capimmo.webp',  url:'capimmo-tanger',      w:6.6 },
+  panel:     { make:'screen', src:'shots/tradepro.webp', url:'tradeproacademy.pro', w:5.6 },
+  box:       { make:'photo',  src:'shots/burger.webp',   w:5.6 },
+  cardResto: { make:'card',   src:'shots/resto.webp',    label:'LE JASMIN — RESTAURANT · TANGER', w:3.5 },
+  cardHotel: { make:'card',   src:'shots/resort.webp',   label:'AZUR BAY — HÔTEL · TANGER',       w:3.5 },
+  cardImmo:  { make:'card',   src:'shots/capimmo.webp',  label:'CAP IMMO — IMMOBILIER · TANGER',  w:3.5 }
+};
+window.STAGE = { layers:{}, cam:{...SCENES[0].cam}, ready:false };
+Object.keys(SCENES[0].layers).forEach(k => { window.STAGE.layers[k] = {...SCENES[0].layers[k]}; });
+
+const qs = new URLSearchParams(location.search);
+const DEBUG = qs.get('debug') === '1';
+const FORCED_P = parseFloat(qs.get('p'));
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ST = window.STAGE;
+
+/* ================== loader ================== */
+(function(){
+  const intro = document.getElementById('intro');
+  const hide = () => intro.classList.add('done');
+  if (REDUCED) { hide(); return; }
+  addEventListener('load', () => setTimeout(hide, 500));
+  setTimeout(hide, 1500);
+})();
+
+/* ================== language switcher (interface + hero) ================== */
+(function(){
+  const dict = siteConfig.i18n;
+  const blocks = ['ov1','ov2','ov4'].map(id => document.getElementById(id));
+  function apply(lang){
+    const d = dict[lang]; if (!d) return;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n'); if (d[k]) el.textContent = d[k];
+    });
+    blocks.forEach(b => { if (b) b.dir = lang === 'ar' ? 'rtl' : 'ltr'; });
+    document.querySelectorAll('.langs button').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
+    try { localStorage.setItem('tw-lang', lang); } catch(e) {}
+  }
+  document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
+  try { const saved = localStorage.getItem('tw-lang'); if (saved && saved !== 'ar') apply(saved); } catch(e) {}
+})();
+
+/* ================== nav: burger, active section, smooth anchors ================== */
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+if (burger && navLinks){
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') navLinks.classList.remove('open'); });
+}
+gsap.registerPlugin(ScrollTrigger);
+let lenis = null;
+if (!REDUCED && window.Lenis && isNaN(FORCED_P)){
+  lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t){ e.preventDefault(); lenis ? lenis.scrollTo(t) : t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+addEventListener('scroll', () => {
+  document.getElementById('hdr').classList.toggle('scrolled', scrollY > 40);
+  if (!document.querySelector('.stage')) return;
+}, {passive:true});
+(function(){
+  const map = { work:'work', services:'services', process:'process', pricing:'pricing', faq:'faq' };
+  const obs = new IntersectionObserver(es => {
+    es.forEach(en => {
+      if (!en.isIntersecting) return;
+      navLinks.querySelectorAll('a').forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + en.target.id));
+    });
+  }, {rootMargin:'-38% 0px -55% 0px'});
+  Object.keys(map).forEach(id => { const s = document.getElementById(id); if (s) obs.observe(s); });
+})();
+
+/* ================== hero master timeline ================== */
+const railDots = document.querySelectorAll('#rail .rdot');
+const dbg = document.getElementById('debug');
+if (DEBUG) dbg.style.display = 'block';
+const tl = gsap.timeline({
+  defaults:{ease:'power1.inOut'},
+  scrollTrigger:{
+    id:'stage', trigger:'#stage', start:'top top', end:'+=460%',
+    pin:'#pin', scrub: isNaN(FORCED_P) ? .6 : true, anticipatePin:1,
+    onUpdate(self){
+      const p = self.progress;
+      document.getElementById('progress').style.width = (p*100)+'%';
+      const scene = Math.min(Math.floor(p * 5), 4);
+      railDots.forEach((d,i) => d.classList.toggle('on', i === scene));
+      const near = [.2,.4,.6,.8].some(b => Math.abs(p - b) < .007);
+      document.getElementById('glwrap').classList.toggle('trans', near && ST.ready);
+      if (DEBUG) dbg.textContent = 'scene: '+(scene+1)+'/5 · progress: '+(p*100).toFixed(1)+'%';
+    }
+  }
+});
+for (let i = 0; i < SCENES.length - 1; i++){
+  const at = i * 20, dur = 20;
+  tl.to(ST.cam, {...SCENES[i+1].cam, duration:dur}, at);
+  Object.keys(SCENES[i].layers).forEach(k => { tl.to(ST.layers[k], {...SCENES[i+1].layers[k], duration:dur}, at); });
+}
+gsap.fromTo('#ov1', {opacity:0, x:-46}, {opacity:1, x:0, duration:1.15, delay:.35, ease:'power3.out'});
+tl.to('#scrollcue', {opacity:0, duration:3}, 15)
+  .to('#ov1', {opacity:0, x:-30, duration:4}, 16.5)
+  .fromTo('#ov2', {opacity:0, x:40}, {opacity:1, x:0, duration:4}, 19.5)
+  .to('#ov2', {opacity:0, duration:4}, 36.5)
+  .fromTo('#ov3', {opacity:0}, {opacity:1, duration:4}, 41.5)
+  .fromTo('#ov3 .statement', {y:56}, {y:0, duration:7, ease:'power2.out'}, 41.5)
+  .to('#ov3', {opacity:0, duration:4}, 56.5)
+  .fromTo('#ov4', {opacity:0, y:30}, {opacity:1, y:0, duration:4}, 60.5)
+  .to('#ov4', {opacity:0, duration:4}, 76.5)
+  .fromTo('#ov5', {opacity:0, y:30}, {opacity:1, y:0, duration:5}, 82.5)
+  .to({}, {duration:3}, 97);
+if (!isNaN(FORCED_P)){
+  setTimeout(() => { const st = ScrollTrigger.getById('stage'); st.scroll(st.start + Math.min(Math.max(FORCED_P,0),1)*(st.end - st.start)); ScrollTrigger.update(); }, 80);
+}
+
+/* ================== work — horizontal gallery ================== */
+(function(){
+  const track = document.getElementById('htrack');
+  const wrap = document.getElementById('hwrap');
+  if (!track || innerWidth < 821) return;
+  const dist = () => Math.max(0, track.scrollWidth - wrap.clientWidth + 44);
+  gsap.to(track, { x: () => -dist(), ease:'none',
+    scrollTrigger:{ trigger:'#work', start:'top top', end:() => '+=' + dist(), pin:true, scrub:1, invalidateOnRefresh:true, anticipatePin:1 } });
+})();
+
+/* ================== services — editorial interactive list ================== */
+(function(){
+  const list = document.getElementById('svcList');
+  const img = document.getElementById('svcImg');
+  const name = document.getElementById('svcName'), desc = document.getElementById('svcDesc'),
+        feat = document.getElementById('svcFeat'), cta = document.getElementById('svcCta');
+  let cur = -1;
+  function activate(i){
+    if (i === cur) return; cur = i;
+    const s = siteConfig.services[i];
+    list.querySelectorAll('.svc-row').forEach((r,j) => {
+      r.classList.toggle('on', j === i); r.setAttribute('aria-selected', String(j === i));
+    });
+    img.style.opacity = 0;
+    setTimeout(() => { img.src = s.img; img.onload = () => img.style.opacity = 1; setTimeout(() => img.style.opacity = 1, 350); }, 240);
+    name.textContent = s.name; desc.textContent = s.desc;
+    feat.innerHTML = s.feats.map(f => '<li>' + f + '</li>').join('');
+    cta.setAttribute('data-service', s.form);
+    cta.textContent = 'أريد هذا النوع — ' + s.from;
+  }
+  siteConfig.services.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.className = 'svc-row'; b.type = 'button'; b.setAttribute('role','tab'); b.setAttribute('aria-selected','false');
+    b.innerHTML = '<span class="n">0' + (i+1) + '</span><h3>' + s.name + '</h3><span class="from">' + s.from + '</span>';
+    b.addEventListener('click', () => activate(i));
+    b.addEventListener('pointerenter', () => { if (matchMedia('(pointer:fine)').matches) activate(i); });
+    b.addEventListener('focus', () => activate(i));
+    list.appendChild(b);
+  });
+  activate(0);
+  document.querySelectorAll('[data-service]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sel = document.getElementById('fType');
+      if (sel) sel.value = btn.getAttribute('data-service');
+    });
+  });
+})();
+
+/* ================== process line + about parallax ================== */
+gsap.to('#procFill', { scaleY:1, ease:'none',
+  scrollTrigger:{ trigger:'.proc', start:'top 70%', end:'bottom 60%', scrub:.5 } });
+if (innerWidth > 820){
+  gsap.to('#aboutA', { y:-34, ease:'none', scrollTrigger:{ trigger:'#about', start:'top bottom', end:'bottom top', scrub:.6 } });
+  gsap.to('#aboutB', { y:30, ease:'none', scrollTrigger:{ trigger:'#about', start:'top bottom', end:'bottom top', scrub:.6 } });
+}
+
+/* ================== reveals + counters ================== */
+const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+const cio = new IntersectionObserver(es => { es.forEach(e => {
+  if (!e.isIntersecting) return; cio.unobserve(e.target);
+  const end = +e.target.dataset.count; let t0 = null;
+  const step = ts => { if (!t0) t0 = ts; const p = Math.min((ts - t0)/1400, 1); e.target.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}); }, {threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+/* ================== FAQ accordion ================== */
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+  if (!q || !a) return;
+  q.addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o => {
+      o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null;
+      o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+    });
+    if (!open){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; q.setAttribute('aria-expanded','true'); }
+  });
+});
+
+/* ================== lead form -> WhatsApp ================== */
+(function(){
+  const form = document.getElementById('leadForm'); if (!form) return;
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const err = document.getElementById('formErr'), ok = document.getElementById('formOk');
+    const name = document.getElementById('fName').value.trim();
+    const phone = document.getElementById('fPhone').value.trim();
+    const type = document.getElementById('fType').value;
+    const budget = document.getElementById('fBudget').value;
+    const msg = document.getElementById('fMsg').value.trim();
+    if (!name || !phone || !type){ err.textContent = '⚠️ عمر الخانات الضرورية: الاسم، الهاتف، ونوع المشروع.'; ok.style.display = 'none'; return; }
+    if (!/^[+\d][\d\s-]{7,}$/.test(phone)){ err.textContent = '⚠️ رقم الهاتف ما بانش صحيح — تأكد منو.'; ok.style.display = 'none'; return; }
+    err.textContent = '';
+    const lines = ['السلام عليكم، شفت الموقع وبغيت نستفسر على تصميم موقع لمشروعي.', '', 'الاسم: ' + name, 'رقم الهاتف: ' + phone, 'نوع المشروع: ' + type];
+    if (budget) lines.push('الميزانية: ' + budget);
+    if (msg) lines.push('وصف المشروع: ' + msg);
+    const waUrl = 'https://wa.me/' + siteConfig.brand.whatsapp + '?text=' + encodeURIComponent(lines.join('\n'));
+    window.open(waUrl, '_blank');
+    ok.innerHTML = '✅ <strong>وجدنا ليك الرسالة!</strong> تحل واتساب في تبويب جديد — غير ضغط «إرسال». إلا ما تحلش، <a href="' + waUrl + '" target="_blank" rel="noopener">ضغط هنا باش تكمل في واتساب</a>.';
+    ok.style.display = 'block';
+    ok.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+})();
+
+/* ================== magnetic buttons ================== */
+if (matchMedia('(pointer:fine)').matches && !REDUCED){
+  document.querySelectorAll('[data-mag]').forEach(el => {
+    el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width/2), dy = e.clientY - (r.top + r.height/2);
+      el.style.transform = 'translate(' + dx*.18 + 'px,' + dy*.22 + 'px)'; });
+    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+  });
+}
+</script>
 
 <script type="module">
-/* ===== Tanja Web hero: floating portfolio screens in 3D (tasteful layer) ===== */
+/* ================== WebGL hero: layered screens & cards ================== */
 try {
   const THREE = await import('three');
-  const canvas = document.getElementById('heroGL');
-  const hero = document.querySelector('.hero');
+  const ST = window.STAGE;
+  const canvas = document.getElementById('gl');
   const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.8));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth < 820 ? 1.6 : 2));
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(40, 1, .1, 100);
-  camera.position.set(0, 0, 9);
+  const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
 
-  const loadImg = src => new Promise((res, rej)=>{
-    const img = new Image(); img.onload = ()=>res(img); img.onerror = rej; img.src = src;
+  const loadImg = src => new Promise((res, rej) => {
+    const img = new Image(); img.onload = () => res(img); img.onerror = rej; img.src = src;
   });
   function cover(x, img, dx, dy, w, h){
     const ir = img.naturalWidth/img.naturalHeight, r = w/h;
     let sw, sh, sx, sy;
-    if (ir > r){ sh = img.naturalHeight; sw = sh*r; sx = (img.naturalWidth-sw)/2; sy = 0; }
-    else { sw = img.naturalWidth; sh = sw/r; sx = 0; sy = (img.naturalHeight-sh)/2; }
+    if (ir > r){ sh = img.naturalHeight; sw = sh*r; sx = (img.naturalWidth - sw)/2; sy = 0; }
+    else { sw = img.naturalWidth; sh = sw/r; sx = 0; sy = (img.naturalHeight - sh)/2; }
     x.drawImage(img, sx, sy, sw, sh, dx, dy, w, h);
   }
   function rr(x, dx, dy, w, h, r){ x.beginPath(); x.moveTo(dx+r,dy); x.arcTo(dx+w,dy,dx+w,dy+h,r); x.arcTo(dx+w,dy+h,dx,dy+h,r); x.arcTo(dx,dy+h,dx,dy,r); x.arcTo(dx,dy,dx+w,dy,r); x.closePath(); }
-  async function screenTex(src, label){
+  async function screenTexture(src, url){
     const img = await loadImg(src);
-    const c = document.createElement('canvas'); c.width = 900; c.height = 610;
+    const c = document.createElement('canvas'); c.width = 1100; c.height = 730;
     const x = c.getContext('2d');
-    x.fillStyle = '#0c1220'; rr(x, 3, 3, 894, 604, 22); x.fill();
-    x.fillStyle = '#131c31'; rr(x, 3, 3, 894, 62, 22); x.fill(); x.fillRect(3, 40, 894, 25);
-    ['#ff5f57','#febc2e','#28c840'].forEach((col, i)=>{ x.fillStyle = col; x.beginPath(); x.arc(36+i*28, 34, 8, 0, 7); x.fill(); });
-    x.fillStyle = '#1d2947'; rr(x, 150, 18, 430, 32, 16); x.fill();
-    x.fillStyle = '#d7a441'; x.font = '20px Courier New'; x.fillText(label, 168, 41);
-    x.save(); rr(x, 16, 78, 868, 516, 12); x.clip(); cover(x, img, 16, 78, 868, 516); x.restore();
-    x.strokeStyle = 'rgba(215,164,65,.35)'; x.lineWidth = 2; rr(x, 3, 3, 894, 604, 22); x.stroke();
+    x.fillStyle = '#0c1220'; rr(x, 4, 4, 1092, 722, 26); x.fill();
+    x.fillStyle = '#131c31'; rr(x, 4, 4, 1092, 74, 26); x.fill(); x.fillRect(4, 52, 1092, 26);
+    ['#ff5f57','#febc2e','#28c840'].forEach((col, i) => { x.fillStyle = col; x.beginPath(); x.arc(44 + i*34, 41, 10, 0, 7); x.fill(); });
+    x.fillStyle = '#1d2947'; rr(x, 200, 22, 560, 38, 19); x.fill();
+    x.fillStyle = '#d7a441'; x.font = '24px Courier New'; x.fillText('https://' + url, 224, 49);
+    x.save(); rr(x, 22, 96, 1056, 612, 14); x.clip(); cover(x, img, 22, 96, 1056, 612); x.restore();
+    x.strokeStyle = 'rgba(215,164,65,.35)'; x.lineWidth = 2; rr(x, 4, 4, 1092, 722, 26); x.stroke();
     const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
-    return t;
+    return {tex:t, aspect:730/1100};
   }
-  function glowTex(){
-    const c = document.createElement('canvas'); c.width = 256; c.height = 256;
+  async function cardTexture(src, label){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 800; c.height = 600;
     const x = c.getContext('2d');
-    const g = x.createRadialGradient(128,128,10,128,128,128);
-    g.addColorStop(0,'rgba(215,164,65,.20)'); g.addColorStop(1,'rgba(215,164,65,0)');
-    x.fillStyle = g; x.fillRect(0,0,256,256);
-    return new THREE.CanvasTexture(c);
+    x.fillStyle = '#0a0d13'; x.fillRect(0, 0, 800, 600);
+    cover(x, img, 0, 0, 800, 492);
+    x.fillStyle = '#0c1017'; x.fillRect(0, 492, 800, 108);
+    x.fillStyle = '#d7a441'; x.fillRect(28, 522, 34, 4);
+    x.fillStyle = '#f2efe9'; x.font = '700 27px Courier New'; x.fillText(label, 28, 570);
+    x.strokeStyle = 'rgba(215,164,65,.3)'; x.lineWidth = 2; x.strokeRect(1, 1, 798, 598);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex:t, aspect:600/800};
   }
-  const DEFS = [
-    { src:'shots/burger.webp',  label:'smash.house',  fx:-.90, fy: .40, z:-1.2, w:3.5, ry: .30, ph:0 },
-    { src:'shots/resto.webp',   label:'le-jasmin',    fx: .92, fy: .48, z:-1.9, w:3.1, ry:-.32, ph:2 },
-    { src:'shots/photo.webp',   label:'atelier-photo',fx:-.84, fy:-.62, z:-.4,  w:2.9, ry: .24, ph:4 },
-    { src:'shots/capimmo.webp', label:'capimmo',      fx: .86, fy:-.70, z:-1.0, w:3.0, ry:-.26, ph:1 }
-  ];
-  const group = new THREE.Group(); scene.add(group);
-  const planes = [];
-  const glow = new THREE.Mesh(new THREE.PlaneGeometry(16, 10),
-    new THREE.MeshBasicMaterial({ map: glowTex(), transparent:true, depthWrite:false, opacity:.8 }));
-  glow.position.z = -3.5; group.add(glow);
-  for (const d of DEFS){
-    const tex = await screenTex(d.src, d.label);
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(d.w, d.w * 610/900),
-      new THREE.MeshBasicMaterial({ map: tex, transparent:true, depthWrite:false, opacity:.92 }));
-    m.rotation.y = d.ry; m.renderOrder = 2;
-    group.add(m); planes.push({ m, ...d });
+  async function photoTexture(src){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 1280; c.height = 800;
+    const x = c.getContext('2d'); cover(x, img, 0, 0, 1280, 800);
+    x.strokeStyle = 'rgba(215,164,65,.25)'; x.lineWidth = 3; x.strokeRect(2, 2, 1276, 796);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex:t, aspect:800/1280};
   }
-  function place(){
-    const w = canvas.clientWidth || hero.clientWidth, h = canvas.clientHeight || hero.clientHeight;
-    renderer.setSize(w, h, false);
-    camera.aspect = w/h; camera.updateProjectionMatrix();
-    const portrait = camera.aspect < 1;
-    for (const p of planes){
-      const dist = camera.position.z - p.z;
-      const halfH = Math.tan(THREE.MathUtils.degToRad(camera.fov/2)) * dist;
-      const halfW = halfH * camera.aspect;
-      p.m.position.set(p.fx * (portrait ? 1.35 : 1) * halfW, p.fy * halfH, p.z);
-      p.baseY = p.m.position.y;
-      p.mobO = portrait ? .38 : .85;
-    }
+  function glowTexture(){
+    const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+    const x = c.getContext('2d');
+    const g = x.createRadialGradient(256, 256, 20, 256, 256, 256);
+    g.addColorStop(0, 'rgba(215,164,65,.30)'); g.addColorStop(.55, 'rgba(87,199,227,.08)'); g.addColorStop(1, 'rgba(215,164,65,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 512, 512);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+    return {tex:t, aspect:1};
   }
-  place(); addEventListener('resize', place);
+
+  const defs = { glow:{make:'glow'}, screen:LAYER_SRC.screen, panel:LAYER_SRC.panel, box:LAYER_SRC.box,
+                 cardResto:LAYER_SRC.cardResto, cardHotel:LAYER_SRC.cardHotel, cardImmo:LAYER_SRC.cardImmo };
+  const meshes = {};
+  for (const [key, d] of Object.entries(defs)){
+    let r;
+    if (d.make === 'screen') r = await screenTexture(d.src, d.url);
+    else if (d.make === 'card') r = await cardTexture(d.src, d.label);
+    else if (d.make === 'photo') r = await photoTexture(d.src);
+    else r = glowTexture();
+    const w = key === 'glow' ? 15 : d.w;
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, w * r.aspect),
+      new THREE.MeshBasicMaterial({ map:r.tex, transparent:true, depthWrite:false }));
+    m.renderOrder = key === 'glow' ? 0 : 5;
+    scene.add(m); meshes[key] = m;
+  }
+  document.getElementById('stageLoader').style.display = 'none';
+  ST.ready = true;
+
   let mx = 0, my = 0, visible = true;
   if (matchMedia('(pointer:fine)').matches)
-    addEventListener('pointermove', e=>{ mx = e.clientX/innerWidth - .5; my = e.clientY/innerHeight - .5; }, {passive:true});
-  new IntersectionObserver(es=>{ visible = es[0].isIntersecting; }).observe(hero);
-  const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    addEventListener('pointermove', e => { mx = e.clientX/innerWidth - .5; my = e.clientY/innerHeight - .5; }, {passive:true});
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(document.getElementById('stage'));
+  function resize(){
+    const w = canvas.clientWidth || innerWidth, h = canvas.clientHeight || innerHeight;
+    renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix();
+  }
+  resize(); addEventListener('resize', resize);
+
   function tick(t){
-    if (!REDUCED) requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
     if (!visible) return;
-    const sy = scrollY;
-    group.position.y = sy * .0016;
-    group.rotation.y += ((mx * .07) - group.rotation.y) * .04;
-    group.rotation.x += ((my * .05) - group.rotation.x) * .04;
-    const fade = Math.max(0, 1 - Math.max(0, sy - 320) / 480);
-    for (const p of planes){
-      p.m.position.y = p.baseY + Math.sin(t*.0006 + p.ph) * .09;
-      p.m.material.opacity = (p.mobO || .85) * fade;
+    const ms = innerWidth < 820 ? .62 : 1;
+    for (const [key, m] of Object.entries(meshes)){
+      const L = ST.layers[key]; if (!L) continue;
+      m.position.set(L.x * (innerWidth < 820 ? .45 : 1), L.y, L.z);
+      m.rotation.set(0, L.ry + mx * .12, L.rz);
+      const sc = L.s * ms; m.scale.set(sc, sc, 1);
+      m.material.opacity = L.o;
+      m.renderOrder = 5 + L.z * 2;
+      m.material.color.setScalar(1 - (L.dk || 0) * .75);
     }
+    camera.position.set(ST.cam.x + mx * .35, ST.cam.y - my * .25 + Math.sin(t*.0004)*.04, ST.cam.z);
+    camera.lookAt(ST.cam.x * .6, ST.cam.y * .6, 0);
     renderer.render(scene, camera);
   }
   requestAnimationFrame(tick);
 } catch(e) {
-  const c = document.getElementById('heroGL'); if (c) c.remove();
+  document.getElementById('stageLoader').style.display = 'none';
+  document.getElementById('fallback3d').style.display = 'flex';
+  const g = document.getElementById('gl'); if (g) g.style.display = 'none';
 }
 </script>
 </body>
