@@ -86,7 +86,7 @@ a{color:inherit;text-decoration:none}
 .pillar h4{font-family:var(--serif);font-size:25px;font-weight:600;margin:10px 0 8px}
 .pillar p{font-size:14.5px;line-height:1.65;color:#454036}
 @media(max-width:820px){.pillars{grid-template-columns:1fr}.pillar{border-left:0;padding-left:0;border-top:1px solid #12100d1f}.pillar:first-child{border-top:0}}
-#film{height:340vh;position:relative}
+#film,.filmsec{height:340vh;position:relative}
 .film-sticky{position:sticky;top:0;height:100vh;overflow:hidden;background:#000}
 .film-sticky video,.film-sticky canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .film-sticky .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,6,.36),transparent 34%,transparent 60%,rgba(10,8,6,.6))}
@@ -203,15 +203,15 @@ footer{background:#080706;padding:64px 5vw 0;overflow:hidden}
   <div class="chap-meta"><div class="label">Villas · Penthouses</div><h3>La lumière du détroit, en première ligne.</h3><p>Des architectures qui regardent l'Espagne — colonnes, baies vitrées et terrasses suspendues entre ciel et mer.</p></div>
 </section>
 
-<section id="film" data-chap="04">
+<section id="film" class="filmsec" data-chap="04">
   <div class="film-sticky">
-    <canvas id="filmcanvas" data-seq="demo-immoluxe/vid/seq/f" data-frames="222" data-poster="demo-immoluxe/vid/posters/interior.jpg"></canvas>
+    <canvas id="filmcanvas" class="filmcanvas" data-seq="demo-immoluxe/vid/seq/f" data-frames="222" data-poster="demo-immoluxe/vid/posters/interior.jpg" data-pname="filmp"></canvas>
     <div class="veil"></div><div class="chap-num" style="position:absolute;right:34px;top:84px;font-family:var(--mono);font-size:11px;letter-spacing:.34em;color:#ffffffc9;z-index:3">CHAPITRE 02 — LE FILM</div>
     <h2 class="vtitle">Intér<em>ieurs</em></h2>
     <div class="fcap"><div class="label">Acte I</div><h3>Entrer.</h3></div>
     <div class="fcap"><div class="label">Acte II</div><h3>Respirer — la lumière fait le décor.</h3></div>
     <div class="fcap"><div class="label">Acte III</div><h3>Habiter. Tout simplement.</h3></div>
-    <div class="fline"><i id="ffill"></i></div>
+    <div class="fline"><i id="ffill" class="ffill"></i></div>
   </div>
 </section>
 
@@ -229,7 +229,19 @@ footer{background:#080706;padding:64px 5vw 0;overflow:hidden}
   <div class="chap-meta"><div class="label">Propriétés avec terrain</div><h3>Entre mer et oliviers, l'espace devient le luxe.</h3><p>Des domaines avec piscine, jardin paysager et maison d'invités — à quelques minutes du centre, dans un autre monde.</p></div>
 </section>
 
-<section id="who" data-chap="06">
+<section id="chantier" class="filmsec" data-chap="06" style="height:330vh">
+  <div class="film-sticky">
+    <canvas class="filmcanvas" data-seq="demo-immoluxe/vid/seq2/f" data-frames="204" data-poster="demo-immoluxe/vid/posters/chantier.jpg" data-pname="filmp2"></canvas>
+    <div class="veil"></div><div class="chap-num" style="position:absolute;right:34px;top:84px;font-family:var(--mono);font-size:11px;letter-spacing:.34em;color:#ffffffc9;z-index:3">CHAPITRE 04 — GENÈSE</div>
+    <h2 class="vtitle">Gen<em>èse</em></h2>
+    <div class="fcap"><div class="label">Acte I — Le chantier</div><h3>D'abord, le squelette et les grues.</h3></div>
+    <div class="fcap"><div class="label">Acte II — La matière</div><h3>Puis le verre prend la lumière.</h3></div>
+    <div class="fcap"><div class="label">Acte III — La livraison</div><h3>Bienvenue chez vous.</h3></div>
+    <div class="fline"><i class="ffill"></i></div>
+  </div>
+</section>
+
+<section id="who" data-chap="07">
   <img class="bgimg" src="demo-immoluxe/vid/posters/hero.jpg" alt="Vue aérienne réelle de villas luxueuses au bord de l'eau">
   <div class="wveil"></div>
   <div class="in"><div class="label">Qui sommes-nous</div><h2>Who We <em>Are</em></h2>
@@ -313,24 +325,29 @@ if ('IntersectionObserver' in window) { var io = new IntersectionObserver(functi
 /* pause videos off-screen */
 if ('IntersectionObserver' in window) { var vio = new IntersectionObserver(function(es){ es.forEach(function(e){ var v = e.target; if (v.id === 'filmvid') return; if (e.isIntersecting) { var p = v.play(); if (p) p.catch(function(){}); } else v.pause(); }); }, { threshold:.12 });
   document.querySelectorAll('video').forEach(function(v){ vio.observe(v); }); }
-/* THE FILM: canvas frame sequence — the scroll draws frames (the pro technique) */
-var film = document.getElementById('film'), cv = document.getElementById('filmcanvas'), fcaps = document.querySelectorAll('.fcap'), ffill = document.getElementById('ffill');
-if (film && cv) {
+/* THE FILM(S): canvas frame sequences — the scroll draws frames (the pro technique) */
+function initFilm(sec){
+  if (!sec) return;
+  var cv = sec.querySelector('canvas'); if (!cv) return;
+  var fcaps = sec.querySelectorAll('.fcap'), ffill = sec.querySelector('.fline i');
   var FN = parseInt(cv.getAttribute('data-frames'), 10), FBASE = cv.getAttribute('data-seq'), FCTX = cv.getContext('2d');
   var FIMGS = [], fdrawn = -1, fprog = 0;
-  var q2 = new URLSearchParams(location.search); var fixedP = q2.has('filmp') ? Math.min(1, Math.max(0, parseFloat(q2.get('filmp')))) : null;
+  var q2 = new URLSearchParams(location.search); var pn = cv.getAttribute('data-pname') || 'filmp';
+  var fixedP = q2.has(pn) ? Math.min(1, Math.max(0, parseFloat(q2.get(pn)))) : null;
   var fposter = new Image(); fposter.src = cv.getAttribute('data-poster');
   function fdraw(img){ if (!img || !img.naturalWidth) return; var W = cv.width, H = cv.height, ir = img.naturalWidth / img.naturalHeight, r = W / H, dw, dh; if (ir > r) { dh = H; dw = H * ir; } else { dw = W; dh = W / ir; } FCTX.drawImage(img, (W - dw) / 2, (H - dh) / 2, dw, dh); }
   function fsize(){ var d = Math.min(window.devicePixelRatio || 1, 1.5); cv.width = cv.clientWidth * d; cv.height = cv.clientHeight * d; fdrawn = -1; }
   function frender(){ var idx = Math.round(fprog * (FN - 1)); if (idx === fdrawn) return; var img = FIMGS[idx]; if (img && img.complete && img.naturalWidth) { fdraw(img); fdrawn = idx; } else if (fdrawn < 0 && fposter.complete) fdraw(fposter); }
   for (var fi = 0; fi < FN; fi++) { var im = new Image(); im.onload = frender; im.src = FBASE + ('00' + (fi + 1)).slice(-3) + '.webp'; FIMGS.push(im); }
   fsize(); addEventListener('resize', function(){ fsize(); frender(); });
-  (function floop(){ var p; if (fixedP !== null) p = fixedP; else { var r = film.getBoundingClientRect(); var total = film.offsetHeight - innerHeight; p = Math.min(1, Math.max(0, -r.top / (total || 1))); }
-    fprog = p; frender(); ffill.style.width = (p * 100) + '%';
+  (function floop(){ var p; if (fixedP !== null) p = fixedP; else { var r = sec.getBoundingClientRect(); var total = sec.offsetHeight - innerHeight; p = Math.min(1, Math.max(0, -r.top / (total || 1))); }
+    fprog = p; frender(); if (ffill) ffill.style.width = (p * 100) + '%';
     var idx = Math.min(2, Math.floor(p * 3.0001));
-    fcaps.forEach(function(c, i){ var on = i === idx; c.style.opacity = on ? 1 : 0; c.style.transform = 'translateY(' + (on ? 0 : 24) + 'px)'; });
+    fcaps.forEach(function(c, ci){ var on = ci === idx; c.style.opacity = on ? 1 : 0; c.style.transform = 'translateY(' + (on ? 0 : 24) + 'px)'; });
     requestAnimationFrame(floop); })();
 }
+initFilm(document.getElementById('film'));
+initFilm(document.getElementById('chantier'));
 })();
 </script>
 </body>
