@@ -15,39 +15,36 @@
 :root{
   --bg:#0a0705; --panel:#14100a; --line:#2a2113; --hair:rgba(245,234,210,.14);
   --acc:#c9a24b; --acc2:#e6c87a; --txt:#f5ead2; --mut:#b3a582;
-  /* palette of the shop sections (original demo) */
   --cream:#faf6ef; --cream2:#f3ead9; --ink:#241a12; --ink2:#4a3a28;
   --gold:#b8862f; --gold2:#c9a24b;
   --card:#fffdf8; --shadow:0 18px 45px rgba(36,26,18,.14);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:auto}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 body{background:var(--bg);color:var(--txt);font-family:'Tajawal',sans-serif;overflow-x:hidden}
 img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 ::selection{background:var(--acc);color:#171008}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
 .demobar{background:#171008;color:#e8d9b8;text-align:center;font-size:.82rem;font-weight:500;padding:7px 14px;letter-spacing:.2px;position:relative;z-index:200;border-bottom:1px solid #3a2c12}
-/* ---------- chrome ---------- */
-#progress{position:fixed;top:0;right:0;height:2px;background:var(--acc);width:0;z-index:150}
+#progress{position:fixed;top:0;right:0;height:2px;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0;z-index:150}
 header{position:fixed;top:36px;left:0;right:0;z-index:140;transition:background .3s,border-color .3s}
-header .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 22px;max-width:1180px;margin:0 auto;gap:16px}
-header.scrolled{background:rgba(10,7,5,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .bar{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1180px;margin:0 auto}
+header.scrolled{background:rgba(6,6,7,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .logo{display:flex;align-items:center;gap:11px}
 .logo-mark{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#3a2a17,#171008 75%);color:var(--acc2);display:flex;align-items:center;justify-content:center;font-family:'Amiri',serif;font-size:1.4rem;border:1px solid var(--acc);flex:none}
 .logo-name{font-family:'Amiri',serif;font-size:1.35rem;font-weight:700;line-height:1.05;color:#f5ead2}
 .logo-sub{font-size:.6rem;letter-spacing:3.5px;color:var(--acc);font-weight:700;text-transform:uppercase;font-family:'Tajawal',sans-serif}
-nav.chaps{display:flex;gap:22px;font-size:.92rem;color:var(--mut);font-weight:500}
-nav.chaps a:hover{color:#fff}
-.btn{display:inline-block;background:linear-gradient(135deg,var(--acc),var(--gold));color:#fff;padding:13px 28px;border-radius:999px;font-weight:800;font-size:16px;transition:transform .25s,background .25s;will-change:transform;border:0;cursor:pointer;font-family:inherit}
-.btn:hover{filter:brightness(1.1)}
-.btn-ghost{background:transparent;border:1.5px solid #6b5a35}
 .cartbtn{background:#171008;border:1px solid var(--acc);color:#f5ead2;display:inline-flex;align-items:center;gap:8px;padding:10px 20px}
 .cartbtn:hover{background:var(--gold);filter:none}
 .cart-count{background:var(--gold2);color:#171008;border-radius:999px;min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;padding:0 6px}
-.eyebrow{font-family:'Arial Narrow',Arial,sans-serif;color:var(--acc);font-weight:700;letter-spacing:4px;font-size:13px;text-transform:uppercase}
+nav.chaps{display:flex;gap:22px;font-size:12.5px;color:var(--mut);letter-spacing:1.5px}
+nav.chaps a:hover{color:#fff}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--acc),var(--gold));color:#fff;padding:13px 28px;border-radius:999px;font-weight:800;font-size:16px;transition:transform .25s,filter .25s;will-change:transform;border:0;cursor:pointer;font-family:inherit}
+.btn:hover{filter:brightness(1.1)}
+.btn-wa{background:#22c064}.btn-ghost{background:transparent;border:1.5px solid #6b5a35}
+.eyebrow{font-family:'Arial Narrow',Arial,sans-serif;color:var(--acc2);font-weight:700;letter-spacing:4px;font-size:13px;text-transform:uppercase}
 .micro{font-family:'Courier New',monospace;font-size:11px;letter-spacing:1.5px;color:var(--mut);text-transform:uppercase}
-/* progress rail */
 #rail{position:fixed;inset-inline-end:20px;top:50%;transform:translateY(-50%);z-index:130;display:flex;flex-direction:column;gap:16px;align-items:center}
 #rail .rdot{display:flex;flex-direction:column;align-items:center;gap:5px;color:#5c574f;font-family:'Courier New',monospace;font-size:10.5px;transition:color .3s}
 #rail .rdot i{width:7px;height:7px;border-radius:50%;border:1px solid #5c574f;display:block;transition:.3s}
@@ -55,102 +52,67 @@ nav.chaps a:hover{color:#fff}
 #rail .rdot.on i{background:var(--acc);border-color:var(--acc);box-shadow:0 0 12px rgba(201,162,75,.8)}
 #rail .rline{width:1px;height:44px;background:var(--hair);position:relative;overflow:hidden}
 #rail .rline b{position:absolute;top:0;left:0;width:100%;background:var(--acc);height:0}
-/* grain + vignette */
 #grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:120;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");animation:gr 7s steps(8) infinite}
 @keyframes gr{0%,100%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(-1%,2%)}}
-/* cursor */
 #cur,#curR{position:fixed;top:0;left:0;pointer-events:none;z-index:300;border-radius:50%;display:none}
 @media(pointer:fine){#cur,#curR{display:block}}
 #cur{width:6px;height:6px;background:var(--acc);transform:translate(-50%,-50%)}
-#curR{width:34px;height:34px;border:1px solid rgba(245,234,210,.4);transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
+#curR{width:34px;height:34px;border:1px solid rgba(244,241,234,.4);transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
 #curR.big{width:58px;height:58px;border-color:var(--acc)}
 /* ---------- STAGE ---------- */
 .stage{position:relative}
 .pin{position:relative;height:100svh;overflow:hidden;background:radial-gradient(1000px 520px at 66% 44%,rgba(201,162,75,.13),transparent 65%),var(--bg)}
-.pin .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 55%,rgba(0,0,0,.55));z-index:3}
+.pin .grid-bg{position:absolute;inset:0;z-index:0;background:
+  linear-gradient(rgba(244,241,234,.045) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(244,241,234,.045) 1px,transparent 1px);
+  background-size:72px 72px;mask-image:radial-gradient(80% 70% at 50% 45%,#000 30%,transparent 78%)}
+.pin .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 52%,rgba(0,0,0,.6));z-index:3}
 .pin .frame{position:absolute;inset:14px;border:1px solid var(--hair);pointer-events:none;z-index:3}
-#gl{position:absolute;inset:0;width:100%;height:100%;opacity:1;z-index:2}
+.pin .corner{position:absolute;width:18px;height:18px;z-index:4;pointer-events:none;border-color:var(--acc2);border-style:solid;border-width:0}
+.corner.tl{top:22px;inset-inline-start:22px;border-top-width:1.5px;border-inline-start-width:1.5px}
+.corner.tr{top:22px;inset-inline-end:22px;border-top-width:1.5px;border-inline-end-width:1.5px}
+.corner.bl{bottom:22px;inset-inline-start:22px;border-bottom-width:1.5px;border-inline-start-width:1.5px}
+.corner.br{bottom:22px;inset-inline-end:22px;border-bottom-width:1.5px;border-inline-end-width:1.5px}
 #glwrap{position:absolute;inset:0;z-index:2}
-#glwrap.trans{filter:blur(1.3px) drop-shadow(2.5px 0 rgba(255,0,70,.28)) drop-shadow(-2.5px 0 rgba(0,210,255,.28))}
+#gl{position:absolute;inset:0;width:100%;height:100%}
+#glwrap.trans{filter:blur(1px) drop-shadow(2px 0 rgba(255,0,70,.28)) drop-shadow(-2px 0 rgba(0,210,255,.28))}
 #fallback3d{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:2}
 #fallback3d img{height:84svh;object-fit:contain}
-#heroImg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;z-index:1;will-change:transform,filter}
-#boxImg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1;opacity:0;will-change:transform;filter:brightness(1.05)}
-.flare{position:absolute;top:0;bottom:0;width:34%;z-index:2;background:linear-gradient(100deg,transparent,rgba(255,214,170,.13),transparent);transform:translateX(-140%) skewX(-8deg);pointer-events:none}
+#loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mut);letter-spacing:3px;font-size:13px;z-index:5;font-family:'Courier New',monospace}
 .ovl{position:absolute;z-index:6;pointer-events:none}
 .ovl a{pointer-events:auto}
-.mask{display:block;overflow:hidden}
-.mask>span{display:block;transform:translateY(112%)}
-/* scene 1 */
-#ovHero{inset-inline-start:0;top:50%;transform:translateY(-52%);max-width:640px;padding:0 34px}
-#ovHero h1{font-family:'Amiri',serif;font-size:clamp(48px,8vw,96px);font-weight:700;line-height:1.15;margin:16px 0 8px}
-#ovHero h1 .lat{font-family:'Arial Black',Arial,sans-serif;letter-spacing:.5px;font-size:.52em;vertical-align:.18em}
-#ovHero h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--acc)}
-#ovHero p{color:#e8dcbc;max-width:450px;font-size:18px;font-weight:300;margin:14px 0 26px;opacity:0;text-shadow:0 2px 18px rgba(0,0,0,.8)}
-#ovHero .tags{display:flex;gap:10px;flex-wrap:wrap;opacity:0}
-#ovHero .tags span{border:1px solid #6b5a35;border-radius:30px;padding:6px 16px;font-size:14px;color:#f0e3c0;background:rgba(0,0,0,.45)}
-#scrollcue{position:absolute;bottom:30px;inset-inline-start:50%;transform:translateX(50%);z-index:6;color:var(--mut);font-size:11px;letter-spacing:4px;text-align:center}
-#scrollcue i{display:block;width:1px;height:44px;background:linear-gradient(var(--acc),transparent);margin:8px auto 0;animation:cue 1.8s infinite}
+#ov1{inset-inline-start:0;top:15svh;padding:0 38px;max-width:700px}
+#ov1 h1{font-size:clamp(40px,6.6vw,84px);font-weight:900;line-height:1.05;margin:14px 0 12px;text-shadow:0 4px 44px rgba(0,0,0,.6)}
+#ov1 h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--acc2)}
+#ov1 p{color:#cfc9bd;max-width:430px;font-size:17px;text-shadow:0 2px 16px rgba(0,0,0,.85)}
+#ov1 .meta{display:flex;gap:18px;margin-top:20px;flex-wrap:wrap}
+#ov2{inset-inline-end:0;top:16svh;padding:0 38px;text-align:end;max-width:480px}
+#ov2 h2{font-size:clamp(26px,3.6vw,42px);font-weight:900;line-height:1.2;margin:10px 0 10px}
+#ov2 p{color:var(--mut);font-size:16px}
+#ov2 .ticks{margin-top:18px;display:grid;gap:7px;justify-items:end}
+#ov3{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:10svh;text-align:center}
+#ov3 .statement{font-size:clamp(38px,7vw,84px);font-weight:900;line-height:1.12;position:relative}
+#ov3 .statement .sh{position:absolute;inset:0;color:transparent;-webkit-text-stroke:1.5px rgba(201,162,75,.55);transform:translate(7px,7px);z-index:-1}
+#ov3 p{color:#ddd6c9;margin-top:12px;font-size:16.5px;text-shadow:0 2px 18px rgba(0,0,0,.8)}
+#ov4{inset-inline-start:0;top:15.5svh;padding:0 38px}
+#ov4 h2{font-size:clamp(28px,4vw,46px);font-weight:900;line-height:1.15;margin:10px 0 8px}
+#ov4 p{color:var(--mut);font-size:16px;max-width:380px}
+#ov5{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8.5svh;text-align:center}
+#ov5 h2{font-size:clamp(28px,4.4vw,46px);font-weight:900;margin:10px 0 12px;text-shadow:0 3px 34px rgba(0,0,0,.9)}
+#ov5 p{color:#cfc9bd;max-width:520px;font-size:16.5px;margin-bottom:24px}
+#ov5 .mini-nav{display:flex;gap:22px;margin-top:28px;font-size:12.5px;letter-spacing:1.5px;color:var(--mut)}
+#ov5 .mini-nav a:hover{color:#fff}
+#ov5 .techfoot{margin-top:16px}
+#ov1 h1,#ov2 h2,#ov3 .statement,#ov4 h2,#ov5 h2{font-family:'Amiri',serif;font-weight:700}
+#scrollcue{position:absolute;bottom:26px;inset-inline-start:50%;transform:translateX(50%);z-index:6;color:var(--mut);font-size:11px;letter-spacing:4px;text-align:center}
+#scrollcue i{display:block;width:1px;height:42px;background:linear-gradient(var(--acc2),transparent);margin:8px auto 0;animation:cue 1.8s infinite}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-/* scene 2 */
-#ovLayers{inset-inline-start:0;top:50%;transform:translateY(-50%);width:min(440px,90vw);padding:0 34px;opacity:0}
-#ovLayers p.intro{color:var(--mut);font-size:15.5px;margin:10px 0 20px}
-.layer-label{border-inline-start:2px solid #3a2e18;padding:11px 16px;margin-bottom:10px;opacity:.16;transform:translateX(16px);transition:.45s;background:rgba(10,7,5,.6);backdrop-filter:blur(3px)}
-.layer-label.on{opacity:1;transform:none;border-color:var(--acc)}
-.layer-label h3{font-family:'Amiri',serif;font-size:21px;margin-bottom:2px}
-.layer-label p{color:var(--mut);font-size:14px}
-.layer-label .micro{color:var(--acc2)}
-#techlabels{position:absolute;inset-inline-end:34px;bottom:110px;z-index:6;text-align:end;opacity:0}
-#techlabels div{margin-top:6px}
-/* scene 3 */
-#ovBig{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:11svh;text-align:center;opacity:0}
-#ovBig .statement{font-family:'Amiri',serif;font-size:clamp(42px,7.5vw,88px);font-weight:700;line-height:1.2;position:relative}
-#ovBig .statement .sh{position:absolute;inset:0;color:transparent;-webkit-text-stroke:1.5px rgba(201,162,75,.55);transform:translate(7px,7px);z-index:-1}
-#ovBig p{color:var(--mut);margin-top:14px;font-size:16.5px}
-/* scene 4 */
-#ovBox{inset-inline-start:0;bottom:12svh;max-width:600px;padding:0 34px;opacity:0}
-#ovBox h2{font-family:'Amiri',serif;font-size:clamp(30px,4.6vw,50px);font-weight:700;line-height:1.25;margin:10px 0 12px;color:#fff;text-shadow:0 3px 34px rgba(0,0,0,.85)}
-#ovBox p{color:#e8dcbc;max-width:480px;font-size:17px;font-weight:300}
-#ovBox .chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-/* scene 5 */
-#ovEnd{inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:9svh;text-align:center;opacity:0}
-#ovEnd h2{font-family:'Amiri',serif;font-size:clamp(30px,4.4vw,48px);font-weight:700;margin:10px 0 12px;text-shadow:0 3px 34px rgba(0,0,0,.9)}
-#ovEnd p{color:#ddd2b0;max-width:520px;font-size:16.5px;font-weight:300;margin-bottom:24px;text-shadow:0 2px 20px rgba(0,0,0,.9)}
-#ovEnd .mini-nav{display:flex;gap:22px;margin-top:30px;font-size:12.5px;letter-spacing:1px;color:var(--mut)}
-#ovEnd .mini-nav a:hover{color:#fff}
-#loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--mut);letter-spacing:3px;font-size:13px;z-index:5;background:var(--bg)}
 #debug{position:fixed;bottom:14px;left:14px;z-index:400;background:#000;border:1px solid var(--acc);color:#ffd977;font-family:'Courier New',monospace;font-size:12px;padding:8px 12px;display:none}
-/* ---------- marquee ---------- */
+/* ---------- SECTIONS ---------- */
 .marquee{border-block:1px solid var(--line);background:#0a0806;overflow:hidden;padding:14px 0}
 .marquee .track{display:flex;gap:44px;width:max-content;animation:mq 22s linear infinite;font-weight:900;font-size:19px;white-space:nowrap;color:#e8dcbc}
 .marquee .track span i{color:var(--acc);font-style:normal}
 @keyframes mq{to{transform:translateX(50%)}}
-/* ---------- MID-PAGE 3D ZONE ---------- */
-.zone3d{position:relative;background:radial-gradient(900px 480px at 50% 40%,rgba(201,162,75,.12),transparent 65%),#070503;color:#f5ead2}
-.zone-pin{position:relative;height:100svh;overflow:hidden}
-#gl2{position:absolute;inset:0;width:100%;height:100%}
-.zone-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
-.zone-txt{position:absolute;z-index:5;inset-inline-start:0;top:50%;transform:translateY(-50%);max-width:540px;padding:0 34px}
-.zone-txt h2{font-family:'Amiri',serif;font-size:clamp(32px,4.8vw,52px);font-weight:700;margin:12px 0 8px;text-shadow:0 3px 30px rgba(0,0,0,.85)}
-.zone-txt p{color:#d8cba6;font-size:16.5px;font-weight:300;max-width:430px;text-shadow:0 2px 16px rgba(0,0,0,.85)}
-.zone-price{font-size:32px;font-weight:900;color:var(--acc2);margin:18px 0 20px}
-.zone-cta{display:inline-block;background:linear-gradient(135deg,var(--acc),var(--gold));color:#fff;padding:14px 30px;border-radius:999px;font-weight:800;font-size:16.5px;border:0;cursor:pointer;font-family:inherit;transition:.25s}
-.zone-cta:hover{filter:brightness(1.12);transform:translateY(-2px)}
-.waf{position:fixed;bottom:20px;inset-inline-end:20px;z-index:145;background:#22c064;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:27px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
-@media(max-width:820px){
-  nav.chaps,#rail{display:none}
-  #ovHero{top:auto;bottom:11svh;transform:none}
-  #ovLayers{top:auto;bottom:3.5svh;transform:none;width:100%}
-  #ovLayers p.intro{display:none}
-  .layer-label{padding:7px 13px;margin-bottom:7px}
-  .layer-label p{display:none}
-  #techlabels{display:none}
-  #ovBox{bottom:9svh}
-  .zone-txt{top:auto;bottom:6svh;transform:none}
-}
-@media(prefers-reduced-motion:reduce){
-  .marquee .track{animation:none}#grain{animation:none}#scrollcue i{animation:none}
-}
 /* ============================================================
    SHOP SECTIONS — transplanted verbatim from the original demo
    (scoped under .shopzone; --line locally = the cream divider)
@@ -212,7 +174,7 @@ nav.chaps a:hover{color:#fff}
 /* ===== cart drawer (original demo) ===== */
 .overlay{position:fixed;inset:0;background:rgba(16,10,4,.55);opacity:0;pointer-events:none;transition:.3s;z-index:150}
 .overlay.show{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;bottom:0;inset-inline-start:0;width:min(430px,94vw);background:var(--cream);color:var(--ink);font-family:'Tajawal',sans-serif;line-height:1.75;z-index:160;transform:translateX(-115%);transition:transform .35s cubic-bezier(.2,.8,.25,1);display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.drawer{position:fixed;top:0;bottom:0;inset-inline-start:0;width:min(430px,94vw);background:var(--cream);color:var(--ink);font-family:'Tajawal',sans-serif;line-height:1.75;z-index:160;transform:translateX(115%);transition:transform .35s cubic-bezier(.2,.8,.25,1);display:flex;flex-direction:column;box-shadow:var(--shadow)}
 .drawer.open{transform:translateX(0)}
 .drawer-head{padding:20px 22px;border-bottom:1px solid #e7dcc4;display:flex;align-items:center;justify-content:space-between}
 .drawer-head h3{font-family:'Amiri',serif;font-size:1.45rem}
@@ -235,6 +197,21 @@ nav.chaps a:hover{color:#fff}
 .drawer-note{text-align:center;font-size:.82rem;color:var(--ink2);margin-top:10px;font-weight:300}
 .toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,90px);background:var(--ink);color:#f5ead2;padding:12px 24px;border-radius:999px;font-weight:700;font-size:.95rem;z-index:170;transition:.35s;box-shadow:var(--shadow);max-width:92vw;text-align:center;font-family:'Tajawal',sans-serif}
 .toast.show{transform:translate(-50%,0)}
+
+.waf{position:fixed;bottom:20px;inset-inline-end:20px;z-index:145;background:#22c064;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:27px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.js .rv{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.1s}.js .rv.d2{transition-delay:.2s}.js .rv.d3{transition-delay:.3s}
+@media(max-width:820px){
+  nav.chaps,#rail{display:none}
+  #ov1{top:auto;bottom:12svh}
+  #ov2{top:auto;bottom:10svh;text-align:start}
+  #ov2 .ticks{justify-items:start}
+  #ov4{top:auto;bottom:11svh}
+  .logo-name{font-size:1.08rem}
+  .logo-sub{letter-spacing:2px;white-space:nowrap}
+}
+@media(prefers-reduced-motion:reduce){.marquee .track{animation:none}#grain{animation:none}#scrollcue i{animation:none}}
 </style>
 <script type="importmap">{"imports":{"three":"./demo-burger/gl/three.module.js"}}</script>
 </head>
@@ -270,66 +247,55 @@ nav.chaps a:hover{color:#fff}
   <div class="rdot" data-s="4"><i></i>05</div>
 </div>
 
-<!-- ================= PINNED 3D SHOWCASE (5 SCENES) ================= -->
+<!-- ================= PINNED EDITORIAL 3D STAGE ================= -->
 <section class="stage" id="stage">
  <div class="pin" id="pin">
-  <img id="heroImg" src="demo-parfum/img/hero3d.webp" alt="عطر فاخر من دار العطور">
-  <img id="boxImg" src="demo-parfum/img/wide3d.webp" alt="مجموعة دار العطور الكاملة">
+  <div class="grid-bg"></div>
   <div id="glwrap"><canvas id="gl"></canvas></div>
   <div id="fallback3d"><img src="demo-parfum/img/hero3d.webp" alt="عطر دار العطور"></div>
-  <div class="flare" id="flare"></div>
   <div class="vig"></div><div class="frame"></div>
+  <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
   <div id="loader">… LOADING EXPERIENCE</div>
 
-  <!-- SCENE 01 : the 3D layers are visible from the first second,
-       floating over the dimmed hero backdrop; headline reveals over them -->
-  <div class="ovl" id="ovHero">
-    <div class="eyebrow mask"><span>// Scene 01 — The Signature · Tanger</span></div>
-    <h1>
-      <span class="mask"><span>دار العطور</span></span>
-      <span class="mask"><span><span class="lat">MAISON</span> <span class="stroke">PARFUM</span></span></span>
-    </h1>
-    <p id="heroSub">تشكيلة مختارة بعناية من العود والمسك وأرقى العطور الشرقية والفرنسية — أصلية 100%، تصلك أينما كنت في طنجة خلال 24 ساعة.</p>
-    <div class="tags" id="heroTags"><span>💎 أصلي 100%</span><span>🚚 توصيل 24 ساعة</span><span>💵 الدفع عند الاستلام</span></div>
+  <div class="ovl" id="ov1">
+    <div class="eyebrow">// Scene 01 — The Signature · Tanger</div>
+    <h1>عطرٌ يسبقك<br><span class="stroke">ويبقى بعدك.</span></h1>
+    <p>تشكيلة مختارة بعناية من العود والمسك وأرقى العطور الشرقية والفرنسية — أصلية 100%، تصلك أينما كنت في طنجة خلال 24 ساعة.</p>
+    <div class="meta"><span class="micro">EST. TANGER — MAISON DE PARFUM</span><span class="micro">OUD ROYAL · 890 DH</span><span class="micro">LIVRAISON · 24H</span></div>
   </div>
-  <div id="scrollcue">SCROLL<i></i></div>
 
-  <!-- SCENE 02 -->
-  <div class="ovl" id="ovLayers">
+  <div class="ovl" id="ov2" style="opacity:0">
     <div class="eyebrow">// Scene 02 — The Elements</div>
-    <p class="intro">أربعة عناصر تُكوّن العطر، كلٌّ منها في عمق مختلف من فضاء 3D، تتحرك بسرعات مختلفة مع التمرير ومع مؤشرك.</p>
-    <div class="layer-label" data-l="0"><div class="micro">Layer 01 · Z +0.45</div><h3>الغطاء الذهبي</h3><p>سدّادة مذهّبة منحوتة، مرصّعة بحجر عنبري — توقيع الدار.</p></div>
-    <div class="layer-label" data-l="1"><div class="micro">Layer 02 · Z +0.15</div><h3>قارورة العنبر</h3><p>زجاج عنبري مقطّع كالألماس، يختزن أثمن الخلاصات.</p></div>
-    <div class="layer-label" data-l="2"><div class="micro">Layer 03 · Z −0.10</div><h3>العود المعتّق</h3><p>قطع عود كمبودي تُدخّن ببطء، وتدوم رائحتها أياماً.</p></div>
-    <div class="layer-label" data-l="3"><div class="micro">Layer 04 · Z +0.30</div><h3>الورد والياسمين</h3><p>بتلات ورد طائفي وقطاف ياسمين أبيض — نعومة أول شمّة.</p></div>
-  </div>
-  <div id="techlabels"><div class="micro">CAM · DOLLY 8.6 → 11.2</div><div class="micro">PARALLAX · 4 LAYERS / 3 Z-DEPTHS</div><div class="micro">SCRUB · SCROLL-LINKED</div></div>
-
-  <!-- SCENE 03 -->
-  <div class="ovl" id="ovBig">
-    <div class="statement"><span class="sh" aria-hidden="true">يبقى بعد رحيلك</span>يبقى بعد رحيلك</div>
-    <p>القارورة تقترب من الكاميرا… وبقية العناصر تتراجع إلى الخلف.</p>
-  </div>
-
-  <!-- SCENE 04 -->
-  <div class="ovl" id="ovBox">
-    <div class="eyebrow">// Scene 04 — The Collection</div>
-    <h2>المجموعة كاملة،<br>في لقطة واحدة.</h2>
-    <p>ثمانية عطور أصلية مختارة بعناية — من العود الملكي إلى الياسمين الأبيض، في تغليف يليق بالإهداء.</p>
-    <div class="chips">
-      <a class="btn" data-mag href="#produits">العود الملكي — 890 درهم</a>
-      <a class="btn btn-ghost" data-mag href="#produits">زيت العود الفاخر — 950 درهم</a>
+    <h2>كل مكوّن في<br>عمقٍ مختلف.</h2>
+    <p>الشاشة، المجموعة، وقارورة العنبر الحرّة — كيتحركو بسرعات مختلفة حيت العمق حقيقي، ماشي وهمي.</p>
+    <div class="ticks">
+      <span class="micro">LAYER A · SCREEN — Z 0.0</span>
+      <span class="micro">LAYER B · COLLECTION — Z +0.8</span>
+      <span class="micro">LAYER C · BOTTLE — Z +1.6</span>
     </div>
   </div>
 
-  <!-- SCENE 05 -->
-  <div class="ovl" id="ovEnd">
+  <div class="ovl" id="ov3" style="opacity:0">
+    <div class="statement"><span class="sh" aria-hidden="true">يبقى بعد رحيلك</span>يبقى بعد رحيلك</div>
+    <p>المجموعة كاملة — من العود الملكي إلى الياسمين الأبيض، في تغليف يليق بالإهداء.</p>
+  </div>
+
+  <div class="ovl" id="ov4" style="opacity:0">
+    <div class="eyebrow">// Scene 04 — The Collection</div>
+    <h2>التشكيلة كاملة،<br>قدام عينيك.</h2>
+    <p>بطاقات كتطفو في العمق — كل وحدة عطر قائم بذاتو. البطاقة اللي في الوسط هي توقيع الدار.</p>
+  </div>
+
+  <div class="ovl" id="ov5" style="opacity:0">
     <div class="eyebrow">// Scene 05 — Your Signature</div>
     <h2>عطرك القادم… ينتظرك.</h2>
     <p>أضف ما يعجبك إلى السلة وأرسل طلبك عبر واتساب في ثوانٍ — الدفع عند الاستلام، والتوصيل داخل طنجة في 24 ساعة.</p>
     <a class="btn" data-mag href="#produits">اكتشف المنتجات</a>
     <div class="mini-nav"><a href="#collections">المجموعات</a><a href="#atouts">لماذا نحن</a><a href="#stage">من الأول ↑</a></div>
+    <div class="micro techfoot">DAR AL OTOR © 2026 · TANJA WEB — WEBGL / GSAP / LENIS</div>
   </div>
+
+  <div id="scrollcue">SCROLL<i></i></div>
  </div>
 </section>
 
@@ -338,7 +304,6 @@ nav.chaps a:hover{color:#fff}
   <span>عود <i>✦</i> مسك <i>✦</i> عنبر <i>✦</i> ورد طائفي <i>✦</i> ياسمين <i>✦</i> زعفران <i>✦</i></span>
 </div></div>
 
-<!-- ================= SHOP (original demo, preserved) ================= -->
 <div class="shopzone">
 
 <!-- COLLECTIONS -->
@@ -391,21 +356,6 @@ nav.chaps a:hover{color:#fff}
 </section>
 
 </div><!-- /shopzone -->
-
-<!-- ================= MID-PAGE 3D PRODUCT ZONE ================= -->
-<section class="zone3d" id="zone3d">
- <div class="zone-pin" id="zonePin">
-  <canvas id="gl2"></canvas>
-  <img class="zone-fallback" id="zoneFallback" src="demo-parfum/img/hero3d.webp" alt="عطر العود الملكي">
-  <div class="zone-txt">
-    <div class="eyebrow">// The Icon — Reassemble 3D</div>
-    <h2>عطر العود الملكي</h2>
-    <p>مرّر ببطء: العناصر الأربعة تدور أمامك وتعود لتجتمع في القارورة من جديد. عود كمبودي معتّق بلمسة عنبر — 100 مل.</p>
-    <div class="zone-price">890 درهم</div>
-    <button class="zone-cta" data-mag onclick="addToCart(1);openCart()">أضف إلى السلة +</button>
-  </div>
- </div>
-</section>
 
 <div class="shopzone">
 
@@ -487,30 +437,75 @@ nav.chaps a:hover{color:#fff}
 <script src="demo-burger/gl/lib/lenis.min.js"></script>
 <script>
 /* ================================================================
-   CONFIG — عدّل من هنا فقط: الصور، طبقات الـ3D، طول المشاهد.
+   SCENES — نظام طبقات قابل للتبديل: بدّل src / المواضع / التوقيت
+   من هنا فقط. كل طبقة عندها keyframe في كل مشهد:
+   x, y, z (العمق), s (المقياس), rz/ry (الدوران), o (الشفافية), dk (التعتيم)
    ================================================================ */
-const CONFIG = {
-  stageLength: 460,               // طول تمرير العرض الرئيسي (% من الشاشة)
-  zoneLength: 180,                // طول تمرير منطقة 3D الوسطى (%)
-  scenes: 5,
-  gl: {
-    layers: [                     // من الأعلى إلى الأسفل — w = العرض في عالم 3D
-      {src:'demo-parfum/gl/cap-alpha.webp',    w:1.10, z: .45, y0: 1.95, y1: 2.55},
-      {src:'demo-parfum/gl/bottle-alpha.webp', w:1.80, z: .15, y0: .35,  y1: .70},
-      {src:'demo-parfum/gl/oud-alpha.webp',    w:3.20, z:-.10, y0:-1.30, y1:-1.55},
-      {src:'demo-parfum/gl/petals-alpha.webp', w:3.40, z: .30, y0:-1.95, y1:-2.35}
-    ]
-  }
+const KF = (x,y,z,s,rz,ry,o,dk) => ({x,y,z,s,rz,ry,o,dk:dk||0});
+const SCENES = [
+  { id:'opening', cam:{x:0, y:0, z:10.6}, layers:{
+    glow:      KF(0, .2, -3.5, 1,    0, 0, .9),
+    screen:    KF(.95, -.05, 0,  1,    0, -.06, 1),
+    box:       KF(3.6, -2.2, -1.2, .34, .06, -.2, 0),
+    cardOud:KF(-3.4, -2.4, -1.6, .5, -.05, .2, 0),
+    cardRose:KF(3.9, 2.3, -2, .5, .04, -.15, 0),
+    cardOil:   KF(-3.8, 2.2, -2.2, .5, -.03, .18, 0),
+    bottle:     KF(-2.6, 1.9, -1.4, .5, 0, .1, 0)
+  }},
+  { id:'layers', cam:{x:0, y:0, z:9.6}, layers:{
+    glow:      KF(-.5, .3, -3.5, 1.05, 0, 0, .8),
+    screen:    KF(-2.3, .7, -.4, .74, .03, .22, 1),
+    box:       KF(2.5, -.5, .3, .78, -.03, -.18, 1),
+    cardOud:KF(-3.6, -2.3, -1.6, .5, -.05, .2, 0),
+    cardRose:KF(3.9, 2.4, -2, .5, .04, -.15, 0),
+    cardOil:   KF(-3.9, 2.4, -2.2, .5, -.03, .18, 0),
+    bottle:     KF(.4, -.9, 1.6, .62, .05, -.1, 1)
+  }},
+  { id:'reveal', cam:{x:0, y:0, z:8.2}, layers:{
+    glow:      KF(0, 0, -3.5, 1.1, 0, 0, .55),
+    screen:    KF(-3.4, 1.8, -1.8, .5, .05, .3, .28, .5),
+    box:       KF(0, .1, .4, 1.85, 0, 0, 1),
+    cardOud:KF(-3.8, -2.2, -2, .5, -.06, .25, .2, .55),
+    cardRose:KF(3.9, 2.2, -2.2, .5, .05, -.2, .2, .55),
+    cardOil:   KF(-3.9, -2.4, -2.4, .5, -.04, .2, .15, .6),
+    bottle:     KF(2.9, -2, .8, .5, .04, -.15, .3, .4)
+  }},
+  { id:'works', cam:{x:-.7, y:.35, z:9.8}, layers:{
+    glow:      KF(.4, 0, -3.5, 1.05, 0, 0, .7),
+    screen:    KF(-2.9, 1.5, -.8, .62, .04, .2, .85, .25),
+    box:       KF(3, 1.7, -1.2, .66, -.03, -.16, .85, .25),
+    cardOud:KF(.2, -.2, .9, 1.06, -.02, -.05, 1),
+    cardRose:KF(-3.1, -1.7, -.4, .72, .05, .14, .8, .3),
+    cardOil:   KF(3.2, -1.6, -.6, .74, -.05, -.12, .8, .3),
+    bottle:     KF(-.4, 2.3, -1.8, .45, 0, .1, 0)
+  }},
+  { id:'closing', cam:{x:0, y:0, z:10.4}, layers:{
+    glow:      KF(0, .4, -3.5, 1, 0, 0, .8),
+    screen:    KF(0, .85, 0, .82, 0, 0, 1),
+    box:       KF(3.6, -2.2, -1.4, .4, .05, -.2, 0),
+    cardOud:KF(-3.5, -2.3, -1.8, .5, -.05, .2, 0),
+    cardRose:KF(3.9, 2.3, -2.2, .5, .04, -.15, 0),
+    cardOil:   KF(-3.8, 2.2, -2.4, .5, -.03, .18, 0),
+    bottle:     KF(-2.7, 2, -1.6, .5, 0, .1, 0)
+  }}
+];
+const LAYER_SRC = {
+  screen:  { make:'screen', src:'demo-parfum/img/hero3d.webp',  url:'dar-alotor.ma', w:6.6 },
+  box:     { make:'photo',  src:'demo-parfum/img/wide3d.webp',  w:5.4 },
+  cardOud: { make:'card',   src:'demo-parfum/img/p1.jpg',       label:'OUD ROYAL — 890 DH', w:3.5 },
+  cardRose:{ make:'card',   src:'demo-parfum/img/g3.jpg',       label:'TAIF ROSE — 640 DH', w:3.5 },
+  cardOil: { make:'card',   src:'demo-parfum/img/p4.jpg',       label:'OUD OIL — 950 DH',   w:3.5 },
+  bottle:  { make:'alpha',  src:'demo-parfum/gl/bottle-alpha.webp', w:2.2 }
 };
-/* ================== state shared with the WebGL modules ================== */
-window.GLSTATE = { spread:.45, camZ:8.6, rotY:-.12, pattyPush:0, layersOpacity:1, gx:1.5, ready:false };
-window.ZONE = { spread:1, rotY:0, spreadT:1, rotYT:0 };   // mid-page zone: starts exploded
+window.STAGE = { layers:{}, cam:{...SCENES[0].cam}, ready:false };
+Object.keys(SCENES[0].layers).forEach(k => { window.STAGE.layers[k] = {...SCENES[0].layers[k]}; });
+
 const qs = new URLSearchParams(location.search);
 const DEBUG = qs.get('debug') === '1';
 const FORCED_P = parseFloat(qs.get('p'));
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ================== smooth scroll (Lenis) + GSAP ================== */
+/* ================== smooth scroll + master timeline ================== */
 gsap.registerPlugin(ScrollTrigger);
 let lenis = null;
 if (!REDUCED && window.Lenis && isNaN(FORCED_P)){
@@ -521,97 +516,59 @@ if (!REDUCED && window.Lenis && isNaN(FORCED_P)){
 }
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', e=>{
-    const href = a.getAttribute('href');
-    if (href.length < 2) return;
-    const t = document.querySelector(href);
+    const t=document.querySelector(a.getAttribute('href'));
     if(t){ e.preventDefault(); lenis ? lenis.scrollTo(t) : t.scrollIntoView({behavior:'smooth'}); }
   });
 });
 
-/* ================== the 5-scene timeline ================== */
-const S = window.GLSTATE;
-const labels = document.querySelectorAll('.layer-label');
+const ST = window.STAGE;
 const railDots = document.querySelectorAll('#rail .rdot');
 const dbg = document.getElementById('debug');
 if (DEBUG) dbg.style.display='block';
-
 const tl = gsap.timeline({
-  defaults:{ease:'none'},
+  defaults:{ease:'power1.inOut'},
   scrollTrigger:{
-    id:'stage', trigger:'#stage', start:'top top',
-    end:'+=' + CONFIG.stageLength + '%',
+    id:'stage', trigger:'#stage', start:'top top', end:'+=460%',
     pin:'#pin', scrub: isNaN(FORCED_P) ? .6 : true, anticipatePin:1,
     onUpdate(self){
       const p = self.progress;
       document.getElementById('progress').style.width = (p*100)+'%';
-      document.getElementById('rfill').style.height = (p*100)+'%';
-      const scene = Math.min(Math.floor(p * CONFIG.scenes), CONFIG.scenes-1);
+      const rf = document.getElementById('rfill'); if (rf) rf.style.height = (p*100)+'%';
+      const scene = Math.min(Math.floor(p * 5), 4);
       railDots.forEach((d,i)=>d.classList.toggle('on', i===scene));
-      const wrap = document.getElementById('glwrap');
-      const near = [.2,.4,.6,.8].some(b => Math.abs(p-b) < .012);
-      wrap.classList.toggle('trans', near && S.ready);
-      if (DEBUG) dbg.textContent = 'scene: '+(scene+1)+'/5 · progress: '+(p*100).toFixed(1)+'% · spread: '+S.spread.toFixed(2);
+      const near = [.2,.4,.6,.8].some(b => Math.abs(p-b) < .007);
+      document.getElementById('glwrap').classList.toggle('trans', near && ST.ready);
+      if (DEBUG) dbg.textContent = 'scene: '+(scene+1)+'/5 · progress: '+(p*100).toFixed(1)+'%';
     }
   }
 });
-/* S01 · opening (0–20%) — the 3D layers are ALREADY visible from second zero
-   (canvas opacity 1, spread .45), floating over the hero photo used only as a
-   dimmed backdrop that fades out by ~15%. */
-tl.fromTo('#heroImg', {scale:1.14, filter:'brightness(.48)'}, {scale:1.05, filter:'brightness(.40)', duration:20}, 0)
-  .to('#ovHero .mask>span', {y:0, duration:6, stagger:1.2, ease:'power3.out'}, 1)
-  .to('#heroSub', {opacity:1, duration:5}, 6)
-  .to('#heroTags', {opacity:1, duration:5}, 8)
-  .to('#heroImg', {opacity:0, duration:4}, 12)
-  .to('#scrollcue', {opacity:0, duration:3}, 15)
-  .to('#ovHero', {opacity:0, y:-40, duration:5}, 16);
-/* S02 · layers (20–40%) */
-tl.to(S, {spread:1, rotY:.35, camZ:11.2, gx:-1.15, duration:20, ease:'power1.inOut',
-      onUpdate(){ const lp=(S.spread-.45)/.55; const act=Math.min(Math.floor(Math.max(lp,0)*4.4),3);
-        labels.forEach((l,i)=>l.classList.toggle('on', act>=i)); }}, 20)
-  .to('#ovLayers', {opacity:1, duration:4}, 21)
-  .to('#techlabels', {opacity:1, duration:5}, 30)
-  .to('#ovLayers', {opacity:0, duration:4}, 37)
-  .to('#techlabels', {opacity:0, duration:3}, 37);
-/* S03 · detail push-in — the bottle comes forward (40–60%) */
-tl.to(S, {pattyPush:1, camZ:7.4, spread:1.12, gx:1.5, duration:18, ease:'power1.inOut'}, 41)
-  .fromTo('#ovBig', {opacity:0}, {opacity:1, duration:4}, 44)
-  .fromTo('#ovBig .statement', {y:60}, {y:0, duration:8, ease:'power2.out'}, 44)
-  .to('#ovBig', {opacity:0, duration:4}, 56)
-  .to(S, {pattyPush:0, camZ:10.2, spread:1, duration:5}, 57)
-  .to('#gl', {opacity:0, duration:4}, 58);
-/* S04 · full-width collection (60–80%) */
-tl.fromTo('#boxImg', {opacity:0, scale:1.14, xPercent:-1.5}, {opacity:1, scale:1.02, xPercent:1, duration:20, ease:'power1.inOut'}, 60)
-  .fromTo('#flare', {xPercent:-140}, {xPercent:420, duration:7, ease:'power2.inOut'}, 63)
-  .to('#ovBox', {opacity:1, duration:5}, 66)
-  .to('#ovBox', {opacity:0, duration:4}, 76)
-  .to('#boxImg', {opacity:0, duration:5}, 77);
-/* S05 · closing (80–100%) */
-tl.to('#gl', {opacity:1, duration:4}, 79)
-  .to(S, {spread:.64, rotY:-.2, camZ:9.4, duration:16, ease:'power1.inOut'}, 80)
-  .to('#ovEnd', {opacity:1, duration:5}, 85)
-  .to({}, {duration:4}, 96);
-
-/* ================== mid-page 3D zone: reassemble + ~300° rotation ================== */
-ScrollTrigger.create({
-  id:'zone', trigger:'#zone3d', start:'top top',
-  end:'+=' + CONFIG.zoneLength + '%',
-  pin:'#zonePin', scrub:.6, anticipatePin:1,
-  onUpdate(self){
-    const p = self.progress;
-    window.ZONE.spreadT = 1 - .55 * p;          // 1 → .45 : layers reassemble
-    window.ZONE.rotYT = p * 5.236;              // ~300° of rotation
-  }
-});
-
-if (!isNaN(FORCED_P)){
-  if (lenis) lenis.stop();
-  const fp = Math.min(Math.max(FORCED_P,0),1);
-  setTimeout(()=>{ const st = ScrollTrigger.getById('stage'); st.scroll(st.start + fp*(st.end - st.start)); ScrollTrigger.update(); }, 80);
+/* keyframe segments: scene i → i+1 over units [i*20, (i+1)*20] */
+for (let i = 0; i < SCENES.length - 1; i++){
+  const at = i * 20, dur = 20;
+  tl.to(ST.cam, {...SCENES[i+1].cam, duration:dur}, at);
+  Object.keys(SCENES[i].layers).forEach(k => {
+    tl.to(ST.layers[k], {...SCENES[i+1].layers[k], duration:dur}, at);
+  });
 }
-/* header state */
+/* overlays */
+gsap.fromTo('#ov1', {opacity:0, x:-46}, {opacity:1, x:0, duration:1.15, delay:.25, ease:'power3.out'});
+tl.to('#scrollcue', {opacity:0, duration:3}, 15)
+  .to('#ov1', {opacity:0, x:-30, duration:4}, 16.5)
+  .fromTo('#ov2', {opacity:0, x:40}, {opacity:1, x:0, duration:4}, 19.5)
+  .to('#ov2', {opacity:0, duration:4}, 36.5)
+  .fromTo('#ov3', {opacity:0}, {opacity:1, duration:4}, 41.5)
+  .fromTo('#ov3 .statement', {y:56}, {y:0, duration:7, ease:'power2.out'}, 41.5)
+  .to('#ov3', {opacity:0, duration:4}, 56.5)
+  .fromTo('#ov4', {opacity:0, y:30}, {opacity:1, y:0, duration:4}, 60.5)
+  .to('#ov4', {opacity:0, duration:4}, 76.5)
+  .fromTo('#ov5', {opacity:0, y:30}, {opacity:1, y:0, duration:5}, 82.5)
+  .to({}, {duration:3}, 97);
+if (!isNaN(FORCED_P)){
+  setTimeout(()=>{ const st = ScrollTrigger.getById('stage'); st.scroll(st.start + Math.min(Math.max(FORCED_P,0),1)*(st.end - st.start)); ScrollTrigger.update(); }, 80);
+}
 addEventListener('scroll', ()=>{ document.getElementById('hdr').classList.toggle('scrolled', scrollY>40); }, {passive:true});
 
-/* ================== custom cursor + magnetic (desktop) ================== */
+/* ================== custom cursor + magnetic ================== */
 if (matchMedia('(pointer:fine)').matches && !REDUCED){
   const cur=document.getElementById('cur'), ring=document.getElementById('curR');
   let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
@@ -631,94 +588,141 @@ if (matchMedia('(pointer:fine)').matches && !REDUCED){
 </script>
 
 <script type="module">
-/* ================== WebGL main stage: real Z-depth layers (Three.js) ================== */
-const LCONF = [
-  {src:'demo-parfum/gl/cap-alpha.webp',    w:1.10, z: .45, y0: 1.95, y1: 2.55},
-  {src:'demo-parfum/gl/bottle-alpha.webp', w:1.80, z: .15, y0: .35,  y1: .70},
-  {src:'demo-parfum/gl/oud-alpha.webp',    w:3.20, z:-.10, y0:-1.30, y1:-1.55},
-  {src:'demo-parfum/gl/petals-alpha.webp', w:3.40, z: .30, y0:-1.95, y1:-2.35}
-];
-function makeLoadTex(THREE){
-  return function loadTex(url){
-    return new Promise((res, rej)=>{
-      const img = new Image(); if (location.protocol.indexOf('http')===0) img.crossOrigin='anonymous';
-      img.onload = ()=>{
-        const c=document.createElement('canvas'); c.width=img.naturalWidth; c.height=img.naturalHeight;
-        const x=c.getContext('2d'); x.drawImage(img,0,0);
-        const d=x.getImageData(0,0,c.width,c.height), px=d.data;
-        let minX=c.width,minY=c.height,maxX=0,maxY=0;
-        for (let i=3;i<px.length;i+=16){ if (px[i]>12){ const n=(i-3)/4, X=n%c.width, Y=(n/c.width)|0;
-          if(X<minX)minX=X; if(X>maxX)maxX=X; if(Y<minY)minY=Y; if(Y>maxY)maxY=Y; } }
-        const pad=10; minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad);
-        maxX=Math.min(c.width-1,maxX+pad); maxY=Math.min(c.height-1,maxY+pad);
-        const cw=maxX-minX+1, ch=maxY-minY+1;
-        const cc=document.createElement('canvas'); cc.width=cw; cc.height=ch;
-        cc.getContext('2d').drawImage(c,minX,minY,cw,ch,0,0,cw,ch);
-        const t=new THREE.CanvasTexture(cc); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=4;
-        res({tex:t, aspect:ch/cw});
-      };
-      img.onerror=rej; img.src=url;
-    });
-  };
-}
-async function buildLayers(THREE, scene){
-  const loadTex = makeLoadTex(THREE);
-  const group = new THREE.Group(); scene.add(group);
-  const layers = [];
-  for (const d of LCONF){
-    const {tex, aspect} = await loadTex(d.src);
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(d.w, d.w*aspect),
-      new THREE.MeshBasicMaterial({map:tex, transparent:true, side:THREE.DoubleSide, depthWrite:false}));
-    m.position.set(0, d.y0, d.z); m.renderOrder = 10 - layers.length;
-    group.add(m); layers.push({m, ...d});
-  }
-  return {group, layers};
-}
-const lerp=(a,b,t)=>a+(b-a)*t;
-function spreadY(L, s){ return lerp(L.y0, L.y1, (s-.45)/.55); }
-
+/* ================== WebGL: layered editorial composition ================== */
 try {
   const THREE = await import('three');
-  const S = window.GLSTATE;
+  const ST = window.STAGE;
   const canvas = document.getElementById('gl');
   const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
   renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth < 820 ? 1.6 : 2));
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
-  const {group, layers} = await buildLayers(THREE, scene);
-  const focus = layers[1].m, focusBaseZ = LCONF[1].z;   // scene 03 pushes the BOTTLE forward
 
-  function place(){
-    const mob = innerWidth < 820;
-    group.position.x = mob ? 0 : S.gx;
-    group.position.y = mob ? .72 : -.05;
-    group.scale.setScalar(mob ? .78 : .94);
+  const loadImg = src => new Promise((res, rej)=>{
+    const img = new Image(); if (location.protocol.indexOf('http')===0) img.crossOrigin='anonymous';
+    img.onload = ()=>res(img); img.onerror = rej; img.src = src;
+  });
+  function cover(ctx, img, x, y, w, h){
+    const ir = img.naturalWidth/img.naturalHeight, r = w/h;
+    let sw, sh, sx, sy;
+    if (ir > r){ sh = img.naturalHeight; sw = sh*r; sx = (img.naturalWidth-sw)/2; sy = 0; }
+    else { sw = img.naturalWidth; sh = sw/r; sx = 0; sy = (img.naturalHeight-sh)/2; }
+    ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+  }
+  function rr(ctx, x, y, w, h, r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+  async function screenTexture(src, url){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 1100; c.height = 730;
+    const x = c.getContext('2d');
+    x.fillStyle = '#101013'; rr(x, 4, 4, 1092, 722, 26); x.fill();
+    x.fillStyle = '#17171b'; rr(x, 4, 4, 1092, 74, 26); x.fill(); x.fillRect(4, 52, 1092, 26);
+    ['#e8362a','#f5bf42','#39d353'].forEach((col, i)=>{ x.fillStyle = col; x.beginPath(); x.arc(44+i*34, 41, 10, 0, 7); x.fill(); });
+    x.fillStyle = '#232329'; rr(x, 200, 22, 560, 38, 19); x.fill();
+    x.fillStyle = '#9a958a'; x.font = '24px Courier New'; x.fillText('https://' + url, 224, 49);
+    x.fillStyle = '#9a958a'; x.font = '22px Courier New'; x.fillText('≡', 1030, 50);
+    x.save(); rr(x, 22, 96, 1056, 612, 14); x.clip(); cover(x, img, 22, 96, 1056, 612); x.restore();
+    x.strokeStyle = 'rgba(244,241,234,.16)'; x.lineWidth = 2; rr(x, 4, 4, 1092, 722, 26); x.stroke();
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: 730/1100};
+  }
+  async function cardTexture(src, label){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 800; c.height = 600;
+    const x = c.getContext('2d');
+    x.fillStyle = '#0c0c0e'; x.fillRect(0, 0, 800, 600);
+    x.filter = 'brightness(.66) contrast(1.06) saturate(1.1)'; cover(x, img, 0, 0, 800, 492); x.filter = 'none';
+    const grd = x.createLinearGradient(0, 0, 0, 492); grd.addColorStop(0, 'rgba(12,8,4,.10)'); grd.addColorStop(1, 'rgba(12,8,4,.42)'); x.fillStyle = grd; x.fillRect(0, 0, 800, 492);
+    x.fillStyle = '#101013'; x.fillRect(0, 492, 800, 108);
+    x.fillStyle = '#c9a24b'; x.fillRect(28, 522, 34, 4);
+    x.fillStyle = '#f4f1ea'; x.font = '700 30px Courier New'; x.fillText(label, 28, 570);
+    x.strokeStyle = 'rgba(244,241,234,.22)'; x.lineWidth = 2; x.strokeRect(1, 1, 798, 598);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: 600/800};
+  }
+  async function photoTexture(src){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = 1024; c.height = 1024;
+    const x = c.getContext('2d'); cover(x, img, 0, 0, 1024, 1024);
+    x.strokeStyle = 'rgba(244,241,234,.18)'; x.lineWidth = 3; x.strokeRect(2, 2, 1020, 1020);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: 1};
+  }
+  async function alphaTexture(src){
+    const img = await loadImg(src);
+    const c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight;
+    const x = c.getContext('2d'); x.drawImage(img, 0, 0);
+    const d = x.getImageData(0, 0, c.width, c.height), px = d.data;
+    let minX=c.width,minY=c.height,maxX=0,maxY=0;
+    for (let i=3;i<px.length;i+=16){ if (px[i]>12){ const n=(i-3)/4, X=n%c.width, Y=(n/c.width)|0;
+      if(X<minX)minX=X; if(X>maxX)maxX=X; if(Y<minY)minY=Y; if(Y>maxY)maxY=Y; } }
+    const pad=10; minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad);
+    maxX=Math.min(c.width-1,maxX+pad); maxY=Math.min(c.height-1,maxY+pad);
+    const cw=maxX-minX+1, ch=maxY-minY+1;
+    const cc=document.createElement('canvas'); cc.width=cw; cc.height=ch;
+    cc.getContext('2d').drawImage(c,minX,minY,cw,ch,0,0,cw,ch);
+    const t = new THREE.CanvasTexture(cc); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return {tex: t, aspect: ch/cw};
+  }
+  function glowTexture(){
+    const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+    const x = c.getContext('2d');
+    const g = x.createRadialGradient(256, 256, 20, 256, 256, 256);
+    g.addColorStop(0, 'rgba(201,162,75,.34)'); g.addColorStop(.55, 'rgba(201,162,75,.10)'); g.addColorStop(1, 'rgba(201,162,75,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 512, 512);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+    return {tex: t, aspect: 1};
+  }
+
+  const defs = {
+    glow:   { make:'glow' },
+    screen: LAYER_SRC.screen, box: LAYER_SRC.box,
+    cardOud: LAYER_SRC.cardOud, cardRose: LAYER_SRC.cardRose,
+    cardOil: LAYER_SRC.cardOil, bottle: LAYER_SRC.bottle
+  };
+  const meshes = {};
+  for (const [key, d] of Object.entries(defs)){
+    let r;
+    if (d.make === 'screen') r = await screenTexture(d.src, d.url);
+    else if (d.make === 'card') r = await cardTexture(d.src, d.label);
+    else if (d.make === 'photo') r = await photoTexture(d.src);
+    else if (d.make === 'alpha') r = await alphaTexture(d.src);
+    else r = glowTexture();
+    const w = key === 'glow' ? 15 : d.w;
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, w * r.aspect),
+      new THREE.MeshBasicMaterial({ map: r.tex, transparent: true, depthWrite: false }));
+    m.renderOrder = key === 'glow' ? 0 : 5;
+    scene.add(m); meshes[key] = m;
+  }
+  document.getElementById('loader').style.display = 'none';
+  ST.ready = true;
+  (window.__meshes = window.__meshes || []).push(meshes);
+
+  let mx = 0, my = 0, visible = true;
+  if (matchMedia('(pointer:fine)').matches)
+    addEventListener('pointermove', e=>{ mx = e.clientX/innerWidth - .5; my = e.clientY/innerHeight - .5; }, {passive:true});
+  new IntersectionObserver(es=>{ visible = es[0].isIntersecting; }).observe(document.getElementById('stage'));
+  function resize(){
     const w = canvas.clientWidth || innerWidth, h = canvas.clientHeight || innerHeight;
     renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix();
   }
-  place(); addEventListener('resize', place);
-
-  document.getElementById('loader').style.display = 'none';
-  S.ready = true;
-
-  let mx=0, my=0, visible=true;
-  if (matchMedia('(pointer:fine)').matches)
-    addEventListener('pointermove', e=>{ mx=e.clientX/innerWidth-.5; my=e.clientY/innerHeight-.5; }, {passive:true});
-  new IntersectionObserver(es=>{ visible = es[0].isIntersecting; }).observe(document.getElementById('stage'));
+  resize(); addEventListener('resize', resize);
 
   function tick(t){
     requestAnimationFrame(tick);
     if (!visible) return;
-    layers.forEach((L)=>{ L.m.position.y = spreadY(L, S.spread); L.m.material.opacity = S.layersOpacity; });
-    /* scene 03: bottle pushes toward camera */
-    focus.position.z = focusBaseZ + S.pattyPush * .95;
-    const ps = 1 + S.pattyPush * .16; focus.scale.set(ps, ps, 1);
-    layers.forEach((L,i)=>{ if (i!==1) L.m.material.opacity = S.layersOpacity * (1 - S.pattyPush*.45); });
-    group.position.x += ((innerWidth < 820 ? 0 : S.gx) - group.position.x) * .08;
-    group.rotation.y = S.rotY + Math.sin(t*.00035)*.05 + mx*.3;
-    group.rotation.x = Math.sin(t*.0005)*.025 + my*.15;
-    camera.position.z = S.camZ;
-    camera.position.y = .1 + my*-.2;
+    const ms = innerWidth < 820 ? .62 : 1;
+    for (const [key, m] of Object.entries(meshes)){
+      const L = ST.layers[key]; if (!L) continue;
+      m.position.set(L.x * (innerWidth < 820 ? .45 : 1), L.y, L.z);
+      m.rotation.set(0, L.ry + mx * .12, L.rz);
+      const sc = L.s * ms; m.scale.set(sc, sc, 1);
+      m.material.opacity = L.o;
+      m.renderOrder = 5 + L.z * 2;
+      const dk = 1 - (L.dk || 0) * .75;
+      m.material.color.setScalar(dk);
+    }
+    camera.position.set(ST.cam.x + mx * .35, ST.cam.y - my * .25 + Math.sin(t*.0004)*.04, ST.cam.z);
+    camera.lookAt(ST.cam.x * .6, ST.cam.y * .6, 0);
     renderer.render(scene, camera);
   }
   requestAnimationFrame(tick);
@@ -726,90 +730,6 @@ try {
   document.getElementById('loader').style.display = 'none';
   document.getElementById('fallback3d').style.display = 'flex';
   const g = document.getElementById('gl'); if (g) g.style.display = 'none';
-}
-</script>
-
-<script type="module">
-/* ================== WebGL mid-page zone: reassemble + rotation ================== */
-const LCONF_Z = [
-  {src:'demo-parfum/gl/cap-alpha.webp',    w:1.10, z: .45, y0: 1.95, y1: 2.55},
-  {src:'demo-parfum/gl/bottle-alpha.webp', w:1.80, z: .15, y0: .35,  y1: .70},
-  {src:'demo-parfum/gl/oud-alpha.webp',    w:3.20, z:-.10, y0:-1.30, y1:-1.55},
-  {src:'demo-parfum/gl/petals-alpha.webp', w:3.40, z: .30, y0:-1.95, y1:-2.35}
-];
-const spreadYZ = (L, s)=> L.y0 + (L.y1 - L.y0) * ((s-.45)/.55);
-
-try {
-  const THREE = await import('three');
-  const Z = window.ZONE;
-  const canvas = document.getElementById('gl2');
-  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth < 820 ? 1.6 : 2));
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
-  camera.position.set(0, .1, 9.6);
-
-  const loadTex = (()=>{
-    return function(url){
-      return new Promise((res, rej)=>{
-        const img = new Image(); if (location.protocol.indexOf('http')===0) img.crossOrigin='anonymous';
-        img.onload = ()=>{
-          const c=document.createElement('canvas'); c.width=img.naturalWidth; c.height=img.naturalHeight;
-          const x=c.getContext('2d'); x.drawImage(img,0,0);
-          const d=x.getImageData(0,0,c.width,c.height), px=d.data;
-          let minX=c.width,minY=c.height,maxX=0,maxY=0;
-          for (let i=3;i<px.length;i+=16){ if (px[i]>12){ const n=(i-3)/4, X=n%c.width, Y=(n/c.width)|0;
-            if(X<minX)minX=X; if(X>maxX)maxX=X; if(Y<minY)minY=Y; if(Y>maxY)maxY=Y; } }
-          const pad=10; minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad);
-          maxX=Math.min(c.width-1,maxX+pad); maxY=Math.min(c.height-1,maxY+pad);
-          const cw=maxX-minX+1, ch=maxY-minY+1;
-          const cc=document.createElement('canvas'); cc.width=cw; cc.height=ch;
-          cc.getContext('2d').drawImage(c,minX,minY,cw,ch,0,0,cw,ch);
-          const t=new THREE.CanvasTexture(cc); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=4;
-          res({tex:t, aspect:ch/cw});
-        };
-        img.onerror=rej; img.src=url;
-      });
-    };
-  })();
-
-  const group = new THREE.Group(); scene.add(group);
-  const layers = [];
-  for (const d of LCONF_Z){
-    const {tex, aspect} = await loadTex(d.src);
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(d.w, d.w*aspect),
-      new THREE.MeshBasicMaterial({map:tex, transparent:true, side:THREE.DoubleSide, depthWrite:false}));
-    m.position.set(0, d.y1, d.z); m.renderOrder = 10 - layers.length;
-    group.add(m); layers.push({m, ...d});
-  }
-
-  function place(){
-    const mob = innerWidth < 820;
-    group.position.x = mob ? 0 : -1.35;
-    group.position.y = mob ? .62 : -.05;
-    group.scale.setScalar(mob ? .8 : .95);
-    const w = canvas.clientWidth || innerWidth, h = canvas.clientHeight || innerHeight;
-    renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix();
-  }
-  place(); addEventListener('resize', place);
-
-  let visible = false;
-  new IntersectionObserver(es=>{ visible = es[0].isIntersecting; }).observe(document.getElementById('zone3d'));
-
-  function tick(t){
-    requestAnimationFrame(tick);
-    if (!visible) return;
-    Z.spread += (Z.spreadT - Z.spread) * .08;
-    Z.rotY += (Z.rotYT - Z.rotY) * .08;
-    layers.forEach((L)=>{ L.m.position.y = spreadYZ(L, Z.spread); });
-    group.rotation.y = Z.rotY + Math.sin(t*.0004)*.04;
-    group.rotation.x = Math.sin(t*.0005)*.03;
-    renderer.render(scene, camera);
-  }
-  requestAnimationFrame(tick);
-} catch(e) {
-  const c = document.getElementById('gl2'); if (c) c.style.display = 'none';
-  document.getElementById('zoneFallback').style.display = 'block';
 }
 </script>
 
