@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TANJA WEB — Digital Experiences That Hold Attention</title>
+<meta name="description" content="TANJA WEB is a creative digital studio in Tangier designing cinematic, scroll-driven websites and interactive brand experiences that people remember.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TANJA WEB — Digital Experiences That Hold Attention">
+<meta property="og:description" content="A premium, cinematic, scroll-driven portfolio. The best websites don't just grab attention — they hold it.">
+<meta property="og:url" content="https://bofrahi12.github.io/mounir-web/demo-cinema.html">
+<meta name="theme-color" content="#07090D">
+<link rel="icon" href="logo-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07090D; --bg2:#0A0D13; --panel:#0D1119;
+  --cobalt:#2E6BFF; --cobalt-soft:#6E97FF; --violet:#8B7CFF; --amber:#F2A950;
+  --white:#F4F6FA; --muted:#98A2B5; --faint:#5C6577;
+  --line:rgba(244,246,250,.09);
+  --font-d:"Space Grotesk",system-ui,sans-serif;
+  --font-b:"Inter",system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--bg);color:var(--white);font-family:var(--font-b);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--cobalt);color:#fff}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--cobalt-soft);outline-offset:3px;border-radius:4px}
+img,svg{display:block;max-width:100%}
+
+/* ---------- atmosphere ---------- */
+.grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(0,0,0,.5) 100%)}
+#progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:120;background:linear-gradient(90deg,var(--cobalt),var(--violet));transform-origin:0 50%;transform:scaleX(0)}
+.chapter{position:fixed;left:26px;bottom:22px;z-index:110;font-family:var(--font-d);font-size:.72rem;letter-spacing:.28em;color:var(--muted)}
+.chapter b{color:var(--white);font-weight:600}
+.cursor-light{position:fixed;top:0;left:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;pointer-events:none;z-index:2;
+  background:radial-gradient(circle,rgba(46,107,255,.16) 0%,rgba(139,124,255,.07) 38%,transparent 68%);mix-blend-mode:screen;opacity:0}
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:130;border-radius:50%;opacity:0}
+.cursor-dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--white)}
+.cursor-ring{width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid rgba(244,246,250,.45);transition:width .25s var(--ease),height .25s var(--ease),margin .25s var(--ease),border-color .25s}
+body.cursor-grow .cursor-ring{width:58px;height:58px;margin:-29px 0 0 -29px;border-color:rgba(110,151,255,.8)}
+@media(pointer:coarse){.cursor-light,.cursor-dot,.cursor-ring{display:none}}
+
+/* ---------- preloader ---------- */
+#preloader{position:fixed;inset:0;z-index:200;background:#04060A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+#preloader .pl-mark{font-family:var(--font-d);font-weight:700;font-size:1.05rem;letter-spacing:.42em;text-indent:.42em}
+#preloader .pl-mark span{color:var(--cobalt-soft)}
+#preloader .pl-count{font-family:var(--font-d);font-size:clamp(3rem,8vw,5.2rem);font-weight:600;line-height:1;color:var(--white)}
+#preloader .pl-bar{width:min(280px,60vw);height:1px;background:rgba(244,246,250,.14);overflow:hidden}
+#preloader .pl-bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--cobalt),var(--violet));transform-origin:0 50%;transform:scaleX(0)}
+#skipIntro{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);background:none;border:1px solid var(--line);color:var(--muted);
+  padding:9px 20px;border-radius:99px;font-size:.78rem;letter-spacing:.14em;cursor:pointer;transition:color .2s,border-color .2s}
+#skipIntro:hover{color:var(--white);border-color:rgba(244,246,250,.35)}
+
+/* ---------- header ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 30px;mix-blend-mode:difference}
+.wordmark{font-family:var(--font-d);font-weight:700;letter-spacing:.3em;font-size:.86rem}
+.wordmark span{color:var(--cobalt-soft)}
+nav.mainnav{display:flex;gap:30px;font-size:.8rem;letter-spacing:.12em;color:#cfd6e4}
+nav.mainnav a{position:relative;padding:4px 0}
+nav.mainnav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:#fff;transform:scaleX(0);transform-origin:100% 50%;transition:transform .35s var(--ease)}
+nav.mainnav a:hover::after{transform:scaleX(1);transform-origin:0 50%}
+.avail{display:flex;align-items:center;gap:8px;font-size:.72rem;letter-spacing:.16em;color:#cfd6e4;border:1px solid rgba(255,255,255,.25);padding:7px 14px;border-radius:99px}
+.avail i{width:7px;height:7px;border-radius:50%;background:#3DDC84;box-shadow:0 0 10px #3DDC84;animation:pulse 2.2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media(max-width:760px){nav.mainnav{display:none}header{padding:16px 18px}.chapter{left:16px}}
+
+/* ---------- shared scene scaffolding ---------- */
+.scene{position:relative;z-index:3;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px 6vw;overflow:hidden}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-d);font-size:.7rem;letter-spacing:.34em;color:var(--muted);text-transform:uppercase}
+.kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cobalt);box-shadow:0 0 12px var(--cobalt)}
+.mask{display:block;overflow:hidden}
+.mask>span{display:block;will-change:transform}
+.grad{background:linear-gradient(94deg,var(--cobalt-soft) 0%,var(--violet) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.amber{color:var(--amber)}
+
+/* ---------- Scene 1 : opening ---------- */
+#opening{align-items:flex-start;text-align:left}
+#opening .halo{position:absolute;width:110vmax;height:110vmax;left:50%;top:44%;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(circle at 62% 34%,rgba(46,107,255,.17),transparent 42%),radial-gradient(circle at 26% 74%,rgba(139,124,255,.11),transparent 46%),radial-gradient(circle at 82% 82%,rgba(242,169,80,.05),transparent 30%)}
+#opening .label{margin-bottom:34px;color:var(--cobalt-soft)}
+#opening h1{font-family:var(--font-d);font-weight:600;font-size:clamp(2.5rem,6.4vw,5.4rem);line-height:1.06;letter-spacing:-.015em;max-width:16ch}
+#opening h1 .hold{font-size:1.22em}
+#opening .sub{margin-top:30px;color:var(--muted);max-width:44ch;font-size:1rem}
+.scroll-hint{position:absolute;left:6vw;bottom:92px;display:flex;align-items:center;gap:14px;color:var(--faint);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase}
+.scroll-hint .wire{width:1px;height:52px;background:linear-gradient(var(--cobalt-soft),transparent);display:block;animation:wire 2.4s var(--ease) infinite}
+@keyframes wire{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero-meta{position:absolute;right:6vw;bottom:34px;text-align:right;color:var(--faint);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;line-height:2}
+@media(max-width:760px){.hero-meta{display:none}}
+
+/* ---------- Scene 2 : first impression ---------- */
+#impression{padding-top:70px;padding-bottom:70px}
+.imp-grid{display:grid;grid-template-columns:minmax(260px,4fr) 7fr;gap:5vw;align-items:center;width:100%}
+.imp-copy h2{font-family:var(--font-d);font-weight:600;font-size:clamp(1.9rem,3.6vw,3.2rem);line-height:1.12;letter-spacing:-.01em;margin:20px 0 18px}
+.imp-copy p{color:var(--muted);max-width:36ch}
+.imp-stage{position:relative;perspective:1400px;display:flex;justify-content:center}
+.imp-halo{position:absolute;width:78%;height:78%;left:11%;top:12%;background:radial-gradient(circle,rgba(46,107,255,.4),rgba(139,124,255,.14) 55%,transparent 72%);filter:blur(50px);pointer-events:none}
+.browser{position:relative;width:min(660px,100%);aspect-ratio:4/3.1;border-radius:18px;background:linear-gradient(160deg,#121826,#0A0E16 60%);
+  border:1px solid rgba(244,246,250,.13);box-shadow:0 60px 120px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.07);
+  transform-style:preserve-3d;will-change:transform,filter;overflow:hidden}
+.browser .b-bar{display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+.b-dot{width:10px;height:10px;border-radius:50%}
+.b-url{flex:1;text-align:center;background:rgba(255,255,255,.05);color:#8d99b0;font-size:.7rem;padding:5px 10px;border-radius:7px;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-left:8px}
+.b-body{position:relative;height:calc(100% - 45px);padding:26px 30px;overflow:hidden;background:
+  radial-gradient(420px 260px at 84% 8%,rgba(139,124,255,.28),transparent 65%),
+  radial-gradient(480px 300px at 8% 96%,rgba(46,107,255,.24),transparent 65%),#0A0E16}
+.b-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.b-logo{font-family:var(--font-d);font-weight:700;letter-spacing:.3em;font-size:.62rem}
+.b-links{display:flex;gap:14px}
+.b-links i{display:block;width:34px;height:5px;border-radius:3px;background:rgba(244,246,250,.28)}
+.b-links i:last-child{width:52px;background:var(--cobalt)}
+.b-word{font-family:var(--font-d);font-weight:700;font-size:clamp(2rem,5.2vw,3.6rem);line-height:.98;letter-spacing:-.01em}
+.b-word em{font-style:normal}
+.b-row{display:flex;gap:14px;margin-top:24px}
+.b-card{flex:1;height:86px;border-radius:12px;border:1px solid rgba(244,246,250,.1);position:relative;overflow:hidden}
+.b-card.c1{background:linear-gradient(140deg,rgba(46,107,255,.5),rgba(46,107,255,.05))}
+.b-card.c2{background:linear-gradient(140deg,rgba(139,124,255,.42),rgba(139,124,255,.04))}
+.b-card.c3{background:linear-gradient(140deg,rgba(242,169,80,.34),rgba(242,169,80,.03))}
+.b-card::after{content:"";position:absolute;left:14px;bottom:12px;width:55%;height:6px;border-radius:3px;background:rgba(255,255,255,.35)}
+.b-pill{position:absolute;right:26px;bottom:22px;background:var(--white);color:#0A0D13;font-weight:600;font-size:.72rem;padding:9px 18px;border-radius:99px;letter-spacing:.04em}
+.caption-pill{position:absolute;z-index:5;top:-24px;left:50%;transform:translateX(-50%);background:var(--white);color:#0A0D13;
+  font-weight:600;font-size:.82rem;padding:11px 22px;border-radius:99px;box-shadow:0 18px 40px rgba(0,0,0,.45);white-space:nowrap}
+.caption-pill b{color:var(--cobalt)}
+@media(max-width:900px){.imp-grid{grid-template-columns:1fr;gap:44px}.imp-copy{order:2}.imp-stage{order:1;margin-top:20px}}
+
+/* ---------- Scene 3 : mood sweep ---------- */
+#mood{padding-left:0;padding-right:0;justify-content:flex-start}
+.mood-head{padding:0 6vw;margin-bottom:5vh}
+.mood-head h2{font-family:var(--font-d);font-weight:600;font-size:clamp(1.9rem,3.8vw,3.3rem);line-height:1.12;margin-top:20px}
+.sweep{width:100%;overflow:visible}
+.sweep-track{display:flex;gap:3.4vw;width:max-content;padding:0 8vw;will-change:transform}
+.panel{position:relative;flex:0 0 auto;width:min(400px,74vw);height:min(58vh,520px);border-radius:20px;overflow:hidden;
+  border:1px solid rgba(244,246,250,.12);background:var(--panel);box-shadow:0 40px 80px rgba(0,0,0,.5);will-change:transform,filter}
+.panel .p-idx{position:absolute;top:20px;left:22px;font-family:var(--font-d);font-size:.7rem;letter-spacing:.3em;color:rgba(255,255,255,.65);z-index:3}
+.panel .p-tag{position:absolute;left:22px;bottom:20px;z-index:3;font-family:var(--font-d);font-weight:700;font-size:clamp(1.5rem,2.6vw,2.1rem);letter-spacing:.14em}
+.panel .p-note{position:absolute;right:22px;bottom:26px;z-index:3;color:rgba(255,255,255,.6);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+.p-mood{background:radial-gradient(120% 90% at 18% 8%,rgba(139,124,255,.55),transparent 55%),radial-gradient(110% 100% at 88% 88%,rgba(46,107,255,.55),transparent 58%),linear-gradient(160deg,#131A2C,#080B11)}
+.p-mood::after{content:"";position:absolute;inset:0;background:radial-gradient(300px 200px at 70% 30%,rgba(242,169,80,.22),transparent 70%)}
+.p-form{background:linear-gradient(170deg,#101623,#090C12)}
+.p-form .aa{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-weight:700;font-size:11rem;line-height:1;color:rgba(244,246,250,.92)}
+.p-form .grid-lines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 51px,rgba(244,246,250,.06) 51px 52px),repeating-linear-gradient(90deg,transparent 0 51px,rgba(244,246,250,.06) 51px 52px)}
+.p-motion{background:linear-gradient(170deg,#0C1220,#080B11)}
+.p-motion svg{position:absolute;inset:0;margin:auto;width:78%;height:78%;animation:spin 26s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.p-story{background:linear-gradient(165deg,#141021,#0A0C12)}
+.p-story .s-lines{position:absolute;left:26px;right:26px;top:24%}
+.p-story .s-lines b{display:block;font-family:var(--font-d);font-weight:600;font-size:1.28rem;line-height:1.35;margin-bottom:14px}
+.p-story .s-lines i{display:block;width:44px;height:3px;background:var(--amber);margin-bottom:18px}
+.p-story .s-lines span{display:block;color:var(--muted);font-size:.85rem;line-height:1.6}
+
+/* ---------- Scene 4 : interaction ---------- */
+#interaction{align-items:center;text-align:center}
+#interaction h2{font-family:var(--font-d);font-weight:600;font-size:clamp(1.9rem,3.8vw,3.3rem);line-height:1.12;margin:20px auto 16px;max-width:20ch}
+#interaction .lede{color:var(--muted);max-width:52ch;margin:0 auto}
+.tilt-zone{perspective:1200px;margin:52px auto 8px;width:min(720px,92vw)}
+.tilt-card{position:relative;border-radius:22px;padding:2px;background:linear-gradient(150deg,rgba(110,151,255,.55),rgba(244,246,250,.1) 40%,rgba(139,124,255,.45));
+  transform-style:preserve-3d;will-change:transform;text-align:left}
+.tilt-inner{border-radius:20px;background:linear-gradient(165deg,#101625,#090C13 65%);padding:34px 36px;position:relative;overflow:hidden}
+.tilt-inner::before{content:"";position:absolute;width:420px;height:420px;left:var(--mx,50%);top:var(--my,50%);transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(46,107,255,.22),transparent 65%);pointer-events:none;opacity:0;transition:opacity .35s}
+.tilt-card:hover .tilt-inner::before{opacity:1}
+.tilt-inner .t-kick{font-family:var(--font-d);font-size:.68rem;letter-spacing:.3em;color:var(--cobalt-soft);text-transform:uppercase}
+.tilt-inner h3{font-family:var(--font-d);font-weight:600;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.2;margin:14px 0 10px;max-width:22ch}
+.tilt-inner p{color:var(--muted);max-width:46ch}
+.tilt-detail{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);display:flex;gap:26px;flex-wrap:wrap;opacity:0;transform:translateY(12px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.tilt-card:hover .tilt-detail,.tilt-card:focus-within .tilt-detail{opacity:1;transform:none}
+.tilt-detail div b{display:block;font-family:var(--font-d);font-size:1.05rem}
+.tilt-detail div span{color:var(--faint);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;gap:12px;border-radius:99px;font-weight:600;font-size:.95rem;padding:16px 32px;cursor:pointer;border:0;will-change:transform;transition:box-shadow .25s var(--ease),background .25s}
+.btn-primary{background:var(--cobalt);color:#fff;box-shadow:0 10px 34px rgba(46,107,255,.35)}
+.btn-primary:hover{box-shadow:0 14px 44px rgba(46,107,255,.55)}
+.btn-primary .arr{transition:transform .25s var(--ease)}
+.btn-primary:hover .arr{transform:translateX(4px)}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(244,246,250,.25)}
+.btn-ghost:hover{border-color:rgba(244,246,250,.55)}
+#interaction .btn{margin-top:38px}
+
+/* ---------- Scene 5 : storytelling stack ---------- */
+#story{align-items:center}
+.stack-zone{position:relative;width:min(760px,92vw);height:min(54vh,440px);perspective:1200px}
+.story-panel{position:absolute;inset:0;border-radius:22px;border:1px solid rgba(244,246,250,.12);
+  background:linear-gradient(160deg,#101624,#090C12 70%);box-shadow:0 50px 100px rgba(0,0,0,.55);
+  display:flex;flex-direction:column;justify-content:center;padding:44px 48px;will-change:transform,opacity}
+.story-panel .s-num{font-family:var(--font-d);font-size:.7rem;letter-spacing:.3em;color:var(--cobalt-soft);margin-bottom:18px}
+.story-panel p{font-family:var(--font-d);font-weight:600;font-size:clamp(1.45rem,3.2vw,2.4rem);line-height:1.28;letter-spacing:-.01em;max-width:24ch}
+.story-panel.sp2{background:linear-gradient(160deg,#131126,#090C12 70%)}
+.story-panel.sp3{background:linear-gradient(160deg,#181410,#090C12 72%)}
+.story-panel.sp3 .s-num{color:var(--amber)}
+.stack-dots{position:absolute;right:-52px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
+.stack-dots i{width:6px;height:6px;border-radius:50%;background:rgba(244,246,250,.25)}
+@media(max-width:900px){.stack-dots{display:none}.story-panel{padding:32px 26px}}
+
+/* ---------- Scene 6 : payoff ---------- */
+#payoff{align-items:center;text-align:center;min-height:118vh}
+.orb-wrap{position:absolute;left:50%;top:50%;width:min(620px,92vw);aspect-ratio:1;transform:translate(-50%,-54%);pointer-events:none}
+.orb{position:absolute;inset:16%;border-radius:50%;
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.5),transparent 42%),
+             radial-gradient(circle at 70% 78%,rgba(139,124,255,.75),transparent 60%),
+             radial-gradient(circle at 30% 75%,rgba(46,107,255,.85),transparent 62%),
+             linear-gradient(150deg,rgba(110,151,255,.35),rgba(10,13,19,.2));
+  filter:blur(1px) saturate(1.2);opacity:.8;box-shadow:0 0 140px rgba(46,107,255,.35),inset 0 0 80px rgba(139,124,255,.35);animation:orbFloat 9s ease-in-out infinite alternate}
+@keyframes orbFloat{from{transform:translateY(-12px) scale(1)}to{transform:translateY(14px) scale(1.035)}}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(140,160,255,.28)}
+.ring.r1{inset:6%;transform:rotateX(72deg);animation:spin3d 22s linear infinite}
+.ring.r2{inset:-2%;border-color:rgba(139,124,255,.18);transform:rotateX(64deg) rotateY(14deg);animation:spin3d 34s linear infinite reverse}
+@keyframes spin3d{from{rotate:0deg}to{rotate:360deg}}
+.sat{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 16px var(--amber);left:8%;top:20%}
+#payoff h2{position:relative;font-family:var(--font-d);font-weight:600;font-size:clamp(2.4rem,6.2vw,5rem);line-height:1.08;letter-spacing:-.015em;max-width:15ch}
+#payoff .after{position:relative;margin-top:28px;color:var(--muted);font-size:1.05rem;letter-spacing:.04em}
+#payoff .after b{color:var(--white);font-weight:600}
+
+/* ---------- Scene 7 : CTA / footer ---------- */
+#contact{align-items:center;text-align:center;justify-content:flex-end;padding-bottom:0;min-height:108vh}
+#contact .cta-block{margin:auto 0;padding-top:60px}
+#contact h2{font-family:var(--font-d);font-weight:600;font-size:clamp(2.1rem,5vw,4.2rem);line-height:1.1;letter-spacing:-.01em;max-width:18ch;margin:22px auto 34px}
+.cta-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;align-items:center}
+.link-arrow{font-weight:600;padding:14px 8px;border-bottom:1px solid rgba(244,246,250,.3);transition:border-color .25s,color .25s}
+.link-arrow:hover{border-color:var(--cobalt-soft);color:var(--cobalt-soft)}
+.giant{font-family:var(--font-d);font-weight:700;font-size:clamp(3rem,12.5vw,11.5rem);line-height:.94;letter-spacing:.02em;margin-top:7vh;white-space:nowrap;
+  color:transparent;-webkit-text-stroke:1px rgba(244,246,250,.32);user-select:none}
+.giant b{color:var(--white);-webkit-text-stroke:0;font-weight:700}
+footer{width:100%;border-top:1px solid var(--line);margin-top:5vh;padding:26px 6vw 30px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:.82rem}
+footer .f-links{display:flex;gap:24px}
+footer a{transition:color .2s}
+footer a:hover{color:var(--white)}
+footer .f-mid{letter-spacing:.14em;text-transform:uppercase;font-size:.7rem;color:var(--faint);align-self:center}
+
+/* reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  #preloader{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div id="progress" aria-hidden="true"></div>
+<div class="cursor-light" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="chapter" aria-hidden="true"><b id="chNow">01</b> / 07 — <span id="chName">OPENING</span></div>
+
+<div id="preloader" role="status" aria-label="Loading">
+  <div class="pl-mark">TANJA <span>WEB</span></div>
+  <div class="pl-count" id="plCount">0</div>
+  <div class="pl-bar"><i id="plBar"></i></div>
+  <button id="skipIntro" type="button">SKIP INTRO →</button>
+</div>
+
+<header>
+  <a class="wordmark" href="#opening" data-scroll>TANJA <span>WEB</span></a>
+  <nav class="mainnav" aria-label="Main">
+    <a href="#impression" data-scroll>IMPRESSION</a>
+    <a href="#mood" data-scroll>MOOD</a>
+    <a href="#story" data-scroll>STORY</a>
+    <a href="portfolio.html">WORK</a>
+  </nav>
+  <div class="avail"><i></i>AVAILABLE FOR PROJECTS</div>
+</header>
+
+<main>
+
+<!-- ============ SCENE 1 · OPENING ============ -->
+<section class="scene" id="opening" data-chapter="01" data-name="OPENING" aria-label="Opening">
+  <div class="halo" aria-hidden="true"></div>
+  <p class="kicker label" id="heroLabel">Digital Experiences / 2026</p>
+  <h1>
+    <span class="mask"><span>The best websites</span></span>
+    <span class="mask"><span>don’t just grab attention.</span></span>
+    <span class="mask"><span class="hold grad">They hold it.</span></span>
+  </h1>
+  <p class="sub" id="heroSub">TANJA WEB is a creative digital studio in Tangier. We design websites that behave like films — every scroll, a scene; every scene, a reason to stay.</p>
+  <div class="scroll-hint" aria-hidden="true"><span class="wire"></span>Scroll — the film begins</div>
+  <div class="hero-meta" aria-hidden="true">Creative Development<br>Web Design · Branding<br>Tangier — Worldwide</div>
+</section>
+
+<!-- ============ SCENE 2 · FIRST IMPRESSION ============ -->
+<section class="scene" id="impression" data-chapter="02" data-name="FIRST IMPRESSION" aria-label="First impression">
+  <div class="imp-grid">
+    <div class="imp-copy">
+      <p class="kicker">First Impression</p>
+      <h2><span class="mask"><span>A powerful first</span></span><span class="mask"><span>impression creates</span></span><span class="mask"><span class="grad">curiosity.</span></span></h2>
+      <p>Three seconds. That is all a visitor gives you before deciding to stay or leave. We spend those seconds like cinema spends its opening shot.</p>
+    </div>
+    <div class="imp-stage">
+      <div class="imp-halo" aria-hidden="true"></div>
+      <div class="caption-pill" id="capPill">One click can <b>change everything.</b></div>
+      <div class="browser" id="browserMock" role="img" aria-label="Abstract preview of a creative website designed by the studio">
+        <div class="b-bar"><span class="b-dot" style="background:#FF5F57"></span><span class="b-dot" style="background:#FEBC2E"></span><span class="b-dot" style="background:#28C840"></span><span class="b-url">tanjaweb.studio — preview</span></div>
+        <div class="b-body">
+          <div class="b-nav"><span class="b-logo">STUDIO®</span><span class="b-links"><i></i><i></i><i></i></span></div>
+          <div class="b-word">APPEAR<br><em class="grad">LOUDER.</em></div>
+          <div class="b-row"><div class="b-card c1"></div><div class="b-card c2"></div><div class="b-card c3"></div></div>
+          <span class="b-pill">Start →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCENE 3 · MOOD SWEEP ============ -->
+<section class="scene" id="mood" data-chapter="03" data-name="VISUAL MOOD" aria-label="Visual mood">
+  <div class="mood-head">
+    <p class="kicker">Visual Mood</p>
+    <h2>Strong visuals <span class="grad">establish the mood.</span></h2>
+  </div>
+  <div class="sweep"><div class="sweep-track" id="sweepTrack">
+    <article class="panel p-mood"><span class="p-idx">/ 01</span><h3 class="p-tag">MOOD</h3><span class="p-note">Atmosphere first</span></article>
+    <article class="panel p-form"><span class="p-idx">/ 02</span><div class="grid-lines" aria-hidden="true"></div><div class="aa" aria-hidden="true">Aa</div><h3 class="p-tag">FORM</h3><span class="p-note">Type as image</span></article>
+    <article class="panel p-motion"><span class="p-idx">/ 03</span>
+      <svg viewBox="0 0 200 200" fill="none" aria-hidden="true"><circle cx="100" cy="100" r="86" stroke="rgba(110,151,255,.35)" stroke-width="1"/><circle cx="100" cy="100" r="62" stroke="rgba(139,124,255,.5)" stroke-width="1" stroke-dasharray="4 7"/><circle cx="100" cy="100" r="38" stroke="rgba(242,169,80,.55)" stroke-width="1"/><path d="M100 14 A86 86 0 0 1 186 100" stroke="#2E6BFF" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="100" r="5" fill="#F4F6FA"/></svg>
+      <h3 class="p-tag">MOTION</h3><span class="p-note">Nothing sits still</span></article>
+    <article class="panel p-story"><span class="p-idx">/ 04</span>
+      <div class="s-lines"><i></i><b>Every brand has<br>one true story.</b><span>We find it, frame it, and let the visitor walk through it — scene by scene.</span></div>
+      <h3 class="p-tag">STORY</h3><span class="p-note">Narrative space</span></article>
+  </div></div>
+</section>
+
+<!-- ============ SCENE 4 · INTERACTION ============ -->
+<section class="scene" id="interaction" data-chapter="04" data-name="INTERACTION" aria-label="Interaction">
+  <p class="kicker">Interaction</p>
+  <h2>Smooth interactions keep people <span class="grad">exploring.</span></h2>
+  <p class="lede">Move your cursor over the card. It leans toward you, lights up, and answers in under 200 milliseconds. That is the standard — on every button, every page, every site we ship.</p>
+  <div class="tilt-zone">
+    <div class="tilt-card" id="tiltCard" tabindex="0" aria-label="Interactive demonstration card">
+      <div class="tilt-inner">
+        <p class="t-kick">Live specimen — interface Nº 04</p>
+        <h3>An interface that notices you back.</h3>
+        <p>Tilt, glow and depth are not decoration. They are feedback — the interface telling the visitor: you are here, this responds to you.</p>
+        <div class="tilt-detail">
+          <div><b>200ms</b><span>Response easing</span></div>
+          <div><b>60fps</b><span>Transform-only motion</span></div>
+          <div><b>0</b><span>Layout thrash</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="btn btn-primary magnetic" href="#story" data-scroll><span>Feel it in the story</span><span class="arr">→</span></a>
+</section>
+
+<!-- ============ SCENE 5 · STORYTELLING ============ -->
+<section class="scene" id="story" data-chapter="05" data-name="STORYTELLING" aria-label="Storytelling">
+  <div class="stack-zone" id="stackZone">
+    <article class="story-panel sp1"><p class="s-num">STORY — 01 / 03</p><p>Thoughtful storytelling gives the brand a reason to be remembered.</p></article>
+    <article class="story-panel sp2"><p class="s-num">STORY — 02 / 03</p><p>When every piece feels intentional…</p></article>
+    <article class="story-panel sp3"><p class="s-num">STORY — 03 / 03</p><p>The website stops feeling like a website.</p></article>
+    <div class="stack-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- ============ SCENE 6 · PAYOFF ============ -->
+<section class="scene" id="payoff" data-chapter="06" data-name="THE PAYOFF" aria-label="Experience payoff">
+  <div class="orb-wrap" aria-hidden="true"><div class="ring r1"></div><div class="ring r2"></div><div class="orb"></div><span class="sat"></span></div>
+  <h2 id="payoffTitle">It starts feeling like an <span class="grad">experience.</span></h2>
+  <p class="after">Build something <b>worth remembering.</b></p>
+</section>
+
+<!-- ============ SCENE 7 · CTA ============ -->
+<section class="scene" id="contact" data-chapter="07" data-name="START A PROJECT" aria-label="Start a project">
+  <div class="cta-block">
+    <p class="kicker" style="justify-content:center">Tanja Web — Creative Digital Studio</p>
+    <h2>Create your next <span class="grad">digital experience.</span></h2>
+    <div class="cta-row">
+      <a class="btn btn-primary magnetic" id="ctaStart" href="https://wa.me/212693981822?text=Bonjour%20TANJA%20WEB%2C%20je%20veux%20cr%C3%A9er%20mon%20site%20web." target="_blank" rel="noopener"><span>Start a project</span><span class="arr">→</span></a>
+      <a class="link-arrow magnetic" href="portfolio.html">Explore the work →</a>
+    </div>
+  </div>
+  <div class="giant" aria-hidden="true">TANJA <b>WEB</b></div>
+  <footer>
+    <div><a href="mailto:mounir.boufrahi90@gmail.com">mounir.boufrahi90@gmail.com</a></div>
+    <div class="f-mid">Tangier, Morocco — Working worldwide</div>
+    <div class="f-links">
+      <a href="https://wa.me/212693981822" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="#opening" data-scroll>Top ↑</a>
+    </div>
+    <div>© 2026 TANJA WEB — <span style="color:#3DDC84">●</span> Available for new projects</div>
+  </footer>
+</section>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+/* ================= CONFIG — change the brand here ================= */
+const CONFIG = {
+  brand: "TANJA WEB",
+  email: "mounir.boufrahi90@gmail.com",
+  whatsapp: "212693981822",
+  timing: { preloader: 1.25, pinImpression: 1.4, pinMood: 1.8, pinStory: 2.2 } // ×100vh scroll lengths
+};
+/* ================================================================== */
+(function(){
+  "use strict";
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = window.matchMedia("(pointer: fine)").matches;
+  const pre = document.getElementById("preloader");
+
+  if (reduced || !window.gsap) {
+    if (pre) pre.style.display = "none";
+    document.getElementById("chNow").textContent = "01";
+    return; // calm version: everything is visible by default in the CSS
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- Lenis smooth scroll ---------- */
+  let lenis = null;
+  if (window.Lenis) {
+    lenis = new Lenis({ lerp: 0.08, wheelMultiplier: 1, smoothWheel: true });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((t)=>{ lenis.raf(t*1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+  document.querySelectorAll("[data-scroll]").forEach(a=>{
+    a.addEventListener("click", e=>{
+      const id = a.getAttribute("href");
+      if (id && id.startsWith("#")) {
+        e.preventDefault();
+        const el = document.querySelector(id);
+        if (el) { lenis ? lenis.scrollTo(el, {offset:0, duration:1.4}) : el.scrollIntoView({behavior:"smooth"}); }
+      }
+    });
+  });
+
+  /* ---------- progress + chapter ---------- */
+  gsap.to("#progress", { scaleX: 1, ease: "none",
+    scrollTrigger: { trigger: document.body, start: "top top", end: "bottom bottom", scrub: 0.3 } });
+  document.querySelectorAll(".scene").forEach(sec=>{
+    ScrollTrigger.create({ trigger: sec, start: "top 55%", end: "bottom 55%",
+      onToggle: self=>{ if (self.isActive) {
+        document.getElementById("chNow").textContent = sec.dataset.chapter;
+        document.getElementById("chName").textContent = sec.dataset.name;
+      }}});
+  });
+
+  /* ---------- preloader + hero intro ---------- */
+  const heroTl = gsap.timeline({ paused: true });
+  heroTl.from("#heroLabel", { opacity: 0, y: 14, duration: .7, ease: "expo.out" })
+    .from("#opening h1 .mask > span", { yPercent: 115, duration: 1.05, ease: "expo.out", stagger: .13 }, "-=.35")
+    .from("#heroSub", { opacity: 0, y: 18, duration: .8, ease: "expo.out" }, "-=.55")
+    .from(".scroll-hint, .hero-meta", { opacity: 0, duration: .8 }, "-=.4")
+    .from("#opening .halo", { opacity: 0, scale: .92, duration: 1.6, ease: "sine.out" }, 0);
+
+  let preDone = false;
+  function finishPreloader(){
+    if (preDone) return; preDone = true;
+    gsap.timeline()
+      .to(pre, { yPercent: -100, duration: .9, ease: "expo.inOut" })
+      .set(pre, { display: "none" })
+      .add(()=>heroTl.play(), "-=.45");
+  }
+  const cnt = { v: 0 }, plCount = document.getElementById("plCount"), plBar = document.getElementById("plBar");
+  const cntTween = gsap.to(cnt, { v: 100, duration: CONFIG.timing.preloader, ease: "power2.inOut",
+    onUpdate(){ const n = Math.round(cnt.v); plCount.textContent = n; plBar.style.transform = "scaleX(" + (n/100) + ")"; },
+    onComplete: finishPreloader });
+  document.getElementById("skipIntro").addEventListener("click", ()=>{ cntTween.kill(); finishPreloader(); });
+  setTimeout(finishPreloader, 4000); // never trap the visitor
+  gsap.to("#opening .halo", { x: 40, y: -30, duration: 9, ease: "sine.inOut", yoyo: true, repeat: -1 });
+
+  /* ---------- cursor light + dot ---------- */
+  if (fine) {
+    const light = document.querySelector(".cursor-light"), dot = document.querySelector(".cursor-dot"), ring = document.querySelector(".cursor-ring");
+    const lx = gsap.quickTo(light, "x", {duration:.9, ease:"expo.out"}), ly = gsap.quickTo(light, "y", {duration:.9, ease:"expo.out"});
+    const dx = gsap.quickTo(dot, "x", {duration:.12, ease:"power2.out"}), dy = gsap.quickTo(dot, "y", {duration:.12, ease:"power2.out"});
+    const rx = gsap.quickTo(ring, "x", {duration:.45, ease:"expo.out"}), ry = gsap.quickTo(ring, "y", {duration:.45, ease:"expo.out"});
+    gsap.set([light,dot,ring], { xPercent: 0, yPercent: 0 });
+    window.addEventListener("mousemove", e=>{
+      gsap.to([light,dot,ring], { opacity: 1, duration: .4, overwrite: "auto" });
+      lx(e.clientX); ly(e.clientY); dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY);
+    });
+    document.querySelectorAll("a, button, .tilt-card").forEach(el=>{
+      el.addEventListener("mouseenter", ()=>document.body.classList.add("cursor-grow"));
+      el.addEventListener("mouseleave", ()=>document.body.classList.remove("cursor-grow"));
+    });
+  }
+
+  /* ---------- magnetic elements ---------- */
+  if (fine) document.querySelectorAll(".magnetic").forEach(el=>{
+    el.addEventListener("mousemove", e=>{
+      const r = el.getBoundingClientRect();
+      gsap.to(el, { x: (e.clientX - r.left - r.width/2)*.32, y: (e.clientY - r.top - r.height/2)*.32, duration: .6, ease: "expo.out" });
+    });
+    el.addEventListener("mouseleave", ()=> gsap.to(el, { x:0, y:0, duration:.7, ease:"elastic.out(1,.45)" }));
+  });
+
+  /* ---------- Scene 2 : browser mockup film ---------- */
+  gsap.set("#browserMock", { rotationY: -24, rotationX: 11, y: 90, scale: .92, filter: "blur(7px)" });
+  gsap.set("#capPill", { opacity: 0, y: 26 });
+  gsap.timeline({ scrollTrigger: { trigger: "#impression", start: "top top",
+      end: "+=" + (window.innerHeight * CONFIG.timing.pinImpression), pin: true, scrub: .6 } })
+    .from("#impression .imp-copy .mask > span", { yPercent: 115, duration: .5, ease: "expo.out", stagger: .08 }, 0)
+    .from("#impression .imp-copy p:not(.kicker)", { opacity: 0, y: 16, duration: .4 }, .1)
+    .to("#browserMock", { rotationY: -6, rotationX: 3, y: 0, scale: 1.02, filter: "blur(0px)", duration: 1, ease: "power2.inOut" }, 0)
+    .to(".imp-halo", { opacity: 1, scale: 1.12, duration: 1 }, 0)
+    .to("#capPill", { opacity: 1, y: 0, duration: .35, ease: "expo.out" }, .55);
+
+  /* ---------- Scene 3 : horizontal sweep ---------- */
+  const track = document.getElementById("sweepTrack");
+  const sweepDist = () => Math.max(0, track.scrollWidth - window.innerWidth + window.innerWidth * .04);
+  gsap.set(".panel", { y: 60, opacity: 0, filter: "blur(8px)", rotationY: -7 });
+  gsap.timeline({ scrollTrigger: { trigger: "#mood", start: "top top",
+      end: "+=" + (window.innerHeight * CONFIG.timing.pinMood), pin: true, scrub: .6 } })
+    .from("#mood .mood-head", { opacity: 0, x: -60, duration: .3, ease: "expo.out" }, 0)
+    .to(".panel", { y: 0, opacity: 1, filter: "blur(0px)", rotationY: 0, duration: .45, ease: "expo.out", stagger: .07 }, .05)
+    .to(track, { x: () => -sweepDist(), duration: 1, ease: "none" }, .3);
+
+  /* ---------- Scene 4 : tilt card ---------- */
+  gsap.from("#interaction .tilt-zone", { y: 70, opacity: 0, filter: "blur(6px)", duration: 1, ease: "expo.out",
+    scrollTrigger: { trigger: "#interaction", start: "top 62%" } });
+  const card = document.getElementById("tiltCard");
+  if (fine && card) {
+    const qrx = gsap.quickTo(card, "rotationX", {duration:.7, ease:"expo.out"});
+    const qry = gsap.quickTo(card, "rotationY", {duration:.7, ease:"expo.out"});
+    gsap.set(card, { transformPerspective: 1100 });
+    card.addEventListener("mousemove", e=>{
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+      qry((px - .5) * 13); qrx((.5 - py) * 11);
+      card.style.setProperty("--mx", (px*100) + "%"); card.style.setProperty("--my", (py*100) + "%");
+    });
+    card.addEventListener("mouseleave", ()=>{ qrx(0); qry(0); });
+  }
+
+  /* ---------- Scene 5 : story stack ---------- */
+  const panels = gsap.utils.toArray(".story-panel");
+  panels.forEach((p, i)=> gsap.set(p, { y: i * 26, scale: 1 - i * .045, opacity: i === 0 ? 1 : .55, zIndex: 10 - i }));
+  const storyTl = gsap.timeline({ scrollTrigger: { trigger: "#story", start: "top top",
+      end: "+=" + (window.innerHeight * CONFIG.timing.pinStory), pin: true, scrub: .6 } });
+  for (let i = 0; i < panels.length - 1; i++) {
+    storyTl.to(panels[i], { y: -90, scale: 1.05, opacity: 0, filter: "blur(5px)", duration: 1, ease: "power2.inOut" })
+           .to(panels[i+1], { y: 0, scale: 1, opacity: 1, duration: 1, ease: "power2.inOut" }, "<.15");
+    if (panels[i+2]) storyTl.to(panels[i+2], { y: 26, scale: .955, opacity: .55, duration: 1 }, "<");
+  }
+  storyTl.to({}, { duration: .4 }); // hold the last line
+
+  /* ---------- Scene 6 : payoff ---------- */
+  gsap.from("#payoffTitle", { scale: .93, opacity: 0, filter: "blur(8px)", duration: 1.1, ease: "expo.out",
+    scrollTrigger: { trigger: "#payoff", start: "top 58%" } });
+  gsap.from("#payoff .after", { opacity: 0, y: 20, duration: .9, ease: "expo.out", delay: .15,
+    scrollTrigger: { trigger: "#payoff", start: "top 58%" } });
+  gsap.to(".orb-wrap", { y: -60, ease: "none",
+    scrollTrigger: { trigger: "#payoff", start: "top bottom", end: "bottom top", scrub: .8 } });
+
+  /* ---------- Scene 7 : giant wordmark ---------- */
+  gsap.from(".giant", { yPercent: 34, opacity: 0, duration: 1.1, ease: "expo.out",
+    scrollTrigger: { trigger: "#contact", start: "top 46%" } });
+  gsap.from("#contact .cta-block", { opacity: 0, y: 40, duration: 1, ease: "expo.out",
+    scrollTrigger: { trigger: "#contact", start: "top 62%" } });
+
+  window.addEventListener("load", ()=> ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
