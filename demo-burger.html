@@ -443,7 +443,7 @@ addEventListener('scroll', ()=>{ document.getElementById('hdr').classList.toggle
 
 /* ================== mid-page 3D zone state ================== */
 window.ZSTATE = { rot: 0, spread: 1 };
-gsap.to(window.ZSTATE, { rot: 5.24, spread: .45, ease: 'none',
+gsap.to(window.ZSTATE, { rot: 6.28, spread: .45, ease: 'none',
   scrollTrigger: { trigger: '#zone3d', start: 'top top', end: '+=170%', pin: true, scrub: .6, anticipatePin: 1 } });
 gsap.fromTo('.zone-txt', {opacity: 0, y: 40}, {opacity: 1, y: 0, ease: 'power2.out',
   scrollTrigger: { trigger: '#zone3d', start: 'top 55%' } });

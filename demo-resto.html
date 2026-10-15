@@ -92,7 +92,7 @@ header .btn{padding:10px 22px}
 #ovHero{inset-inline-start:0;top:50%;transform:translateY(-52%);max-width:640px;padding:0 34px}
 #ovHero h1{font-size:clamp(52px,8.6vw,106px);font-weight:600;line-height:1.05;margin:16px 0 8px}
 #ovHero h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--gold)}
-#ovHero p{color:#E4DCCB;max-width:460px;font-size:17.5px;margin:14px 0 26px;opacity:0;line-height:1.7}
+#ovHero p{color:#E4DCCB;max-width:460px;font-size:17.5px;margin:14px 0 26px;opacity:0;line-height:1.7;text-shadow:0 2px 18px rgba(0,0,0,.95),0 1px 4px rgba(0,0,0,.9)}
 #ovHero .tags{display:flex;gap:10px;flex-wrap:wrap;opacity:0}
 #ovHero .tags span{border:1px solid #4a4234;border-radius:30px;padding:6px 16px;font-size:13.5px;color:#EDE6D6;background:rgba(12,10,8,.45)}
 #scrollcue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:6;color:var(--mut);font-size:11px;letter-spacing:4px;text-align:center}
@@ -596,14 +596,14 @@ tl.fromTo('#boxImg', {opacity:0, scale:1.14, xPercent:-1.5}, {opacity:1, scale:1
   .to('#ovBox', {opacity:0, duration:4}, 76)
   .to('#boxImg', {opacity:0, duration:5}, 77);
 /* S05 · retour au calme + appel à l'action (80–100%) */
-tl.fromTo('#gl', {opacity:0}, {opacity:1, duration:4}, 79)
+tl.fromTo('#gl', {opacity:0}, {opacity:1, duration:4, immediateRender:false}, 79)
   .to(S, {spread:.64, rotY:-.15, camZ:9.4, duration:16, ease:'power1.inOut'}, 80)
   .to('#ovEnd', {opacity:1, duration:5}, 85)
   .to({}, {duration:4}, 96);
 
 /* ================== zone 3D centrale : réassemblage + rotation 300° ================== */
 gsap.to(window.GLSTATE2, {
-  spread:.45, rotY:5.236, ease:'none',
+  spread:.45, rotY:6.283, ease:"none",
   scrollTrigger:{ trigger:'#zone3d', start:'top top', end:'+=180%', pin:'.pin2', scrub:.6, anticipatePin:1 }
 });
 
@@ -794,7 +794,7 @@ try {
     const s = S2.spread;
     layers2.forEach((L)=>{ L.m.position.y = lerp(L.y0, L.y1, (s-.45)/.55); });
     group2.rotation.y = S2.rotY;
-    group2.rotation.x = Math.sin(t*.0004)*.03;
+    group2.rotation.x = .32 + Math.sin(t*.0004)*.03;
     renderer2.render(scene2, camera2);
   }
   requestAnimationFrame(tick2);
