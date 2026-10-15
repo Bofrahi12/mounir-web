@@ -66,6 +66,15 @@ nav.chaps a:hover{color:#fff}
 .ovl{position:absolute;z-index:6;pointer-events:none}
 .ovl a{pointer-events:auto}
 .mask{display:block;overflow:hidden}
+@keyframes riseIn{from{transform:translateY(112%)}to{transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+#ovHero .mask>span{animation:riseIn 1.05s cubic-bezier(.2,.7,.2,1) both}
+#ovHero .eyebrow.mask>span{animation-delay:.15s}
+#ovHero h1 .mask:nth-child(1)>span{animation-delay:.32s}
+#ovHero h1 .mask:nth-child(2)>span{animation-delay:.48s}
+#heroSub{animation:fadeUp .9s ease .95s both}
+#heroTags{animation:fadeUp .9s ease 1.15s both}
+.pin .shad{position:absolute;inset:0;z-index:1;background:linear-gradient(270deg,rgba(0,0,0,.5),transparent 58%);pointer-events:none}
 .mask>span{display:block;transform:translateY(112%)}
 /* scene 1 */
 #ovHero{inset-inline-start:0;top:50%;transform:translateY(-52%);max-width:640px;padding:0 34px}
@@ -189,6 +198,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);font-siz
  <div class="pin" id="pin">
   <img id="heroImg" src="demo-burger/img/hero.webp" alt="دوبل سماش برغر">
   <img id="boxImg" src="demo-burger/img/box.webp" alt="علبة سماش هاوس">
+  <div class="shad"></div>
   <div id="glwrap"><canvas id="gl"></canvas></div>
   <div id="fallback3d"><img src="demo-burger/img/exploded.webp" alt="طبقات البرغر"></div>
   <div class="flare" id="flare"></div>
@@ -391,11 +401,8 @@ const tl = gsap.timeline({
   }
 });
 /* S01 · opening (0–20%) */
-tl.fromTo('#heroImg', {scale:1.16, filter:'brightness(.5)'}, {scale:1.05, filter:'brightness(.72)', duration:20}, 0)
+tl.fromTo('#heroImg', {scale:1.16, filter:'brightness(.34)'}, {scale:1.05, filter:'brightness(.58)', duration:20}, 0)
   .to(S, {spread:.6, rotY:-.05, duration:18, ease:'power1.inOut'}, 1)
-  .to('#ovHero .mask>span', {y:0, duration:6, stagger:1.2, ease:'power3.out'}, 1)
-  .to('#heroSub', {opacity:1, duration:5}, 6)
-  .to('#heroTags', {opacity:1, duration:5}, 8)
   .to('#scrollcue', {opacity:0, duration:3}, 15)
   .to('#ovHero', {opacity:0, y:-40, duration:5}, 16)
   .to('#heroImg', {opacity:0, scale:1.12, duration:5}, 13);
