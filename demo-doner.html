@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE DÖNER — Slow-Roasted. Sliced. Stacked.</title>
+<meta name="description" content="THE DÖNER — a döner engineered like a spec sheet. Dry-aged veal, charcoal fire, 260° sear, seven layers. Born from two worlds: Istanbul × Berlin.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="THE DÖNER — Slow-Roasted. Sliced. Stacked.">
+<meta property="og:description" content="28 days dry-aged. 260° sear. 7 layers. Build your döner.">
+<meta property="og:url" content="https://bofrahi12.github.io/mounir-web/demo-doner.html">
+<meta property="og:image" content="https://bofrahi12.github.io/mounir-web/demo-doner/spit.webp">
+<meta name="theme-color" content="#0A0705">
+<meta name="robots" content="noindex">
+<link rel="icon" href="logo-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0705; --bg2:#0E0B07; --panel:#14100A; --panel2:#1A150E;
+  --gold:#E8B84B; --gold2:#F5D67B; --flame:#FF7A29; --ember:#FF4D00;
+  --white:#F5EFE3; --muted:#A99C86; --faint:#6E6353;
+  --line:rgba(245,239,227,.1);
+  --font-d:"Anton",Impact,sans-serif;
+  --font-g:"Space Grotesk",system-ui,sans-serif;
+  --font-b:"Inter",system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--white);font-family:var(--font-b);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--gold);color:#171106}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px;border-radius:4px}
+img{display:block;max-width:100%}
+.grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+#progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:120;background:linear-gradient(90deg,var(--flame),var(--gold));transform-origin:0 50%;transform:scaleX(0)}
+.ruler{position:fixed;left:0;top:0;bottom:0;width:22px;z-index:60;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(180deg,rgba(245,239,227,.35) 0 1px,transparent 1px 14px);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
+.ruler::after{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:repeating-linear-gradient(180deg,rgba(245,239,227,.5) 0 1px,transparent 1px 70px)}
+@media(max-width:900px){.ruler{display:none}}
+.chapter{position:fixed;left:34px;bottom:20px;z-index:110;font-family:var(--font-g);font-size:.68rem;letter-spacing:.26em;color:var(--muted);background:rgba(6,4,3,.55);padding:7px 12px;border-radius:7px;backdrop-filter:blur(5px)}
+.chapter b{color:var(--gold2)}
+@media(max-width:900px){.chapter{left:16px}}
+.cursor-glow{position:fixed;top:0;left:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:2;opacity:0;
+  background:radial-gradient(circle,rgba(255,122,41,.13),rgba(232,184,75,.05) 42%,transparent 68%);mix-blend-mode:screen}
+@media(pointer:coarse){.cursor-glow{display:none}}
+
+/* preloader */
+#preloader{position:fixed;inset:0;z-index:200;background:#060403;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+#preloader .pl-logo{font-family:var(--font-d);font-size:1.6rem;letter-spacing:.14em}
+#preloader .pl-logo span{color:var(--gold)}
+#preloader .pl-count{font-family:var(--font-d);font-size:clamp(3rem,9vw,5.4rem);line-height:1;color:var(--white)}
+#preloader .pl-bar{width:min(280px,60vw);height:2px;background:rgba(245,239,227,.12);overflow:hidden}
+#preloader .pl-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--flame),var(--gold));transform-origin:0 50%;transform:scaleX(0)}
+#preloader .pl-sub{font-family:var(--font-g);font-size:.66rem;letter-spacing:.34em;color:var(--faint)}
+#skipIntro{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);background:none;border:1px solid var(--line);color:var(--muted);padding:9px 20px;border-radius:99px;font-size:.74rem;letter-spacing:.14em;transition:color .2s,border-color .2s}
+#skipIntro:hover{color:var(--white);border-color:rgba(245,239,227,.4)}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 28px;
+  background:linear-gradient(180deg,rgba(6,4,3,.82),rgba(6,4,3,0));backdrop-filter:blur(2px)}
+.logo{font-family:var(--font-d);font-size:1.15rem;letter-spacing:.1em;white-space:nowrap}
+.logo span{color:var(--gold)}
+nav.mainnav{display:flex;gap:20px;font-family:var(--font-g);font-size:.66rem;letter-spacing:.18em;color:var(--muted);flex-wrap:wrap;justify-content:center}
+nav.mainnav a{padding:4px 0;transition:color .2s}
+nav.mainnav a:hover{color:var(--gold2)}
+nav.mainnav a b{color:var(--flame);font-weight:600;margin-right:4px}
+.btn-order{background:linear-gradient(120deg,var(--gold2),var(--gold));color:#1A1206;font-weight:700;font-family:var(--font-g);font-size:.78rem;letter-spacing:.12em;
+  padding:12px 24px;border-radius:6px;box-shadow:0 8px 28px rgba(232,184,75,.28);transition:box-shadow .25s var(--ease),transform .25s var(--ease);white-space:nowrap}
+.btn-order:hover{box-shadow:0 12px 38px rgba(232,184,75,.45)}
+@media(max-width:1080px){nav.mainnav{display:none}}
+
+/* scaffolding */
+.scene{position:relative;z-index:3;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px 6vw;overflow:hidden}
+.spec{font-family:var(--font-g);font-size:.68rem;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.spec::before{content:"";width:26px;height:1px;background:var(--flame)}
+h2.big{font-family:var(--font-d);font-weight:400;font-size:clamp(2.6rem,6.4vw,5.6rem);line-height:.98;letter-spacing:.01em;text-transform:uppercase;margin:18px 0 16px}
+.gold{color:var(--gold)}
+.grad-gold{background:linear-gradient(96deg,var(--gold2),var(--gold) 60%,var(--flame));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:var(--muted);max-width:52ch}
+.mask{display:block;overflow:hidden}
+.mask>span{display:block;will-change:transform}
+
+/* 01 SPIN hero */
+#spin{padding:0;justify-content:flex-end;min-height:108vh}
+.hero-img{position:absolute;inset:0;overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 22%;will-change:transform}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,7,5,.88) 0%,rgba(10,7,5,.45) 42%,rgba(10,7,5,.05) 75%),linear-gradient(0deg,rgba(10,7,5,.96) 4%,transparent 42%),linear-gradient(180deg,rgba(10,7,5,.55),transparent 26%)}
+.hero-top{position:absolute;top:96px;left:6vw;z-index:4;display:flex;flex-direction:column;gap:8px;font-family:var(--font-g);font-size:.68rem;letter-spacing:.3em;color:rgba(245,239,227,.85)}
+.hero-top .hot{color:var(--gold2)}
+.hero-temp{position:absolute;top:96px;right:6vw;z-index:4;text-align:right;font-family:var(--font-g)}
+.hero-temp b{display:block;font-family:var(--font-d);font-weight:400;font-size:2rem;color:var(--gold2);line-height:1}
+.hero-temp span{font-size:.62rem;letter-spacing:.28em;color:var(--muted)}
+.hero-core{position:relative;z-index:4;padding:0 6vw 12vh}
+.hero-core .spec{margin-bottom:14px}
+h1.mega{font-family:var(--font-d);font-weight:400;font-size:clamp(4.2rem,14.5vw,13.5rem);line-height:.9;letter-spacing:.005em;text-transform:uppercase}
+h1.mega .o{color:var(--gold)}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap;margin-top:20px}
+.hero-tag{font-family:var(--font-d);font-size:clamp(1rem,2vw,1.5rem);letter-spacing:.14em;color:var(--white);text-transform:uppercase}
+.hero-tag i{font-style:normal;color:var(--flame);margin:0 .35em}
+.hero-chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{font-family:var(--font-g);font-size:.64rem;letter-spacing:.22em;padding:9px 15px;border:1px solid rgba(245,239,227,.22);border-radius:99px;color:rgba(245,239,227,.85);background:rgba(10,7,5,.35);backdrop-filter:blur(4px)}
+.chip b{color:var(--gold2);font-weight:600}
+.scroll-hint{position:absolute;right:6vw;bottom:170px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--faint);font-family:var(--font-g);font-size:.6rem;letter-spacing:.3em;writing-mode:vertical-rl}
+.scroll-hint .wire{width:1px;height:54px;background:linear-gradient(var(--gold),transparent);animation:wire 2.4s var(--ease) infinite}
+@keyframes wire{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:760px){.scroll-hint,.hero-temp{display:none}.hero-top{top:84px}.hero-chips{display:none}h1.mega{font-size:clamp(3.4rem,17vw,5rem)}}
+
+/* 02 DIVE */
+#dive{padding:0}
+.dive-img{position:absolute;inset:0;overflow:hidden}
+.dive-img img{width:100%;height:100%;object-fit:cover;will-change:transform}
+.dive-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,7,5,.9) 8%,rgba(10,7,5,.25) 55%,rgba(10,7,5,.1)),linear-gradient(0deg,rgba(10,7,5,.85),transparent 40%)}
+.dive-ui{position:relative;z-index:4;padding:110px 6vw;width:100%}
+.temp-read{font-family:var(--font-d);font-size:clamp(5rem,15vw,12rem);line-height:.95;color:var(--white)}
+.temp-read sup{font-size:.32em;color:var(--gold2);-webkit-text-stroke:0;vertical-align:super}
+.temp-label{font-family:var(--font-g);letter-spacing:.3em;font-size:.7rem;color:var(--gold2);margin-top:6px}
+.dive-calls{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px;max-width:640px}
+.call{font-family:var(--font-g);font-size:.66rem;letter-spacing:.2em;padding:11px 17px;border:1px solid rgba(245,239,227,.25);border-radius:6px;background:rgba(10,7,5,.5);backdrop-filter:blur(4px);opacity:.18;transition:opacity .3s}
+.call.on{opacity:1;border-color:var(--gold);color:var(--white)}
+.call b{color:var(--flame)}
+.dive-note{margin-top:26px;color:rgba(245,239,227,.75);max-width:44ch}
+
+/* 03 REVEAL */
+#reveal{padding:0;align-items:center;text-align:center}
+.reveal-img{position:absolute;inset:0;overflow:hidden}
+.reveal-img img{width:100%;height:112%;object-fit:cover;will-change:transform}
+.reveal-img::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 46%,transparent 30%,rgba(10,7,5,.72) 100%),linear-gradient(0deg,var(--bg),transparent 30%),linear-gradient(180deg,var(--bg),transparent 30%)}
+.reveal-core{position:relative;z-index:4;padding:120px 6vw}
+.reveal-core .spec{justify-content:center}
+.reveal-core .spec::before{display:none}
+.flags{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.flag{display:flex;align-items:center;gap:12px;border:1px solid rgba(245,239,227,.22);background:rgba(10,7,5,.55);backdrop-filter:blur(5px);border-radius:10px;padding:13px 20px;font-family:var(--font-g);text-align:left}
+.flag .fe{font-size:1.5rem;line-height:1}
+.flag b{display:block;font-size:.8rem;letter-spacing:.14em}
+.flag span{font-size:.64rem;letter-spacing:.2em;color:var(--muted)}
+
+/* 04 LAYERS sweep */
+#layers{padding-left:0;padding-right:0;justify-content:flex-start}
+.layers-head{padding:0 6vw;margin-bottom:4vh}
+.sweep-track{display:flex;gap:2.6vw;width:max-content;padding:0 6vw;will-change:transform}
+.lpanel{position:relative;flex:0 0 auto;width:min(380px,76vw);height:min(56vh,500px);border-radius:16px;overflow:hidden;border:1px solid rgba(245,239,227,.12);background:var(--panel);will-change:transform,filter}
+.lpanel .ph{position:absolute;inset:0;background-image:url("demo-doner/grid.webp");background-size:308% 308%}
+.lpanel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,5,3,.94) 26%,rgba(8,5,3,.25) 58%,rgba(8,5,3,.15))}
+.lpanel .lp-core{position:absolute;left:22px;right:22px;bottom:20px;z-index:3}
+.lpanel .lp-idx{position:absolute;top:18px;left:22px;z-index:3;font-family:var(--font-g);font-size:.66rem;letter-spacing:.28em;color:var(--gold2)}
+.lpanel h3{font-family:var(--font-d);font-weight:400;font-size:1.65rem;letter-spacing:.03em;text-transform:uppercase;margin-bottom:8px}
+.lpanel p{color:rgba(245,239,227,.78);font-size:.86rem;line-height:1.55}
+.ph-veal{background-image:url("demo-doner/macro.webp");background-size:cover;background-position:center}
+
+/* 05 CRAFT */
+#craft{justify-content:flex-start}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:36px;background:rgba(255,255,255,.012)}
+.stat{padding:30px 26px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--font-d);font-weight:400;font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1;color:var(--gold2)}
+.stat b small{font-size:.45em;color:var(--flame)}
+.stat h4{font-family:var(--font-g);font-size:.68rem;letter-spacing:.24em;margin:12px 0 8px;color:var(--white)}
+.stat p{color:var(--muted);font-size:.82rem;line-height:1.55}
+@media(max-width:900px){.stats{grid-template-columns:1fr 1fr}.stat{border-bottom:1px solid var(--line)}}
+.roast-split{display:grid;grid-template-columns:5fr 6fr;gap:5vw;align-items:center;margin-top:8vh}
+.roast-split .rimg{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.roast-split .rimg img{width:100%;height:min(52vh,460px);object-fit:cover;object-position:center 30%}
+@media(max-width:900px){.roast-split{grid-template-columns:1fr}}
+
+/* 06 STORY stack */
+#story{align-items:center}
+.stack-zone{position:relative;width:min(780px,92vw);height:min(54vh,440px);perspective:1200px}
+.story-panel{position:absolute;inset:0;border-radius:18px;border:1px solid rgba(245,239,227,.13);box-shadow:0 50px 100px rgba(0,0,0,.55);
+  display:flex;flex-direction:column;justify-content:center;padding:44px 48px;will-change:transform,opacity;background:linear-gradient(155deg,#171008,#0B0805 72%)}
+.story-panel .s-num{font-family:var(--font-g);font-size:.68rem;letter-spacing:.3em;color:var(--gold);margin-bottom:16px}
+.story-panel h3{font-family:var(--font-d);font-weight:400;font-size:clamp(1.7rem,3.6vw,2.7rem);text-transform:uppercase;line-height:1.05;margin-bottom:12px}
+.story-panel p{color:var(--muted);max-width:46ch}
+.story-panel.sp2{background:linear-gradient(155deg,#101318,#0B0805 72%)}
+.story-panel.sp3{background:linear-gradient(155deg,#181106,#0B0805 72%)}
+@media(max-width:760px){.story-panel{padding:30px 24px}}
+
+/* 07 ORDER */
+#order{justify-content:flex-start}
+.lineup{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
+.dish{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column;transition:border-color .3s,transform .3s var(--ease)}
+.dish:hover{border-color:rgba(232,184,75,.55);transform:translateY(-5px)}
+.dish .dimg{height:190px;background-size:cover;background-position:center;position:relative}
+.dish .dimg::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,16,10,.65),transparent 55%)}
+.dish .price{position:absolute;right:16px;bottom:12px;z-index:2;font-family:var(--font-d);font-size:1.7rem;color:var(--gold2)}
+.dish .dbody{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.dish h3{font-family:var(--font-d);font-weight:400;font-size:1.45rem;letter-spacing:.04em}
+.dish p{color:var(--muted);font-size:.88rem;flex:1}
+.dish .tags{display:flex;gap:8px;flex-wrap:wrap}
+.dish .tags span{font-family:var(--font-g);font-size:.58rem;letter-spacing:.18em;border:1px solid var(--line);border-radius:99px;padding:5px 10px;color:var(--muted)}
+.add-btn{margin-top:6px;background:none;border:1px solid rgba(232,184,75,.5);color:var(--gold2);font-family:var(--font-g);font-weight:600;font-size:.76rem;letter-spacing:.16em;padding:13px;border-radius:8px;transition:background .25s,color .25s}
+.add-btn:hover{background:var(--gold);color:#1A1206}
+@media(max-width:980px){.lineup{grid-template-columns:1fr}}
+.builder{margin-top:9vh;border:1px solid var(--line);border-radius:20px;background:linear-gradient(165deg,#120D07,#0B0805);padding:38px clamp(20px,4vw,46px)}
+.step-t{font-family:var(--font-g);font-size:.68rem;letter-spacing:.28em;color:var(--gold);margin:30px 0 16px;display:flex;align-items:center;gap:12px}
+.step-t:first-of-type{margin-top:8px}
+.step-t::after{content:"";flex:1;height:1px;background:var(--line)}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.opt{position:relative;border:1px solid var(--line);border-radius:12px;padding:18px;background:rgba(255,255,255,.015);text-align:left;color:var(--white);transition:border-color .25s,background .25s}
+.opt:hover{border-color:rgba(232,184,75,.5)}
+.opt.sel{border-color:var(--gold);background:rgba(232,184,75,.07);box-shadow:0 0 0 1px var(--gold)}
+.opt .sz{position:absolute;top:12px;right:14px;font-family:var(--font-d);font-size:1.3rem;color:var(--flame)}
+.opt b{display:block;font-family:var(--font-g);font-size:.92rem;letter-spacing:.06em;margin-bottom:4px}
+.opt span{color:var(--muted);font-size:.78rem;display:block}
+.opt .op{font-family:var(--font-d);font-size:1.25rem;color:var(--gold2);margin-top:10px;display:block}
+.extras{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.extra{display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px;background:rgba(255,255,255,.015);text-align:left;color:var(--white);transition:border-color .25s,background .25s;width:100%}
+.extra:hover{border-color:rgba(232,184,75,.5)}
+.extra.sel{border-color:var(--gold);background:rgba(232,184,75,.08);box-shadow:0 0 0 1px var(--gold)}
+.extra .ethumb{flex:0 0 58px;width:58px;height:58px;border-radius:9px;background-image:url("demo-doner/grid.webp");background-size:308% 308%}
+.extra b{display:block;font-family:var(--font-g);font-size:.84rem;letter-spacing:.04em}
+.extra span{color:var(--gold2);font-family:var(--font-g);font-size:.74rem;letter-spacing:.1em}
+.extra span.free{color:#3DDC84}
+@media(max-width:980px){.opts,.extras{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.opts,.extras{grid-template-columns:1fr}}
+.slots{display:flex;gap:10px;flex-wrap:wrap}
+.slot{border:1px solid var(--line);background:none;color:var(--white);border-radius:99px;padding:10px 18px;font-family:var(--font-g);font-size:.8rem;letter-spacing:.08em;transition:border-color .2s,background .2s}
+.slot:hover{border-color:rgba(232,184,75,.55)}
+.slot.sel{border-color:var(--gold);background:var(--gold);color:#1A1206;font-weight:700}
+.build-grid{display:grid;grid-template-columns:7fr 5fr;gap:34px;margin-top:36px;align-items:stretch}
+.summary{border:1px solid rgba(232,184,75,.35);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;background:#0D0A06}
+.summary .simg{height:170px;background-image:url("demo-doner/grid.webp");background-size:308% 308%;background-position:2% 2%}
+.summary .sbody{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.summary .sline{display:flex;justify-content:space-between;font-size:.86rem;color:var(--muted);gap:14px}
+.summary .sline b{color:var(--white);font-weight:600;text-align:right}
+.summary .stotal{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed rgba(245,239,227,.2);padding-top:14px;margin-top:6px}
+.summary .stotal span{font-family:var(--font-g);font-size:.68rem;letter-spacing:.26em;color:var(--muted)}
+.summary .stotal b{font-family:var(--font-d);font-weight:400;font-size:2.3rem;color:var(--gold2)}
+.order-btn{margin:0 22px 22px;background:linear-gradient(120deg,var(--gold2),var(--gold));border:0;color:#1A1206;font-family:var(--font-g);font-weight:700;letter-spacing:.14em;font-size:.92rem;padding:17px;border-radius:10px;box-shadow:0 12px 34px rgba(232,184,75,.3);transition:box-shadow .25s}
+.order-btn:hover{box-shadow:0 16px 44px rgba(232,184,75,.5)}
+@media(max-width:980px){.build-grid{grid-template-columns:1fr}}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,80px);z-index:150;background:var(--gold);color:#1A1206;font-family:var(--font-g);font-weight:700;font-size:.82rem;letter-spacing:.08em;padding:13px 24px;border-radius:99px;box-shadow:0 16px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none}
+.finale{text-align:center;margin-top:11vh}
+.finale .big-order{font-family:var(--font-d);font-weight:400;text-transform:uppercase;line-height:.92;font-size:clamp(3.2rem,10vw,8.6rem)}
+.finale .hours{color:var(--muted);margin-top:20px;font-size:.95rem}
+.giant{font-family:var(--font-d);font-size:clamp(3rem,12.5vw,11rem);line-height:.94;text-align:center;margin-top:6vh;color:transparent;-webkit-text-stroke:1px rgba(245,239,227,.3);user-select:none;white-space:nowrap}
+.giant b{color:var(--gold);-webkit-text-stroke:0;font-weight:400}
+footer{border-top:1px solid var(--line);margin-top:5vh;padding:26px 6vw 32px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.82rem}
+footer a:hover{color:var(--gold2)}
+footer .f-mid{font-family:var(--font-g);letter-spacing:.16em;text-transform:uppercase;font-size:.66rem;color:var(--faint);align-self:center}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  #preloader{display:none}
+  .call{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="ruler" aria-hidden="true"></div>
+<div id="progress" aria-hidden="true"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+<div class="chapter" aria-hidden="true"><b id="chNow">01</b> / 07 — <span id="chName">THE SPIN</span></div>
+
+<div id="preloader" role="status" aria-label="Loading">
+  <div class="pl-logo">THE <span>DÖNER</span></div>
+  <div class="pl-count" id="plCount">0</div>
+  <div class="pl-bar"><i id="plBar"></i></div>
+  <div class="pl-sub">HEATING THE CHARCOAL</div>
+  <button id="skipIntro" type="button">SKIP →</button>
+</div>
+
+<header>
+  <a class="logo" href="#spin" data-scroll>THE <span>DÖNER</span></a>
+  <nav class="mainnav" aria-label="Sections">
+    <a href="#spin" data-scroll><b>01</b>THE SPIN</a>
+    <a href="#dive" data-scroll><b>02</b>THE DIVE</a>
+    <a href="#reveal" data-scroll><b>03</b>THE REVEAL</a>
+    <a href="#layers" data-scroll><b>04</b>THE LAYERS</a>
+    <a href="#craft" data-scroll><b>05</b>THE CRAFT</a>
+    <a href="#story" data-scroll><b>06</b>THE STORY</a>
+    <a href="#order" data-scroll><b>07</b>ORDER</a>
+  </nav>
+  <a class="btn-order magnetic" href="#order" data-scroll>ORDER NOW</a>
+</header>
+
+<main>
+
+<!-- ============ 01 · THE SPIN ============ -->
+<section class="scene" id="spin" data-chapter="01" data-name="THE SPIN" aria-label="The Spin">
+  <div class="hero-img"><img id="heroImg" src="demo-doner/spit.webp" alt="Vertical döner spit roasting over charcoal flames" fetchpriority="high"></div>
+  <div class="hero-top">
+    <span>SLOW ROASTED // <span class="hot">VERTICAL SPIT</span></span>
+    <span>CHARCOAL FIRE — NO SHORTCUTS</span>
+  </div>
+  <div class="hero-temp"><b>260°</b><span>SEAR TEMPERATURE</span></div>
+  <div class="hero-core">
+    <p class="spec">Est. Berlin × Istanbul — MMXXVI</p>
+    <h1 class="mega"><span class="mask"><span>THE</span></span><span class="mask"><span>D<span class="o">Ö</span>NER</span></span></h1>
+    <div class="hero-row">
+      <p class="hero-tag">Roasted <i>·</i> Sliced <i>·</i> Stacked</p>
+      <div class="hero-chips">
+        <span class="chip"><b>28 DAYS</b> DRY-AGED</span>
+        <span class="chip"><b>7</b> LAYERS</span>
+        <span class="chip"><b>BMS 10–12</b> MARBLING</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">SCROLL<span class="wire"></span></div>
+</section>
+
+<!-- ============ 02 · THE DIVE ============ -->
+<section class="scene" id="dive" data-chapter="02" data-name="THE DIVE" aria-label="The Dive — specifications">
+  <div class="dive-img"><img id="diveImg" src="demo-doner/macro.webp" alt="Knife shaving thin slices off the döner spit" loading="lazy"></div>
+  <div class="dive-ui">
+    <p class="spec">Specifications // 02. The Dive</p>
+    <div class="temp-read"><span id="tempNum">20</span><sup>°C</sup></div>
+    <p class="temp-label" id="tempLabel">AMBIENT — THE SPIT AT REST</p>
+    <div class="dive-calls">
+      <span class="call" data-call="0"><b>01</b> · SURFACE SEAR — 260°C CHARCOAL IRON</span>
+      <span class="call" data-call="1"><b>02</b> · MAILLARD REACTION — ACTIVE</span>
+      <span class="call" data-call="2"><b>03</b> · CORE TEMP — 220°C REACHED</span>
+      <span class="call" data-call="3"><b>04</b> · SLICED THIN — TO ORDER, NEVER BEFORE</span>
+    </div>
+    <p class="dive-note">We treat a döner like an engine spec. Scroll down and dive into the meat — watch the core temperature climb as the knife gets closer.</p>
+  </div>
+</section>
+
+<!-- ============ 03 · THE REVEAL ============ -->
+<section class="scene" id="reveal" data-chapter="03" data-name="THE REVEAL" aria-label="The Reveal">
+  <div class="reveal-img"><img id="revealImg" src="demo-doner/explosion.webp" alt="Döner sandwich exploding into its ingredients over flames" loading="lazy"></div>
+  <div class="reveal-core">
+    <p class="spec">03. The Reveal</p>
+    <h2 class="big"><span class="mask"><span>Born from</span></span><span class="mask"><span class="grad-gold">two worlds</span></span></h2>
+    <p class="lede" style="margin:0 auto">One sandwich, two cities. The fire and patience of Anatolia — the engineering and appetite of Berlin.</p>
+    <div class="flags">
+      <div class="flag"><span class="fe" aria-hidden="true">🇹🇷</span><div><b>ISTANBUL</b><span>THE RECIPE — CENTURIES ON THE SPIT</span></div></div>
+      <div class="flag"><span class="fe" aria-hidden="true">🇩🇪</span><div><b>BERLIN</b><span>THE SANDWICH — BORN 1972, KREUZBERG</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · THE LAYERS ============ -->
+<section class="scene" id="layers" data-chapter="04" data-name="THE LAYERS" aria-label="The Layers">
+  <div class="layers-head">
+    <p class="spec">04. The Layers</p>
+    <h2 class="big">Seven layers.<br><span class="grad-gold">Zero filler.</span></h2>
+  </div>
+  <div class="sweep-track" id="sweepTrack">
+    <article class="lpanel"><div class="ph ph-veal"></div><span class="lp-idx">LAYER / 01 — THE MEAT</span><div class="lp-core"><h3>Roasted Veal</h3><p>Hand-stacked with lamb on the vertical spit. 4–6 hours at heat renders and bastes the layers beneath. Sliced thin, to order.</p></div></article>
+    <article class="lpanel"><div class="ph" style="background-position:51% 2%"></div><span class="lp-idx">LAYER / 02 — THE BASE</span><div class="lp-core"><h3>Durum Flatbread</h3><p>Stone-baked daily. Durum wheat dough, thin-rolled and dry-toasted on a cast iron plate. Crisp edges, soft centre. Never chilled.</p></div></article>
+    <article class="lpanel"><div class="ph" style="background-position:98% 2%"></div><span class="lp-idx">LAYER / 03 — THE FRESH</span><div class="lp-core"><h3>Heirloom Tomato</h3><p>Sliced thick, salted at the pass. It cools the heat of the meat and carries the juice through every layer below it.</p></div></article>
+    <article class="lpanel"><div class="ph" style="background-position:2% 51%"></div><span class="lp-idx">LAYER / 04 — THE CUT</span><div class="lp-core"><h3>Sumac Onions</h3><p>Red onions shaved paper-thin, dusted with sumac. The sharp, citrus edge that cuts through the richness of the veal.</p></div></article>
+    <article class="lpanel"><div class="ph" style="background-position:51% 51%"></div><span class="lp-idx">LAYER / 05 — THE SAUCE</span><div class="lp-core"><h3>Garlic Yogurt</h3><p>Whipped daily with roasted garlic and a whisper of lemon. Cool first, warm finish — the layer that binds the stack.</p></div></article>
+    <article class="lpanel"><div class="ph" style="background-position:98% 51%"></div><span class="lp-idx">LAYER / 06+7 — THE STACK</span><div class="lp-core"><h3>Sliced To Order</h3><p>Every portion shaved at the moment you order it — never held, never reheated. Layers six and seven are heat and timing.</p></div></article>
+  </div>
+</section>
+
+<!-- ============ 05 · THE CRAFT ============ -->
+<section class="scene" id="craft" data-chapter="05" data-name="THE CRAFT" aria-label="The Craft">
+  <p class="spec">05. The Craft</p>
+  <h2 class="big">Engineered<br><span class="grad-gold">like a spec sheet</span></h2>
+  <div class="stats">
+    <div class="stat"><b data-count="28">0</b><h4>DAYS — DRY-AGED</h4><p>In-house dry-aging at 2°C. Enzymes break down fibres. Flavour concentrates.</p></div>
+    <div class="stat"><b><span data-count="260">0</span><small>°C</small></b><h4>CELSIUS — SEAR TEMPERATURE</h4><p>Charcoal iron. First contact triggers the Maillard reaction within seconds.</p></div>
+    <div class="stat"><b data-count="7">0</b><h4>LAYERS — IN THE STACK</h4><p>Every component contributes. Nothing is decoration, nothing is filler.</p></div>
+    <div class="stat"><b>10–12</b><h4>BMS — MARBLING GRADE</h4><p>Selected veal, graded like wagyu. Fat in the muscle is flavour in the bite.</p></div>
+  </div>
+  <div class="roast-split">
+    <div class="rimg"><img src="demo-doner/spit.webp" alt="The döner spit resting over charcoal" loading="lazy"></div>
+    <div>
+      <p class="spec">The Roast — On The Spit</p>
+      <h2 class="big" style="font-size:clamp(2rem,4.4vw,3.6rem)">The spit rests.<br>The fire doesn't.</h2>
+      <p class="lede">Four to six hours of slow rotation over charcoal. The outside sears, the inside bastes itself, layer by layer. When the knife finally touches it, the work is already done — the slice is just the reveal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 · THE STORY ============ -->
+<section class="scene" id="story" data-chapter="06" data-name="THE STORY" aria-label="The Story">
+  <div class="stack-zone" id="stackZone">
+    <article class="story-panel sp1"><p class="s-num">THE STORY — 01 / 03 · ISTANBUL 🇹🇷</p><h3>The recipe is older than the sandwich</h3><p>Vertical roasting was perfected in Ottoman kitchens — meat stacked, turned slowly against the fire, shaved as it crisped. That patience is our foundation.</p></article>
+    <article class="story-panel sp2"><p class="s-num">THE STORY — 02 / 03 · BERLIN 🇩🇪</p><h3>1972 — the sandwich is born</h3><p>In Kreuzberg, the spit met the bread. Meat, salad and sauce folded into flatbread for workers on the move — a street icon was engineered by necessity.</p></article>
+    <article class="story-panel sp3"><p class="s-num">THE STORY — 03 / 03 · TODAY</p><h3>Two worlds. One spec.</h3><p>We kept the soul of both cities and rebuilt the döner like a product spec: dry-aged meat, measured heat, seven layers, zero filler. Tradition — with tolerances.</p></article>
+  </div>
+</section>
+
+<!-- ============ 07 · ORDER ============ -->
+<section class="scene" id="order" data-chapter="07" data-name="ORDER" aria-label="Order">
+  <p class="spec">07. Order // 01. The Lineup</p>
+  <h2 class="big">The <span class="grad-gold">Lineup</span></h2>
+  <div class="lineup">
+    <article class="dish">
+      <div class="dimg" style="background-image:url('demo-doner/grid.webp');background-size:308% 308%;background-position:2% 2%"><span class="price">€12</span></div>
+      <div class="dbody"><h3>THE CLASSIC</h3><p>Slow-roasted veal on durum flatbread. Garlic yogurt, red onions, heirloom tomato, fresh parsley. The one that started it all.</p>
+      <div class="tags"><span>SLOW-ROASTED VEAL</span><span>GARLIC YOGURT</span></div>
+      <button class="add-btn" type="button" data-preset="classic">+ ADD TO ORDER</button></div>
+    </article>
+    <article class="dish">
+      <div class="dimg" style="background-image:url('demo-doner/macro.webp')"><span class="price">€14</span></div>
+      <div class="dbody"><h3>THE SPICY</h3><p>Veal-chili blend, harissa yogurt, sumac onions, jalapeño, chili flakes. Heat builds with every bite. Not for the faint of heart.</p>
+      <div class="tags"><span>HARISSA YOGURT</span><span>JALAPEÑO</span></div>
+      <button class="add-btn" type="button" data-preset="spicy">+ ADD TO ORDER</button></div>
+    </article>
+    <article class="dish">
+      <div class="dimg" style="background-image:url('demo-doner/explosion.webp')"><span class="price">€16</span></div>
+      <div class="dbody"><h3>THE BOLD</h3><p>Our 100% premium veal, black truffle pepper, ember-pickled onions, micro herbs. The full expression of what a döner can be.</p>
+      <div class="tags"><span>TRUFFLE MAYO</span><span>PREMIUM VEAL</span></div>
+      <button class="add-btn" type="button" data-preset="bold">+ ADD TO ORDER</button></div>
+    </article>
+  </div>
+
+  <div class="builder" id="builder">
+    <p class="spec">07. Order // 02. Build Your Döner</p>
+    <h2 class="big" style="font-size:clamp(2rem,4.6vw,3.8rem)">Build your <span class="grad-gold">Döner</span></h2>
+
+    <p class="step-t">STEP 1 — CHOOSE SIZE</p>
+    <div class="opts" id="sizeOpts" role="radiogroup" aria-label="Choose size">
+      <button class="opt sel" type="button" data-size="Beef Wrap" data-price="12" role="radio" aria-checked="true"><span class="sz">S</span><b>BEEF WRAP</b><span>Single wrap · the original build</span><span class="op">€12</span></button>
+      <button class="opt" type="button" data-size="Double Wrap" data-price="18" role="radio" aria-checked="false"><span class="sz">M</span><b>DOUBLE WRAP</b><span>Double meat · built for appetite</span><span class="op">€18</span></button>
+      <button class="opt" type="button" data-size="Family Platter" data-price="34" role="radio" aria-checked="false"><span class="sz">L</span><b>FAMILY PLATTER</b><span>Open platter · serves 3–4</span><span class="op">€34</span></button>
+    </div>
+
+    <p class="step-t">STEP 2 — ADD EXTRAS</p>
+    <div class="extras" id="extraOpts">
+      <button class="extra" type="button" data-extra="Jalapeño" data-price="2" aria-pressed="false"><span class="ethumb" style="background-position:2% 98%"></span><span><b>JALAPEÑO</b><span>+ €2</span></span></button>
+      <button class="extra" type="button" data-extra="Sumac Onions" data-price="2" aria-pressed="false"><span class="ethumb" style="background-position:2% 51%"></span><span><b>SUMAC ONIONS</b><span>+ €2</span></span></button>
+      <button class="extra" type="button" data-extra="Extra Garlic Yogurt" data-price="0" aria-pressed="false"><span class="ethumb" style="background-position:51% 51%"></span><span><b>EXTRA GARLIC YOGURT</b><span class="free">FREE</span></span></button>
+      <button class="extra" type="button" data-extra="Feta Crumble" data-price="2" aria-pressed="false"><span class="ethumb" style="background-position:51% 98%"></span><span><b>FETA CRUMBLE</b><span>+ €2</span></span></button>
+      <button class="extra" type="button" data-extra="Truffle Mayo" data-price="4" aria-pressed="false"><span class="ethumb" style="background-position:98% 98%"></span><span><b>TRUFFLE MAYO</b><span>+ €4</span></span></button>
+      <button class="extra" type="button" data-extra="Extra Veal" data-price="3" aria-pressed="false"><span class="ethumb" style="background-position:98% 51%"></span><span><b>EXTRA VEAL</b><span>+ €3</span></span></button>
+    </div>
+
+    <div class="build-grid">
+      <div>
+        <p class="step-t">STEP 3 — SELECT DATE</p>
+        <div class="slots" id="dateSlots" role="radiogroup" aria-label="Pickup date"></div>
+        <p class="step-t">STEP 4 — SELECT TIME</p>
+        <div class="slots" id="timeSlots" role="radiogroup" aria-label="Pickup time"></div>
+        <p style="color:var(--faint);font-size:.8rem;margin-top:22px">Pickup at the counter. Your döner is shaved when you arrive — never before.</p>
+      </div>
+      <aside class="summary" aria-label="Your build summary">
+        <div class="simg" role="img" aria-label="Your döner wrap"></div>
+        <div class="sbody">
+          <div class="sline"><span>BUILD</span><b id="sumSize">Beef Wrap</b></div>
+          <div class="sline"><span>EXTRAS</span><b id="sumExtras">None</b></div>
+          <div class="sline"><span>PICKUP</span><b id="sumWhen">Today · 13:00</b></div>
+          <div class="stotal"><span>TOTAL BUILD</span><b id="sumTotal">€12</b></div>
+        </div>
+        <button class="order-btn magnetic" id="orderBtn" type="button">ORDER YOUR DÖNER →</button>
+      </aside>
+    </div>
+  </div>
+
+  <div class="finale">
+    <p class="spec" style="justify-content:center">Order now — the specs</p>
+    <div class="big-order"><span class="mask"><span>ORDER</span></span><span class="mask"><span class="grad-gold">YOUR DÖNER</span></span></div>
+    <p class="hours">Open daily 11:00 – 22:00 · Walk-ins welcome, pre-order preferred.</p>
+  </div>
+  <div class="giant" aria-hidden="true">THE <b>DÖNER</b></div>
+  <footer>
+    <div>THE DÖNER — Slow-roasted. Sliced. Stacked.</div>
+    <div class="f-mid">Istanbul × Berlin — Fired daily</div>
+    <div><a href="#spin" data-scroll>Back to the spin ↑</a></div>
+    <div>© 2026 THE DÖNER — Demo by <a href="index.html">TANJA WEB</a></div>
+  </footer>
+</section>
+
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+/* ================= CONFIG ================= */
+const CONFIG = { whatsapp: "212693981822", brand: "THE DÖNER" };
+/* ========================================== */
+(function(){
+  "use strict";
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = window.matchMedia("(pointer: fine)").matches;
+
+  /* ---------- ORDER BUILDER (works with or without animation) ---------- */
+  const state = { size: "Beef Wrap", sizePrice: 12, extras: new Map(), date: null, time: "13:00" };
+  const fmt = n => "€" + n;
+  function recalc(){
+    let total = state.sizePrice;
+    state.extras.forEach(p => total += p);
+    document.getElementById("sumSize").textContent = state.size;
+    document.getElementById("sumExtras").textContent = state.extras.size ? [...state.extras.keys()].join(", ") : "None";
+    document.getElementById("sumWhen").textContent = (state.date || "Today") + " · " + state.time;
+    document.getElementById("sumTotal").textContent = fmt(total);
+    return total;
+  }
+  function toast(msg){
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    if (window.gsap && !reduced) {
+      gsap.killTweensOf(t);
+      gsap.fromTo(t, { xPercent: -50, y: 80, opacity: 0 },
+        { xPercent: -50, y: 0, opacity: 1, duration: .45, ease: "expo.out" });
+      gsap.to(t, { y: 80, opacity: 0, duration: .4, ease: "expo.in", delay: 2.6 });
+    } else { t.style.opacity = 1; t.style.transform = "translate(-50%,0)"; setTimeout(()=>{ t.style.opacity = 0; }, 2400); }
+  }
+  function selectSize(btn){
+    document.querySelectorAll("#sizeOpts .opt").forEach(b=>{ b.classList.remove("sel"); b.setAttribute("aria-checked","false"); });
+    btn.classList.add("sel"); btn.setAttribute("aria-checked","true");
+    state.size = btn.dataset.size; state.sizePrice = +btn.dataset.price; recalc();
+  }
+  function toggleExtra(btn, force){
+    const name = btn.dataset.extra, price = +btn.dataset.price;
+    const on = force !== undefined ? force : !state.extras.has(name);
+    if (on) state.extras.set(name, price); else state.extras.delete(name);
+    btn.classList.toggle("sel", on); btn.setAttribute("aria-pressed", on); recalc();
+  }
+  document.querySelectorAll("#sizeOpts .opt").forEach(b => b.addEventListener("click", ()=>selectSize(b)));
+  document.querySelectorAll("#extraOpts .extra").forEach(b => b.addEventListener("click", ()=>toggleExtra(b)));
+  const PRESETS = {
+    classic: { size: "Beef Wrap", extras: [] },
+    spicy:   { size: "Beef Wrap", extras: ["Jalapeño"] },
+    bold:    { size: "Beef Wrap", extras: ["Truffle Mayo"] }
+  };
+  document.querySelectorAll("[data-preset]").forEach(btn => btn.addEventListener("click", ()=>{
+    const p = PRESETS[btn.dataset.preset]; if (!p) return;
+    document.querySelectorAll("#sizeOpts .opt").forEach(b => { if (b.dataset.size === p.size) selectSize(b); });
+    document.querySelectorAll("#extraOpts .extra").forEach(b => toggleExtra(b, p.extras.includes(b.dataset.extra)));
+    const name = btn.closest(".dish").querySelector("h3").textContent;
+    toast(name + " added — " + fmt(recalc()) + ". Finish your build below ↓");
+    const target = document.getElementById("builder");
+    if (window.__lenis) window.__lenis.scrollTo(target, { offset: -70, duration: 1.3 });
+    else target.scrollIntoView({ behavior: "smooth" });
+  }));
+  // pickup dates: today + next 3 days
+  const dateWrap = document.getElementById("dateSlots");
+  const days = ["SUN","MON","TUE","WED","THU","FRI","SAT"], months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+  for (let i = 0; i < 4; i++){
+    const d = new Date(); d.setDate(d.getDate() + i);
+    const label = (i === 0 ? "TODAY" : days[d.getDay()]) + " " + d.getDate() + " " + months[d.getMonth()];
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "slot" + (i === 0 ? " sel" : ""); b.textContent = label; b.dataset.label = label;
+    if (i === 0) state.date = label;
+    b.addEventListener("click", ()=>{ dateWrap.querySelectorAll(".slot").forEach(s=>s.classList.remove("sel")); b.classList.add("sel"); state.date = label; recalc(); });
+    dateWrap.appendChild(b);
+  }
+  const timeWrap = document.getElementById("timeSlots");
+  ["12:00","12:30","13:00","13:30","14:00","18:00","19:00","20:30"].forEach(tm=>{
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "slot" + (tm === state.time ? " sel" : ""); b.textContent = tm;
+    b.addEventListener("click", ()=>{ timeWrap.querySelectorAll(".slot").forEach(s=>s.classList.remove("sel")); b.classList.add("sel"); state.time = tm; recalc(); });
+    timeWrap.appendChild(b);
+  });
+  recalc();
+  document.getElementById("orderBtn").addEventListener("click", ()=>{
+    const total = recalc();
+    const extras = state.extras.size ? [...state.extras.keys()].join(", ") : "no extras";
+    const msg = CONFIG.brand + " — Order: " + state.size + " (" + extras + ") · Total " + fmt(total) +
+      " · Pickup: " + (state.date || "Today") + " " + state.time;
+    window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
+  });
+
+  /* ---------- ANIMATION LAYER ---------- */
+  const pre = document.getElementById("preloader");
+  if (reduced || !window.gsap) { if (pre) pre.style.display = "none"; return; }
+  gsap.registerPlugin(ScrollTrigger);
+
+  let lenis = null;
+  if (window.Lenis) {
+    lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+    window.__lenis = lenis;
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+  document.querySelectorAll("[data-scroll]").forEach(a => a.addEventListener("click", e=>{
+    const id = a.getAttribute("href");
+    if (id && id.startsWith("#")) { e.preventDefault(); const el = document.querySelector(id);
+      if (el) lenis ? lenis.scrollTo(el, { duration: 1.4 }) : el.scrollIntoView({ behavior: "smooth" }); }
+  }));
+
+  gsap.to("#progress", { scaleX: 1, ease: "none",
+    scrollTrigger: { trigger: document.body, start: "top top", end: "bottom bottom", scrub: .3 } });
+  document.querySelectorAll(".scene").forEach(sec => ScrollTrigger.create({
+    trigger: sec, start: "top 55%", end: "bottom 55%",
+    onToggle: s => { if (s.isActive) { document.getElementById("chNow").textContent = sec.dataset.chapter;
+      document.getElementById("chName").textContent = sec.dataset.name; } }
+  }));
+
+  // glow cursor
+  if (fine) {
+    const glow = document.querySelector(".cursor-glow");
+    const gx = gsap.quickTo(glow, "x", { duration: .9, ease: "expo.out" });
+    const gy = gsap.quickTo(glow, "y", { duration: .9, ease: "expo.out" });
+    window.addEventListener("mousemove", e => { gsap.to(glow, { opacity: 1, duration: .5, overwrite: "auto" }); gx(e.clientX); gy(e.clientY); });
+    document.querySelectorAll(".magnetic").forEach(el=>{
+      el.addEventListener("mousemove", e=>{ const r = el.getBoundingClientRect();
+        gsap.to(el, { x: (e.clientX - r.left - r.width/2)*.25, y: (e.clientY - r.top - r.height/2)*.25, duration: .6, ease: "expo.out" }); });
+      el.addEventListener("mouseleave", ()=> gsap.to(el, { x:0, y:0, duration:.7, ease:"elastic.out(1,.45)" }));
+    });
+  }
+
+  // preloader + hero intro
+  const heroTl = gsap.timeline({ paused: true });
+  heroTl.from("#spin .mega .mask > span", { yPercent: 115, duration: 1.05, ease: "expo.out", stagger: .12 })
+    .from(".hero-top, .hero-temp", { opacity: 0, y: -14, duration: .7, ease: "expo.out" }, "-=.6")
+    .from(".hero-row, #spin .spec", { opacity: 0, y: 18, duration: .8, ease: "expo.out" }, "-=.5")
+    .from("#heroImg", { scale: 1.12, duration: 1.8, ease: "sine.out" }, 0);
+  let preDone = false;
+  function finishPre(){
+    if (preDone) return; preDone = true;
+    gsap.timeline().to(pre, { yPercent: -100, duration: .9, ease: "expo.inOut" })
+      .set(pre, { display: "none" }).add(()=>heroTl.play(), "-=.45");
+  }
+  const cnt = { v: 0 };
+  const cntTween = gsap.to(cnt, { v: 100, duration: 1.25, ease: "power2.inOut",
+    onUpdate(){ const n = Math.round(cnt.v); document.getElementById("plCount").textContent = n;
+      document.getElementById("plBar").style.transform = "scaleX(" + n/100 + ")"; },
+    onComplete: finishPre });
+  document.getElementById("skipIntro").addEventListener("click", ()=>{ cntTween.kill(); finishPre(); });
+  setTimeout(finishPre, 4000);
+
+  // hero parallax out
+  gsap.to("#heroImg", { yPercent: 10, ease: "none",
+    scrollTrigger: { trigger: "#spin", start: "top top", end: "bottom top", scrub: .6 } });
+
+  // 02 DIVE — pinned zoom + temperature scrub
+  const tempObj = { v: 20 };
+  const tempNum = document.getElementById("tempNum"), tempLabel = document.getElementById("tempLabel");
+  const LABELS = [[20,"AMBIENT — THE SPIT AT REST"],[90,"WARMING — FAT RENDERS"],[160,"SEAR ZONE — MAILLARD ACTIVE"],[220,"CORE TEMP — 220°C · READY TO SLICE"]];
+  gsap.timeline({ scrollTrigger: { trigger: "#dive", start: "top top", end: "+=160%", pin: true, scrub: .6,
+      onUpdate(self){
+        const p = self.progress;
+        tempObj.v = Math.round(20 + p * 200);
+        tempNum.textContent = tempObj.v;
+        let lab = LABELS[0][1]; LABELS.forEach(L => { if (tempObj.v >= L[0]) lab = L[1]; });
+        tempLabel.textContent = lab;
+        document.querySelectorAll(".dive-calls .call").forEach((c, i)=> c.classList.toggle("on", p > .18 + i * .2));
+      } } })
+    .fromTo("#diveImg", { scale: 1.02 }, { scale: 1.5, xPercent: -6, duration: 1, ease: "none" }, 0)
+    .from(".dive-ui .spec, .dive-note", { opacity: 0, y: 24, duration: .3, stagger: .05 }, 0);
+
+  // 03 REVEAL — parallax + title
+  gsap.fromTo("#revealImg", { yPercent: -8 }, { yPercent: 2, ease: "none",
+    scrollTrigger: { trigger: "#reveal", start: "top bottom", end: "bottom top", scrub: .6 } });
+  gsap.from("#reveal .big .mask > span", { yPercent: 115, duration: 1, ease: "expo.out", stagger: .12,
+    scrollTrigger: { trigger: "#reveal", start: "top 55%" } });
+  gsap.from("#reveal .flag", { opacity: 0, y: 26, duration: .8, ease: "expo.out", stagger: .12,
+    scrollTrigger: { trigger: "#reveal", start: "top 45%" } });
+
+  // 04 LAYERS — horizontal sweep
+  const track = document.getElementById("sweepTrack");
+  const dist = () => Math.max(0, track.scrollWidth - window.innerWidth + window.innerWidth * .05);
+  gsap.set(".lpanel", { y: 56, opacity: 0, filter: "blur(7px)" });
+  gsap.timeline({ scrollTrigger: { trigger: "#layers", start: "top top", end: "+=170%", pin: true, scrub: .6 } })
+    .from("#layers .layers-head", { opacity: 0, x: -50, duration: .3, ease: "expo.out" }, 0)
+    .to(".lpanel", { y: 0, opacity: 1, filter: "blur(0px)", duration: .4, ease: "expo.out", stagger: .06 }, .05)
+    .to(track, { x: () => -dist(), duration: 1, ease: "none" }, .3);
+
+  // 05 CRAFT — counters
+  document.querySelectorAll("[data-count]").forEach(el=>{
+    const end = +el.dataset.count, o = { v: 0 };
+    ScrollTrigger.create({ trigger: el, start: "top 82%", once: true,
+      onEnter(){ gsap.to(o, { v: end, duration: 1.4, ease: "expo.out", onUpdate(){ el.textContent = Math.round(o.v); } }); } });
+  });
+  gsap.from(".roast-split", { opacity: 0, y: 60, duration: 1, ease: "expo.out",
+    scrollTrigger: { trigger: ".roast-split", start: "top 78%" } });
+
+  // 06 STORY — stack
+  const panels = gsap.utils.toArray(".story-panel");
+  panels.forEach((p, i)=> gsap.set(p, { y: i * 26, scale: 1 - i * .045, opacity: i === 0 ? 1 : .55, zIndex: 10 - i }));
+  const st = gsap.timeline({ scrollTrigger: { trigger: "#story", start: "top top", end: "+=200%", pin: true, scrub: .6 } });
+  for (let i = 0; i < panels.length - 1; i++){
+    st.to(panels[i], { y: -90, scale: 1.05, opacity: 0, filter: "blur(5px)", duration: 1, ease: "power2.inOut" })
+      .to(panels[i+1], { y: 0, scale: 1, opacity: 1, duration: 1, ease: "power2.inOut" }, "<.15");
+    if (panels[i+2]) st.to(panels[i+2], { y: 26, scale: .955, opacity: .55, duration: 1 }, "<");
+  }
+  st.to({}, { duration: .4 });
+
+  // 07 ORDER — reveals + finale
+  gsap.from(".dish", { opacity: 0, y: 50, duration: .9, ease: "expo.out", stagger: .12,
+    scrollTrigger: { trigger: ".lineup", start: "top 78%" } });
+  gsap.from(".builder", { opacity: 0, y: 60, duration: 1, ease: "expo.out",
+    scrollTrigger: { trigger: ".builder", start: "top 82%" } });
+  gsap.from(".finale .big-order .mask > span", { yPercent: 115, duration: 1, ease: "expo.out", stagger: .12,
+    scrollTrigger: { trigger: ".finale", start: "top 70%" } });
+  gsap.from(".giant", { yPercent: 30, opacity: 0, duration: 1.1, ease: "expo.out",
+    scrollTrigger: { trigger: ".giant", start: "top 92%" } });
+
+  window.addEventListener("load", ()=> ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
