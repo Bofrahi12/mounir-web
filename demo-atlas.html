@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATLAS ENERGY — L'énergie qui te révèle | Démo Tanja Web</title>
+<meta name="description" content="Site produit immersif style 2026 : canettes flottantes, film 3D piloté par le scroll, collage surréaliste. Démo Tanja Web — Tanger.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Playfair+Display:ital,wght@0,500;1,400;1,600&family=Space+Mono:wght@400;700&family=Cairo:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#050508; --ink:#0b0b10; --blue:#0a4dff; --blue2:#020b2a; --cyan:#35d3ff;
+  --red:#e8222d; --paper:#f4efe6; --sky:#1293e8; --gold:#ffd76a;
+  --disp:'Archivo',sans-serif; --serif:'Playfair Display',serif; --mono:'Space Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--dark);color:#fff;font-family:var(--disp);overflow-x:hidden;cursor:none}
+@media(hover:none){body{cursor:auto}}
+::selection{background:var(--red);color:#fff}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ---------- grain + vignette ---------- */
+.grain{position:fixed;inset:-100px;z-index:200;pointer-events:none;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  animation:grain 7s steps(8) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}25%{transform:translate(-30px,20px)}50%{transform:translate(20px,-25px)}75%{transform:translate(-15px,-10px)}}
+.vig{position:fixed;inset:0;z-index:199;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.42) 100%)}
+
+/* ---------- preloader ---------- */
+#loader{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center}
+#loader .panel{position:absolute;left:0;width:100%;height:50.5%;background:#07070b;transition:transform 1s cubic-bezier(.76,0,.24,1)}
+#loader .p-top{top:0}#loader .p-bot{bottom:0}
+#loader.done .p-top{transform:translateY(-101%)}
+#loader.done .p-bot{transform:translateY(101%)}
+#loader .core{position:relative;z-index:2;text-align:center;transition:opacity .4s}
+#loader.done .core{opacity:0}
+#loader .l-logo{font-weight:900;font-size:clamp(28px,5vw,54px);letter-spacing:.06em}
+#loader .l-logo span{color:var(--red)}
+#loader .l-count{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(60px,12vw,130px);line-height:1;color:#fff}
+#loader .l-bar{width:min(320px,60vw);height:2px;background:#ffffff22;margin:18px auto 0}
+#loader .l-fill{height:100%;width:0%;background:var(--cyan)}
+#loader .l-tag{font-family:var(--mono);font-size:10px;letter-spacing:.35em;color:#ffffff88;margin-top:12px}
+
+/* ---------- cursor ---------- */
+.cur-dot,.cur-ring{position:fixed;top:0;left:0;z-index:500;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%)}
+.cur-dot{width:8px;height:8px;background:#fff;mix-blend-mode:difference}
+.cur-ring{width:38px;height:38px;border:1.5px solid #fff;mix-blend-mode:difference;display:flex;align-items:center;justify-content:center;transition:width .3s,height .3s,background .3s}
+.cur-ring span{font-family:var(--mono);font-size:8px;letter-spacing:.2em;opacity:0;color:#000;transition:opacity .2s}
+.cur-ring.big{width:82px;height:82px;background:#fff}
+.cur-ring.big span{opacity:1}
+@media(hover:none){.cur-dot,.cur-ring{display:none}}
+
+/* ---------- fixed chrome ---------- */
+.chrome{position:fixed;z-index:300;mix-blend-mode:difference;color:#fff}
+.hd-l{top:22px;left:26px;font-weight:900;font-size:20px;letter-spacing:.05em}
+.hd-l i{color:var(--red);font-style:normal}
+.hd-r{top:20px;right:26px;font-family:var(--mono);font-size:11px;letter-spacing:.25em;border:1.5px solid #fff;border-radius:99px;padding:9px 18px}
+.rail{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:300;display:flex;flex-direction:column;gap:12px;mix-blend-mode:difference}
+.rail a{width:38px;height:38px;border:1.5px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff}
+.rail svg{width:16px;height:16px;fill:#fff}
+@media(max-width:768px){.rail{display:none}}
+.prog{position:fixed;left:0;top:0;width:3px;height:100vh;z-index:300;background:#ffffff14}
+.prog i{display:block;width:100%;height:0%;background:linear-gradient(var(--cyan),var(--blue),var(--red))}
+.chap{position:fixed;left:26px;bottom:22px;z-index:300;font-family:var(--mono);font-size:12px;letter-spacing:.3em;mix-blend-mode:difference;color:#fff}
+.chap b{font-size:20px}
+.demopill{position:fixed;bottom:20px;right:20px;z-index:290;background:rgba(10,10,16,.72);backdrop-filter:blur(8px);border:1px solid #ffffff2a;border-radius:99px;padding:8px 16px;font-family:'Cairo',sans-serif;font-size:12.5px;font-weight:600;color:#e8ecf4}
+.demopill a{color:var(--gold);font-weight:800}
+@media(max-width:768px){.demopill{right:50%;transform:translateX(50%);white-space:nowrap}}
+
+/* ---------- generic ---------- */
+section{position:relative}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+.ghost{position:absolute;font-weight:900;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.16);line-height:.85;pointer-events:none;white-space:nowrap;user-select:none}
+.btn{display:inline-flex;align-items:center;gap:10px;background:#0b0b10;color:#fff;font-weight:800;font-size:14px;letter-spacing:.08em;padding:16px 30px;border-radius:99px;border:1.5px solid #0b0b10;transition:.3s;text-transform:uppercase}
+.btn:hover{background:var(--red);border-color:var(--red);color:#fff}
+.btn.light{background:#fff;color:#0b0b10;border-color:#fff}
+.btn.light:hover{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ---------- cans ---------- */
+.can{position:relative;flex:none;border-radius:15px 15px 19px 19px;
+  background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,0) 20%,rgba(255,255,255,.38) 40%,rgba(255,255,255,0) 58%,rgba(0,0,0,.6)),linear-gradient(180deg,var(--c1),var(--c2));
+  box-shadow:inset 0 -20px 26px rgba(0,0,0,.55),inset 0 12px 16px rgba(255,255,255,.14),0 34px 44px rgba(0,0,0,.55)}
+.can::before,.can::after{content:"";position:absolute;left:6%;right:6%;height:13px;border-radius:50%;
+  background:radial-gradient(ellipse at 50% 38%,#f2f5f8,#9aa5b1 58%,#59636f)}
+.can::before{top:-6px}.can::after{bottom:-6px}
+.can b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);
+  font-weight:900;color:#fff;letter-spacing:.03em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.can em{position:absolute;left:0;right:0;bottom:13%;text-align:center;font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.42em;color:rgba(255,255,255,.85)}
+
+/* ---------- S1 lineup ---------- */
+#s1{min-height:100vh;overflow:hidden;background:radial-gradient(900px 480px at 50% 108%,rgba(38,224,190,.34),transparent 62%),radial-gradient(1200px 700px at 50% -10%,#1a1a26,#050508 65%)}
+#s1 .ghost{font-size:31vw;top:6%;left:50%;transform:translateX(-50%)}
+.lamp{position:absolute;top:4.5%;left:50%;transform:translateX(-50%);text-align:center;z-index:3}
+.lamp .dome{width:118px;height:26px;margin:0 auto;border-radius:50%;background:radial-gradient(ellipse at 50% 30%,#fdfdff,#aeb8c4 55%,#4c5563);box-shadow:0 0 44px 10px rgba(255,255,255,.28)}
+.lamp .cone{width:340px;height:300px;margin:-4px auto 0;background:linear-gradient(rgba(255,255,240,.17),rgba(255,255,240,0) 78%);clip-path:polygon(44% 0,56% 0,100% 100%,0 100%)}
+.lamp .lbrand{font-family:var(--mono);font-size:10px;letter-spacing:.4em;color:#ffffffb0;margin-bottom:10px}
+.arc{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:clamp(10px,2.6vw,42px);z-index:2}
+.arc .can{width:clamp(52px,7.2vw,94px);height:clamp(138px,19vw,242px)}
+.arc .can b{font-size:clamp(24px,3.4vw,45px)}
+.arc .can.hero{width:clamp(70px,9.6vw,124px);height:clamp(184px,25vw,316px);z-index:4}
+.arc .can.hero b{font-size:clamp(32px,4.6vw,60px)}
+.arc .can:nth-child(1){transform:rotate(-14deg) translateY(30px)}
+.arc .can:nth-child(2){transform:rotate(-8deg) translateY(10px)}
+.arc .can:nth-child(3){transform:rotate(-3.5deg)}
+.arc .can:nth-child(5){transform:rotate(3.5deg)}
+.arc .can:nth-child(6){transform:rotate(8deg) translateY(10px)}
+.arc .can:nth-child(7){transform:rotate(14deg) translateY(30px)}
+.floaty{animation:lev var(--fd,4s) ease-in-out var(--dl,0s) infinite}
+@keyframes lev{0%,100%{margin-top:0}50%{margin-top:-16px}}
+.s1-copy{position:absolute;left:5vw;bottom:7vh;z-index:5;max-width:430px}
+.s1-copy h1{font-size:clamp(30px,4.6vw,58px);font-weight:900;line-height:.98;text-transform:uppercase}
+.s1-copy h1 span{color:var(--cyan)}
+.s1-copy p{margin-top:12px;color:#cfd4e2;font-size:15px;line-height:1.55;max-width:340px}
+.scrollhint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:5;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.4em;color:#ffffff90}
+.scrollhint::after{content:"";display:block;width:1.5px;height:44px;margin:9px auto 0;background:linear-gradient(#fff,transparent);animation:drop 1.8s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:768px){.s1-copy{left:6vw;bottom:11vh}.lamp .cone{display:none}}
+
+/* ---------- S2 film ---------- */
+#film{height:420vh}
+.film-sticky{position:sticky;top:0;height:100vh;overflow:hidden;background:radial-gradient(1000px 640px at 50% 46%,#2f7bff 0%,var(--blue) 42%,var(--blue2) 100%)}
+.film-sticky .ghost{font-size:23vw;top:34%;left:0;-webkit-text-stroke-color:rgba(255,255,255,.22)}
+.bigcan{position:absolute;left:50%;top:50%;width:clamp(128px,17vw,208px);height:clamp(330px,44vw,536px);transform:translate(-50%,-50%);z-index:3}
+.bigcan .texwrap{position:absolute;inset:0;border-radius:24px 24px 30px 30px;overflow:hidden;
+  background:linear-gradient(180deg,#101018,#05050a);
+  box-shadow:inset 0 -30px 40px rgba(0,0,0,.6),0 50px 80px rgba(0,0,20,.5)}
+.bigcan .tex{display:flex;width:300%;height:100%;will-change:transform}
+.bigcan .pane{width:33.333%;height:100%;position:relative;flex:none}
+.bigcan .pane b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);font-weight:900;font-size:clamp(52px,7.4vw,88px);color:#fff;letter-spacing:.02em}
+.bigcan .pane i{position:absolute;left:0;right:0;bottom:9%;text-align:center;font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.4em;color:var(--cyan)}
+.bigcan .pane u{position:absolute;top:7%;left:0;right:0;text-align:center;text-decoration:none;font-family:var(--mono);font-size:9px;letter-spacing:.34em;color:rgba(255,255,255,.75)}
+.bigcan .shade{position:absolute;inset:0;border-radius:24px 24px 30px 30px;pointer-events:none;z-index:2;
+  background:linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,0) 22%,rgba(255,255,255,.34) 42%,rgba(255,255,255,0) 60%,rgba(0,0,0,.66))}
+.bigcan::before,.bigcan::after{content:"";position:absolute;left:6%;right:6%;height:20px;border-radius:50%;z-index:3;background:radial-gradient(ellipse at 50% 38%,#f2f5f8,#9aa5b1 58%,#59636f)}
+.bigcan::before{top:-9px}.bigcan::after{bottom:-9px}
+.chapbox{position:absolute;left:5vw;bottom:9vh;z-index:4;max-width:480px}
+.fchap{position:absolute;left:0;bottom:0;width:min(480px,86vw);opacity:0;transform:translateY(26px)}
+.fchap .chip{display:inline-block;background:var(--cyan);color:#03263a;font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.22em;padding:7px 13px;border-radius:6px;margin-bottom:16px}
+.fchap h3{font-size:clamp(27px,3.9vw,50px);font-weight:900;line-height:1.02;text-transform:uppercase}
+.fchap p{margin-top:13px;font-size:15.5px;line-height:1.6;color:#dbe7ff;max-width:400px}
+.fprog{position:absolute;right:5vw;bottom:9vh;z-index:4;font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:#ffffffa8;text-align:right}
+.fprog b{display:block;font-size:30px;color:#fff;margin-top:6px;letter-spacing:.05em}
+@media(max-width:768px){.fprog{display:none}.chapbox{bottom:6vh}}
+</style>
+</head>
+<style>
+/* ---------- S3 pear ---------- */
+#pear{min-height:100vh;overflow:hidden;background:var(--sky)}
+#pear .pimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.14);will-change:transform}
+#pear .pveil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,60,110,.38),transparent 55%)}
+.pear-copy{position:absolute;left:5vw;top:16vh;z-index:3;max-width:620px;color:#fff}
+.pear-copy .label{color:#dff2ff}
+.pear-copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(38px,6.4vw,86px);line-height:1.04;margin:16px 0 18px;text-shadow:0 4px 34px rgba(0,40,80,.35)}
+.pear-copy h2 .w{display:inline-block;overflow:hidden;vertical-align:top}
+.pear-copy h2 .w i{display:inline-block;font-style:normal}
+.pear-copy p{font-size:16.5px;line-height:1.6;max-width:400px;color:#eaf6ff;text-shadow:0 2px 16px rgba(0,40,80,.4)}
+.pear-copy .btn{margin-top:26px}
+@media(max-width:768px){.pear-copy{top:10vh}}
+
+/* ---------- S4 craft ---------- */
+#craft{height:260vh}
+.craft-sticky{position:sticky;top:0;height:100vh;overflow:hidden;background:#04070d}
+.craft-sticky img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.02);will-change:transform;opacity:.92}
+.craft-sticky .cveil{position:absolute;inset:0;background:radial-gradient(760px 480px at 50% 55%,transparent,rgba(2,6,14,.66) 88%)}
+.cline{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(880px,90vw);text-align:center;z-index:3;opacity:0;filter:blur(10px)}
+.cline .label{color:var(--cyan)}
+.cline h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,5.2vw,66px);line-height:1.16;margin-top:16px;text-shadow:0 6px 40px rgba(0,0,0,.8)}
+.cline h2 em{color:var(--gold)}
+
+/* ---------- S5 system ---------- */
+#system{background:var(--paper);color:var(--ink);padding:120px 5vw 110px;overflow:hidden}
+#system .label{color:#8a6d1f}
+#system h2{font-family:var(--serif);font-weight:500;font-size:clamp(34px,5.4vw,68px);line-height:1.1;margin:16px 0 8px;max-width:820px}
+#system h2 em{color:var(--red)}
+.diagram{display:flex;gap:6vw;align-items:center;margin:52px 0 60px;flex-wrap:wrap}
+.diagram svg{width:min(430px,86vw);height:auto;flex:none}
+.diagram svg .draw{fill:none;stroke:var(--ink);stroke-width:1.6}
+.diagram svg .draw.red{stroke:var(--red)}
+.diagram svg text{font-family:var(--mono);font-size:11px;letter-spacing:.14em;fill:var(--ink)}
+.dnotes{flex:1;min-width:270px}
+.dnote{display:flex;gap:18px;padding:20px 0;border-top:1.5px solid #0b0b1026}
+.dnote:last-child{border-bottom:1.5px solid #0b0b1026}
+.dnote b{font-family:var(--mono);font-size:13px;color:var(--red);padding-top:3px}
+.dnote h4{font-size:19px;font-weight:800;margin-bottom:5px}
+.dnote p{color:#3c414d;font-size:15px;line-height:1.6}
+.benefits{border-top:2.5px solid var(--ink)}
+.brow{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:30px 6px;border-bottom:1.5px solid #0b0b1026;transition:.35s;cursor:pointer}
+.brow:hover{background:#0b0b10;color:var(--paper);padding-left:22px;padding-right:22px}
+.brow h3{font-size:clamp(21px,3.2vw,38px);font-weight:900;text-transform:uppercase}
+.brow p{font-family:var(--mono);font-size:12px;letter-spacing:.16em;opacity:.75;text-align:right}
+.brow .arr{font-size:26px;transition:.35s}
+.brow:hover .arr{transform:translateX(8px) rotate(-38deg);color:var(--gold)}
+
+/* ---------- S6 faq ---------- */
+#faq{background:#07070c;padding:130px 5vw 120px;overflow:hidden}
+#faq .ghost{font-size:17vw;top:26px;right:-2vw;left:auto}
+.faq-title{font-size:clamp(46px,10.6vw,148px);font-weight:900;line-height:.92;text-transform:uppercase;position:relative;z-index:2}
+.faq-title span{display:block}
+.faq-title .thin{color:transparent;-webkit-text-stroke:2px #fff}
+.faq-list{margin-top:70px;border-top:1.5px solid #ffffff2e;position:relative;z-index:2}
+.fitem{border-bottom:1.5px solid #ffffff2e}
+.fq{width:100%;background:none;border:0;color:#fff;display:flex;align-items:center;gap:22px;padding:30px 4px;cursor:pointer;text-align:left;font-family:var(--disp)}
+.fq .n{font-family:var(--mono);font-size:13px;color:var(--cyan)}
+.fq h3{flex:1;font-size:clamp(19px,2.7vw,32px);font-weight:800}
+.fq .minican{width:24px;height:60px;border-radius:5px;flex:none;background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(255,255,255,.3) 45%,rgba(0,0,0,.5)),linear-gradient(var(--red),#7d0d15);transition:transform .6s cubic-bezier(.34,1.4,.4,1)}
+.fitem.open .minican{transform:rotate(24deg) translateY(-6px)}
+.fq .plus{font-size:30px;font-weight:400;transition:.4s;color:#ffffffb0}
+.fitem.open .plus{transform:rotate(45deg);color:var(--red)}
+.fa{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.76,0,.24,1)}
+.fa p{padding:0 4px 32px 40px;color:#c6cbda;font-size:15.5px;line-height:1.65;max-width:720px}
+
+/* ---------- S7 finale + footer ---------- */
+#finale{min-height:100vh;overflow:hidden;background:#062a52}
+#finale .fimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+#finale .fveil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,26,52,.55),rgba(3,16,36,.88))}
+#stars{position:absolute;inset:0;z-index:2}
+.fin-copy{position:relative;z-index:3;text-align:center;padding:22vh 6vw 16vh}
+.fin-copy .label{color:#bfe3ff}
+.fin-copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(38px,6.8vw,92px);line-height:1.05;margin:18px auto 20px;max-width:900px}
+.fin-copy h2 em{color:var(--gold)}
+.fin-copy p{color:#d7e9fa;font-size:16.5px;max-width:520px;margin:0 auto 32px;line-height:1.65}
+footer{background:#040409;padding:70px 5vw 0;overflow:hidden;position:relative}
+.ft-top{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;padding-bottom:44px}
+.ft-top .label{color:#ffffff70}
+.ft-top nav{display:flex;gap:26px;font-family:var(--mono);font-size:12px;letter-spacing:.18em}
+.ft-top nav a{opacity:.8}.ft-top nav a:hover{opacity:1;color:var(--cyan)}
+.ft-brand{font-weight:900;font-size:19.4vw;line-height:.78;text-align:center;letter-spacing:-.01em;color:#fff;transform:translateY(16%);user-select:none}
+.ft-credit{text-align:center;font-family:'Cairo',sans-serif;font-size:13px;color:#9aa4b8;padding:14px 0 20px;position:relative;z-index:2;background:#040409}
+.ft-credit a{color:var(--gold);font-weight:800}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="panel p-top"></div><div class="panel p-bot"></div>
+  <div class="core">
+    <div class="l-logo">ATLAS<span>⚡</span>ENERGY</div>
+    <div class="l-count" id="lcount">0</div>
+    <div class="l-bar"><div class="l-fill" id="lfill"></div></div>
+    <div class="l-tag">CHARGEMENT DE L'EXPÉRIENCE</div>
+  </div>
+</div>
+
+<div class="grain"></div><div class="vig"></div>
+<div class="cur-dot" id="cdot"></div>
+<div class="cur-ring" id="cring"><span>SCROLL</span></div>
+
+<header class="chrome hd-l"><a href="#s1">ATLAS<i>⚡</i></a></header>
+<div class="chrome hd-r">MENU</div>
+<nav class="rail" aria-label="Réseaux sociaux">
+  <a href="#" aria-label="Instagram" data-cur="VIEW"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.4a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
+  <a href="#" aria-label="X" data-cur="VIEW"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23.3 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L2.7 2h6.4l4.4 5.9L18.9 2zm-1.1 18h1.7L7.1 3.9H5.3L17.8 20z"/></svg></a>
+  <a href="https://wa.me/212693981822?text=Bonjour%20ATLAS%20ENERGY%2C%20je%20veux%20commander" target="_blank" rel="noopener" aria-label="WhatsApp" data-cur="GO"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg></a>
+</nav>
+<div class="prog"><i id="progfill"></i></div>
+<div class="chap"><b id="chapnum">01</b> / 06</div>
+<div class="demopill">نموذج تجريبي خيالي من <a href="portfolio.html">طنجة ويب</a> — بغيتي بحالو لماركتك؟ <a href="https://wa.me/212693981822?text=بغيت%20موقع%20بحال%20ديمو%20ATLAS" target="_blank" rel="noopener">كلّمني واتساب</a></div>
+
+<!-- ================= S1 · LINE-UP ================= -->
+<section id="s1" data-chap="01">
+  <div class="ghost" aria-hidden="true">ATLAS</div>
+  <div class="lamp" aria-hidden="true"><div class="lbrand">ATLAS ENERGY</div><div class="dome"></div><div class="cone"></div></div>
+  <div class="arc" id="arc">
+    <div class="can floaty" style="--c1:#23232e;--c2:#060609;--fd:4.6s"><b>ATLAS</b><em>ZERO</em></div>
+    <div class="can floaty" style="--c1:#0d2f8f;--c2:#04103a;--fd:3.8s;--dl:.4s"><b>ATLAS</b><em>BLUE</em></div>
+    <div class="can floaty" style="--c1:#0d3a26;--c2:#03130a;--fd:4.2s;--dl:.8s"><b>ATLAS</b><em>MENTHE</em></div>
+    <div class="can hero floaty" style="--c1:#ff3b47;--c2:#8f0f18;--fd:3.4s;--dl:.2s"><b>ATLAS</b><em>ORIGINAL</em></div>
+    <div class="can floaty" style="--c1:#5c1150;--c2:#17041c;--fd:4.4s;--dl:1s"><b>ATLAS</b><em>BERRY</em></div>
+    <div class="can floaty" style="--c1:#571d26;--c2:#12040a;--fd:3.9s;--dl:.6s"><b>ATLAS</b><em>NOIR</em></div>
+    <div class="can floaty" style="--c1:#2c313d;--c2:#0a0c11;--fd:4.8s;--dl:1.2s"><b>ATLAS</b><em>ICE</em></div>
+  </div>
+  <div class="s1-copy">
+    <div class="label" style="color:var(--cyan)">Boisson énergisante — Maroc</div>
+    <h1>L'énergie<br>qui <span>monte.</span></h1>
+    <p>Sept caractères, une seule promesse : une caféine née du grain de café, sans sucre ajouté. Fais défiler — le film commence.</p>
+  </div>
+  <div class="scrollhint">SCROLL</div>
+</section>
+
+<!-- ================= S2 · FILM 360° ================= -->
+<section id="film" data-chap="02">
+  <div class="film-sticky">
+    <div class="ghost" id="filmghost" aria-hidden="true">ÉNERGIE — ÉNERGIE — ÉNERGIE</div>
+    <div class="bigcan" id="bigcan" aria-hidden="true">
+      <div class="texwrap"><div class="tex" id="bigtex">
+        <div class="pane"><u>ATLAS ENERGY</u><b>ATLAS</b><i>CAFÉINE NATURELLE</i></div>
+        <div class="pane"><u>ATLAS ENERGY</u><b>ATLAS</b><i>ZÉRO SUCRE · STEVIA</i></div>
+        <div class="pane"><u>ATLAS ENERGY</u><b>ATLAS</b><i>VITAMINES B3 · B6 · B12</i></div>
+      </div></div>
+      <div class="shade"></div>
+    </div>
+    <div class="chapbox">
+      <div class="fchap"><span class="chip">01 · L'ORIGINE</span><h3>Caféine issue de grains de café</h3><p>Pour l'énergie, on a choisi des grains de café — source naturelle de caféine, concentrée par du guarana lui aussi naturel.</p></div>
+      <div class="fchap"><span class="chip">02 · LA DOUCEUR</span><h3>Zéro sucre, vraie douceur</h3><p>Sucrée à la stevia, jamais au sucre raffiné. Le goût franc d'une energy drink, sans le crash qui suit.</p></div>
+      <div class="fchap"><span class="chip">03 · L'ALLIÉ</span><h3>Les vitamines du groupe B</h3><p>B3, B6 et B12 pour accompagner ton métabolisme énergétique — du matin intense à la nuit de révision.</p></div>
+    </div>
+    <div class="fprog">LE FILM<b id="fpct">0%</b></div>
+  </div>
+</section>
+
+<!-- ================= S3 · PEAR / APPARAÎTRE ================= -->
+<section id="pear" data-chap="03">
+  <img class="pimg" id="pearimg" src="demo-atlas/pear.webp" alt="Collage surréaliste : une figure classique sur un piédestal tient une lumière, une foule de l'époque Renaissance la regarde, ciel bleu vif">
+  <div class="pveil"></div>
+  <div class="pear-copy">
+    <div class="label">Le manifeste</div>
+    <h2 id="pearh">Atlas makes you appear.</h2>
+    <p>Certaines boissons se boivent. ATLAS se remarque — dans la salle, au bureau, sur le terrain. Une présence avant même la première gorgée.</p>
+    <a class="btn" href="https://wa.me/212693981822?text=Bonjour%20ATLAS%20ENERGY%2C%20je%20veux%20commander" target="_blank" rel="noopener" data-cur="GO">Commander — WhatsApp</a>
+  </div>
+</section>
+
+<!-- ================= S4 · CRAFT ================= -->
+<section id="craft" data-chap="04">
+  <div class="craft-sticky">
+    <img id="craftimg" src="demo-atlas/craft.webp" alt="Des mains torréfient des grains de café dans une poêle, vapeur et lumière bleue cinématographique">
+    <div class="cveil"></div>
+    <div class="cline"><div class="label">L'origine</div><h2>Tout commence par <em>un grain.</em></h2></div>
+    <div class="cline"><div class="label">Le geste</div><h2>Torréfié lentement,<br>comme <em>depuis toujours.</em></h2></div>
+    <div class="cline"><div class="label">La promesse</div><h2>Une énergie <em>propre,</em><br>sans compromis.</h2></div>
+  </div>
+</section>
+
+<!-- ================= S5 · SYSTEM ================= -->
+<section id="system" data-chap="05">
+  <div class="label">Le système ATLAS</div>
+  <h2>We say no more. <em>Trois notes, une formule.</em></h2>
+  <div class="diagram">
+    <svg viewBox="0 0 440 300" role="img" aria-label="Schéma gravé de la formule ATLAS">
+      <circle class="draw" cx="150" cy="150" r="104"/>
+      <circle class="draw red" cx="150" cy="150" r="66"/>
+      <circle class="draw" cx="150" cy="150" r="26"/>
+      <line class="draw" x1="150" y1="150" x2="392" y2="52"/>
+      <line class="draw red" x1="150" y1="150" x2="398" y2="150"/>
+      <line class="draw" x1="150" y1="150" x2="392" y2="248"/>
+      <circle cx="150" cy="150" r="4.5" fill="#e8222d"/>
+      <text x="330" y="44">NOTE 01 — CAFÉ</text>
+      <text x="330" y="142">NOTE 02 — STEVIA</text>
+      <text x="330" y="240">NOTE 03 — VITAMINES B</text>
+    </svg>
+    <div class="dnotes">
+      <div class="dnote"><b>01</b><div><h4>Un partage de l'énergie</h4><p>80 mg de caféine naturelle par canette — l'équivalent d'un espresso, libérée en douceur grâce au guarana.</p></div></div>
+      <div class="dnote"><b>02</b><div><h4>Zéro sucre, zéro crash</h4><p>La stevia remplace le sucre : pas de pic, pas de chute. Une courbe d'énergie stable pendant des heures.</p></div></div>
+      <div class="dnote"><b>03</b><div><h4>Pensée au Maroc</h4><p>Formulée et mise en canette au Maroc, pour les rythmes d'ici : travail, sport, route et longues nuits.</p></div></div>
+    </div>
+  </div>
+  <div class="benefits">
+    <div class="brow" data-cur="VIEW"><h3>Énergie propre</h3><p>CAFÉINE NATURELLE · 80 MG</p><span class="arr">→</span></div>
+    <div class="brow" data-cur="VIEW"><h3>Zéro sucre ajouté</h3><p>STEVIA · SANS ASPARTAME</p><span class="arr">→</span></div>
+    <div class="brow" data-cur="VIEW"><h3>Concentration longue</h3><p>GUARANA + VITAMINES B</p><span class="arr">→</span></div>
+  </div>
+</section>
+
+<!-- ================= S6 · FAQ ================= -->
+<section id="faq" data-chap="06">
+  <div class="ghost" aria-hidden="true">QUESTIONS</div>
+  <h2 class="faq-title"><span>Foire</span><span class="thin">aux</span><span>Questions</span></h2>
+  <div class="faq-list">
+    <div class="fitem"><button class="fq" aria-expanded="false"><span class="n">01</span><h3>Combien de caféine par canette ?</h3><span class="minican"></span><span class="plus">+</span></button><div class="fa"><p>80 mg de caféine naturelle, issue de grains de café et de guarana — l'équivalent d'un espresso, avec une libération plus progressive.</p></div></div>
+    <div class="fitem"><button class="fq" aria-expanded="false"><span class="n">02</span><h3>ATLAS contient-elle du sucre ?</h3><span class="minican"></span><span class="plus">+</span></button><div class="fa"><p>Non. ATLAS est sucrée à la stevia et ne contient ni sucre ajouté, ni aspartame. Résultat : aucun pic glycémique et aucun crash après coup.</p></div></div>
+    <div class="fitem"><button class="fq" aria-expanded="false"><span class="n">03</span><h3>Quels sont les parfums disponibles ?</h3><span class="minican"></span><span class="plus">+</span></button><div class="fa"><p>Sept caractères : Original, Blue, Menthe, Berry, Noir, Ice et Zero — la gamme complète que tu as vue défiler au début du film.</p></div></div>
+    <div class="fitem"><button class="fq" aria-expanded="false"><span class="n">04</span><h3>Où acheter ATLAS au Maroc ?</h3><span class="minican"></span><span class="plus">+</span></button><div class="fa"><p>Commande directe par WhatsApp avec livraison à Tanger le jour même, et partout au Maroc sous 48 h. Les points de vente partenaires arrivent très bientôt.</p></div></div>
+    <div class="fitem"><button class="fq" aria-expanded="false"><span class="n">05</span><h3>À qui ATLAS n'est-elle pas recommandée ?</h3><span class="minican"></span><span class="plus">+</span></button><div class="fa"><p>Comme toute boisson caféinée : déconseillée aux enfants, aux femmes enceintes et aux personnes sensibles à la caféine. Une à deux canettes par jour suffisent.</p></div></div>
+  </div>
+</section>
+
+<!-- ================= S7 · FINALE ================= -->
+<section id="finale" data-chap="06">
+  <img class="fimg" src="demo-atlas/pear.webp" alt="" aria-hidden="true">
+  <div class="fveil"></div>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="fin-copy">
+    <div class="label">Le dernier acte</div>
+    <h2>Prêt à <em>apparaître ?</em></h2>
+    <p>Le film se termine ici. Ton énergie, elle, commence maintenant — une canette, un message, et ATLAS arrive jusqu'à toi.</p>
+    <a class="btn light" href="https://wa.me/212693981822?text=Bonjour%20ATLAS%20ENERGY%2C%20je%20veux%20commander" target="_blank" rel="noopener" data-cur="GO">Commander sur WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-top">
+    <div><div class="label">ATLAS ENERGY — Démo immersive</div><p style="margin-top:10px;color:#9aa4b8;font-size:14px;max-width:340px;line-height:1.6">Marque fictive créée pour démontrer le style « Websites in 2026 » : film piloté par le scroll, produit 3D, collage surréaliste.</p></div>
+    <nav><a href="#s1">LE FILM</a><a href="#system">LE SYSTÈME</a><a href="#faq">FAQ</a><a href="portfolio.html">PORTFOLIO</a></nav>
+  </div>
+  <div class="ft-brand" aria-hidden="true">ATLAS</div>
+  <div class="ft-credit">صُمّم وبُني بـ <a href="index.html">طنجة ويب — TANJA WEB</a> · طنجة، المغرب · 2026</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(function(){
+"use strict";
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var hasGsap = typeof gsap !== 'undefined';
+if (hasGsap && typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- Lenis smooth scroll ---------- */
+var lenis = null;
+if (!reduced && typeof Lenis !== 'undefined') {
+  lenis = new Lenis({ lerp: 0.08, duration: 1.2 });
+  function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+  if (hasGsap && typeof ScrollTrigger !== 'undefined') lenis.on('scroll', ScrollTrigger.update);
+}
+
+/* ---------- Deep-link test helper (?goto=scene) ---------- */
+var gotoParam = new URLSearchParams(location.search).get('goto');
+if (gotoParam) {
+  setTimeout(function(){
+    var el = document.getElementById(gotoParam);
+    if (el) {
+      if (lenis) lenis.scrollTo(el, { immediate:true, offset:0 });
+      else el.scrollIntoView();
+    }
+  }, 2400);
+}
+
+/* ---------- Preloader ---------- */
+var loader = document.getElementById('loader'),
+    lcount = document.getElementById('lcount'),
+    lfill  = document.getElementById('lfill'),
+    startT = Date.now(), prog = 0;
+var iv = setInterval(function(){
+  prog = Math.min(100, prog + Math.random()*13 + 5);
+  lcount.textContent = Math.floor(prog);
+  lfill.style.width = prog + '%';
+  if (prog >= 100 && Date.now() - startT > 900) {
+    clearInterval(iv);
+    setTimeout(function(){
+      loader.classList.add('done');
+      setTimeout(function(){ loader.style.display = 'none'; }, 1150);
+    }, 180);
+  }
+}, 110);
+
+/* ---------- Custom cursor ---------- */
+var dot = document.getElementById('cdot'), ring = document.getElementById('cring'),
+    mx = innerWidth/2, my = innerHeight/2, rx = mx, ry = my;
+addEventListener('mousemove', function(e){
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx+'px'; dot.style.top = my+'px';
+  var t = e.target.closest ? e.target.closest('[data-cur]') : null;
+  if (t) { ring.classList.add('big'); ring.querySelector('span').textContent = t.getAttribute('data-cur'); }
+  else ring.classList.remove('big');
+});
+(function cloop(){ rx += (mx-rx)*.14; ry += (my-ry)*.14; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(cloop); })();
+
+/* ---------- Progress + chapters ---------- */
+var progfill = document.getElementById('progfill'), chapnum = document.getElementById('chapnum');
+addEventListener('scroll', function(){
+  var h = document.documentElement;
+  var p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+  progfill.style.height = (p*100) + '%';
+}, { passive:true });
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) chapnum.textContent = e.target.getAttribute('data-chap'); });
+  }, { threshold:.35 });
+  document.querySelectorAll('[data-chap]').forEach(function(s){ io.observe(s); });
+}
+
+/* ---------- S1 : mouse parallax + scroll push-in ---------- */
+var arc = document.getElementById('arc'), s1 = document.getElementById('s1');
+s1.addEventListener('mousemove', function(e){
+  var dx = (e.clientX/innerWidth - .5), dy = (e.clientY/innerHeight - .5);
+  arc.style.transform = 'translate(calc(-50% + '+(-dx*26)+'px), calc(-50% + '+(-dy*16)+'px))';
+});
+if (hasGsap && typeof ScrollTrigger !== 'undefined' && !reduced) {
+  gsap.timeline({ scrollTrigger:{ trigger:'#s1', start:'top top', end:'+=110%', scrub:1, pin:true } })
+    .to('#s1 .can:not(.hero)', { x:function(i){ return (i<3 ? -1 : 1) * (34 + i*7) + 'vw'; }, opacity:0, stagger:.05, ease:'power2.in' }, 0)
+    .to('#s1 .can.hero', { scale:1.28, ease:'none' }, 0)
+    .to('#s1 .ghost', { scale:1.25, opacity:.4, ease:'none' }, 0)
+    .to('.s1-copy', { y:-46, opacity:0, ease:'none' }, 0)
+    .to('.scrollhint', { opacity:0 }, 0);
+}
+
+/* ---------- S2 : the 360° film (vanilla, always works) ---------- */
+var film = document.getElementById('film'), bigtex = document.getElementById('bigtex'),
+    bigcan = document.getElementById('bigcan'), ghost = document.getElementById('filmghost'),
+    fchaps = document.querySelectorAll('.fchap'), fpct = document.getElementById('fpct');
+function filmUpdate(){
+  var r = film.getBoundingClientRect();
+  var total = film.offsetHeight - innerHeight;
+  var p = Math.min(1, Math.max(0, -r.top / (total || 1)));
+  bigtex.style.transform = 'translateX(' + (-p * 66.666) + '%)';
+  var x = 18 - p*36;
+  var tilt = -7 + Math.sin(p * Math.PI) * 5;
+  bigcan.style.transform = 'translate(calc(-50% + ' + x + 'vw), -50%) rotate(' + tilt + 'deg) scale(' + (0.86 + Math.sin(p*Math.PI)*0.26) + ')';
+  ghost.style.transform = 'translateX(' + (6 - p*46) + 'vw)';
+  fpct.textContent = Math.round(p*100) + '%';
+  var idx = Math.min(2, Math.floor(p * 3.0001));
+  fchaps.forEach(function(c, i){
+    var on = i === idx;
+    c.style.opacity = on ? 1 : 0;
+    c.style.transform = 'translateY(' + (on ? 0 : 26) + 'px)';
+    c.style.transition = 'opacity .45s, transform .45s';
+  });
+}
+addEventListener('scroll', filmUpdate, { passive:true });
+addEventListener('resize', filmUpdate);
+filmUpdate();
+
+/* ---------- S3 : pear letters + image dolly ---------- */
+var pearh = document.getElementById('pearh');
+pearh.innerHTML = pearh.textContent.trim().split(' ').map(function(w){
+  return '<span class="w"><i>' + w + '</i></span>';
+}).join(' ');
+if (hasGsap && typeof ScrollTrigger !== 'undefined' && !reduced) {
+  gsap.set('#pearh .w i', { yPercent:110 });
+  gsap.to('#pearimg', { scale:1.0, ease:'none',
+    scrollTrigger:{ trigger:'#pear', start:'top bottom', end:'bottom top', scrub:1 } });
+  gsap.to('#pearh .w i', { yPercent:0, stagger:.09, ease:'power3.out',
+    scrollTrigger:{ trigger:'#pear', start:'top 62%', end:'top 18%', scrub:1 } });
+} else {
+  document.getElementById('pearimg').style.transform = 'scale(1)';
+}
+
+/* ---------- S4 : craft lines cross-fade (vanilla scrub) ---------- */
+var craft = document.getElementById('craft'), clines = document.querySelectorAll('.cline'),
+    craftimg = document.getElementById('craftimg');
+function craftUpdate(){
+  var r = craft.getBoundingClientRect();
+  var total = craft.offsetHeight - innerHeight;
+  var p = Math.min(1, Math.max(0, -r.top / (total || 1)));
+  craftimg.style.transform = 'scale(' + (1.02 + p*0.15) + ')';
+  clines.forEach(function(l, i){
+    var c = (i + .5) / clines.length;
+    var d = Math.abs(p - c) / (0.5 / clines.length);
+    var o = Math.max(0, 1 - d);
+    l.style.opacity = o;
+    l.style.filter = 'blur(' + ((1-o)*10) + 'px)';
+    l.style.transform = 'translate(-50%, calc(-50% + ' + ((p-c)*46) + 'px))';
+  });
+}
+addEventListener('scroll', craftUpdate, { passive:true });
+craftUpdate();
+
+/* ---------- S5 : diagram self-draw ---------- */
+document.querySelectorAll('#system .draw').forEach(function(path){
+  var len = 900;
+  try { len = path.getTotalLength(); } catch(e){}
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = (reduced || !hasGsap || typeof ScrollTrigger === 'undefined') ? 0 : len;
+  if (hasGsap && typeof ScrollTrigger !== 'undefined' && !reduced) {
+    gsap.to(path, { strokeDashoffset:0, ease:'none',
+      scrollTrigger:{ trigger:'#system', start:'top 70%', end:'top 15%', scrub:1 } });
+  }
+});
+
+/* ---------- S6 : FAQ accordion ---------- */
+document.querySelectorAll('.fitem').forEach(function(item){
+  var btn = item.querySelector('.fq'), body = item.querySelector('.fa');
+  btn.addEventListener('click', function(){
+    var open = item.classList.contains('open');
+    document.querySelectorAll('.fitem.open').forEach(function(o){
+      o.classList.remove('open');
+      o.querySelector('.fa').style.maxHeight = '0px';
+      o.querySelector('.fq').setAttribute('aria-expanded','false');
+    });
+    if (!open) {
+      item.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded','true');
+    }
+    if (lenis) setTimeout(function(){ lenis.resize(); }, 600);
+  });
+});
+
+/* ---------- S7 : constellation ---------- */
+var cv = document.getElementById('stars'), cx = cv.getContext('2d'), pts = [], W, H, drawn = 0;
+function sizeStars(){
+  var f = document.getElementById('finale');
+  W = cv.width = f.offsetWidth; H = cv.height = f.offsetHeight;
+  pts = [];
+  for (var i=0;i<46;i++) pts.push({ x:Math.random()*W, y:Math.random()*H*.82, r:Math.random()*1.8+.5, s:Math.random()*Math.PI*2 });
+}
+sizeStars(); addEventListener('resize', sizeStars);
+var finObs = new IntersectionObserver(function(es){
+  es.forEach(function(e){ if (e.isIntersecting && drawn < 1) animateStars(); });
+}, { threshold:.25 });
+finObs.observe(document.getElementById('finale'));
+function animateStars(){
+  var t0 = Date.now();
+  (function step(){
+    var p = Math.min(1, (Date.now()-t0)/2400); drawn = p;
+    cx.clearRect(0,0,W,H);
+    cx.strokeStyle = 'rgba(160,210,255,.4)'; cx.lineWidth = 1;
+    for (var i=0;i<pts.length-1;i++){
+      if (i/pts.length > p) break;
+      var a = pts[i], b = pts[i+1];
+      var d = Math.hypot(a.x-b.x, a.y-b.y);
+      if (d < 240) { cx.beginPath(); cx.moveTo(a.x,a.y); cx.lineTo(b.x,b.y); cx.stroke(); }
+    }
+    pts.forEach(function(pt, i){
+      if (i/pts.length > p) return;
+      var tw = .55 + Math.sin(Date.now()/700 + pt.s)*.45;
+      cx.beginPath(); cx.arc(pt.x, pt.y, pt.r, 0, 7);
+      cx.fillStyle = 'rgba(255,230,160,' + tw + ')'; cx.fill();
+    });
+    if (p < 1) requestAnimationFrame(step);
+  })();
+}
+})();
+</script>
+</body>
+</html>
