@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>POLAIRE — Optiques de montagne · Modèle 01 Whiteout</title>
+<meta name="description" content="POLAIRE Modèle 01 — masque de ski à écran torique, pensé pour les jours blancs. Démonstration Tanja Web.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0e12;
+  --snow:#eef3f7;
+  --amber:#ffb347;
+  --magenta:#ff4d8d;
+  --violet:#0d0714;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{
+  font-family:'Archivo',sans-serif;
+  background:#05070a;
+  color:#f2f5f8;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.mono{font-family:'IBM Plex Mono',monospace}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 28px;
+  color:#fff;mix-blend-mode:difference;
+}
+.topbar .brand{font-weight:900;letter-spacing:.22em;font-size:1rem;text-decoration:none}
+.topbar nav{display:flex;gap:34px}
+.topbar nav a{
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.18em;
+  text-transform:uppercase;text-decoration:none;opacity:.85;
+}
+.topbar nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.topbar .cart{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase}
+@media(max-width:720px){.topbar nav{display:none}.topbar{padding:16px 18px}}
+
+/* ---------- film stage ---------- */
+.film{position:relative;height:420vh}
+.stage{
+  position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
+  background:var(--snow);
+}
+.layer{position:absolute;inset:0;will-change:transform,opacity}
+.layer img{width:100%;height:100%;object-fit:cover}
+
+.skier-layer{z-index:1}
+.skier-layer img{object-position:center 38%}
+
+.front-layer,.strap-layer{
+  z-index:3;display:flex;align-items:center;justify-content:center;opacity:0;
+}
+.front-layer figure{width:min(880px,88vw)}
+.strap-layer figure{width:min(1020px,94vw)}
+.front-layer img,.strap-layer img{width:100%;height:auto;object-fit:contain}
+
+/* act texts */
+.act-text{position:absolute;z-index:5;will-change:transform,opacity}
+.t1-word{
+  left:4vw;bottom:5vh;font-weight:900;line-height:.82;
+  font-size:clamp(4.2rem,16.5vw,15.5rem);letter-spacing:-.02em;color:var(--ink);
+}
+.t1-word small{
+  display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;
+  font-size:clamp(.6rem,1vw,.75rem);letter-spacing:.34em;margin-bottom:2.2vh;color:var(--ink);
+}
+.t1-side{
+  right:4vw;bottom:9vh;max-width:320px;color:var(--ink);text-align:left;z-index:6;
+  background:rgba(238,243,247,.58);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  padding:15px 17px;border-radius:14px;border:1px solid rgba(10,14,18,.08);
+  box-shadow:0 14px 40px rgba(10,20,30,.14);
+}
+.t1-side .cap{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.26em;margin-bottom:10px}
+.t1-side p{font-size:.92rem;line-height:1.55;font-weight:500}
+.scroll-hint{
+  left:50%;bottom:2.4vh;transform:translateX(-50%);
+  font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.3em;color:#fff;
+  mix-blend-mode:difference;
+  display:flex;flex-direction:column;align-items:center;gap:8px;z-index:6;
+}
+.scroll-hint::after{content:"";width:1px;height:34px;background:#fff;opacity:.7}
+
+.t2-note{
+  right:5vw;top:50%;transform:translateY(-50%);max-width:250px;color:#e8eef4;opacity:0;
+}
+.t2-note .k{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.3em;color:#9fb4c4;display:block;margin-bottom:12px}
+.t2-note p{font-size:1.05rem;line-height:1.5;font-weight:600}
+.indicator{
+  left:50%;bottom:4vh;transform:translateX(-50%);z-index:6;opacity:0;
+  font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.3em;color:#dbe6ee;
+  display:flex;align-items:center;gap:14px;white-space:nowrap;
+}
+.indicator .track{width:110px;height:1px;background:rgba(255,255,255,.25);position:relative;overflow:hidden}
+.indicator .fill{position:absolute;left:0;top:0;bottom:0;width:0%;background:#fff}
+
+.t3-cap{left:4vw;bottom:15vh;max-width:420px;color:#f2f5f8;opacity:0}
+.t3-cap .k{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.3em;color:#9fb4c4;display:block;margin-bottom:12px}
+.t3-cap h2{font-size:clamp(1.7rem,3.6vw,2.7rem);font-weight:800;line-height:1.05;letter-spacing:-.01em}
+.t3-specs{
+  left:4vw;right:4vw;bottom:5.5vh;display:flex;gap:10px;flex-wrap:wrap;opacity:0;z-index:5;
+}
+.chip{
+  font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.14em;
+  border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:9px 15px;color:#e8eef4;
+  background:rgba(255,255,255,.04);backdrop-filter:blur(4px);
+}
+
+/* buy panel */
+.buy{
+  position:absolute;inset:0;z-index:7;display:flex;align-items:center;justify-content:center;
+  padding:90px 5vw 40px;opacity:0;pointer-events:none;
+}
+.buy-inner{
+  width:min(1120px,100%);display:grid;grid-template-columns:1.05fr .95fr;gap:5vw;align-items:center;
+}
+.buy .k{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.32em;color:#c9a7e8;display:block;margin-bottom:16px}
+.buy h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:800;line-height:1.02;letter-spacing:-.015em;color:#fff}
+.buy h2 .grad{
+  background:linear-gradient(92deg,var(--amber) 0%,var(--magenta) 90%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic;
+}
+.buy .price{margin:22px 0 6px;font-size:1.5rem;font-weight:800;color:#fff}
+.buy .price small{font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:.66rem;letter-spacing:.2em;color:#a99bc4;margin-left:10px}
+.buy .lens-label{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.24em;color:#a99bc4;margin:18px 0 10px}
+.dots{display:flex;gap:12px}
+.dot{
+  width:30px;height:30px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;padding:0;
+  transition:transform .2s,border-color .2s;
+}
+.dot:hover{transform:scale(1.12)}
+.dot.active{border-color:#fff;transform:scale(1.12)}
+.dot.rainbow{background:conic-gradient(#ff5f6d,#ffc371,#8aff80,#6dc8ff,#c77dff,#ff5f6d)}
+.dot.braise{background:linear-gradient(135deg,#ff9a3c,#e2491b)}
+.dot.glacier{background:linear-gradient(135deg,#bfe9ff,#4d9fd6)}
+.cta{
+  display:inline-flex;align-items:center;gap:12px;margin-top:28px;text-decoration:none;
+  background:linear-gradient(92deg,var(--amber),var(--magenta));color:#160a12;
+  font-weight:800;font-size:.95rem;letter-spacing:.02em;padding:16px 30px;border-radius:999px;
+  transition:transform .2s,box-shadow .2s;box-shadow:0 12px 34px rgba(255,77,141,.28);
+}
+.cta:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(255,77,141,.4)}
+.buy .ship{margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.18em;color:#8f83ab}
+.buy-card{
+  border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.14);
+  background:#050505;box-shadow:0 30px 80px rgba(0,0,0,.55);
+  aspect-ratio:4/3;
+}
+.buy-card img{width:100%;height:100%;object-fit:cover}
+@media(max-width:860px){
+  .buy-inner{grid-template-columns:1fr;gap:26px}
+  .buy{padding-top:76px;align-items:flex-start;overflow:hidden}
+  .buy-card{aspect-ratio:16/10}
+  .t2-note{right:5vw;left:5vw;max-width:none;top:auto;bottom:14vh;transform:none}
+  .t3-cap{bottom:19vh}
+}
+
+/* ---------- below the film ---------- */
+.below{background:#07090c;color:#eef2f6}
+.tech{
+  max-width:1180px;margin:0 auto;padding:96px 5vw 30px;
+}
+.tech h3{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.tech h3 em{font-style:italic;background:linear-gradient(92deg,var(--amber),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tech .sub{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.26em;color:#8b98a5;margin-bottom:44px}
+.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cell{
+  border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px 22px;background:rgba(255,255,255,.02);
+}
+.cell .n{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.26em;color:#ffb347;display:block;margin-bottom:14px}
+.cell h4{font-size:1.02rem;font-weight:700;margin-bottom:9px}
+.cell p{font-size:.86rem;line-height:1.55;color:#a9b6c2}
+@media(max-width:900px){.tech-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.tech-grid{grid-template-columns:1fr}}
+
+.band{
+  margin:70px 0 0;height:52vh;min-height:320px;overflow:hidden;position:relative;
+}
+.band img{width:100%;height:130%;object-fit:cover;position:absolute;left:0;top:-15%;will-change:transform}
+.band .band-cap{
+  position:absolute;left:5vw;bottom:26px;z-index:2;color:#fff;
+  font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.3em;
+  text-shadow:0 2px 18px rgba(0,0,0,.6);
+}
+
+.coloris{max-width:1180px;margin:0 auto;padding:96px 5vw 110px}
+.coloris h3{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;margin-bottom:8px}
+.coloris .sub{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.26em;color:#8b98a5;margin-bottom:44px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{
+  border:1px solid rgba(255,255,255,.1);border-radius:22px;overflow:hidden;background:#0b0e13;
+  display:flex;flex-direction:column;transition:transform .3s,border-color .3s;
+}
+.card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.3)}
+.card .ph{aspect-ratio:4/3;overflow:hidden;background:#000}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover .ph img{transform:scale(1.05)}
+.card .body{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card .body .k{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.26em;color:#8b98a5}
+.card h4{font-size:1.15rem;font-weight:800}
+.card p{font-size:.86rem;line-height:1.55;color:#a9b6c2;flex:1}
+.card .row{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
+.card .prix{font-weight:800;font-size:1.05rem}
+.btn{
+  text-decoration:none;font-weight:700;font-size:.82rem;padding:11px 20px;border-radius:999px;
+  background:#fff;color:#0a0e12;transition:background .2s,color .2s;
+}
+.btn:hover{background:linear-gradient(92deg,var(--amber),var(--magenta));color:#160a12}
+@media(max-width:900px){.cards{grid-template-columns:1fr}}
+
+footer{background:#05070a;border-top:1px solid rgba(255,255,255,.08);padding:56px 5vw 40px;color:#8b98a5}
+footer .fbrand{font-weight:900;letter-spacing:.22em;color:#fff;font-size:1.05rem;margin-bottom:12px}
+footer p{font-size:.85rem;line-height:1.6;max-width:520px}
+footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.18em}
+.badge{
+  border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:7px 13px;color:#dbe6ee;
+}
+.demo-pill{
+  position:fixed;right:16px;bottom:16px;z-index:55;pointer-events:none;
+  font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.22em;
+  background:rgba(10,14,18,.72);color:#dbe6ee;border:1px solid rgba(255,255,255,.22);
+  padding:8px 12px;border-radius:999px;backdrop-filter:blur(6px);
+}
+
+/* ---------- reduced motion : stacked acts ---------- */
+.rm .film{height:auto}
+.rm .stage{position:relative;height:auto;overflow:visible;background:#0d0714;display:flex;flex-direction:column}
+.rm .layer,.rm .act-text,.rm .buy,.rm .indicator,.rm .scroll-hint{
+  position:relative;inset:auto;left:auto;right:auto;top:auto;bottom:auto;
+  opacity:1 !important;transform:none !important;min-height:0;
+}
+.rm .skier-layer,.rm .front-layer,.rm .strap-layer{min-height:70vh}
+.rm .t1-word{color:#fff;padding:30px 5vw 0}
+.rm .t1-side{color:#fff;padding:10px 5vw 30px;max-width:560px}
+.rm .t2-note,.rm .t3-cap{padding:26px 5vw}
+.rm .t3-specs{padding:0 5vw 30px}
+.rm .buy{padding:40px 5vw 60px}
+.rm .indicator,.rm .scroll-hint{display:none}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#">POLAIRE</a>
+  <nav>
+    <a href="#tech">Optiques</a>
+    <a href="#coloris">Journal</a>
+    <a href="#histoire">Notre histoire</a>
+  </nav>
+  <div class="cart">Panier (0)</div>
+</header>
+
+<!-- ================= FILM ================= -->
+<section class="film" id="film" aria-label="Le film du Modèle 01">
+  <div class="stage" id="stage">
+
+    <div class="layer skier-layer" id="lySkier">
+      <img src="polaire/skier.webp" alt="Skieur en tenue blanche ajustant son masque POLAIRE sur une pente ensoleillée">
+    </div>
+
+    <div class="layer front-layer" id="lyFront">
+      <figure><img src="polaire/front.webp" alt="Masque POLAIRE à monture blanche et écran miroir arc-en-ciel sur fond noir"></figure>
+    </div>
+
+    <div class="layer strap-layer" id="lyStrap">
+      <figure><img src="polaire/strap.webp" alt="Gros plan sur la sangle du masque POLAIRE"></figure>
+    </div>
+
+    <h1 class="act-text t1-word" id="t1word"><small>Optiques de montagne — Est. Tanger</small>POLAIRE</h1>
+
+    <div class="act-text t1-side" id="t1side">
+      <div class="cap">MODÈLE 01 — WHITEOUT</div>
+      <p>Un masque pour les jours où la montagne efface ses propres contours. L'écran suit la lumière, pas l'inverse.</p>
+    </div>
+
+    <div class="scroll-hint" id="hint">DÉFILER</div>
+
+    <aside class="act-text t2-note" id="t2note">
+      <span class="k">L'ÉCRAN — 01</span>
+      <p>Un seul écran torique, taillé dans la masse, sans raccord ni couture sur le champ de vision.</p>
+    </aside>
+
+    <div class="indicator" id="indicator">
+      <span id="indNum">01</span>
+      <span class="track"><span class="fill" id="indFill"></span></span>
+      <span>03</span>
+    </div>
+
+    <div class="act-text t3-cap" id="t3cap">
+      <span class="k">LA SANGLE — 02</span>
+      <h2>La sangle qui ne lâche pas.</h2>
+    </div>
+    <div class="act-text t3-specs" id="t3specs" style="position:absolute">
+      <span class="chip">VLT 12 %</span>
+      <span class="chip">CONTRASTE +31 %</span>
+      <span class="chip">ANTI-BUÉE HYDROPHOBE</span>
+      <span class="chip">SILICONE ANTIDÉRAPANT</span>
+    </div>
+
+    <div class="buy" id="buyPanel">
+      <div class="buy-inner">
+        <div>
+          <span class="k">MODÈLE 01 — WHITEOUT · DISPONIBLE</span>
+          <h2>Voyez la descente<br>avant de la <span class="grad">descendre.</span></h2>
+          <div class="price">1 450 DH<small>PAIEMENT À LA LIVRAISON</small></div>
+          <div class="lens-label">ÉCRAN — <span id="lensName">ARC-EN-CIEL</span></div>
+          <div class="dots">
+            <button class="dot rainbow active" data-lens="ARC-EN-CIEL" aria-label="Écran arc-en-ciel"></button>
+            <button class="dot braise" data-lens="BRAISE" aria-label="Écran braise"></button>
+            <button class="dot glacier" data-lens="GLACIER" aria-label="Écran glacier"></button>
+          </div>
+          <a class="cta" id="ctaMain" href="https://wa.me/212693981822" target="_blank" rel="noopener">Ajouter au panier
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="ship">LIVRAISON 48 H PARTOUT AU MAROC · RETOUR 30 JOURS</div>
+        </div>
+        <div class="buy-card">
+          <img src="polaire/ember.webp" alt="Masque POLAIRE à monture noire et écran miroir orange, coloris Braise">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= BELOW ================= -->
+<main class="below" id="histoire">
+
+  <section class="tech" id="tech">
+    <div class="sub">FICHE TECHNIQUE — MODÈLE 01</div>
+    <h3>Conçu pour le <em>jour blanc</em>,<br>éprouvé sur les crêtes.</h3>
+    <div style="height:36px"></div>
+    <div class="tech-grid">
+      <div class="cell">
+        <span class="n">01 — ÉCRAN</span>
+        <h4>Écran torique</h4>
+        <p>Une courbure calculée sur deux axes pour élargir le champ latéral sans jamais déformer une ligne droite.</p>
+      </div>
+      <div class="cell">
+        <span class="n">02 — CONFORT</span>
+        <h4>Triple mousse</h4>
+        <p>Trois densités superposées qui épousent le visage, répartissent la pression et coupent le vent froid.</p>
+      </div>
+      <div class="cell">
+        <span class="n">03 — AIR</span>
+        <h4>Ventilation passive</h4>
+        <p>Des canaux d'air permanents chassent la buée en continu, sans ventilateur et sans jamais glacer le front.</p>
+      </div>
+      <div class="cell">
+        <span class="n">04 — MAINTIEN</span>
+        <h4>Compatible casque</h4>
+        <p>Une sangle large à bande siliconée qui reste exactement où on l'a mise, sur casque comme sur bonnet.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <img id="bandImg" src="polaire/strap.webp" alt="La sangle POLAIRE en gros plan">
+    <div class="band-cap">SANGLE 45 MM — TISSÉE, SILICONÉE, RÉGLABLE D'UNE MAIN</div>
+  </div>
+
+  <section class="coloris" id="coloris">
+    <div class="sub">TROIS LUMIÈRES, UN MÊME MASQUE</div>
+    <h3>Les coloris du Modèle 01</h3>
+    <div style="height:36px"></div>
+    <div class="cards">
+      <article class="card">
+        <div class="ph"><img src="polaire/front.webp" alt="Coloris Arc-en-ciel — écran miroir multicolore"></div>
+        <div class="body">
+          <span class="k">ÉCRAN MIROIR — VLT 12 %</span>
+          <h4>Arc-en-ciel</h4>
+          <p>Le miroir complet pour les journées de grand soleil en altitude, quand la neige renvoie tout.</p>
+          <div class="row">
+            <span class="prix">1 450 DH</span>
+            <a class="btn wa-order" data-msg="Bonjour, je veux commander le masque POLAIRE Modèle 01, coloris Arc-en-ciel (1 450 DH)." href="https://wa.me/212693981822" target="_blank" rel="noopener">Commander</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ph"><img src="polaire/ember.webp" alt="Coloris Braise — écran miroir orange sur monture noire"></div>
+        <div class="body">
+          <span class="k">ÉCRAN MIROIR — VLT 14 %</span>
+          <h4>Braise</h4>
+          <p>Une teinte chaude qui relève les reliefs dès que le ciel se voile et que la pente s'aplatit.</p>
+          <div class="row">
+            <span class="prix">1 450 DH</span>
+            <a class="btn wa-order" data-msg="Bonjour, je veux commander le masque POLAIRE Modèle 01, coloris Braise (1 450 DH)." href="https://wa.me/212693981822" target="_blank" rel="noopener">Commander</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ph"><img src="polaire/skier.webp" alt="Coloris Whiteout — le masque porté sur la neige"></div>
+        <div class="body">
+          <span class="k">MONTURE BLANCHE — VLT 12 %</span>
+          <h4>Whiteout</h4>
+          <p>La monture blanche d'origine, celle du film. Sobre de loin, impossible à manquer de près.</p>
+          <div class="row">
+            <span class="prix">1 450 DH</span>
+            <a class="btn wa-order" data-msg="Bonjour, je veux commander le masque POLAIRE Modèle 01, coloris Whiteout (1 450 DH)." href="https://wa.me/212693981822" target="_blank" rel="noopener">Commander</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="fbrand">POLAIRE</div>
+  <p>Des optiques de montagne dessinées à Tanger, testées là où le vent décide. Chaque Modèle 01 est livré avec son étui rigide, un écran de rechange basse lumière et une housse en microfibre.</p>
+  <div class="fine">
+    <span class="badge">Modèle de démonstration</span>
+    <span>Démonstration réalisée par Tanja Web — Tanger</span>
+  </div>
+</footer>
+
+<div class="demo-pill">MODÈLE DE DÉMONSTRATION</div>
+
+<script>
+(function(){
+  "use strict";
+  var WA = "https://wa.me/212693981822?text=";
+
+  /* WhatsApp links */
+  var mainMsg = "Bonjour, je veux le masque POLAIRE Modèle 01 — Whiteout (1 450 DH), merci de me confirmer la disponibilité.";
+  document.getElementById('ctaMain').href = WA + encodeURIComponent(mainMsg);
+  document.querySelectorAll('.wa-order').forEach(function(a){
+    a.href = WA + encodeURIComponent(a.getAttribute('data-msg'));
+  });
+
+  /* Lens dots */
+  var lensName = document.getElementById('lensName');
+  document.querySelectorAll('.dot').forEach(function(d){
+    d.addEventListener('click', function(){
+      document.querySelectorAll('.dot').forEach(function(x){x.classList.remove('active')});
+      d.classList.add('active');
+      var lens = d.getAttribute('data-lens');
+      lensName.textContent = lens;
+      var m = "Bonjour, je veux le masque POLAIRE Modèle 01 avec l'écran " + lens.charAt(0) + lens.slice(1).toLowerCase() + " (1 450 DH), merci de me confirmer la disponibilité.";
+      document.getElementById('ctaMain').href = WA + encodeURIComponent(m);
+    });
+  });
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var film = document.getElementById('film');
+  var stage = document.getElementById('stage');
+  var lySkier = document.getElementById('lySkier');
+  var lyFront = document.getElementById('lyFront');
+  var lyStrap = document.getElementById('lyStrap');
+  var t1word = document.getElementById('t1word');
+  var t1side = document.getElementById('t1side');
+  var hint = document.getElementById('hint');
+  var t2note = document.getElementById('t2note');
+  var indicator = document.getElementById('indicator');
+  var indNum = document.getElementById('indNum');
+  var indFill = document.getElementById('indFill');
+  var t3cap = document.getElementById('t3cap');
+  var t3specs = document.getElementById('t3specs');
+  var buy = document.getElementById('buyPanel');
+  var bandImg = document.getElementById('bandImg');
+
+  function clamp01(x){ return x < 0 ? 0 : (x > 1 ? 1 : x); }
+  function seg(p,a,b){ return clamp01((p - a) / (b - a)); }
+  function lerp(a,b,t){ return a + (b - a) * t; }
+  function ease(t){ return t * t * (3 - 2 * t); }
+
+  /* stage background stops: [progress, [r,g,b]] */
+  var stops = [
+    [0.00, [238,243,247]],
+    [0.30, [214,226,234]],
+    [0.46, [0,0,0]],
+    [0.80, [0,0,0]],
+    [1.00, [13,7,20]]
+  ];
+  function bgColor(p){
+    for (var i = 0; i < stops.length - 1; i++){
+      var a = stops[i], b = stops[i + 1];
+      if (p >= a[0] && p <= b[0]){
+        var t = (p - a[0]) / (b[0] - a[0] || 1);
+        var r = Math.round(lerp(a[1][0], b[1][0], t));
+        var g = Math.round(lerp(a[1][1], b[1][1], t));
+        var bl = Math.round(lerp(a[1][2], b[1][2], t));
+        return 'rgb(' + r + ',' + g + ',' + bl + ')';
+      }
+    }
+    return 'rgb(13,7,20)';
+  }
+
+  function apply(p){
+    stage.style.background = bgColor(p);
+
+    /* ACTE 1 — skier */
+    var skScale = lerp(1, 1.08, seg(p, 0, 0.30));
+    skScale = lerp(skScale, 1.16, seg(p, 0.30, 0.48));
+    var skOp = 1 - seg(p, 0.34, 0.48);
+    lySkier.style.transform = 'scale(' + skScale.toFixed(4) + ')';
+    lySkier.style.opacity = skOp.toFixed(3);
+
+    var t1op = 1 - seg(p, 0.20, 0.30);
+    var t1y = lerp(0, -46, seg(p, 0.20, 0.30));
+    t1word.style.opacity = t1op.toFixed(3);
+    t1word.style.transform = 'translateY(' + t1y.toFixed(1) + 'px)';
+    t1side.style.opacity = t1op.toFixed(3);
+    t1side.style.transform = 'translateY(' + t1y.toFixed(1) + 'px)';
+    hint.style.opacity = (1 - seg(p, 0.04, 0.12)).toFixed(3);
+
+    /* ACTE 2 — front fades in, grows */
+    var frIn = seg(p, 0.34, 0.48);
+    var frScale = lerp(0.8, 1.0, ease(seg(p, 0.30, 0.55)));
+    /* ACTE 3 — front pushes toward camera */
+    frScale = lerp(frScale, 1.35, ease(seg(p, 0.55, 0.75)));
+    var frRot = lerp(0, -3, seg(p, 0.55, 0.75));
+    var frOp = frIn * (1 - seg(p, 0.70, 0.80));
+    lyFront.style.opacity = frOp.toFixed(3);
+    lyFront.style.transform = 'scale(' + frScale.toFixed(4) + ') rotate(' + frRot.toFixed(2) + 'deg)';
+
+    /* annotation + indicator */
+    var nOp = seg(p, 0.42, 0.50) * (1 - seg(p, 0.56, 0.64));
+    t2note.style.opacity = nOp.toFixed(3);
+    var indOp = seg(p, 0.34, 0.44) * (1 - seg(p, 0.78, 0.86));
+    indicator.style.opacity = indOp.toFixed(3);
+    indFill.style.width = (seg(p, 0.34, 0.78) * 100).toFixed(1) + '%';
+    indNum.textContent = p < 0.55 ? '01' : (p < 0.78 ? '02' : '03');
+
+    /* ACTE 3 — strap slides in */
+    var stIn = seg(p, 0.58, 0.72);
+    var stX = lerp(12, 0, ease(seg(p, 0.55, 0.72)));
+    var stOp = stIn * (1 - seg(p, 0.80, 0.90));
+    lyStrap.style.opacity = stOp.toFixed(3);
+    lyStrap.style.transform = 'translateX(' + stX.toFixed(2) + '%)';
+
+    var cOp = seg(p, 0.62, 0.70) * (1 - seg(p, 0.76, 0.84));
+    t3cap.style.opacity = cOp.toFixed(3);
+    t3cap.style.transform = 'translateY(' + lerp(24, 0, seg(p, 0.62, 0.70)).toFixed(1) + 'px)';
+    t3specs.style.opacity = (seg(p, 0.66, 0.74) * (1 - seg(p, 0.76, 0.84))).toFixed(3);
+
+    /* ACTE 4 — buy panel lands */
+    var bOp = seg(p, 0.84, 0.94);
+    buy.style.opacity = bOp.toFixed(3);
+    buy.style.transform = 'translateY(' + lerp(46, 0, ease(seg(p, 0.84, 0.96))).toFixed(1) + 'px)';
+    buy.style.pointerEvents = bOp > 0.6 ? 'auto' : 'none';
+  }
+
+  if (reduced){
+    document.body.classList.add('rm');
+    apply(0);
+  } else {
+    var target = 0, cur = 0;
+    function measure(){
+      var r = film.getBoundingClientRect();
+      var total = film.offsetHeight - window.innerHeight;
+      target = total > 0 ? clamp01(-r.top / total) : 0;
+    }
+    window.addEventListener('scroll', measure, {passive:true});
+    window.addEventListener('resize', measure);
+    measure();
+    cur = target;
+    (function loop(){
+      cur += (target - cur) * 0.085;
+      if (Math.abs(target - cur) < 0.0004) cur = target;
+      apply(cur);
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* parallax band */
+  var band = document.querySelector('.band');
+  function parallax(){
+    if (reduced || !band) return;
+    var r = band.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight) return;
+    var t = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+    bandImg.style.transform = 'translateY(' + (t * -34).toFixed(1) + 'px)';
+  }
+  window.addEventListener('scroll', parallax, {passive:true});
+  parallax();
+})();
+</script>
+</body>
+</html>

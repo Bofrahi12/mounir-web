@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>CHROMA — La couleur, portée haut · Tanger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#faf6ef;
+  --ink:#17130e;
+  --fuchsia:#d8117d;
+  --cobalt:#20309e;
+  --sun:#f5b921;
+  --mint:#bfe3cf;
+  --rose:#f6cfdc;
+  --lav:#d9dcf5;
+  --peach:#fad9bd;
+  --radius-arch:999px 999px 22px 22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Archivo',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.serif-i{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;text-transform:none;letter-spacing:0}
+
+/* ---------- PRELOADER ---------- */
+#preloader{
+  position:fixed;inset:0;z-index:200;display:flex;pointer-events:none;
+}
+#preloader .panel{
+  flex:1;height:100%;
+  transition:transform .95s cubic-bezier(.76,0,.24,1);
+  animation:preFallback .8s ease 3.2s forwards;
+}
+#preloader .panel.left{background:var(--fuchsia);transform-origin:left center}
+#preloader .panel.right{background:var(--cobalt);transform-origin:right center}
+#preloader .mono{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;
+  color:#fff;z-index:2;transition:opacity .35s ease;
+  animation:preFallback .5s ease 3.2s forwards;
+}
+#preloader .mono .mark{
+  font-weight:900;font-size:clamp(2.6rem,8vw,5.2rem);letter-spacing:.14em;line-height:1;
+}
+#preloader .mono .sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,2.4vw,1.35rem);opacity:.9;
+}
+#preloader.done .panel.left{transform:translateX(-102%) skewX(-4deg)}
+#preloader.done .panel.right{transform:translateX(102%) skewX(-4deg)}
+#preloader.done .mono{opacity:0}
+@keyframes preFallback{to{opacity:0;visibility:hidden}}
+
+/* ---------- DEMO BADGE ---------- */
+.demo-badge{
+  position:fixed;left:14px;bottom:14px;z-index:90;
+  background:var(--ink);color:var(--cream);
+  font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:.5rem .8rem;border-radius:999px;box-shadow:0 8px 24px rgba(23,19,14,.25);
+}
+
+/* ---------- TOP BAR ---------- */
+header{
+  position:sticky;top:0;z-index:80;
+  background:rgba(250,246,239,.88);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(23,19,14,.08);
+}
+.bar{
+  max-width:1240px;margin:0 auto;padding:.9rem 1.4rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.wordmark{font-weight:900;font-size:1.55rem;letter-spacing:.18em}
+.wordmark span{color:var(--fuchsia)}
+nav.main{display:flex;gap:2rem}
+nav.main a{
+  font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  position:relative;padding:.2rem 0;
+}
+nav.main a::after{
+  content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--fuchsia);transition:width .3s ease;
+}
+nav.main a:hover::after{width:100%}
+.icons{display:flex;gap:1.05rem;align-items:center}
+.icons svg{width:21px;height:21px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s ease}
+.icons a:hover svg{transform:translateY(-2px)}
+
+/* ---------- HERO ---------- */
+.hero{
+  max-width:1240px;margin:0 auto;
+  padding:3.4rem 1.4rem 4.5rem;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;
+}
+.hero-copy .kicker{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:.75rem;font-weight:800;letter-scope:.2em;letter-spacing:.2em;text-transform:uppercase;
+  border:1.5px solid var(--ink);border-radius:999px;padding:.45rem .95rem;margin-bottom:1.6rem;
+}
+.hero-copy .kicker i{width:8px;height:8px;border-radius:50%;background:var(--fuchsia);display:inline-block}
+h1{
+  font-weight:800;font-size:clamp(3rem,7.6vw,6.2rem);
+  line-height:.98;letter-spacing:-.015em;text-transform:uppercase;
+}
+h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom}
+h1 .w > span{display:inline-block;transform:translateY(110%);animation:riseIn .8s cubic-bezier(.22,1,.36,1) forwards}
+h1 .d1 > span{animation-delay:.15s}
+h1 .d2 > span{animation-delay:.3s}
+h1 .d3 > span{animation-delay:.45s}
+h1 .d4 > span{animation-delay:.6s}
+@keyframes riseIn{to{transform:translateY(0)}}
+h1.settled .w > span{transform:none !important;animation:none !important}
+h1 .serif-i{font-size:1.04em;color:var(--cobalt)}
+.hero-copy p.lead{
+  margin-top:1.5rem;font-size:1.06rem;line-height:1.65;max-width:34rem;color:#3d362c;
+}
+.hero-cta{display:flex;gap:.9rem;margin-top:2rem;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-weight:800;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:.95rem 1.7rem;border-radius:999px;border:2px solid var(--ink);
+  transition:transform .25s ease,background .25s ease,color .25s ease;
+}
+.btn:hover{transform:translateY(-3px)}
+.btn.solid{background:var(--ink);color:var(--cream)}
+.btn.solid:hover{background:var(--fuchsia);border-color:var(--fuchsia)}
+.btn.ghost:hover{background:var(--sun);border-color:var(--ink)}
+.hero-stats{display:flex;gap:2.2rem;margin-top:2.6rem;flex-wrap:wrap}
+.hero-stats div b{font-size:1.5rem;font-weight:900;display:block}
+.hero-stats div small{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6d6355}
+.hero-arch{
+  border-radius:var(--radius-arch);
+  overflow:hidden;aspect-ratio:4/5;
+  box-shadow:0 30px 60px rgba(23,19,14,.22);
+  background:var(--cobalt);
+}
+.hero-arch img{
+  width:100%;height:100%;object-fit:cover;
+  transform:scale(1);will-change:transform;
+}
+
+/* ---------- SECTION SHELL ---------- */
+section{max-width:1240px;margin:0 auto;padding:4.2rem 1.4rem}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:2.2rem;flex-wrap:wrap}
+h2{
+  font-weight:800;font-size:clamp(2.1rem,4.6vw,3.4rem);line-height:1.02;text-transform:uppercase;letter-spacing:-.01em;
+}
+h2 .serif-i{color:var(--fuchsia)}
+.sec-head p{max-width:24rem;line-height:1.6;color:#3d362c;font-size:.98rem}
+
+/* ---------- SIX HUMEURS ---------- */
+.moods{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;
+}
+.mood{text-align:center}
+.mood .frame{
+  border-radius:var(--radius-arch);overflow:hidden;aspect-ratio:3/4.4;
+  transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s ease,filter .45s ease;
+  filter:saturate(.82);
+}
+.mood:nth-child(1) .frame{background:var(--peach)}
+.mood:nth-child(2) .frame{background:var(--rose)}
+.mood:nth-child(3) .frame{background:var(--lav)}
+.mood:nth-child(4) .frame{background:var(--mint)}
+.mood:nth-child(5) .frame{background:#f7e7a8}
+.mood:nth-child(6) .frame{background:#f3b8c6}
+.mood img{width:100%;height:100%;object-fit:cover}
+.mood:hover .frame{transform:translateY(-12px);filter:saturate(1.25);box-shadow:0 22px 40px rgba(23,19,14,.22)}
+.mood figcaption{margin-top:.75rem;font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.mood figcaption em{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:.95rem;color:#6d6355;font-weight:500;margin-top:.15rem}
+
+/* ---------- CAROUSEL ---------- */
+.carousel-sec{background:var(--ink);color:var(--cream);max-width:none}
+.carousel-sec .inner{max-width:1240px;margin:0 auto}
+.carousel-sec h2 .serif-i{color:var(--sun)}
+.carousel-sec .sec-head p{color:#cfc6b8}
+.stage{
+  perspective:1400px;height:460px;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  cursor:grab;touch-action:pan-y;user-select:none;
+}
+.stage:active{cursor:grabbing}
+.ring{
+  position:relative;width:250px;height:340px;
+  transform-style:preserve-3d;will-change:transform;
+}
+.panel3d{
+  position:absolute;inset:0;border-radius:20px;overflow:hidden;
+  backface-visibility:hidden;
+  box-shadow:0 24px 50px rgba(0,0,0,.45);
+  display:flex;flex-direction:column;
+}
+.panel3d .pimg{flex:1;overflow:hidden}
+.panel3d img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.panel3d .pcap{
+  padding:.85rem 1rem;background:rgba(250,246,239,.97);color:var(--ink);
+  display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;
+}
+.panel3d .pcap b{font-size:.86rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.panel3d .pcap span{font-weight:900;color:var(--fuchsia);white-space:nowrap}
+.p-cobalt{background:var(--cobalt)}.p-fuchsia{background:var(--fuchsia)}
+.p-petal{background:#e88bb0}.p-lime{background:var(--sun)}.p-hero{background:#e86a1c}
+.drag-hint{text-align:center;margin-top:.4rem;font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#cfc6b8}
+.drag-hint .serif-i{color:var(--sun);font-size:1rem;letter-spacing:0}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader" aria-hidden="true">
+  <div class="panel left"></div>
+  <div class="panel right"></div>
+  <div class="mono">
+    <div class="mark">CHROMA</div>
+    <div class="sub">la couleur, portée haut</div>
+  </div>
+</div>
+
+<div class="demo-badge">Modèle de démonstration</div>
+
+<!-- TOP BAR -->
+<header>
+  <div class="bar">
+    <a class="wordmark" href="#accueil">CHROMA<span>.</span></a>
+    <nav class="main">
+      <a href="#accueil">Accueil</a>
+      <a href="#boutique">Boutique</a>
+      <a href="#collections">Collections</a>
+      <a href="#lookbook">Lookbook</a>
+    </nav>
+    <div class="icons">
+      <a href="#boutique" aria-label="Rechercher"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></a>
+      <a href="#collections" aria-label="Favoris"><svg viewBox="0 0 24 24"><path d="M12 20.7C6.4 17 3 13.6 3 9.6 3 7 5 5 7.5 5c1.7 0 3.4.9 4.5 2.4C13.1 5.9 14.8 5 16.5 5 19 5 21 7 21 9.6c0 4-3.4 7.4-9 11.1z"/></svg></a>
+      <a href="#boutique" aria-label="Panier"><svg viewBox="0 0 24 24"><path d="M6 8h15l-1.7 8.5a2 2 0 0 1-2 1.5H8.6a2 2 0 0 1-2-1.6L4 3.8A1 1 0 0 0 3 3H1.5"/><circle cx="9" cy="21" r="1.4"/><circle cx="17" cy="21" r="1.4"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="accueil">
+  <div class="hero-copy">
+    <span class="kicker"><i></i> Nouvelle collection · Tanger</span>
+    <h1>
+      <span class="w d1"><span>La</span></span>
+      <span class="w d2"><span>couleur,</span></span><br>
+      <span class="w d3"><span>portée</span></span>
+      <span class="w d4"><span class="serif-i">haut.</span></span>
+    </h1>
+    <p class="lead">Des tailleurs francs, des soies qui captent la lumière et des teintes pensées comme des déclarations. CHROMA habille les femmes qui entrent dans une pièce avant même d'y être annoncées.</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="#boutique">Voir la boutique</a>
+      <a class="btn ghost" href="#lookbook">Le lookbook</a>
+    </div>
+    <div class="hero-stats">
+      <div><b>120+</b><small>Pièces colorées</small></div>
+      <div><b>48 h</b><small>Livraison Tanger</small></div>
+      <div><b>100 %</b><small>Paiement à la livraison</small></div>
+    </div>
+  </div>
+  <figure class="hero-arch">
+    <img id="heroImg" src="chroma/hero.webp" alt="Modèle en tailleur agrume devant un décor cobalt et jaune">
+  </figure>
+</div>
+
+<!-- SIX HUMEURS -->
+<section id="collections">
+  <div class="sec-head">
+    <h2>Six humeurs, <span class="serif-i">une</span> garde-robe</h2>
+    <p>Six façons de porter la couleur cette saison — du tailoring du dimanche aux soies du soir. Choisissez une humeur, nous nous occupons de la teinte.</p>
+  </div>
+  <div class="moods">
+    <figure class="mood">
+      <div class="frame"><img src="chroma/hero.webp" alt="Tailleur agrume"></div>
+      <figcaption>Tailoring du dimanche<em>l'orange en pleine lumière</em></figcaption>
+    </figure>
+    <figure class="mood">
+      <div class="frame"><img src="chroma/fuchsia.webp" alt="Robe fuchsia en satin"></div>
+      <figcaption>Soie &amp; satin<em>le fuchsia qui danse</em></figcaption>
+    </figure>
+    <figure class="mood">
+      <div class="frame"><img src="chroma/cobalt.webp" alt="Robe cobalt en soie"></div>
+      <figcaption>Heure cobalt<em>le bleu profond du soir</em></figcaption>
+    </figure>
+    <figure class="mood">
+      <div class="frame"><img src="chroma/petal.webp" alt="Ensemble bouclé rose sur fond menthe"></div>
+      <figcaption>Pétale<em>le rose bouclé, tout doux</em></figcaption>
+    </figure>
+    <figure class="mood">
+      <div class="frame"><img src="chroma/lime.webp" alt="Tailleur lin jaune"></div>
+      <figcaption>Citron solaire<em>le jaune qui réveille</em></figcaption>
+    </figure>
+    <figure class="mood">
+      <div class="frame"><img src="chroma/bag.webp" alt="Sac en cuir rouge sur fond rose"></div>
+      <figcaption>L'accessoire rouge<em>la touche qui signe</em></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 3D CAROUSEL -->
+<section class="carousel-sec" id="signatures">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>Les <span class="serif-i">Signatures</span></h2>
+      <p>Cinq pièces emblèmes de la maison, montées sur un carrousel concave. Faites-les tourner, approchez-vous, choisissez votre camp de couleur.</p>
+    </div>
+    <div class="stage" id="stage">
+      <div class="ring" id="ring">
+        <article class="panel3d p-cobalt">
+          <div class="pimg"><img src="chroma/cobalt.webp" alt="Robe satin cobalt"></div>
+          <div class="pcap"><b>Robe satin cobalt</b><span>2 600 DH</span></div>
+        </article>
+        <article class="panel3d p-fuchsia">
+          <div class="pimg"><img src="chroma/fuchsia.webp" alt="Robe portefeuille fuchsia"></div>
+          <div class="pcap"><b>Robe fuchsia</b><span>2 900 DH</span></div>
+        </article>
+        <article class="panel3d p-petal">
+          <div class="pimg"><img src="chroma/petal.webp" alt="Ensemble bouclé pétale"></div>
+          <div class="pcap"><b>Ensemble pétale</b><span>3 400 DH</span></div>
+        </article>
+        <article class="panel3d p-lime">
+          <div class="pimg"><img src="chroma/lime.webp" alt="Tailleur lin citron"></div>
+          <div class="pcap"><b>Tailleur citron</b><span>3 100 DH</span></div>
+        </article>
+        <article class="panel3d p-hero">
+          <div class="pimg"><img src="chroma/hero.webp" alt="Tailleur agrume"></div>
+          <div class="pcap"><b>Tailleur agrume</b><span>3 600 DH</span></div>
+        </article>
+      </div>
+    </div>
+    <p class="drag-hint">Glissez pour explorer · <span class="serif-i">à vous de tourner</span></p>
+  </div>
+</section>
+
+<style>
+/* ---------- BOUTIQUE ---------- */
+.filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem}
+.filters button{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.65rem 1.3rem;border-radius:999px;border:2px solid var(--ink);
+  background:transparent;color:var(--ink);cursor:pointer;
+  transition:background .25s ease,color .25s ease,transform .25s ease;
+}
+.filters button:hover{transform:translateY(-2px)}
+.filters button.active{background:var(--ink);color:var(--cream)}
+.grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;
+}
+.card{
+  border-radius:24px;overflow:hidden;position:relative;
+  transition:opacity .35s ease,transform .35s ease;
+  display:flex;flex-direction:column;
+}
+.card.leaving{opacity:0;transform:scale(.92)}
+.card.hidden{display:none}
+.card .cimg{aspect-ratio:4/4.6;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.card:hover img{transform:scale(1.06)}
+.badge{
+  position:absolute;top:14px;left:14px;z-index:3;
+  font-size:.66rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;
+  padding:.4rem .75rem;border-radius:999px;background:var(--ink);color:var(--cream);
+}
+.badge.hot{background:var(--fuchsia)}
+.card .cbody{padding:1.1rem 1.2rem 1.3rem;background:rgba(255,255,255,.55);display:flex;flex-direction:column;gap:.55rem;flex:1}
+.card h3{font-size:1.05rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.card .fabric{font-size:.85rem;color:#5c5344;line-height:1.45}
+.card .price{font-size:1.25rem;font-weight:900}
+.card .price small{font-size:.8rem;color:var(--fuchsia);font-weight:800}
+.sizes{display:flex;gap:.4rem;margin-top:.2rem}
+.sizes span{
+  font-size:.72rem;font-weight:800;border:1.5px solid rgba(23,19,14,.35);border-radius:8px;
+  padding:.28rem .5rem;cursor:pointer;transition:all .2s ease;
+}
+.sizes span:hover,.sizes span.sel{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.cmd{
+  margin-top:auto;display:inline-flex;justify-content:center;align-items:center;gap:.5rem;
+  background:var(--ink);color:var(--cream);font-weight:800;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.85rem 1rem;border-radius:999px;transition:background .25s ease,transform .25s ease;
+}
+.cmd:hover{background:#1faa55;transform:translateY(-2px)}
+.blk-lav{background:var(--lav)}.blk-rose{background:var(--rose)}
+.blk-mint{background:var(--mint)}.blk-sun{background:#f7e7a8}
+.blk-peach{background:var(--peach)}.blk-pink{background:#f3b8c6}
+
+/* ---------- LOOKBOOK ---------- */
+.lookbook{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.lb-sticky{position:sticky;top:96px}
+.lb-frame{border-radius:var(--radius-arch);overflow:hidden;aspect-ratio:4/5;box-shadow:0 26px 50px rgba(23,19,14,.2)}
+.lb-frame img{width:100%;height:100%;object-fit:cover}
+.lb-note{margin-top:1rem;font-size:.9rem;color:#5c5344;line-height:1.6}
+.look{
+  padding:1.6rem 0;border-bottom:1.5px solid rgba(23,19,14,.14);
+  opacity:.38;transform:translateX(10px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.look:first-child{padding-top:.4rem}
+.look.active{opacity:1;transform:translateX(0)}
+.look .num{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.6rem;color:var(--fuchsia);display:block;margin-bottom:.3rem;
+}
+.look h3{font-size:1.5rem;font-weight:800;text-transform:uppercase;margin-bottom:.5rem}
+.look p{line-height:1.65;color:#3d362c}
+.look .lprice{margin-top:.7rem;font-weight:900}
+.look .lprice span{color:var(--cobalt)}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink);color:var(--cream);margin-top:2rem}
+.foot{max-width:1240px;margin:0 auto;padding:3.4rem 1.4rem 2.4rem}
+.foot .big{
+  font-weight:900;font-size:clamp(2.4rem,7vw,4.6rem);letter-spacing:.06em;line-height:1;text-transform:uppercase;
+}
+.foot .big .serif-i{color:var(--sun);font-weight:500}
+.foot-cols{display:flex;gap:3rem;flex-wrap:wrap;margin-top:2.2rem}
+.foot-cols div h4{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.7rem;color:var(--sun)}
+.foot-cols div a,.foot-cols div p{display:block;font-size:.92rem;line-height:1.9;color:#e8e0d2}
+.foot-cols div a:hover{color:#fff;text-decoration:underline}
+.credit{
+  border-top:1px solid rgba(250,246,239,.18);margin-top:2.4rem;padding-top:1.4rem;
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.82rem;color:#bdb29e;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1020px){
+  .moods{grid-template-columns:repeat(3,1fr)}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero{grid-template-columns:1fr;gap:2rem}
+  .hero-arch{max-width:480px}
+  .lookbook{grid-template-columns:1fr}
+  .lb-sticky{position:static}
+  .stage{height:420px}
+}
+@media (max-width:640px){
+  nav.main{display:none}
+  .moods{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:1fr}
+  .stage{height:400px}
+  .ring{width:210px;height:300px}
+  section{padding:3rem 1.1rem}
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;scroll-behavior:auto !important;
+  }
+  h1 .w > span{transform:none}
+  #preloader{display:none}
+}
+</style>
+
+<!-- BOUTIQUE -->
+<section id="boutique">
+  <div class="sec-head">
+    <h2>Nouveautés <span class="serif-i">de saison</span></h2>
+    <p>Les dernières pièces arrivées à l'atelier de Tanger. Filtrez par famille, choisissez votre taille, commandez en un message.</p>
+  </div>
+  <div class="filters" id="filters">
+    <button class="active" data-filter="all">Tout</button>
+    <button data-filter="robes">Robes</button>
+    <button data-filter="tailleur">Tailleur</button>
+    <button data-filter="accessoires">Accessoires</button>
+  </div>
+  <div class="grid" id="grid">
+    <article class="card blk-lav" data-cat="robes">
+      <span class="badge">Nouveau</span>
+      <div class="cimg"><img src="chroma/cobalt.webp" alt="Robe satin cobalt"></div>
+      <div class="cbody">
+        <h3>Robe satin cobalt</h3>
+        <p class="fabric">Soie fluide, tombé net — le bleu qui remplace le noir du soir.</p>
+        <div class="price">2 600 <small>DH</small></div>
+        <div class="sizes"><span>XS</span><span>S</span><span class="sel">M</span><span>L</span><span>XL</span></div>
+        <a class="cmd" href="https://wa.me/212693981822" data-msg="Bonjour CHROMA, je souhaite commander la Robe satin cobalt (2 600 DH). Merci !">Commander</a>
+      </div>
+    </article>
+    <article class="card blk-rose" data-cat="robes">
+      <span class="badge hot">Top vente</span>
+      <div class="cimg"><img src="chroma/fuchsia.webp" alt="Robe portefeuille fuchsia"></div>
+      <div class="cbody">
+        <h3>Robe portefeuille fuchsia</h3>
+        <p class="fabric">Satin lourd, taille nouée — notre pièce la plus demandée du printemps.</p>
+        <div class="price">2 900 <small>DH</small></div>
+        <div class="sizes"><span>XS</span><span>S</span><span class="sel">M</span><span>L</span><span>XL</span></div>
+        <a class="cmd" href="https://wa.me/212693981822" data-msg="Bonjour CHROMA, je souhaite commander la Robe portefeuille fuchsia (2 900 DH). Merci !">Commander</a>
+      </div>
+    </article>
+    <article class="card blk-mint" data-cat="tailleur">
+      <span class="badge">Nouveau</span>
+      <div class="cimg"><img src="chroma/petal.webp" alt="Ensemble bouclé pétale"></div>
+      <div class="cbody">
+        <h3>Ensemble bouclé pétale</h3>
+        <p class="fabric">Bouclé rose poudré sur fond menthe — douceur structurée, esprit couture.</p>
+        <div class="price">3 400 <small>DH</small></div>
+        <div class="sizes"><span>XS</span><span>S</span><span class="sel">M</span><span>L</span><span>XL</span></div>
+        <a class="cmd" href="https://wa.me/212693981822" data-msg="Bonjour CHROMA, je souhaite commander l'Ensemble bouclé pétale (3 400 DH). Merci !">Commander</a>
+      </div>
+    </article>
+    <article class="card blk-sun" data-cat="tailleur">
+      <div class="cimg"><img src="chroma/lime.webp" alt="Tailleur lin citron"></div>
+      <div class="cbody">
+        <h3>Tailleur lin citron</h3>
+        <p class="fabric">Lin respirant jaune solaire — le tailleur des journées qui n'en finissent pas.</p>
+        <div class="price">3 100 <small>DH</small></div>
+        <div class="sizes"><span>XS</span><span>S</span><span class="sel">M</span><span>L</span><span>XL</span></div>
+        <a class="cmd" href="https://wa.me/212693981822" data-msg="Bonjour CHROMA, je souhaite commander le Tailleur lin citron (3 100 DH). Merci !">Commander</a>
+      </div>
+    </article>
+    <article class="card blk-peach" data-cat="tailleur">
+      <span class="badge hot">Top vente</span>
+      <div class="cimg"><img src="chroma/hero.webp" alt="Tailleur agrume"></div>
+      <div class="cbody">
+        <h3>Tailleur agrume</h3>
+        <p class="fabric">Coupe nette, orange mûr — la signature CHROMA depuis la première collection.</p>
+        <div class="price">3 600 <small>DH</small></div>
+        <div class="sizes"><span>XS</span><span>S</span><span class="sel">M</span><span>L</span><span>XL</span></div>
+        <a class="cmd" href="https://wa.me/212693981822" data-msg="Bonjour CHROMA, je souhaite commander le Tailleur agrume (3 600 DH). Merci !">Commander</a>
+      </div>
+    </article>
+    <article class="card blk-pink" data-cat="accessoires">
+      <span class="badge">Nouveau</span>
+      <div class="cimg"><img src="chroma/bag.webp" alt="Sac cuir rouge"></div>
+      <div class="cbody">
+        <h3>Sac cuir rouge</h3>
+        <p class="fabric">Cuir pleine fleur, rouge franc — l'accessoire qui signe toutes les tenues.</p>
+        <div class="price">1 900 <small>DH</small></div>
+        <div class="sizes"><span class="sel">Unique</span></div>
+        <a class="cmd" href="https://wa.me/212693981822" data-msg="Bonjour CHROMA, je souhaite commander le Sac cuir rouge (1 900 DH). Merci !">Commander</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- LOOKBOOK -->
+<section id="lookbook">
+  <div class="sec-head">
+    <h2>Lookbook <span class="serif-i">nº 04</span></h2>
+    <p>Trois silhouettes, trois températures de couleur. Faites défiler : le look actif se révèle à gauche.</p>
+  </div>
+  <div class="lookbook">
+    <div class="lb-sticky">
+      <figure class="lb-frame"><img src="chroma/hero.webp" alt="Lookbook CHROMA — tailleur agrume"></figure>
+      <p class="lb-note">Photographié à Tanger, entre lumière de la médina et murs chaulés. Toutes les pièces du lookbook sont disponibles à la boutique, dans la limite des tailles.</p>
+    </div>
+    <div class="looks">
+      <article class="look" data-look>
+        <span class="num">— 01</span>
+        <h3>Tailoring agrume</h3>
+        <p>Le tailleur orange porté plein jour, sans excuse et sans neutre autour. Une seule couleur, tenue de la tête aux pieds, pour les entrées que l'on n'oublie pas.</p>
+        <div class="lprice">Le look complet : <span>3 600 DH</span></div>
+      </article>
+      <article class="look" data-look>
+        <span class="num">— 02</span>
+        <h3>Heure cobalt</h3>
+        <p>Quand le soir tombe sur la baie, la soie cobalt prend le relais. Profonde, calme, presque électrique sous les lumières — la robe qui remplace toutes les petites robes noires.</p>
+        <div class="lprice">Le look complet : <span>2 600 DH</span></div>
+      </article>
+      <article class="look" data-look>
+        <span class="num">— 03</span>
+        <h3>Pétale rose</h3>
+        <p>Le bouclé rose sur fond menthe : la douceur, mais avec des épaules. Pour les déjeuners qui comptent et les photos qui restent.</p>
+        <div class="lprice">Le look complet : <span>3 400 DH</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot">
+    <div class="big">CHROMA<span style="color:var(--fuchsia)">.</span> <span class="serif-i">osez la teinte</span></div>
+    <div class="foot-cols">
+      <div>
+        <h4>Boutique</h4>
+        <a href="#boutique">Nouveautés</a>
+        <a href="#collections">Collections</a>
+        <a href="#signatures">Les Signatures</a>
+      </div>
+      <div>
+        <h4>La maison</h4>
+        <a href="#lookbook">Lookbook nº 04</a>
+        <a href="#accueil">Notre histoire</a>
+        <a href="#collections">Six humeurs</a>
+      </div>
+      <div>
+        <h4>Atelier — Tanger</h4>
+        <p>12, rue de la Couleur<br>Centre-ville, Tanger</p>
+        <p>Ouvert du lundi au samedi<br>10 h — 19 h</p>
+      </div>
+    </div>
+    <div class="credit">
+      <span>© 2026 CHROMA — Marque fictive de démonstration.</span>
+      <span>Démonstration réalisée par Tanja Web — Tanger</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ----- Preloader ----- */
+  var pre = document.getElementById("preloader");
+  function openPre(){
+    if(!pre) return;
+    pre.classList.add("done");
+    setTimeout(function(){ pre.style.display = "none"; }, 1100);
+  }
+  if(reduced){ if(pre) pre.style.display = "none"; }
+  else if(document.readyState === "complete"){ openPre(); }
+  else{ window.addEventListener("load", openPre); setTimeout(openPre, 2600); }
+
+  /* ----- Headline settle (guarantees final state) ----- */
+  var h1 = document.querySelector("h1");
+  if(h1){ setTimeout(function(){ h1.classList.add("settled"); }, 1500); }
+
+  /* ----- WhatsApp prefilled links ----- */
+  document.querySelectorAll(".cmd").forEach(function(a){
+    var msg = a.getAttribute("data-msg");
+    if(msg){ a.href = "https://wa.me/212693981822?text=" + encodeURIComponent(msg); }
+  });
+
+  /* ----- Size selector ----- */
+  document.querySelectorAll(".sizes").forEach(function(row){
+    row.addEventListener("click", function(e){
+      if(e.target.tagName !== "SPAN") return;
+      row.querySelectorAll("span").forEach(function(s){ s.classList.remove("sel"); });
+      e.target.classList.add("sel");
+    });
+  });
+
+  /* ----- Hero scroll scale ----- */
+  var heroImg = document.getElementById("heroImg");
+  var hero = document.querySelector(".hero");
+  if(heroImg && hero && !reduced){
+    var ticking = false;
+    function upd(){
+      var r = hero.getBoundingClientRect();
+      var total = r.height + window.innerHeight;
+      var p = Math.min(1, Math.max(0, (window.innerHeight - r.top) / total));
+      heroImg.style.transform = "scale(" + (1 + p * 0.06).toFixed(4) + ")";
+      ticking = false;
+    }
+    window.addEventListener("scroll", function(){
+      if(!ticking){ ticking = true; requestAnimationFrame(upd); }
+    }, {passive:true});
+    upd();
+  }
+
+  /* ----- 3D concave carousel ----- */
+  var ring = document.getElementById("ring");
+  var stage = document.getElementById("stage");
+  if(ring && stage){
+    var panels = ring.children.length;
+    var step = 360 / panels;
+    var radius = 430;
+    for(var i = 0; i < panels; i++){
+      ring.children[i].style.transform =
+        "rotateY(" + (i * step) + "deg) translateZ(" + radius + "px)";
+    }
+    var rot = 0, dragging = false, startX = 0, startRot = 0, auto = !reduced;
+    function render(){ ring.style.transform = "translateZ(-" + radius + "px) rotateY(" + rot + "deg)"; }
+    render();
+    (function loop(){
+      if(auto && !dragging){ rot -= 0.12; render(); }
+      requestAnimationFrame(loop);
+    })();
+    stage.addEventListener("pointerdown", function(e){
+      dragging = true; startX = e.clientX; startRot = rot;
+      stage.setPointerCapture(e.pointerId);
+    });
+    stage.addEventListener("pointermove", function(e){
+      if(!dragging) return;
+      rot = startRot + (e.clientX - startX) * 0.25;
+      render();
+    });
+    ["pointerup","pointercancel","pointerleave"].forEach(function(ev){
+      stage.addEventListener(ev, function(){ dragging = false; });
+    });
+    stage.addEventListener("mouseenter", function(){ auto = false; });
+    stage.addEventListener("mouseleave", function(){ if(!reduced) auto = true; });
+  }
+
+  /* ----- Shop filters ----- */
+  var filterBar = document.getElementById("filters");
+  var cards = Array.prototype.slice.call(document.querySelectorAll("#grid .card"));
+  if(filterBar){
+    filterBar.addEventListener("click", function(e){
+      if(e.target.tagName !== "BUTTON") return;
+      filterBar.querySelectorAll("button").forEach(function(b){ b.classList.remove("active"); });
+      e.target.classList.add("active");
+      var f = e.target.getAttribute("data-filter");
+      cards.forEach(function(c){ c.classList.add("leaving"); });
+      setTimeout(function(){
+        cards.forEach(function(c){
+          var show = (f === "all" || c.getAttribute("data-cat") === f);
+          c.classList.toggle("hidden", !show);
+        });
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            cards.forEach(function(c){ c.classList.remove("leaving"); });
+          });
+        });
+      }, reduced ? 0 : 260);
+    });
+  }
+
+  /* ----- Lookbook highlight ----- */
+  var looks = document.querySelectorAll("[data-look]");
+  if("IntersectionObserver" in window && looks.length){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          looks.forEach(function(l){ l.classList.remove("active"); });
+          en.target.classList.add("active");
+        }
+      });
+    }, {threshold: 0.45});
+    looks.forEach(function(l){ io.observe(l); });
+  } else {
+    looks.forEach(function(l){ l.classList.add("active"); });
+  }
+})();
+</script>
+</body>
+</html>

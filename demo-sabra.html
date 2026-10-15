@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>SABRA — Jus de figue de Barbarie · Tanger</title>
+<meta name="description" content="SABRA — jus de figue de Barbarie pressé à froid, cueilli à l'aube. Tanger.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0f0a;
+    --bg2:#0e140d;
+    --ink:#f4f1e8;
+    --ink-dim:rgba(244,241,232,.62);
+    --ink-faint:rgba(244,241,232,.38);
+    --magenta:#e0218a;
+    --magenta-soft:#ff4fa8;
+    --green:#7fb069;
+    --line:rgba(244,241,232,.16);
+    --card:#111711;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Space Grotesk",system-ui,sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--magenta);color:#fff}
+  .mono{font-family:"IBM Plex Mono",monospace}
+  img{display:block;max-width:100%}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;inset:0 0 auto 0;z-index:60;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px clamp(18px,4vw,52px);
+    mix-blend-mode:difference;
+  }
+  .wordmark{
+    font-family:"Archivo",sans-serif;font-weight:900;letter-spacing:.14em;
+    font-size:20px;color:#fff;text-decoration:none;line-height:1;
+  }
+  .wordmark small{
+    display:block;font-family:"IBM Plex Mono",monospace;font-weight:400;
+    letter-spacing:.28em;font-size:8.5px;margin-top:4px;opacity:.75;
+  }
+  .nav-links{display:flex;gap:clamp(14px,3vw,38px);align-items:center}
+  .nav-links a{
+    color:#fff;text-decoration:none;font-family:"IBM Plex Mono",monospace;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.85;
+  }
+  .nav-links a:hover{opacity:1}
+  .nav-links a.cta{
+    border:1px solid #fff;border-radius:999px;padding:9px 18px;opacity:1;
+    transition:background .25s,color .25s;
+  }
+  .nav-links a.cta:hover{background:#fff;color:#000}
+  @media(max-width:760px){.nav-links a:not(.cta){display:none}}
+
+  /* ---------- PINNED HERO ---------- */
+  .hero{position:relative;height:340vh;background:var(--bg)}
+  .hero-stage{
+    position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
+    background:var(--bg);
+  }
+  .hero-scene{
+    position:absolute;inset:-4%;
+    will-change:transform;
+  }
+  .hero-scene img{
+    width:100%;height:100%;object-fit:cover;object-position:50% 42%;
+    filter:saturate(1.08) contrast(1.05);
+  }
+  .hero-shade{
+    position:absolute;inset:0;pointer-events:none;
+    background:
+      linear-gradient(180deg,rgba(10,15,10,.55) 0%,rgba(10,15,10,0) 26%,rgba(10,15,10,0) 58%,rgba(10,15,10,.72) 100%),
+      radial-gradient(120% 90% at 50% 45%,rgba(10,15,10,0) 40%,rgba(10,15,10,.5) 100%);
+  }
+  .hero-glow{
+    position:absolute;left:50%;top:52%;width:62vmin;height:62vmin;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle,rgba(224,33,138,.5) 0%,rgba(224,33,138,.18) 42%,rgba(224,33,138,0) 68%);
+    filter:blur(10px);opacity:.35;pointer-events:none;will-change:opacity,transform;
+  }
+  /* giant headline split around centre */
+  .hero-title{
+    position:absolute;inset:0;pointer-events:none;z-index:5;
+    font-family:"Archivo",sans-serif;font-weight:900;text-transform:uppercase;
+    line-height:.92;letter-spacing:-.01em;color:#fff;
+    text-shadow:0 4px 44px rgba(0,0,0,.45);
+  }
+  .hero-title .w{position:absolute;white-space:nowrap;will-change:transform}
+  .hero-title .w-buvez{left:clamp(16px,4vw,54px);top:15vh;font-size:clamp(52px,11.5vw,168px)}
+  .hero-title .w-le{right:clamp(16px,6vw,90px);top:15vh;font-size:clamp(52px,11.5vw,168px)}
+  .hero-title .w-desert{right:clamp(16px,4vw,54px);bottom:9vh;font-size:clamp(52px,12.5vw,184px)}
+  .hero-title .w-desert em{
+    font-family:"Space Grotesk",sans-serif;font-style:italic;font-weight:500;
+    text-transform:none;letter-spacing:0;color:var(--magenta-soft);
+  }
+  /* the glass */
+  .hero-glass{
+    position:absolute;left:50%;top:51%;z-index:4;
+    width:min(37vh,300px);aspect-ratio:1120/2240;
+    transform:translate(-50%,-50%);
+    will-change:transform;
+    pointer-events:none;
+  }
+  .hero-glass img{
+    width:100%;height:100%;object-fit:contain;
+    filter:drop-shadow(0 24px 44px rgba(0,0,0,.55));
+  }
+  /* spec labels + leader lines */
+  .hero-specs{position:absolute;inset:0;z-index:6;pointer-events:none}
+  .hero-specs svg{position:absolute;inset:0;width:100%;height:100%}
+  .hero-specs path{
+    fill:none;stroke:rgba(244,241,232,.85);stroke-width:1.2;
+    stroke-dasharray:1;stroke-dashoffset:1;
+  }
+  .hero-specs circle{fill:var(--magenta-soft);opacity:0}
+  .spec-label{
+    position:absolute;font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:.18em;text-transform:uppercase;color:#fff;opacity:0;
+    background:rgba(10,15,10,.55);border:1px solid var(--line);
+    padding:7px 11px;border-radius:3px;backdrop-filter:blur(4px);white-space:nowrap;
+  }
+  .spec-label b{color:var(--magenta-soft);font-weight:500}
+  .spec-1{left:9%;top:33%}
+  .spec-2{right:8%;top:47%}
+  .spec-3{left:11%;top:64%}
+  @media(max-width:760px){
+    .spec-1{left:4%;top:30%}
+    .spec-2{right:4%;top:44%}
+    .spec-3{left:5%;top:66%}
+    .spec-label{font-size:9.5px;letter-spacing:.12em}
+  }
+  /* hero bottom-left mono note + scroll hint */
+  .hero-note{
+    position:absolute;left:clamp(16px,4vw,54px);bottom:8.5vh;z-index:7;max-width:300px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;line-height:1.75;
+    letter-spacing:.06em;color:var(--ink-dim);text-transform:uppercase;
+  }
+  .hero-note b{color:#fff;font-weight:500}
+  .scroll-hint{
+    position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:7;
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--ink-faint);text-align:center;
+  }
+  .scroll-hint::after{
+    content:"";display:block;width:1px;height:38px;margin:10px auto 0;
+    background:linear-gradient(180deg,var(--ink-faint),transparent);
+    animation:drip 2.2s ease-in-out infinite;transform-origin:top;
+  }
+  @keyframes drip{0%,100%{transform:scaleY(.4);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+  .hero-badge{
+    position:absolute;right:clamp(16px,4vw,54px);bottom:8.5vh;z-index:7;
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.24em;
+    color:var(--ink-faint);text-transform:uppercase;text-align:right;line-height:2;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{position:relative}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(80px,12vh,140px) clamp(18px,4vw,52px)}
+  .kicker{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--magenta-soft);margin-bottom:22px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .kicker::before{content:"";width:34px;height:1px;background:var(--magenta)}
+  h2{
+    font-family:"Archivo",sans-serif;font-weight:800;text-transform:uppercase;
+    font-size:clamp(38px,6vw,84px);line-height:.98;letter-spacing:-.01em;
+  }
+  h2 em{
+    font-family:"Space Grotesk",sans-serif;font-style:italic;font-weight:500;
+    text-transform:none;color:var(--magenta-soft);
+  }
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* LE FRUIT */
+  .fruit-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,72px);align-items:center}
+  @media(max-width:860px){.fruit-grid{grid-template-columns:1fr}}
+  .fruit-img{border-radius:6px;overflow:hidden;aspect-ratio:3/2.4}
+  .fruit-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+  .fruit-img:hover img{transform:scale(1.05)}
+  .fruit-copy p{color:var(--ink-dim);font-size:17px;line-height:1.75;margin-top:24px;max-width:52ch}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+  .chip{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;border:1px solid var(--line);border-radius:999px;
+    padding:10px 16px;color:var(--ink);
+  }
+  .chip b{color:var(--magenta-soft);font-weight:500}
+
+  /* NOS JUS */
+  #jus{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .jus-banner{border-radius:6px;overflow:hidden;aspect-ratio:21/9;margin-bottom:clamp(36px,5vw,60px)}
+  .jus-banner img{width:100%;height:100%;object-fit:cover}
+  .jus-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:40px}
+  .jus-head p{color:var(--ink-dim);max-width:38ch;line-height:1.7;font-size:16px}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:1020px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:540px){.cards{grid-template-columns:1fr}}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:8px;
+    padding:26px 22px 22px;display:flex;flex-direction:column;gap:12px;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .5s;
+  }
+  .card:hover{transform:translateY(-6px);border-color:rgba(244,241,232,.4)}
+  .card .dot{width:14px;height:14px;border-radius:50%}
+  .card h3{font-family:"Archivo",sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;line-height:1.15}
+  .card p{color:var(--ink-dim);font-size:14.5px;line-height:1.65;flex:1}
+  .card .row{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+  .price{font-family:"Archivo",sans-serif;font-weight:800;font-size:22px}
+  .price small{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:11px;color:var(--ink-faint);letter-spacing:.1em}
+  .order{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:#fff;text-decoration:none;
+    border:1px solid rgba(244,241,232,.35);border-radius:999px;padding:9px 15px;
+    transition:background .25s,border-color .25s;
+  }
+  .order:hover{background:var(--magenta);border-color:var(--magenta)}
+
+  /* LE PRESSAGE */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(36px,5vw,56px)}
+  @media(max-width:860px){.steps{grid-template-columns:1fr}}
+  .step{
+    border:1px solid var(--line);border-radius:8px;padding:30px 26px;
+    background:linear-gradient(180deg,rgba(244,241,232,.03),rgba(244,241,232,0));
+  }
+  .step .num{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.3em;
+    color:var(--magenta-soft);display:block;margin-bottom:18px;
+  }
+  .step h3{font-family:"Archivo",sans-serif;font-weight:700;font-size:23px;text-transform:uppercase;margin-bottom:12px}
+  .step p{color:var(--ink-dim);line-height:1.7;font-size:15.5px}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);background:#070a07}
+  .foot-cta{text-align:center;padding:clamp(80px,12vh,130px) 20px 60px}
+  .foot-cta h2{font-size:clamp(40px,7.5vw,104px)}
+  .big-cta{
+    display:inline-block;margin-top:38px;background:var(--magenta);color:#fff;
+    text-decoration:none;font-family:"IBM Plex Mono",monospace;font-size:12px;
+    letter-spacing:.24em;text-transform:uppercase;padding:18px 34px;border-radius:999px;
+    transition:background .25s,transform .25s;
+  }
+  .big-cta:hover{background:var(--magenta-soft);transform:translateY(-2px)}
+  .foot-meta{
+    display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
+    max-width:1240px;margin:0 auto;padding:26px clamp(18px,4vw,52px) 34px;
+    border-top:1px solid var(--line);
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-faint);
+  }
+  .demo-badge{
+    border:1px dashed rgba(244,241,232,.4);border-radius:4px;padding:7px 12px;color:var(--ink-dim);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="wordmark" href="#">SABRA<small>JUS DE FIGUE DE BARBARIE</small></a>
+  <div class="nav-links">
+    <a href="#fruit">Le Fruit</a>
+    <a href="#pressage">Le Pressage</a>
+    <a href="#jus">Nos Jus</a>
+    <a href="#trouver">Trouver</a>
+    <a class="cta" href="https://wa.me/212693981822" target="_blank" rel="noopener">Commander</a>
+  </div>
+</nav>
+
+<!-- ============ PINNED HERO ============ -->
+<header class="hero" id="hero">
+  <div class="hero-stage" id="heroStage">
+    <div class="hero-scene" id="heroScene">
+      <img src="sabra/hero.webp" alt="Un verre de jus de figue de Barbarie posé sur un rocher, parmi les cactus en fleurs">
+    </div>
+    <div class="hero-shade"></div>
+    <div class="hero-glow" id="heroGlow"></div>
+
+    <figure class="hero-glass" id="heroGlass">
+      <img src="sabra/glass-cut.webp" alt="Verre de jus de figue de Barbarie, couleur magenta">
+    </figure>
+
+    <div class="hero-specs" aria-hidden="true">
+      <svg viewBox="0 0 1000 625" preserveAspectRatio="none">
+        <path id="line1" pathLength="1" d="M 415 250 L 250 208 L 128 208"/>
+        <path id="line2" pathLength="1" d="M 588 320 L 745 296 L 872 296"/>
+        <path id="line3" pathLength="1" d="M 420 415 L 268 402 L 148 402"/>
+        <circle id="dot1" cx="415" cy="250" r="4"/>
+        <circle id="dot2" cx="588" cy="320" r="4"/>
+        <circle id="dot3" cx="420" cy="415" r="4"/>
+      </svg>
+      <span class="spec-label spec-1" id="label1"><b>01</b>&nbsp; Pressé à froid</span>
+      <span class="spec-label spec-2" id="label2"><b>02</b>&nbsp; Cueilli à l'aube</span>
+      <span class="spec-label spec-3" id="label3"><b>03</b>&nbsp; 100 % figue de Barbarie</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="w w-buvez" id="wBuvez">Buvez</span>
+      <span class="w w-le" id="wLe">le</span>
+      <span class="w w-desert" id="wDesert">Désert<em>.</em></span>
+    </h1>
+
+    <p class="hero-note">
+      <b>Figue de Barbarie, pressée à froid.</b><br>
+      Récoltée à la première lumière,<br>
+      servie glacée pour les heures chaudes.
+    </p>
+    <div class="hero-badge">Tanger — Maroc<br>Édition du désert</div>
+    <div class="scroll-hint" id="scrollHint">Défiler</div>
+  </div>
+</header>
+
+<!-- ============ LE FRUIT ============ -->
+<section id="fruit">
+  <div class="wrap">
+    <div class="fruit-grid">
+      <div class="fruit-img reveal">
+        <img src="sabra/fruit.webp" alt="Figues de Barbarie sur une raquette de cactus, l'une ouverte sur sa chair magenta">
+      </div>
+      <div class="fruit-copy reveal">
+        <p class="kicker">Le Fruit</p>
+        <h2>Un fruit <em>patient</em>.</h2>
+        <p>Il pousse là où presque rien ne pousse. Sous les épines de la raquette,
+        la figue de Barbarie attend des mois de soleil avant d'offrir sa chair
+        magenta, douce et pleine d'eau. Nos fruits viennent des collines du
+        Tafilalet et des plaines d'Aït Baâmrane, cueillis à la main avant que
+        la chaleur du jour ne réveille le sucre.</p>
+        <p>Aucun concentré, aucune poudre : un fruit, une presse, une bouteille.
+        C'est tout — et c'est assez.</p>
+        <div class="chips">
+          <span class="chip"><b>+</b> Vitamine C naturelle</span>
+          <span class="chip"><b>+</b> Riche en fibres</span>
+          <span class="chip"><b>0</b> sucre ajouté</span>
+          <span class="chip"><b>100 %</b> fruit frais</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOS JUS ============ -->
+<section id="jus">
+  <div class="wrap">
+    <div class="jus-banner reveal">
+      <img src="sabra/range.webp" alt="Quatre verres de jus SABRA aux couleurs du désert">
+    </div>
+    <div class="jus-head reveal">
+      <div>
+        <p class="kicker">Nos Jus</p>
+        <h2>Quatre couleurs,<br>un seul <em>désert</em>.</h2>
+      </div>
+      <p>Chaque recette part du même fruit et prend une route différente —
+      agrumes, menthe ou grenade. Pressées le matin, livrées le jour même à Tanger.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <span class="dot" style="background:#e0218a"></span>
+        <h3>Figue de Barbarie</h3>
+        <p>La signature. Pure, glacée, d'un magenta qui ne doit rien à personne.</p>
+        <div class="row">
+          <span class="price">45 <small>DH</small></span>
+          <a class="order" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20commander%20le%20jus%20Figue%20de%20Barbarie%20(45%20DH).%20Merci%20!">Commander</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <span class="dot" style="background:#f59e0b"></span>
+        <h3>Agrumes du Haouz</h3>
+        <p>Orange et clémentine du Haouz, relevées d'une pointe de figue de Barbarie.</p>
+        <div class="row">
+          <span class="price">35 <small>DH</small></span>
+          <a class="order" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20commander%20le%20jus%20Agrumes%20du%20Haouz%20(35%20DH).%20Merci%20!">Commander</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <span class="dot" style="background:#34d399"></span>
+        <h3>Cactus-Menthe</h3>
+        <p>Le jus vert de la maison : fruit de Barbarie, menthe fraîche, citron vert.</p>
+        <div class="row">
+          <span class="price">40 <small>DH</small></span>
+          <a class="order" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20commander%20le%20jus%20Cactus-Menthe%20(40%20DH).%20Merci%20!">Commander</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <span class="dot" style="background:#dc2645"></span>
+        <h3>Grenade &amp; Barbarie</h3>
+        <p>Deux rouges profonds qui se rencontrent : grenade mûre et figue de Barbarie.</p>
+        <div class="row">
+          <span class="price">50 <small>DH</small></span>
+          <a class="order" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20commander%20le%20jus%20Grenade%20%26%20Barbarie%20(50%20DH).%20Merci%20!">Commander</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LE PRESSAGE ============ -->
+<section id="pressage">
+  <div class="wrap">
+    <p class="kicker reveal">Le Pressage</p>
+    <h2 class="reveal">De la raquette<br>au <em>verre</em>.</h2>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="num">ÉTAPE — 01</span>
+        <h3>Cueillette à l'aube</h3>
+        <p>Les fruits sont récoltés à la première lumière, quand la chair est encore
+        fraîche et le sucre endormi. Gants épais, gestes lents : les épines négocient.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">ÉTAPE — 02</span>
+        <h3>Pressé à froid</h3>
+        <p>Une presse lente, sans chaleur, qui garde la couleur, les fibres fines
+        et tout ce que le fruit avait à dire. Rien n'est chauffé, rien n'est dilué.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">ÉTAPE — 03</span>
+        <h3>Embouteillé sous 24 h</h3>
+        <p>Du pressoir à la bouteille en moins d'un jour, puis direction Tanger.
+        Un jus qui voyage peu et qui se boit vite — comme il se doit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="trouver">
+  <div class="foot-cta">
+    <p class="kicker reveal" style="justify-content:center">Trouver SABRA</p>
+    <h2 class="reveal">Le désert se boit<br><em style="font-family:'Space Grotesk',sans-serif;font-style:italic;font-weight:500;text-transform:none;color:var(--magenta-soft)">glacé</em>.</h2>
+    <a class="big-cta reveal" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20passer%20une%20commande.%20Merci%20!" target="_blank" rel="noopener">Commander sur WhatsApp</a>
+  </div>
+  <div class="foot-meta">
+    <span>SABRA — Tanger, Maroc</span>
+    <span class="demo-badge">Modèle de démonstration</span>
+    <span>Démonstration réalisée par Tanja Web — Tanger</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- section reveals --- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* --- pinned hero scroll engine --- */
+  var hero    = document.getElementById('hero');
+  var scene   = document.getElementById('heroScene');
+  var glow    = document.getElementById('heroGlow');
+  var glass   = document.getElementById('heroGlass');
+  var hint    = document.getElementById('scrollHint');
+  var wBuvez  = document.getElementById('wBuvez');
+  var wLe     = document.getElementById('wLe');
+  var wDesert = document.getElementById('wDesert');
+  var lines   = [document.getElementById('line1'), document.getElementById('line2'), document.getElementById('line3')];
+  var dots    = [document.getElementById('dot1'),  document.getElementById('dot2'),  document.getElementById('dot3')];
+  var labels  = [document.getElementById('label1'),document.getElementById('label2'),document.getElementById('label3')];
+
+  function clamp(v,a,b){ return v<a?a : v>b?b : v; }
+  function seg(p,a,b){ return clamp((p-a)/(b-a),0,1); }
+  function ease(t){ return t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
+
+  function render(p){
+    /* Phase 1 — slow push-in + glow (0 → .40) */
+    var p1 = ease(seg(p,0,.40));
+    scene.style.transform = 'scale(' + (1 + .18*p1) + ')';
+    glow.style.opacity = .35 + .55*p1;
+    glow.style.transform = 'translate(-50%,-50%) scale(' + (1 + .35*p1) + ')';
+
+    /* Glass lift & tilt — rises through Phase 2 (.40 → .75), settles in Phase 3 */
+    var liftT;
+    if(p < .40)      liftT = 0;
+    else if(p < .75) liftT = ease(seg(p,.40,.75));
+    else             liftT = 1 - ease(seg(p,.75,1));
+    var liftY  = -6 * liftT;              /* vh */
+    var tilt   = -10 * liftT;             /* deg */
+    var gScale = 1 + .08 * liftT;
+    glass.style.transform =
+      'translate(-50%,-50%) translateY(' + liftY + 'vh) rotate(' + tilt + 'deg) scale(' + gScale + ')';
+
+    /* Headline drift (subtle parallax, words breathe apart) */
+    wBuvez.style.transform  = 'translateX(' + (-26*p) + 'px)';
+    wLe.style.transform     = 'translateX(' + (26*p) + 'px)';
+    wDesert.style.transform = 'translateY(' + (-14*p) + 'px)';
+
+    /* Phase 3 — spec labels draw themselves (.76 → 1, staggered) */
+    for(var i=0;i<3;i++){
+      var lt = seg(p, .76 + i*.06, .94 + i*.04);
+      lines[i].style.strokeDashoffset = String(1 - lt);
+      dots[i].style.opacity = lt > .05 ? '1' : '0';
+      labels[i].style.opacity = String(clamp((lt-.35)/.65,0,1));
+      labels[i].style.transform = 'translateY(' + (8*(1-lt)) + 'px)';
+    }
+
+    /* scroll hint fades once the film starts */
+    hint.style.opacity = String(1 - seg(p,0,.12));
+  }
+
+  if(reduce){
+    /* static end-state: labels drawn, glass at rest */
+    render(1);
+    lines.forEach(function(l){ l.style.strokeDashoffset = '0'; });
+    labels.forEach(function(l){ l.style.opacity = '1'; l.style.transform = 'none'; });
+    glass.style.transform = 'translate(-50%,-50%)';
+  } else {
+    var ticking = false;
+    function update(){
+      ticking = false;
+      var rect = hero.getBoundingClientRect();
+      var total = hero.offsetHeight - window.innerHeight;
+      var p = total > 0 ? clamp(-rect.top/total, 0, 1) : 0;
+      render(p);
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ ticking = true; requestAnimationFrame(update); }
+    }, {passive:true});
+    window.addEventListener('resize', update);
+    update();
+  }
+})();
+</script>
+</body>
+</html>

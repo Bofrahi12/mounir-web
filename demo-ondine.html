@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>ONDINE — Joaillerie · Tanger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#04100f;
+    --deep2:#071a18;
+    --aqua:#57e6c9;
+    --aqua-dim:rgba(87,230,201,.35);
+    --ivory:#f3ecdd;
+    --cream:#f6f1e7;
+    --ink:#12211e;
+    --line:rgba(243,236,221,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:auto}
+  body{
+    background:var(--deep);
+    color:var(--ivory);
+    font-family:'Archivo',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:'Cormorant Garamond',serif}
+
+  /* ---------- Badge démo ---------- */
+  .demo-badge{
+    position:fixed;left:14px;bottom:14px;z-index:200;
+    background:rgba(4,16,15,.72);border:1px solid var(--aqua-dim);
+    color:var(--aqua);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    padding:7px 12px;border-radius:999px;backdrop-filter:blur(6px);
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 34px;
+    background:linear-gradient(to bottom,rgba(4,16,15,.55),rgba(4,16,15,0));
+  }
+  .wordmark{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:27px;letter-spacing:.34em;color:var(--ivory);
+  }
+  .wordmark small{
+    display:block;font-family:'Archivo',sans-serif;font-weight:500;
+    font-size:8.5px;letter-spacing:.5em;color:var(--aqua);margin-top:1px;
+  }
+  .nav-links{display:flex;gap:34px;font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+  .nav-links a{opacity:.82;transition:opacity .3s,color .3s}
+  .nav-links a:hover{opacity:1;color:var(--aqua)}
+  .cart{
+    font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    border:1px solid var(--line);border-radius:999px;padding:9px 16px;
+    transition:border-color .3s,color .3s;
+  }
+  .cart:hover{border-color:var(--aqua-dim);color:var(--aqua)}
+
+  /* ---------- Stage épinglé ---------- */
+  .stage{height:520vh;position:relative}
+  .stage-sticky{
+    position:sticky;top:0;height:100vh;overflow:hidden;background:var(--deep);
+  }
+  .layer{position:absolute;inset:0;will-change:transform,opacity}
+  .layer img{width:100%;height:100%;object-fit:cover}
+  .layer .veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,transparent 45%,rgba(4,16,15,.55) 100%)}
+  #layerPool{z-index:1}
+  #layerEarring{z-index:2;opacity:0}
+  #layerPendant{z-index:3;opacity:0}
+  #layerRing{z-index:4;opacity:0}
+  .stage-shade{
+    position:absolute;inset:0;z-index:5;pointer-events:none;
+    background:linear-gradient(to top,rgba(4,16,15,.55),transparent 38%),
+               linear-gradient(to bottom,rgba(4,16,15,.35),transparent 30%);
+  }
+
+  /* Shot 0 — texte */
+  .shot0{position:absolute;inset:0;z-index:10;pointer-events:none}
+  .shot0 h1{
+    position:absolute;top:110px;left:40px;max-width:640px;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+    font-size:clamp(38px,5.6vw,74px);line-height:1.04;color:var(--ivory);
+    text-shadow:0 2px 30px rgba(0,0,0,.45);
+  }
+  .shot0 h1 em{color:var(--aqua);font-style:italic}
+  .shot0 .spec{
+    position:absolute;left:40px;bottom:42px;max-width:340px;
+    font-size:11px;letter-spacing:.14em;line-height:1.9;text-transform:uppercase;opacity:.85;
+  }
+  .shot0 .spec b{color:var(--aqua);font-weight:600}
+  .chip{
+    position:absolute;right:40px;bottom:42px;pointer-events:auto;
+    display:flex;align-items:center;gap:14px;
+    background:rgba(7,26,24,.55);border:1px solid var(--line);
+    border-radius:16px;padding:10px 18px 10px 10px;backdrop-filter:blur(10px);
+  }
+  .chip img{width:52px;height:52px;object-fit:cover;border-radius:10px;aspect-ratio:1}
+  .chip .chip-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;line-height:1.15}
+  .chip .chip-price{font-size:11px;letter-spacing:.18em;color:var(--aqua);margin-top:3px}
+
+  /* Labels verticaux + cartes produits */
+  .shot-label{
+    position:absolute;top:50%;right:34px;z-index:11;opacity:0;
+    transform:translateY(-50%);
+    writing-mode:vertical-rl;font-size:10.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--ivory);
+    display:flex;align-items:center;gap:14px;
+  }
+  .shot-label::after{content:"";width:1px;height:56px;background:var(--aqua-dim)}
+  .shot-label b{color:var(--aqua);font-weight:600}
+  .card{
+    position:absolute;right:86px;bottom:44px;z-index:12;width:308px;opacity:0;
+    background:rgba(6,22,20,.68);border:1px solid var(--line);border-radius:18px;
+    padding:20px 22px;backdrop-filter:blur(12px);will-change:transform,opacity;
+  }
+  .card .card-kicker{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--aqua)}
+  .card h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;line-height:1.1;margin:8px 0 4px}
+  .card .card-mat{font-size:12px;opacity:.75;letter-spacing:.06em}
+  .card .card-row{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
+  .card .card-price{font-size:15px;letter-spacing:.12em;font-weight:600}
+  .btn-add{
+    font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+    background:var(--aqua);color:#03211b;border-radius:999px;padding:11px 18px;
+    transition:transform .25s,box-shadow .25s;display:inline-block;
+  }
+  .btn-add:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(87,230,201,.35)}
+
+  /* Shot 4 — titre final */
+  .shot4{
+    position:absolute;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;
+    text-align:center;opacity:0;pointer-events:none;padding:0 20px;
+  }
+  .shot4 h2{
+    font-family:'Cormorant Garamond',serif;font-weight:500;
+    font-size:clamp(42px,7vw,96px);line-height:1.02;color:var(--ivory);
+    text-shadow:0 4px 40px rgba(0,0,0,.6);
+  }
+  .shot4 h2 em{color:var(--aqua)}
+  .shot4 p{margin-top:18px;font-size:11px;letter-spacing:.4em;text-transform:uppercase;opacity:.85}
+
+  /* Jauge de progression */
+  .gauge{
+    position:absolute;right:20px;top:50%;transform:translateY(-50%);z-index:30;
+    height:42vh;width:2px;background:rgba(243,236,221,.18);border-radius:2px;
+  }
+  .gauge-fill{position:absolute;top:0;left:0;width:100%;height:0%;background:var(--aqua);border-radius:2px}
+  .gauge mark{
+    position:absolute;left:50%;transform:translate(-50%,-50%);
+    width:7px;height:7px;border-radius:50%;background:var(--deep);
+    border:1px solid rgba(243,236,221,.5);
+  }
+  .gauge mark.on{background:var(--aqua);border-color:var(--aqua);box-shadow:0 0 12px var(--aqua-dim)}
+  .gauge mark span{
+    position:absolute;right:14px;top:50%;transform:translateY(-50%);
+    font-size:9px;letter-spacing:.3em;color:var(--ivory);opacity:.65;font-style:normal;background:none;
+  }
+  .gauge mark.on span{color:var(--aqua);opacity:1}
+
+  /* Bouton rewind */
+  .rewind{
+    position:fixed;right:26px;bottom:26px;z-index:150;
+    width:58px;height:58px;border-radius:50%;cursor:pointer;
+    background:rgba(7,26,24,.7);border:1px solid var(--aqua-dim);color:var(--aqua);
+    font-size:21px;display:flex;align-items:center;justify-content:center;flex-direction:column;
+    opacity:0;pointer-events:none;transform:translateY(12px);
+    transition:opacity .4s,transform .4s;backdrop-filter:blur(8px);
+  }
+  .rewind small{font-size:6.5px;letter-spacing:.18em;text-transform:uppercase;margin-top:1px;font-family:'Archivo',sans-serif}
+  .rewind.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+  .rewind:hover{background:rgba(87,230,201,.16)}
+
+  /* ---------- Finale crème ---------- */
+  .finale{background:var(--cream);color:var(--ink);padding:96px 34px 30px}
+  .finale-inner{max-width:1080px;margin:0 auto}
+  .finale .kicker{font-size:10.5px;letter-spacing:.4em;text-transform:uppercase;color:#7b6a4a;text-align:center}
+  .finale h2{
+    font-family:'Cormorant Garamond',serif;font-weight:500;text-align:center;
+    font-size:clamp(36px,4.6vw,58px);line-height:1.05;margin:14px 0 8px;
+  }
+  .finale h2 em{color:#0c7a66}
+  .finale .sub{text-align:center;font-size:13px;opacity:.7;letter-spacing:.05em;margin-bottom:54px}
+  .piece{
+    display:grid;grid-template-columns:86px 1fr auto auto;align-items:center;gap:26px;
+    padding:22px 6px;border-top:1px solid rgba(18,33,30,.14);
+  }
+  .piece:last-of-type{border-bottom:1px solid rgba(18,33,30,.14)}
+  .piece img{width:86px;height:86px;object-fit:cover;border-radius:12px;aspect-ratio:1}
+  .piece .p-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:25px;line-height:1.1}
+  .piece .p-mat{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin-top:4px}
+  .piece .p-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:#0c7a66}
+  .piece .p-price{font-weight:600;letter-spacing:.08em;font-size:15px;white-space:nowrap}
+  .piece .p-add{
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+    border:1px solid rgba(18,33,30,.35);border-radius:999px;padding:10px 16px;transition:all .25s;white-space:nowrap;
+  }
+  .piece .p-add:hover{background:var(--ink);color:var(--cream)}
+
+  .bundle{
+    margin-top:52px;background:var(--deep2);color:var(--ivory);border-radius:22px;
+    display:flex;align-items:center;gap:26px;padding:24px 30px;flex-wrap:wrap;
+  }
+  .bundle .thumbs{display:flex}
+  .bundle .thumbs img{
+    width:64px;height:64px;object-fit:cover;border-radius:50%;aspect-ratio:1;
+    border:2px solid var(--deep2);margin-left:-16px;
+  }
+  .bundle .thumbs img:first-child{margin-left:0}
+  .bundle .b-txt{flex:1;min-width:220px}
+  .bundle .b-kicker{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--aqua)}
+  .bundle .b-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:25px;margin-top:5px}
+  .bundle .b-price{font-size:19px;font-weight:600;letter-spacing:.08em;white-space:nowrap}
+  .bundle .b-price s{opacity:.45;font-weight:400;font-size:14px;margin-right:10px}
+
+  .viewing{
+    margin-top:64px;border-top:1px solid rgba(18,33,30,.14);padding-top:52px;
+    display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;
+  }
+  .viewing h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3.4vw,42px);line-height:1.08}
+  .viewing h3 em{color:#0c7a66}
+  .viewing p{font-size:12.5px;opacity:.7;margin-top:10px;max-width:400px;line-height:1.7}
+  .viewing form{display:flex;gap:10px;flex-wrap:wrap}
+  .viewing input{
+    font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:.04em;
+    background:transparent;border:1px solid rgba(18,33,30,.35);border-radius:999px;
+    padding:14px 20px;min-width:250px;color:var(--ink);outline:none;
+  }
+  .viewing input:focus{border-color:#0c7a66}
+  .viewing button{
+    font-family:'Archivo',sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+    background:var(--ink);color:var(--cream);border:none;border-radius:999px;padding:14px 24px;cursor:pointer;
+    transition:background .25s;
+  }
+  .viewing button:hover{background:#0c7a66}
+
+  footer{
+    background:var(--cream);color:var(--ink);padding:56px 34px 40px;
+  }
+  .foot-inner{
+    max-width:1080px;margin:0 auto;border-top:1px solid rgba(18,33,30,.14);padding-top:30px;
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.85;
+  }
+  .foot-inner .f-brand{font-family:'Cormorant Garamond',serif;font-size:19px;letter-spacing:.3em;text-transform:none;opacity:1}
+  .credit{
+    max-width:1080px;margin:26px auto 0;font-size:10.5px;letter-spacing:.14em;
+    text-transform:none;opacity:.55;text-align:center;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:760px){
+    nav{padding:16px 18px}
+    .nav-links{display:none}
+    .wordmark{font-size:22px}
+    .shot0 h1{top:96px;left:20px;right:20px}
+    .shot0 .spec{left:20px;bottom:110px;max-width:250px}
+    .chip{right:20px;left:20px;bottom:34px}
+    .shot-label{display:none}
+    .card{right:16px;left:16px;width:auto;bottom:26px;padding:16px 18px}
+    .card h3{font-size:22px}
+    .gauge{display:none}
+    .finale{padding:70px 18px 20px}
+    .piece{grid-template-columns:64px 1fr;gap:16px}
+    .piece img{width:64px;height:64px}
+    .piece .p-num{display:none}
+    .piece .p-price{grid-column:2}
+    .bundle{padding:20px}
+    footer{padding:44px 18px 34px}
+  }
+
+  /* ---------- Mouvement réduit : plans empilés ---------- */
+  body.reduced .stage{height:auto}
+  body.reduced .stage-sticky{position:static;height:auto;overflow:visible}
+  body.reduced .layer{position:relative;height:62vh;opacity:1 !important;transform:none !important}
+  body.reduced .shot0,body.reduced .shot4{position:relative;opacity:1 !important;height:auto;padding:60px 24px;pointer-events:auto}
+  body.reduced .shot0 h1,body.reduced .shot0 .spec,body.reduced .chip{position:static;margin-top:16px}
+  body.reduced .card,body.reduced .shot-label{position:relative;opacity:1 !important;transform:none !important;right:auto;left:auto;bottom:auto;margin:14px}
+  body.reduced .gauge,body.reduced .rewind{display:none}
+</style>
+</head>
+<body>
+
+<div class="demo-badge">Modèle de démonstration</div>
+
+<nav>
+  <a class="wordmark" href="#">ONDINE<small>JOAILLERIE · TANGER</small></a>
+  <div class="nav-links">
+    <a href="#finale">Collections</a>
+    <a href="#finale">Atelier</a>
+    <a href="#film">Le Grand Bain</a>
+    <a href="#presentation">Journal</a>
+  </div>
+  <a class="cart" href="#finale">Panier (0)</a>
+</nav>
+
+<!-- ============ LE FILM — UN SEUL MOUVEMENT DE CAMÉRA ============ -->
+<section class="stage" id="film">
+  <div class="stage-sticky" id="sticky">
+
+    <div class="layer" id="layerPool">
+      <img src="ondine/pool.webp" alt="Femme au bord d'un bassin nocturne portant les pièces Ondine">
+      <div class="veil"></div>
+    </div>
+    <div class="layer" id="layerEarring">
+      <img src="ondine/earring.webp" alt="Boucles Goutte d'Onde en gros plan">
+      <div class="veil"></div>
+    </div>
+    <div class="layer" id="layerPendant">
+      <img src="ondine/pendant.webp" alt="Pendentif Profondeur en gros plan">
+      <div class="veil"></div>
+    </div>
+    <div class="layer" id="layerRing">
+      <img src="ondine/ring.webp" alt="Bague Bain de Minuit en gros plan">
+      <div class="veil"></div>
+    </div>
+    <div class="stage-shade"></div>
+
+    <!-- SHOT 0 -->
+    <div class="shot0" id="shot0">
+      <h1>Née dans l&rsquo;eau calme,<br>portée <em>après la nuit</em>.</h1>
+      <p class="spec">Aigue-marine taille poire,<br>sertie à la main en <b>or blanc 18 carats</b> —<br>une pierre qui garde la lumière du bassin.</p>
+      <a class="chip" href="https://wa.me/212693981822?text=Bonjour%20ONDINE%2C%20je%20souhaite%20commander%20la%20Bague%20Bain%20de%20Minuit%20(12%20900%20DH).%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9." target="_blank" rel="noopener">
+        <img src="ondine/ring.webp" alt="Bague Bain de Minuit">
+        <span>
+          <span class="chip-name">Bague Bain de Minuit</span>
+          <span class="chip-price" style="display:block">12 900 DH</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- SHOT 1 -->
+    <div class="shot-label" id="label1">Boucles Goutte d&rsquo;Onde — <b>01</b></div>
+    <div class="card" id="card1">
+      <div class="card-kicker">Pièce 01 · Boucles d&rsquo;oreilles</div>
+      <h3>Goutte d&rsquo;Onde</h3>
+      <p class="card-mat">Or blanc 18k &amp; aigue-marine goutte, pavé de diamants</p>
+      <div class="card-row">
+        <span class="card-price">9 800 DH</span>
+        <a class="btn-add" href="https://wa.me/212693981822?text=Bonjour%20ONDINE%2C%20je%20souhaite%20commander%20les%20Boucles%20Goutte%20d%27Onde%20(9%20800%20DH).%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9." target="_blank" rel="noopener">Ajouter</a>
+      </div>
+    </div>
+
+    <!-- SHOT 2 -->
+    <div class="shot-label" id="label2">Pendentif Profondeur — <b>02</b></div>
+    <div class="card" id="card2">
+      <div class="card-kicker">Pièce 02 · Pendentif</div>
+      <h3>Profondeur</h3>
+      <p class="card-mat">Or blanc 18k &amp; aigue-marine poire sur chaîne forçat</p>
+      <div class="card-row">
+        <span class="card-price">7 600 DH</span>
+        <a class="btn-add" href="https://wa.me/212693981822?text=Bonjour%20ONDINE%2C%20je%20souhaite%20commander%20le%20Pendentif%20Profondeur%20(7%20600%20DH).%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9." target="_blank" rel="noopener">Ajouter</a>
+      </div>
+    </div>
+
+    <!-- SHOT 3 -->
+    <div class="shot-label" id="label3">Bague Bain de Minuit — <b>03</b></div>
+    <div class="card" id="card3">
+      <div class="card-kicker">Pièce 03 · Bague</div>
+      <h3>Bain de Minuit</h3>
+      <p class="card-mat">Or blanc 18k, aigue-marine poire &amp; halo de diamants</p>
+      <div class="card-row">
+        <span class="card-price">12 900 DH</span>
+        <a class="btn-add" href="https://wa.me/212693981822?text=Bonjour%20ONDINE%2C%20je%20souhaite%20commander%20la%20Bague%20Bain%20de%20Minuit%20(12%20900%20DH).%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9." target="_blank" rel="noopener">Ajouter</a>
+      </div>
+    </div>
+
+    <!-- SHOT 4 -->
+    <div class="shot4" id="shot4">
+      <div>
+        <h2>Trois pièces,<br><em>un seul bain</em>.</h2>
+        <p>La collection Grand Bain — Ondine, Tanger</p>
+      </div>
+    </div>
+
+    <!-- Jauge -->
+    <div class="gauge" aria-hidden="true">
+      <div class="gauge-fill" id="gaugeFill"></div>
+      <mark id="mark1" style="top:30%"><span>01</span></mark>
+      <mark id="mark2" style="top:53%"><span>02</span></mark>
+      <mark id="mark3" style="top:74%"><span>03</span></mark>
+    </div>
+
+  </div>
+</section>
+
+<button class="rewind" id="rewindBtn" aria-label="Revoir le film">↺<small>Revoir</small></button>
+
+<!-- ============ FINALE ============ -->
+<section class="finale" id="finale">
+  <div class="finale-inner">
+    <p class="kicker">Collection Grand Bain</p>
+    <h2>Les trois pièces,<br><em>une à une</em></h2>
+    <p class="sub">Chaque pierre est choisie, taillée et sertie dans notre atelier de Tanger.</p>
+
+    <div class="piece">
+      <img src="ondine/earring.webp" alt="Boucles Goutte d'Onde">
+      <div>
+        <div class="p-name">Boucles Goutte d&rsquo;Onde</div>
+        <div class="p-mat">Or blanc 18k · Aigue-marine goutte · Diamants</div>
+      </div>
+      <span class="p-num">nº 01</span>
+      <span class="p-price">9 800 DH</span>
+      <a class="p-add" href="https://wa.me/212693981822?text=Bonjour%20ONDINE%2C%20je%20souhaite%20commander%20les%20Boucles%20Goutte%20d%27Onde%20(9%20800%20DH).%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9." target="_blank" rel="noopener">Ajouter</a>
+    </div>
+
+    <div class="piece">
+      <img src="ondine/pendant.webp" alt="Pendentif Profondeur">
+      <div>
+        <div class="p-name">Pendentif Profondeur</div>
+        <div class="p-mat">Or blanc 18k · Aigue-marine poire · Chaîne forçat</div>
+      </div>
+      <span class="p-num">nº 02</span>
+      <span class="p-price">7 600 DH</span>
+      <a class="p-add" href="https://wa.me/212693981822?text=Bonjour%20ONDINE%2C%20je%20souhaite%20commander%20le%20Pendentif%20Profondeur%20(7%20600%20DH).%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9." target="_blank" rel="noopener">Ajouter</a>
+    </div>
+
+    <div class="piece">
+      <img src="ondine/ring.webp" alt="Bague Bain de Minuit">
+      <div>
+        <div class="p-name">Bague Bain de Minuit</div>
+        <div class="p-mat">Or blanc 18k · Aigue-marine poire · Halo de diamants</div>
+      </div>
+      <span class="p-num">nº 03</span>
+      <span class="p-price">12 900 DH</span>
+      <a class="p-add" href="https://wa.me/212693981822?text=Bonjour%20ONDINE%2C%20je%20souhaite%20commander%20la%20Bague%20Bain%20de%20Minuit%20(12%20900%20DH).%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9." target="_blank" rel="noopener">Ajouter</a>
+    </div>
+
+    <div class="bundle">
+      <div class="thumbs">
+        <img src="ondine/earring.webp" alt="">
+        <img src="ondine/pendant.webp" alt="">
+        <img src="ondine/ring.webp" alt="">
+        <img src="ondine/set.webp" alt="Le Trio Ondine sur ardoise mouillée">
+      </div>
+      <div class="b-txt">
+        <div class="b-kicker">Le Trio · Édition limitée</div>
+        <div class="b-name">Boucles, pendentif &amp; bague — le bain complet</div>
+      </div>
+      <span class="b-price"><s>30 300 DH</s>27 500 DH</span>
+      <a class="btn-add" href="https://wa.me/212693981822?text=Bonjour%20ONDINE%2C%20je%20souhaite%20commander%20Le%20Trio%20%E2%80%94%20boucles%2C%20pendentif%20%26%20bague%20(27%20500%20DH).%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9." target="_blank" rel="noopener">Ajouter le trio</a>
+    </div>
+
+    <div class="viewing" id="presentation">
+      <div>
+        <h3>Réserver une<br>présentation <em>privée</em></h3>
+        <p>Les trois pièces, présentées en salon privé à Tanger, sur rendez-vous. Laissez votre e-mail : nous confirmons l&rsquo;heure ensemble sur WhatsApp.</p>
+      </div>
+      <form id="viewingForm">
+        <input type="email" id="viewingEmail" placeholder="Votre e-mail" required aria-label="Votre e-mail">
+        <button type="submit">Demander</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <span class="f-brand">ONDINE</span>
+    <span>Collections</span>
+    <span>Atelier — Tanger</span>
+    <span>Le Grand Bain</span>
+    <span>Journal</span>
+  </div>
+  <p class="credit">Démonstration réalisée par Tanja Web — Tanger · Maison fictive créée pour démonstration.</p>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced){ document.body.classList.add("reduced"); }
+
+  /* ---------- Formulaire présentation privée → WhatsApp ---------- */
+  document.getElementById("viewingForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = document.getElementById("viewingEmail").value.trim();
+    var msg = "Bonjour ONDINE, je souhaite réserver une présentation privée des pièces Grand Bain. Mon e-mail : " + email;
+    window.open("https://wa.me/212693981822?text=" + encodeURIComponent(msg), "_blank");
+  });
+
+  if (reduced) return; /* plans statiques : aucune animation */
+
+  /* ---------- Moteur de scroll lissé ---------- */
+  var stage   = document.getElementById("film");
+  var pool    = document.getElementById("layerPool");
+  var earring = document.getElementById("layerEarring");
+  var pendant = document.getElementById("layerPendant");
+  var ring    = document.getElementById("layerRing");
+  var shot0   = document.getElementById("shot0");
+  var shot4   = document.getElementById("shot4");
+  var fill    = document.getElementById("gaugeFill");
+  var rewind  = document.getElementById("rewindBtn");
+  var marks   = [document.getElementById("mark1"), document.getElementById("mark2"), document.getElementById("mark3")];
+  var markAt  = [0.30, 0.53, 0.74];
+  var cards   = [
+    {el:document.getElementById("card1"), label:document.getElementById("label1"), from:0.335, to:0.565},
+    {el:document.getElementById("card2"), label:document.getElementById("label2"), from:0.595, to:0.785},
+    {el:document.getElementById("card3"), label:document.getElementById("label3"), from:0.805, to:0.90}
+  ];
+
+  function clamp01(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); }
+  function seg(p, a, b){ return clamp01((p - a) / (b - a)); }
+  function layerState(p, inA, inB, outA, outB, sFrom, sTo){
+    var o = seg(p, inA, inB) * (1 - seg(p, outA, outB));
+    var s = sFrom + (sTo - sFrom) * seg(p, inA, outB);
+    return {o:o, s:s};
+  }
+
+  function render(p){
+    /* — Pool : push-in, sortie, puis retour assombri pour le titre final — */
+    var poolScale, poolOpacity, poolBright;
+    if (p < 0.84){
+      poolScale   = 1 + 0.35 * seg(p, 0.00, 0.30);
+      poolOpacity = 1 - seg(p, 0.30, 0.40);
+      poolBright  = 1;
+    } else {
+      var back = seg(p, 0.86, 0.95);
+      poolScale   = 1.35 - 0.29 * back;         /* 1.35 → 1.06 */
+      poolOpacity = 0.6 * back;
+      poolBright  = 1 - 0.55 * back;            /* assombri */
+    }
+    pool.style.opacity   = poolOpacity.toFixed(3);
+    pool.style.transform = "scale(" + poolScale.toFixed(4) + ")";
+    pool.style.filter    = "brightness(" + poolBright.toFixed(3) + ")";
+
+    /* — Macros : fondu enchaîné + push continu — */
+    var e = layerState(p, 0.27, 0.37, 0.52, 0.60, 1.12, 1.28);
+    earring.style.opacity   = e.o.toFixed(3);
+    earring.style.transform = "scale(" + e.s.toFixed(4) + ")";
+
+    var d = layerState(p, 0.57, 0.65, 0.74, 0.81, 1.12, 1.28);
+    pendant.style.opacity   = d.o.toFixed(3);
+    pendant.style.transform = "scale(" + d.s.toFixed(4) + ")";
+
+    var r = layerState(p, 0.78, 0.85, 0.885, 0.945, 1.12, 1.26);
+    ring.style.opacity   = r.o.toFixed(3);
+    ring.style.transform = "scale(" + r.s.toFixed(4) + ")";
+
+    /* — Shot 0 : disparaît tôt — */
+    var o0 = 1 - seg(p, 0.10, 0.17);
+    shot0.style.opacity = o0.toFixed(3);
+    shot0.style.transform = "translateY(" + (-26 * seg(p, 0.10, 0.17)).toFixed(1) + "px)";
+    shot0.style.pointerEvents = o0 > 0.4 ? "none" : "none";
+    shot0.querySelector(".chip").style.pointerEvents = o0 > 0.4 ? "auto" : "none";
+
+    /* — Cartes + labels — */
+    cards.forEach(function(c){
+      var o = seg(p, c.from, c.from + 0.045) * (1 - seg(p, c.to - 0.035, c.to));
+      c.el.style.opacity = o.toFixed(3);
+      c.el.style.transform = "translateY(" + (26 * (1 - o)).toFixed(1) + "px)";
+      c.el.style.pointerEvents = o > 0.5 ? "auto" : "none";
+      c.label.style.opacity = (o * 0.95).toFixed(3);
+    });
+
+    /* — Shot 4 : titre final — */
+    var o4 = seg(p, 0.885, 0.96);
+    shot4.style.opacity = o4.toFixed(3);
+    shot4.style.transform = "translateY(" + (20 * (1 - o4)).toFixed(1) + "px)";
+
+    /* — Jauge + repères — */
+    fill.style.height = (p * 100).toFixed(2) + "%";
+    marks.forEach(function(m, i){ m.classList.toggle("on", p >= markAt[i]); });
+
+    /* — Bouton rewind dès le shot 2 — */
+    rewind.classList.toggle("show", p > 0.44);
+  }
+
+  var target = 0, current = 0;
+  function measure(){
+    var rect = stage.getBoundingClientRect();
+    var total = stage.offsetHeight - window.innerHeight;
+    var y = Math.min(Math.max(-rect.top, 0), Math.max(total, 1));
+    target = total > 0 ? y / total : 0;
+  }
+  function loop(){
+    measure();
+    current += (target - current) * 0.085;         /* lissage beurre-doux */
+    if (Math.abs(target - current) < 0.00005) current = target;
+    render(current);
+    requestAnimationFrame(loop);
+  }
+  render(0);
+  requestAnimationFrame(loop);
+
+  /* ---------- Rewind rapide (~1,2 s) ---------- */
+  var rewinding = false;
+  rewind.addEventListener("click", function(){
+    if (rewinding) return;
+    rewinding = true;
+    var startY = window.scrollY;
+    var stageTop = startY + stage.getBoundingClientRect().top;
+    var t0 = null, dur = 1200;
+    function step(ts){
+      if (!t0) t0 = ts;
+      var k = Math.min((ts - t0) / dur, 1);
+      var ease = 1 - Math.pow(1 - k, 3);
+      window.scrollTo(0, startY + (stageTop - startY) * ease);
+      if (k < 1) requestAnimationFrame(step);
+      else rewinding = false;
+    }
+    requestAnimationFrame(step);
+  });
+})();
+</script>
+</body>
+</html>
