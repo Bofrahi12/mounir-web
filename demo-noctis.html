@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>NOCTIS — Joaillerie · Bagues de caractère, Tanger</title>
+<meta name="description" content="NOCTIS — Joaillerie à Tanger. Bagues sculpturales en argent oxydé et grenat, serties à la main. Collection Automne — Hiver.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070607;
+  --bg2:#0d0a0b;
+  --bone:#ece5d8;
+  --bone-dim:rgba(236,229,216,.55);
+  --bone-faint:rgba(236,229,216,.32);
+  --crimson:#a31621;
+  --crimson-soft:rgba(163,22,33,.55);
+  --line:rgba(236,229,216,.14);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --mono:'IBM Plex Mono',monospace;
+  --grot:'Space Grotesk',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{background:var(--bg)}
+body{
+  color:var(--bone);
+  font-family:var(--grot);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--crimson);color:var(--bone)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase}
+.serif{font-family:var(--serif)}
+
+/* ---------- fixed chrome ---------- */
+.demo-badge{
+  position:fixed;right:1.1rem;bottom:1.1rem;z-index:90;
+  font-family:var(--mono);font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--bone-dim);
+  background:rgba(10,8,9,.55);border:1px solid var(--line);
+  padding:.5rem .8rem;border-radius:999px;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  pointer-events:none;
+}
+nav{
+  position:fixed;inset:0 0 auto 0;z-index:80;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.3rem clamp(1.2rem,4vw,3rem);
+  transition:background .5s ease,border-color .5s ease,padding .5s ease;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(7,6,7,.72);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom-color:var(--line);
+  padding-top:.85rem;padding-bottom:.85rem;
+}
+.logo{font-family:var(--serif);font-size:1.45rem;letter-spacing:.22em;font-weight:500}
+.logo .star{color:var(--crimson);font-size:1rem;vertical-align:.28em;margin-right:.45rem}
+.nav-links{display:flex;gap:2.6rem}
+.nav-links a{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--bone-dim);position:relative;padding:.3rem 0;transition:color .3s;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--crimson);transform:scaleX(0);transform-origin:right;transition:transform .45s cubic-bezier(.7,0,.2,1);
+}
+.nav-links a:hover{color:var(--bone)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.cart{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:999px;padding:.55rem 1rem;
+  transition:border-color .3s,background .3s;
+}
+.cart:hover{border-color:var(--crimson-soft);background:rgba(163,22,33,.08)}
+
+/* ---------- hero ---------- */
+.hero{height:300vh;position:relative}
+.hero-stage{
+  position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
+  background:radial-gradient(120% 90% at 68% 42%,#171114 0%,var(--bg) 58%);
+}
+.hero-vignette{
+  position:absolute;inset:0;z-index:5;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(7,6,7,.72) 0%,rgba(7,6,7,0) 42%),
+    linear-gradient(0deg,rgba(7,6,7,.85) 0%,rgba(7,6,7,0) 30%),
+    linear-gradient(180deg,rgba(7,6,7,.55) 0%,rgba(7,6,7,0) 22%);
+}
+.headline-stack{
+  position:absolute;inset:0;z-index:1;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 clamp(1.2rem,6vw,6rem);
+  will-change:transform,opacity;
+}
+.headline-stack.front{z-index:4;clip-path:inset(63% 0 0 0);pointer-events:none}
+.headline-stack h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(3rem,8.4vw,7.8rem);
+  line-height:.96;letter-spacing:.005em;color:var(--bone);
+  text-shadow:0 2px 40px rgba(0,0,0,.45);
+}
+.headline-stack h1 .l2{margin-left:clamp(.5rem,4vw,3.6rem)}
+.headline-stack h1 em{font-style:italic;color:var(--crimson);font-weight:500}
+.hero-kicker{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--bone-dim);margin-bottom:1.6rem;display:flex;align-items:center;gap:.9rem;
+}
+.hero-kicker::before{content:"";width:2.6rem;height:1px;background:var(--crimson)}
+.hand-wrap{
+  position:absolute;inset:0;z-index:2;
+  display:flex;align-items:center;justify-content:flex-end;
+  padding-right:1vw;
+  will-change:transform;
+}
+.hand-wrap::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(90deg,var(--bg) 5%,rgba(7,6,7,.62) 22%,transparent 44%),
+    linear-gradient(0deg,var(--bg) 0%,transparent 26%),
+    linear-gradient(180deg,rgba(7,6,7,.8) 0%,transparent 24%);
+}
+.hand-wrap img{
+  width:min(94vh,64vw);aspect-ratio:3/2;object-fit:cover;object-position:center 38%;
+  -webkit-mask-image:radial-gradient(97% 92% at 50% 46%,#000 52%,transparent 98%);
+          mask-image:radial-gradient(97% 92% at 50% 46%,#000 52%,transparent 98%);
+  filter:saturate(.92) contrast(1.04) brightness(.95);
+}
+.glass-chip{
+  position:absolute;z-index:6;
+  background:rgba(18,14,16,.38);
+  border:1px solid rgba(236,229,216,.22);
+  border-radius:16px;
+  backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);
+  padding:.95rem 1.15rem;
+  box-shadow:0 24px 50px rgba(0,0,0,.45),inset 0 1px 0 rgba(236,229,216,.14);
+  will-change:transform;
+}
+.glass-chip .k{font-family:var(--mono);font-size:.54rem;letter-spacing:.26em;text-transform:uppercase;color:var(--bone-faint)}
+.glass-chip .v{font-family:var(--serif);font-size:1.45rem;line-height:1.15;margin-top:.3rem;font-weight:500}
+.glass-chip .v i{color:var(--crimson);font-style:normal}
+.chip-a{top:24%;right:9%}
+.chip-b{bottom:26%;right:22%}
+.hero-foot{
+  position:absolute;left:clamp(1.2rem,6vw,6rem);bottom:2.2rem;z-index:7;
+  display:flex;align-items:center;gap:1.4rem;
+}
+.season{font-family:var(--mono);font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--bone-dim)}
+.pill{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;
+  border:1px solid rgba(236,229,216,.35);border-radius:999px;padding:.7rem 1.5rem;
+  display:inline-flex;align-items:center;gap:.6rem;
+  transition:background .35s,border-color .35s,transform .35s;
+  background:rgba(7,6,7,.3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.pill:hover{background:var(--crimson);border-color:var(--crimson);transform:translateY(-2px)}
+.pill .arr{font-family:var(--serif);font-size:.95rem;line-height:0}
+.hero-progress{
+  position:absolute;right:clamp(1.2rem,4vw,3rem);bottom:2.2rem;z-index:7;
+  display:flex;align-items:center;gap:.9rem;
+  font-family:var(--mono);font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--bone-faint);
+}
+.hero-progress .track{width:5.5rem;height:1px;background:rgba(236,229,216,.18);position:relative;overflow:hidden}
+.hero-progress .fill{position:absolute;inset:0;background:var(--crimson);transform:scaleX(0);transform-origin:left}
+</style>
+</head>
+<style>
+/* ---------- macro chapter ---------- */
+.macro{height:170vh;position:relative;background:var(--bg)}
+.macro-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.macro-stage img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  will-change:transform;filter:saturate(.95) contrast(1.05);
+}
+.macro-shade{position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 55%,transparent 30%,rgba(7,6,7,.78) 100%),linear-gradient(0deg,rgba(7,6,7,.9),transparent 35%),linear-gradient(180deg,rgba(7,6,7,.85),transparent 30%)}
+.macro-cap{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 1.5rem;opacity:0;transform:translateY(26px);
+}
+.macro-cap .mono{color:var(--crimson);margin-bottom:1.1rem}
+.macro-cap p{font-family:var(--serif);font-size:clamp(1.9rem,4.6vw,3.6rem);font-weight:400;line-height:1.15;max-width:16em}
+.macro-cap p em{font-style:italic;color:var(--crimson)}
+
+/* ---------- sections ---------- */
+.section{padding:clamp(4.5rem,10vw,8.5rem) clamp(1.2rem,6vw,6rem);position:relative}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:clamp(2.2rem,5vw,3.8rem);flex-wrap:wrap}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,5.5vw,4.4rem);line-height:1.02}
+.sec-head h2 em{font-style:italic;color:var(--crimson)}
+.sec-head .mono{color:var(--bone-faint);padding-bottom:.7rem}
+
+/* ---------- collection ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.4vw,2rem);perspective:1400px}
+.card{
+  background:linear-gradient(180deg,#0e0b0c,#090708);
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  opacity:0;transform:translateY(44px);
+  transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),border-color .4s;
+  transform-style:preserve-3d;will-change:transform;
+}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{border-color:rgba(163,22,33,.45)}
+.card .ph{aspect-ratio:4/5;overflow:hidden;position:relative;background:#000}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.7,.2,1);filter:saturate(.94)}
+.card:hover .ph img{transform:scale(1.07)}
+.card .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,6,7,.55),transparent 45%)}
+.card .ref{position:absolute;top:1rem;left:1rem;z-index:2;font-family:var(--mono);font-size:.54rem;letter-spacing:.26em;color:var(--bone-dim);text-transform:uppercase}
+.card .body{padding:1.5rem 1.5rem 1.7rem;transform:translateZ(30px)}
+.card h3{font-family:var(--serif);font-weight:500;font-size:1.75rem;line-height:1.05}
+.card .mat{font-family:var(--mono);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-faint);margin-top:.55rem}
+.card .row{display:flex;align-items:center;justify-content:space-between;margin-top:1.4rem}
+.price{font-family:var(--serif);font-size:1.4rem}
+.price small{font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;color:var(--bone-faint);margin-left:.3rem}
+.add{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;
+  border:1px solid rgba(236,229,216,.3);border-radius:999px;padding:.62rem 1.15rem;
+  transition:background .3s,border-color .3s;white-space:nowrap;
+}
+.add:hover{background:var(--crimson);border-color:var(--crimson)}
+
+/* ---------- savoir-faire ---------- */
+.sf{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sf h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,6.5vw,5.2rem);line-height:1.0;margin-bottom:clamp(2.4rem,5vw,4rem)}
+.sf h2 em{font-style:italic;color:var(--crimson)}
+.stats{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.stat{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(1.6rem,3.5vw,2.8rem)}
+.stat .num{font-family:var(--serif);font-weight:400;font-size:clamp(3rem,7vw,5.4rem);line-height:1;display:flex;align-items:baseline;gap:.35rem}
+.stat .num .unit{font-size:.42em;color:var(--crimson);font-style:italic}
+.stat .lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--bone-dim);margin-top:1rem}
+.stat .txt{color:var(--bone-dim);font-size:.92rem;line-height:1.65;margin-top:.7rem;max-width:30em;font-weight:300}
+
+/* ---------- footer ---------- */
+footer{padding:clamp(3.5rem,7vw,5.5rem) clamp(1.2rem,6vw,6rem) 3rem;text-align:center}
+footer .flogo{font-family:var(--serif);font-size:clamp(2.6rem,7vw,4.6rem);letter-spacing:.18em;font-weight:500}
+footer .flogo .star{color:var(--crimson);font-size:.5em;vertical-align:.7em}
+footer .ftag{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--bone-dim);margin-top:.6rem}
+footer .fnav{display:flex;justify-content:center;gap:2.4rem;margin:2.4rem 0;flex-wrap:wrap}
+footer .fnav a{font-family:var(--mono);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--bone-faint);transition:color .3s}
+footer .fnav a:hover{color:var(--bone)}
+.credit{border-top:1px solid var(--line);padding-top:1.6rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-faint);line-height:2}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .cards{grid-template-columns:1fr}
+  .chip-a{top:15%;right:5%}
+  .chip-b{bottom:auto;top:64%;right:6%}
+  .nav-links{display:none}
+  .headline-stack{justify-content:flex-start;padding-top:17vh}
+  .headline-stack.front{clip-path:inset(46% 0 0 0)}
+  .hand-wrap img{width:125vw}
+}
+@media (max-width:560px){
+  .stats{grid-template-columns:1fr}
+  .hero-foot{flex-direction:column;align-items:flex-start;gap:.9rem;bottom:1.6rem}
+  .hero-progress{display:none}
+  .glass-chip .v{font-size:1.15rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  .card,.reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-badge">Modèle de démonstration</div>
+
+<nav id="nav">
+  <a class="logo" href="#"><span class="star">✦</span>NOCTIS</a>
+  <div class="nav-links">
+    <a href="#collection">Collection</a>
+    <a href="#savoir-faire">Savoir-faire</a>
+  </div>
+  <a class="cart" href="#collection">Panier&nbsp;0</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero">
+  <div class="hero-stage">
+    <div class="headline-stack" data-headline>
+      <div class="hero-kicker">Joaillerie — Tanger</div>
+      <h1>Portée comme<br><span class="l2">un <em>serment</em>.</span></h1>
+    </div>
+
+    <div class="hand-wrap" data-hand>
+      <img src="noctis/hand.webp" alt="Main aux ongles noirs portant des bagues ornementales en argent oxydé et grenat, tendue vers l'objectif">
+    </div>
+
+    <div class="headline-stack front" data-headline aria-hidden="true">
+      <div class="hero-kicker">Joaillerie — Tanger</div>
+      <h1>Portée comme<br><span class="l2">un <em>serment</em>.</span></h1>
+    </div>
+
+    <div class="vignette hero-vignette"></div>
+
+    <div class="glass-chip chip-a" data-chip="0.9">
+      <div class="k">Pierre maîtresse</div>
+      <div class="v">Grenat <i>—</i> 8,4 ct</div>
+    </div>
+    <div class="glass-chip chip-b" data-chip="1.7">
+      <div class="k">Métal</div>
+      <div class="v">Argent oxydé <i>925</i></div>
+    </div>
+
+    <div class="hero-foot">
+      <span class="season">Automne — Hiver</span>
+      <a class="pill" href="#collection">Découvrir <span class="arr">↓</span></a>
+    </div>
+
+    <div class="hero-progress">
+      <span>Défiler</span>
+      <div class="track"><div class="fill" data-progress></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MACRO ============ -->
+<section class="macro" id="macro">
+  <div class="macro-stage">
+    <img src="noctis/macro.webp" alt="Macro extrême des bagues en grenat serties sur les doigts" data-macro-img>
+    <div class="macro-shade"></div>
+    <div class="macro-cap" data-macro-cap>
+      <div class="mono">Le détail — Nº 01</div>
+      <p>Chaque pierre, <em>sertie</em> à la main.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLLECTION ============ -->
+<section class="section" id="collection">
+  <div class="sec-head reveal">
+    <h2>La <em>collection</em></h2>
+    <div class="mono">Trois pièces — Aucune ne se répète</div>
+  </div>
+
+  <div class="cards">
+    <article class="card" data-tilt>
+      <div class="ph">
+        <img src="noctis/ring1.webp" alt="Bague Serment Cramoisi — grenat taille cœur en argent oxydé ornemental">
+        <span class="ref">Nº 01 — Pièce signée</span>
+      </div>
+      <div class="body">
+        <h3>Serment Cramoisi</h3>
+        <div class="mat">Grenat · Argent oxydé</div>
+        <div class="row">
+          <div class="price">8 900<small>DH</small></div>
+          <a class="add" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20NOCTIS%2C%20je%20souhaite%20commander%20la%20bague%20%C2%AB%20Serment%20Cramoisi%20%C2%BB%20%E2%80%94%20grenat%2C%20argent%20oxyd%C3%A9%20%E2%80%94%208%20900%20DH.%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9.">Ajouter</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-tilt>
+      <div class="ph">
+        <img src="noctis/ring2.webp" alt="Bague Éclipse Mate — anneau large en bronze noirci brossé">
+        <span class="ref">Nº 02 — Finie main</span>
+      </div>
+      <div class="body">
+        <h3>Éclipse Mate</h3>
+        <div class="mat">Bronze noirci brossé</div>
+        <div class="row">
+          <div class="price">3 500<small>DH</small></div>
+          <a class="add" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20NOCTIS%2C%20je%20souhaite%20commander%20la%20bague%20%C2%AB%20%C3%89clipse%20Mate%20%C2%BB%20%E2%80%94%20bronze%20noirci%20bross%C3%A9%20%E2%80%94%203%20500%20DH.%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9.">Ajouter</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-tilt>
+      <div class="ph">
+        <img src="noctis/ring3.webp" alt="Bague Halo d'Onyx — anneau éternité en pavé noir sur argent">
+        <span class="ref">Nº 03 — Pavé intégral</span>
+      </div>
+      <div class="body">
+        <h3>Halo d'Onyx</h3>
+        <div class="mat">Pavé noir · Argent</div>
+        <div class="row">
+          <div class="price">6 400<small>DH</small></div>
+          <a class="add" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20NOCTIS%2C%20je%20souhaite%20commander%20la%20bague%20%C2%AB%20Halo%20d%E2%80%99Onyx%20%C2%BB%20%E2%80%94%20pav%C3%A9%20noir%2C%20argent%20%E2%80%94%206%20400%20DH.%20Merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9.">Ajouter</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ SAVOIR-FAIRE ============ -->
+<section class="section sf" id="savoir-faire">
+  <h2 class="reveal">Faite sans<br><em>compromis</em>.</h2>
+  <div class="stats">
+    <div class="stat reveal">
+      <div class="num"><span data-count="100">0</span><span class="unit">%</span></div>
+      <div class="lbl">Fait main</div>
+      <p class="txt">Aucune pièce ne sort d'un moule industriel : chacune naît sous la lime, dans notre atelier de Tanger.</p>
+    </div>
+    <div class="stat reveal">
+      <div class="num"><span data-count="92">0</span><span class="unit">g</span></div>
+      <div class="lbl">Poids ressenti</div>
+      <p class="txt">De 14 à 92 grammes selon le modèle — une présence franche au doigt, jamais un bijou qui s'oublie.</p>
+    </div>
+    <div class="stat reveal">
+      <div class="num"><span data-count="925">0</span></div>
+      <div class="lbl">Argent sterling</div>
+      <p class="txt">Un alliage dense, oxydé à chaud pour obtenir ce noir profond que le temps ne fera que patiner.</p>
+    </div>
+    <div class="stat reveal">
+      <div class="num"><span>∞</span></div>
+      <div class="lbl">Garantie</div>
+      <p class="txt">Repolissage, réoxydation, ajustement de taille : la maison entretient ses pièces sans limite de durée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="flogo"><span class="star">✦</span>NOCTIS</div>
+  <div class="ftag">Des bagues qui se portent comme des serments.</div>
+  <div class="fnav">
+    <a href="#collection">Collection</a>
+    <a href="#savoir-faire">Savoir-faire</a>
+    <a href="#hero">Haut de page</a>
+  </div>
+  <div class="credit">
+    Démonstration réalisée par Tanja Web — Tanger<br>
+    Maison fictive — Aucune commande réelle n'est traitée sur cette page
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer = window.matchMedia("(pointer: fine)").matches;
+
+  var nav = document.getElementById("nav");
+  var hero = document.getElementById("hero");
+  var hand = document.querySelector("[data-hand]");
+  var headlines = document.querySelectorAll("[data-headline]");
+  var progressFill = document.querySelector("[data-progress]");
+  var chips = Array.prototype.slice.call(document.querySelectorAll("[data-chip]"));
+  var macro = document.getElementById("macro");
+  var macroImg = document.querySelector("[data-macro-img]");
+  var macroCap = document.querySelector("[data-macro-cap]");
+
+  var clamp01 = function(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); };
+  var lerp = function(a,b,t){ return a + (b - a) * t; };
+
+  /* ---- pointer parallax state (lerped) ---- */
+  var px = 0, py = 0, tx = 0, ty = 0;
+  if (finePointer && !reduced) {
+    window.addEventListener("pointermove", function(e){
+      tx = (e.clientX / window.innerWidth - .5) * 2;
+      ty = (e.clientY / window.innerHeight - .5) * 2;
+    }, { passive:true });
+  }
+
+  /* ---- chip resting positions are in CSS; we only add offsets ---- */
+  chips.forEach(function(c){
+    c._depth = parseFloat(c.getAttribute("data-chip")) || 1;
+  });
+
+  var ticking = false;
+  function frame(){
+    ticking = false;
+    var vh = window.innerHeight;
+
+    /* nav */
+    if (window.scrollY > 40) nav.classList.add("scrolled"); else nav.classList.remove("scrolled");
+
+    /* hero progress */
+    var hRect = hero.getBoundingClientRect();
+    var hTotal = hero.offsetHeight - vh;
+    var hp = clamp01(-hRect.top / (hTotal || 1));
+
+    var handScale = reduced ? 1 : lerp(1, 1.28, hp);
+    hand.style.transform = "scale(" + handScale.toFixed(4) + ")";
+
+    var headY = reduced ? 0 : -hp * vh * 0.35;
+    var headO = 1 - clamp01((hp - .55) / .4);
+    headlines.forEach(function(h){
+      h.style.transform = "translate3d(0," + headY.toFixed(1) + "px,0)";
+      h.style.opacity = headO.toFixed(3);
+    });
+    if (progressFill) progressFill.style.transform = "scaleX(" + hp.toFixed(4) + ")";
+
+    /* pointer parallax (lerped) */
+    px = lerp(px, tx, .055);
+    py = lerp(py, ty, .055);
+    chips.forEach(function(c){
+      var drift = reduced ? 0 : hp * -30 * c._depth;
+      c.style.transform = "translate3d(" + (px * 14 * c._depth).toFixed(1) + "px," + (py * 10 * c._depth + drift).toFixed(1) + "px,0)";
+    });
+
+    /* macro Ken Burns */
+    var mRect = macro.getBoundingClientRect();
+    var mTotal = macro.offsetHeight - vh;
+    var mp = clamp01(-mRect.top / (mTotal || 1));
+    if (!reduced) {
+      macroImg.style.transform = "scale(" + lerp(1.02, 1.24, mp).toFixed(4) + ") translateY(" + lerp(1.5, -1.5, mp).toFixed(2) + "%)";
+    }
+    var capIn = clamp01((mp - .18) / .3);
+    macroCap.style.opacity = capIn.toFixed(3);
+    macroCap.style.transform = "translateY(" + ((1 - capIn) * 26).toFixed(1) + "px)";
+
+    if (finePointer && !reduced && (Math.abs(tx - px) > .001 || Math.abs(ty - py) > .001)) {
+      requestAnimationFrame(frame); ticking = true;
+    }
+  }
+  function onScroll(){
+    if (!ticking) { ticking = true; requestAnimationFrame(frame); }
+  }
+  window.addEventListener("scroll", onScroll, { passive:true });
+  window.addEventListener("resize", onScroll);
+  if (finePointer && !reduced) window.addEventListener("pointermove", onScroll, { passive:true });
+  frame();
+
+  /* ---- reveals ---- */
+  var revealEls = document.querySelectorAll(".reveal, .card");
+  if ("IntersectionObserver" in window && !reduced) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) {
+          var el = en.target;
+          if (el.classList.contains("card")) {
+            var idx = Array.prototype.indexOf.call(document.querySelectorAll(".card"), el);
+            el.style.transitionDelay = (idx * 0.13) + "s";
+          }
+          el.classList.add("in");
+          io.unobserve(el);
+        }
+      });
+    }, { threshold:.18 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  /* ---- count-ups ---- */
+  function countUp(el){
+    var target = parseInt(el.getAttribute("data-count"), 10);
+    if (reduced) { el.textContent = target; return; }
+    var start = null, dur = 1600;
+    function step(ts){
+      if (!start) start = ts;
+      var p = clamp01((ts - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll("[data-count]");
+  if ("IntersectionObserver" in window) {
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { countUp(en.target); cio.unobserve(en.target); }
+      });
+    }, { threshold:.5 });
+    counters.forEach(function(el){ cio.observe(el); });
+  } else {
+    counters.forEach(countUp);
+  }
+
+  /* ---- card tilt ---- */
+  if (finePointer && !reduced) {
+    document.querySelectorAll("[data-tilt]").forEach(function(card){
+      var raf = null;
+      card.addEventListener("pointermove", function(e){
+        var r = card.getBoundingClientRect();
+        var dx = (e.clientX - r.left) / r.width - .5;
+        var dy = (e.clientY - r.top) / r.height - .5;
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function(){
+          card.style.transform = "translateY(0) rotateX(" + (-dy * 6).toFixed(2) + "deg) rotateY(" + (dx * 8).toFixed(2) + "deg)";
+        });
+      });
+      card.addEventListener("pointerleave", function(){
+        if (raf) cancelAnimationFrame(raf);
+        card.style.transform = "";
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
