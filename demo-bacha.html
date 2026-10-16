@@ -8,7 +8,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="مطعم الباشا — الشيف أيوب بنعمر · طنجة">
 <meta property="og:description" content="كل طبق له حكاية — لحسة الباشا، برغر، طاكوس وبيتزا في البرانص 2، طنجة. اطلب عبر واتساب.">
-<meta property="og:url" content="https://bofrahi12.github.io/mounir-web/demo-bacha.html">
+<meta property="og:url" content="https://tanja-web.onrender.com/demo-bacha.html">
+<link rel="canonical" href="https://tanja-web.onrender.com/demo-bacha.html">
 <meta property="og:image" content="https://bofrahi12.github.io/mounir-web/demo-bacha/hero-poster.webp">
 <meta name="theme-color" content="#0C0A06">
 <meta name="robots" content="noindex">
@@ -312,6 +313,46 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 #curRing{width:36px;height:36px;border:1.5px solid rgba(212,164,55,.65);transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
 #curRing.big{width:58px;height:58px;border-color:rgba(212,164,55,.95)}
 
+
+/* ===== v8: FIND US + DELIVERY/PICKUP ===== */
+.findus-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:26px;margin-top:36px;align-items:start}
+@media(max-width:980px){.findus-grid{grid-template-columns:1fr}}
+.findus-photo{border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:0}
+.findus-photo img{display:block;width:100%;height:auto}
+.findus-photo figcaption{padding:12px 16px;color:var(--muted);font-size:.84rem;background:var(--panel)}
+.map-card{position:relative;border:1px solid rgba(227,160,8,.35);border-radius:16px;overflow:hidden;background:#0B0805}
+.map-card svg{display:block;width:100%;height:auto}
+.map-chip{position:absolute;top:10px;left:10px;background:rgba(6,4,3,.72);color:var(--gold2);font-family:var(--font-g);font-size:.64rem;font-weight:700;padding:5px 10px;border-radius:99px;border:1px solid rgba(227,160,8,.4)}
+.findus-lines{list-style:none;margin:18px 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.findus-lines li{display:flex;justify-content:space-between;gap:14px;border-bottom:1px dashed rgba(247,241,227,.14);padding-bottom:9px;font-size:.92rem}
+.findus-lines b{font-family:var(--font-g);color:var(--gold);font-size:.78rem;font-weight:700;padding-top:2px}
+.findus-lines span{color:var(--white);text-align:left}
+.green-dot::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#3DDC84;margin-left:7px;box-shadow:0 0 10px #3DDC84}
+.findus-btns{display:flex;gap:12px;flex-wrap:wrap}
+.dir-btn{background:linear-gradient(120deg,var(--gold2),var(--gold));color:#1A1206;font-family:var(--font-g);font-weight:800;font-size:.92rem;padding:16px 22px;border-radius:10px;min-height:56px;display:inline-flex;align-items:center}
+.wa-ask{border:1px solid rgba(61,220,132,.55);color:#7CE8AC;font-family:var(--font-g);font-weight:700;font-size:.92rem;padding:16px 22px;border-radius:10px;min-height:56px;display:inline-flex;align-items:center}
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.methods{grid-template-columns:1fr}}
+.method{position:relative;border:1px solid var(--line);border-radius:12px;padding:18px;background:rgba(255,255,255,.015);text-align:right;color:var(--white);min-height:76px;transition:border-color .25s,background .25s}
+.method b{display:block;font-family:var(--font-g);font-size:.98rem;font-weight:800;margin-bottom:5px}
+.method span{color:var(--muted);font-size:.82rem;display:block}
+.method.sel{border-color:var(--gold);background:rgba(227,160,8,.07);box-shadow:0 0 0 1px var(--gold)}
+.method[data-method="delivery"].sel{border-color:#3DDC84;background:rgba(61,220,132,.07);box-shadow:0 0 0 1px #3DDC84}
+.m-badge{display:inline-block!important;background:rgba(61,220,132,.16);color:#7CE8AC!important;border:1px solid rgba(61,220,132,.5);border-radius:99px;padding:3px 10px;font-size:.68rem!important;font-weight:700;margin-bottom:7px}
+.addr-block{margin-top:16px;border:1px dashed rgba(61,220,132,.45);border-radius:12px;padding:18px;background:rgba(61,220,132,.04)}
+.addr-block label{font-family:var(--font-g);font-weight:700;font-size:.88rem;display:block;margin-bottom:10px}
+.addr-block .req{color:#FF9D5C;font-size:.72rem}
+#addrInput{width:100%;box-sizing:border-box;background:#0D0A06;border:1px solid var(--line);border-radius:10px;color:var(--white);font-family:var(--font-g);font-size:16px;padding:15px;min-height:56px}
+#addrInput:focus{outline:none;border-color:#3DDC84}
+#addrInput.err{border-color:#E5484D;animation:shake .35s}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(5px)}75%{transform:translateX(-5px)}}
+.geo-btn{margin-top:12px;background:none;border:1px solid rgba(247,241,227,.35);color:var(--white);font-family:var(--font-g);font-weight:700;font-size:.88rem;padding:14px 20px;border-radius:10px;min-height:52px;width:100%}
+.geo-btn:active{border-color:#3DDC84}
+.geo-status{color:#7CE8AC;font-size:.84rem;margin-top:9px;min-height:1em}
+.addr-note{color:var(--faint);font-size:.8rem;margin-top:8px}
+.pickup-note{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:15px 18px;color:var(--muted);background:rgba(255,255,255,.02);font-size:.92rem}
+.pickup-note b{color:var(--gold2)}
+
 </style>
 </head>
 <body>
@@ -321,7 +362,7 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 <div id="progress" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>
 <div id="cur" aria-hidden="true"></div><div id="curRing" aria-hidden="true"></div>
-<div class="chapter" aria-hidden="true"><b id="chNow">01</b> / 08 — <span id="chName">الواجهة</span></div>
+<div class="chapter" aria-hidden="true"><b id="chNow">01</b> / 09 — <span id="chName">الواجهة</span></div>
 
 <div id="preloader" role="status" aria-label="تحميل">
   <div class="pl-logo">مطعم <span>الباشا</span></div>
@@ -341,7 +382,8 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
     <a href="#menu" data-scroll><b>05</b>الكتالوغ</a>
     <a href="#craft" data-scroll><b>06</b>الحرفة</a>
     <a href="#story" data-scroll><b>07</b>القصة</a>
-    <a href="#order" data-scroll><b>08</b>اطلب</a>
+    <a href="#findus" data-scroll><b>08</b>فين تلقانا</a>
+    <a href="#order" data-scroll><b>09</b>اطلب</a>
   </nav>
   <a class="btn-order magnetic" href="#order" data-scroll>اطلب دابا</a>
 </header>
@@ -490,9 +532,47 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
   </div>
 </section>
 
-<!-- ============ 08 · اطلب ============ -->
-<section class="scene" id="order" data-chapter="08" data-name="اطلب" aria-label="اطلب">
-  <p class="spec">07. اطلب // 01. أطباق التوقيع</p>
+
+<!-- ============ 08 · فين تلقانا ============ -->
+<section class="scene" id="findus" data-chapter="08" data-name="فين تلقانا" aria-label="فين تلقانا">
+  <p class="spec">08. فين تلقانا</p>
+  <h2 class="big">المطعم <span class="grad-gold">حداك</span></h2>
+  <div class="findus-grid">
+    <figure class="findus-photo">
+      <img src="demo-bacha/loc.webp" alt="من داخل مطعم الباشا — كونطوار المطعم في البرانص 2" loading="lazy">
+      <figcaption>من داخل مطعم الباشا — كونطوار الدار، البرانص 2</figcaption>
+    </figure>
+    <div class="findus-info">
+      <div class="map-card" role="img" aria-label="خريطة توضيحية: مطعم الباشا في البرانص 2، قريب من مركز الحليب">
+        <svg viewBox="0 0 400 250" aria-hidden="true">
+          <rect width="400" height="250" fill="#0B0805"/>
+          <g stroke="#241B10" stroke-width="13" fill="none"><path d="M-10 70 H410"/><path d="M-10 170 H410"/><path d="M90 -10 V260"/><path d="M250 -10 V260"/><path d="M340 -10 V260"/></g>
+          <g stroke="#171008" stroke-width="6" fill="none"><path d="M-10 120 H410"/><path d="M170 -10 V260"/><path d="M300 -10 V260"/></g>
+          <path d="M36 216 C110 190 150 150 205 128 C240 114 262 104 282 88" stroke="#E7A614" stroke-width="3.5" stroke-dasharray="8 7" fill="none" stroke-linecap="round"/>
+          <circle cx="36" cy="216" r="7" fill="#F7F1E3"/><text x="52" y="221" fill="#F7F1E3" font-size="12" font-family="sans-serif">أنت</text>
+          <circle cx="128" cy="152" r="6" fill="#8A7B5F"/><text x="142" y="157" fill="#B9A888" font-size="12" font-family="sans-serif">مركز الحليب</text>
+          <g><path d="M285 44 C272 44 265 54 265 64 C265 78 285 96 285 96 C285 96 305 78 305 64 C305 54 298 44 285 44Z" fill="#E7A614"/><circle cx="285" cy="64" r="7.5" fill="#0B0805"/></g>
+          <text x="285" y="118" fill="#F2C14E" font-size="14.5" font-weight="bold" font-family="sans-serif" text-anchor="middle">مطعم الباشا</text>
+          <text x="285" y="136" fill="#B9A888" font-size="11" font-family="sans-serif" text-anchor="middle">البرانص 2</text>
+        </svg>
+        <span class="map-chip">خريطة توضيحية</span>
+      </div>
+      <ul class="findus-lines">
+        <li><b>العنوان</b><span>البرانص 2 — طنجة</span></li>
+        <li><b>العلامة</b><span>قريب من مركز الحليب · Centre Laitier</span></li>
+        <li><b>التوصيل</b><span class="green-dot">متوفر — الثمن والمدة كيتأكدو في واتساب</span></li>
+      </ul>
+      <div class="findus-btns">
+        <a class="dir-btn magnetic" id="dirBtn" href="https://www.google.com/maps/search/?api=1&query=Restaurant%20El%20Bacha%2C%20Branes%202%2C%20Tanger" target="_blank" rel="noopener">حلّ الاتجاهات في Google Maps ←</a>
+        <a class="wa-ask magnetic" id="waAsk" href="https://wa.me/212719161654?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B9%D8%B1%D9%81%20%D9%81%D9%8A%D9%86%20%D8%AC%D8%A7%D9%8A%20%D9%85%D8%B7%D8%B9%D9%85%20%D8%A7%D9%84%D8%A8%D8%A7%D8%B4%D8%A7%20%D8%A8%D8%A7%D9%84%D8%B6%D8%A8%D8%B7%D8%9F" target="_blank" rel="noopener">سولنا على المكان في واتساب</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 · اطلب ============ -->
+<section class="scene" id="order" data-chapter="09" data-name="اطلب" aria-label="اطلب">
+  <p class="spec">09. اطلب // 01. أطباق التوقيع</p>
   <h2 class="big">اختر <span class="grad-gold">طبقك</span></h2>
   <div class="lineup">
     <article class="dish">
@@ -516,7 +596,7 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
   </div>
 
   <div class="builder" id="builder">
-    <p class="spec">07. اطلب // 02. كمّل طلبك</p>
+    <p class="spec">09. اطلب // 02. كمّل طلبك</p>
     <h2 class="big" style="font-size:clamp(1.9rem,4.4vw,3.6rem)">بنِ <span class="grad-gold">طلبك</span></h2>
 
     <p class="step-t">الخطوة 1 — اختر الطبق</p>
@@ -543,11 +623,26 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
       <button class="extra" type="button" data-extra="حلوى اليوم" data-price="18" aria-pressed="false"><span class="ethumb" style="background-image:url('demo-bacha/p-pasticho.webp')"></span><span><b>حلوى اليوم</b><span>+ 18 درهم</span></span></button>
     </div>
 
+
+    <p class="step-t">الخطوة 3 — كيفاش يوصلك الطلب؟</p>
+    <div class="methods" id="methodOpts" role="radiogroup" aria-label="طريقة الوصول">
+      <button class="method" type="button" data-method="delivery" role="radio" aria-checked="false"><span class="m-badge">التوصيل متوفر</span><b>التوصيل لباب الدار</b><span>كيوصلك الطلب سخون حتى لعندك</span></button>
+      <button class="method sel" type="button" data-method="pickup" role="radio" aria-checked="true"><b>الاستلام من المطعم</b><span>البرانص 2 · قريب من مركز الحليب</span></button>
+    </div>
+    <div class="addr-block" id="addrBlock" hidden>
+      <label for="addrInput">الحومة والعنوان <b class="req">— مطلوب للتوصيل</b></label>
+      <input id="addrInput" type="text" autocomplete="street-address" placeholder="مثال: البرانص 2، زنقة الياسمين، رقم 12، قدام الصيدلية…">
+      <button class="geo-btn" id="geoBtn" type="button">◎ استعمل موقعي الحالي</button>
+      <p class="geo-status" id="geoStatus" role="status"></p>
+      <p class="addr-note">ثمن ومدة التوصيل كيتأكدو معاك في واتساب قبل ما يتحضّر الطلب. موقعك كيتزاد غير في رسالة الطلب، ما كيتخزّن حتى في بلاصة.</p>
+    </div>
+    <p class="pickup-note" id="pickupNote">طلبك غادي يكون واجد في <b>مطعم الباشا</b> — البرانص 2، طنجة، قريب من مركز الحليب.</p>
+
     <div class="build-grid">
       <div>
-        <p class="step-t">الخطوة 3 — اختر النهار</p>
+        <p class="step-t">الخطوة 4 — اختر النهار</p>
         <div class="slots" id="dateSlots" role="radiogroup" aria-label="نهار الاستلام"></div>
-        <p class="step-t">الخطوة 4 — اختر الوقت</p>
+        <p class="step-t">الخطوة 5 — اختر الوقت</p>
         <div class="slots" id="timeSlots" role="radiogroup" aria-label="وقت الاستلام"></div>
         <p style="color:var(--faint);font-size:.82rem;margin-top:22px">الطلب كيتحضّر غير ملي توصّلنا الرسالة — سخون وطازج، بلا انتظار.</p>
       </div>
@@ -555,8 +650,10 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
         <div class="simg" role="img" aria-label="طبقك"></div>
         <div class="sbody">
           <div class="sline"><span>الطبق</span><b id="sumSize">برغر الباشا</b></div>
-          <div class="sline"><span>اللمسات</span><b id="sumExtras">بدون</b></div>
-          <div class="sline"><span>الاستلام</span><b id="sumWhen">اليوم · 13:00</b></div>
+          <div class="sline"><span>الإضافات</span><b id="sumExtras">بدون</b></div>
+          <div class="sline"><span>طريقة الوصول</span><b id="sumMethod">الاستلام من المطعم</b></div>
+          <div class="sline"><span>العنوان</span><b id="sumAddr">المطعم — البرانص 2</b></div>
+          <div class="sline"><span>الموعد</span><b id="sumWhen">اليوم · 13:00</b></div>
           <div class="stotal"><span>المجموع</span><b id="sumTotal">55 درهم</b></div>
         </div>
         <button class="order-btn magnetic" id="orderBtn" type="button">أكّد الطلب في واتساب ←</button>
@@ -596,7 +693,7 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
 /* ================= CONFIG ================= */
-const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا" };
+const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Restaurant%20El%20Bacha%2C%20Branes%202%2C%20Tanger" };
 /* ========================================== */
 (function(){
   "use strict";
@@ -604,7 +701,7 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا" };
   const fine = window.matchMedia("(pointer: fine)").matches;
 
   /* ---------- ORDER BUILDER ---------- */
-  const state = { size: "برغر الباشا", sizePrice: 55, extras: new Map(), date: null, time: "13:00" };
+  const state = { size: "برغر الباشا", sizePrice: 55, extras: new Map(), date: null, time: "13:00", method: "pickup", address: "", geoLink: null };
   const fmt = n => n + " درهم";
   function recalc(){
     let total = state.sizePrice;
@@ -612,6 +709,9 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا" };
     document.getElementById("sumSize").textContent = state.size;
     document.getElementById("sumExtras").textContent = state.extras.size ? [...state.extras.keys()].join("، ") : "بدون";
     document.getElementById("sumWhen").textContent = (state.date || "اليوم") + " · " + state.time;
+    const mEl = document.getElementById("sumMethod"), aEl = document.getElementById("sumAddr");
+    if (mEl) mEl.textContent = state.method === "delivery" ? "التوصيل لباب الدار" : "الاستلام من المطعم";
+    if (aEl) aEl.textContent = state.method === "delivery" ? (state.address || "—") : "المطعم — البرانص 2";
     document.getElementById("sumTotal").textContent = fmt(total);
     return total;
   }
@@ -650,16 +750,16 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا" };
     platter:   { size: "طبق مشترك الباشا", extras: [] },
     formule:   { size: "فورمول الباشا", extras: [] }
   };
-  document.querySelectorAll("[data-preset]").forEach(btn => btn.addEventListener("click", ()=>{
+  document.addEventListener("click", e => {
+    const btn = e.target.closest("[data-preset]"); if (!btn) return;
     const p = PRESETS[btn.dataset.preset]; if (!p) return;
     document.querySelectorAll("#sizeOpts .opt").forEach(b => { if (b.dataset.size === p.size) selectSize(b); });
     document.querySelectorAll("#extraOpts .extra").forEach(b => toggleExtra(b, p.extras.includes(b.dataset.extra)));
-    const name = btn.closest(".dish").querySelector("h3").textContent;
-    toast("تزاد " + name + " — " + fmt(recalc()) + ". كمّل طلبك لتحت ↓");
+    toast("تزاد " + p.size + " — " + fmt(recalc()) + ". كمّل طلبك لتحت ↓");
     const target = document.getElementById("builder");
     if (window.__lenis) window.__lenis.scrollTo(target, { offset: -70, duration: 1.3 });
     else target.scrollIntoView({ behavior: "smooth" });
-  }));
+  });
   const dateWrap = document.getElementById("dateSlots");
   const days = ["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"], months = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليوز","غشت","شتنبر","أكتوبر","نونبر","دجنبر"];
   for (let i = 0; i < 4; i++){
@@ -679,12 +779,57 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا" };
     timeWrap.appendChild(b);
   });
   recalc();
+  function buildOrderMessage(st, total){
+    const extras = st.extras.size ? [...st.extras.keys()].join("، ") : "بدون";
+    const lines = [
+      CONFIG.brand + " — طلب: " + st.size,
+      "الإضافات: " + extras,
+      "المجموع: " + fmt(total)
+    ];
+    if (st.method === "delivery") {
+      lines.push("طريقة الوصول: التوصيل لباب الدار");
+      lines.push("العنوان: " + st.address);
+      if (st.geoLink) lines.push("موقعي: " + st.geoLink);
+    } else {
+      lines.push("طريقة الوصول: الاستلام من المطعم");
+    }
+    lines.push("الموعد: " + (st.date || "اليوم") + " " + st.time);
+    return lines.join("\n");
+  }
+  const addrBlock = document.getElementById("addrBlock"), addrInput = document.getElementById("addrInput"),
+        pickupNote = document.getElementById("pickupNote"), geoStatus = document.getElementById("geoStatus");
+  function setMethod(m){
+    state.method = m;
+    document.querySelectorAll("#methodOpts .method").forEach(b => {
+      const on = b.dataset.method === m;
+      b.classList.toggle("sel", on); b.setAttribute("aria-checked", on ? "true" : "false");
+    });
+    if (addrBlock) addrBlock.hidden = m !== "delivery";
+    if (pickupNote) pickupNote.style.display = m === "delivery" ? "none" : "";
+    recalc();
+  }
+  document.querySelectorAll("#methodOpts .method").forEach(b => b.addEventListener("click", ()=> setMethod(b.dataset.method)));
+  if (addrInput) addrInput.addEventListener("input", ()=>{ state.address = addrInput.value.trim(); addrInput.classList.remove("err"); recalc(); });
+  const geoBtn = document.getElementById("geoBtn");
+  if (geoBtn) geoBtn.addEventListener("click", ()=>{
+    if (!("geolocation" in navigator)) { geoStatus.textContent = "المتصفح ديالك ما كيدعمش تحديد الموقع — كتب العنوان، بلا مشكل."; return; }
+    geoStatus.textContent = "كنحددو موقعك…";
+    navigator.geolocation.getCurrentPosition(
+      pos => { state.geoLink = "https://www.google.com/maps?q=" + pos.coords.latitude.toFixed(6) + "," + pos.coords.longitude.toFixed(6);
+               geoStatus.textContent = "تزاد موقعك لرسالة الطلب ✓ (ما كيتخزّن حتى في بلاصة)"; },
+      () => { geoStatus.textContent = "ما قدرناش نحددو الموقع — كتب العنوان، بلا مشكل."; },
+      { timeout: 10000, maximumAge: 60000 });
+  });
+  setMethod("pickup");
   document.getElementById("orderBtn").addEventListener("click", ()=>{
     const total = recalc();
-    const extras = state.extras.size ? [...state.extras.keys()].join("، ") : "بدون لمسات";
-    const msg = CONFIG.brand + " — طلب: " + state.size + " (" + extras + ") · المجموع " + fmt(total) +
-      " · الاستلام: " + (state.date || "اليوم") + " " + state.time;
-    window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
+    if (state.method === "delivery" && !state.address) {
+      toast("كتب الحومة والعنوان باش يوصلك الطلب");
+      addrInput.classList.add("err"); addrInput.focus();
+      addrBlock.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+      return;
+    }
+    window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(buildOrderMessage(state, total)), "_blank");
   });
 
   /* ---------- SECTION VIDEOS (autoplay-hardened) ---------- */
