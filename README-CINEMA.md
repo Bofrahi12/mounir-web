@@ -1,4 +1,4 @@
-# TANJA WEB — Cinematic Scroll Portfolio (`demo-cinema.html`)
+# VERTEX WEB — Cinematic Scroll Portfolio (`demo-cinema.html`)
 
 A premium, cinematic, scroll-driven portfolio built as a 20–30 second design-reel
 experience: 7 pinned/reversible film scenes, dark graphite (#07090D), electric

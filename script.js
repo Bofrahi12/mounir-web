@@ -1,4 +1,4 @@
-/* ===== Tanja Web — script.js =====
+/* ===== Vertex Web — script.js =====
    Analytics: events are pushed to window.dataLayer and, if a GoatCounter
    code is set below, sent to GoatCounter (privacy-friendly, no cookies).
    To activate: put the account code in TW_GOATCOUNTER (e.g. 'tanjaweb'). */
