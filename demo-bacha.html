@@ -269,6 +269,49 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
   #preloader{display:none}
   .call{opacity:1}
 }
+
+/* ===== GENESIS FILM + 3D STAGE + MARQUEE + FAQ + CURSOR (v7) ===== */
+.gen-pin{position:relative;height:100vh;overflow:hidden;background:#000}
+.gen-canvas{position:absolute;inset:0;width:100%;height:100%}
+.gen-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,3,2,.55),transparent 30%,transparent 62%,rgba(5,3,2,.72));pointer-events:none}
+.gen-spec{position:absolute;top:12vh;right:6vw;z-index:3}
+.gen-caps{position:absolute;left:0;right:0;bottom:15vh;z-index:3;text-align:center;padding:0 6vw}
+.gen-cap{position:absolute;left:0;right:0;bottom:0;font-family:var(--font-d);font-size:clamp(1.7rem,6vw,3.4rem);font-weight:800;color:var(--white);opacity:0;transform:translateY(26px);transition:opacity .45s ease,transform .45s ease;text-shadow:0 6px 30px rgba(0,0,0,.6)}
+.gen-cap.on{opacity:1;transform:none}
+.gen-prog{position:absolute;bottom:9vh;left:50%;transform:translateX(-50%);width:min(420px,70vw);height:2px;background:rgba(244,234,217,.18);z-index:3}
+.gen-prog span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.gen-hint{position:absolute;bottom:4.5vh;left:0;right:0;text-align:center;z-index:3;color:var(--muted);font-size:.82rem;letter-spacing:.04em}
+.stage-wrap{padding:13vh 6vw 10vh;text-align:center;background:radial-gradient(60% 50% at 50% 30%,#1c1107 0%,var(--bg) 70%)}
+.stage-title{font-family:var(--font-d);font-size:clamp(2rem,6vw,3.6rem);font-weight:900;margin:.4rem 0 2.2rem}
+.stage3d{position:relative;max-width:430px;margin:0 auto;perspective:1200px}
+.stage-bg{position:absolute;inset:-8% -14%;background:url('demo-bacha/stage.webp') center/cover;filter:blur(46px) brightness(.5);opacity:.55;border-radius:50%}
+.stage-tilt{position:relative;transform-style:preserve-3d;will-change:transform}
+.stage-float{animation:stageFloat 5.5s ease-in-out infinite;border-radius:22px;overflow:hidden;box-shadow:0 44px 90px rgba(0,0,0,.65),0 0 0 1px rgba(212,164,55,.28)}
+.stage-float img{display:block;width:100%;height:auto}
+.stage-glare{position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,236,190,.20) 48%,transparent 62%);mix-blend-mode:screen;pointer-events:none;transform:translateX(-70%)}
+.stage-refl{margin-top:10px;height:110px;overflow:hidden;border-radius:0 0 22px 22px;opacity:.32;transform:scaleY(-1);-webkit-mask-image:linear-gradient(180deg,transparent 30%,#000);mask-image:linear-gradient(180deg,transparent 30%,#000)}
+.stage-refl img{width:100%;height:auto;display:block;filter:brightness(.85)}
+@keyframes stageFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.stage-note{color:var(--muted);margin:1.4rem auto .6rem;max-width:460px}
+.stage-add{margin-top:.4rem}
+.marquee{direction:ltr;overflow:hidden;border-top:1px solid rgba(212,164,55,.3);border-bottom:1px solid rgba(212,164,55,.3);padding:.85rem 0;background:rgba(212,164,55,.05)}
+.mq-track{display:flex;width:max-content;animation:mqMove 26s linear infinite}
+.mq-track span{font-family:var(--font-d);font-weight:700;font-size:1.02rem;color:var(--gold2);white-space:nowrap;padding:0 .4rem}
+@keyframes mqMove{to{transform:translateX(-50%)}}
+.faq{max-width:760px;margin:0 auto 9vh;padding:0 6vw}
+.faq-title{font-family:var(--font-d);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;text-align:center;margin:.4rem 0 1.6rem}
+.faq details{border:1px solid rgba(212,164,55,.25);border-radius:14px;background:rgba(255,255,255,.03);margin-bottom:.7rem;overflow:hidden}
+.faq summary{cursor:pointer;list-style:none;padding:1rem 1.2rem;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';color:var(--gold);font-size:1.3rem;transition:transform .3s}
+.faq details[open ] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 1.2rem 1.1rem;color:var(--muted);line-height:1.9}
+#cur,#curRing{position:fixed;top:0;left:0;pointer-events:none;z-index:400;border-radius:50%;display:none}
+@media(pointer:fine){#cur,#curRing{display:block}}
+#cur{width:7px;height:7px;background:var(--gold);transform:translate(-50%,-50%)}
+#curRing{width:36px;height:36px;border:1.5px solid rgba(212,164,55,.65);transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
+#curRing.big{width:58px;height:58px;border-color:rgba(212,164,55,.95)}
+
 </style>
 </head>
 <body>
@@ -277,7 +320,8 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 <div class="ruler" aria-hidden="true"></div>
 <div id="progress" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>
-<div class="chapter" aria-hidden="true"><b id="chNow">01</b> / 07 — <span id="chName">الواجهة</span></div>
+<div id="cur" aria-hidden="true"></div><div id="curRing" aria-hidden="true"></div>
+<div class="chapter" aria-hidden="true"><b id="chNow">01</b> / 08 — <span id="chName">الواجهة</span></div>
 
 <div id="preloader" role="status" aria-label="تحميل">
   <div class="pl-logo">مطعم <span>الباشا</span></div>
@@ -293,10 +337,11 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
     <a href="#hero" data-scroll><b>01</b>الواجهة</a>
     <a href="#dive" data-scroll><b>02</b>حرفة الشيف</a>
     <a href="#signature" data-scroll><b>03</b>التوقيع</a>
-    <a href="#menu" data-scroll><b>04</b>الكتالوغ</a>
-    <a href="#craft" data-scroll><b>05</b>الحرفة</a>
-    <a href="#story" data-scroll><b>06</b>القصة</a>
-    <a href="#order" data-scroll><b>07</b>اطلب</a>
+    <a href="#genesis" data-scroll><b>04</b>النشأة</a>
+    <a href="#menu" data-scroll><b>05</b>الكتالوغ</a>
+    <a href="#craft" data-scroll><b>06</b>الحرفة</a>
+    <a href="#story" data-scroll><b>07</b>القصة</a>
+    <a href="#order" data-scroll><b>08</b>اطلب</a>
   </nav>
   <a class="btn-order magnetic" href="#order" data-scroll>اطلب دابا</a>
 </header>
@@ -361,10 +406,45 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
   </div>
 </section>
 
-<!-- ============ 04 · القائمة ============ -->
-<section class="scene" id="menu" data-chapter="04" data-name="الكتالوغ" aria-label="الكتالوغ">
+<!-- ============ 04 · النشأة ============ -->
+<section class="scene" id="genesis" data-chapter="04" data-name="النشأة" aria-label="النشأة">
+  <div class="gen-pin" id="genPin">
+    <canvas id="genCanvas" class="gen-canvas" aria-label="فيلم البرغر عند الباشا — كيتحرك مع السكرول"></canvas>
+    <div class="gen-shade"></div>
+    <p class="spec gen-spec">النشأة // 04. من اللهب للطاولة</p>
+    <div class="gen-caps">
+      <h3 class="gen-cap on">النار كتولّد النكهة</h3>
+      <h3 class="gen-cap">البرغر كيتركّب — طبقة فوق طبقة</h3>
+      <h3 class="gen-cap">واجد — وهادا هو التوقيع</h3>
+    </div>
+    <div class="gen-prog"><span id="genProg"></span></div>
+    <p class="gen-hint">كمّل النزول — السكرول هو الريموت</p>
+  </div>
+  <div class="stage-wrap">
+    <p class="spec" style="justify-content:center">الطبق النجم // تجربة 3D</p>
+    <h2 class="stage-title">سباغيتي <span class="grad-gold">ثمار البحر</span></h2>
+    <div class="stage3d">
+      <div class="stage-bg"></div>
+      <div class="stage-tilt" id="stageTilt">
+        <div class="stage-float">
+          <img src="demo-bacha/stage.webp" alt="سباغيتي ثمار البحر عند مطعم الباشا — سكبة الزيت الذهبية">
+          <div class="stage-glare" id="stageGlare"></div>
+        </div>
+        <div class="stage-refl" aria-hidden="true"><img src="demo-bacha/stage.webp" alt=""></div>
+      </div>
+    </div>
+    <p class="stage-note">حرّك صبعك ولا الفأرة فوق الصحن، وتبّع سكبة الزيت الذهبية وهي نازلة.</p>
+    <div class="sig-price"><b>55 درهم</b><span>قمرون وكلامار في صوص كريمية</span></div>
+    <br>
+    <button class="add-btn stage-add magnetic" type="button" data-preset="spaghetti">+ زيدها للطلب</button>
+  </div>
+  <div class="marquee" aria-hidden="true"><div class="mq-track" id="mqTrack"></div></div>
+</section>
+
+<!-- ============ 05 · القائمة ============ -->
+<section class="scene" id="menu" data-chapter="05" data-name="الكتالوغ" aria-label="الكتالوغ">
   <div class="layers-head">
-    <p class="spec">04. الكتالوغ — تخصصات الباشا</p>
+    <p class="spec">08. الكتالوغ — تخصصات الباشا</p>
     <h2 class="big">عشرة تخصصات<br><span class="grad-gold">بصور حقيقية من مطبخنا</span></h2>
   </div>
   <div class="cat-grid">
@@ -381,8 +461,8 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
   </div>
 </section>
 
-<!-- ============ 05 · الحرفة ============ -->
-<section class="scene" id="craft" data-chapter="05" data-name="الحرفة" aria-label="الحرفة">
+<!-- ============ 06 · الحرفة ============ -->
+<section class="scene" id="craft" data-chapter="06" data-name="الحرفة" aria-label="الحرفة">
   <p class="spec">05. الحرفة</p>
   <h2 class="big">أرقامنا<br><span class="grad-gold">بلا تزويق</span></h2>
   <div class="stats">
@@ -401,8 +481,8 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
   </div>
 </section>
 
-<!-- ============ 06 · القصة ============ -->
-<section class="scene" id="story" data-chapter="06" data-name="القصة" aria-label="القصة">
+<!-- ============ 07 · القصة ============ -->
+<section class="scene" id="story" data-chapter="07" data-name="القصة" aria-label="القصة">
   <div class="stack-zone" id="stackZone">
     <article class="story-panel sp1"><p class="s-num">القصة — 01 / 03 · الحلم</p><h3>بدات الحكاية بحلم</h3><p>شيف شاب من طنجة، كبر بين أطباق الواليدة ووصفات الدار، وحلم يكون عندو مطعم باسمو — وطبق باسمو.</p></article>
     <article class="story-panel sp2"><p class="s-num">القصة — 02 / 03 · الدار</p><h3>مطعم الباشا — البرانص 2</h3><p>تحقق الحلم في البرانص 2: مطعم بروح كبيرة، أطباق بثمن في المتناول، وطعم ما كيتنساش — واللحسة ولّات العنوان.</p></article>
@@ -410,8 +490,8 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
   </div>
 </section>
 
-<!-- ============ 07 · اطلب ============ -->
-<section class="scene" id="order" data-chapter="07" data-name="اطلب" aria-label="اطلب">
+<!-- ============ 08 · اطلب ============ -->
+<section class="scene" id="order" data-chapter="08" data-name="اطلب" aria-label="اطلب">
   <p class="spec">07. اطلب // 01. أطباق التوقيع</p>
   <h2 class="big">اختر <span class="grad-gold">طبقك</span></h2>
   <div class="lineup">
@@ -484,6 +564,16 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
     </div>
   </div>
 
+
+  <div class="faq">
+    <p class="spec" style="justify-content:center">قبل ما تطلب</p>
+    <h2 class="faq-title">أسئلة <span class="grad-gold">كتعاود</span></h2>
+    <details><summary>واش كاين التوصيل؟</summary><p>أييه، التوصيل متوفر. صيفط الطلب في واتساب وغادي نأكدو معاك العنوان والمدة قبل ما يخرج من المطبخ.</p></details>
+    <details><summary>كيفاش كنطلب؟</summary><p>عمّر الطلب هنا في الموقع وغادي يوصّلنا مباشرة في واتساب المطعم 0719 161 654، ولا كلمنا في نفس الرقم.</p></details>
+    <details><summary>فين جاي المطعم بالضبط؟</summary><p>البرانص 2 في طنجة، قريب من مركز الحليب (Centre Laitier) — وإذا توهتي، كلمنا في واتساب ونوجّهوك.</p></details>
+    <details><summary>شنو هما الأطباق الأكثر طلباً؟</summary><p>لحسة الباشا هي النجمة، ومن بعدها بيتزا ثمار البحر وفورمول الباشا — والعشرة تخصصات كاملة كاينة في الكتالوغ ديال الموقع.</p></details>
+    <details><summary>واش الأثمنة في الموقع هي أثمنة المطعم؟</summary><p>أييه، هي أثمنة المطعم — والعروض الخاصة كنعلنو عليها في إنستغرام الشيف @chef_ayoub_lbacha.</p></details>
+  </div>
   <div class="finale">
     <p class="spec" style="justify-content:center">الفحم شاعل — مرحبا بيك</p>
     <div class="big-order"><span class="mask"><span>اطلب</span></span><span class="mask"><span class="grad-gold">دابا</span></span></div>
@@ -765,5 +855,80 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا" };
   window.addEventListener("load", ()=> ScrollTrigger.refresh());
 })();
 </script>
+
+<script>
+/* ===== v7: GENESIS FILM + 3D STAGE + CURSOR + MARQUEE ===== */
+(function(){
+  // Marquee content (x2 for the seamless loop)
+  var mq = document.getElementById('mqTrack');
+  if (mq) {
+    var items = 'لحسة الباشا ✦ بيتزا ثمار البحر ✦ كسكس الجمعة ✦ كامبيرو الباشا ✦ فورمول الباشا ✦ سباغيتي ثمار البحر ✦ توصيل متوفر ✦ ';
+    mq.innerHTML = '<span>' + items + '</span><span>' + items + '</span>';
+  }
+  // Custom cursor (fine pointers only)
+  if (window.matchMedia('(pointer:fine)').matches) {
+    var cur = document.getElementById('cur'), ring = document.getElementById('curRing');
+    var mx = innerWidth/2, my = innerHeight/2, rx = mx, ry = my;
+    addEventListener('mousemove', function(e){ mx = e.clientX; my = e.clientY; if (cur){ cur.style.left = mx+'px'; cur.style.top = my+'px'; } });
+    (function loop(){ rx += (mx-rx)*.16; ry += (my-ry)*.16; if (ring){ ring.style.left = rx+'px'; ring.style.top = ry+'px'; } requestAnimationFrame(loop); })();
+    document.addEventListener('mouseover', function(e){ if (ring) ring.classList.toggle('big', !!e.target.closest('a,button,summary,.opt,.extra,.cat-card')); });
+  }
+  // 3D stage tilt + glare
+  var stage = document.getElementById('stageTilt'), glare = document.getElementById('stageGlare');
+  if (stage && window.gsap) {
+    var wrap = stage.closest('.stage3d');
+    var qx = gsap.quickTo(stage, 'rotationY', {duration:.7, ease:'expo.out'});
+    var qy = gsap.quickTo(stage, 'rotationX', {duration:.7, ease:'expo.out'});
+    gsap.set(stage, {transformPerspective: 1200});
+    wrap.addEventListener('pointermove', function(e){
+      var r = wrap.getBoundingClientRect();
+      var px = (e.clientX - r.left)/r.width - .5, py = (e.clientY - r.top)/r.height - .5;
+      qx(px*16); qy(-py*12);
+      if (glare) glare.style.transform = 'translateX(' + (px*90 - 20) + '%)';
+    });
+    wrap.addEventListener('pointerleave', function(){ qx(0); qy(0); if (glare) glare.style.transform = 'translateX(-70%)'; });
+  }
+  // Genesis canvas scroll-film (108 frames from the chef's own burger videos)
+  var cv = document.getElementById('genCanvas');
+  if (cv && window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    var ctx = cv.getContext('2d'), N = 108, frames = [], ready = [], cur = -1;
+    function fit(){
+      var dpr = Math.min(devicePixelRatio||1, 2);
+      cv.width = cv.clientWidth * dpr; cv.height = cv.clientHeight * dpr;
+      cur = -1;
+    }
+    function draw(i){
+      if (i === cur || !ready[i]) return;
+      var img = frames[i]; if (!img) return;
+      var cw = cv.width, ch = cv.height, sc = Math.max(cw/img.width, ch/img.height);
+      var w = img.width*sc, h = img.height*sc;
+      ctx.drawImage(img, (cw-w)/2, (ch-h)/2, w, h);
+      cur = i;
+    }
+    for (var i = 0; i < N; i++) {
+      (function(i){
+        var img = new Image();
+        img.onload = function(){ ready[i] = true; if (i === 0) draw(0); };
+        img.src = 'demo-bacha/gen/f' + String(i).padStart(3,'0') + '.webp';
+        frames[i] = img;
+      })(i);
+    }
+    fit();
+    var caps = document.querySelectorAll('.gen-cap'), prog = document.getElementById('genProg');
+    ScrollTrigger.create({ trigger: '#genPin', start: 'top top', end: '+=240%', pin: true, scrub: .4,
+      onUpdate: function(self){
+        var pr = self.progress, idx = Math.min(N-1, Math.round(pr*(N-1)));
+        if (!ready[idx]) { var j = idx; while (j > 0 && !ready[j]) j--; idx = j; }
+        draw(idx);
+        var cap = pr < .36 ? 0 : (pr < .74 ? 1 : 2);
+        caps.forEach(function(c, k){ c.classList.toggle('on', k === cap); });
+        if (prog) prog.style.width = (pr*100) + '%';
+      }});
+    addEventListener('resize', function(){ fit(); draw(Math.max(cur,0)); });
+  }
+})();
+</script>
+
 </body>
 </html>
