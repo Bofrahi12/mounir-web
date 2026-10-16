@@ -57,8 +57,8 @@
   .dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
   .urlpill{flex:1;text-align:center;background:#070b13;color:#7286ab;font-size:.74rem;padding:4px 10px;border-radius:6px;direction:ltr;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-inline-start:6px}
   .shotwrap{overflow:hidden}
-  .wcard img.shot{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center;transition:transform .5s ease}
-  .wcard:hover img.shot{transform:scale(1.045)}
+  .wcard .shot{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center;transition:transform .5s ease}
+  .wcard:hover .shot{transform:scale(1.045)}
   .wbody{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
   .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:11px}
   .tag{font-size:.73rem;font-weight:800;padding:4px 12px;border-radius:50px}
@@ -236,12 +236,12 @@
 
       <a class="wcard" data-cat="demo" data-sector="resto" href="https://bofrahi12.github.io/mounir-web/demo-doner.html" target="_blank" rel="noopener">
         <div class="framebar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="urlpill">bofrahi12.github.io/mounir-web/demo-doner</span></div>
-        <div class="shotwrap"><img class="shot" src="shots/doner.webp" alt="THE DÖNER — cinematic restaurant website" loading="lazy"></div>
+        <div class="shotwrap"><video class="shot" src="demo-doner/spit.mp4" poster="shots/doner.webp" muted loop playsinline preload="metadata" data-vid aria-label="THE DÖNER — cinematic restaurant website"></video></div>
         <div class="wbody">
           <div class="tags"><span class="tag tag-demo">نموذج تجريبي</span><span class="tag tag-cat">مطعم · سينمائي تفاعلي · إنجليزية</span></div>
           <h3>THE DÖNER — Restaurant Expérience</h3>
           <p>موقع مطعم دونر كامل بستايل المواصفات التقنية: سبعة أقسام سينمائية بالسكرول من المشواة حتى الطلب — بحال الفيديو تماماً.</p>
-          <ul class="feats"><li>غوص بالسكرول في اللحم مع عدّاد حرارة حي حتى 220°</li><li>قائمة التوقيع €12/€14/€16 + بانٍ تفاعلي: الحجم، الإضافات، وقت الاستلام</li><li>الطلب الكامل كيوصل لواتساب: التهيئة + الثمن + الموعد</li></ul>
+          <ul class="feats"><li>ثلاث لقطات فيديو حقيقية كتحرك: المشواة كتدور، السكين كيقطّع، والطبق واجد — مع غوص بالسكرول وعدّاد حرارة حي حتى 220°</li><li>قائمة التوقيع €12/€14/€16 + بانٍ تفاعلي: الحجم، الإضافات، وقت الاستلام</li><li>الطلب الكامل كيوصل لواتساب: التهيئة + الثمن + الموعد</li></ul>
           <span class="go">جرّب النموذج <i>←</i></span>
         </div>
       </a>
@@ -618,6 +618,24 @@
       trackEvent('portfolio_filter', f);
     });
   });
+</script>
+<script>
+  // Card videos: play only while on screen
+  (function(){
+    var vids = document.querySelectorAll('video[data-vid]');
+    if (!vids.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(es){ es.forEach(function(e){
+        var v = e.target;
+        if (e.isIntersecting) { var p = v.play(); if (p) p.catch(function(){}); }
+        else v.pause();
+      }); }, { threshold: .2 });
+      vids.forEach(function(v){ io.observe(v); });
+    } else {
+      vids.forEach(function(v){ var p = v.play(); if (p) p.catch(function(){}); });
+    }
+  })();
 </script>
 </body>
 </html>
