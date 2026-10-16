@@ -12,7 +12,6 @@
 <link rel="canonical" href="https://tanja-web.onrender.com/demo-bacha.html">
 <meta property="og:image" content="https://bofrahi12.github.io/mounir-web/demo-bacha/hero-poster.webp">
 <meta name="theme-color" content="#0C0A06">
-<meta name="robots" content="noindex">
 <link rel="icon" href="logo-icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -328,6 +327,34 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 .loc-film-cap{position:relative;text-align:center;color:var(--muted);font-size:.88rem;margin-top:18px}
 .loc-film-cap b{color:var(--gold2);font-weight:700}
 @media(max-width:760px){.loc-film{max-width:min(88vw,380px)}.loc-film::before{inset:-16px -14px}}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:28px}
+.hbtn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:14px 30px;border-radius:99px;font-weight:800;font-size:.95rem;text-decoration:none;white-space:nowrap}
+.hbtn.gold{background:linear-gradient(120deg,var(--gold2),var(--gold));color:#1A1206;box-shadow:0 14px 36px rgba(227,160,8,.28)}
+.hbtn.ghost{border:1px solid rgba(247,241,227,.4);color:var(--white);background:rgba(12,10,6,.35);backdrop-filter:blur(4px)}
+.hlink{color:var(--gold2);font-family:var(--font-g);font-weight:700;font-size:.85rem;text-decoration:none;border-bottom:1px dashed rgba(227,160,8,.5);padding-bottom:2px}
+.pick-list{display:flex;flex-direction:column;gap:10px}
+.pick-row{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:14px;padding:12px 16px;background:rgba(255,255,255,.015)}
+.pick-info{flex:1;min-width:0}
+.pick-info b{display:block;font-size:1rem}
+.pick-info span{color:var(--muted);font-size:.8rem}
+.pick-info .fri-note{color:var(--gold2);font-weight:700}
+.pick-price{color:var(--gold2);font-family:var(--font-g);white-space:nowrap}
+.pick-row .add-btn{margin-top:0;white-space:nowrap;padding:11px 16px;cursor:pointer}
+.cart-box{margin-top:20px;border:1px solid rgba(227,160,8,.4);border-radius:16px;padding:18px;background:rgba(227,160,8,.05)}
+.cart-t{font-family:var(--font-g);font-weight:800;color:var(--gold2);margin-bottom:6px}
+.cart-empty{color:var(--muted);font-size:.9rem;padding:8px 0 2px}
+.cart-line{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(247,241,227,.13)}
+.cart-line:last-child{border-bottom:0}
+.cl-info{flex:1;min-width:0}
+.cl-info b{display:block;font-size:.98rem}
+.cl-info span{color:var(--muted);font-size:.78rem}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:36px;height:36px;border-radius:50%;border:1px solid rgba(227,160,8,.6);background:rgba(12,10,6,.4);color:var(--gold2);font-size:1.1rem;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center}
+.qty b{min-width:20px;text-align:center}
+.cl-total{white-space:nowrap}
+.rm{background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem;padding:8px;line-height:1}
+.findus-note{color:var(--muted);font-size:.83rem;line-height:1.9;margin-top:16px;border-top:1px dashed rgba(247,241,227,.13);padding-top:12px}
+@media(max-width:560px){.pick-row{flex-wrap:wrap}.pick-info{flex:1 1 100%}.hero-ctas .hbtn{flex:1;justify-content:center}}
 .map-card{position:relative;border:1px solid rgba(227,160,8,.35);border-radius:16px;overflow:hidden;background:#0B0805}
 .map-card svg{display:block;width:100%;height:auto}
 .map-chip{position:absolute;top:10px;left:10px;background:rgba(6,4,3,.72);color:var(--gold2);font-family:var(--font-g);font-size:.64rem;font-weight:700;padding:5px 10px;border-radius:99px;border:1px solid rgba(227,160,8,.4)}
@@ -443,12 +470,17 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
     <p class="hero-ayub">الشيف أيوب بنعمر</p>
     <h1 class="mega"><span class="mask"><span>الب<span class="o">ا</span>شا</span></span></h1>
     <div class="hero-row">
-      <p class="hero-tag">برغر <i>·</i> طاكوس <i>·</i> بيتزا <i>·</i> طواجن</p>
+      <p class="hero-tag">مطبخ مفتوح <i>·</i> فحم حيّ <i>·</i> ضيافة طنجاوية</p>
       <div class="hero-chips">
         <span class="chip"><b>+51 ألف</b> متابع على إنستغرام</span>
         <span class="chip"><b>توصيل</b> متوفر</span>
         <span class="chip"><b>البرانص 2</b> — طنجة</span>
       </div>
+    </div>
+    <div class="hero-ctas">
+      <a class="hbtn ghost magnetic" href="#menu" data-scroll>شوف المنيو</a>
+      <a class="hbtn gold magnetic" href="#order" data-scroll>اطلب دابا</a>
+      <a class="hlink" href="#findus" data-scroll>فين تلقانا ←</a>
     </div>
   </div>
   <div class="chef-badge" aria-label="الشيف أيوب بنعمر">
@@ -484,7 +516,7 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
     <p class="lede" style="margin:0 auto">200 غرام لحم بقري، جبن ذائب، خبز طري وصلصة الباشا السرية. البرغر اللي كيتصوّر قبل ما يتكال.</p>
     <div class="sig-price"><b>55 درهم</b><span>مع بطاطس وصلصة الباشا</span></div>
     <br>
-    <a class="sig-cta magnetic" href="#order" data-scroll>اطلب التوقيع ←</a>
+    <a class="sig-cta magnetic" href="#order" data-scroll data-add="burger">زيدو للطلب ←</a>
   </div>
 </section>
 
@@ -518,7 +550,7 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
     <p class="stage-note">حرّك صبعك ولا الفأرة فوق الصحن، وتبّع سكبة الزيت الذهبية وهي نازلة.</p>
     <div class="sig-price"><b>65 درهم</b><span>قمرون وكلامار في صوص كريمية</span></div>
     <br>
-    <button class="add-btn stage-add magnetic" type="button" data-preset="spaghetti">+ زيدها للطلب</button>
+    <button class="add-btn stage-add magnetic" type="button" data-add="spaghetti">+ زيدها للطلب</button>
   </div>
   <div class="marquee" aria-hidden="true"><div class="mq-track" id="mqTrack"></div></div>
 </section>
@@ -527,19 +559,18 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 <section class="scene" id="menu" data-chapter="05" data-name="الكتالوغ" aria-label="الكتالوغ">
   <div class="layers-head">
     <p class="spec">05. الكتالوغ — تخصصات الباشا</p>
-    <h2 class="big">عشرة تخصصات<br><span class="grad-gold">بصور حقيقية من مطبخنا</span></h2>
+    <h2 class="big">تخصصات الدار<br><span class="grad-gold">بصور حقيقية من مطبخنا</span></h2>
   </div>
   <div class="cat-grid">
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-lahssa.webp')"><span class="cprice">35 درهم</span><span class="cbadge">الأكثر طلباً</span></div><div class="cbody"><h3>لحسة الباشا</h3><p>توقيع الدار والطبق اللي شهّرها — كتغلي وكتوصل سخونة.</p><button class="add-btn" type="button" data-preset="lahssa">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-pizza.webp')"><span class="cprice">55 درهم</span><span class="cbadge">توقيع الباشا</span></div><div class="cbody"><h3>بيتزا ثمار البحر</h3><p>قمرون وكلامار وفطر على عجينة رقيقة — نجمة الحساب.</p><button class="add-btn" type="button" data-preset="pizza">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-spaghetti.webp')"><span class="cprice">65 درهم</span></div><div class="cbody"><h3>سباغيتي ثمار البحر</h3><p>سباغيتي كريمية بالقمرون، كتتقدم سخونة في صحنها.</p><button class="add-btn" type="button" data-preset="spaghetti">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-emince.webp')"><span class="cprice">70 درهم</span></div><div class="cbody"><h3>إمينسي الدجاج</h3><p>دجاج بصلصة الفطر الكريمية مع روز وخضرة — طبق رئيسي كامل.</p><button class="add-btn" type="button" data-preset="emince">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-burger.webp')"><span class="cprice">55 درهم</span></div><div class="cbody"><h3>برغر الباشا</h3><p>برغر الدار بالجبن الذائب، مع بطاطس مقلية وصلصة الباشا.</p><button class="add-btn" type="button" data-preset="burger">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-kampiro.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>كامبيرو الباشا</h3><p>ساندويتش عامر بالدجاج والفلفلة والجبن، مع بطاطس وصلصة الدار.</p><button class="add-btn" type="button" data-preset="kampiro">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-couscous.webp')"><span class="cprice">60 درهم</span><span class="cbadge">نهار الجمعة</span></div><div class="cbody"><h3>كسكس الجمعة</h3><p>موعد الجمعة المقدس: سميدة، لحم، خضرة وتفاية ذهبية.</p><button class="add-btn" type="button" data-preset="couscous">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-pasticho.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>باستيشو</h3><p>باستا غراتان بالجبن، كتخرج من الفرن وهي كتغلي.</p><button class="add-btn" type="button" data-preset="pasticho">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-platter.webp')"><span class="cprice">110 درهم</span><span class="cbadge">للمشاركة</span></div><div class="cbody"><h3>طبق مشترك الباشا</h3><p>كلامار مقرمش ومقليات الدار مع الصلصات — طبق كيجمع الحباب.</p><button class="add-btn" type="button" data-preset="platter">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-formule.webp')"><span class="cprice">85 درهم</span><span class="cbadge">عرض خاص</span></div><div class="cbody"><h3>فورمول الباشا</h3><p>بيتزا + لحسة + باستيشو — العرض اللي كيهضرو عليه كاملين.</p><button class="add-btn" type="button" data-preset="formule">+ زيدها للطلب</button></div></article>
+    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-lahssa.webp')"><span class="cprice">35 درهم</span><span class="cbadge">الأكثر طلباً</span></div><div class="cbody"><h3>لحسة الباشا</h3><p>توقيع الدار والطبق اللي شهّرها — كتغلي وكتوصل سخونة.</p><button class="add-btn" type="button" data-add="lahssa">+ زيدها للطلب</button></div></article>
+    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-pizza.webp')"><span class="cprice">55 درهم</span><span class="cbadge">توقيع الباشا</span></div><div class="cbody"><h3>بيتزا ثمار البحر</h3><p>قمرون وكلامار وفطر على عجينة رقيقة — نجمة الحساب.</p><button class="add-btn" type="button" data-add="pizza">+ زيدها للطلب</button></div></article>
+    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-crispy.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>برغر كرسبي</h3><p>قطعة كرسبي مقرمشة بالجبن — كتتركب قدامك.</p><button class="add-btn" type="button" data-add="crispy">+ زيدها للطلب</button></div></article>
+    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-emince.webp')"><span class="cprice">70 درهم</span></div><div class="cbody"><h3>إمينسي الدجاج</h3><p>دجاج بصلصة الفطر الكريمية مع روز وخضرة — طبق رئيسي كامل.</p><button class="add-btn" type="button" data-add="emince">+ زيدها للطلب</button></div></article>
+    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-kampiro.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>كامبيرو الباشا</h3><p>ساندويتش عامر بالدجاج والفلفلة والجبن، مع بطاطس وصلصة الدار.</p><button class="add-btn" type="button" data-add="kampiro">+ زيدها للطلب</button></div></article>
+    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-couscous.webp')"><span class="cprice">60 درهم</span><span class="cbadge">نهار الجمعة</span></div><div class="cbody"><h3>كسكس الجمعة</h3><p>موعد الجمعة المقدس: سميدة، لحم، خضرة وتفاية ذهبية.</p><button class="add-btn" type="button" data-add="couscous">+ زيدها للطلب</button></div></article>
+    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-pasticho.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>باستيشو</h3><p>باستا غراتان بالجبن، كتخرج من الفرن وهي كتغلي.</p><button class="add-btn" type="button" data-add="pasticho">+ زيدها للطلب</button></div></article>
+    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-platter.webp')"><span class="cprice">110 درهم</span><span class="cbadge">للمشاركة</span></div><div class="cbody"><h3>طبق مشترك الباشا</h3><p>كلامار مقرمش ومقليات الدار مع الصلصات — طبق كيجمع الحباب.</p><button class="add-btn" type="button" data-add="platter">+ زيدها للطلب</button></div></article>
+    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-formule.webp')"><span class="cprice">85 درهم</span><span class="cbadge">عرض خاص</span></div><div class="cbody"><h3>فورمول الباشا</h3><p>بيتزا + لحسة + باستيشو — العرض اللي كيهضرو عليه كاملين.</p><button class="add-btn" type="button" data-add="formule">+ زيدها للطلب</button></div></article>
   </div>
   <div class="fullmenu">
     <p class="spec" style="justify-content:center">المنيو الكامل</p>
@@ -572,24 +603,6 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
       <figure class="board"><img src="demo-bacha/board-8.webp" alt="المنيو الأصلي — التحلية" loading="lazy"><figcaption>التحلية</figcaption></figure>
     </div>
   </div>
-  <div class="pop-wrap">
-    <p class="spec" style="justify-content:center">الأكثر طلباً</p>
-    <h2 class="big" style="text-align:center">أطباق كتتصوّر <span class="grad-gold">في مطبخنا</span></h2>
-    <p class="lede" style="text-align:center;max-width:620px;margin:10px auto 0">صور حقيقية من مطبخ الباشا، بلا صور واجدة وبلا فلاتر — هادو هما الأطباق اللي كيطلبوهم الزبناء كل نهار.</p>
-    <div class="cat-grid">
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-lahssa.webp')"><span class="cprice">35 درهم</span><span class="cbadge">الأكثر طلباً</span></div><div class="cbody"><h3>لحسة الباشا</h3><p>توقيع الدار — كتغلي وكتوصل سخونة.</p><button class="add-btn" type="button" data-preset="lahssa">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-formule.webp')"><span class="cprice">85 درهم</span><span class="cbadge">عرض خاص</span></div><div class="cbody"><h3>فورمول الباشا</h3><p>بيتزا + لحسة + باستيشو في عرض واحد.</p><button class="add-btn" type="button" data-preset="formule">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-pizza.webp')"><span class="cprice">55 درهم</span></div><div class="cbody"><h3>بيتزا ثمار البحر</h3><p>قمرون وكلامار وفطر على عجينة رقيقة.</p><button class="add-btn" type="button" data-preset="pizza">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-spaghetti.webp')"><span class="cprice">65 درهم</span></div><div class="cbody"><h3>سباغيتي ثمار البحر</h3><p>كريمية بالقمرون، من يد الشيف.</p><button class="add-btn" type="button" data-preset="spaghetti">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-burger.webp')"><span class="cprice">55 درهم</span></div><div class="cbody"><h3>برغر الباشا</h3><p>برغر الدار بالجبن الذائب وبطاطس مقلية.</p><button class="add-btn" type="button" data-preset="burger">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-kampiro.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>كامبيرو الدجاج</h3><p>ساندويتش عامر بالدجاج والفلفلة والجبن.</p><button class="add-btn" type="button" data-preset="kampiro">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-crispy.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>برغر كرسبي</h3><p>قطعة كرسبي مقرمشة بالجبن — كتتركب قدامك.</p><a class="add-btn" style="text-align:center;text-decoration:none" target="_blank" rel="noopener" href="https://wa.me/212719161654?text=%D9%85%D8%B7%D8%B9%D9%85%20%D8%A7%D9%84%D8%A8%D8%A7%D8%B4%D8%A7%20%E2%80%94%20%D8%B7%D9%84%D8%A8%3A%20%D8%A8%D8%B1%D8%BA%D8%B1%20%D9%83%D8%B1%D8%B3%D8%A8%D9%8A">اطلب في واتساب</a></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-emince.webp')"><span class="cprice">70 درهم</span></div><div class="cbody"><h3>إمينسي الدجاج</h3><p>صلصة الفطر مع روز وخضرة — طبق كامل.</p><button class="add-btn" type="button" data-preset="emince">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-pasticho.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>باستيشو</h3><p>غراتان كيخرج من الفرن وهو كيغلي.</p><button class="add-btn" type="button" data-preset="pasticho">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-platter.webp')"><span class="cprice">110 درهم</span><span class="cbadge">للمشاركة</span></div><div class="cbody"><h3>طبق مشترك الباشا</h3><p>كالامار ومقليات الدار — طبق كيجمع الحباب.</p><button class="add-btn" type="button" data-preset="platter">+ زيدها للطلب</button></div></article>
-    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-couscous.webp')"><span class="cprice">60 درهم</span><span class="cbadge">نهار الجمعة</span></div><div class="cbody"><h3>كسكس الجمعة</h3><p>سميدة، لحم، خضرة وتفاية ذهبية.</p><button class="add-btn" type="button" data-preset="couscous">+ زيدها للطلب</button></div></article>
-    </div>
-  </div>
 </section>
 
 <!-- ============ 06 · الحرفة ============ -->
@@ -598,7 +611,7 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
   <h2 class="big">أرقامنا<br><span class="grad-gold">بلا تزويق</span></h2>
   <div class="stats">
     <div class="stat"><b><span data-count="51">0</span><small>ألف+</small></b><h4>متابع على إنستغرام</h4><p>مجتمع كيكبر كل نهار حول أطباق الباشا وحكاياتها.</p></div>
-    <div class="stat"><b data-count="10">0</b><h4>تخصصات في الكتالوغ</h4><p>كل وحدة بصورتها الحقيقية من مطبخ الباشا نفسه.</p></div>
+    <div class="stat"><b data-count="11">0</b><h4>تخصصاً بصور حقيقية</h4><p>كل وحدة بصورتها الحقيقية من مطبخ الباشا نفسه — والبرغر والسباغيتي عندهم فصولهم الخاصة.</p></div>
     <div class="stat"><b><span data-count="35">0</span><small>درهم</small></b><h4>ثمن أشهر طبق</h4><p>اللحسة ولّات حديث المدينة — وبثمن في متناول الجميع.</p></div>
     <div class="stat"><b data-count="7">0</b><h4>أيام في الأسبوع</h4><p>الدار خدامة كل نهار، ونهار الجمعة عندو طقسو الخاص: الكسكس.</p></div>
   </div>
@@ -662,63 +675,46 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
         <a class="dir-btn magnetic" id="dirBtn" href="https://www.google.com/maps/search/?api=1&query=Restaurant%20El%20Bacha%2C%20Branes%202%2C%20Tanger" target="_blank" rel="noopener">حلّ الاتجاهات في Google Maps ←</a>
         <a class="wa-ask magnetic" id="waAsk" href="https://wa.me/212719161654?text=%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B9%D8%B1%D9%81%20%D9%81%D9%8A%D9%86%20%D8%AC%D8%A7%D9%8A%20%D9%85%D8%B7%D8%B9%D9%85%20%D8%A7%D9%84%D8%A8%D8%A7%D8%B4%D8%A7%20%D8%A8%D8%A7%D9%84%D8%B6%D8%A8%D8%B7%D8%9F" target="_blank" rel="noopener">سولنا على المكان في واتساب</a>
       </div>
+      <p class="findus-note">الخريطة اللي فوق غير توضيحية باش تعرّفك بالحومة — ماشي Pin رسمي مؤكد. العنوان: البرانص 2، طنجة، قريب من مركز الحليب.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ 09 · اطلب ============ -->
 <section class="scene" id="order" data-chapter="09" data-name="اطلب" aria-label="اطلب">
-  <p class="spec">09. اطلب // 01. أطباق التوقيع</p>
-  <h2 class="big">اختر <span class="grad-gold">طبقك</span></h2>
-  <div class="lineup">
-    <article class="dish">
-      <div class="dimg" style="background-image:url('demo-bacha/p-lahssa.webp')"><span class="price">35 درهم</span></div>
-      <div class="dbody"><h3>لحسة الباشا</h3><p>الطبق اللي شهّر الدار — كيغلي وكيوصل سخون. الأكثر طلباً عندنا.</p>
-      <div class="tags"><span>توقيع الدار</span><span>الأكثر طلباً</span></div>
-      <button class="add-btn" type="button" data-preset="lahssa">+ زيدها للطلب</button></div>
-    </article>
-    <article class="dish">
-      <div class="dimg" style="background-image:url('demo-bacha/p-pizza.webp')"><span class="price">55 درهم</span></div>
-      <div class="dbody"><h3>بيتزا ثمار البحر</h3><p>قمرون وكلامار وفطر على عجينة رقيقة — نجمة حسابنا على إنستغرام.</p>
-      <div class="tags"><span>ثمار البحر</span><span>عجينة رقيقة</span></div>
-      <button class="add-btn" type="button" data-preset="pizza">+ زيدها للطلب</button></div>
-    </article>
-    <article class="dish">
-      <div class="dimg" style="background-image:url('demo-bacha/p-formule.webp')"><span class="price">85 درهم</span></div>
-      <div class="dbody"><h3>فورمول الباشا</h3><p>بيتزا + لحسة + باستيشو في عرض واحد — اللي كيهضرو عليه كاملين.</p>
-      <div class="tags"><span>عرض خاص</span><span>3 أطباق</span></div>
-      <button class="add-btn" type="button" data-preset="formule">+ زيدها للطلب</button></div>
-    </article>
-  </div>
+  <p class="spec">09. اطلب</p>
+  <h2 class="big">بنِ <span class="grad-gold">طلبك</span></h2>
 
   <div class="builder" id="builder">
-    <p class="spec">09. اطلب // 02. كمّل طلبك</p>
-    <h2 class="big" style="font-size:clamp(1.9rem,4.4vw,3.6rem)">بنِ <span class="grad-gold">طلبك</span></h2>
-
-    <p class="step-t">الخطوة 1 — اختر الطبق</p>
-    <div class="opts" id="sizeOpts" role="radiogroup" aria-label="اختر الطبق">
-      <button class="opt sel" type="button" data-size="برغر الباشا" data-price="55" role="radio" aria-checked="true"><span class="sz">★</span><b>برغر الباشا</b><span>توقيع الدار · صلصة سرية</span><span class="op">55 درهم</span></button>
-      <button class="opt" type="button" data-size="لحسة الباشا" data-price="35" role="radio" aria-checked="false"><span class="sz">ل</span><b>لحسة الباشا</b><span>الأكثر طلباً · توقيع الدار</span><span class="op">35 درهم</span></button>
-      <button class="opt" type="button" data-size="بيتزا ثمار البحر" data-price="55" role="radio" aria-checked="false"><span class="sz">ب</span><b>بيتزا ثمار البحر</b><span>قمرون وكلامار</span><span class="op">55 درهم</span></button>
-      <button class="opt" type="button" data-size="سباغيتي ثمار البحر" data-price="65" role="radio" aria-checked="false"><span class="sz">س</span><b>سباغيتي ثمار البحر</b><span>كريمية · بالقمرون</span><span class="op">65 درهم</span></button>
-      <button class="opt" type="button" data-size="إمينسي الدجاج" data-price="70" role="radio" aria-checked="false"><span class="sz">إ</span><b>إمينسي الدجاج</b><span>صلصة الفطر · طبق كامل</span><span class="op">70 درهم</span></button>
-      <button class="opt" type="button" data-size="كامبيرو الباشا" data-price="45" role="radio" aria-checked="false"><span class="sz">كم</span><b>كامبيرو الباشا</b><span>ساندويتش عامر · مع بطاطس</span><span class="op">45 درهم</span></button>
-      <button class="opt" type="button" data-size="كسكس الجمعة" data-price="60" role="radio" aria-checked="false"><span class="sz">ك</span><b>كسكس الجمعة</b><span>تفاية · نهار الجمعة</span><span class="op">60 درهم</span></button>
-      <button class="opt" type="button" data-size="باستيشو" data-price="45" role="radio" aria-checked="false"><span class="sz">ت</span><b>باستيشو</b><span>غراتان · من الفرن</span><span class="op">45 درهم</span></button>
-      <button class="opt" type="button" data-size="طبق مشترك الباشا" data-price="110" role="radio" aria-checked="false"><span class="sz">م</span><b>طبق مشترك الباشا</b><span>للمشاركة · كلامار ومقليات</span><span class="op">110 درهم</span></button>
-      <button class="opt" type="button" data-size="فورمول الباشا" data-price="85" role="radio" aria-checked="false"><span class="sz">ف</span><b>فورمول الباشا</b><span>بيتزا + لحسة + باستيشو</span><span class="op">85 درهم</span></button>
+    <p class="step-t">الخطوة 1 — اختر الأطباق</p>
+    <div class="pick-list" id="pickList">
+      <div class="pick-row"><div class="pick-info"><b>لحسة الباشا</b><span>توقيع الدار — الأكثر طلباً</span></div><b class="pick-price">35 درهم</b><button class="add-btn" type="button" data-add="lahssa">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>برغر الباشا</b><span>توقيع الدار — 200غ لحم وصلصة سرية</span></div><b class="pick-price">55 درهم</b><button class="add-btn" type="button" data-add="burger">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>بيتزا ثمار البحر</b><span>قمرون وكلامار على عجينة رقيقة</span></div><b class="pick-price">55 درهم</b><button class="add-btn" type="button" data-add="pizza">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>سباغيتي ثمار البحر</b><span>كريمية بالقمرون</span></div><b class="pick-price">65 درهم</b><button class="add-btn" type="button" data-add="spaghetti">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>فورمول الباشا</b><span>بيتزا + لحسة + باستيشو</span></div><b class="pick-price">85 درهم</b><button class="add-btn" type="button" data-add="formule">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>كامبيرو الباشا</b><span>ساندويتش الدجاج العامر</span></div><b class="pick-price">45 درهم</b><button class="add-btn" type="button" data-add="kampiro">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>برغر كرسبي</b><span>قطعة مقرمشة بالجبن</span></div><b class="pick-price">45 درهم</b><button class="add-btn" type="button" data-add="crispy">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>إمينسي الدجاج</b><span>صلصة الفطر — طبق كامل</span></div><b class="pick-price">70 درهم</b><button class="add-btn" type="button" data-add="emince">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>باستيشو</b><span>غراتان من الفرن</span></div><b class="pick-price">45 درهم</b><button class="add-btn" type="button" data-add="pasticho">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>طبق مشترك الباشا</b><span>كلامار ومقليات — للمشاركة</span></div><b class="pick-price">110 درهم</b><button class="add-btn" type="button" data-add="platter">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>كسكس الجمعة</b><span class="fri-note">متوفر غير نهار الجمعة</span></div><b class="pick-price">60 درهم</b><button class="add-btn" type="button" data-add="couscous">+ زيدها</button></div>
+    </div>
+    <div class="cart-box" id="cartBox">
+      <p class="cart-t">سلة الطلب</p>
+      <div id="cartLines"></div>
+      <p class="cart-empty" id="cartEmpty">السلة خاوية — زيد أول طبق من اللائحة.</p>
     </div>
 
     <p class="step-t">الخطوة 2 — زيد لمسات</p>
     <div class="extras" id="extraOpts">
-      <button class="extra" type="button" data-extra="جبن إضافي" data-price="7" aria-pressed="false"><span class="ethumb" style="background-image:url('demo-bacha/p-burger.webp')"></span><span><b>جبن إضافي</b><span>+ 7 درهم</span></span></button>
-      <button class="extra" type="button" data-extra="صلصة الباشا" data-price="5" aria-pressed="false"><span class="ethumb" style="background-image:url('demo-bacha/p-lahssa.webp')"></span><span><b>صلصة الباشا</b><span>+ 5 درهم</span></span></button>
-      <button class="extra" type="button" data-extra="بطاطس مقلية" data-price="10" aria-pressed="false"><span class="ethumb" style="background-image:url('demo-bacha/p-burger.webp')"></span><span><b>بطاطس مقلية</b><span>+ 10 درهم</span></span></button>
-      <button class="extra" type="button" data-extra="سلطة الدار" data-price="12" aria-pressed="false"><span class="ethumb" style="background-image:url('demo-bacha/p-platter.webp')"></span><span><b>سلطة الدار</b><span>+ 12 درهم</span></span></button>
-      <button class="extra" type="button" data-extra="عصير أفوكادو" data-price="20" aria-pressed="false"><span class="ethumb" style="background-image:url('demo-bacha/p-spaghetti.webp')"></span><span><b>عصير أفوكادو</b><span>+ 20 درهم</span></span></button>
-      <button class="extra" type="button" data-extra="حلوى اليوم" data-price="18" aria-pressed="false"><span class="ethumb" style="background-image:url('demo-bacha/p-pasticho.webp')"></span><span><b>حلوى اليوم</b><span>+ 18 درهم</span></span></button>
+      <button class="extra" type="button" data-extra="جبن إضافي" data-price="7" aria-pressed="false"><span><b>جبن إضافي</b><span>+ 7 درهم</span></span></button>
+      <button class="extra" type="button" data-extra="صلصة الباشا" data-price="5" aria-pressed="false"><span><b>صلصة الباشا</b><span>+ 5 درهم</span></span></button>
+      <button class="extra" type="button" data-extra="بطاطس مقلية" data-price="10" aria-pressed="false"><span><b>بطاطس مقلية</b><span>+ 10 درهم</span></span></button>
+      <button class="extra" type="button" data-extra="سلطة الدار" data-price="12" aria-pressed="false"><span><b>سلطة الدار</b><span>+ 12 درهم</span></span></button>
+      <button class="extra" type="button" data-extra="عصير أفوكادو" data-price="20" aria-pressed="false"><span><b>عصير أفوكادو</b><span>+ 20 درهم</span></span></button>
+      <button class="extra" type="button" data-extra="حلوى اليوم" data-price="18" aria-pressed="false"><span><b>حلوى اليوم</b><span>+ 18 درهم</span></span></button>
     </div>
-
 
     <p class="step-t">الخطوة 3 — كيفاش يوصلك الطلب؟</p>
     <div class="methods" id="methodOpts" role="radiogroup" aria-label="طريقة الوصول">
@@ -743,14 +739,14 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
         <p style="color:var(--faint);font-size:.82rem;margin-top:22px">الطلب كيتحضّر غير ملي توصّلنا الرسالة — سخون وطازج، بلا انتظار.</p>
       </div>
       <aside class="summary" aria-label="ملخص الطلب">
-        <div class="simg" role="img" aria-label="طبقك"></div>
+        <div class="simg" role="img" aria-label="مطعم الباشا"></div>
         <div class="sbody">
-          <div class="sline"><span>الطبق</span><b id="sumSize">برغر الباشا</b></div>
+          <div id="sumItems"><div class="sline"><span>الأطباق</span><b>—</b></div></div>
           <div class="sline"><span>الإضافات</span><b id="sumExtras">بدون</b></div>
           <div class="sline"><span>طريقة الوصول</span><b id="sumMethod">الاستلام من المطعم</b></div>
           <div class="sline"><span>العنوان</span><b id="sumAddr">المطعم — البرانص 2</b></div>
           <div class="sline"><span>الموعد</span><b id="sumWhen">اليوم · 13:00</b></div>
-          <div class="stotal"><span>المجموع</span><b id="sumTotal">55 درهم</b></div>
+          <div class="stotal"><span>المجموع</span><b id="sumTotal">0 درهم</b></div>
         </div>
         <button class="order-btn magnetic" id="orderBtn" type="button">أكّد الطلب في واتساب ←</button>
       </aside>
@@ -764,7 +760,7 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
     <details><summary>واش كاين التوصيل؟</summary><p>أييه، التوصيل متوفر. صيفط الطلب في واتساب وغادي نأكدو معاك العنوان والمدة قبل ما يخرج من المطبخ.</p></details>
     <details><summary>كيفاش كنطلب؟</summary><p>عمّر الطلب هنا في الموقع وغادي يوصّلنا مباشرة في واتساب المطعم 0719 161 654، ولا كلمنا في نفس الرقم.</p></details>
     <details><summary>فين جاي المطعم بالضبط؟</summary><p>البرانص 2 في طنجة، قريب من مركز الحليب (Centre Laitier) — وإذا توهتي، كلمنا في واتساب ونوجّهوك.</p></details>
-    <details><summary>شنو هما الأطباق الأكثر طلباً؟</summary><p>لحسة الباشا هي النجمة، ومن بعدها بيتزا ثمار البحر وفورمول الباشا — والعشرة تخصصات كاملة كاينة في الكتالوغ، والمنيو الكامل بأصنافو وأثمنتو كاين في نفس الصفحة.</p></details>
+    <details><summary>شنو هما الأطباق الأكثر طلباً؟</summary><p>لحسة الباشا هي النجمة، ومن بعدها بيتزا ثمار البحر وفورمول الباشا — وتخصصات الدار كاملة كاينة في الكتالوغ، والمنيو الكامل بأصنافو وأثمنتو كاين في نفس الصفحة.</p></details>
     <details><summary>واش الأثمنة في الموقع هي أثمنة المطعم؟</summary><p>أييه، هي أثمنة المطعم — والعروض الخاصة كنعلنو عليها في إنستغرام الشيف @chef_ayoub_lbacha.</p></details>
   </div>
   <div class="finale">
@@ -797,12 +793,25 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   const fine = window.matchMedia("(pointer: fine)").matches;
 
   /* ---------- ORDER BUILDER ---------- */
-  const state = { size: "برغر الباشا", sizePrice: 55, extras: new Map(), date: null, time: "13:00", method: "pickup", address: "", geoLink: null };
+  const state = { extras: new Map(), date: null, dateObj: new Date(), time: "13:00", method: "pickup", address: "", geoLink: null };
+  const MENU = {
+    lahssa:    { name: "لحسة الباشا", price: 35 },
+    burger:    { name: "برغر الباشا", price: 55 },
+    pizza:     { name: "بيتزا ثمار البحر", price: 55 },
+    spaghetti: { name: "سباغيتي ثمار البحر", price: 65 },
+    formule:   { name: "فورمول الباشا", price: 85 },
+    kampiro:   { name: "كامبيرو الباشا", price: 45 },
+    crispy:    { name: "برغر كرسبي", price: 45 },
+    emince:    { name: "إمينسي الدجاج", price: 70 },
+    pasticho:  { name: "باستيشو", price: 45 },
+    platter:   { name: "طبق مشترك الباشا", price: 110 },
+    couscous:  { name: "كسكس الجمعة", price: 60, friday: true }
+  };
+  const cart = new Map();
   const fmt = n => n + " درهم";
+  function cartTotal(){ let t = 0; cart.forEach((q,k)=> t += MENU[k].price * q); state.extras.forEach(p => t += p); return t; }
   function recalc(){
-    let total = state.sizePrice;
-    state.extras.forEach(p => total += p);
-    document.getElementById("sumSize").textContent = state.size;
+    const total = cartTotal();
     document.getElementById("sumExtras").textContent = state.extras.size ? [...state.extras.keys()].join("، ") : "بدون";
     document.getElementById("sumWhen").textContent = (state.date || "اليوم") + " · " + state.time;
     const mEl = document.getElementById("sumMethod"), aEl = document.getElementById("sumAddr");
@@ -821,10 +830,48 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
       gsap.to(t, { y: 80, opacity: 0, duration: .4, ease: "expo.in", delay: 2.6 });
     } else { t.style.opacity = 1; t.style.transform = "translate(-50%,0)"; setTimeout(()=>{ t.style.opacity = 0; }, 2400); }
   }
-  function selectSize(btn){
-    document.querySelectorAll("#sizeOpts .opt").forEach(b=>{ b.classList.remove("sel"); b.setAttribute("aria-checked","false"); });
-    btn.classList.add("sel"); btn.setAttribute("aria-checked","true");
-    state.size = btn.dataset.size; state.sizePrice = +btn.dataset.price; recalc();
+  function isFriday(){ return state.dateObj && state.dateObj.getDay() === 5; }
+  function renderCart(){
+    const wrap = document.getElementById("cartLines");
+    wrap.innerHTML = "";
+    document.getElementById("cartEmpty").style.display = cart.size ? "none" : "";
+    cart.forEach((qty, key) => {
+      const it = MENU[key];
+      const row = document.createElement("div"); row.className = "cart-line";
+      const info = document.createElement("div"); info.className = "cl-info";
+      const nm = document.createElement("b"); nm.textContent = it.name;
+      const un = document.createElement("span"); un.textContent = fmt(it.price) + " للوحدة";
+      info.append(nm, un);
+      const q = document.createElement("div"); q.className = "qty";
+      q.innerHTML = '<button type="button" data-dec="' + key + '" aria-label="نقص الكمية">−</button><b>' + qty + '</b><button type="button" data-inc="' + key + '" aria-label="زيد الكمية">+</button>';
+      const tot = document.createElement("b"); tot.className = "cl-total"; tot.textContent = fmt(it.price * qty);
+      const rm = document.createElement("button"); rm.type = "button"; rm.className = "rm"; rm.dataset.rm = key; rm.setAttribute("aria-label", "حيّد من السلة"); rm.textContent = "✕";
+      row.append(info, q, tot, rm);
+      wrap.appendChild(row);
+    });
+    const si = document.getElementById("sumItems");
+    si.innerHTML = "";
+    if (!cart.size) { si.innerHTML = '<div class="sline"><span>الأطباق</span><b>—</b></div>'; }
+    cart.forEach((qty, key) => {
+      const d = document.createElement("div"); d.className = "sline";
+      const s = document.createElement("span"); s.textContent = MENU[key].name + " × " + qty;
+      const b = document.createElement("b"); b.textContent = fmt(MENU[key].price * qty);
+      d.append(s, b); si.appendChild(d);
+    });
+    recalc();
+  }
+  function addToCart(key){
+    const it = MENU[key]; if (!it) return false;
+    if (it.friday && !isFriday()) { toast("هاد الطبق متوفر غير نهار الجمعة"); return false; }
+    cart.set(key, (cart.get(key) || 0) + 1);
+    renderCart();
+    return true;
+  }
+  function guardCouscous(){
+    if (cart.has("couscous") && !isFriday()) {
+      cart.delete("couscous"); renderCart();
+      toast("تزال الكسكس من السلة — متوفر غير نهار الجمعة");
+    }
   }
   function toggleExtra(btn, force){
     const name = btn.dataset.extra, price = +btn.dataset.price;
@@ -832,39 +879,35 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
     if (on) state.extras.set(name, price); else state.extras.delete(name);
     btn.classList.toggle("sel", on); btn.setAttribute("aria-pressed", on); recalc();
   }
-  document.querySelectorAll("#sizeOpts .opt").forEach(b => b.addEventListener("click", ()=>selectSize(b)));
   document.querySelectorAll("#extraOpts .extra").forEach(b => b.addEventListener("click", ()=>toggleExtra(b)));
-  const PRESETS = {
-    lahssa:    { size: "لحسة الباشا", extras: [] },
-    pizza:     { size: "بيتزا ثمار البحر", extras: [] },
-    spaghetti: { size: "سباغيتي ثمار البحر", extras: [] },
-    emince:    { size: "إمينسي الدجاج", extras: [] },
-    burger:    { size: "برغر الباشا", extras: [] },
-    kampiro:   { size: "كامبيرو الباشا", extras: [] },
-    couscous:  { size: "كسكس الجمعة", extras: [] },
-    pasticho:  { size: "باستيشو", extras: [] },
-    platter:   { size: "طبق مشترك الباشا", extras: [] },
-    formule:   { size: "فورمول الباشا", extras: [] }
-  };
   document.addEventListener("click", e => {
-    const btn = e.target.closest("[data-preset]"); if (!btn) return;
-    const p = PRESETS[btn.dataset.preset]; if (!p) return;
-    document.querySelectorAll("#sizeOpts .opt").forEach(b => { if (b.dataset.size === p.size) selectSize(b); });
-    document.querySelectorAll("#extraOpts .extra").forEach(b => toggleExtra(b, p.extras.includes(b.dataset.extra)));
-    toast("تزاد " + p.size + " — " + fmt(recalc()) + ". كمّل طلبك لتحت ↓");
-    const target = document.getElementById("builder");
-    if (window.__lenis) window.__lenis.scrollTo(target, { offset: -70, duration: 1.3 });
-    else target.scrollIntoView({ behavior: "smooth" });
+    const add = e.target.closest("[data-add]");
+    if (add) {
+      const key = add.dataset.add;
+      if (addToCart(key) && !add.closest("#order")) {
+        toast("تزاد «" + MENU[key].name + "» للسلة — " + fmt(cartTotal()) + ". كمّل طلبك لتحت ↓");
+        const target = document.getElementById("builder");
+        if (window.__lenis) window.__lenis.scrollTo(target, { offset: -70, duration: 1.3 });
+        else target.scrollIntoView({ behavior: "smooth" });
+      }
+      return;
+    }
+    const inc = e.target.closest("[data-inc]");
+    if (inc) { addToCart(inc.dataset.inc); return; }
+    const dec = e.target.closest("[data-dec]");
+    if (dec) { const k = dec.dataset.dec, q = (cart.get(k) || 0) - 1; if (q <= 0) cart.delete(k); else cart.set(k, q); renderCart(); return; }
+    const rm = e.target.closest("[data-rm]");
+    if (rm) { cart.delete(rm.dataset.rm); renderCart(); }
   });
   const dateWrap = document.getElementById("dateSlots");
   const days = ["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"], months = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليوز","غشت","شتنبر","أكتوبر","نونبر","دجنبر"];
-  for (let i = 0; i < 4; i++){
+  for (let i = 0; i < 7; i++){
     const d = new Date(); d.setDate(d.getDate() + i);
     const label = (i === 0 ? "اليوم" : days[d.getDay()]) + " " + d.getDate() + " " + months[d.getMonth()];
     const b = document.createElement("button");
     b.type = "button"; b.className = "slot" + (i === 0 ? " sel" : ""); b.textContent = label; b.dataset.label = label;
-    if (i === 0) state.date = label;
-    b.addEventListener("click", ()=>{ dateWrap.querySelectorAll(".slot").forEach(s=>s.classList.remove("sel")); b.classList.add("sel"); state.date = label; recalc(); });
+    if (i === 0) { state.date = label; state.dateObj = d; }
+    b.addEventListener("click", ()=>{ dateWrap.querySelectorAll(".slot").forEach(s=>s.classList.remove("sel")); b.classList.add("sel"); state.date = label; state.dateObj = d; recalc(); guardCouscous(); });
     dateWrap.appendChild(b);
   }
   const timeWrap = document.getElementById("timeSlots");
@@ -874,23 +917,21 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
     b.addEventListener("click", ()=>{ timeWrap.querySelectorAll(".slot").forEach(s=>s.classList.remove("sel")); b.classList.add("sel"); state.time = tm; recalc(); });
     timeWrap.appendChild(b);
   });
-  recalc();
+  renderCart();
   function buildOrderMessage(st, total){
-    const extras = st.extras.size ? [...st.extras.keys()].join("، ") : "بدون";
-    const lines = [
-      CONFIG.brand + " — طلب: " + st.size,
-      "الإضافات: " + extras,
-      "المجموع: " + fmt(total)
-    ];
+    const L = [CONFIG.brand + " — طلب جديد", "", "الأطباق:"];
+    cart.forEach((q,k)=> L.push("- " + MENU[k].name + " × " + q));
+    L.push("", "الإضافات:");
+    if (st.extras.size) [...st.extras.keys()].forEach(x=> L.push("- " + x)); else L.push("بدون إضافات");
+    L.push("", "طريقة الوصول:", st.method === "delivery" ? "التوصيل لباب الدار" : "الاستلام من المطعم");
     if (st.method === "delivery") {
-      lines.push("طريقة الوصول: التوصيل لباب الدار");
-      lines.push("العنوان: " + st.address);
-      if (st.geoLink) lines.push("موقعي: " + st.geoLink);
-    } else {
-      lines.push("طريقة الوصول: الاستلام من المطعم");
+      L.push("", "العنوان:", st.address);
+      if (st.geoLink) L.push("موقعي: " + st.geoLink);
     }
-    lines.push("الموعد: " + (st.date || "اليوم") + " " + st.time);
-    return lines.join("\n");
+    L.push("", "الموعد:", (st.date || "اليوم") + " " + st.time);
+    L.push("", "المجموع:", fmt(total));
+    if (st.method === "delivery") L.push("", "ثمن ومدة التوصيل يتأكدو مع المطعم في واتساب.");
+    return L.join("\n");
   }
   const addrBlock = document.getElementById("addrBlock"), addrInput = document.getElementById("addrInput"),
         pickupNote = document.getElementById("pickupNote"), geoStatus = document.getElementById("geoStatus");
@@ -919,6 +960,11 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   setMethod("pickup");
   document.getElementById("orderBtn").addEventListener("click", ()=>{
     const total = recalc();
+    if (!cart.size) {
+      toast("السلة خاوية — زيد طبق بعدا من اللائحة");
+      document.getElementById("pickList").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+      return;
+    }
     if (state.method === "delivery" && !state.address) {
       toast("كتب الحومة والعنوان باش يوصلك الطلب");
       addrInput.classList.add("err"); addrInput.focus();
@@ -1084,8 +1130,8 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   st.to({}, { duration: .4 });
 
   // 07 ORDER — reveals + finale
-  gsap.from(".dish", { opacity: 0, y: 50, duration: .9, ease: "expo.out", stagger: .12,
-    scrollTrigger: { trigger: ".lineup", start: "top 78%" } });
+  gsap.from(".pick-row", { opacity: 0, y: 40, duration: .8, ease: "expo.out", stagger: .06,
+    scrollTrigger: { trigger: "#pickList", start: "top 85%" } });
   gsap.from(".builder", { opacity: 0, y: 60, duration: 1, ease: "expo.out",
     scrollTrigger: { trigger: ".builder", start: "top 82%" } });
   gsap.from(".finale .big-order .mask > span", { yPercent: 115, duration: 1, ease: "expo.out", stagger: .12,
