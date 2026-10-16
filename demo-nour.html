@@ -120,6 +120,48 @@ h2.big .u{color:var(--acc2)}
 .car .price b{font-family:'Archivo';font-size:23px;color:#fff}
 .car .price span{color:var(--mut);font-size:12.5px;display:block}
 .note{color:var(--mut);font-size:13.5px;margin-top:18px}
+.car .avail{font-size:13.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+.car .avail i{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.car .avail.ok{color:#7ddb9a}.car .avail.ok i{background:#22c064;box-shadow:0 0 10px rgba(34,192,100,.8)}
+.car .avail.busy{color:#ffc65c}.car .avail.busy i{background:var(--acc);box-shadow:0 0 10px rgba(246,162,30,.8)}
+section{scroll-margin-top:84px}
+/* reservation */
+.rs-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:22px;margin-top:36px;align-items:start}
+.rs-form{background:var(--panel2);border:1px solid var(--line);border-radius:18px;padding:28px}
+.rs-step{margin-bottom:26px}
+.rs-step:last-child{margin-bottom:0}
+.rs-step h3{font-size:16px;font-weight:800;letter-spacing:.4px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.rs-step h3 b{background:var(--acc);color:#231600;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:'Archivo';font-size:14px;flex-shrink:0}
+.rs-form label{font-size:12.5px;color:var(--mut);font-weight:700;letter-spacing:1px;display:block;margin-bottom:6px}
+.rs-form select,.rs-form input[type=date],.rs-form input[type=text],.rs-form input[type=tel],.rs-form textarea{width:100%;background:#171a20;border:1px solid #2c303a;color:#fff;border-radius:9px;padding:12px;font-family:inherit;font-size:15.5px;color-scheme:dark}
+.rs-form select:focus,.rs-form input:focus,.rs-form textarea:focus{outline:2px solid var(--acc);border-color:transparent}
+.rs-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rs-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.rs-status{margin-top:10px;font-size:14px;font-weight:700}
+.rs-status.ok{color:#7ddb9a}.rs-status.busy{color:#ffc65c}
+.extras{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.extras label{display:flex;gap:10px;align-items:center;background:#171a20;border:1px solid #2c303a;border-radius:10px;padding:12px 14px;cursor:pointer;font-size:14.5px;color:#e8e2d2;letter-spacing:0;margin:0;font-weight:600}
+.extras label:has(input:checked){border-color:var(--acc);background:#1d180b}
+.extras input{accent-color:var(--acc);width:17px;height:17px;flex-shrink:0}
+.extras .xp{margin-inline-start:auto;color:var(--acc2);font-weight:800;white-space:nowrap}
+.rs-sum{background:linear-gradient(180deg,#14161d,#0d0f13);border:1px solid #3a3f4c;border-radius:18px;padding:24px;position:sticky;top:96px}
+.rs-sum .ph{border-radius:12px;overflow:hidden;aspect-ratio:16/9;margin-bottom:16px}
+.rs-sum .ph img{width:100%;height:100%;object-fit:cover}
+.rs-sum h3{font-family:'Archivo';font-size:22px;margin-bottom:4px}
+.rs-lines{margin:16px 0;border-top:1px dashed #2b2e36;padding-top:14px;display:grid;gap:9px;font-size:15px}
+.rs-lines .ln{display:flex;justify-content:space-between;gap:14px;color:var(--mut)}
+.rs-lines .ln b{color:#fff;font-weight:700;text-align:end}
+.rs-total{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:16px;margin-top:6px}
+.rs-total b{font-family:'Archivo';font-size:29px;color:var(--acc2)}
+.rs-err{color:#ff9c9c;font-size:14px;font-weight:700;margin-top:12px;display:none}
+.rs-ok{display:none;background:var(--panel2);border:1px solid #2c5c3c;border-radius:18px;padding:34px 28px;text-align:center}
+.rs-ok .big-ic{font-size:52px;margin-bottom:10px}
+.rs-ok h3{font-size:26px;font-weight:900;margin-bottom:8px}
+.rs-ok .ref{font-family:'Courier New',monospace;background:#0a0c0f;border:1px dashed #4a3a12;color:#ffd977;border-radius:10px;padding:12px;font-size:19px;letter-spacing:2px;margin:16px auto;max-width:340px}
+.rs-ok p{color:var(--mut);line-height:1.7;max-width:520px;margin:0 auto}
+.rs-ok .recap{text-align:start;background:#101218;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:20px auto;max-width:520px;line-height:2;font-size:15px}
+@media(max-width:900px){.rs-grid{grid-template-columns:1fr}.rs-sum{position:static}}
+@media(max-width:560px){.rs-2,.rs-3,.extras{grid-template-columns:1fr}}
 /* services */
 .svc{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px}
 .svc .card{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:26px 22px;transition:transform .3s,border-color .3s}
@@ -198,7 +240,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 90px;color:var(--mut);fon
   <div class="bar">
     <a class="logo" href="#">NOUR <b>COCHES</b><small>LOCATION DE VOITURES · TANGER</small></a>
     <nav class="chaps" id="chaps">
-      <a href="#flotte">LA FLOTTE</a><a href="#services">SERVICES</a><a href="#vente">VENTE</a><a href="#faq">FAQ</a><a href="#contact">CONTACT</a>
+      <a href="#flotte">LA FLOTTE</a><a href="#reservation">RÉSERVER</a><a href="#services">SERVICES</a><a href="#vente">VENTE</a><a href="#faq">FAQ</a><a href="#contact">CONTACT</a>
     </nav>
     <a class="btn btn-wa btn-sm" href="https://wa.me/212608028793?text=Bonjour%20Nour%20Coches%2C%20je%20souhaite%20louer%20une%20voiture%20%C3%A0%20Tanger." target="_blank" rel="noopener">WhatsApp</a>
     <button id="burgerBtn" aria-label="Menu">☰</button>
@@ -238,8 +280,8 @@ footer{border-top:1px solid var(--line);padding:28px 0 90px;color:var(--mut);fon
         <select id="bkCar">
           <option>Renault Clio 5</option><option>Peugeot 208</option><option>Renault Captur</option>
           <option>Volkswagen Golf 8</option><option>SEAT León</option><option>Dacia Duster</option>
-          <option>Volkswagen T-Roc</option><option>Volkswagen Tiguan</option><option>Hyundai Tucson 2026</option>
-          <option>Peugeot 3008 GT Line</option><option>Toyota RAV4</option><option>Kia EV6 (électrique)</option>
+          <option>Volkswagen T-Roc</option><option>Volkswagen Tiguan</option><option>Hyundai Tucson</option>
+          <option>Peugeot 3008 GT Line</option><option>Toyota RAV4</option><option>Kia EV6</option>
         </select></div>
       <div><label>DÉPART</label><input type="date" id="bkFrom"></div>
       <div><label>RETOUR</label><input type="date" id="bkTo"></div>
@@ -272,8 +314,74 @@ footer{border-top:1px solid var(--line);padding:28px 0 90px;color:var(--mut);fon
   </div>
 </section>
 
+<!-- RESERVATION -->
+<section class="sec alt" id="reservation">
+  <div class="wrap">
+    <p class="eyebrow rv">Réservation en ligne</p>
+    <h2 class="big rv d1">Réservez votre voiture<br><span class="u">en 1 minute</span>.</h2>
+    <p class="sub rv d2">Choisissez la voiture, vos dates et vos options — le prix total s'affiche en direct. Vous validez, vous recevez une référence, et l'agence confirme sur WhatsApp.</p>
+    <p class="note rv">* Disponibilités et options affichées à titre de démonstration — la version réelle se connecte à l'agenda de l'agence.</p>
+    <div class="rs-grid">
+      <form class="rs-form rv" id="rsForm" novalidate>
+        <div class="rs-step"><h3><b>1</b> Votre voiture</h3>
+          <label>MODÈLE</label><select id="rsCar"></select>
+          <div class="rs-status ok" id="rsStatus"></div>
+        </div>
+        <div class="rs-step"><h3><b>2</b> Dates &amp; lieu de prise</h3>
+          <div class="rs-3">
+            <div><label>DÉPART</label><input type="date" id="rsFromD"></div>
+            <div><label>HEURE</label><select id="rsFromT"></select></div>
+            <div><label>LIEU</label>
+              <select id="rsLoc"><option>Agence — Jirari 1</option><option>Aéroport Ibn Battouta</option><option>Port Tanger Ville</option><option>Port Tanger Med</option><option>Hôtel / adresse à Tanger</option></select></div>
+          </div>
+          <div class="rs-2" style="margin-top:14px">
+            <div><label>RETOUR</label><input type="date" id="rsToD"></div>
+            <div><label>HEURE</label><select id="rsToT"></select></div>
+          </div>
+        </div>
+        <div class="rs-step"><h3><b>3</b> Options <span style="color:var(--mut);font-weight:600;font-size:13px">(tarifs démo)</span></h3>
+          <div class="extras">
+            <label><input type="checkbox" class="rsEx" value="GPS" data-p="30"> GPS <span class="xp">30 MAD/j</span></label>
+            <label><input type="checkbox" class="rsEx" value="Siège bébé" data-p="20"> Siège bébé <span class="xp">20 MAD/j</span></label>
+            <label><input type="checkbox" class="rsEx" value="Conducteur supplémentaire" data-p="50"> Conducteur + <span class="xp">50 MAD/j</span></label>
+            <label><input type="checkbox" class="rsEx" value="Assurance tous risques" data-p="100"> Tous risques <span class="xp">100 MAD/j</span></label>
+          </div>
+        </div>
+        <div class="rs-step"><h3><b>4</b> Vos coordonnées</h3>
+          <div class="rs-2">
+            <div><label>NOM COMPLET</label><input type="text" id="rsName" placeholder="Votre nom"></div>
+            <div><label>TÉLÉPHONE / WHATSAPP</label><input type="tel" id="rsPhone" placeholder="06 XX XX XX XX"></div>
+          </div>
+          <div style="margin-top:14px"><label>REMARQUE (optionnel)</label><input type="text" id="rsNotes" placeholder="N° de vol, besoin particulier…"></div>
+        </div>
+      </form>
+      <aside class="rs-sum rv d1" id="rsSumCard">
+        <div class="ph"><img id="sumImg" src="demo-nour/img/clio.webp" alt="Voiture sélectionnée"></div>
+        <h3 id="sumName">Renault Clio 5</h3>
+        <div class="rs-status ok" id="sumStatus"></div>
+        <div class="rs-lines" id="sumLines"></div>
+        <div class="rs-total"><span>Total estimé</span><b id="sumTotal">0 MAD</b></div>
+        <button class="btn btn-wa" id="rsConfirm" style="width:100%;margin-top:18px;font-size:17px">Valider ma réservation</button>
+        <div class="rs-err" id="rsErr"></div>
+        <p class="note" style="text-align:center">Sans paiement en ligne : vous payez à la prise du véhicule.</p>
+      </aside>
+      <div class="rs-ok" id="rsOk">
+        <div class="big-ic">🎉</div>
+        <h3>Demande envoyée !</h3>
+        <p>Votre référence de réservation :</p>
+        <div class="ref" id="rsRef">NC-00000</div>
+        <div class="recap" id="rsRecap"></div>
+        <p>Dernière étape : envoyez le récapitulatif à l'agence sur WhatsApp pour la confirmation définitive — réponse en quelques minutes, 24h/24.</p>
+        <br>
+        <a class="btn btn-wa" id="rsWa" href="#" target="_blank" rel="noopener" style="font-size:17px">Confirmer sur WhatsApp</a>
+        <button class="btn btn-ghost" id="rsReset" style="margin-inline-start:10px">Nouvelle réservation</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
-<section class="sec alt" id="services">
+<section class="sec" id="services">
   <div class="wrap">
     <p class="eyebrow rv">Services</p>
     <h2 class="big rv d1">Pensé pour les Tangérois<br>et pour la <span class="u">diaspora</span>.</h2>
@@ -380,13 +488,19 @@ footer{border-top:1px solid var(--line);padding:28px 0 90px;color:var(--mut);fon
     {n:'Toyota RAV4',c:'premium',cat:'SUV Premium',img:'rav4',p:500,s:['5 places','Hybride','Climatisation','Automatique']},
     {n:'Kia EV6',c:'premium',cat:'Électrique',img:'ev6',p:600,s:['5 places','100% électrique','Climatisation','Automatique'],b:'ÉLECTRIQUE'}
   ];
+  /* disponibilités démo : jours avant le retour de la voiture (0 = disponible) */
+  var AVAIL={clio:0,p208:0,captur:3,golf:0,leon:5,duster:0,troc:2,tiguan:0,tucson:6,p3008:0,rav4:4,ev6:0};
+  function retDate(imgKey){var d=new Date();d.setDate(d.getDate()+(AVAIL[imgKey]||0));return d;}
+  function fmtD(d){return d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});}
+  function availText(imgKey){var o=AVAIL[imgKey]||0;return o===0?'Disponible maintenant':'Louée · retour '+fmtD(retDate(imgKey));}
   var fleet=document.getElementById('fleet');
-  function waLink(car){return 'https://wa.me/'+WA+'?text='+encodeURIComponent('Bonjour Nour Coches, je souhaite louer : '+car+'. Merci de me confirmer la disponibilité et le prix.');}
   CARS.forEach(function(x){
+    var o=AVAIL[x.img]||0;
     var d=document.createElement('article');d.className='car rv';d.dataset.c=x.c;
     d.innerHTML='<div class="ph"><img src="demo-nour/img/'+x.img+'.webp" alt="'+x.n+' à louer à Tanger chez Nour Coches" loading="lazy">'+(x.b?'<span class="badge">'+x.b+'</span>':'')+'</div>'
       +'<div class="body"><h3>'+x.n+'</h3><div class="specs"><span>🏷️ '+x.cat+'</span>'+x.s.map(function(s){return '<span>• '+s+'</span>';}).join('')+'</div>'
-      +'<div class="row"><div class="price"><span>à partir de</span><b>'+x.p+' MAD</b> /jour</div><a class="btn btn-wa btn-sm" target="_blank" rel="noopener" href="'+waLink(x.n)+'">Réserver</a></div></div>';
+      +'<div class="avail '+(o===0?'ok':'busy')+'"><i></i>'+availText(x.img)+'</div>'
+      +'<div class="row"><div class="price"><span>à partir de</span><b>'+x.p+' MAD</b> /jour</div><a class="btn btn-wa btn-sm rs-go" href="#reservation" data-car="'+x.n+'">Réserver</a></div></div>';
     fleet.appendChild(d);
   });
   /* filters */
@@ -399,12 +513,75 @@ footer{border-top:1px solid var(--line);padding:28px 0 90px;color:var(--mut);fon
   });
   /* marquee duplicate */
   var mq=document.getElementById('mqTrack');mq.innerHTML+=mq.innerHTML;
-  /* booking form -> WhatsApp */
+  /* ---------- système de réservation (démo) ---------- */
+  var rsCar=document.getElementById('rsCar'),rsFromD=document.getElementById('rsFromD'),rsToD=document.getElementById('rsToD'),
+      rsFromT=document.getElementById('rsFromT'),rsToT=document.getElementById('rsToT'),rsLoc=document.getElementById('rsLoc'),
+      rsName=document.getElementById('rsName'),rsPhone=document.getElementById('rsPhone'),rsNotes=document.getElementById('rsNotes'),
+      rsStatus=document.getElementById('rsStatus'),sumImg=document.getElementById('sumImg'),sumName=document.getElementById('sumName'),
+      sumStatus=document.getElementById('sumStatus'),sumLines=document.getElementById('sumLines'),sumTotal=document.getElementById('sumTotal'),
+      rsErr=document.getElementById('rsErr');
+  CARS.forEach(function(x){var op=document.createElement('option');op.value=x.n;op.textContent=x.n+' — '+x.p+' MAD/j';rsCar.appendChild(op);});
+  ['rsFromT','rsToT'].forEach(function(id){var sel=document.getElementById(id);for(var h=7;h<=23;h++){var op=document.createElement('option');op.textContent=(h<10?'0':'')+h+':00';sel.appendChild(op);}sel.value='09:00';});
+  function carByName(n){for(var i=0;i<CARS.length;i++)if(CARS[i].n===n)return CARS[i];return CARS[0];}
+  function iso(d){return d.toISOString().slice(0,10);}
+  var today=new Date(),plus3=new Date();plus3.setDate(plus3.getDate()+3);
+  rsFromD.min=iso(today);rsToD.min=iso(today);rsFromD.value=iso(today);rsToD.value=iso(plus3);
+  function rsDays(){var f=new Date(rsFromD.value+'T'+rsFromT.value),t=new Date(rsToD.value+'T'+rsToT.value);var ms=t-f;return {f:f,t:t,days:Math.max(0,Math.ceil(ms/86400000))};}
+  function rsCompute(){
+    var car=carByName(rsCar.value),o=AVAIL[car.img]||0,dd=rsDays();
+    sumImg.src='demo-nour/img/'+car.img+'.webp';sumName.textContent=car.n;
+    var st=availText(car.img);rsStatus.textContent=(o===0?'🟢 ':'🟠 ')+st;rsStatus.className='rs-status '+(o===0?'ok':'busy');
+    sumStatus.textContent=(o===0?'🟢 ':'🟠 ')+st;sumStatus.className='rs-status '+(o===0?'ok':'busy');
+    var exTotal=0,exNames=[];
+    document.querySelectorAll('.rsEx:checked').forEach(function(cb){exTotal+=+cb.dataset.p*dd.days;exNames.push(cb.value);});
+    var base=car.p*dd.days,total=base+exTotal;
+    sumLines.innerHTML='<div class="ln"><span>Location · '+dd.days+' jour(s)</span><b>'+car.p+' × '+dd.days+' = '+base+' MAD</b></div>'
+      +(exNames.length?'<div class="ln"><span>Options · '+exNames.join(', ')+'</span><b>'+exTotal+' MAD</b></div>':'')
+      +'<div class="ln"><span>Prise</span><b>'+fmtD(dd.f)+' · '+rsFromT.value+' · '+rsLoc.value+'</b></div>'
+      +'<div class="ln"><span>Retour</span><b>'+fmtD(dd.t)+' · '+rsToT.value+'</b></div>'
+      +(o>0&&dd.f<retDate(car.img)?'<div class="ln"><span style="color:#ffc65c">⚠️ Retour prévu de cette voiture</span><b style="color:#ffc65c">'+fmtD(retDate(car.img))+'</b></div>':'');
+    sumTotal.textContent=total+' MAD';
+    return {car:car,days:dd.days,base:base,ex:exTotal,total:total,exNames:exNames,f:dd.f,t:dd.t};
+  }
+  ['change','input'].forEach(function(ev){document.getElementById('rsForm').addEventListener(ev,rsCompute);});
+  rsCompute();
+  /* hero bar -> pré-remplit la réservation */
   document.getElementById('bookForm').addEventListener('submit',function(e){
     e.preventDefault();
-    var car=document.getElementById('bkCar').value,f=document.getElementById('bkFrom').value,t=document.getElementById('bkTo').value;
-    var msg='Bonjour Nour Coches, je souhaite louer : '+car+(f?' · départ le '+f:'')+(t?' · retour le '+t:'')+'. Merci de me confirmer la disponibilité et le prix.';
-    window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
+    rsCar.value=document.getElementById('bkCar').value;
+    var f=document.getElementById('bkFrom').value,t=document.getElementById('bkTo').value;
+    if(f)rsFromD.value=f; if(t)rsToD.value=t;
+    rsCompute();
+    document.getElementById('reservation').scrollIntoView({behavior:'smooth'});
+  });
+  /* boutons Réserver des cartes */
+  document.addEventListener('click',function(e){var b=e.target.closest('.rs-go');if(!b)return;rsCar.value=b.dataset.car;rsCompute();});
+  /* validation + confirmation */
+  document.getElementById('rsConfirm').addEventListener('click',function(){
+    var r=rsCompute();rsErr.style.display='none';
+    function fail(m){rsErr.textContent=m;rsErr.style.display='block';rsErr.scrollIntoView({behavior:'smooth',block:'center'});}
+    if(r.days<1)return fail('⚠️ Vérifiez vos dates : le retour doit être après le départ.');
+    if(rsName.value.trim().length<3)return fail('⚠️ Entrez votre nom complet.');
+    if(rsPhone.value.replace(/\D/g,'').length<9)return fail('⚠️ Entrez un numéro de téléphone valide.');
+    var ref='NC-'+Math.floor(10000+Math.random()*90000);
+    document.getElementById('rsRef').textContent=ref;
+    document.getElementById('rsRecap').innerHTML=
+      '🚗 <b>'+r.car.n+'</b> — '+r.car.p+' MAD/jour<br>📅 Du <b>'+fmtD(r.f)+' '+rsFromT.value+'</b> au <b>'+fmtD(r.t)+' '+rsToT.value+'</b> ('+r.days+' jour(s))<br>📍 Prise : '+rsLoc.value+'<br>'
+      +(r.exNames.length?'➕ Options : '+r.exNames.join(', ')+'<br>':'')
+      +'👤 '+rsName.value.trim()+' · 📞 '+rsPhone.value.trim()+(rsNotes.value.trim()?'<br>📝 '+rsNotes.value.trim():'')
+      +'<br>💰 <b>Total estimé : '+r.total+' MAD</b>';
+    var msg='Bonjour Nour Coches, je confirme ma réservation '+ref+' :\n• Voiture : '+r.car.n+'\n• Du '+fmtD(r.f)+' '+rsFromT.value+' au '+fmtD(r.t)+' '+rsToT.value+' ('+r.days+' j)\n• Prise : '+rsLoc.value+(r.exNames.length?'\n• Options : '+r.exNames.join(', '):'')+'\n• Nom : '+rsName.value.trim()+'\n• Tél : '+rsPhone.value.trim()+(rsNotes.value.trim()?'\n• Remarque : '+rsNotes.value.trim():'')+'\n• Total estimé : '+r.total+' MAD';
+    document.getElementById('rsWa').href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+    document.getElementById('rsForm').style.display='none';
+    document.getElementById('rsSumCard').style.display='none';
+    var ok=document.getElementById('rsOk');ok.style.display='block';ok.style.gridColumn='1/-1';
+    ok.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('rsReset').addEventListener('click',function(){
+    document.getElementById('rsOk').style.display='none';
+    document.getElementById('rsForm').style.display='';
+    document.getElementById('rsSumCard').style.display='';
+    document.getElementById('reservation').scrollIntoView({behavior:'smooth'});
   });
   /* preloader */
   var pl=document.getElementById('preloader'),num=document.getElementById('plNum'),fill=document.getElementById('plFill'),v=0;
