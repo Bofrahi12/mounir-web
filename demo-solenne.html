@@ -402,6 +402,52 @@
     #atelier .bgimg{object-position:center}
     #atelier .shade{background:linear-gradient(to top, rgba(6,10,20,.95) 20%, rgba(6,10,20,.6) 60%, rgba(6,10,20,.75))}
   }
+  /* ---------- FILM BANDS (video) ---------- */
+  .vidband{
+    position:relative;overflow:hidden;background:#04070d;
+    height:74vh;min-height:440px;max-height:820px;
+  }
+  .vidband video{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+  .vidband .vshade{
+    position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(to top, rgba(6,10,20,.82) 0%, rgba(6,10,20,.12) 42%, rgba(6,10,20,.38) 100%),
+               linear-gradient(to right, rgba(6,10,20,.45), rgba(6,10,20,0) 55%);
+  }
+  .vidband .vcap{
+    position:absolute;left:clamp(20px,7vw,110px);bottom:clamp(34px,7vh,64px);z-index:2;max-width:min(640px,88vw);
+  }
+  .vidband .vkick{
+    font-size:10.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);
+    display:flex;align-items:center;gap:14px;margin-bottom:16px;
+  }
+  .vidband .vkick::after{content:"";height:1px;width:56px;background:var(--gold-dim)}
+  .vidband .vtitle{
+    font-family:var(--serif);font-weight:500;font-size:clamp(38px,5.6vw,72px);line-height:1.05;color:var(--ivory);
+  }
+  .vidband .vtitle em{font-style:italic;color:var(--gold)}
+  .vidband .vcta{
+    margin-top:26px;display:inline-flex;align-items:center;gap:10px;
+    border:1px solid var(--gold-dim);color:var(--gold);
+    padding:14px 26px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;transition:.35s;
+  }
+  .vidband .vcta:hover{background:var(--gold);color:var(--navy)}
+  .vidpanel{
+    position:relative;border-radius:18px;overflow:hidden;max-width:1240px;margin:64px auto 0;
+    aspect-ratio:16/9;background:#05080f;border:1px solid var(--line);
+  }
+  .vidpanel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .vidpanel .vshade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top, rgba(6,10,20,.72), rgba(6,10,20,0) 46%)}
+  .vidpanel .vcap{position:absolute;left:26px;bottom:22px;z-index:2}
+  .vidpanel .vkick{font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .vidpanel .vtitle{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,36px);color:var(--ivory)}
+  .vidpanel .vtitle em{font-style:italic;color:var(--gold)}
+  @media (max-width:640px){
+    .vidband{height:62vh;min-height:380px}
+    .vidpanel{border-radius:12px;margin-top:44px}
+    .vidpanel .vcap{left:18px;bottom:16px}
+  }
 </style>
 </head>
 <body>
@@ -475,6 +521,16 @@
     </div>
   </div>
 </div>
+
+<!-- ================= FILM 01 — LE TEMPS EN MOUVEMENT ================= -->
+<section class="vidband" id="film1" aria-label="Film — une Solenne au poignet">
+  <video class="filmvid" src="solenne/vid/clip1.mp4" poster="solenne/hero.webp" autoplay muted loop playsinline preload="metadata"></video>
+  <div class="vshade"></div>
+  <div class="vcap">
+    <div class="vkick">Le Film — 01</div>
+    <div class="vtitle">Le temps, <em>en mouvement.</em></div>
+  </div>
+</section>
 
 <!-- ================= COLLECTION ================= -->
 <section class="blk" id="collection">
@@ -612,6 +668,14 @@
       <span class="dur">Numéro gravé main</span>
     </div>
   </div>
+  <figure class="vidpanel" id="film2">
+    <video class="filmvid" src="solenne/vid/clip2.mp4" poster="solenne/macro.webp" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="vshade"></div>
+    <figcaption class="vcap">
+      <div class="vkick">Le Film — 02 · L'Assemblage</div>
+      <div class="vtitle">Deux cent treize pièces, <em>une seule main</em>.</div>
+    </figcaption>
+  </figure>
 </section>
 
 <!-- ================= ATELIER ================= -->
@@ -692,6 +756,17 @@
     </article>
   </div>
   <p class="avis-note">Témoignages de démonstration — avis présentés à titre d'exemple.</p>
+</section>
+
+<!-- ================= FILM 03 — SIGNÉE SOLENNE ================= -->
+<section class="vidband" id="film3" aria-label="Film — gros plan sur le cadran">
+  <video class="filmvid" src="solenne/vid/clip3.mp4" poster="solenne/gold.webp" autoplay muted loop playsinline preload="metadata"></video>
+  <div class="vshade"></div>
+  <div class="vcap">
+    <div class="vkick">Le Film — 03</div>
+    <div class="vtitle">Signée <em>Solenne</em>.</div>
+    <a class="vcta" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%2C%20je%20souhaite%20d%C3%A9couvrir%20les%20montres%20SOLENNE.">Découvrir la collection</a>
+  </div>
 </section>
 
 <!-- ================= FAQ ================= -->
@@ -921,6 +996,33 @@
       });
     });
   }
+})();
+</script>
+<script>
+(function(){
+  "use strict";
+  var vids = document.querySelectorAll("video.filmvid");
+  if(!vids.length) return;
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduced){
+    /* Poster only: never fetch or play the film. */
+    vids.forEach(function(v){
+      v.removeAttribute("autoplay");
+      v.pause();
+      v.removeAttribute("src");
+      v.load();
+    });
+    return;
+  }
+  if(!("IntersectionObserver" in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v = e.target;
+      if(e.isIntersecting){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+      else v.pause();
+    });
+  }, { threshold: 0.12 });
+  vids.forEach(function(v){ io.observe(v); });
 })();
 </script>
 </body>
