@@ -367,6 +367,29 @@ footer .fnav a:hover{color:var(--bone)}
 .faq-list summary:hover{color:#fff}
 .faq-list details p{color:var(--bone-dim);line-height:1.75;font-weight:300;padding:0 .2rem 1.6rem;max-width:62ch}
 
+/* ---------- films (three moving shots) ---------- */
+.vid-band{position:relative;overflow:hidden;background:#000;border-top:1px solid var(--line);border-bottom:1px solid var(--line);height:min(80vh,760px);min-height:400px}
+.vid-band video.film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vid-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(7,6,7,.82) 0%,rgba(7,6,7,.18) 42%,rgba(7,6,7,.30) 100%),radial-gradient(90% 70% at 50% 45%,rgba(7,6,7,0) 55%,rgba(7,6,7,.45) 100%)}
+.vid-cap{position:absolute;left:clamp(1.2rem,6vw,6rem);bottom:clamp(1.8rem,5vh,3.4rem);z-index:2;max-width:min(90vw,720px)}
+.vid-cap .mono{color:var(--bone-faint);margin-bottom:.9rem}
+.vid-cap p{font-family:var(--serif);font-weight:400;font-size:clamp(2.1rem,5.2vw,3.9rem);line-height:1.05;color:var(--bone);text-shadow:0 2px 34px rgba(0,0,0,.65)}
+.vid-cap .mono,.vid-panel-cap .mono{text-shadow:0 1px 12px rgba(0,0,0,.8)}
+.vid-cap p em{font-style:italic;color:var(--crimson)}
+.vid-cap.center{left:0;right:0;bottom:auto;top:50%;transform:translateY(-50%);text-align:center;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.vid-cap.center .pill{margin-top:1.7rem}
+.vid-panel{position:relative;margin-top:clamp(2.6rem,6vw,4.5rem);border:1px solid var(--line);border-radius:20px;overflow:hidden;aspect-ratio:16/8.2;background:#000}
+.vid-panel video.film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vid-panel-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(7,6,7,.78) 0%,rgba(7,6,7,0) 46%)}
+.vid-panel-cap{position:absolute;left:clamp(1.1rem,3vw,2.2rem);bottom:clamp(1rem,2.6vw,1.8rem);z-index:2}
+.vid-panel-cap .mono{color:var(--bone-faint);display:block;margin-bottom:.5rem}
+.vid-panel-cap p{font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,2rem);line-height:1.15;color:var(--bone)}
+.vid-panel-cap p em{font-style:italic;color:var(--crimson)}
+@media (max-width:560px){
+  .vid-band{height:62vh;min-height:340px}
+  .vid-panel{aspect-ratio:4/3.4}
+}
+
 @media (max-width:900px){
   .maison-grid,.taille-grid{grid-template-columns:1fr}
   .avis-grid{grid-template-columns:1fr}
@@ -440,6 +463,16 @@ footer .fnav a:hover{color:var(--bone)}
   </div>
 </header>
 
+<!-- ============ FILM Nº 01 — L'OMBRE ============ -->
+<section class="vid-band" aria-label="Film — la bague portée, dans la pénombre">
+  <video class="film" autoplay muted loop playsinline preload="metadata" poster="noctis/hand.webp" src="noctis/vid/clip1.mp4"></video>
+  <div class="vid-shade"></div>
+  <div class="vid-cap reveal">
+    <div class="mono">Le film — Nº 01</div>
+    <p>Née dans <em>l'ombre</em>.</p>
+  </div>
+</section>
+
 <!-- ============ MACRO ============ -->
 <section class="macro" id="macro">
   <div class="macro-stage">
@@ -474,6 +507,14 @@ footer .fnav a:hover{color:var(--bone)}
       <li><span class="tv">1 / 1</span><span class="tl">Pièces uniques numérotées — aucune réédition</span></li>
       <li><span class="tv">14 j</span><span class="tl">Pour changer d'avis, sans justification</span></li>
     </ul>
+  </div>
+  <div class="vid-panel reveal">
+    <video class="film" autoplay muted loop playsinline preload="metadata" poster="noctis/macro.webp" src="noctis/vid/clip2.mp4"></video>
+    <div class="vid-panel-shade"></div>
+    <div class="vid-panel-cap">
+      <span class="mono">Le film — Nº 02 · La pierre</span>
+      <p>La lumière traverse la pierre — <em>jamais l'inverse</em>.</p>
+    </div>
   </div>
 </section>
 
@@ -639,6 +680,17 @@ footer .fnav a:hover{color:var(--bone)}
     </figure>
   </div>
   <p class="avis-note reveal">Témoignages de démonstration — situations présentées à titre d'exemple.</p>
+</section>
+
+<!-- ============ FILM Nº 03 — LA VÔTRE ============ -->
+<section class="vid-band" aria-label="Film — la pièce portée">
+  <video class="film" autoplay muted loop playsinline preload="metadata" poster="noctis/ring1.webp" src="noctis/vid/clip3.mp4"></video>
+  <div class="vid-shade"></div>
+  <div class="vid-cap center reveal">
+    <div class="mono">Le film — Nº 03</div>
+    <p>Une seule. <em>La vôtre.</em></p>
+    <a class="pill" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=Bonjour%20NOCTIS%2C%20je%20souhaite%20commander%20ma%20pi%C3%A8ce%20unique.%20Pouvez-vous%20me%20conseiller%20%3F">Commander la mienne <span class="arr">→</span></a>
+  </div>
 </section>
 
 <!-- ============ FAQ ============ -->
@@ -874,6 +926,40 @@ footer .fnav a:hover{color:var(--bone)}
       });
     });
   }
+})();
+</script>
+<script>
+/* ---- films: play on screen, pause off screen; poster only if reduced motion ---- */
+(function(){
+  "use strict";
+  var films = Array.prototype.slice.call(document.querySelectorAll("video.film"));
+  if (!films.length) return;
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced) {
+    films.forEach(function(v){
+      v.removeAttribute("autoplay");
+      v.pause();
+      v.preload = "none";
+    });
+    return;
+  }
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var v = e.target;
+        if (e.isIntersecting) {
+          var p = v.play();
+          if (p && p.catch) p.catch(function(){});
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.15 });
+    films.forEach(function(v){ io.observe(v); });
+  }
+  document.addEventListener("visibilitychange", function(){
+    if (document.hidden) films.forEach(function(v){ v.pause(); });
+  });
 })();
 </script>
 </body>

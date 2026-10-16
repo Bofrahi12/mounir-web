@@ -194,6 +194,35 @@ a{color:inherit}
   text-shadow:0 2px 18px rgba(0,0,0,.6);
 }
 
+/* ---------- video beats ---------- */
+.vband{position:relative;height:74vh;min-height:420px;overflow:hidden;background:#000}
+.vband video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vband::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(4,6,9,.38),rgba(4,6,9,0) 34%,rgba(4,6,9,0) 55%,rgba(4,6,9,.58));
+}
+.vband .v-cap{position:absolute;left:5vw;bottom:36px;z-index:2;color:#fff;max-width:640px}
+.vband .v-cap .k{
+  font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.3em;
+  display:block;margin-bottom:12px;color:#ffd9a8;
+}
+.vband .v-cap h3{
+  font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800;letter-spacing:-.01em;line-height:1.05;
+  text-shadow:0 4px 30px rgba(0,0,0,.45);
+}
+.vband .v-cap .cta{margin-top:22px}
+.vpanel{
+  margin-top:44px;border-radius:20px;overflow:hidden;position:relative;
+  aspect-ratio:16/9;background:#000;border:1px solid rgba(255,255,255,.1);
+}
+.vpanel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vpanel .vp-cap{
+  position:absolute;left:16px;bottom:14px;z-index:2;color:#fff;
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.26em;
+  background:rgba(5,8,11,.55);padding:8px 12px;border-radius:999px;backdrop-filter:blur(4px);
+}
+@media(max-width:640px){.vband{height:56vh;min-height:340px}}
+
 .coloris{max-width:1180px;margin:0 auto;padding:96px 5vw 110px}
 .coloris h3{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;margin-bottom:8px}
 .coloris .sub{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.26em;color:#8b98a5;margin-bottom:44px}
@@ -429,6 +458,15 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
   </div>
 </section>
 
+<!-- ================= VIDEO BEAT 1 — ESTABLISHING ================= -->
+<div class="vband" aria-label="Un skieur descend une piste en plein soleil">
+  <video class="pvid" src="polaire/vid/clip1.mp4" poster="polaire/skier.webp" autoplay muted loop playsinline preload="metadata"></video>
+  <div class="v-cap">
+    <span class="k">EN MOUVEMENT — LA DESCENTE</span>
+    <h3>La montagne, en face.</h3>
+  </div>
+</div>
+
 <!-- ================= BELOW ================= -->
 <main class="below" id="histoire">
 
@@ -485,6 +523,10 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
       <div class="spec-row"><dt>POIDS</dt><dd>128 g, écran compris</dd></div>
       <div class="spec-row"><dt>COMPATIBILITÉ</dt><dd>Casques toutes marques · lunettes (OTG)</dd></div>
     </dl>
+    <div class="vpanel">
+      <video class="pvid" src="polaire/vid/clip2.mp4" poster="polaire/front.webp" autoplay muted loop playsinline preload="metadata"></video>
+      <span class="vp-cap">L'ÉCRAN EN VRAI — MISE EN PLACE & RÉFLEXIONS</span>
+    </div>
   </section>
 
   <div class="band">
@@ -582,6 +624,18 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
     </div>
     <div class="avis-note">AVIS DE DÉMONSTRATION — RETOURS PRÉSENTÉS À TITRE D'EXEMPLE</div>
   </section>
+
+  <!-- ================= VIDEO BEAT 3 — FINAL PRODUCT ================= -->
+  <div class="vband" aria-label="Portrait d'un skieur équipé de son masque au sommet">
+    <video class="pvid" src="polaire/vid/clip3.mp4" poster="polaire/ember.webp" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="v-cap">
+      <span class="k">MODÈLE 01 — WHITEOUT · 1 450 DH · PAIEMENT À LA LIVRAISON</span>
+      <h3>Prêt pour le sommet.</h3>
+      <a class="cta" href="https://wa.me/212693981822?text=Bonjour%2C%20je%20veux%20le%20masque%20POLAIRE%20Mod%C3%A8le%2001%20%E2%80%94%20Whiteout%20(1%20450%20DH)%2C%20merci%20de%20me%20confirmer%20la%20disponibilit%C3%A9." target="_blank" rel="noopener">Commander le Modèle 01
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
 
   <section class="sec" id="faq" style="padding-bottom:110px">
     <div class="sub">QUESTIONS FRÉQUENTES</div>
@@ -831,6 +885,27 @@ footer .fine{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:ce
   }
   window.addEventListener('scroll', parallax, {passive:true});
   parallax();
+})();
+</script>
+<script>
+/* Video beats: play on screen, pause off screen; poster only under reduced motion */
+(function(){
+  var vids = document.querySelectorAll('video.pvid');
+  if(!vids.length) return;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){
+    vids.forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); });
+    return;
+  }
+  if(!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v = e.target;
+      if(e.isIntersecting){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+      else { v.pause(); }
+    });
+  }, {threshold: .18});
+  vids.forEach(function(v){ io.observe(v); });
 })();
 </script>
 </body>

@@ -285,6 +285,30 @@ footer{background:#17110c;color:var(--ivory-faint);padding:34px 0 44px}
 .foot-small{font-family:var(--grot);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;line-height:2}
 .foot-small b{color:var(--gold);font-weight:700}
 @media(max-width:900px){.finale-grid{grid-template-columns:1fr}}
+/* ================= VIDEO BEATS ================= */
+.vid-band{position:relative;overflow:hidden;background:var(--panel)}
+.vid-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vid-band .vid-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,6,6,.58),rgba(8,6,6,0) 30%,rgba(8,6,6,0) 60%,rgba(8,6,6,.62))}
+.vid-band .vid-cap{position:absolute;left:var(--pad);bottom:clamp(20px,3.4vh,34px);z-index:2;font-family:var(--grot);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ivory-dim)}
+.vid-band .vid-cap b{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(22px,2.6vw,32px);letter-spacing:0;text-transform:none;color:var(--ivory);margin-bottom:8px}
+.vid-hero{height:min(86vh,760px)}
+.vid-finale{height:min(88vh,800px)}
+.vid-finale .vid-center{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px}
+.vid-finale .vid-kick{font-family:var(--grot);font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.vid-finale .vid-line{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(44px,6.8vw,88px);line-height:1.02;color:var(--ivory);text-shadow:0 8px 44px rgba(0,0,0,.5)}
+.vid-finale .vid-sub{margin-top:16px;font-size:15px;line-height:1.7;color:rgba(239,233,223,.85);max-width:46ch;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.vid-finale .vid-cta{margin-top:30px;display:inline-block;background:var(--oxblood);color:#fff;font-family:var(--grot);font-size:11px;letter-spacing:.22em;text-transform:uppercase;border-radius:99px;padding:17px 30px;transition:background .3s;text-decoration:none}
+.vid-finale .vid-cta:hover{background:var(--oxblood-bright)}
+.parcours-top{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(28px,4.5vw,64px);align-items:center}
+.parcours-top .sec-intro{margin-top:0}
+.vid-panel{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/10;background:#000;box-shadow:0 30px 60px rgba(0,0,0,.45);margin:0}
+.vid-panel video{width:100%;height:100%;object-fit:cover;display:block}
+.vid-panel figcaption{position:absolute;left:14px;bottom:12px;z-index:2;font-family:var(--grot);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ivory);background:rgba(8,6,6,.55);border:1px solid var(--line);border-radius:99px;padding:8px 14px;backdrop-filter:blur(6px)}
+@media(max-width:900px){
+  .parcours-top{grid-template-columns:1fr}
+  .vid-hero{height:60vh}
+  .vid-finale{height:72vh}
+}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
   html{scroll-behavior:auto}
@@ -350,6 +374,13 @@ footer{background:#17110c;color:var(--ivory-faint);padding:34px 0 44px}
       <div class="rdrag">Tirez · Défiler</div>
     </div>
   </div>
+</div>
+
+<!-- ================= 1b · FILM — LE HALL ================= -->
+<div class="vid-band vid-hero">
+  <video class="beat-video" src="marlowe/vid/clip1.mp4" poster="marlowe/front.webp" autoplay muted loop playsinline preload="metadata" aria-label="Voitures classiques exposées dans un salon lumineux"></video>
+  <div class="vid-shade"></div>
+  <div class="vid-cap"><b>Le hall des collections</b>Exposition permanente · Tanger</div>
 </div>
 
 <!-- ================= 2 · DESIGN ================= -->
@@ -539,9 +570,15 @@ footer{background:#17110c;color:var(--ivory-faint);padding:34px 0 44px}
 <section class="parcours-sec" id="parcours">
   <div class="wrap">
     <div class="sec-head"><b>Le Parcours</b><span>De la première visite à la livraison</span></div>
-    <div class="sec-intro rv">
-      <h2>Vous savez tout, <em>à chaque étape.</em></h2>
-      <p>Une restauration dure des mois ; notre travail est aussi de vous les faire vivre sereinement. Voici comment se déroule chaque projet, sans zone d'ombre.</p>
+    <div class="parcours-top">
+      <div class="sec-intro rv">
+        <h2>Vous savez tout, <em>à chaque étape.</em></h2>
+        <p>Une restauration dure des mois ; notre travail est aussi de vous les faire vivre sereinement. Voici comment se déroule chaque projet, sans zone d'ombre.</p>
+      </div>
+      <figure class="vid-panel rv">
+        <video class="beat-video" src="marlowe/vid/clip2.mp4" poster="marlowe/wheel.webp" autoplay muted loop playsinline preload="metadata" aria-label="Les mains d'un mécanicien au travail sur un moteur à l'atelier"></video>
+        <figcaption>À l'atelier — la mécanique, à la main</figcaption>
+      </figure>
     </div>
     <div class="steps">
       <div class="step rv">
@@ -652,6 +689,18 @@ footer{background:#17110c;color:var(--ivory-faint);padding:34px 0 44px}
       </div>
       <a class="pratique-cta" href="https://wa.me/212693981822?text=Bonjour%20Atelier%20Marlowe%2C%20je%20souhaite%20des%20informations%20sur%20vos%20restaurations.%20Merci%20!" target="_blank" rel="noopener">Écrire à l'atelier · WhatsApp</a>
     </div>
+  </div>
+</div>
+
+<!-- ================= 4h · FILM — PRÊTE À ROULER ================= -->
+<div class="vid-band vid-finale">
+  <video class="beat-video" src="marlowe/vid/clip3.mp4" poster="marlowe/rear.webp" autoplay muted loop playsinline preload="metadata" aria-label="Une voiture classique rouge roule sur une route ouverte au soleil couchant"></video>
+  <div class="vid-shade"></div>
+  <div class="vid-center rv">
+    <div class="vid-kick">Essais terminés · Livraison</div>
+    <div class="vid-line">Prête à rouler.</div>
+    <p class="vid-sub">500 km d'essais et de réglages avant chaque livraison — ensuite, la route est à vous.</p>
+    <a class="vid-cta" href="https://wa.me/212693981822?text=Bonjour%20Atelier%20Marlowe%2C%20je%20souhaite%20demander%20une%20invitation%20pour%20une%20visite%20priv%C3%A9e%20%C3%A0%20Tanger.%20Merci%20!" target="_blank" rel="noopener">Demander une visite privée · WhatsApp</a>
   </div>
 </div>
 
@@ -972,6 +1021,28 @@ footer{background:#17110c;color:var(--ivory-faint);padding:34px 0 44px}
     if(msg) lines.push("Message : "+msg);
     window.open("https://wa.me/212693981822?text="+encodeURIComponent(lines.join("\n")), "_blank");
   });
+
+  /* ---------- Video beats: pause off-screen, poster-only if reduced motion ---------- */
+  var beatVids = document.querySelectorAll("video.beat-video");
+  if (beatVids.length) {
+    var rmq = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (rmq) {
+      for (var bi = 0; bi < beatVids.length; bi++) {
+        beatVids[bi].removeAttribute("autoplay");
+        beatVids[bi].pause();
+        beatVids[bi].preload = "none";
+      }
+    } else if ("IntersectionObserver" in window) {
+      var vio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          var v = en.target;
+          if (en.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+          else { v.pause(); }
+        });
+      }, { threshold: 0.12 });
+      for (var bj = 0; bj < beatVids.length; bj++) vio.observe(beatVids[bj]);
+    }
+  }
 })();
 </script>
 </body>
