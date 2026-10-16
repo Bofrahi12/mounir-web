@@ -411,6 +411,28 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
   .wrap{padding:80px 20px}
   .q-result .rec{flex-direction:column;align-items:flex-start}
 }
+/* ---------- moving shots (real video) ---------- */
+.shot-video{display:block}
+.vidband{
+  position:relative;overflow:hidden;min-height:76svh;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  background:var(--bg-2);
+}
+.vidband .shot-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vidband-shade{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(180deg,var(--bg) 0%,rgba(29,19,12,0) 22%,rgba(29,19,12,0) 68%,var(--bg) 100%),
+    radial-gradient(900px 480px at 50% 55%,rgba(29,19,12,.18),rgba(29,19,12,.55));
+}
+.vidband-inner{position:relative;z-index:2;padding:110px 20px;max-width:820px}
+.vidband-inner .kicker{justify-content:center}
+.vidband-title{font-size:clamp(2.3rem,5.6vw,4.3rem);font-weight:800;line-height:1.08;letter-spacing:-.01em;text-shadow:0 10px 44px rgba(0,0,0,.5)}
+.vidband-title em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--caramel-soft)}
+.vidband-inner .btn{margin-top:30px}
+.maison-img .shot-video{width:100%;height:100%;object-fit:cover}
+@media(max-width:1060px){.vidband{min-height:62svh}}
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .hero h1 .w>span,.fade-item,.hero-frame,.hero-chip,.reveal{opacity:1!important;transform:none!important}
@@ -475,6 +497,16 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
       </span>
       <div><b>Torréfaction du matin</b><span>Le lot du jour vient de sortir du torréfacteur</span></div>
     </div>
+  </div>
+</section>
+
+<!-- ======================= FILM 01 — LE CAFÉ EN MOUVEMENT ======================= -->
+<section class="vidband" aria-label="Café fraîchement versé, en mouvement">
+  <video class="shot-video" autoplay muted loop playsinline preload="metadata" poster="torra/hero.webp" src="torra/vid/clip1.mp4"></video>
+  <div class="vidband-shade"></div>
+  <div class="vidband-inner reveal">
+    <p class="kicker">Le geste</p>
+    <h2 class="vidband-title">Le café, <em>en mouvement.</em></h2>
   </div>
 </section>
 
@@ -598,7 +630,7 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
       </div>
 
       <div class="maison-img reveal kbwrap">
-        <img class="kb" src="torra/cup.webp" alt="Cappuccino TORRA dans la lumière du matin, accompagné d'un croissant" loading="lazy">
+        <video class="shot-video" autoplay muted loop playsinline preload="metadata" poster="torra/barista.webp" src="torra/vid/clip2.mp4" aria-label="Extraction d'un espresso en gros plan, le café coule du porte-filtre"></video>
       </div>
 
       <div class="points right">
@@ -817,6 +849,17 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
   </div>
 </section>
 
+<!-- ======================= FILM 03 — À DÉGUSTER MAINTENANT ======================= -->
+<section class="vidband" aria-label="Une tasse fumante, prête à déguster">
+  <video class="shot-video" autoplay muted loop playsinline preload="metadata" poster="torra/cup.webp" src="torra/vid/clip3.mp4"></video>
+  <div class="vidband-shade"></div>
+  <div class="vidband-inner reveal">
+    <p class="kicker">La tasse du moment</p>
+    <h2 class="vidband-title">À déguster <em>maintenant.</em></h2>
+    <a class="btn btn-caramel" href="https://wa.me/212693981822?text=Bonjour%20TORRA%20%2C%20je%20souhaite%20commander%20un%20caf%C3%A9." target="_blank" rel="noopener">Commander sur WhatsApp</a>
+  </div>
+</section>
+
 <!-- ======================= FAQ ======================= -->
 <section id="faq">
   <div class="wrap" style="padding-top:20px">
@@ -972,6 +1015,34 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
         card.style.transform = "";
       });
     });
+  }
+
+  /* ---- moving shots: play on screen, pause off screen; poster only if reduced motion ---- */
+  var shotVideos = document.querySelectorAll("video.shot-video");
+  if(shotVideos.length){
+    if(reduced){
+      shotVideos.forEach(function(v){
+        v.removeAttribute("autoplay");
+        v.preload = "none";
+        v.pause();
+      });
+    } else if("IntersectionObserver" in window){
+      var vio = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          var v = e.target;
+          v.dataset.on = e.isIntersecting ? "1" : "";
+          if(e.isIntersecting){ var pr = v.play(); if(pr && pr.catch) pr.catch(function(){}); }
+          else { v.pause(); }
+        });
+      }, {threshold:.2});
+      shotVideos.forEach(function(v){ vio.observe(v); });
+      document.addEventListener("visibilitychange", function(){
+        shotVideos.forEach(function(v){
+          if(document.hidden){ v.pause(); }
+          else if(v.dataset.on === "1"){ var pr = v.play(); if(pr && pr.catch) pr.catch(function(){}); }
+        });
+      });
+    }
   }
 
   /* ---- quiz ---- */

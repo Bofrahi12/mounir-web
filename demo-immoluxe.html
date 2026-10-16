@@ -155,6 +155,23 @@ a{color:inherit;text-decoration:none}
 #finale h2{font-family:var(--serif);font-weight:500;font-size:clamp(38px,6.6vw,88px);line-height:1.05;margin:18px auto 18px;max-width:880px}
 #finale h2 em{color:var(--sand)}
 #finale p{color:#e6dfcd;font-size:16px;max-width:520px;margin:0 auto 32px;line-height:1.7}
+#genese-reel{position:relative;background:#0b0a08;padding:130px 5vw;overflow:hidden}
+#genese-reel .glow{position:absolute;inset:0;background:radial-gradient(60% 55% at 76% 42%,rgba(200,180,138,.11),transparent 65%);pointer-events:none}
+.gr-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(290px,400px) 1fr;gap:clamp(40px,6vw,92px);align-items:center;max-width:1280px;margin:0 auto}
+.gr-frame{border-radius:20px;padding:10px;border:1px solid rgba(200,180,138,.5);background:linear-gradient(165deg,rgba(200,180,138,.12),rgba(200,180,138,.02) 55%);box-shadow:0 44px 90px rgba(0,0,0,.55);will-change:transform}
+.gr-frame video{width:100%;aspect-ratio:720/1278;object-fit:cover;border-radius:12px;background:#000}
+.gr-cap{margin-top:16px;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;color:#9a927e;text-transform:uppercase;line-height:1.9}
+.gr-copy .label{color:var(--sand)}
+.gr-copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(38px,4.8vw,66px);line-height:1.04;margin:18px 0 16px}
+.gr-copy h2 em{color:var(--sand)}
+.gr-copy .lead{font-size:16px;line-height:1.7;color:#d9d2bf;max-width:490px}
+.gr-stages{margin-top:38px;border-top:1px solid var(--line);max-width:540px}
+.gr-stages>div{display:flex;gap:18px;align-items:baseline;padding:17px 2px;border-bottom:1px solid var(--line)}
+.gr-stages b{font-family:var(--mono);font-size:12px;color:var(--sand)}
+.gr-stages h4{font-family:var(--serif);font-size:23px;font-weight:600;min-width:138px}
+.gr-stages p{font-size:14px;line-height:1.6;color:#cfc7b2}
+.gr-cta{margin-top:36px}
+@media(max-width:900px){#genese-reel{padding:90px 5vw}.gr-grid{grid-template-columns:1fr}.gr-frame{max-width:380px;margin:0 auto}.gr-stages>div{flex-wrap:wrap;gap:6px}.gr-stages h4{min-width:0}}
 footer{background:#080706;padding:64px 5vw 0;overflow:hidden}
 .ft{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:40px}
 .ft .label{color:#ffffff70}
@@ -238,6 +255,29 @@ footer{background:#080706;padding:64px 5vw 0;overflow:hidden}
     <div class="fcap"><div class="label">Acte II — La matière</div><h3>Puis le verre prend la lumière.</h3></div>
     <div class="fcap"><div class="label">Acte III — La livraison</div><h3>Bienvenue chez vous.</h3></div>
     <div class="fline"><i class="ffill"></i></div>
+  </div>
+</section>
+
+<section id="genese-reel" data-chap="06">
+  <div class="glow"></div>
+  <div class="gr-grid">
+    <div>
+      <div class="gr-frame" id="grframe">
+        <video id="grvid" src="demo-immoluxe/vid/genese-reel.mp4" poster="demo-immoluxe/vid/posters/genese-reel.jpg" autoplay muted loop playsinline preload="metadata"></video>
+      </div>
+      <div class="gr-cap">Du premier béton au coucher du soleil — dix secondes</div>
+    </div>
+    <div class="gr-copy">
+      <div class="label">Genèse — le film de la métamorphose</div>
+      <h2>Du chantier <em>à la lumière.</em></h2>
+      <p class="lead">Avant la première visite, il y a des mois de chantier. Ce film suit une villa dans sa transformation, en une seule prise : le béton brut et les grues, puis — d'un coup de lumière — la maison habitée.</p>
+      <div class="gr-stages">
+        <div><b>01</b><h4>La structure</h4><p>Le béton brut et les grues dessinent le squelette de la future adresse.</p></div>
+        <div><b>02</b><h4>La matière</h4><p>Le verre, la pierre et l'eau de la piscine prennent leur place, un geste à la fois.</p></div>
+        <div><b>03</b><h4>La lumière</h4><p>Au couchant, la villa s'illumine de l'intérieur : la maison est née.</p></div>
+      </div>
+      <div class="gr-cta"><a class="btn solid" data-cur="GO" href="https://wa.me/212693981822?text=Bonjour%20Tanja%20Luxe%2C%20je%20veux%20visiter%20une%20villa%20d'exception%20à%20Tanger" target="_blank" rel="noopener">Visiter une villa née ainsi</a></div>
+    </div>
   </div>
 </section>
 
@@ -348,6 +388,29 @@ function initFilm(sec){
 }
 initFilm(document.getElementById('film'));
 initFilm(document.getElementById('chantier'));
+})();
+</script>
+<script>
+(function(){
+  var vid = document.getElementById('grvid'); if (!vid) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    /* poster only — never load or play the film */
+    vid.removeAttribute('autoplay'); vid.removeAttribute('src'); vid.setAttribute('preload','none'); vid.load();
+    vid.addEventListener('play', function(){ vid.pause(); });
+    return;
+  }
+  /* slight scroll parallax on the portrait frame */
+  var frame = document.getElementById('grframe'), sec = document.getElementById('genese-reel'), cur = 0;
+  (function loop(){
+    var r = sec.getBoundingClientRect();
+    if (r.bottom > -200 && r.top < innerHeight + 200) {
+      var p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height)));
+      cur += ((p - .5) * -30 - cur) * .06;
+      frame.style.transform = 'translateY(' + cur.toFixed(2) + 'px)';
+    }
+    requestAnimationFrame(loop);
+  })();
 })();
 </script>
 </body>

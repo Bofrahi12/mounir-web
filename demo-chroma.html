@@ -273,6 +273,16 @@ h2 .serif-i{color:var(--fuchsia)}
   </figure>
 </div>
 
+<!-- VIDÉO — LA COULEUR EN MOUVEMENT -->
+<section class="vidband" aria-label="Vidéo — la couleur en mouvement">
+  <video class="plx-vid" src="chroma/vid/clip1.mp4" poster="chroma/fuchsia.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="cap">
+    <span class="kick">Le film nº 01</span>
+    <h2>La couleur <span class="serif-i">en mouvement.</span></h2>
+  </div>
+</section>
+
 <!-- SIX HUMEURS -->
 <section id="collections">
   <div class="sec-head">
@@ -310,7 +320,7 @@ h2 .serif-i{color:var(--fuchsia)}
 <!-- LA BOUTIQUE — HISTOIRE -->
 <section id="histoire">
   <div class="story">
-    <figure class="simg"><img id="storyImg" data-plx="22" data-plx-scale="0.06" src="chroma/hero.webp" alt="Atelier CHROMA — tailleur agrume"></figure>
+    <figure class="simg"><video id="storyImg" class="plx-vid" data-plx="22" data-plx-scale="0.06" src="chroma/vid/clip2.mp4" poster="chroma/hero.webp" autoplay muted loop playsinline preload="metadata" aria-label="Atelier CHROMA — les mains de la couturière guident l'étoffe sous l'aiguille de la machine à coudre"></video></figure>
     <div>
       <h2>La Boutique, <span class="serif-i">née</span> d'un pari</h2>
       <p>CHROMA est née à Tanger d'un pari simple : une garde-robe entièrement pensée en couleurs franches peut être aussi élégante qu'une garde-robe de neutres — et infiniment plus vivante. Chaque pièce est dessinée à l'atelier, coupée dans des étoffes choisies pour leur tombé et pour la tenue de leur teinte, puis produite en séries courtes.</p>
@@ -535,6 +545,30 @@ footer{background:var(--ink);color:var(--cream);margin-top:2rem}
 .story{display:grid;grid-template-columns:.92fr 1.08fr;gap:3rem;align-items:center}
 .story .simg{border-radius:var(--radius-arch);overflow:hidden;aspect-ratio:4/4.7;box-shadow:0 26px 50px rgba(23,19,14,.18)}
 .story .simg img{width:100%;height:100%;object-fit:cover}
+.story .simg video{width:100%;height:100%;object-fit:cover}
+
+/* ---------- BANDES VIDÉO ---------- */
+.vidband{max-width:none;width:100%;padding:0;position:relative;overflow:hidden;height:min(74vh,660px);min-height:380px;background:var(--ink)}
+.vidband video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vidband .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,19,14,.16),rgba(23,19,14,.38) 60%,rgba(23,19,14,.62));pointer-events:none}
+.vidband .cap{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:2.4rem 1.4rem 2.9rem;color:var(--cream)}
+.vidband .cap .kick{font-size:.72rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;opacity:.92}
+.vidband .cap h2{color:var(--cream);margin-top:.55rem}
+.vidband .cap h2 .serif-i{color:var(--sun)}
+.vidband .cap .btn{margin-top:1.35rem}
+.btn.light{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.btn.light:hover{background:var(--fuchsia);border-color:var(--fuchsia);color:#fff}
+@media (max-width:640px){.vidband{height:62vh;min-height:340px}}
+
+/* ---------- LA BOUTIQUE DANS VOTRE POCHE ---------- */
+.poche{display:grid;grid-template-columns:.92fr 1.08fr;gap:3.2rem;align-items:center}
+.poche-frame{justify-self:center;width:min(320px,78vw);aspect-ratio:9/16;border-radius:28px;overflow:hidden;background:#e9e2d6;box-shadow:0 34px 70px rgba(23,19,14,.28),0 6px 18px rgba(23,19,14,.18);will-change:transform}
+.poche-frame video{width:100%;height:100%;object-fit:cover}
+.poche-copy p{line-height:1.7;color:#3d362c;margin-top:1rem}
+.poche-feats{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+.poche-feats span{font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid var(--ink);border-radius:999px;padding:.45rem .9rem}
+.poche-copy .btn{margin-top:1.7rem}
+@media (max-width:900px){.poche{grid-template-columns:1fr}}
 .story p{line-height:1.7;color:#3d362c;margin-top:1rem}
 .statband{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.4rem}
 .statband div{border:1.5px solid rgba(23,19,14,.16);border-radius:18px;padding:1.1rem 1rem;text-align:center;background:rgba(255,255,255,.5)}
@@ -768,6 +802,26 @@ table.tailles td b{font-weight:900}
   </div>
 </section>
 
+<!-- LA BOUTIQUE DANS VOTRE POCHE -->
+<section id="poche">
+  <div class="poche">
+    <div class="poche-frame" id="phoneFrame">
+      <video class="plx-vid" src="chroma/vid/phone3d.mp4" poster="chroma/phone3d-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="La boutique CHROMA sur téléphone — casquette, vestes et baskets flottent hors de l'écran"></video>
+    </div>
+    <div class="poche-copy">
+      <h2>La boutique, <span class="serif-i">dans votre poche</span></h2>
+      <p>Toute la collection tient dans votre téléphone : les pièces défilent devant vous, la taille se choisit en un geste, et la commande part directement sur WhatsApp — sans compte à créer, sans carte à sortir.</p>
+      <p>Vous payez à la livraison, vous suivez votre commande par message à chaque étape, et l'échange reste gratuit sous 14 jours. La couleur vient à vous, à Tanger comme partout au Maroc.</p>
+      <div class="poche-feats">
+        <span>Paiement à la livraison</span>
+        <span>Suivi par message</span>
+        <span>Échange 14 jours</span>
+      </div>
+      <a class="btn solid cmd" href="https://wa.me/212693981822" data-msg="Bonjour CHROMA, je souhaite commander depuis mon téléphone. Merci !">Commander sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
 <!-- AVIS CLIENTES -->
 <section id="avis">
   <div class="sec-head">
@@ -792,6 +846,17 @@ table.tailles td b{font-weight:900}
     </article>
   </div>
   <p class="avis-note">Avis de démonstration — témoignages présentés à titre d'exemple sur ce modèle de site.</p>
+</section>
+
+<!-- VIDÉO — PRÊTE À PORTER -->
+<section class="vidband" aria-label="Vidéo — prête à porter">
+  <video class="plx-vid" src="chroma/vid/clip3.mp4" poster="chroma/cobalt.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="cap">
+    <span class="kick">Le film nº 02</span>
+    <h2>Prête <span class="serif-i">à porter.</span></h2>
+    <a class="btn light cmd" href="https://wa.me/212693981822" data-msg="Bonjour CHROMA, je souhaite commander une pièce de la collection. Merci !">Commander sur WhatsApp</a>
+  </div>
 </section>
 
 <!-- FAQ -->
@@ -1020,6 +1085,54 @@ table.tailles td b{font-weight:900}
       });
     }, {threshold: 0.45});
     lookEls.forEach(function(l){ io2.observe(l); });
+  }
+})();
+</script>
+
+<script>
+(function(){
+  "use strict";
+  /* ----- Vidéos : lecture à l'écran seulement, poster seul si mouvement réduit ----- */
+  var vids = document.querySelectorAll("video.plx-vid");
+  if(!vids.length) return;
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduced){
+    vids.forEach(function(v){
+      v.removeAttribute("autoplay");
+      v.pause();
+      v.removeAttribute("src");
+      v.load();
+    });
+    return;
+  }
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var v = en.target;
+        if(en.isIntersecting){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+        else{ v.pause(); }
+      });
+    }, {threshold: 0.12});
+    vids.forEach(function(v){ io.observe(v); });
+  }
+
+  /* ----- Cadre téléphone : inclinaison douce liée au défilement ----- */
+  var frame = document.getElementById("phoneFrame");
+  if(frame){
+    var cur = -1;
+    (function tilt(){
+      var r = frame.getBoundingClientRect();
+      var p = (window.innerHeight - r.top) / (window.innerHeight + r.height);
+      p = p < 0 ? 0 : p > 1 ? 1 : p;
+      if(cur < 0) cur = p;
+      cur += (p - cur) * 0.08;
+      var rot = (0.5 - cur) * 5;
+      frame.style.transform =
+        "perspective(1100px) rotateY(" + (-rot).toFixed(2) + "deg)" +
+        " rotateX(" + (rot * 0.4).toFixed(2) + "deg)" +
+        " translateY(" + ((cur - 0.5) * -14).toFixed(1) + "px)";
+      requestAnimationFrame(tilt);
+    })();
   }
 })();
 </script>

@@ -357,6 +357,43 @@
     .cream-block{padding:70px 18px 60px}
   }
 
+  /* ---------- Trois plans en mouvement (vidéo) ---------- */
+  .vid-band{position:relative;overflow:hidden;background:var(--deep)}
+  .vid-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .vid-band1{height:clamp(430px,76vh,660px)}
+  .vid-band1 video{object-position:50% 58%}
+  .vid-shade{
+    position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(to top,rgba(4,16,15,.74),rgba(4,16,15,.05) 46%,rgba(4,16,15,.32));
+  }
+  .vid-cap{position:absolute;left:40px;bottom:38px;z-index:2;max-width:660px}
+  .vid-kicker{font-size:10.5px;letter-spacing:.4em;text-transform:uppercase;color:var(--aqua);margin-bottom:12px}
+  .vid-cap h2{
+    font-family:'Cormorant Garamond',serif;font-weight:500;
+    font-size:clamp(34px,4.6vw,58px);line-height:1.05;color:var(--ivory);
+    text-shadow:0 2px 26px rgba(0,0,0,.5);
+  }
+  .vid-cap h2 em{color:var(--aqua)}
+  .vid-panel{
+    position:relative;border-radius:22px;overflow:hidden;margin-top:52px;
+    aspect-ratio:16/9;background:#000;box-shadow:0 30px 60px rgba(0,0,0,.35);
+  }
+  .vid-panel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .vid-tag{
+    position:absolute;left:18px;bottom:16px;z-index:2;
+    font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ivory);
+    background:rgba(4,16,15,.55);border:1px solid var(--line);border-radius:999px;
+    padding:8px 14px;backdrop-filter:blur(6px);
+  }
+  .vid-band3{height:clamp(430px,72vh,620px);width:100vw;margin:74px 0 4px calc(50% - 50vw)}
+  .vid-band3 .vid-cap{left:50%;transform:translateX(-50%);bottom:42px;text-align:center;width:min(680px,88vw)}
+  .vid-band3 .vid-cap .btn-add{margin-top:24px}
+  @media (max-width:760px){
+    .vid-cap{left:20px;right:20px;bottom:26px}
+    .vid-band3 .vid-cap{left:50%;right:auto;bottom:30px}
+    .vid-panel{margin-top:38px}
+  }
+
   /* ---------- Responsive ---------- */
   @media (max-width:760px){
     nav{padding:16px 18px}
@@ -495,6 +532,16 @@
 
 <button class="rewind" id="rewindBtn" aria-label="Revoir le film">↺<small>Revoir</small></button>
 
+<!-- ============ PLAN 1 — LA LUMIÈRE (vidéo) ============ -->
+<section class="vid-band vid-band1" aria-label="Bague scintillante en mouvement">
+  <video class="clip" src="ondine/vid/clip1.mp4" poster="ondine/ring.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <div class="vid-shade"></div>
+  <div class="vid-cap">
+    <p class="vid-kicker">Le Grand Bain — En mouvement</p>
+    <h2>La lumière, <em>apprivoisée</em>.</h2>
+  </div>
+</section>
+
 <!-- ============ FINALE ============ -->
 <section class="finale" id="finale">
   <div class="finale-ghost" id="finaleGhost" aria-hidden="true">Ondine</div>
@@ -575,6 +622,11 @@
     <p class="lead rv">ONDINE est née à Tanger, dans un atelier baigné par la lumière du détroit. Ici, pas de chaîne de montage : un joaillier dessine, taille l&rsquo;assise, sertit et polit chaque pièce du début à la fin, sur le même établi.</p>
     <p class="lead rv">Nos aigues-marines sont choisies une à une pour leur eau — ce bleu profond qui rappelle le bassin après la nuit. L&rsquo;or 18 carats est titré, poinçonné, et chaque pièce quitte l&rsquo;atelier avec son certificat.</p>
 
+    <figure class="vid-panel rv">
+      <video class="clip" src="ondine/vid/clip2.mp4" poster="ondine/set.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      <figcaption class="vid-tag">L&rsquo;atelier, en mouvement</figcaption>
+    </figure>
+
     <div class="stats">
       <div class="stat rv"><div class="stat-num">18 <i>carats</i></div><div class="stat-label">Or titré &amp; poinçonné</div></div>
       <div class="stat rv rv-d1"><div class="stat-num">100 <i>%</i></div><div class="stat-label">Pierres certifiées, certificat joint</div></div>
@@ -642,6 +694,17 @@
       </figure>
     </div>
     <p class="demo-note rv">Témoignages de démonstration — situations présentées à titre d&rsquo;exemple.</p>
+
+    <!-- ============ PLAN 3 — PORTÉES (vidéo) ============ -->
+    <div class="vid-band vid-band3" role="img" aria-label="Collier et boucles portés, en mouvement">
+      <video class="clip" src="ondine/vid/clip3.mp4" poster="ondine/pool.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      <div class="vid-shade"></div>
+      <div class="vid-cap">
+        <p class="vid-kicker">Portées</p>
+        <h2>À porter, <em>à garder</em>.</h2>
+        <a class="btn-add" href="https://wa.me/212693981822?text=Bonjour%20ONDINE%2C%20je%20souhaite%20d%C3%A9couvrir%20la%20collection%20Grand%20Bain.%20Merci%20!" target="_blank" rel="noopener">Découvrir sur WhatsApp</a>
+      </div>
+    </div>
 
     <p class="kicker rv" style="margin-top:78px">Questions fréquentes</p>
     <h2 class="rv">Avant de<br><em>plonger</em></h2>
@@ -879,6 +942,37 @@
     }
     requestAnimationFrame(step);
   });
+})();
+</script>
+
+<script>
+/* ---------- Trois plans en mouvement : lecture/pause selon visibilité ---------- */
+(function(){
+  "use strict";
+  var clips = document.querySelectorAll("video.clip");
+  if (!clips.length) return;
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced){
+    /* Mouvement réduit : poster seul, aucune lecture */
+    clips.forEach(function(v){
+      v.removeAttribute("autoplay");
+      v.preload = "none";
+      v.pause();
+    });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      var v = en.target;
+      if (en.isIntersecting){
+        var pr = v.play();
+        if (pr && pr.catch) pr.catch(function(){});
+      } else {
+        v.pause();
+      }
+    });
+  }, {threshold: 0.18});
+  clips.forEach(function(v){ io.observe(v); });
 })();
 </script>
 </body>

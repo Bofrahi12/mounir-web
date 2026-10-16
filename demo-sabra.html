@@ -355,6 +355,35 @@
   .faq-item .faq-body b{color:var(--ink)}
   .faq-item .order{display:inline-block;margin-top:14px}
 
+  /* FILMS — TROIS PLANS */
+  .film-band{position:relative;overflow:hidden;background:#050705}
+  .film-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .film-b1{height:min(82vh,720px)}
+  .film-b3{height:min(86vh,760px)}
+  .film-shade{position:absolute;inset:0;pointer-events:none;z-index:1}
+  .film-b1 .film-shade{background:linear-gradient(180deg,rgba(10,15,10,.42),rgba(10,15,10,0) 34%,rgba(10,15,10,0) 44%,rgba(10,15,10,.8) 100%)}
+  .film-b3 .film-shade{background:radial-gradient(95% 95% at 50% 42%,rgba(10,15,10,.12),rgba(10,15,10,.6) 100%),linear-gradient(180deg,rgba(10,15,10,.4),rgba(10,15,10,.08) 42%,rgba(10,15,10,.5))}
+  .film-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 clamp(18px,4vw,52px) clamp(30px,6vh,56px)}
+  .film-cap .inner{max-width:1240px;margin:0 auto}
+  .film-cap .kicker{margin-bottom:14px}
+  .film-cap h2,.film-center h2{text-shadow:0 4px 44px rgba(0,0,0,.55)}
+  .film-center{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
+  .film-center .sub{margin-top:16px;color:var(--ink);font-size:16.5px;line-height:1.6;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+  @media(max-width:760px){.film-b1{height:58vh}.film-b3{height:66vh}}
+
+  /* PRESSAGE — PANNEAU VIDÉO */
+  .press-layout{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(20px,3vw,36px);margin-top:clamp(36px,5vw,56px);align-items:stretch}
+  .press-layout .steps{grid-template-columns:1fr;margin-top:0}
+  .press-video{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);min-height:340px;background:#000}
+  .press-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .press-video figcaption{
+    position:absolute;left:0;right:0;top:0;z-index:2;padding:16px 20px 34px;
+    background:linear-gradient(180deg,rgba(10,15,10,.82),rgba(10,15,10,0));
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+  }
+  .press-video figcaption b{color:var(--magenta-soft);font-weight:500}
+  @media(max-width:860px){.press-layout{grid-template-columns:1fr}.press-video{min-height:0;aspect-ratio:16/10}}
+
   /* FOOTER */
   footer{border-top:1px solid var(--line);background:#070a07}
   .foot-cta{text-align:center;padding:clamp(80px,12vh,130px) 20px 60px}
@@ -441,6 +470,18 @@
     <div class="scroll-hint" id="scrollHint">Scroll</div>
   </div>
 </header>
+
+<!-- ============ FILM 01 — LE DÉSERT ============ -->
+<section class="film-band film-b1" aria-label="Le désert, là où pousse la figue de Barbarie">
+  <video class="film-video" autoplay muted loop playsinline preload="metadata" poster="sabra/hero.webp" src="sabra/vid/clip1.mp4"></video>
+  <div class="film-shade"></div>
+  <div class="film-cap">
+    <div class="inner reveal">
+      <p class="kicker">L'origine</p>
+      <h2>Né dans le <em>désert</em>.</h2>
+    </div>
+  </div>
+</section>
 
 <!-- ============ LE FRUIT ============ -->
 <section id="fruit">
@@ -530,7 +571,12 @@
   <div class="wrap">
     <p class="kicker reveal">Le Pressage</p>
     <h2 class="reveal">De la raquette<br>au <em>verre</em>.</h2>
-    <div class="steps">
+    <div class="press-layout">
+      <figure class="press-video reveal">
+        <video class="film-video" autoplay muted loop playsinline preload="metadata" poster="sabra/glass.webp" src="sabra/vid/clip2.mp4"></video>
+        <figcaption><b>En direct</b> — le pressage du matin, versé sans attendre</figcaption>
+      </figure>
+      <div class="steps">
       <div class="step reveal">
         <span class="num">Étape — 01</span>
         <h3>Cueillette à l'aube</h3>
@@ -548,6 +594,7 @@
         <h3>Embouteillé sous 24 h</h3>
         <p>Du pressoir à la bouteille en moins d'un jour, puis direction Tanger.
         Un jus qui voyage peu et qui se boit vite — comme il se doit.</p>
+      </div>
       </div>
     </div>
   </div>
@@ -761,6 +808,17 @@
 </section>
 
 <!-- ============ FOOTER ============ -->
+<!-- ============ FILM 03 — À TABLE ============ -->
+<section class="film-band film-b3" aria-label="Des verres de jus SABRA levés entre amis">
+  <video class="film-video" autoplay muted loop playsinline preload="metadata" poster="sabra/range.webp" src="sabra/vid/clip3.mp4"></video>
+  <div class="film-shade"></div>
+  <div class="film-center reveal">
+    <h2>À boire <em>glacé</em>.</h2>
+    <p class="sub">Entre 4 et 6 °C, dans un verre bien froid —<br>c'est là que le désert devient dessert.</p>
+    <a class="big-cta" href="https://wa.me/212693981822?text=Bonjour%20SABRA%2C%20je%20souhaite%20passer%20une%20commande.%20Merci%20!" target="_blank" rel="noopener">Commander sur WhatsApp</a>
+  </div>
+</section>
+
 <footer>
   <div class="foot-cta">
     <p class="kicker reveal" style="justify-content:center">Trouver SABRA</p>
@@ -868,6 +926,27 @@
       requestAnimationFrame(frame);
     })(0);
   }
+})();
+</script>
+<script>
+/* Films — lecture à l'écran seulement, pause hors champ ; image seule si reduced-motion */
+(function(){
+  var vids = document.querySelectorAll('video.film-video');
+  if(!vids.length) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){
+    vids.forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); });
+    return;
+  }
+  if(!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v = e.target;
+      if(e.isIntersecting){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+      else { v.pause(); }
+    });
+  }, {threshold: 0.18});
+  vids.forEach(function(v){ io.observe(v); });
 })();
 </script>
 </body>
