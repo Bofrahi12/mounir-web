@@ -31,6 +31,11 @@
 .demo-badge{position:fixed;left:14px;bottom:14px;z-index:999;background:rgba(10,10,10,.82);color:#f2c66d;border:1px solid rgba(214,169,79,.5);font-size:12px;font-weight:600;padding:7px 14px;border-radius:50px;backdrop-filter:blur(4px)}
 .wa-float2{position:fixed;left:14px;bottom:56px;z-index:999;width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.35)}
 </style>
+<style>
+.header .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.header .container{position:relative;z-index:3}
+@media (prefers-reduced-motion: reduce){.header .hero-video{display:none}}
+</style>
 </head>
 <body>
     <!-- Preloader -->
@@ -73,6 +78,7 @@
     </nav>
     <!-- Header -->
     <header class="header valign pos-pre bg-img parallaxie" data-scroll-index="0" data-overlay-dark="4" data-background="studio-nojom/img/slider/6.jpg">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="studio-nojom/video/wedding-poster.jpg" aria-hidden="true"><source src="studio-nojom/video/wedding-hero.mp4" type="video/mp4"></video>
         <div class="container">
             <div class="row">
                 <div class="col-md-12 caption">
