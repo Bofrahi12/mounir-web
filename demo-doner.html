@@ -87,7 +87,7 @@ h2.big{font-family:var(--font-d);font-weight:400;font-size:clamp(2.6rem,6.4vw,5.
 /* 01 SPIN hero */
 #spin{padding:0;justify-content:flex-end;min-height:108vh}
 .hero-img{position:absolute;inset:0;overflow:hidden}
-.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 22%;will-change:transform}
+.hero-img img,.hero-img video{width:100%;height:100%;object-fit:cover;object-position:center 22%;will-change:transform}
 .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,7,5,.88) 0%,rgba(10,7,5,.45) 42%,rgba(10,7,5,.05) 75%),linear-gradient(0deg,rgba(10,7,5,.96) 4%,transparent 42%),linear-gradient(180deg,rgba(10,7,5,.55),transparent 26%)}
 .hero-top{position:absolute;top:96px;left:6vw;z-index:4;display:flex;flex-direction:column;gap:8px;font-family:var(--font-g);font-size:.68rem;letter-spacing:.3em;color:rgba(245,239,227,.85)}
 .hero-top .hot{color:var(--gold2)}
@@ -107,12 +107,12 @@ h1.mega .o{color:var(--gold)}
 .scroll-hint{position:absolute;right:6vw;bottom:170px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--faint);font-family:var(--font-g);font-size:.6rem;letter-spacing:.3em;writing-mode:vertical-rl}
 .scroll-hint .wire{width:1px;height:54px;background:linear-gradient(var(--gold),transparent);animation:wire 2.4s var(--ease) infinite}
 @keyframes wire{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-@media(max-width:760px){.scroll-hint,.hero-temp{display:none}.hero-top{top:84px}.hero-chips{display:none}h1.mega{font-size:clamp(3.4rem,17vw,5rem)}}
+@media(max-width:760px){.scroll-hint,.hero-temp{display:none}.hero-top{top:84px}.hero-chips{display:none}h1.mega{font-size:clamp(3.4rem,17vw,5rem)}#spin{min-height:100svh}.hero-core{padding-bottom:9vh}}
 
 /* 02 DIVE */
 #dive{padding:0}
 .dive-img{position:absolute;inset:0;overflow:hidden}
-.dive-img img{width:100%;height:100%;object-fit:cover;will-change:transform}
+.dive-img img,.dive-img video{width:100%;height:100%;object-fit:cover;will-change:transform}
 .dive-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,7,5,.9) 8%,rgba(10,7,5,.25) 55%,rgba(10,7,5,.1)),linear-gradient(0deg,rgba(10,7,5,.85),transparent 40%)}
 .dive-ui{position:relative;z-index:4;padding:110px 6vw;width:100%}
 .temp-read{font-family:var(--font-d);font-size:clamp(5rem,15vw,12rem);line-height:.95;color:var(--white)}
@@ -134,7 +134,7 @@ h1.mega .o{color:var(--gold)}
 .reveal-core .spec::before{display:none}
 .flags{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
 .flag{display:flex;align-items:center;gap:12px;border:1px solid rgba(245,239,227,.22);background:rgba(10,7,5,.55);backdrop-filter:blur(5px);border-radius:10px;padding:13px 20px;font-family:var(--font-g);text-align:left}
-.flag .fe{font-size:1.5rem;line-height:1}
+.flag .fe{font-family:var(--font-d);font-size:1.35rem;line-height:1;color:var(--gold);border:1px solid rgba(232,184,75,.45);border-radius:8px;padding:7px 10px;letter-spacing:.06em}
 .flag b{display:block;font-size:.8rem;letter-spacing:.14em}
 .flag span{font-size:.64rem;letter-spacing:.2em;color:var(--muted)}
 
@@ -233,6 +233,12 @@ h1.mega .o{color:var(--gold)}
 .order-btn:hover{box-shadow:0 16px 44px rgba(232,184,75,.5)}
 @media(max-width:980px){.build-grid{grid-template-columns:1fr}}
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,80px);z-index:150;background:var(--gold);color:#1A1206;font-family:var(--font-g);font-weight:700;font-size:.82rem;letter-spacing:.08em;padding:13px 24px;border-radius:99px;box-shadow:0 16px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none}
+.plate-band{position:relative;margin-top:9vh;height:min(64vh,580px);border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.plate-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.plate-band::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,5,3,.88) 6%,transparent 46%),linear-gradient(90deg,rgba(8,5,3,.45),transparent 55%)}
+.plate-cap{position:absolute;left:26px;bottom:22px;z-index:3}
+.plate-cap h3{font-family:var(--font-d);font-weight:400;font-size:clamp(1.8rem,4.4vw,3.2rem);text-transform:uppercase;line-height:1;margin-top:10px}
+@media(max-width:760px){.plate-band{height:52vh}}
 .finale{text-align:center;margin-top:11vh}
 .finale .big-order{font-family:var(--font-d);font-weight:400;text-transform:uppercase;line-height:.92;font-size:clamp(3.2rem,10vw,8.6rem)}
 .finale .hours{color:var(--muted);margin-top:20px;font-size:.95rem}
@@ -282,7 +288,7 @@ footer .f-mid{font-family:var(--font-g);letter-spacing:.16em;text-transform:uppe
 
 <!-- ============ 01 · THE SPIN ============ -->
 <section class="scene" id="spin" data-chapter="01" data-name="THE SPIN" aria-label="The Spin">
-  <div class="hero-img"><img id="heroImg" src="demo-doner/spit.webp" alt="Vertical döner spit roasting over charcoal flames" fetchpriority="high"></div>
+  <div class="hero-img"><video id="heroImg" data-vid src="demo-doner/spit.mp4" poster="demo-doner/hero-poster.webp" autoplay muted loop playsinline preload="auto" aria-label="Vertical döner spit rotating slowly over glowing charcoal"></video></div>
   <div class="hero-top">
     <span>SLOW ROASTED // <span class="hot">VERTICAL SPIT</span></span>
     <span>CHARCOAL FIRE — NO SHORTCUTS</span>
@@ -305,7 +311,7 @@ footer .f-mid{font-family:var(--font-g);letter-spacing:.16em;text-transform:uppe
 
 <!-- ============ 02 · THE DIVE ============ -->
 <section class="scene" id="dive" data-chapter="02" data-name="THE DIVE" aria-label="The Dive — specifications">
-  <div class="dive-img"><img id="diveImg" src="demo-doner/macro.webp" alt="Knife shaving thin slices off the döner spit" loading="lazy"></div>
+  <div class="dive-img"><video id="diveImg" data-vid src="demo-doner/slicing.mp4" poster="demo-doner/dive-poster.webp" muted loop playsinline preload="metadata" aria-label="Knife shaving thin slices off the rotating döner spit"></video></div>
   <div class="dive-ui">
     <p class="spec">Specifications // 02. The Dive</p>
     <div class="temp-read"><span id="tempNum">20</span><sup>°C</sup></div>
@@ -328,8 +334,8 @@ footer .f-mid{font-family:var(--font-g);letter-spacing:.16em;text-transform:uppe
     <h2 class="big"><span class="mask"><span>Born from</span></span><span class="mask"><span class="grad-gold">two worlds</span></span></h2>
     <p class="lede" style="margin:0 auto">One sandwich, two cities. The fire and patience of Anatolia — the engineering and appetite of Berlin.</p>
     <div class="flags">
-      <div class="flag"><span class="fe" aria-hidden="true">🇹🇷</span><div><b>ISTANBUL</b><span>THE RECIPE — CENTURIES ON THE SPIT</span></div></div>
-      <div class="flag"><span class="fe" aria-hidden="true">🇩🇪</span><div><b>BERLIN</b><span>THE SANDWICH — BORN 1972, KREUZBERG</span></div></div>
+      <div class="flag"><span class="fe" aria-hidden="true">TR</span><div><b>ISTANBUL</b><span>THE RECIPE — CENTURIES ON THE SPIT</span></div></div>
+      <div class="flag"><span class="fe" aria-hidden="true">DE</span><div><b>BERLIN</b><span>THE SANDWICH — BORN 1972, KREUZBERG</span></div></div>
     </div>
   </div>
 </section>
@@ -373,8 +379,8 @@ footer .f-mid{font-family:var(--font-g);letter-spacing:.16em;text-transform:uppe
 <!-- ============ 06 · THE STORY ============ -->
 <section class="scene" id="story" data-chapter="06" data-name="THE STORY" aria-label="The Story">
   <div class="stack-zone" id="stackZone">
-    <article class="story-panel sp1"><p class="s-num">THE STORY — 01 / 03 · ISTANBUL 🇹🇷</p><h3>The recipe is older than the sandwich</h3><p>Vertical roasting was perfected in Ottoman kitchens — meat stacked, turned slowly against the fire, shaved as it crisped. That patience is our foundation.</p></article>
-    <article class="story-panel sp2"><p class="s-num">THE STORY — 02 / 03 · BERLIN 🇩🇪</p><h3>1972 — the sandwich is born</h3><p>In Kreuzberg, the spit met the bread. Meat, salad and sauce folded into flatbread for workers on the move — a street icon was engineered by necessity.</p></article>
+    <article class="story-panel sp1"><p class="s-num">THE STORY — 01 / 03 · ISTANBUL</p><h3>The recipe is older than the sandwich</h3><p>Vertical roasting was perfected in Ottoman kitchens — meat stacked, turned slowly against the fire, shaved as it crisped. That patience is our foundation.</p></article>
+    <article class="story-panel sp2"><p class="s-num">THE STORY — 02 / 03 · BERLIN</p><h3>1972 — the sandwich is born</h3><p>In Kreuzberg, the spit met the bread. Meat, salad and sauce folded into flatbread for workers on the move — a street icon was engineered by necessity.</p></article>
     <article class="story-panel sp3"><p class="s-num">THE STORY — 03 / 03 · TODAY</p><h3>Two worlds. One spec.</h3><p>We kept the soul of both cities and rebuilt the döner like a product spec: dry-aged meat, measured heat, seven layers, zero filler. Tradition — with tolerances.</p></article>
   </div>
 </section>
@@ -446,6 +452,14 @@ footer .f-mid{font-family:var(--font-g);letter-spacing:.16em;text-transform:uppe
     </div>
   </div>
 
+  <div class="plate-band">
+    <video data-vid src="demo-doner/plated.mp4" poster="demo-doner/plate-poster.webp" muted loop playsinline preload="metadata" aria-label="Finished döner served on a plate with yogurt, rice and grilled vegetables"></video>
+    <div class="plate-cap">
+      <p class="spec">07. Order // 03. The Plate</p>
+      <h3>Off the spit. <span class="grad-gold">On the plate.</span></h3>
+    </div>
+  </div>
+
   <div class="finale">
     <p class="spec" style="justify-content:center">Order now — the specs</p>
     <div class="big-order"><span class="mask"><span>ORDER</span></span><span class="mask"><span class="grad-gold">YOUR DÖNER</span></span></div>
@@ -456,7 +470,7 @@ footer .f-mid{font-family:var(--font-g);letter-spacing:.16em;text-transform:uppe
     <div>THE DÖNER — Slow-roasted. Sliced. Stacked.</div>
     <div class="f-mid">Istanbul × Berlin — Fired daily</div>
     <div><a href="#spin" data-scroll>Back to the spin ↑</a></div>
-    <div>© 2026 THE DÖNER — Demo by <a href="index.html">TANJA WEB</a></div>
+    <div>© 2026 THE DÖNER — Demo by <a href="index.html">TANJA WEB</a> · Spit, slicing &amp; plate footage via Pexels</div>
   </footer>
 </section>
 
@@ -552,6 +566,21 @@ const CONFIG = { whatsapp: "212693981822", brand: "THE DÖNER" };
       " · Pickup: " + (state.date || "Today") + " " + state.time;
     window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
   });
+
+  /* ---------- SECTION VIDEOS — play on screen, pause off screen ---------- */
+  const vids = document.querySelectorAll("video[data-vid]");
+  if (reduced) {
+    vids.forEach(v => { v.removeAttribute("autoplay"); v.preload = "metadata"; });
+  } else if ("IntersectionObserver" in window) {
+    const vio = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) { const p = v.play(); if (p) p.catch(()=>{}); }
+      else v.pause();
+    }), { threshold: .12 });
+    vids.forEach(v => vio.observe(v));
+  } else {
+    vids.forEach(v => { const p = v.play(); if (p) p.catch(()=>{}); });
+  }
 
   /* ---------- ANIMATION LAYER ---------- */
   const pre = document.getElementById("preloader");
