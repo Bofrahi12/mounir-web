@@ -745,15 +745,21 @@
     var vids = document.querySelectorAll('video[data-vid]');
     if (!vids.length) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function inView(v){ var r = v.getBoundingClientRect(); return r.bottom > 0 && r.top < window.innerHeight; }
+    function tryP(v){ var p = v.play(); if (p) p.catch(function(){}); }
+    // first touch/click unlocks muted playback on strict phones
+    ['pointerdown','touchstart'].forEach(function(ev){ window.addEventListener(ev, function(){
+      vids.forEach(function(v){ if (v.paused && inView(v)) tryP(v); });
+    }, { passive: true }); });
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function(es){ es.forEach(function(e){
         var v = e.target;
-        if (e.isIntersecting) { var p = v.play(); if (p) p.catch(function(){}); }
+        if (e.isIntersecting) tryP(v);
         else v.pause();
       }); }, { threshold: .2 });
       vids.forEach(function(v){ io.observe(v); });
     } else {
-      vids.forEach(function(v){ var p = v.play(); if (p) p.catch(function(){}); });
+      vids.forEach(tryP);
     }
   })();
 </script>
