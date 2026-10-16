@@ -291,7 +291,7 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
   <a class="logo" href="#hero" data-scroll>مطعم <span>الباشا</span></a>
   <nav class="mainnav" aria-label="الأقسام">
     <a href="#hero" data-scroll><b>01</b>الواجهة</a>
-    <a href="#dive" data-scroll><b>02</b>على الفحم</a>
+    <a href="#dive" data-scroll><b>02</b>حرفة الشيف</a>
     <a href="#signature" data-scroll><b>03</b>التوقيع</a>
     <a href="#menu" data-scroll><b>04</b>الكتالوغ</a>
     <a href="#craft" data-scroll><b>05</b>الحرفة</a>
@@ -331,20 +331,20 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
   <div class="scroll-hint" aria-hidden="true">نزل لتحت<span class="wire"></span></div>
 </section>
 
-<!-- ============ 02 · على الفحم ============ -->
-<section class="scene" id="dive" data-chapter="02" data-name="على الفحم" aria-label="على الفحم">
-  <div class="dive-img"><video id="diveImg" data-vid src="demo-bacha/craft.mp4" poster="demo-bacha/craft-poster.webp" muted loop playsinline preload="metadata" aria-label="لحم كيتحمّر على شواية الفحم"></video></div>
+<!-- ============ 02 · حرفة الشيف ============ -->
+<section class="scene" id="dive" data-chapter="02" data-name="حرفة الشيف" aria-label="حرفة الشيف">
+  <div class="dive-img"><video id="diveImg" data-vid src="demo-bacha/craft.mp4" poster="demo-bacha/craft-poster.webp" muted loop playsinline preload="metadata" aria-label="سباغيتي ثمار البحر عند الباشا — سكبة الزيت الذهبية"></video></div>
   <div class="dive-ui">
-    <p class="spec">الحرفة // 02. على الفحم</p>
+    <p class="spec">الحرفة // 02. من المقلاة للطاولة</p>
     <div class="temp-read"><span id="tempNum">20</span><sup>°</sup></div>
-    <p class="temp-label" id="tempLabel">الفحم كيتنفّس — الجمر كيتكوّن</p>
+    <p class="temp-label" id="tempLabel">المقلاة كتسخّن — الزيت بدا كيلمع</p>
     <div class="dive-calls">
-      <span class="call" data-call="0"><b>01</b> · جمر حي — فحم غابة طبيعي</span>
-      <span class="call" data-call="1"><b>02</b> · تحميص أول — القشرة كتتشكّل</span>
-      <span class="call" data-call="2"><b>03</b> · تفاعل ميلارد — النكهة كتولد</span>
-      <span class="call" data-call="3"><b>04</b> · قلب وردي — التوقيت ديال الباشا</span>
+      <span class="call" data-call="0"><b>01</b> · قمرون طازج — كيتحمّر في المقلاة</span>
+      <span class="call" data-call="1"><b>02</b> · صوص كريمية — كتوجد في الحين</span>
+      <span class="call" data-call="2"><b>03</b> · سكبة الزيت الذهبية — توقيع الشيف</span>
+      <span class="call" data-call="3"><b>04</b> · من المقلاة للطاولة — كتوصل سخونة</span>
     </div>
-    <p class="dive-note">عند الباشا، النار ماشي وسيلة طهي — هي المكوّن الأول. نزل لتحت وقرّب من الجمر، وراقب الحرارة وهي كتطلع.</p>
+    <p class="dive-note">عند الباشا، السباغيتي ماشي طبق كيتسنّى — كتوجد في الحين قدّام عينيك: القمرون كيتحمّر، الصوص كتتخلّط، والزيت الذهبي كيتسكّب في آخر ثانية. نزّل لتحت وقرّب من الصحن.</p>
   </div>
 </section>
 
@@ -705,11 +705,11 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا" };
   // 02 DIVE — pinned zoom + temperature scrub
   const tempObj = { v: 20 };
   const tempNum = document.getElementById("tempNum"), tempLabel = document.getElementById("tempLabel");
-  const LABELS = [[20,"الفحم كيتنفّس — الجمر كيتكوّن"],[120,"كيشدّ الحرارة — التحميص بدا"],[210,"منطقة التحميص — ميلارد خدام"],[300,"300° — واجد للشواء"]];
+  const LABELS = [[20,"المقلاة كتسخّن — الزيت بدا كيلمع"],[55,"القمرون دخل — كيتحمّر على السريع"],[80,"الصوص الكريمية كتتخلّط — الثوم والبارميزان"],[100,"100° — سكبة الزيت الذهبية، توقيع الشيف"]];
   gsap.timeline({ scrollTrigger: { trigger: "#dive", start: "top top", end: "+=160%", pin: true, scrub: .6,
       onUpdate(self){
         const p = self.progress;
-        tempObj.v = Math.round(20 + p * 280);
+        tempObj.v = Math.round(20 + p * 80);
         tempNum.textContent = tempObj.v;
         let lab = LABELS[0][1]; LABELS.forEach(L => { if (tempObj.v >= L[0]) lab = L[1]; });
         tempLabel.textContent = lab;
