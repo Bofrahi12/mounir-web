@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Labo Ahlam — مختبر تركيبات الأسنان | Prothèses dentaires</title>
+<meta name="description" content="Labo Ahlam — أحلام مغري زرهوني: تركيبات أسنان كاملة وجزئية، سيليكون مرن، Snap-on Smile، واقي ليلي وأحجار الأسنان. الحجز عبر واتساب 0609238630.">
+<meta property="og:title" content="Labo Ahlam — مختبر تركيبات الأسنان">
+<meta property="og:description" content="تركيبات كاملة وجزئية · سيليكون مرن · Snap-on Smile · أحجار أسنان — الحجز عبر واتساب.">
+<meta property="og:image" content="demo-labo-ahlam/og-labo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d0a16">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Marcellus&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>">
+<style>
+:root{
+  --bg:#0d0a16; --bg2:#141021; --panel:#181228; --line:#2b2145; --hair:rgba(233,225,255,.12);
+  --vio:#8b5cf6; --vio2:#c4a6ff; --pink:#f0a6c8; --txt:#f4f0ff; --mut:#b6aad4;
+  --wa:#22c064;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Cairo','Segoe UI',Tahoma,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--vio);color:#fff}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.demobar{background:#000;color:#ffd977;text-align:center;font-size:13.5px;padding:9px 14px;border-bottom:1px solid #3a2f10;position:relative;z-index:200}
+#progress{position:fixed;top:0;inset-inline-start:0;height:2px;background:linear-gradient(90deg,var(--vio),var(--pink));width:0;z-index:300}
+header{position:fixed;top:37px;left:0;right:0;z-index:140;transition:background .3s,border-color .3s}
+header .bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 22px;max-width:1180px;margin:0 auto}
+header.scrolled{background:rgba(13,10,22,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{font-weight:900;font-size:21px;letter-spacing:.4px;white-space:nowrap}
+.logo b{color:var(--vio2)} .logo span{font-family:'Marcellus',serif;font-weight:400}
+nav.chaps{display:flex;gap:20px;font-size:13.5px;color:var(--mut);font-weight:700}
+nav.chaps a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--vio);color:#fff;padding:13px 26px;border-radius:999px;font-weight:800;font-size:15.5px;border:0;cursor:pointer;transition:transform .25s,background .25s;will-change:transform}
+.btn:hover{background:#7440e8;transform:translateY(-2px)}
+.btn-wa{background:var(--wa)} .btn-wa:hover{background:#1aa653}
+.btn-ghost{background:transparent;border:1px solid #574a80;color:var(--txt)}
+.btn-ghost:hover{background:#1d1533;border-color:var(--vio)}
+.eyebrow{color:var(--vio2);font-weight:800;letter-spacing:3px;font-size:12.5px;text-transform:uppercase;font-family:'Marcellus',serif}
+h2.title{font-size:clamp(27px,4.4vw,42px);font-weight:900;line-height:1.35;margin:10px 0 8px}
+.lede{color:var(--mut);font-size:16.5px;line-height:1.9;max-width:640px}
+section{padding:92px 0;position:relative}
+.micro{font-size:11.5px;letter-spacing:1.6px;color:var(--mut);text-transform:uppercase;font-weight:700}
+/* HERO */
+#hero{min-height:100svh;display:flex;align-items:center;padding:150px 0 80px;background:
+ radial-gradient(900px 480px at 85% -10%,rgba(139,92,246,.28),transparent 60%),
+ radial-gradient(700px 420px at 0% 110%,rgba(240,166,200,.13),transparent 60%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+.hero h1{font-size:clamp(34px,5.6vw,58px);font-weight:900;line-height:1.45;margin:14px 0 12px}
+.hero h1 em{font-style:normal;color:var(--vio2)}
+.hero p.sub{color:var(--mut);font-size:17.5px;line-height:2;max-width:520px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.stats{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap}
+.stat b{display:block;font-size:27px;font-weight:900;color:#fff}
+.stat span{color:var(--mut);font-size:13px;font-weight:700}
+.tilt-scene{perspective:1200px}
+.tilt{position:relative;transform-style:preserve-3d;transition:transform .35s ease;border-radius:22px}
+.tilt img.main{width:100%;height:520px;object-fit:cover;border-radius:22px;border:1px solid var(--line);box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.tilt .glare{position:absolute;inset:0;border-radius:22px;background:radial-gradient(420px 260px at var(--gx,70%) var(--gy,20%),rgba(255,255,255,.20),transparent 60%);pointer-events:none}
+.chip{position:absolute;background:rgba(20,14,38,.88);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:800;transform:translateZ(55px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.chip i{font-style:normal;color:var(--vio2)}
+.chip.c1{top:22px;inset-inline-start:18px}.chip.c2{bottom:88px;inset-inline-end:16px}.chip.c3{bottom:24px;inset-inline-start:22px}
+/* MARQUEE */
+.marquee{border-block:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:15px 0;direction:ltr}
+.mq-track{display:flex;gap:0;width:max-content;animation:mq 26s linear infinite}
+.mq-track span{font-family:'Marcellus',serif;font-size:19px;letter-spacing:2px;color:var(--vio2);padding:0 26px;white-space:nowrap}
+.mq-track span::after{content:'✦';margin-inline-start:52px;color:var(--pink)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* SERVICES */
+#services{background:var(--bg2)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+.svc{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .3s,border-color .3s}
+.svc:hover{transform:translateY(-6px);border-color:var(--vio)}
+.svc .ph{height:190px;overflow:hidden}
+.svc .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.svc:hover .ph img{transform:scale(1.07)}
+.svc .bd{padding:20px 20px 22px}
+.svc h3{font-size:19.5px;font-weight:900;margin-bottom:2px}
+.svc .fr{color:var(--vio2);font-size:12.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;font-family:'Marcellus',serif}
+.svc p{color:var(--mut);font-size:14.5px;line-height:1.95;margin:10px 0 16px;min-height:84px}
+.svc a.go{color:#fff;font-weight:800;font-size:14.5px}
+.svc a.go:hover{color:var(--pink)}
+/* 3D GALLERY */
+.gal-hint{color:var(--mut);font-size:14px;margin-top:6px}
+#gal3d{margin-top:34px;perspective:1400px}
+.gal-track{display:flex;gap:18px;overflow-x:auto;padding:26px 6px 30px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.gal-track::-webkit-scrollbar{display:none}
+.gcard{flex:0 0 min(74vw,430px);scroll-snap-align:center;border-radius:20px;overflow:hidden;position:relative;border:1px solid var(--line);transform-style:preserve-3d;will-change:transform;background:#000}
+.gcard img{width:100%;height:340px;object-fit:cover;pointer-events:none}
+.gcard figcaption{position:absolute;bottom:0;right:0;left:0;padding:34px 18px 14px;background:linear-gradient(transparent,rgba(5,3,12,.88));font-weight:800;font-size:15.5px}
+.gcard .glare{position:absolute;inset:0;background:radial-gradient(360px 220px at var(--gx,70%) var(--gy,20%),rgba(255,255,255,.18),transparent 60%);pointer-events:none}
+.gcard.is-center{border-color:var(--vio);box-shadow:0 24px 60px rgba(139,92,246,.28)}
+/* PROCESS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:38px}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px 20px}
+.step b.num{font-family:'Marcellus',serif;font-size:34px;color:var(--vio);display:block}
+.step h3{font-size:18px;font-weight:900;margin:8px 0 6px}
+.step p{color:var(--mut);font-size:14px;line-height:1.9}
+/* REELS + AVIS */
+#reels{background:var(--bg2)}
+.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.reel-box{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;min-height:420px}
+.reel-box .cap{font-weight:800;font-size:15px;padding:10px 4px 2px}
+.reel-box .cap span{display:block;color:var(--mut);font-weight:600;font-size:13px;margin-top:3px}
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.avis{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px}
+.avis .stars{color:#ffc94d;letter-spacing:3px}
+.avis p{font-size:16.5px;line-height:2;margin:12px 0}
+.avis small{color:var(--mut);font-weight:700}
+/* FAQ */
+#faq .acc{max-width:820px;margin:34px auto 0}
+.faq-it{border:1px solid var(--line);border-radius:14px;margin-bottom:12px;background:var(--panel);overflow:hidden}
+.faq-it button{width:100%;background:none;border:0;color:var(--txt);text-align:start;padding:19px 22px;font-family:inherit;font-size:16.5px;font-weight:800;cursor:pointer;display:flex;justify-content:space-between;gap:12px}
+.faq-it .ans{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-it .ans p{padding:0 22px 20px;color:var(--mut);line-height:2;font-size:15px}
+.faq-it.open .ans{max-height:300px}
+.faq-it .pl{color:var(--vio2);font-size:22px;line-height:1}
+/* RDV */
+#rdv{background:linear-gradient(180deg,var(--bg) ,#1a1130)}
+.rdv-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:10px}
+form.book{display:grid;gap:13px}
+form.book label{font-size:13.5px;font-weight:800;color:var(--mut)}
+form.book input,form.book select,form.book textarea{width:100%;background:#120c22;border:1px solid var(--line);border-radius:12px;color:var(--txt);padding:13px 15px;font-family:inherit;font-size:15.5px;margin-top:6px}
+form.book input:focus,form.book select:focus,form.book textarea:focus{outline:2px solid var(--vio);border-color:transparent}
+.info-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px}
+.info-card h3{font-size:19px;font-weight:900;margin-bottom:14px}
+.info-card .row{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px dashed var(--hair);font-size:15px}
+.info-card .row:last-child{border:0}
+.info-card .row b{color:#fff}.info-card .row span{color:var(--mut)}
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:44px 0 96px;background:#0a0714}
+.foot{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:flex-start}
+footer .mut{color:var(--mut);font-size:14px;line-height:2}
+#wa-pill{position:fixed;bottom:18px;inset-inline-start:18px;z-index:250;background:var(--wa);color:#fff;font-weight:900;padding:14px 22px;border-radius:999px;box-shadow:0 16px 34px rgba(0,0,0,.45);font-size:15.5px}
+.rv{opacity:0;transform:translateY(26px)}
+.js .rv{transition:opacity .8s ease,transform .8s ease}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none}.rv{opacity:1;transform:none;transition:none}}
+@media(max-width:900px){
+  nav.chaps{display:none}
+  .hero-grid,.rdv-grid{grid-template-columns:1fr}
+  .tilt img.main{height:400px}
+  .svc-grid,.reels-grid,.avis-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  section{padding:64px 0}
+}
+
+/* ===== 2026 layer: preloader, grain, cursor, film, trust ===== */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:500;display:flex;flex-direction:column;gap:18px;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .lg{font-size:30px;font-weight:900}#loader .lg b{color:var(--vio2)}
+#loader .bar2{width:180px;height:3px;background:#241a44;border-radius:99px;overflow:hidden}
+#loader .bar2 i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--vio),var(--pink));transition:width .3s}
+#grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:240;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");animation:gr 9s steps(6) infinite}
+@keyframes gr{0%{transform:translate(0,0)}20%{transform:translate(-2%,1%)}40%{transform:translate(1%,-2%)}60%{transform:translate(-1%,2%)}80%{transform:translate(2%,1%)}100%{transform:translate(0,0)}}
+#cursor{position:fixed;width:34px;height:34px;border:1.5px solid var(--vio2);border-radius:50%;pointer-events:none;z-index:400;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;mix-blend-mode:screen;display:none}
+@media(hover:hover) and (pointer:fine){#cursor{display:block}}
+#cursor.big{width:58px;height:58px;background:rgba(139,92,246,.16)}
+#film{background:#08060f;overflow:hidden}
+.film-pin{height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:70px 18px 30px}
+#filmCanvas{width:min(1060px,94vw);aspect-ratio:16/9;border-radius:20px;border:1px solid var(--line);box-shadow:0 40px 90px rgba(0,0,0,.55);background:#000}
+.film-caps{position:relative;height:64px;width:min(860px,92vw);text-align:center}
+.film-cap{position:absolute;inset:0;opacity:0;transition:opacity .5s;font-size:clamp(19px,3vw,27px);font-weight:900;line-height:1.6}
+.film-cap.on{opacity:1}
+.film-cap span{display:block;font-size:13px;color:var(--vio2);letter-spacing:3px;font-family:'Marcellus',serif;font-weight:400}
+.trustrow{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.trustrow .tr{flex:1;min-width:200px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:800;font-size:14.5px;text-align:center}
+.trustrow .tr i{font-style:normal;color:var(--vio2)}
+#langBtn{background:transparent;border:1px solid #574a80;color:var(--txt);border-radius:999px;padding:9px 16px;font-weight:800;font-family:inherit;cursor:pointer;font-size:13.5px}
+#langBtn:hover{border-color:var(--vio)}
+</style>
+</head>
+<body>
+<div id="loader"><div class="lg"><span style="font-family:'Marcellus',serif">LABO</span> <b>AHLAM</b> 🦷</div><div class="bar2"><i id="loadFill"></i></div><div class="micro">كنوجدو لك الابتسامة…</div></div>
+<div id="grain"></div><div id="cursor"></div>
+<div class="demobar">✦ نسخة تجريبية من VERTEX WEB — هذا الموقع ديمو قدّم لـ Labo Ahlam باش تشوف النتيجة قبل ما تقرر ✦</div>
+<div id="progress"></div>
+<header id="hdr">
+  <div class="bar">
+    <a class="logo" href="#hero"><span>LABO</span> <b>AHLAM</b> 🦷</a>
+    <nav class="chaps">
+      <a href="#services" data-i="nav1">الخدمات</a><a href="#galerie" data-i="nav2">المعرض ثلاثي الأبعاد</a><a href="#process" data-i="nav3">كيفاش كنخدمو</a><a href="#reels" data-i="nav4">من إنستغرام</a><a href="#faq" data-i="nav5">أسئلة</a><a href="#rdv" data-i="nav6">الحجز</a>
+    </nav>
+    <button id="langBtn" type="button">FR</button>
+    <a class="btn btn-wa" href="https://wa.me/212609238630?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D8%AA%D8%B1%D9%83%D9%8A%D8%A8%D8%A7%D8%AA%20%D8%A7%D9%84%D8%A3%D8%B3%D9%86%D8%A7%D9%86" target="_blank" rel="noopener">واتساب</a>
+  </div>
+</header>
+
+<section id="hero" class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow" data-i="hEyebrow">Labo Ahlam · Prothèses dentaires</div>
+      <h1 data-i="h1">ابتسامة <em>كتصايب بدقة</em>…<br>وكتبان طبيعية</h1>
+      <p class="sub">مختبر أحلام مغري زرهوني لتركيبات الأسنان: تركيبات كاملة وجزئية، سيليكون مرن، Snap-on Smile، واقي ليلي وأحجار الأسنان — خدمة كتشرح لك كلشي قبل ما تبدا، وزبونات كيجيو من مدن مختلفة على ود هاد الثقة.</p>
+      <div class="hero-cta">
+        <a class="btn btn-wa" href="#rdv" data-i="cta1">احجزي استشارتك في واتساب</a>
+        <a class="btn btn-ghost" href="#services" data-i="cta2">شوفي الخدمات</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b data-count="228">0</b><span data-i="st1">ألف متابِعة على إنستغرام</span></div>
+        <div class="stat"><b data-count="1310">0</b><span data-i="st2">منشور وفيديو تعليمي</span></div>
+        <div class="stat"><b data-count="7">0</b><span data-i="st3">خدمات متخصصة</span></div>
+      </div>
+    </div>
+    <div class="tilt-scene">
+      <div class="tilt" id="heroTilt">
+        <img class="main" src="demo-labo-ahlam/img/img1.webp" alt="تركيبات أسنان جزئية مرنة من Labo Ahlam" fetchpriority="high">
+        <div class="glare"></div>
+        <div class="chip c1"><i>✦</i> سيليكون مرن</div>
+        <div class="chip c2"><i>✦</i> Snap-on Smile</div>
+        <div class="chip c3"><i>✦</i> أحجار الأسنان</div>
+      </div>
+      <p class="micro" style="text-align:center;margin-top:14px">حرّكي الصورة بصبعك — تجربة ثلاثية الأبعاد</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="mq-track" id="mq">
+  <span>PROTHÈSE COMPLÈTE</span><span>FLEXIBLE SILICONE</span><span>SNAP-ON SMILE</span><span>GOUTTIÈRE</span><span>STRASS DENTAIRE</span><span>COURONNES CÉRAMIQUE</span>
+</div></div>
+
+
+<section id="film">
+  <div class="film-pin" id="filmPin">
+    <div class="eyebrow">Le film · جولة في المختبر</div>
+    <canvas id="filmCanvas" width="1280" height="720"></canvas>
+    <div class="film-caps">
+      <div class="film-cap on" data-cap="0"><span>SCÈNE 01</span>المختبر — هنا كتصايب الابتسامة</div>
+      <div class="film-cap" data-cap="1"><span>SCÈNE 02</span>القوالب والمقاسات — الدقة قبل كلشي</div>
+      <div class="film-cap" data-cap="2"><span>SCÈNE 03</span>النتيجة — تركيبة واجدة، طبيعية ومريحة</div>
+    </div>
+    <p class="micro">كملي النزول — الفيلم كيتحرك معاك</p>
+  </div>
+</section>
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow">Nos services · خدماتنا</div>
+    <h2 class="title rv" data-i="svcT">شنو كنصايبو في المختبر؟</h2>
+    <p class="lede rv">كل خدمة مشروحة ببساطة — بلا مصطلحات معقدة. اختاري الخدمة ووصلي مباشرة لواتساب باش تسولي على التفاصيل والثمن على حساب حالتك.</p>
+    <div class="svc-grid">
+      <article class="svc rv"><div class="ph"><img src="demo-labo-ahlam/img/img3.webp" alt="تركيبة أسنان كاملة" loading="lazy"></div><div class="bd">
+        <div class="fr">Prothèse complète</div><h3>التركيبة الكاملة</h3>
+        <p>طقم كامل علوي وسفلي للناس اللي فقدو أسنانهم. كاينين أنواع وألوان مختلفة، والاختيار كيكون على حساب ذوقك وشكل وجهك — كيف ما كتشرح أحلام في فيديوهاتها.</p>
+        <a class="go" target="_blank" rel="noopener" href="https://wa.me/212609238630?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%AA%D8%B1%D9%83%D9%8A%D8%A8%D8%A9%20%D8%A7%D9%84%D9%83%D8%A7%D9%85%D9%84%D8%A9">اسألي على هاد الخدمة ←</a></div></article>
+
+      <article class="svc rv"><div class="ph"><img src="demo-labo-ahlam/img/img2.webp" alt="تركيبات جزئية مرنة" loading="lazy"></div><div class="bd">
+        <div class="fr">Flexible · Silicone</div><h3>التركيبة الجزئية المرنة — سيليكون</h3>
+        <p>تركيبة خفيفة ومرنة كتلبس مزيان بلا ما تضغط. أحلام كتشرح في فيديو خاص أنها مصممة تتحمل الاستعمال اليومي: الماكلة السخونة والقاصحة والمشروبات السخونة.</p>
+        <a class="go" target="_blank" rel="noopener" href="https://wa.me/212609238630?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%AA%D8%B1%D9%83%D9%8A%D8%A8%D8%A9%20%D8%A7%D9%84%D9%85%D8%B1%D9%86%D8%A9%20%D8%B3%D9%8A%D9%84%D9%8A%D9%83%D9%88%D9%86">اسألي على هاد الخدمة ←</a></div></article>
+
+      <article class="svc rv"><div class="ph"><img src="demo-labo-ahlam/img/img6.webp" alt="تركيبة جزئية بهيكل معدني" loading="lazy"></div><div class="bd">
+        <div class="fr">Classique · Stellite</div><h3>التركيبة الجزئية الكلاسيكية</h3>
+        <p>الاختيار التقليدي بهيكل معدني (Stellite) للي كيحتاج ثبات أكبر. في المختبر كنشرحو لك الفرق بين المرنة والكلاسيكية باش تختاري اللي يناسب حالتك.</p>
+        <a class="go" target="_blank" rel="noopener" href="https://wa.me/212609238630?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%AA%D8%B1%D9%83%D9%8A%D8%A8%D8%A9%20%D8%A7%D9%84%D9%83%D9%84%D8%A7%D8%B3%D9%8A%D9%83%D9%8A%D8%A9">اسألي على هاد الخدمة ←</a></div></article>
+
+      <article class="svc rv"><div class="ph"><img src="demo-labo-ahlam/img/img1.webp" alt="Snap-on Smile" loading="lazy"></div><div class="bd">
+        <div class="fr">Snap-on Smile</div><h3>سناب-أون سمايل</h3>
+        <p>ابتسامة قابلة للإزالة كتلبس فوق الأسنان وكتبدل الشكل في الحين — بلا حفر وبلا ألم. شوفي شهادة زبون حقيقية في قسم الفيديوهات تحت.</p>
+        <a class="go" target="_blank" rel="noopener" href="https://wa.me/212609238630?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%B9%D9%84%D9%89%20Snap-on%20Smile">اسألي على هاد الخدمة ←</a></div></article>
+
+      <article class="svc rv"><div class="ph"><img src="demo-labo-ahlam/img/img7.webp" alt="قالب أسنان لصناعة الواقي الليلي" loading="lazy"></div><div class="bd">
+        <div class="fr">Gouttière de contention</div><h3>الواقي الليلي — Gouttière</h3>
+        <p>كيتلبس بالليل بعد التقويم باش الأسنان ما ترجعش لبلاصتها، وكيحمي حتى الناس اللي كيصرّو أسنانهم وهم ناعسين. كيتصايب هنا في المغرب على مقاس فمك.</p>
+        <a class="go" target="_blank" rel="noopener" href="https://wa.me/212609238630?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D9%88%D8%A7%D9%82%D9%8A%20%D8%A7%D9%84%D9%84%D9%8A%D9%84%D9%8A%20Goutti%C3%A8re">اسألي على هاد الخدمة ←</a></div></article>
+
+      <article class="svc rv"><div class="ph"><img src="demo-labo-ahlam/img/img5.webp" alt="داخل مختبر الأسنان" loading="lazy"></div><div class="bd">
+        <div class="fr">Couronnes · Facettes</div><h3>التيجان والوجوه الخزفية</h3>
+        <p>تيجان ووجوه (facettes) خزفية بلمسة طبيعية — كيتعرضو ويتشرحو لك بالتفصيل في المختبر قبل أي قرار، باش تشوفي النتيجة المتوقعة بعينيك.</p>
+        <a class="go" target="_blank" rel="noopener" href="https://wa.me/212609238630?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%AA%D9%8A%D8%AC%D8%A7%D9%86%20%D9%88%D8%A7%D9%84%D9%88%D8%AC%D9%88%D9%87%20%D8%A7%D9%84%D8%AE%D8%B2%D9%81%D9%8A%D8%A9">اسألي على هاد الخدمة ←</a></div></article>
+
+      <article class="svc rv"><div class="ph"><img src="demo-labo-ahlam/img/img4.webp" alt="قوالب أسنان دقيقة" loading="lazy"></div><div class="bd">
+        <div class="fr">Strass dentaire</div><h3>أحجار الأسنان — Strass</h3>
+        <p>لمعة صغيرة كتبدل الابتسامة: أحجار أسنان بأشكال وأحجام مختلفة — منها شكل الدمعة والأحجام الصغيرة الرقيقة. شوفي الفيديو ديالها في قسم إنستغرام.</p>
+        <a class="go" target="_blank" rel="noopener" href="https://wa.me/212609238630?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%D8%B9%D9%84%D9%89%20%D8%A3%D8%AD%D8%AC%D8%A7%D8%B1%20%D8%A7%D9%84%D8%A3%D8%B3%D9%86%D8%A7%D9%86%20Strass">اسألي على هاد الخدمة ←</a></div></article>
+
+      <article class="svc rv" style="display:flex;flex-direction:column;justify-content:center;background:linear-gradient(150deg,#241640,#17102b)"><div class="bd">
+        <div class="fr">Une question ?</div><h3>ما عارفة شنو يناسبك؟</h3>
+        <p style="min-height:0">هذا طبيعي — أغلب الزبونات كيبداو بسؤال بسيط في واتساب، وكنجاوبوهم بالشرح والصور قبل أي التزام.</p>
+        <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/212609238630?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D8%B4%D9%8A%D8%B1%20%D9%85%D8%B9%D8%A7%D9%83%D9%85">سولي في واتساب</a></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="galerie">
+  <div class="wrap">
+    <div class="eyebrow">Galerie 3D · من المختبر</div>
+    <h2 class="title rv" data-i="galT">الخدمة… بصور ثلاثية الأبعاد</h2>
+    <p class="gal-hint rv">جرّي الصور بجنب، وشدّي الصورة اللي في الوسط ودوّريها بصبعك — بحال كتمسّي التركيبة بيدك.</p>
+  </div>
+  <div id="gal3d"><div class="gal-track" id="galTrack">
+    <figure class="gcard"><img src="demo-labo-ahlam/img/img1.webp" alt="تركيبات جزئية مرنة" loading="lazy"><div class="glare"></div><figcaption>تركيبات جزئية مرنة — خفيفة ومريحة</figcaption></figure>
+    <figure class="gcard"><img src="demo-labo-ahlam/img/img2.webp" alt="مجموعة تركيبات كاملة وجزئية" loading="lazy"><div class="glare"></div><figcaption>كاملة وجزئية — أنواع على حساب كل حالة</figcaption></figure>
+    <figure class="gcard"><img src="demo-labo-ahlam/img/img3.webp" alt="طقم أسنان كامل" loading="lazy"><div class="glare"></div><figcaption>طقم كامل — لون وشكل طبيعي</figcaption></figure>
+    <figure class="gcard"><img src="demo-labo-ahlam/img/img4.webp" alt="قوالب الأسنان" loading="lazy"><div class="glare"></div><figcaption>القوالب — من هنا كتبدا الدقة</figcaption></figure>
+    <figure class="gcard"><img src="demo-labo-ahlam/img/img5.webp" alt="طاولة عمل المختبر" loading="lazy"><div class="glare"></div><figcaption>داخل المختبر — خدمة يدوية متقنة</figcaption></figure>
+    <figure class="gcard"><img src="demo-labo-ahlam/img/img6.webp" alt="تركيبة بهيكل معدني في اليد" loading="lazy"><div class="glare"></div><figcaption>هيكل معدني — ثبات الكلاسيكية</figcaption></figure>
+    <figure class="gcard"><img src="demo-labo-ahlam/img/img7.webp" alt="قالب أسنان معلم" loading="lazy"><div class="glare"></div><figcaption>كل سنّ بعلامتها — خدمة على المقاس</figcaption></figure>
+  </div></div>
+</section>
+
+<section id="process" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow">Le parcours · المراحل</div>
+    <h2 class="title rv" data-i="procT">كيفاش كتمشي الخدمة؟</h2>
+    <p class="lede rv">أربعة مراحل واضحة — بلا مفاجآت.</p>
+    <div class="steps">
+      <div class="step rv"><b class="num">01</b><h3>الاستشارة</h3><p>كتواصلي في واتساب أو رسالة خاصة، كتشرحي حالتك وشنو بغيتي، وكتجاوبك أحلام بالخيارات المناسبة.</p></div>
+      <div class="step rv"><b class="num">02</b><h3>المقاس والقالب</h3><p>كناخدو مقاس فمك بدقة ونصايبو القالب — هادي هي القاعدة اللي كتبنى عليها التركيبة كاملة.</p></div>
+      <div class="step rv"><b class="num">03</b><h3>الصناعة في المختبر</h3><p>التركيبة كتصايب يدوياً في المختبر بالمادة اللي اخترتي: مرنة، كلاسيكية، أو غيرها.</p></div>
+      <div class="step rv"><b class="num">04</b><h3>التجربة والمتابعة</h3><p>كتجربي التركيبة وكنعدّلو عليها حتى تولي مريحة وطبيعية في فمك — والمتابعة كتبقى مفتوحة.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reels">
+  <div class="wrap">
+    <div class="eyebrow">Instagram · @labo_ahlam</div>
+    <h2 class="title rv" data-i="reelT">من إنستغرامها — الشرح بصوتها</h2>
+    <p class="lede rv">228 ألف متابِعة كيتعلمو منها كل نهار. هاد الفيديوهات من صفحتها مباشرة:</p>
+    <div class="reels-grid">
+      <div class="reel-box rv">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DefEOEbizQ9/" data-instgrm-version="14" style="width:100%;margin:0 auto;max-width:340px"></blockquote>
+        <div class="cap">أحجار الأسنان — Strass<span>الأشكال والأحجام اللي كاينة، مشروحة بصوتها</span></div>
+      </div>
+      <div class="reel-box rv">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DemxcM2C7tN/" data-instgrm-version="14" style="width:100%;margin:0 auto;max-width:340px"></blockquote>
+        <div class="cap">تركيبة السيليكون<span>واش كتتحمل السخونية والماكلة القاصحة؟ الجواب ديالها</span></div>
+      </div>
+      <div class="reel-box rv">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZQmIxJqlJh/" data-instgrm-version="14" style="width:100%;margin:0 auto;max-width:340px"></blockquote>
+        <div class="cap">شهادة زبونة<span>«كنبغي نشكر أحلام على الابتسامة الجميلة اللي صايبت ليا»</span></div>
+      </div>
+    </div>
+
+    <h2 class="title rv" style="margin-top:56px">شنو قالو الزبونات؟</h2>
+    <div class="avis-grid">
+      <div class="avis rv"><div class="stars">★★★★★</div><p>«كنبغي نشكر أحلام على الابتسامة الجميلة اللي صايبت ليا — شكراً بزاف»</p><small>من تعليقات زبوناتها على إنستغرام</small></div>
+      <div class="avis rv"><div class="stars">★★★★★</div><p>«شكراً أحلام على اللطافة والأخلاق»</p><small>من تعليقات زبوناتها على إنستغرام</small></div>
+      <div class="avis rv"><div class="stars">★★★★★</div><p>زبون جرب Snap-on Smile وشارك النتيجة بفيديو: تجربة وصفها بالممتازة، والابتسامة ولات واجدة من بعد أسبوعين.</p><small>شهادة مصوّرة منشورة على إنستغرام</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow" style="text-align:center">Questions fréquentes</div>
+    <h2 class="title rv" style="text-align:center" data-i="faqT">الأسئلة اللي كتعاود بزاف</h2>
+    <div class="acc">
+      <div class="faq-it"><button type="button">واش تركيبة السيليكون كتتحمل الماكلة السخونة والقاصحة؟<span class="pl">+</span></button><div class="ans"><p>على حساب شرح أحلام في فيديوهاتها: التركيبة المرنة مصممة للاستعمال اليومي العادي — الماكلة السخونة، الحوايج القاصحة بحال المكسرات، والمشروبات السخونة بحال القهوة — مع العناية العادية بأي تركيبة.</p></div></div>
+      <div class="faq-it"><button type="button">شحال ديال الوقت كتاخد التركيبة حتى توجد؟<span class="pl">+</span></button><div class="ans"><p>المدة كتختلف على حساب النوع والحالة — مثلاً شهادة زبون Snap-on Smile وجدت في أسبوعين. الوقت المضبوط كيتقال لك من الأول ملي كتحجزي.</p></div></div>
+      <div class="faq-it"><button type="button">الواقي الليلي (Gouttière) علاش كيصلح بالضبط؟<span class="pl">+</span></button><div class="ans"><p>جوج أسباب: بعد تقويم الأسنان كيحافظ على النتيجة وكيمنع الأسنان ترجع تتحرك، وبالنسبة للناس اللي كيصرّو أسنانهم بالليل كيحمي الأسنان من التآكل. كيتصايب هنا في المغرب على مقاسك.</p></div></div>
+      <div class="faq-it"><button type="button">كيفاش كنحجز موعد؟<span class="pl">+</span></button><div class="ans"><p>ببساطة: واتساب أو رسالة خاصة في إنستغرام. أوقات العمل: 10:00–13:00 و 15:00–19:00. صيفطي الخدمة اللي بغيتي وغادي تجاوبك بالتفاصيل.</p></div></div>
+      <div class="faq-it"><button type="button">واش الأسعار ثابتة؟<span class="pl">+</span></button><div class="ans"><p>الثمن كيتحسب على حساب الحالة والنوع والمادة — داكشي علاش كنفضلو تجاوبك أحلام مباشرة من بعد ما تعرف حالتك، بلا أرقام عامة ما كتنطبقش على كلشي.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="rdv">
+  <div class="wrap">
+    <div class="eyebrow">Rendez-vous · الحجز</div>
+    <h2 class="title rv" data-i="rdvT">احجزي في دقيقة — بلا تعقيد</h2>
+    <div class="rdv-grid">
+      <div class="trustrow rv">
+        <div class="tr"><i>✦</i> الرد في أوقات العمل</div>
+        <div class="tr"><i>✦</i> الشرح والصور قبل أي قرار</div>
+        <div class="tr"><i>✦</i> الاستشارة بلا التزام</div>
+      </div>
+      <form class="book rv" id="bookForm">
+        <label>الاسم الكامل<input id="fName" type="text" placeholder="مثال: فاطمة الزهراء" autocomplete="name"></label>
+        <label>رقم الهاتف / واتساب<input id="fPhone" type="tel" placeholder="06 XX XX XX XX" autocomplete="tel"></label>
+        <label>الخدمة اللي بغيتي
+          <select id="fSvc">
+            <option>التركيبة الكاملة</option><option>التركيبة الجزئية المرنة — سيليكون</option><option>التركيبة الجزئية الكلاسيكية</option><option>Snap-on Smile</option><option>الواقي الليلي — Gouttière</option><option>التيجان والوجوه الخزفية</option><option>أحجار الأسنان — Strass</option><option>استشارة — ما زال ما عارفة</option>
+          </select></label>
+        <label>المدينة<input id="fCity" type="text" placeholder="منين غادي تجي؟"></label>
+        <label>رسالتك<textarea id="fMsg" rows="3" placeholder="شرحي حالتك باختصار…"></textarea></label>
+        <button class="btn btn-wa" type="submit" style="justify-content:center;font-size:17px;padding:16px">صيفطي الطلب في واتساب ←</button>
+        <p class="micro" style="text-align:center">الطلب كيوصل مباشرة لواتساب المختبر 0609238630</p>
+        <a class="btn btn-ghost" style="justify-content:center" target="_blank" rel="noopener" href="https://wa.me/212609238630?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D8%AA%D8%B1%D9%83%D9%8A%D8%A8%D8%A7%D8%AA%20%D8%A7%D9%84%D8%A3%D8%B3%D9%86%D8%A7%D9%86">أو صيفطي غير «السلام» دابا — بلا ما تعمري والو</a>
+      </form>
+      <div class="info-card rv">
+        <h3>معلومات التواصل</h3>
+        <div class="row"><b>الهاتف / واتساب</b><span dir="ltr">0609 238 630</span></div>
+        <div class="row"><b>أوقات العمل</b><span>10:00–13:00 · 15:00–19:00</span></div>
+        <div class="row"><b>إنستغرام</b><span dir="ltr">@labo_ahlam</span></div>
+        <div class="row"><b>تيك توك</b><span dir="ltr">@labo_ahlam</span></div>
+        <div class="row"><b>المتابِعون</b><span>+228 ألف على إنستغرام</span></div>
+        <p style="color:var(--mut);line-height:2;font-size:14.5px;margin-top:16px">زبونات كيجيو عند أحلام من مدن مختلفة — الموعد كيتأكد في واتساب، والعنوان كيتصيفط لك مع تأكيد الحجز.</p>
+        <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+          <a class="btn btn-ghost" href="https://www.instagram.com/labo_ahlam" target="_blank" rel="noopener">إنستغرام</a>
+          <a class="btn btn-ghost" href="http://www.tiktok.com/@labo_ahlam" target="_blank" rel="noopener">تيك توك</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="logo"><span>LABO</span> <b style="color:var(--vio2)">AHLAM</b> 🦷</div>
+      <p class="mut">مختبر أحلام مغري زرهوني لتركيبات الأسنان<br>Prothèses dentaires — fait avec précision au Maroc.</p>
+    </div>
+    <div class="mut">
+      <b style="color:#fff">تواصل</b><br>
+      واتساب: <span dir="ltr">0609 238 630</span><br>
+      إنستغرام وتيك توك: <span dir="ltr">@labo_ahlam</span><br>
+      العمل: 10:00–13:00 · 15:00–19:00
+    </div>
+    <div class="mut">
+      <b style="color:#fff">الخدمات</b><br>تركيبة كاملة · مرنة سيليكون · كلاسيكية<br>Snap-on Smile · Gouttière · Strass · Couronnes
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:28px"><p class="micro">© Labo Ahlam — Demo conçu par VERTEX WEB · vertex-web-tanger.onrender.com</p></div>
+</footer>
+
+<a id="wa-pill" data-i="pill" href="https://wa.me/212609238630?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1" target="_blank" rel="noopener">💬 واتساب المختبر</a>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+<script src="demo-burger/gl/lib/gsap.min.js"></script>
+<script src="demo-burger/gl/lib/ScrollTrigger.min.js"></script>
+<script src="demo-burger/gl/lib/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* progress + header */
+  var prog=document.getElementById('progress'),hdr=document.getElementById('hdr');
+  function onScroll(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);prog.style.width=(p*100)+'%';hdr.classList.toggle('scrolled',h.scrollTop>30);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  /* smooth scroll */
+  if(window.Lenis&&!reduce){try{var lenis=new Lenis({duration:1.1});window.__lenis=lenis;function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}catch(e){}}
+  /* reveals */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+  /* counters */
+  var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io2.unobserve(e.target);var el=e.target,end=+el.dataset.count,t0=null;function step(ts){if(!t0)t0=ts;var k=Math.min((ts-t0)/1400,1);el.textContent=Math.round(end*(0.2+0.8*k)).toLocaleString('fr-FR');if(k<1)requestAnimationFrame(step);else el.textContent='+'+end.toLocaleString('fr-FR');}requestAnimationFrame(step);});},{threshold:.4});
+  document.querySelectorAll('[data-count]').forEach(function(el){io2.observe(el);});
+  /* marquee duplicate */
+  var mq=document.getElementById('mq');mq.innerHTML+=mq.innerHTML;
+  /* HERO 3D tilt */
+  var tilt=document.getElementById('heroTilt');
+  if(tilt&&!reduce){
+    var scene=tilt.parentElement;
+    function move(x,y,r){var rx=((y/r.height)-.5)*-14,ry=((x/r.width)-.5)*16;tilt.style.transform='rotateX('+rx+'deg) rotateY('+ry+'deg)';tilt.style.setProperty('--gx',((x/r.width)*100)+'%');tilt.style.setProperty('--gy',((y/r.height)*100)+'%');}
+    scene.addEventListener('pointermove',function(e){var r=tilt.getBoundingClientRect();move(e.clientX-r.left,e.clientY-r.top,r);});
+    scene.addEventListener('pointerleave',function(){tilt.style.transform='rotateX(0) rotateY(0)';});
+  }
+  /* 3D GALLERY coverflow + center drag tilt (Bacha V3 pattern) */
+  var track=document.getElementById('galTrack'),cards=[].slice.call(track.children);
+  function galUpdate(){
+    var tr=track.getBoundingClientRect(),mid=tr.left+tr.width/2;
+    cards.forEach(function(c){
+      var r=c.getBoundingClientRect(),cx=r.left+r.width/2,d=(cx-mid)/(tr.width/2),ad=Math.min(Math.abs(d),1);
+      var isC=Math.abs(d)<0.28;c.classList.toggle('is-center',isC);
+      if(c.dataset.grabbed==='1')return;
+      c.style.transform='rotateY('+(d*-22)+'deg) scale('+(1-ad*0.10)+')';
+      c.style.opacity=String(1-ad*0.35);
+      c.style.touchAction=isC?'none':'';
+    });
+  }
+  track.addEventListener('scroll',function(){requestAnimationFrame(galUpdate);},{passive:true});
+  window.addEventListener('resize',galUpdate);galUpdate();
+  cards.forEach(function(c){
+    var sx=0,sy=0,drag=false,moved=false;
+    c.addEventListener('pointerdown',function(e){if(!c.classList.contains('is-center'))return;sx=e.clientX;sy=e.clientY;drag=true;moved=false;c.dataset.grabbed='1';c.setPointerCapture(e.pointerId);});
+    c.addEventListener('pointermove',function(e){if(!drag)return;var dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)+Math.abs(dy)>6)moved=true;var ry=Math.max(-34,Math.min(34,dx/6)),rx=Math.max(-24,Math.min(24,-dy/6));c.style.transform='rotateX('+rx+'deg) rotateY('+ry+'deg) scale(1.02)';c.style.setProperty('--gx',(50+dx/4)+'%');c.style.setProperty('--gy',(50+dy/4)+'%');});
+    function end(e){if(!drag)return;drag=false;delete c.dataset.grabbed;c.style.transform='';galUpdate();if(moved){var kill=function(ev){ev.stopPropagation();ev.preventDefault();c.removeEventListener('click',kill,true);};c.addEventListener('click',kill,true);setTimeout(function(){c.removeEventListener('click',kill,true);},350);}}
+    c.addEventListener('pointerup',end);c.addEventListener('pointercancel',end);
+    c.addEventListener('click',function(){if(!c.classList.contains('is-center')){c.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});}});
+    c.addEventListener('contextmenu',function(e){e.preventDefault();});
+  });
+  /* FAQ */
+  document.querySelectorAll('.faq-it button').forEach(function(b){b.addEventListener('click',function(){var it=b.parentElement,was=it.classList.contains('open');document.querySelectorAll('.faq-it.open').forEach(function(o){o.classList.remove('open');o.querySelector('.pl').textContent='+';});if(!was){it.classList.add('open');b.querySelector('.pl').textContent='−';}});});
+  /* BOOKING -> WhatsApp */
+  document.getElementById('bookForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=function(id){return document.getElementById(id).value.trim();};
+    var lines=['السلام، بغيت نحجز عند Labo Ahlam','الاسم: '+(v('fName')||'—'),'الهاتف: '+(v('fPhone')||'—'),'الخدمة: '+v('fSvc'),'المدينة: '+(v('fCity')||'—')];
+    if(v('fMsg'))lines.push('رسالة: '+v('fMsg'));
+    window.open('https://wa.me/212609238630?text='+encodeURIComponent(lines.join('\n')),'_blank');
+  });
+})();
+</script>
+
+<script>
+(function(){
+  /* PRELOADER */
+  var loader=document.getElementById('loader'),fill=document.getElementById('loadFill'),pr=0;
+  var iv=setInterval(function(){pr=Math.min(pr+Math.random()*22,92);fill.style.width=pr+'%';},160);
+  window.addEventListener('load',function(){clearInterval(iv);fill.style.width='100%';setTimeout(function(){loader.classList.add('done');},350);});
+  setTimeout(function(){loader.classList.add('done');},3800);
+  /* CURSOR */
+  var cur=document.getElementById('cursor');
+  if(cur&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.addEventListener('pointermove',function(e){cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
+    document.querySelectorAll('a,button,.gcard,.tilt').forEach(function(el){el.addEventListener('pointerenter',function(){cur.classList.add('big');});el.addEventListener('pointerleave',function(){cur.classList.remove('big');});});
+  }
+  /* SCROLL FILM — canvas frame sequence, reversible */
+  var cv=document.getElementById('filmCanvas');
+  if(cv&&window.gsap&&window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);if(window.__lenis){window.__lenis.on('scroll',ScrollTrigger.update);}window.addEventListener('load',function(){setTimeout(function(){ScrollTrigger.refresh();},400);});
+    var ctx=cv.getContext('2d'),N=60,frames=[],loaded=0,state={f:0};
+    for(var i=0;i<N;i++){var im=new Image();im.src='demo-labo-ahlam/film/f'+String(i).padStart(3,'0')+'.webp';im.onload=function(){loaded++;if(loaded===1)draw(0);};frames.push(im);}
+    function draw(f){var img=frames[Math.max(0,Math.min(N-1,Math.round(f)))];if(img&&img.complete&&img.naturalWidth)ctx.drawImage(img,0,0,1280,720);}
+    var caps=document.querySelectorAll('.film-cap');
+    gsap.to(state,{f:N-1,ease:'none',
+      scrollTrigger:{trigger:'#filmPin',start:'top top',end:'+=160%',pin:true,scrub:0.6},
+      onUpdate:function(){draw(state.f);var seg=state.f<20?0:(state.f<40?1:2);caps.forEach(function(c){c.classList.toggle('on',+c.dataset.cap===seg);});}});
+  }
+  /* FR TOGGLE */
+  var FR={
+    nav1:'Services',nav2:'Galerie 3D',nav3:'Le parcours',nav4:'Instagram',nav5:'Questions',nav6:'Rendez-vous',
+    h1:'Un sourire <em>façonné avec précision</em>…<br>au rendu naturel',
+    cta1:'Réserver sur WhatsApp',cta2:'Voir les services',
+    st1:'abonnées sur Instagram',st2:'publications & vidéos',st3:'services spécialisés',
+    svcT:'Que fabriquons-nous au laboratoire ?',galT:'Le travail… en images 3D',procT:'Comment ça se passe ?',
+    reelT:'Sur son Instagram — ses explications',faqT:'Les questions qui reviennent souvent',rdvT:'Réservez en une minute — sans complication',
+    pill:'💬 WhatsApp du labo'
+  };
+  var btn=document.getElementById('langBtn'),fr=false;
+  btn.addEventListener('click',function(){
+    fr=!fr;var html=document.documentElement;
+    document.querySelectorAll('[data-i]').forEach(function(el){
+      var k=el.dataset.i;if(!FR[k])return;
+      if(fr){if(el.dataset.ar===undefined)el.dataset.ar=el.innerHTML;el.innerHTML=FR[k];}
+      else if(el.dataset.ar!==undefined){el.innerHTML=el.dataset.ar;}
+    });
+    html.lang=fr?'fr':'ar';html.dir=fr?'ltr':'rtl';btn.textContent=fr?'عربي':'FR';
+  });
+})();
+</script>
+</body>
+</html>
