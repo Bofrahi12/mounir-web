@@ -16,15 +16,15 @@
 <link rel="canonical" href="https://vertex-web-tanger.onrender.com/demo-bacha.html">
 <link rel="alternate" hreflang="ar" href="https://vertex-web-tanger.onrender.com/demo-bacha.html">
 <link rel="alternate" hreflang="x-default" href="https://vertex-web-tanger.onrender.com/demo-bacha.html">
-<meta property="og:image" content="https://vertex-web-tanger.onrender.com/demo-bacha/loc.webp">
-<meta property="og:image:width" content="1080">
-<meta property="og:image:height" content="861">
-<meta property="og:image:alt" content="من داخل مطعم الباشا — كونطوار الدار في البرانص 2، طنجة">
+<meta property="og:image" content="https://vertex-web-tanger.onrender.com/demo-bacha/og-bacha.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="مطعم الباشا — الشيف أيوب بنعمر · البرانص 2، طنجة · كل طبق له حكاية">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="مطعم الباشا — الشيف أيوب بنعمر · طنجة">
 <meta name="twitter:description" content="كل طبق له حكاية — لحسة الباشا، برغر، طاكوس وبيتزا في البرانص 2، طنجة. اطلب عبر واتساب.">
-<meta name="twitter:image" content="https://vertex-web-tanger.onrender.com/demo-bacha/loc.webp">
-<meta name="twitter:image:alt" content="من داخل مطعم الباشا — كونطوار الدار في البرانص 2، طنجة">
+<meta name="twitter:image" content="https://vertex-web-tanger.onrender.com/demo-bacha/og-bacha.jpg">
+<meta name="twitter:image:alt" content="مطعم الباشا — الشيف أيوب بنعمر · البرانص 2، طنجة · كل طبق له حكاية">
 <meta name="theme-color" content="#0C0A06">
 <link rel="icon" type="image/svg+xml" href="demo-bacha/favicon.svg">
 <link rel="apple-touch-icon" href="demo-bacha/apple-touch-icon.png">
@@ -601,6 +601,8 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 .sb-btn{background:var(--gold,#d7a441);color:#1A1206;border:0;border-radius:99px;font-weight:900;padding:11px 22px;cursor:pointer;font-size:.95rem;white-space:nowrap;font-family:inherit}
 .toast{bottom:92px!important}
 .ig-link{color:var(--gold,#d7a441);font-weight:700}
+.onetap-btn{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:0;border-radius:14px;padding:16px 18px;font-family:inherit;font-weight:900;font-size:1.05rem;cursor:pointer;box-shadow:0 14px 34px rgba(18,140,126,.35)}
+.onetap-hint{margin:8px 0 4px;text-align:center;font-size:.8rem;color:var(--muted,#b6b0a1)}
 body{padding-bottom:84px}
 @media(max-width:760px){.fricard{flex-direction:column;align-items:flex-start}#sbTxt{font-size:.8rem}#stickybar{bottom:60px}.toast{bottom:128px!important}}
 </style>
@@ -921,6 +923,8 @@ body{padding-bottom:84px}
           <div class="sline"><span data-i18n="sumWhenL">الموعد</span><b id="sumWhen">اليوم · 13:00</b></div>
           <div class="stotal"><span data-i18n="sumTotalL">المجموع</span><b id="sumTotal">0 درهم</b></div>
         </div>
+        <button class="onetap-btn" id="oneTapBtn" type="button" data-i18n="oneTap">🟢 اطلب دابا في واتساب — بلا ما تعمّر والو</button>
+        <p class="onetap-hint" data-i18n="oneTapHint">المعلومات أعلاها اختيارية مع هاد الزر — زيدها غير إلا بغيتي تدقّق الطلب.</p>
         <button class="order-btn magnetic" id="orderBtn" type="button" data-i18n="confirmBtn">أكّد الطلب في واتساب ←</button>
       </aside>
     </div>
@@ -1047,6 +1051,7 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
       cartTitle: "سلة الطلب", cartEmpty: "السلة خاوية — زيد أول طبق من اللائحة.", delBadge: "التوصيل متوفر",
       mDelB: "التوصيل لباب الدار", mDelS: "كيوصلك الطلب سخون حتى لعندك", mPickB: "الاستلام من المطعم", mPickS: "البرانص 2 · قريب من مركز الحليب",
       geoBtn: "◎ استعمل موقعي الحالي", addrNote: "ثمن ومدة التوصيل كيتأكدو معاك في واتساب قبل ما يتحضّر الطلب. موقعك كيتزاد غير في رسالة الطلب، ما كيتخزّن حتى في بلاصة.",
+      oneTap: "🟢 اطلب دابا في واتساب — بلا ما تعمّر والو", oneTapHint: "المعلومات أعلاها اختيارية مع هاد الزر — زيدها غير إلا بغيتي تدقّق الطلب.",
       barEmpty: "أطباق الشيف — بصور حقيقية", barOrder: "اطلب دابا", barInCart: "{n} في السلة", barCheckout: "كمّل الطلب",
       friT: "كسكس الجمعة 🍲", friP: "طبق الدار ديال نهار الجمعة — كيتحضّر غير في هاد النهار، على الطريقة التقليدية. زيدو لطلبك واختار نهار الجمعة كموعد.", friAdd: "+ زيدها للطلب",
       friToday: "اليوم الجمعة — الكسكس متوفر اليوم!", friIn: "باقي {n} على نهار الجمعة", friD: "يوم", friH: "ساعة", friM: "دقيقة",
@@ -1067,6 +1072,7 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
       cartTitle: "Votre panier", cartEmpty: "Le panier est vide — ajoutez un premier plat.", delBadge: "Livraison disponible",
       mDelB: "Livraison à domicile", mDelS: "Votre commande arrive chaude chez vous", mPickB: "À emporter au restaurant", mPickS: "Branes 2 · près du Centre Laitier",
       geoBtn: "◎ Utiliser ma position actuelle", addrNote: "Les frais et le délai de livraison sont confirmés sur WhatsApp avant la préparation. Votre position n'est ajoutée qu'au message de commande, elle n'est jamais enregistrée.",
+      oneTap: "🟢 Commander sur WhatsApp — sans rien remplir", oneTapHint: "Avec ce bouton, les infos ci-dessus sont facultatives — ajoutez-les seulement pour préciser la commande.",
       barEmpty: "Les plats du chef, en photos réelles", barOrder: "Commander", barInCart: "{n} au panier", barCheckout: "Finaliser",
       friT: "Couscous du vendredi 🍲", friP: "Le plat maison du vendredi — préparé uniquement ce jour-là, à la traditionnelle. Ajoutez-le à votre commande et choisissez vendredi comme rendez-vous.", friAdd: "+ Ajouter",
       friToday: "C'est vendredi — le couscous est disponible aujourd'hui !", friIn: "Plus que {n} avant vendredi", friD: "j", friH: "h", friM: "min",
@@ -1661,9 +1667,9 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
 (function(){
   var DICT = {
     ar: { barEmpty: "أطباق الشيف — بصور حقيقية", barOrder: "اطلب دابا", barInCart: "{n} في السلة", barCheckout: "كمّل الطلب",
-      friToday: "اليوم الجمعة — الكسكس متوفر اليوم!", friIn: "باقي {n} على نهار الجمعة", friD: "يوم", friH: "ساعة", friM: "دقيقة" },
+      friToday: "اليوم الجمعة — الكسكس متوفر اليوم!", friIn: "باقي {n} على نهار الجمعة", friD: "يوم", friH: "ساعة", friM: "دقيقة", oneTapEmpty: "زيد أطباق أولاً 👆" },
     fr: { barEmpty: "Les plats du chef, en photos réelles", barOrder: "Commander", barInCart: "{n} au panier", barCheckout: "Finaliser",
-      friToday: "C'est vendredi — le couscous est disponible aujourd'hui !", friIn: "Plus que {n} avant vendredi", friD: "j", friH: "h", friM: "min" }
+      friToday: "C'est vendredi — le couscous est disponible aujourd'hui !", friIn: "Plus que {n} avant vendredi", friD: "j", friH: "h", friM: "min", oneTapEmpty: "Ajoutez d'abord des plats 👆" }
   };
   function curLang(){ var el = document.querySelector('[data-i18n="sumTotalL"]'); return (el && el.textContent.trim() === 'Total') ? 'fr' : 'ar'; }
   function PT(k, n){ var d = DICT[curLang()] || DICT.ar; var v = d[k] || DICT.ar[k] || k; if (n !== undefined) v = v.replace('{n}', n); return v; }
@@ -1696,6 +1702,43 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
     el.textContent=PT('friIn', s);
   }
   setInterval(updBar, 900); setInterval(updFri, 30000);
+
+  var MENU_AR = { lahssa: "لحسة الباشا", burger: "برغر الباشا", pizza: "بيتزا ثمار البحر", spaghetti: "سباغيتي ثمار البحر", formule: "فورمول الباشا", kampiro: "كامبيرو الباشا", crispy: "برغر كرسبي", emince: "إمينسي الدجاج", pasticho: "باستيشو", platter: "طبق مشترك الباشا", couscous: "كسكس الجمعة" };
+  var otBtn = document.getElementById('oneTapBtn');
+  function dTxt(id){ var e = document.getElementById(id); return e ? e.textContent.trim() : ''; }
+  function dVal(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; }
+  function oneTap(){
+    var rows = document.querySelectorAll('#cartLines .cart-line');
+    if (!rows.length) {
+      var pl = document.getElementById('pickList'); if (pl) pl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (otBtn) { var old = otBtn.textContent; otBtn.textContent = PT('oneTapEmpty'); setTimeout(function(){ otBtn.textContent = old; }, 2200); }
+      return;
+    }
+    var L = ["مطعم الباشا — طلب جديد", "", "الزبون: " + (dVal('custName') || "—"), "الهاتف: " + (dVal('custPhone') || "—"), "", "الأطباق:"];
+    rows.forEach(function(row){
+      var rm = row.querySelector('[data-rm]'); var key = rm ? rm.dataset.rm : '';
+      var qb = row.querySelector('.qty b'); var qty = qb ? qb.textContent.trim() : '1';
+      var nm = MENU_AR[key] || ((row.querySelector('.cl-info b') || {}).textContent || key);
+      L.push("- " + nm + " × " + qty);
+      var nt = row.querySelector('.cl-note');
+      if (nt) { var note = nt.textContent.replace(/^ملاحظة:\s*/, '').replace(/^Note :\s*/, ''); if (note) L.push("  ملاحظة: " + note); }
+    });
+    L.push("", "الإضافات:");
+    var ex = dTxt('sumExtras');
+    if (ex && ex !== "بدون" && ex !== "Aucun" && ex !== "—") { ex.split(/،\s*|,\s*/).forEach(function(x){ if (x) L.push("- " + x); }); } else { L.push("بدون إضافات"); }
+    var mTxt = dTxt('sumMethod'); var delivery = mTxt.indexOf('التوصيل') >= 0 || mTxt.indexOf('Livraison') >= 0;
+    L.push("", "طريقة الوصول:", delivery ? "التوصيل لباب الدار" : "الاستلام من المطعم");
+    if (delivery) { var ad = dVal('addrInput'); if (ad) L.push("", "العنوان:", ad); }
+    var when = dTxt('sumWhen').replace(/\s*·\s*/, ' ');
+    L.push("", "الموعد:", when || "اليوم");
+    var pTxt = dTxt('sumPay'); var transfer = pTxt.indexOf('تحويل') >= 0 || pTxt.indexOf('Virement') >= 0;
+    L.push("", "طريقة الأداء:", transfer ? "تحويل — يتأكد في واتساب" : "نقداً عند الاستلام");
+    var total = (dTxt('sumTotal').match(/\d+/) || ['0'])[0];
+    L.push("", "المجموع:", total + " درهم");
+    if (delivery) L.push("", "ثمن ومدة التوصيل يتأكدو مع المطعم في واتساب.");
+    window.open("https://wa.me/212719161654?text=" + encodeURIComponent(L.join("\n")), "_blank");
+  }
+  if (otBtn) otBtn.addEventListener('click', oneTap);
   updBar(); updFri();
 })();
 </script>
