@@ -322,6 +322,21 @@ html,body{overflow-x:clip}
 .fac-scroll i{display:block;width:14px;height:14px;border-inline-end:2px solid var(--gold,#d7a441);border-bottom:2px solid var(--gold,#d7a441);transform:rotate(45deg);animation:facBounce 1.8s ease-in-out infinite}
 @keyframes facBounce{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.65}50%{transform:rotate(45deg) translate(4px,4px);opacity:1}}
 @media (prefers-reduced-motion: reduce){.fac-scroll i{animation:none}}
+/* facade scroll-film (Websites in 2026 method) */
+#facade{position:relative;background:#04060b}
+#facade.scrollmode{height:290vh}
+.fac-sticky{position:sticky;top:0;height:100svh;overflow:hidden;perspective:1200px}
+.fac-3d{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+#facCanvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+.fac-content h1{font-size:clamp(38px,6.2vw,78px);font-weight:900;line-height:1.18;margin:12px 0 10px;text-shadow:0 4px 44px rgba(0,0,0,.65)}
+.fac-content h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--gold2,#f3cd7a)}
+.fac-content{bottom:92px}
+.fac-sub{color:#e8e2d4;font-size:clamp(15px,2.2vw,17.5px);max-width:520px;margin:0 auto;text-shadow:0 2px 16px rgba(0,0,0,.85)}
+.fac-meta{display:flex;gap:8px 16px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.fac-meta .micro{font-family:'Archivo',sans-serif;font-size:10.5px;letter-spacing:2.5px;color:#c9d2e2}
+.fac-end{position:absolute;inset-inline:0;bottom:110px;padding:0 22px;text-align:center;z-index:2;opacity:0;pointer-events:none}
+.fac-end-line{font-size:clamp(16px,4.6vw,22px);font-weight:800;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.9);margin-bottom:16px}
+.fac-load{position:absolute;top:84px;inset-inline-end:18px;z-index:3;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:2px;color:var(--gold2,#f3cd7a);background:rgba(4,6,11,.55);border:1px solid rgba(215,164,65,.4);padding:4px 10px;border-radius:999px}
 </style>
 <style id="vx-pre-css">
 #vxPre{position:fixed;inset:0;z-index:99999;background:#070b14;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:transform .8s cubic-bezier(.76,0,.24,1)}
@@ -349,7 +364,7 @@ html,body{overflow-x:clip}
 
 <header class="nav" id="hdr">
   <div class="nav-inner">
-    <a href="#stage" class="logo"><img src="logo-icon.svg?v=2" alt="شعار فيرتكس ويب" width="34" height="34">فيرتكس <span>ويب</span></a>
+    <a href="#facade" class="logo"><img src="logo-icon.svg?v=2" alt="شعار فيرتكس ويب" width="34" height="34">فيرتكس <span>ويب</span></a>
     <nav class="links" id="navLinks" aria-label="التنقل الرئيسي">
       <a href="#work" data-i18n="navWork">أعمالنا</a>
       <a href="#services" data-i18n="navServices">خدماتنا</a>
@@ -379,81 +394,35 @@ html,body{overflow-x:clip}
 
 <!-- ================= CINEMATIC 3D HERO ================= -->
 <section id="facade" aria-label="Vertex Web">
-  <video id="facadeFilm" autoplay muted loop playsinline preload="metadata" poster="media/hero-film.jpg" aria-label="فيلم تعريفي ديال فيرتكس ويب">
-    <source src="media/hero-film-hd.mp4" media="(min-width: 821px)" type="video/mp4">
-    <source src="media/hero-film-sd.mp4" type="video/mp4">
-  </video>
-  <div class="fac-shade"></div>
-  <div class="fac-content">
-    <div class="fac-micro">VERTEX WEB · TANGIER — DIGITAL STUDIO</div>
-    <div class="fac-brand">فيرتكس <span>ويب</span></div>
-    <div class="fac-line">مواقع · متاجر إلكترونية · تجارب 3D</div>
-    <div class="fac-line2">42 مشروعاً منشوراً وحياً</div>
-    <div class="cta-row fac-ctas">
-      <a class="btn" href="#contact" data-i18n="heroCta1" data-mag>ابدأ مشروعك</a>
-      <a class="btn btn-ghost" href="#work" data-i18n="heroCta2">شوف أعمالنا</a>
+  <div class="fac-sticky">
+    <div class="fac-3d" id="fac3d">
+      <video id="facadeFilm" autoplay muted loop playsinline preload="metadata" poster="media/hero-film.jpg" aria-label="فيلم تعريفي ديال فيرتكس ويب">
+        <source src="media/hero-film-hd.mp4" media="(min-width: 821px)" type="video/mp4">
+        <source src="media/hero-film-sd.mp4" type="video/mp4">
+      </video>
+      <canvas id="facCanvas" width="720" height="1280" aria-label="فيلم تعريفي ديال فيرتكس ويب"></canvas>
+      <div class="fac-shade"></div>
+      <div class="fac-content" id="facContent">
+        <div class="fac-micro">VERTEX WEB · TANGIER — DIGITAL STUDIO</div>
+        <h1><span data-i18n="heroH1a">كنبنّيو مواقع</span><br><span class="stroke" data-i18n="heroH1b">كتتحرك.</span></h1>
+        <p class="fac-sub" data-i18n="heroSub">مواقع وهويات وتجارب رقمية مصممة باش مشروعك ما يتعاودش يتجاهل — من طنجة، بمعايير عالمية.</p>
+        <div class="cta-row fac-ctas">
+          <a class="btn" href="#contact" data-i18n="heroCta1" data-mag>ابدأ مشروعك</a>
+          <a class="btn btn-ghost" href="#work" data-i18n="heroCta2">شوف أعمالنا</a>
+        </div>
+        <div class="fac-meta"><span class="micro">EST. 2026 — TANGER</span><span class="micro">42 LIVE PROJECTS</span><span class="micro">7–14 DAYS DELIVERY</span></div>
+      </div>
+      <div class="fac-end" id="facEnd">
+        <div class="fac-end-line">صفحة هبوط بـ 900 درهم · موقع تعريفي بـ 1,900 درهم · متجر إلكتروني بـ 4,900 درهم</div>
+        <a class="btn" href="#contact" data-i18n="heroCta1">ابدأ مشروعك</a>
+      </div>
+      <div class="fac-load" id="facLoad">0%</div>
+      <button class="fac-scroll" id="facScroll" type="button" aria-label="مرّر للأسفل"><span>مرّر للأسفل</span><i></i></button>
     </div>
   </div>
-  <button class="fac-scroll" id="facScroll" type="button" aria-label="مرّر للأسفل"><span>مرّر للأسفل</span><i></i></button>
 </section>
 
-<section class="stage" id="stage">
- <div class="pin" id="pin">
-  <div class="grid-bg"></div>
-  <div id="glwrap"><canvas id="gl"></canvas></div>
-  <div id="fallback3d"><img src="shots/immoluxe.webp" alt="موقع Tanja Luxe Immobilier"></div>
-  <div class="vig"></div><div class="frame"></div>
-  <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-  <div id="stageLoader">LOADING EXPERIENCE…</div>
 
-  <div class="ovl" id="ov1">
-    <div class="eyebrow" data-i18n="heroEyebrow">Digital Studio · Tangier / Morocco</div>
-    <h1><span data-i18n="heroH1a">كنبنّيو مواقع</span><br><span class="stroke" data-i18n="heroH1b">كتتحرك.</span></h1>
-    <p data-i18n="heroSub">مواقع وهويات وتجارب رقمية مصممة باش مشروعك ما يتعاودش يتجاهل — من طنجة، بمعايير عالمية.</p>
-    <div class="cta-row">
-      <a class="btn" href="#contact" data-i18n="heroCta1" data-mag>ابدأ مشروعك</a>
-      <a class="btn btn-ghost" href="#work" data-i18n="heroCta2">شوف أعمالنا</a>
-    </div>
-    <div class="meta"><span class="micro">EST. 2026 — TANGER</span><span class="micro">42 LIVE PROJECTS</span><span class="micro">7–14 DAYS DELIVERY</span></div>
-
-  </div>
-  <div class="ovl" id="ov2" style="opacity:0">
-    <div class="eyebrow">// Scene 02 — Interface</div>
-    <h2 data-i18n="s2Title">كنشكّلو الواجهة، طبقة فوق طبقة.</h2>
-    <p data-i18n="s2Sub">كل عنصر في عمقو الخاص: شاشات، بطاقات، وكلمات كتتحرك بسرعات مختلفة — حيت العمق الحقيقي كيتصنع، ما كيتقلّدش.</p>
-    <div class="ticks">
-      <span class="micro">LAYER A · MAIN SCREEN — Z 0.0</span>
-      <span class="micro">LAYER B · PANEL — Z −0.8</span>
-      <span class="micro">LAYER C · CARDS — Z +0.9</span>
-    </div>
-  </div>
-
-  <div class="ovl" id="ov3" style="opacity:0">
-    <div class="statement"><span class="sh" aria-hidden="true">DESIGN WITH INTENT.<br>MOTION WITH PURPOSE.</span>DESIGN WITH INTENT.<br>MOTION WITH PURPOSE.</div>
-    <p data-i18n="s3Sub">من الفكرة حتى المنتج الرقمي — كل حركة عندها سبب، وكل بكسل عندو وظيفة.</p>
-  </div>
-
-  <div class="ovl" id="ov4" style="opacity:0">
-    <div class="eyebrow">// Scene 04 — Selected Work</div>
-    <h2 data-i18n="s4Title">أعمال مختارة، في العمق.</h2>
-    <p data-i18n="s4Sub">منصة، مطعم، ومتجر — شاشات وبطاقات كتطفو قدامك. اللي في الوسط هي نجمة المشهد.</p>
-  </div>
-
-  <div class="ovl" id="ov5" style="opacity:0">
-    <div class="eyebrow">// Scene 05 — The Promise</div>
-    <h2 data-i18n="s5Title">موقعك الجاي خاصو يحسّ بحال علامتك.</h2>
-    <p data-i18n="s5Sub">ماشي قالب جاهز — تجربة مصممة على قياس مشروعك، كتخلي الزائر يتواصل معاك في واتساب من أول زيارة.</p>
-    <div class="row">
-      <a class="btn" href="#contact" data-i18n="s5Cta" data-mag>ابدأ مشروعك</a>
-      <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/212693981822?text=%D8%B3%D9%84%D8%A7%D9%85%20Vertex%20Web%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%A8%D8%AF%D8%A3%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A">💬 WhatsApp</a>
-    </div>
-    <div class="mini-nav"><a href="#work" data-i18n="navWork">أعمالنا</a><a href="#services" data-i18n="navServices">خدماتنا</a><a href="#contact" data-i18n="navCta">ابدأ مشروعك</a></div>
-    <div class="micro techfoot">VERTEX WEB © 2026 · TANGIER — WEBGL / GSAP / LENIS</div>
-  </div>
-
-  <div id="scrollcue">SCROLL<i></i></div>
- </div>
-</section>
 
 <div class="marquee"><div class="track">
   <span>مواقع تعريفية <i>//</i> متاجر إلكترونية <i>//</i> هوية بصرية <i>//</i> تجارب 3D <i>//</i> صفحات هبوط <i>//</i> SEO تقني <i>//</i></span>
@@ -946,76 +915,10 @@ const siteConfig = {
   ]
 };
 
-/* ================================================================
-   SCENES — نظام الطبقات ديال الهيرو (نفس محرك الـ3D التحريري):
-   screen = Cap Immo · panel = TradePro · box = Smash House 3D ·
-   cards = Restaurant / Hôtel / Immobilier
-   ================================================================ */
-const KF = (x,y,z,s,rz,ry,o,dk) => ({x,y,z,s,rz,ry,o,dk:dk||0});
-const SCENES = [
-  { id:'opening', cam:{x:0, y:0, z:10.6}, layers:{
-    glow:      KF(0, .2, -3.5, 1,    0, 0, .9),
-    screen:    KF(-.9, -.05, 0,  .82,   0, -.05, 1),
-    panel:     KF(-3.6, -2.2, -1.6, .5, -.05, .2, 0),
-    box:       KF(3.6, -2.4, -1.2, .34, .06, -.2, 0),
-    cardResto: KF(-3.8, 2.2, -2.2, .5, -.03, .18, 0),
-    cardHotel: KF(3.9, 2.3, -2, .5, .04, -.15, 0),
-    cardImmo:  KF(-3.4, -2.4, -1.8, .5, -.04, .16, 0)
-  }},
-  { id:'interface', cam:{x:0, y:0, z:9.6}, layers:{
-    glow:      KF(-.5, .3, -3.5, 1.05, 0, 0, .8),
-    screen:    KF(-2.6, 1.05, -.4, .62, .03, .22, 1),
-    panel:     KF(2.7, 1.15, -.8, .56, -.02, -.2, 1),
-    box:       KF(.2, -1.75, .9, .56, .02, -.06, 1),
-    cardResto: KF(-3.9, 2.4, -2.2, .5, -.03, .18, 0),
-    cardHotel: KF(3.9, 2.4, -2, .5, .04, -.15, 0),
-    cardImmo:  KF(-3.6, -2.3, -1.8, .5, -.04, .16, 0)
-  }},
-  { id:'reveal', cam:{x:0, y:0, z:8.4}, layers:{
-    glow:      KF(0, 0, -3.5, 1.1, 0, 0, .55),
-    screen:    KF(-3.4, 1.8, -1.8, .5, .05, .3, .26, .5),
-    panel:     KF(3.5, 1.9, -2, .5, -.04, -.26, .22, .55),
-    box:       KF(0, .15, .3, 2.55, 0, 0, 1),
-    cardResto: KF(-3.9, -2.4, -2.4, .5, -.04, .2, .14, .6),
-    cardHotel: KF(3.9, 2.2, -2.2, .5, .05, -.2, .14, .6),
-    cardImmo:  KF(-3.8, -2.2, -2, .5, -.05, .25, .18, .55)
-  }},
-  { id:'work', cam:{x:-.7, y:.35, z:9.8}, layers:{
-    glow:      KF(.4, 0, -3.5, 1.05, 0, 0, .7),
-    screen:    KF(-2.9, 1.5, -.8, .62, .04, .2, .85, .25),
-    panel:     KF(-3.1, -1.7, -.4, .66, .05, .14, .8, .3),
-    box:       KF(3, 1.7, -1.2, .6, -.03, -.16, .8, .3),
-    cardResto: KF(.2, -.2, .9, 1.06, -.02, -.05, 1),
-    cardHotel: KF(3.2, -1.6, -.6, .74, -.05, -.12, .8, .3),
-    cardImmo:  KF(-.4, 2.3, -1.8, .5, 0, .1, 0)
-  }},
-  { id:'closing', cam:{x:0, y:0, z:10.4}, layers:{
-    glow:      KF(0, .4, -3.5, 1, 0, 0, .8),
-    screen:    KF(0, 1.4, 0, .66, 0, 0, 1),
-    panel:     KF(-3.6, -2.3, -1.8, .5, -.05, .2, 0),
-    box:       KF(3.6, -2.2, -1.4, .4, .05, -.2, 0),
-    cardResto: KF(-3.8, 2.2, -2.4, .5, -.03, .18, 0),
-    cardHotel: KF(3.9, 2.3, -2.2, .5, .04, -.15, 0),
-    cardImmo:  KF(-3.4, -2.4, -2, .5, -.04, .16, 0)
-  }}
-];
-const LAYER_SRC = {
-  screen:    { make:'screen', src:'shots/immoluxe.webp', url:'tanjaluxe.ma', w:6.6 },
-  panel:     { make:'screen', src:'shots/mode.webp',     url:'atlas-mode',          w:5.6 },
-  box:       { make:'photo',  src:'demo-burger/img/box.webp', w:5.6 },
-  cardResto: { make:'card',   src:'shots/resto.webp',    label:'LE JASMIN — RESTAURANT · TANGER', w:3.5 },
-  cardHotel: { make:'card',   src:'shots/burger.webp',   label:'SMASH HOUSE — BURGER · TANGER',    w:3.5 },
-  cardImmo:  { make:'card',   src:'shots/mode.webp',     label:'ATLAS MODE — BOUTIQUE · TANGER',   w:3.5 }
-};
-window.STAGE = { layers:{}, cam:{...SCENES[0].cam}, ready:false };
-Object.keys(SCENES[0].layers).forEach(k => { window.STAGE.layers[k] = {...SCENES[0].layers[k]}; });
-
 const qs = new URLSearchParams(location.search);
 const DEBUG = qs.get('debug') === '1';
 const FORCED_P = parseFloat(qs.get('p'));
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const ST = window.STAGE;
-
 /* ================== loader ================== */
 (function(){
   const intro = document.getElementById('intro');
@@ -1106,47 +1009,6 @@ addEventListener('scroll', () => {
   }, {rootMargin:'-38% 0px -55% 0px'});
   Object.keys(map).forEach(id => { const s = document.getElementById(id); if (s) obs.observe(s); });
 })();
-
-/* ================== hero master timeline ================== */
-const railDots = document.querySelectorAll('#rail .rdot');
-const dbg = document.getElementById('debug');
-if (DEBUG) dbg.style.display = 'block';
-const tl = gsap.timeline({
-  defaults:{ease:'power1.inOut'},
-  scrollTrigger:{
-    id:'stage', trigger:'#stage', start:'top top', end:'+=460%',
-    pin:'#pin', scrub: isNaN(FORCED_P) ? .6 : true, anticipatePin:1,
-    onUpdate(self){
-      const p = self.progress;
-      document.getElementById('progress').style.width = (p*100)+'%';
-      const scene = Math.min(Math.floor(p * 5), 4);
-      railDots.forEach((d,i) => d.classList.toggle('on', i === scene));
-      const near = [.2,.4,.6,.8].some(b => Math.abs(p - b) < .007);
-      document.getElementById('glwrap').classList.toggle('trans', near && ST.ready);
-      if (DEBUG) dbg.textContent = 'scene: '+(scene+1)+'/5 · progress: '+(p*100).toFixed(1)+'%';
-    }
-  }
-});
-for (let i = 0; i < SCENES.length - 1; i++){
-  const at = i * 20, dur = 20;
-  tl.to(ST.cam, {...SCENES[i+1].cam, duration:dur}, at);
-  Object.keys(SCENES[i].layers).forEach(k => { tl.to(ST.layers[k], {...SCENES[i+1].layers[k], duration:dur}, at); });
-}
-gsap.fromTo('#ov1', {opacity:0, x:-46}, {opacity:1, x:0, duration:1.15, delay:.35, ease:'power3.out'});
-tl.to('#scrollcue', {opacity:0, duration:3}, 15)
-  .to('#ov1', {opacity:0, x:-30, duration:4}, 16.5)
-  .fromTo('#ov2', {opacity:0, x:40}, {opacity:1, x:0, duration:4}, 19.5)
-  .to('#ov2', {opacity:0, duration:4}, 36.5)
-  .fromTo('#ov3', {opacity:0}, {opacity:1, duration:4}, 41.5)
-  .fromTo('#ov3 .statement', {y:56}, {y:0, duration:7, ease:'power2.out'}, 41.5)
-  .to('#ov3', {opacity:0, duration:4}, 56.5)
-  .fromTo('#ov4', {opacity:0, y:30}, {opacity:1, y:0, duration:4}, 60.5)
-  .to('#ov4', {opacity:0, duration:4}, 76.5)
-  .fromTo('#ov5', {opacity:0, y:30}, {opacity:1, y:0, duration:5}, 82.5)
-  .to({}, {duration:3}, 97);
-if (!isNaN(FORCED_P)){
-  setTimeout(() => { const st = ScrollTrigger.getById('stage'); st.scroll(st.start + Math.min(Math.max(FORCED_P,0),1)*(st.end - st.start)); ScrollTrigger.update(); }, 80);
-}
 
 /* ================== work — horizontal gallery ================== */
 (function(){
@@ -1247,8 +1109,8 @@ document.querySelectorAll('.faq-item').forEach(item => {
     const lines = [UI.waHead, '', UI.waName + name, UI.waPhone + phone, UI.waType + type];
     if (budget) lines.push(UI.waBudget + budget);
     if (msg) lines.push(UI.waMsg + msg);
-    form.dataset.busy = '1'; setTimeout(() => delete form.dataset.busy, 1500);
     if (form.dataset.busy) return;
+    form.dataset.busy = '1'; setTimeout(() => delete form.dataset.busy, 1500);
     const waUrl = 'https://wa.me/' + siteConfig.brand.whatsapp + '?text=' + encodeURIComponent(lines.join('\n'));
     window.open(waUrl, '_blank');
     ok.innerHTML = UI.okPre + '<a href="' + waUrl + '" target="_blank" rel="noopener">' + UI.okLink + '</a>.';
@@ -1268,125 +1130,7 @@ if (matchMedia('(pointer:fine)').matches && !REDUCED){
 }
 </script>
 
-<script type="module">
-/* ================== WebGL hero: layered screens & cards ================== */
-try {
-  const THREE = await import('three');
-  const ST = window.STAGE;
-  const canvas = document.getElementById('gl');
-  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth < 820 ? 1.6 : 2));
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
 
-  const loadImg = src => new Promise((res, rej) => {
-    const img = new Image(); img.onload = () => res(img); img.onerror = rej; img.src = src;
-  });
-  function cover(x, img, dx, dy, w, h){
-    const ir = img.naturalWidth/img.naturalHeight, r = w/h;
-    let sw, sh, sx, sy;
-    if (ir > r){ sh = img.naturalHeight; sw = sh*r; sx = (img.naturalWidth - sw)/2; sy = 0; }
-    else { sw = img.naturalWidth; sh = sw/r; sx = 0; sy = (img.naturalHeight - sh)/2; }
-    x.drawImage(img, sx, sy, sw, sh, dx, dy, w, h);
-  }
-  function rr(x, dx, dy, w, h, r){ x.beginPath(); x.moveTo(dx+r,dy); x.arcTo(dx+w,dy,dx+w,dy+h,r); x.arcTo(dx+w,dy+h,dx,dy+h,r); x.arcTo(dx,dy+h,dx,dy,r); x.arcTo(dx,dy,dx+w,dy,r); x.closePath(); }
-  async function screenTexture(src, url){
-    const img = await loadImg(src);
-    const c = document.createElement('canvas'); c.width = 1100; c.height = 730;
-    const x = c.getContext('2d');
-    x.fillStyle = '#0c1220'; rr(x, 4, 4, 1092, 722, 26); x.fill();
-    x.fillStyle = '#131c31'; rr(x, 4, 4, 1092, 74, 26); x.fill(); x.fillRect(4, 52, 1092, 26);
-    ['#ff5f57','#febc2e','#28c840'].forEach((col, i) => { x.fillStyle = col; x.beginPath(); x.arc(44 + i*34, 41, 10, 0, 7); x.fill(); });
-    x.fillStyle = '#1d2947'; rr(x, 200, 22, 560, 38, 19); x.fill();
-    x.fillStyle = '#d7a441'; x.font = '24px Courier New'; x.fillText('https://' + url, 224, 49);
-    x.save(); rr(x, 22, 96, 1056, 612, 14); x.clip(); cover(x, img, 22, 96, 1056, 612); x.restore();
-    x.strokeStyle = 'rgba(215,164,65,.35)'; x.lineWidth = 2; rr(x, 4, 4, 1092, 722, 26); x.stroke();
-    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
-    return {tex:t, aspect:730/1100};
-  }
-  async function cardTexture(src, label){
-    const img = await loadImg(src);
-    const c = document.createElement('canvas'); c.width = 800; c.height = 600;
-    const x = c.getContext('2d');
-    x.fillStyle = '#0a0d13'; x.fillRect(0, 0, 800, 600);
-    cover(x, img, 0, 0, 800, 492);
-    x.fillStyle = '#0c1017'; x.fillRect(0, 492, 800, 108);
-    x.fillStyle = '#d7a441'; x.fillRect(28, 522, 34, 4);
-    x.fillStyle = '#f2efe9'; x.font = '700 27px Courier New'; x.fillText(label, 28, 570);
-    x.strokeStyle = 'rgba(215,164,65,.3)'; x.lineWidth = 2; x.strokeRect(1, 1, 798, 598);
-    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
-    return {tex:t, aspect:600/800};
-  }
-  async function photoTexture(src){
-    const img = await loadImg(src);
-    const c = document.createElement('canvas'); c.width = 1280; c.height = 800;
-    const x = c.getContext('2d'); cover(x, img, 0, 0, 1280, 800);
-    x.strokeStyle = 'rgba(215,164,65,.25)'; x.lineWidth = 3; x.strokeRect(2, 2, 1276, 796);
-    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
-    return {tex:t, aspect:800/1280};
-  }
-  function glowTexture(){
-    const c = document.createElement('canvas'); c.width = 512; c.height = 512;
-    const x = c.getContext('2d');
-    const g = x.createRadialGradient(256, 256, 20, 256, 256, 256);
-    g.addColorStop(0, 'rgba(215,164,65,.30)'); g.addColorStop(.55, 'rgba(87,199,227,.08)'); g.addColorStop(1, 'rgba(215,164,65,0)');
-    x.fillStyle = g; x.fillRect(0, 0, 512, 512);
-    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
-    return {tex:t, aspect:1};
-  }
-
-  const defs = { glow:{make:'glow'}, screen:LAYER_SRC.screen, panel:LAYER_SRC.panel, box:LAYER_SRC.box,
-                 cardResto:LAYER_SRC.cardResto, cardHotel:LAYER_SRC.cardHotel, cardImmo:LAYER_SRC.cardImmo };
-  const meshes = {};
-  for (const [key, d] of Object.entries(defs)){
-    let r;
-    if (d.make === 'screen') r = await screenTexture(d.src, d.url);
-    else if (d.make === 'card') r = await cardTexture(d.src, d.label);
-    else if (d.make === 'photo') r = await photoTexture(d.src);
-    else r = glowTexture();
-    const w = key === 'glow' ? 15 : d.w;
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, w * r.aspect),
-      new THREE.MeshBasicMaterial({ map:r.tex, transparent:true, depthWrite:false }));
-    m.renderOrder = key === 'glow' ? 0 : 5;
-    scene.add(m); meshes[key] = m;
-  }
-  document.getElementById('stageLoader').style.display = 'none';
-  ST.ready = true;
-
-  let mx = 0, my = 0, visible = true;
-  if (matchMedia('(pointer:fine)').matches)
-    addEventListener('pointermove', e => { mx = e.clientX/innerWidth - .5; my = e.clientY/innerHeight - .5; }, {passive:true});
-  new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(document.getElementById('stage'));
-  function resize(){
-    const w = canvas.clientWidth || innerWidth, h = canvas.clientHeight || innerHeight;
-    renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix();
-  }
-  resize(); addEventListener('resize', resize);
-
-  function tick(t){
-    requestAnimationFrame(tick);
-    if (!visible) return;
-    const ms = innerWidth < 820 ? .8 : 1;
-    for (const [key, m] of Object.entries(meshes)){
-      const L = ST.layers[key]; if (!L) continue;
-      m.position.set(L.x * (innerWidth < 820 ? .45 : 1), L.y, L.z);
-      m.rotation.set(0, L.ry + mx * .12, L.rz);
-      const sc = L.s * ms; m.scale.set(sc, sc, 1);
-      m.material.opacity = L.o;
-      m.renderOrder = 5 + L.z * 2;
-      m.material.color.setScalar(1 - (L.dk || 0) * .75);
-    }
-    camera.position.set(ST.cam.x + mx * .35, ST.cam.y - my * .25 + Math.sin(t*.0004)*.04, ST.cam.z);
-    camera.lookAt(ST.cam.x * .6, ST.cam.y * .6, 0);
-    renderer.render(scene, camera);
-  }
-  requestAnimationFrame(tick);
-} catch(e) {
-  document.getElementById('stageLoader').style.display = 'none';
-  document.getElementById('fallback3d').style.display = 'flex';
-  const g = document.getElementById('gl'); if (g) g.style.display = 'none';
-}
-</script>
 <script id="vx-pre-js">
 (function(){ var pre=document.getElementById('vxPre'); if(!pre) return;
   var n=pre.querySelector('.n'), f=pre.querySelector('.bar i'), p=0;
@@ -1396,19 +1140,76 @@ try {
 })();
 </script>
 <script>
-/* facade film: play/pause on visibility, reduced-motion respect, scroll cue */
+/* facade scroll-film: canvas frame sequence driven by scroll (Websites in 2026 method) */
 (function(){
-  var vid = document.getElementById('facadeFilm'); if (!vid) return;
-  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) { vid.removeAttribute('autoplay'); vid.pause(); vid.setAttribute('controls', ''); }
-  else if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function(en){ en.forEach(function(x){ if (x.isIntersecting) { vid.play().catch(function(){}); } else { vid.pause(); } }); }, {threshold: .08}).observe(vid);
-  }
+  var sec = document.getElementById('facade'); if (!sec) return;
+  var vid = document.getElementById('facadeFilm');
+  var cvs = document.getElementById('facCanvas');
+  var loadEl = document.getElementById('facLoad');
+  var content = document.getElementById('facContent');
+  var end = document.getElementById('facEnd');
+  var wrap3d = document.getElementById('fac3d');
   var cue = document.getElementById('facScroll');
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (cue) cue.addEventListener('click', function(){
-    var st = document.getElementById('stage');
-    if (st) st.scrollIntoView({behavior: reduced ? 'auto' : 'smooth'});
+    var w = document.getElementById('work');
+    if (w) w.scrollIntoView({behavior: reduced ? 'auto' : 'smooth'});
   });
+  if (reduced) {
+    if (vid) { vid.removeAttribute('autoplay'); vid.pause(); vid.setAttribute('controls', ''); }
+    if (loadEl) loadEl.style.display = 'none';
+    return;
+  }
+  var io = new IntersectionObserver(function(en){ en.forEach(function(x){
+    if (!sec.classList.contains('scrollmode')) { if (x.isIntersecting) { vid.play().catch(function(){}); } else { vid.pause(); } }
+  }); }, {threshold: .08});
+  io.observe(vid);
+  var N = 124, frames = [], loaded = 0, ready = false, cur = -1, ticking = false;
+  function pad(n){ return ('00' + n).slice(-3); }
+  function start(){
+    if (ready) return; ready = true;
+    sec.classList.add('scrollmode');
+    vid.style.display = 'none'; cvs.style.display = 'block';
+    if (loadEl) loadEl.style.display = 'none';
+    draw(0); onScroll();
+  }
+  function draw(idx){
+    if (idx === cur) return; cur = idx;
+    var im = frames[idx];
+    if (im && im.complete && im.naturalWidth) cvs.getContext('2d').drawImage(im, 0, 0);
+  }
+  function onScroll(){
+    ticking = false;
+    if (!ready) return;
+    var total = sec.offsetHeight - innerHeight;
+    if (total <= 0) return;
+    var p = Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / total));
+    draw(Math.min(N - 1, Math.floor(p * N)));
+    var co = 1 - Math.min(1, p / 0.5);
+    if (content) { content.style.opacity = String(co); content.style.pointerEvents = p < 0.45 ? 'auto' : 'none'; }
+    var eo = p > 0.8 ? Math.min(1, (p - 0.8) / 0.14) : 0;
+    if (end) { end.style.opacity = String(eo); end.style.pointerEvents = eo > 0.6 ? 'auto' : 'none'; }
+    if (wrap3d) wrap3d.style.transform = 'rotateX(' + ((0.5 - p) * 3.4).toFixed(2) + 'deg) rotateY(' + ((p - 0.5) * 5).toFixed(2) + 'deg) scale(' + (1 + p * 0.05).toFixed(3) + ')';
+    if (cue) cue.style.opacity = String(1 - Math.min(1, p / 0.1));
+  }
+  addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, {passive: true});
+  if (matchMedia('(pointer:fine)').matches) {
+    sec.addEventListener('pointermove', function(e){
+      if (!ready) return;
+      wrap3d.style.translate = ((e.clientX / innerWidth - 0.5) * 12).toFixed(1) + 'px ' + ((e.clientY / innerHeight - 0.5) * 9).toFixed(1) + 'px';
+    });
+  }
+  for (var i = 1; i <= N; i++) {
+    var im = new Image();
+    im.onload = im.onerror = function(){
+      loaded++;
+      if (loadEl && !ready) loadEl.textContent = Math.round(loaded / N * 100) + '%';
+      if (loaded >= Math.floor(N * 0.45) && !ready) start();
+      if (loaded === N && loadEl) loadEl.style.display = 'none';
+    };
+    im.src = 'film/f' + pad(i) + '.webp';
+    frames.push(im);
+  }
 })();
 </script>
 </body>
