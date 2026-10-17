@@ -315,9 +315,14 @@ h1.mega .o{color:var(--gold)}
 
 /* 06 STORY stack */
 #story{align-items:center}
-.stack-zone{position:relative;width:min(780px,92vw);height:min(54vh,440px);perspective:1200px}
+.stack-zone{position:relative;width:min(780px,92vw);height:min(64vh,540px);perspective:1200px}
 .story-panel{position:absolute;inset:0;border-radius:18px;border:1px solid rgba(247,241,227,.13);box-shadow:0 50px 100px rgba(0,0,0,.55);
   display:flex;flex-direction:column;justify-content:center;padding:44px 48px;will-change:transform,opacity;background:linear-gradient(155deg,#1A1206,#0B0805 72%)}
+.story-panel .s-img{height:150px;border-radius:12px;overflow:hidden;margin:0 0 18px}
+.story-panel .s-img img{width:100%;height:100%;object-fit:cover;display:block}
+.story-panel.sp1 .s-img img{object-position:center 45%}
+.story-panel.sp3 .s-img img{object-position:center 32%}
+@media(max-width:760px){.story-panel .s-img{height:116px;margin-bottom:14px}}
 .story-panel .s-num{font-family:var(--font-g);font-size:.72rem;font-weight:700;color:var(--gold);margin-bottom:14px}
 .story-panel h3{font-family:var(--font-d);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.35;margin-bottom:10px}
 .story-panel p{color:var(--muted);max-width:46ch}
@@ -722,9 +727,9 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 <!-- ============ 07 · القصة ============ -->
 <section class="scene" id="story" data-chapter="07" data-name="القصة" aria-label="القصة">
   <div class="stack-zone" id="stackZone">
-    <article class="story-panel sp1"><p class="s-num">القصة — 01 / 03 · الحلم</p><h3>بدات الحكاية بحلم</h3><p>شيف شاب من طنجة، كبر بين أطباق الواليدة ووصفات الدار، وحلم يكون عندو مطعم باسمو — وطبق باسمو.</p></article>
-    <article class="story-panel sp2"><p class="s-num">القصة — 02 / 03 · الدار</p><h3>مطعم الباشا — البرانص 2</h3><p>تحقق الحلم في البرانص 2: مطعم بروح كبيرة، أطباق بثمن في المتناول، وطعم ما كيتنساش — واللحسة ولّات العنوان.</p></article>
-    <article class="story-panel sp3"><p class="s-num">القصة — 03 / 03 · اليوم</p><h3>كل طبق له حكاية</h3><p>اليوم، أكثر من 51 ألف متابع كيتابعو الحكاية كل نهار على إنستغرام — والحكاية ما زالت كتتكتب، طبق بعد طبق.</p></article>
+    <article class="story-panel sp1"><figure class="s-img"><img src="demo-bacha/story-1.webp" alt="الشيف أيوب بنعمر في مطبخ مطعم الباشا" loading="lazy"></figure><p class="s-num">القصة — 01 / 03 · الحلم</p><h3>بدات الحكاية بحلم</h3><p>شيف شاب من طنجة، كبر بين أطباق الواليدة ووصفات الدار، وحلم يكون عندو مطعم باسمو — وطبق باسمو.</p></article>
+    <article class="story-panel sp2"><figure class="s-img"><img src="demo-bacha/story-2.webp" alt="كونطوار مطعم الباشا — أطباق جاهزة للتقديم" loading="lazy"></figure><p class="s-num">القصة — 02 / 03 · الدار</p><h3>مطعم الباشا — البرانص 2</h3><p>تحقق الحلم في البرانص 2: مطعم بروح كبيرة، أطباق بثمن في المتناول، وطعم ما كيتنساش — واللحسة ولّات العنوان.</p></article>
+    <article class="story-panel sp3"><figure class="s-img"><img src="demo-bacha/story-3.webp" alt="تقديم الأطباق للزبناء داخل مطعم الباشا" loading="lazy"></figure><p class="s-num">القصة — 03 / 03 · اليوم</p><h3>كل طبق له حكاية</h3><p>اليوم، أكثر من 51 ألف متابع كيتابعو الحكاية كل نهار على إنستغرام — والحكاية ما زالت كتتكتب، طبق بعد طبق.</p></article>
   </div>
 </section>
 
