@@ -302,8 +302,17 @@ footer .copy{font-size:13px;margin-top:8px}
   footer .mline{animation:none}#intro .bar i{animation-duration:.2s}
 }
 </style>
+<style id="vx-pre-css">
+#vxPre{position:fixed;inset:0;z-index:99999;background:#070b14;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:transform .8s cubic-bezier(.76,0,.24,1)}
+#vxPre.done{transform:translateY(-101%)}
+#vxPre .b{font:700 15px/1.2 system-ui;letter-spacing:.42em;color:#d9a441}
+#vxPre .n{font:800 54px/1 system-ui;color:#f4f6fb}
+#vxPre .bar{width:min(260px,60vw);height:2px;background:rgba(217,164,65,.18);overflow:hidden}
+#vxPre .bar i{display:block;height:100%;width:0;background:#d9a441;transition:width .25s}
+</style>
 </head>
 <body>
+<div id="vxPre"><div class="b">VERTEX WEB</div><div class="n">0%</div><div class="bar"><i></i></div></div>
 <script>document.documentElement.classList.add('js');</script>
 
 <div id="intro" aria-hidden="true">
@@ -416,7 +425,7 @@ footer .copy{font-size:13px;margin-top:8px}
   <div class="container sec-head rv">
     <div class="eyebrow">// Selected Work</div>
     <h2 class="sec-title" data-i18n="workTitle">أعمال حقيقية، شغالة دابا</h2>
-    <p class="sec-sub" data-i18n="workSub">مشاريع منشورة ونماذج كاملة — مرّر باش تسافر بيناتهم، والمعرض الكامل فيه 43 عملاً.</p>
+    <p class="sec-sub" data-i18n="workSub">مشاريع منشورة ونماذج كاملة — مرّر باش تسافر بيناتهم، والمعرض الكامل فيه 42 عملاً.</p>
   </div>
   <div class="hwrap" id="hwrap" dir="ltr">
     <div class="htrack" id="htrack">
@@ -467,7 +476,7 @@ footer .copy{font-size:13px;margin-top:8px}
   <div class="container">
     <p class="hint" data-i18n="workHint">↔ مرّر عمودياً — المعرض كيتحرك أفقياً</p>
     <div style="text-align:center;margin-top:26px">
-      <a href="portfolio.html" class="btn btn-ghost btn-lg" data-i18n="workCta">📁 المعرض الكامل — 43 موقعاً</a>
+      <a href="portfolio.html" class="btn btn-ghost btn-lg" data-i18n="workCta">📁 المعرض الكامل — 42 موقعاً</a>
     </div>
   </div>
 </section>
@@ -1252,6 +1261,14 @@ try {
   document.getElementById('fallback3d').style.display = 'flex';
   const g = document.getElementById('gl'); if (g) g.style.display = 'none';
 }
+</script>
+<script id="vx-pre-js">
+(function(){ var pre=document.getElementById('vxPre'); if(!pre) return;
+  var n=pre.querySelector('.n'), f=pre.querySelector('.bar i'), p=0;
+  var iv=setInterval(function(){ p=Math.min(100, p+Math.random()*16); n.textContent=Math.floor(p)+'%'; f.style.width=p+'%';
+    if(p>=100){ clearInterval(iv); setTimeout(function(){ pre.classList.add('done'); setTimeout(function(){ pre.remove(); }, 900); }, 120); } }, 110);
+  setTimeout(function(){ if(document.body.contains(pre)){ pre.classList.add('done'); setTimeout(function(){ pre.remove(); }, 900); } }, 3200);
+})();
 </script>
 </body>
 </html>
