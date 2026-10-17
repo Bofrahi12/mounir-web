@@ -4,7 +4,7 @@ A premium, cinematic, scroll-driven portfolio built as a 20–30 second design-r
 experience: 7 pinned/reversible film scenes, dark graphite (#07090D), electric
 cobalt + soft violet + a touch of warm amber, editorial grotesk type.
 
-**Live:** https://bofrahi12.github.io/mounir-web/demo-cinema.html
+**Live:** https://bofrahi12.github.io/vertex-web/demo-cinema.html
 
 ## Run it
 

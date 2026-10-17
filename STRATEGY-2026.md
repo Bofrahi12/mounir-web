@@ -3,7 +3,7 @@
 
 ## المراجع (المستوى المطلوب)
 - الفيديو الأصلي «Websites in 2026»: موقع CIKO (منتج 3D كيدور مع السكرول) + موقع Pear / pear.no (فيلم سينمائي بالسكرول، «Pear makes you appear»).
-- الديمو الحي ديالنا: **ATLAS ENERGY** — https://bofrahi12.github.io/mounir-web/demo-atlas.html (مشروع #28 فالبورتفوليو) — هو الإثبات الجاهز قدّام أي زبون.
+- الديمو الحي ديالنا: **ATLAS ENERGY** — https://bofrahi12.github.io/vertex-web/demo-atlas.html (مشروع #28 فالبورتفوليو) — هو الإثبات الجاهز قدّام أي زبون.
 
 ## الأدوات (البرومبتات)
 الملف: `~/workspace/your_files/prompt-websites-2026-style.md` — فيه 3 برومبتات:
