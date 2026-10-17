@@ -582,6 +582,10 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 .board{flex:0 0 min(76vw,330px);scroll-snap-align:center;margin:0;border:1px solid rgba(227,160,8,.35);border-radius:14px;overflow:hidden;background:#0B0805}
 .board img{display:block;width:100%;height:auto}
 .board figcaption{padding:11px 14px;font-family:var(--font-g);font-weight:700;font-size:.85rem;color:var(--gold2);text-align:center}
+.boards{perspective:1200px;perspective-origin:50% 42%}
+.board{transform-style:preserve-3d;will-change:transform;box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.board.is-center{border-color:rgba(227,160,8,.8);box-shadow:0 30px 70px rgba(0,0,0,.62),0 0 0 1px rgba(227,160,8,.28),0 16px 42px rgba(227,160,8,.10)}
+@media (prefers-reduced-motion: reduce){.board{transform:none!important;opacity:1!important}}
 .bwrap{position:relative;display:block}
 .board-hot{position:absolute;left:5%;width:90%;margin:0;padding:0;background:transparent;border:0;border-radius:6px;cursor:pointer;z-index:3;-webkit-tap-highlight-color:transparent}
 .board-hot:active{background:rgba(227,160,8,.10)}
@@ -1752,6 +1756,39 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   }
   if (otBtn) otBtn.addEventListener('click', oneTap);
   updBar(); updFri();
+})();
+</script>
+
+<script>
+/* Bacha — the real menu boards in 3D (cover-flow by scroll position) */
+(function(){
+  var track = document.querySelector(".boards");
+  if (!track) return;
+  var boards = Array.prototype.slice.call(track.querySelectorAll(".board"));
+  if (!boards.length) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { boards[0].classList.add("is-center"); return; }
+  var ticking = false;
+  function update(){
+    ticking = false;
+    var tr = track.getBoundingClientRect();
+    if (!tr.width) return;
+    var cx = tr.left + tr.width / 2, best = null, bestD = 1e9;
+    boards.forEach(function(b){
+      var r = b.getBoundingClientRect();
+      var d = ((r.left + r.width / 2) - cx) / tr.width;
+      var cl = Math.max(-1, Math.min(1, d));
+      b.style.transform = "rotateY(" + (-cl * 24).toFixed(2) + "deg) scale(" + (1 - Math.min(0.10, Math.abs(cl) * 0.10)).toFixed(3) + ")";
+      b.style.opacity = String(1 - Math.min(0.35, Math.abs(cl) * 0.45));
+      if (Math.abs(d) < bestD) { bestD = Math.abs(d); best = b; }
+    });
+    boards.forEach(function(b){ b.classList.toggle("is-center", b === best); });
+  }
+  function req(){ if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  track.addEventListener("scroll", req, { passive: true });
+  window.addEventListener("resize", req);
+  window.addEventListener("load", req);
+  if ("IntersectionObserver" in window) new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) req(); }); }, { threshold: 0.05 }).observe(track);
+  req();
 })();
 </script>
 </body>
