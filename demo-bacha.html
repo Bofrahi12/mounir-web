@@ -586,6 +586,11 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 .board{transform-style:preserve-3d;will-change:transform;box-shadow:0 18px 44px rgba(0,0,0,.45)}
 .board.is-center{border-color:rgba(227,160,8,.8);box-shadow:0 30px 70px rgba(0,0,0,.62),0 0 0 1px rgba(227,160,8,.28),0 16px 42px rgba(227,160,8,.10)}
 @media (prefers-reduced-motion: reduce){.board{transform:none!important;opacity:1!important}}
+.board{position:relative}
+.board .bglare{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(430px circle at var(--gx,50%) var(--gy,50%),rgba(255,226,160,.22),transparent 65%);opacity:0;transition:opacity .3s}
+.board.tilting .bglare{opacity:1}
+.board.tilting{border-color:rgba(227,160,8,.85)}
+.board.grabbed{touch-action:none;cursor:grabbing}
 .bwrap{position:relative;display:block}
 .board-hot{position:absolute;left:5%;width:90%;margin:0;padding:0;background:transparent;border:0;border-radius:6px;cursor:pointer;z-index:3;-webkit-tap-highlight-color:transparent}
 .board-hot:active{background:rgba(227,160,8,.10)}
@@ -770,7 +775,7 @@ body{padding-bottom:84px}
   <div class="boards-wrap">
     <p class="spec" style="justify-content:center">المنيو الأصلي</p>
     <h2 class="big" style="text-align:center">المنيو <span class="grad-gold">كما هو</span> عند الشيف</h2>
-    <p class="lede" style="text-align:center;max-width:620px;margin:10px auto 0">اللوحات الأصلية ديال منيو مطعم الباشا — مرّر باش تشوف الأصناف الثمانية كاملة، واضغط على أي طبق من تخصصات الدار في اللوحات باش تشوف تفاصيله وتزيدو لطلبك.</p>
+    <p class="lede" style="text-align:center;max-width:620px;margin:10px auto 0">اللوحات الأصلية ديال منيو مطعم الباشا — مرّر باش تشوف الأصناف الثمانية كاملة، واضغط على أي طبق من تخصصات الدار في اللوحات باش تشوف تفاصيله وتزيدو لطلبك. وشدّ أي لوحة ودوّرها بصبعك باش تشوفها بثلاثة أبعاد.</p>
     <div class="boards">
       <figure class="board"><span class="bwrap"><img src="demo-bacha/board-1.webp" alt="المنيو الأصلي — المقبلات والسلطات" loading="lazy" decoding="async"><button class="board-hot" type="button" data-dish="platter" style="top:46.2%;height:2.9%" aria-label="طبق مشترك الباشا — 110 درهم — عرض التفاصيل والطلب"></button></span><figcaption>المقبلات والسلطات</figcaption></figure>
       <figure class="board"><img src="demo-bacha/board-2.webp" alt="المنيو الأصلي — الساندويتشات والطاكوس" loading="lazy" decoding="async"><figcaption>الساندويتشات والطاكوس</figcaption></figure>
@@ -1760,20 +1765,22 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
 </script>
 
 <script>
-/* Bacha — the real menu boards in 3D (cover-flow by scroll position) */
+/* Bacha — the real menu boards in 3D (cover-flow by scroll position) + free rotation:
+   hold a board a moment and drag to turn it in space; hover tilts it on desktop. */
 (function(){
   var track = document.querySelector(".boards");
   if (!track) return;
   var boards = Array.prototype.slice.call(track.querySelectorAll(".board"));
   if (!boards.length) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { boards[0].classList.add("is-center"); return; }
-  var ticking = false;
+  var ticking = false, activeBoard = null, suppress = null;
   function update(){
     ticking = false;
     var tr = track.getBoundingClientRect();
     if (!tr.width) return;
     var cx = tr.left + tr.width / 2, best = null, bestD = 1e9;
     boards.forEach(function(b){
+      if (b === activeBoard) return;
       var r = b.getBoundingClientRect();
       var d = ((r.left + r.width / 2) - cx) / tr.width;
       var cl = Math.max(-1, Math.min(1, d));
@@ -1788,6 +1795,67 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   window.addEventListener("resize", req);
   window.addEventListener("load", req);
   if ("IntersectionObserver" in window) new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) req(); }); }, { threshold: 0.05 }).observe(track);
+
+  function releaseBoard(b){
+    b.classList.remove("tilting", "grabbed");
+    activeBoard = null;
+    b.style.transition = "transform .55s cubic-bezier(.2,.8,.25,1)";
+    b.style.transform = "";
+    setTimeout(function(){ b.style.transition = ""; update(); }, 580);
+  }
+  boards.forEach(function(b){
+    var gl = document.createElement("i"); gl.className = "bglare"; b.appendChild(gl);
+    b.addEventListener("click", function(e){ if (suppress === b) { suppress = null; e.preventDefault(); e.stopPropagation(); } }, true);
+
+    /* touch / pen: press-and-hold to grab, then drag to rotate freely */
+    b.addEventListener("pointerdown", function(e){
+      if (e.pointerType === "mouse" || (e.button !== undefined && e.button > 0)) return;
+      var sx = e.clientX, sy = e.clientY, grab = null;
+      var timer = setTimeout(function(){
+        grab = { moved: false };
+        activeBoard = b;
+        b.classList.add("tilting", "grabbed");
+        b.style.transition = "transform .12s ease-out";
+        try { b.setPointerCapture(e.pointerId); } catch(_){}
+      }, 170);
+      function mv(ev){
+        if (!grab) return;
+        var dx = ev.clientX - sx, dy = ev.clientY - sy;
+        var ry = Math.max(-34, Math.min(34, dx * 0.35));
+        var rx = Math.max(-24, Math.min(24, -dy * 0.28));
+        if (Math.abs(dx) + Math.abs(dy) > 8) grab.moved = true;
+        b.style.transform = "rotateX(" + rx.toFixed(1) + "deg) rotateY(" + ry.toFixed(1) + "deg) scale(1.03)";
+        b.style.setProperty("--gx", (50 + ry * 1.1) + "%");
+        b.style.setProperty("--gy", (50 - rx * 1.4) + "%");
+      }
+      function up(){
+        clearTimeout(timer);
+        b.removeEventListener("pointermove", mv);
+        b.removeEventListener("pointerup", up);
+        b.removeEventListener("pointercancel", up);
+        if (grab) { if (grab.moved) suppress = b; grab = null; releaseBoard(b); }
+      }
+      b.addEventListener("pointermove", mv);
+      b.addEventListener("pointerup", up);
+      b.addEventListener("pointercancel", up);
+    });
+
+    /* desktop: hover tilt toward the cursor */
+    if (window.matchMedia("(pointer: fine)").matches) {
+      b.addEventListener("mousemove", function(e){
+        if (activeBoard && activeBoard !== b) return;
+        activeBoard = b;
+        var r = b.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+        b.classList.add("tilting");
+        b.style.transition = "transform .15s ease-out";
+        b.style.transform = "rotateX(" + (-py * 13).toFixed(1) + "deg) rotateY(" + (px * 15).toFixed(1) + "deg) scale(1.02)";
+        b.style.setProperty("--gx", ((px + 0.5) * 100) + "%");
+        b.style.setProperty("--gy", ((py + 0.5) * 100) + "%");
+      });
+      b.addEventListener("mouseleave", function(){ if (activeBoard === b) releaseBoard(b); });
+    }
+  });
   req();
 })();
 </script>
