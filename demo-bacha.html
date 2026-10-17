@@ -311,6 +311,9 @@ h1.mega .o{color:var(--gold)}
 .roast-split{display:grid;grid-template-columns:5fr 6fr;gap:5vw;align-items:center;margin-top:8vh}
 .roast-split .rimg{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
 .roast-split .rimg img{width:100%;height:min(52vh,460px);object-fit:cover}
+#craft{min-height:0;padding-top:84px;padding-bottom:84px}
+.roast-split{grid-template-columns:1fr;max-width:760px;margin:6vh auto 0;text-align:center}
+.roast-split .spec{justify-content:center}
 @media(max-width:900px){.roast-split{grid-template-columns:1fr}}
 
 /* 06 STORY stack */
@@ -591,6 +594,9 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 .board.tilting .bglare{opacity:1}
 .board.tilting{border-color:rgba(227,160,8,.85)}
 .board.grabbed{touch-action:none;cursor:grabbing}
+.board{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.board img{-webkit-user-drag:none}
+.board.is-center{touch-action:none}
 .bwrap{position:relative;display:block}
 .board-hot{position:absolute;left:5%;width:90%;margin:0;padding:0;background:transparent;border:0;border-radius:6px;cursor:pointer;z-index:3;-webkit-tap-highlight-color:transparent}
 .board-hot:active{background:rgba(227,160,8,.10)}
@@ -775,7 +781,7 @@ body{padding-bottom:84px}
   <div class="boards-wrap">
     <p class="spec" style="justify-content:center">المنيو الأصلي</p>
     <h2 class="big" style="text-align:center">المنيو <span class="grad-gold">كما هو</span> عند الشيف</h2>
-    <p class="lede" style="text-align:center;max-width:620px;margin:10px auto 0">اللوحات الأصلية ديال منيو مطعم الباشا — مرّر باش تشوف الأصناف الثمانية كاملة، واضغط على أي طبق من تخصصات الدار في اللوحات باش تشوف تفاصيله وتزيدو لطلبك. وشدّ أي لوحة ودوّرها بصبعك باش تشوفها بثلاثة أبعاد.</p>
+    <p class="lede" style="text-align:center;max-width:620px;margin:10px auto 0">اللوحات الأصلية ديال منيو مطعم الباشا — مرّر باش تشوف الأصناف الثمانية كاملة، واضغط على أي طبق من تخصصات الدار في اللوحات باش تشوف تفاصيله وتزيدو لطلبك. واللوحة اللي في الوسط شدّها ودوّرها بصبعك — كتدور بثلاثة أبعاد.</p>
     <div class="boards">
       <figure class="board"><span class="bwrap"><img src="demo-bacha/board-1.webp" alt="المنيو الأصلي — المقبلات والسلطات" loading="lazy" decoding="async"><button class="board-hot" type="button" data-dish="platter" style="top:46.2%;height:2.9%" aria-label="طبق مشترك الباشا — 110 درهم — عرض التفاصيل والطلب"></button></span><figcaption>المقبلات والسلطات</figcaption></figure>
       <figure class="board"><img src="demo-bacha/board-2.webp" alt="المنيو الأصلي — الساندويتشات والطاكوس" loading="lazy" decoding="async"><figcaption>الساندويتشات والطاكوس</figcaption></figure>
@@ -808,7 +814,6 @@ body{padding-bottom:84px}
     <div class="stat"><b data-count="7">7</b><h4>أيام في الأسبوع</h4><p>الدار خدامة كل نهار، ونهار الجمعة عندو طقسو الخاص: الكسكس.</p></div>
   </div>
   <div class="roast-split">
-    <div class="rimg"><img src="demo-bacha/interior.webp" alt="داخل مطعم أيوب الباشا — زليج وفوانيس" loading="lazy" decoding="async"></div>
     <div>
       <p class="spec">الدار — البرانص 2</p>
       <h2 class="big" style="font-size:clamp(1.9rem,4.2vw,3.4rem)">الضيف يدخل جائعاً،<br>ويخرج من العائلة</h2>
@@ -1766,7 +1771,7 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
 
 <script>
 /* Bacha — the real menu boards in 3D (cover-flow by scroll position) + free rotation:
-   hold a board a moment and drag to turn it in space; hover tilts it on desktop. */
+   the centred board turns in space the moment you drag it; tap a side board to centre it. */
 (function(){
   var track = document.querySelector(".boards");
   if (!track) return;
@@ -1795,6 +1800,7 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   window.addEventListener("resize", req);
   window.addEventListener("load", req);
   if ("IntersectionObserver" in window) new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) req(); }); }, { threshold: 0.05 }).observe(track);
+  track.addEventListener("contextmenu", function(e){ if (e.target.closest(".board")) e.preventDefault(); });
 
   function releaseBoard(b){
     b.classList.remove("tilting", "grabbed");
@@ -1805,35 +1811,37 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   }
   boards.forEach(function(b){
     var gl = document.createElement("i"); gl.className = "bglare"; b.appendChild(gl);
-    b.addEventListener("click", function(e){ if (suppress === b) { suppress = null; e.preventDefault(); e.stopPropagation(); } }, true);
+    b.addEventListener("click", function(e){
+      if (suppress === b) { suppress = null; e.preventDefault(); e.stopPropagation(); return; }
+      if (!b.classList.contains("is-center") && !e.target.closest(".board-hot")) {
+        b.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+    }, true);
 
-    /* touch / pen: press-and-hold to grab, then drag to rotate freely */
+    /* touch / pen on the CENTRED board: rotation starts with the drag itself */
     b.addEventListener("pointerdown", function(e){
       if (e.pointerType === "mouse" || (e.button !== undefined && e.button > 0)) return;
-      var sx = e.clientX, sy = e.clientY, grab = null;
-      var timer = setTimeout(function(){
-        grab = { moved: false };
-        activeBoard = b;
-        b.classList.add("tilting", "grabbed");
-        b.style.transition = "transform .12s ease-out";
-        try { b.setPointerCapture(e.pointerId); } catch(_){}
-      }, 170);
+      if (!b.classList.contains("is-center")) return;
+      var sx = e.clientX, sy = e.clientY, moved = false;
+      activeBoard = b;
+      b.classList.add("tilting", "grabbed");
+      b.style.transition = "transform .1s ease-out";
+      try { b.setPointerCapture(e.pointerId); } catch(_){}
       function mv(ev){
-        if (!grab) return;
         var dx = ev.clientX - sx, dy = ev.clientY - sy;
-        var ry = Math.max(-34, Math.min(34, dx * 0.35));
-        var rx = Math.max(-24, Math.min(24, -dy * 0.28));
-        if (Math.abs(dx) + Math.abs(dy) > 8) grab.moved = true;
+        var ry = Math.max(-36, Math.min(36, dx * 0.38));
+        var rx = Math.max(-26, Math.min(26, -dy * 0.30));
+        if (Math.abs(dx) + Math.abs(dy) > 8) moved = true;
         b.style.transform = "rotateX(" + rx.toFixed(1) + "deg) rotateY(" + ry.toFixed(1) + "deg) scale(1.03)";
         b.style.setProperty("--gx", (50 + ry * 1.1) + "%");
         b.style.setProperty("--gy", (50 - rx * 1.4) + "%");
       }
       function up(){
-        clearTimeout(timer);
         b.removeEventListener("pointermove", mv);
         b.removeEventListener("pointerup", up);
         b.removeEventListener("pointercancel", up);
-        if (grab) { if (grab.moved) suppress = b; grab = null; releaseBoard(b); }
+        if (moved) suppress = b;
+        releaseBoard(b);
       }
       b.addEventListener("pointermove", mv);
       b.addEventListener("pointerup", up);
