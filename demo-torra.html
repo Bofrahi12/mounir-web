@@ -438,6 +438,7 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
   .hero h1 .w>span,.fade-item,.hero-frame,.hero-chip,.reveal{opacity:1!important;transform:none!important}
 }
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "TORRA — Torréfacteur &amp;amp; Café · Tanger", "creator": {"@type": "Organization", "name": "VERTEX WEB — فيرتكس ويب", "url": "https://tanja-web.onrender.com/"}}</script>
 </head>
 <body>
 
@@ -1098,6 +1099,32 @@ footer{background:#150d07;border-top:1px solid rgba(243,233,215,.07);margin-top:
     result.classList.remove("active");
     showStep(0);
   });
+})();
+</script>
+<style id="vx-pre-css">
+#vxPre{position:fixed;inset:0;z-index:99999;background:#070b14;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:transform .8s cubic-bezier(.76,0,.24,1)}
+#vxPre.done{transform:translateY(-101%)}
+#vxPre .b{font:700 15px/1.2 system-ui;letter-spacing:.42em;color:#d9a441;text-transform:uppercase}
+#vxPre .n{font:800 54px/1 system-ui;color:#f4f6fb}
+#vxPre .bar{width:min(260px,60vw);height:2px;background:rgba(217,164,65,.18);overflow:hidden}
+#vxPre .bar i{display:block;height:100%;width:0;background:#d9a441;transition:width .25s}
+#vxBar{position:fixed;top:0;right:0;height:3px;background:linear-gradient(90deg,#d9a441,#f3cd7a);z-index:99998;width:0}
+#vxGrain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:99997;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");animation:vxg 9s steps(6) infinite}
+@keyframes vxg{0%{transform:translate(0,0)}20%{transform:translate(-2%,1%)}40%{transform:translate(1%,-2%)}60%{transform:translate(-1%,2%)}80%{transform:translate(2%,-1%)}100%{transform:translate(0,0)}}
+</style>
+<div id="vxPre"><div class="b">VERTEX WEB</div><div class="n">0%</div><div class="bar"><i></i></div></div><div id="vxBar"></div><div id="vxGrain"></div>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script id="vx-pre-js">
+(function(){ var pre=document.getElementById('vxPre'); if(!pre) return;
+  var n=pre.querySelector('.n'), f=pre.querySelector('.bar i'), p=0;
+  var iv=setInterval(function(){ p=Math.min(100, p+Math.random()*16); n.textContent=Math.floor(p)+'%'; f.style.width=p+'%';
+    if(p>=100){ clearInterval(iv); setTimeout(function(){ pre.classList.add('done'); setTimeout(function(){ pre.remove(); }, 900); }, 120); } }, 110);
+  setTimeout(function(){ if(document.body.contains(pre)){ pre.classList.add('done'); setTimeout(function(){ pre.remove(); }, 900); } }, 3200);
+  try{ if(window.Lenis && !window.__vxLenis){ window.__vxLenis = new Lenis({lerp:.09, smoothWheel:true});
+    var rafL = function(t){ window.__vxLenis.raf(t); requestAnimationFrame(rafL); }; requestAnimationFrame(rafL); } }catch(e){}
+  var bar=document.getElementById('vxBar');
+  addEventListener('scroll', function(){ var h=document.documentElement; var m=h.scrollHeight-h.clientHeight;
+    if(bar) bar.style.width=(m>0 ? (h.scrollTop/m)*100 : 0)+'%'; }, {passive:true});
 })();
 </script>
 </body>
