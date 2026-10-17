@@ -283,6 +283,8 @@ footer .copy{font-size:13px;margin-top:8px}
   #burger{display:block}
   #rail{display:none}
   #ov1{top:auto;bottom:0;inset-inline:0;padding:70px 22px 10svh;background:linear-gradient(transparent,rgba(5,6,10,.9) 34%)}
+  #ov1 .meta{display:grid;grid-template-columns:repeat(2,auto);gap:8px 18px;justify-content:start}
+  #scrollcue{font-size:0;bottom:12px}
   #ov2{top:auto;bottom:0;inset-inline:0;text-align:start;padding:70px 22px 9svh;background:linear-gradient(transparent,rgba(5,6,10,.9) 34%)}
   #ov2 .ticks{justify-items:start}
   #ov4{top:auto;bottom:0;inset-inline:0;padding:70px 22px 10svh;background:linear-gradient(transparent,rgba(5,6,10,.9) 34%)}
@@ -1217,7 +1219,7 @@ try {
   function tick(t){
     requestAnimationFrame(tick);
     if (!visible) return;
-    const ms = innerWidth < 820 ? .62 : 1;
+    const ms = innerWidth < 820 ? .8 : 1;
     for (const [key, m] of Object.entries(meshes)){
       const L = ST.layers[key]; if (!L) continue;
       m.position.set(L.x * (innerWidth < 820 ? .45 : 1), L.y, L.z);
