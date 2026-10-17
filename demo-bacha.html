@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مطعم الباشا | الشيف أيوب بنعمر — البرانص 2، طنجة · كل طبق له حكاية</title>
-<meta name="description" content="مطعم الباشا ديال الشيف أيوب بنعمر في البرانص 2، طنجة — قرب مركز الحليب: لحسة، برغر، طاكوس، بيتزا، طواجن وكسكس الجمعة. التوصيل متوفر — اطلب عبر واتساب 0719 161 654.">
+<meta name="description" content="مطعم الباشا — الشيف أيوب بنعمر، البرانص 2 طنجة (قرب مركز الحليب): لحسة، برغر، بيتزا، طواجن وكسكس الجمعة. التوصيل متوفر — اطلب في واتساب 0719161654.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="keywords" content="مطعم الباشا, مطعم طنجة, البرانص 2, الشيف أيوب بنعمر, لحسة الباشا, برغر طنجة, كسكس الجمعة طنجة, توصيل طعام طنجة, Restaurant El Bacha Tanger">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:type" content="website">
@@ -512,6 +513,15 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 .sheet-media img{width:100%;height:100%;object-fit:cover;display:block}
 #sheetViewer{position:absolute;inset:0;display:none}
 #sheetViewer model-viewer{width:100%;height:100%}
+.sheet-media{perspective:1100px;touch-action:pan-y}
+#sheetImg{transform-style:preserve-3d;will-change:transform;transition:transform .16s ease-out}
+.sheet-glare{position:absolute;inset:0;pointer-events:none;z-index:2;background:radial-gradient(340px circle at var(--gx,50%) var(--gy,50%),rgba(255,236,190,.22),transparent 65%);opacity:0;transition:opacity .25s}
+.sheet-media.tilting .sheet-glare{opacity:1}
+.sheet-tilt-hint{position:absolute;top:12px;inset-inline-start:12px;z-index:2;background:rgba(12,10,6,.72);border:1px solid rgba(227,160,8,.55);color:var(--gold2);border-radius:99px;padding:6px 12px;font-size:.72rem;font-weight:700;pointer-events:none}
+.sheet-angles{position:absolute;bottom:12px;inset-inline-end:12px;z-index:3;display:none;gap:8px}
+.sheet-angles.on{display:flex}
+.sheet-angles button{width:46px;height:46px;border-radius:12px;border:2px solid rgba(247,238,227,.28);background-size:cover;background-position:center;cursor:pointer;padding:0;background-color:#000}
+.sheet-angles button.on{border-color:var(--gold)}
 .sheet-3d-badge{position:absolute;bottom:12px;inset-inline-start:12px;background:rgba(12,10,6,.78);border:1px solid rgba(227,160,8,.5);color:var(--gold2);border-radius:99px;padding:7px 14px;font-size:.76rem;font-weight:700}
 .sheet-body{padding:20px 22px 26px}
 .sheet-body h3{font-family:var(--font-d);font-size:1.55rem;font-weight:800}
@@ -770,8 +780,10 @@ body{padding-bottom:84px}
   <div class="cat-grid">
     <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-lahssa.webp')"><span class="cprice">35 درهم</span><span class="cbadge">الأكثر طلباً</span></div><div class="cbody"><h3>لحسة الباشا</h3><p>توقيع الدار والطبق اللي شهّرها — كتغلي وكتوصل سخونة.</p><button class="add-btn" type="button" data-add="lahssa">+ زيدها للطلب</button></div></article>
     <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-pizza.webp')"><span class="cprice">55 درهم</span><span class="cbadge">توقيع الباشا</span></div><div class="cbody"><h3>بيتزا ثمار البحر</h3><p>قمرون وكلامار وفطر على عجينة رقيقة — نجمة الحساب.</p><button class="add-btn" type="button" data-add="pizza">+ زيدها للطلب</button></div></article>
+    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-veggie.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>بيتزا الخضار</h3><p>باذنجان وفلفلة وذرة وطماطم على عجينة رقيقة — خفيفة ومليانة نكهة.</p><button class="add-btn" type="button" data-add="veggie">+ زيدها للطلب</button></div></article>
     <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-crispy.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>برغر كرسبي</h3><p>قطعة كرسبي مقرمشة بالجبن — كتتركب قدامك.</p><button class="add-btn" type="button" data-add="crispy">+ زيدها للطلب</button></div></article>
     <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-emince.webp')"><span class="cprice">70 درهم</span></div><div class="cbody"><h3>إمينسي الدجاج</h3><p>دجاج بصلصة الفطر الكريمية مع روز وخضرة — طبق رئيسي كامل.</p><button class="add-btn" type="button" data-add="emince">+ زيدها للطلب</button></div></article>
+    <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-emincev.webp')"><span class="cprice">95 درهم</span></div><div class="cbody"><h3>إمينسي اللحم</h3><p>لحم بقري بصلصة الفطر الكريمية مع روز وبيري وخضرة — طبق رئيسي فاخر.</p><button class="add-btn" type="button" data-add="emincev">+ زيدها للطلب</button></div></article>
     <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-kampiro.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>كامبيرو الباشا</h3><p>ساندويتش عامر بالدجاج والفلفلة والجبن، مع بطاطس وصلصة الدار.</p><button class="add-btn" type="button" data-add="kampiro">+ زيدها للطلب</button></div></article>
     <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-couscous.webp')"><span class="cprice">60 درهم</span><span class="cbadge">نهار الجمعة</span></div><div class="cbody"><h3>كسكس الجمعة</h3><p>موعد الجمعة المقدس: سميدة، لحم، خضرة وتفاية ذهبية.</p><button class="add-btn" type="button" data-add="couscous">+ زيدها للطلب</button></div></article>
     <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-pasticho.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>باستيشو</h3><p>باستا غراتان بالجبن، كتخرج من الفرن وهي كتغلي.</p><button class="add-btn" type="button" data-add="pasticho">+ زيدها للطلب</button></div></article>
@@ -809,7 +821,7 @@ body{padding-bottom:84px}
   <h2 class="big">أرقامنا<br><span class="grad-gold">بلا تزويق</span></h2>
   <div class="stats">
     <div class="stat"><b><span data-count="51">51</span><small>ألف+</small></b><h4>متابع على إنستغرام</h4><p>مجتمع كيكبر كل نهار حول أطباق الباشا وحكاياتها.</p></div>
-    <div class="stat"><b data-count="11">11</b><h4>تخصصاً بصور حقيقية</h4><p>كل وحدة بصورتها الحقيقية من مطبخ الباشا نفسه — والبرغر والسباغيتي عندهم فصولهم الخاصة.</p></div>
+    <div class="stat"><b data-count="13">13</b><h4>تخصصاً بصور حقيقية</h4><p>كل وحدة بصورتها الحقيقية من مطبخ الباشا نفسه — والبرغر والسباغيتي عندهم فصولهم الخاصة.</p></div>
     <div class="stat"><b><span data-count="35">35</span><small>درهم</small></b><h4>ثمن أشهر طبق</h4><p>اللحسة ولّات حديث المدينة — وبثمن في متناول الجميع.</p></div>
     <div class="stat"><b data-count="7">7</b><h4>أيام في الأسبوع</h4><p>الدار خدامة كل نهار، ونهار الجمعة عندو طقسو الخاص: الكسكس.</p></div>
   </div>
@@ -874,11 +886,13 @@ body{padding-bottom:84px}
       <div class="pick-row"><div class="pick-info"><b>لحسة الباشا</b><span>توقيع الدار — الأكثر طلباً</span></div><b class="pick-price">35 درهم</b><button class="add-btn" type="button" data-add="lahssa">+ زيدها</button></div>
       <div class="pick-row"><div class="pick-info"><b>برغر الباشا</b><span>توقيع الدار — 200غ لحم وصلصة سرية</span></div><b class="pick-price">55 درهم</b><button class="add-btn" type="button" data-add="burger">+ زيدها</button></div>
       <div class="pick-row"><div class="pick-info"><b>بيتزا ثمار البحر</b><span>قمرون وكلامار على عجينة رقيقة</span></div><b class="pick-price">55 درهم</b><button class="add-btn" type="button" data-add="pizza">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>بيتزا الخضار</b><span>خضار مشوية على عجينة رقيقة</span></div><b class="pick-price">45 درهم</b><button class="add-btn" type="button" data-add="veggie">+ زيدها</button></div>
       <div class="pick-row"><div class="pick-info"><b>سباغيتي ثمار البحر</b><span>كريمية بالقمرون</span></div><b class="pick-price">65 درهم</b><button class="add-btn" type="button" data-add="spaghetti">+ زيدها</button></div>
       <div class="pick-row"><div class="pick-info"><b>فورمول الباشا</b><span>بيتزا + لحسة + باستيشو</span></div><b class="pick-price">85 درهم</b><button class="add-btn" type="button" data-add="formule">+ زيدها</button></div>
       <div class="pick-row"><div class="pick-info"><b>كامبيرو الباشا</b><span>ساندويتش الدجاج العامر</span></div><b class="pick-price">45 درهم</b><button class="add-btn" type="button" data-add="kampiro">+ زيدها</button></div>
       <div class="pick-row"><div class="pick-info"><b>برغر كرسبي</b><span>قطعة مقرمشة بالجبن</span></div><b class="pick-price">45 درهم</b><button class="add-btn" type="button" data-add="crispy">+ زيدها</button></div>
       <div class="pick-row"><div class="pick-info"><b>إمينسي الدجاج</b><span>صلصة الفطر — طبق كامل</span></div><b class="pick-price">70 درهم</b><button class="add-btn" type="button" data-add="emince">+ زيدها</button></div>
+      <div class="pick-row"><div class="pick-info"><b>إمينسي اللحم</b><span>صلصة الفطر — طبق فاخر</span></div><b class="pick-price">95 درهم</b><button class="add-btn" type="button" data-add="emincev">+ زيدها</button></div>
       <div class="pick-row"><div class="pick-info"><b>باستيشو</b><span>غراتان من الفرن</span></div><b class="pick-price">45 درهم</b><button class="add-btn" type="button" data-add="pasticho">+ زيدها</button></div>
       <div class="pick-row"><div class="pick-info"><b>طبق مشترك الباشا</b><span>كلامار ومقليات — للمشاركة</span></div><b class="pick-price">110 درهم</b><button class="add-btn" type="button" data-add="platter">+ زيدها</button></div>
       <div class="pick-row"><div class="pick-info"><b>كسكس الجمعة</b><span class="fri-note">متوفر غير نهار الجمعة</span></div><b class="pick-price">60 درهم</b><button class="add-btn" type="button" data-add="couscous">+ زيدها</button></div>
@@ -986,6 +1000,9 @@ body{padding-bottom:84px}
     <img id="sheetImg" src="" alt="" decoding="async">
     <div id="sheetViewer"></div>
     <span class="sheet-3d-badge" id="sheet3dBadge">النموذج ثلاثي الأبعاد في طور الإعداد</span>
+    <div class="sheet-glare" id="sheetGlare"></div>
+    <span class="sheet-tilt-hint" id="sheetTiltHint">اسحب الصورة ودوّرها — عرض ثلاثي الأبعاد</span>
+    <div class="sheet-angles" id="sheetAngles"></div>
   </div>
   <div class="sheet-body">
     <h3 id="sheetName"></h3>
@@ -1004,9 +1021,9 @@ body{padding-bottom:84px}
 </aside>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" integrity="sha384-O55L/6rhHr9CFvrxqv5luxOCcmVaBmETbZbJDP+Do8T0pztTACsFBD/IXCNkj7DV" crossorigin="anonymous"></script>
 <script>
 /* ================= CONFIG ================= */
 const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Restaurant%20El%20Bacha%2C%20Branes%202%2C%20Tanger" };
@@ -1018,15 +1035,28 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
 
   /* ---------- ORDER BUILDER ---------- */
   const state = { extras: new Map(), date: null, dateObj: new Date(), time: "13:00", method: "pickup", address: "", geoLink: null, name: "", phone: "", pay: "cash" };
+  /* ====== تكبير المنيو (GROWTH) — طبق جديد كيتزاد من بلاصة وحدة ======
+     1) زيد سطر في MENU لتحت (الاسم بالعربية + الثمن + friday اختيارية).
+     2) زيد نفس المفتاح في DISHES و DISHIMG و MODELS (فوق، في بلوك v14):
+        الاسم والوصف بالعربية والفرنسية + صورة الطبق الحقيقية + رابط .glb
+        إلا تصنع النموذج ثلاثي الأبعاد ديالو.
+     3) زيد بطاقة في الكتالوغ (cat-card بنفس data-add) وسطر في لائحة الطلب
+        (pick-row بنفس data-add) — ورقة التفاصيل والسلة والترجمة وواتساب
+        كيخدمو عليه تلقائياً بلا حتى تعديل آخر.
+     4) اختياري: زيد زر board-hot في لوحات المنيو بنفس data-dish باش يتفتح
+        حتى من اللوحات. ملاحظة: حتى طبق ما كيتربط قبل تأكيد الشيف
+        (خريطة التأكيد: your_files/menu-map-bacha-confirmation.md). */
   const MENU = {
     lahssa:    { name: "لحسة الباشا", price: 35 },
     burger:    { name: "برغر الباشا", price: 55 },
     pizza:     { name: "بيتزا ثمار البحر", price: 55 },
+    veggie:    { name: "بيتزا الخضار", price: 45 },
     spaghetti: { name: "سباغيتي ثمار البحر", price: 65 },
     formule:   { name: "فورمول الباشا", price: 85 },
     kampiro:   { name: "كامبيرو الباشا", price: 45 },
     crispy:    { name: "برغر كرسبي", price: 45 },
     emince:    { name: "إمينسي الدجاج", price: 70 },
+    emincev:   { name: "إمينسي اللحم", price: 95 },
     pasticho:  { name: "باستيشو", price: 45 },
     platter:   { name: "طبق مشترك الباشا", price: 110 },
     couscous:  { name: "كسكس الجمعة", price: 60, friday: true }
@@ -1037,8 +1067,9 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
      غير ملي يتفتح تفاصيل الطبق. بلا رابط: كتبقى الصورة الحقيقية + شارة
      «النموذج ثلاثي الأبعاد في طور الإعداد» — بلا ادعاءات كاذبة. */
   var LANG = "ar";
-  var MODELS = { lahssa: "", burger: "", pizza: "", spaghetti: "", formule: "", kampiro: "", crispy: "", emince: "", pasticho: "", platter: "", couscous: "" };
-  var DISHIMG = { lahssa: "demo-bacha/p-lahssa.webp", burger: "demo-bacha/sig-poster.webp", pizza: "demo-bacha/p-pizza.webp", spaghetti: "demo-bacha/stage.webp", formule: "demo-bacha/p-formule.webp", kampiro: "demo-bacha/p-kampiro.webp", crispy: "demo-bacha/p-crispy.webp", emince: "demo-bacha/p-emince.webp", pasticho: "demo-bacha/p-pasticho.webp", platter: "demo-bacha/p-platter.webp", couscous: "demo-bacha/p-couscous.webp" };
+  var MODELS = { lahssa: "", burger: "", pizza: "", veggie: "", spaghetti: "", formule: "", kampiro: "", crispy: "", emince: "", emincev: "", pasticho: "", platter: "", couscous: "" };
+  var DISHIMG2 = { pizza: "demo-bacha/p-pizza2.webp" };
+  var DISHIMG = { lahssa: "demo-bacha/p-lahssa.webp", burger: "demo-bacha/p-burger.webp", pizza: "demo-bacha/p-pizza.webp", veggie: "demo-bacha/p-veggie.webp", spaghetti: "demo-bacha/stage.webp", formule: "demo-bacha/p-formule.webp", kampiro: "demo-bacha/p-kampiro.webp", crispy: "demo-bacha/p-crispy.webp", emince: "demo-bacha/p-emince.webp", emincev: "demo-bacha/p-emincev.webp", pasticho: "demo-bacha/p-pasticho.webp", platter: "demo-bacha/p-platter.webp", couscous: "demo-bacha/p-couscous.webp" };
   var DISHES = {
     lahssa:    { ar: { name: "لحسة الباشا", desc: "توقيع الدار والطبق اللي شهّرها — كتغلي وكتوصل سخونة.", note: "توقيع الدار — الأكثر طلباً" },
                  fr: { name: "Lahssa El Bacha", desc: "La signature de la maison — le plat qui a fait sa réputation, servi bouillant.", note: "Signature de la maison — le plus commandé" } },
@@ -1054,6 +1085,10 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
                  fr: { name: "Kampiro El Bacha", desc: "Sandwich généreux au poulet, poivrons et fromage, frites et sauce maison.", note: "Sandwich poulet généreux" } },
     crispy:    { ar: { name: "برغر كرسبي", desc: "قطعة كرسبي مقرمشة بالجبن — كتتركب قدامك.", note: "قطعة مقرمشة بالجبن" },
                  fr: { name: "Crispy Burger", desc: "Pièce crispy croustillante au fromage, montée devant vous.", note: "Pièce croustillante au fromage" } },
+    veggie:    { ar: { name: "بيتزا الخضار", desc: "باذنجان وفلفلة وذرة وطماطم على عجينة رقيقة — خفيفة ومليانة نكهة.", note: "خضار مشوية على عجينة رقيقة" },
+                 fr: { name: "Pizza Végétarienne", desc: "Aubergine, poivrons, maïs et tomates sur pâte fine.", note: "Légumes grillés sur pâte fine" } },
+    emincev:   { ar: { name: "إمينسي اللحم", desc: "لحم بقري بصلصة الفطر الكريمية مع روز وبيري وخضرة — طبق رئيسي فاخر.", note: "صلصة الفطر — طبق فاخر" },
+                 fr: { name: "Émincé de Viande", desc: "Bœuf à la sauce champignons crémeuse, riz, purée et légumes — un plat généreux.", note: "Sauce champignons — plat généreux" } },
     emince:    { ar: { name: "إمينسي الدجاج", desc: "دجاج بصلصة الفطر الكريمية مع روز وخضرة — طبق رئيسي كامل.", note: "صلصة الفطر — طبق كامل" },
                  fr: { name: "Émincé de Poulet", desc: "Poulet à la sauce champignons crémeuse, riz et légumes — un plat complet.", note: "Sauce champignons — plat complet" } },
     pasticho:  { ar: { name: "باستيشو", desc: "باستا غراتان بالجبن، كتخرج من الفرن وهي كتغلي.", note: "غراتان من الفرن" },
@@ -1081,7 +1116,7 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
       confirmBtn: "أكّد الطلب في واتساب ←", custNameL: "الاسم الكامل", custNamePh: "مثال: يوسف العلوي", custPhoneL: "رقم الهاتف", custPhonePh: "06 XX XX XX XX",
       payCashB: "نقداً عند الاستلام", payCashS: "خلّص ملي يوصلك الطلب ولا ملي تجي تاخدو", payTrB: "تحويل", payTrS: "نتفاهمو على التفاصيل في واتساب",
       addBtn: "+ زيدها", addBtnLong: "+ زيدها للطلب", noteLabel: "ملاحظة على هاد الطبق (اختيارية)", notePh: "مثال: بلا حار، الصلصة على جنب…",
-      sheetAdd: "زيدها للسلة", sheet3d: "النموذج ثلاثي الأبعاد في طور الإعداد", fridayOnly: "هاد الطبق متوفر غير نهار الجمعة",
+      sheetAdd: "زيدها للسلة", sheet3d: "النموذج ثلاثي الأبعاد في طور الإعداد", sheetTilt: "اسحب الصورة ودوّرها — عرض ثلاثي الأبعاد", fridayOnly: "هاد الطبق متوفر غير نهار الجمعة",
       couscousRemoved: "تزال الكسكس من السلة — متوفر غير نهار الجمعة", added: "تزاد «{n}» للسلة — {t}. كمّل طلبك لتحت ↓",
       cartEmptyToast: "السلة خاوية — زيد طبق بعدا من اللائحة", needAddress: "كتب الحومة والعنوان باش يوصلك الطلب",
       needName: "كتب الاسم ديالك باش نعرفو الطلب ديال من", needPhone: "كتب رقم هاتف مغربي صحيح (06/07…)" },
@@ -1102,7 +1137,7 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
       confirmBtn: "Confirmer sur WhatsApp ←", custNameL: "Nom complet", custNamePh: "Ex. : Youssef El Alaoui", custPhoneL: "Numéro de téléphone", custPhonePh: "06 XX XX XX XX",
       payCashB: "Espèces à la réception", payCashS: "Payez à la livraison ou au retrait", payTrB: "Virement", payTrS: "Les détails se règlent sur WhatsApp",
       addBtn: "+ Ajouter", addBtnLong: "+ Ajouter à la commande", noteLabel: "Une note pour ce plat (optionnel)", notePh: "Ex. : sans piment, sauce à part…",
-      sheetAdd: "Ajouter au panier", sheet3d: "Le modèle 3D est en préparation", fridayOnly: "Ce plat n'est disponible que le vendredi",
+      sheetAdd: "Ajouter au panier", sheet3d: "Le modèle 3D est en préparation", sheetTilt: "Glissez pour pivoter la photo — vue 3D", fridayOnly: "Ce plat n'est disponible que le vendredi",
       couscousRemoved: "Le couscous a été retiré — disponible le vendredi uniquement", added: "« {n} » ajouté au panier — {t}. Finalisez ci-dessous ↓",
       cartEmptyToast: "Le panier est vide — ajoutez d'abord un plat", needAddress: "Écrivez votre quartier et votre adresse pour la livraison",
       needName: "Écrivez votre nom pour identifier la commande", needPhone: "Écrivez un numéro marocain valide (06/07…)" }
@@ -1322,6 +1357,7 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
     document.getElementById("sheetPrice").textContent = fmt(MENU[sheetKey].price);
     document.getElementById("sheetQty").textContent = sheetQty;
     document.getElementById("sheet3dBadge").textContent = T("sheet3d");
+    document.getElementById("sheetTiltHint").textContent = T("sheetTilt");
     sheetTotal();
   }
   function openSheet(key, origin){
@@ -1330,12 +1366,18 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
     document.getElementById("sheetNote").value = "";
     const img = document.getElementById("sheetImg"), viewer = document.getElementById("sheetViewer"), badge = document.getElementById("sheet3dBadge");
     img.src = DISHIMG[key]; img.alt = DISHES[key][LANG].name;
+    img.style.transform = "";
     viewer.innerHTML = ""; viewer.style.display = "none"; img.style.display = ""; badge.style.display = "";
+    const hint = document.getElementById("sheetTiltHint"); hint.style.display = "";
+    const angles = document.getElementById("sheetAngles");
+    const shots = DISHIMG2[key] ? [DISHIMG[key], DISHIMG2[key]] : [DISHIMG[key]];
+    angles.innerHTML = ""; angles.classList.toggle("on", shots.length > 1);
+    shots.forEach((s, i) => { const b = document.createElement("button"); b.type = "button"; b.style.backgroundImage = "url('" + s + "')"; b.setAttribute("aria-label", DISHES[key][LANG].name); if (i === 0) b.classList.add("on"); b.addEventListener("click", ()=>{ img.src = s; img.style.transform = ""; angles.querySelectorAll("button").forEach(x => x.classList.remove("on")); b.classList.add("on"); }); angles.appendChild(b); });
     fillSheet();
     if (MODELS[key]) {
       ensureModelViewer(()=>{
         if (sheetKey !== key) return;
-        img.style.display = "none"; badge.style.display = "none"; viewer.style.display = "block";
+        img.style.display = "none"; badge.style.display = "none"; hint.style.display = "none"; angles.classList.remove("on"); viewer.style.display = "block";
         viewer.innerHTML = '<model-viewer src="' + MODELS[key] + '" poster="' + DISHIMG[key] + '" camera-controls auto-rotate shadow-intensity="0.5" style="width:100%;height:100%" alt="' + DISHES[key][LANG].name + '"></model-viewer>';
       });
     }
@@ -1389,6 +1431,23 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   document.querySelectorAll(".board-hot").forEach(b => {
     b.addEventListener("click", ()=> openSheet(b.dataset.dish, "board"));
   });
+
+  /* ---------- v17: مسرح 3D لصورة الطبق — إمالة بالسحب/الفأرة مع انعكاس ضوئي ---------- */
+  (function(){
+    const media = document.querySelector(".sheet-media"), img = document.getElementById("sheetImg"), viewer = document.getElementById("sheetViewer");
+    if (!media || !img || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let dragging = false;
+    function tilt(e){
+      const r = media.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      img.style.transform = "rotateX(" + ((.5 - y) * 11).toFixed(1) + "deg) rotateY(" + ((x - .5) * 15).toFixed(1) + "deg) scale(1.07)";
+      media.style.setProperty("--gx", (x * 100) + "%"); media.style.setProperty("--gy", (y * 100) + "%");
+    }
+    media.addEventListener("pointerdown", e => { if (viewer.style.display === "block") return; dragging = true; media.classList.add("tilting"); tilt(e); });
+    media.addEventListener("pointermove", e => { if (viewer.style.display === "block") return; if (e.pointerType === "touch" && !dragging) return; tilt(e); media.classList.add("tilting"); });
+    window.addEventListener("pointerup", ()=>{ if (dragging) { dragging = false; setTimeout(()=>{ img.style.transform = ""; media.classList.remove("tilting"); }, 420); } });
+    media.addEventListener("pointerleave", ()=>{ if (!dragging) { img.style.transform = ""; media.classList.remove("tilting"); } });
+  })();
 
   /* ---------- v14: customer + payment bindings ---------- */
   const custName = document.getElementById("custName"), custPhone = document.getElementById("custPhone");
