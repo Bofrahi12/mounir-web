@@ -582,6 +582,10 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 .board{flex:0 0 min(76vw,330px);scroll-snap-align:center;margin:0;border:1px solid rgba(227,160,8,.35);border-radius:14px;overflow:hidden;background:#0B0805}
 .board img{display:block;width:100%;height:auto}
 .board figcaption{padding:11px 14px;font-family:var(--font-g);font-weight:700;font-size:.85rem;color:var(--gold2);text-align:center}
+.bwrap{position:relative;display:block}
+.board-hot{position:absolute;left:5%;width:90%;margin:0;padding:0;background:transparent;border:0;border-radius:6px;cursor:pointer;z-index:3;-webkit-tap-highlight-color:transparent}
+.board-hot:active{background:rgba(227,160,8,.10)}
+.board-hot:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;background:rgba(227,160,8,.12)}
 .pop-wrap{margin-top:9vh;border-top:1px solid var(--line);padding-top:7vh}
 .pop-wrap .cat-grid{margin-top:34px}
 
@@ -762,15 +766,15 @@ body{padding-bottom:84px}
   <div class="boards-wrap">
     <p class="spec" style="justify-content:center">المنيو الأصلي</p>
     <h2 class="big" style="text-align:center">المنيو <span class="grad-gold">كما هو</span> عند الشيف</h2>
-    <p class="lede" style="text-align:center;max-width:620px;margin:10px auto 0">اللوحات الأصلية ديال منيو مطعم الباشا — مرّر باش تشوف الأصناف الثمانية كاملة.</p>
+    <p class="lede" style="text-align:center;max-width:620px;margin:10px auto 0">اللوحات الأصلية ديال منيو مطعم الباشا — مرّر باش تشوف الأصناف الثمانية كاملة، واضغط على أي طبق من تخصصات الدار في اللوحات باش تشوف تفاصيله وتزيدو لطلبك.</p>
     <div class="boards">
-      <figure class="board"><img src="demo-bacha/board-1.webp" alt="المنيو الأصلي — المقبلات والسلطات" loading="lazy" decoding="async"><figcaption>المقبلات والسلطات</figcaption></figure>
+      <figure class="board"><span class="bwrap"><img src="demo-bacha/board-1.webp" alt="المنيو الأصلي — المقبلات والسلطات" loading="lazy" decoding="async"><button class="board-hot" type="button" data-dish="platter" style="top:46.2%;height:2.9%" aria-label="طبق مشترك الباشا — 110 درهم — عرض التفاصيل والطلب"></button></span><figcaption>المقبلات والسلطات</figcaption></figure>
       <figure class="board"><img src="demo-bacha/board-2.webp" alt="المنيو الأصلي — الساندويتشات والطاكوس" loading="lazy" decoding="async"><figcaption>الساندويتشات والطاكوس</figcaption></figure>
-      <figure class="board"><img src="demo-bacha/board-3.webp" alt="المنيو الأصلي — البرغر، البيتزا واللفائف" loading="lazy" decoding="async"><figcaption>البرغر، البيتزا واللفائف</figcaption></figure>
+      <figure class="board"><span class="bwrap"><img src="demo-bacha/board-3.webp" alt="المنيو الأصلي — البرغر، البيتزا واللفائف" loading="lazy" decoding="async"><button class="board-hot" type="button" data-dish="crispy" style="top:22.9%;height:2.6%" aria-label="برغر كريسبي — 45 درهم — عرض التفاصيل والطلب"></button><button class="board-hot" type="button" data-dish="pizza" style="top:53.9%;height:2.6%" aria-label="بيتزا ثمار البحر — 55 درهم — عرض التفاصيل والطلب"></button></span><figcaption>البرغر، البيتزا واللفائف</figcaption></figure>
       <figure class="board"><img src="demo-bacha/board-4.webp" alt="المنيو الأصلي — البانيني، الشاورما والكاساديا" loading="lazy" decoding="async"><figcaption>البانيني، الشاورما والكاساديا</figcaption></figure>
-      <figure class="board"><img src="demo-bacha/board-5.webp" alt="المنيو الأصلي — المعكرونة والكامبيرو" loading="lazy" decoding="async"><figcaption>المعكرونة والكامبيرو</figcaption></figure>
+      <figure class="board"><span class="bwrap"><img src="demo-bacha/board-5.webp" alt="المنيو الأصلي — المعكرونة والكامبيرو" loading="lazy" decoding="async"><button class="board-hot" type="button" data-dish="spaghetti" style="top:43.8%;height:2.4%" aria-label="سباغيتي ثمار البحر — 65 درهم — عرض التفاصيل والطلب"></button><button class="board-hot" type="button" data-dish="pasticho" style="top:66.0%;height:2.4%" aria-label="باستيشو — 45 درهم — عرض التفاصيل والطلب"></button><button class="board-hot" type="button" data-dish="kampiro" style="top:84.3%;height:2.4%" aria-label="كامبيرو الباشا — 45 درهم — عرض التفاصيل والطلب"></button></span><figcaption>المعكرونة والكامبيرو</figcaption></figure>
       <figure class="board"><img src="demo-bacha/board-6.webp" alt="المنيو الأصلي — البولز والباييلا" loading="lazy" decoding="async"><figcaption>البولز والباييلا</figcaption></figure>
-      <figure class="board"><img src="demo-bacha/board-7.webp" alt="المنيو الأصلي — الأطباق والطواجن" loading="lazy" decoding="async"><figcaption>الأطباق والطواجن</figcaption></figure>
+      <figure class="board"><span class="bwrap"><img src="demo-bacha/board-7.webp" alt="المنيو الأصلي — الأطباق والطواجن" loading="lazy" decoding="async"><button class="board-hot" type="button" data-dish="emince" style="top:21.4%;height:2.8%" aria-label="إمينسي الدجاج — 70 درهم — عرض التفاصيل والطلب"></button></span><figcaption>الأطباق والطواجن</figcaption></figure>
       <figure class="board"><img src="demo-bacha/board-8.webp" alt="المنيو الأصلي — التحلية" loading="lazy" decoding="async"><figcaption>التحلية</figcaption></figure>
     </div>
   </div>
@@ -1285,7 +1289,7 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
 
   /* ---------- v14: dish detail sheet (photo + ready 3D slot) ---------- */
   const sheet = document.getElementById("dishSheet"), sheetBd = document.getElementById("sheetBackdrop");
-  let sheetKey = null, sheetQty = 1, mvRequested = false;
+  let sheetKey = null, sheetQty = 1, mvRequested = false, sheetOrigin = "catalog";
   function ensureModelViewer(cb){
     if (window.customElements && customElements.get("model-viewer")) { cb(); return; }
     if (mvRequested) { const iv = setInterval(()=>{ if (window.customElements && customElements.get("model-viewer")) { clearInterval(iv); cb(); } }, 150); return; }
@@ -1306,9 +1310,9 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
     document.getElementById("sheet3dBadge").textContent = T("sheet3d");
     sheetTotal();
   }
-  function openSheet(key){
+  function openSheet(key, origin){
     if (!MENU[key]) return;
-    sheetKey = key; sheetQty = 1;
+    sheetKey = key; sheetQty = 1; sheetOrigin = origin || "catalog";
     document.getElementById("sheetNote").value = "";
     const img = document.getElementById("sheetImg"), viewer = document.getElementById("sheetViewer"), badge = document.getElementById("sheet3dBadge");
     img.src = DISHIMG[key]; img.alt = DISHES[key][LANG].name;
@@ -1343,9 +1347,11 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
       const nm = dname(sheetKey);
       closeSheet();
       toast(T("added", nm, fmt(cartTotal())));
-      const target = document.getElementById("builder");
-      if (window.__lenis) window.__lenis.scrollTo(target, { offset: -70, duration: 1.2 });
-      else target.scrollIntoView({ behavior: "smooth" });
+      if (sheetOrigin !== "board") {
+        const target = document.getElementById("builder");
+        if (window.__lenis) window.__lenis.scrollTo(target, { offset: -70, duration: 1.2 });
+        else target.scrollIntoView({ behavior: "smooth" });
+      }
     }
   });
   document.querySelectorAll(".cat-card").forEach(card => {
@@ -1364,6 +1370,11 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   if (sigFig) { sigFig.style.cursor = "pointer"; sigFig.addEventListener("click", ()=>openSheet("burger")); }
   const stageEl = document.querySelector(".stage-wrap");
   if (stageEl) { stageEl.style.cursor = "pointer"; stageEl.addEventListener("click", e => { if (!e.target.closest("button")) openSheet("spaghetti"); }); }
+  /* v15 — مناطق ضغط غير مرئية فوق أطباق اللوحات الأصلية: كل منطقة مربوطة
+     بطبقها وسعرها كما هو مطبوع في اللوحة، وكتفتح نفس ورقة التفاصيل. */
+  document.querySelectorAll(".board-hot").forEach(b => {
+    b.addEventListener("click", ()=> openSheet(b.dataset.dish, "board"));
+  });
 
   /* ---------- v14: customer + payment bindings ---------- */
   const custName = document.getElementById("custName"), custPhone = document.getElementById("custPhone");
