@@ -586,6 +586,24 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 .pop-wrap .cat-grid{margin-top:34px}
 
 </style>
+
+<style id="persuasion-css">
+.trustrow{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 4px}
+.tchip{border:1px solid rgba(215,164,65,.45);color:var(--gold,#d7a441);border-radius:99px;padding:8px 14px;font-size:.85rem;font-weight:700;background:rgba(215,164,65,.07)}
+.fricard{margin:28px auto 4px;max-width:880px;display:flex;gap:18px;align-items:center;justify-content:space-between;border:1px solid rgba(215,164,65,.5);border-radius:20px;padding:20px 22px;background:linear-gradient(135deg,rgba(215,164,65,.13),rgba(215,164,65,.03))}
+.fricard h3{margin:0 0 6px;font-size:1.35rem}
+.fricard p{margin:0;opacity:.85}
+.fri-count{margin-top:8px!important;font-weight:800;color:var(--gold,#d7a441);opacity:1!important}
+.fri-btn{white-space:nowrap}
+#stickybar{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:90;display:flex;align-items:center;gap:14px;background:rgba(10,12,18,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(215,164,65,.55);border-radius:99px;padding:9px 10px;padding-inline-start:20px;box-shadow:0 18px 44px rgba(0,0,0,.55);width:max-content;max-width:94vw;transition:opacity .3s,transform .3s}
+#stickybar.sb-hide{opacity:0;pointer-events:none;transform:translate(-50%,16px)}
+#sbTxt{font-weight:700;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-btn{background:var(--gold,#d7a441);color:#1A1206;border:0;border-radius:99px;font-weight:900;padding:11px 22px;cursor:pointer;font-size:.95rem;white-space:nowrap;font-family:inherit}
+.toast{bottom:92px!important}
+.ig-link{color:var(--gold,#d7a441);font-weight:700}
+body{padding-bottom:84px}
+@media(max-width:760px){.fricard{flex-direction:column;align-items:flex-start}#sbTxt{font-size:.8rem}#stickybar{bottom:60px}.toast{bottom:128px!important}}
+</style>
 </head>
 <body>
 
@@ -753,6 +771,14 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
       <figure class="board"><img src="demo-bacha/board-8.webp" alt="المنيو الأصلي — التحلية" loading="lazy"><figcaption>التحلية</figcaption></figure>
     </div>
   </div>
+  <div class="fricard">
+    <div class="fri-txt">
+      <h3 data-i18n="friT">كسكس الجمعة 🍲</h3>
+      <p data-i18n="friP">طبق الدار ديال نهار الجمعة — كيتحضّر غير في هاد النهار، على الطريقة التقليدية. زيدو لطلبك واختار نهار الجمعة كموعد.</p>
+      <p class="fri-count" id="friCount"></p>
+    </div>
+    <button class="add-btn fri-btn" type="button" data-add="couscous" data-i18n="friAdd">+ زيدها للطلب</button>
+  </div>
 </section>
 
 <!-- ============ 06 · الحرفة ============ -->
@@ -815,6 +841,11 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 <section class="scene" id="order" data-chapter="09" data-name="اطلب" aria-label="اطلب">
   <p class="spec" data-i18n="orderSpec">09. اطلب</p>
   <h2 class="big">بنِ <span class="grad-gold">طلبك</span></h2>
+  <div class="trustrow">
+    <span class="tchip" data-i18n="trust1">💵 الدفع عند الاستلام أو بالتحويل</span>
+    <span class="tchip" data-i18n="trust2">💬 تأكيد فوري في واتساب</span>
+    <span class="tchip" data-i18n="trust3">🛵 توصيل أو استلام من المحل</span>
+  </div>
 
   <div class="builder" id="builder">
     <p class="step-t" data-i18n="step1">الخطوة 1 — اختر الأطباق</p>
@@ -914,12 +945,17 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
   <footer>
     <div>مطعم الباشا — الشيف أيوب بنعمر · البرانص 2، طنجة · 0719 161 654</div>
     <div class="f-mid">طنجة — كل طبق له حكاية</div>
+    <div><a class="ig-link" href="https://www.instagram.com/chef_ayoub_lbacha" target="_blank" rel="noopener" data-i18n="igFollow">📸 تابع الشيف على إنستغرام — @chef_ayoub_lbacha</a></div>
     <div><a href="#hero" data-scroll>رجوع للواجهة ↑</a></div>
     <div>© 2026 مطعم الباشا — نموذج من <a href="index.html">VERTEX WEB</a> · لقطات الشواء عبر Pexels</div>
   </footer>
 </section>
 
 </main>
+<div id="stickybar">
+  <span id="sbTxt" data-i18n="barEmpty">أطباق الشيف — بصور حقيقية</span>
+  <button class="sb-btn" id="sbBtn" type="button" data-i18n="barOrder">اطلب دابا</button>
+</div>
 <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
 <aside class="dish-sheet" id="dishSheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetName">
   <button class="sheet-x" id="sheetClose" type="button" aria-label="إغلاق">✕</button>
@@ -1011,6 +1047,11 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
       cartTitle: "سلة الطلب", cartEmpty: "السلة خاوية — زيد أول طبق من اللائحة.", delBadge: "التوصيل متوفر",
       mDelB: "التوصيل لباب الدار", mDelS: "كيوصلك الطلب سخون حتى لعندك", mPickB: "الاستلام من المطعم", mPickS: "البرانص 2 · قريب من مركز الحليب",
       geoBtn: "◎ استعمل موقعي الحالي", addrNote: "ثمن ومدة التوصيل كيتأكدو معاك في واتساب قبل ما يتحضّر الطلب. موقعك كيتزاد غير في رسالة الطلب، ما كيتخزّن حتى في بلاصة.",
+      barEmpty: "أطباق الشيف — بصور حقيقية", barOrder: "اطلب دابا", barInCart: "{n} في السلة", barCheckout: "كمّل الطلب",
+      friT: "كسكس الجمعة 🍲", friP: "طبق الدار ديال نهار الجمعة — كيتحضّر غير في هاد النهار، على الطريقة التقليدية. زيدو لطلبك واختار نهار الجمعة كموعد.", friAdd: "+ زيدها للطلب",
+      friToday: "اليوم الجمعة — الكسكس متوفر اليوم!", friIn: "باقي {n} على نهار الجمعة", friD: "يوم", friH: "ساعة", friM: "دقيقة",
+      trust1: "💵 الدفع عند الاستلام أو بالتحويل", trust2: "💬 تأكيد فوري في واتساب", trust3: "🛵 توصيل أو استلام من المحل",
+      igFollow: "📸 تابع الشيف على إنستغرام — @chef_ayoub_lbacha",
       freshNote: "الطلب كيتحضّر غير ملي توصّلنا الرسالة — سخون وطازج، بلا انتظار.",
       sumExtrasL: "الإضافات", sumMethodL: "طريقة الوصول", sumAddrL: "العنوان", sumPayL: "الأداء", sumWhenL: "الموعد", sumTotalL: "المجموع",
       confirmBtn: "أكّد الطلب في واتساب ←", custNameL: "الاسم الكامل", custNamePh: "مثال: يوسف العلوي", custPhoneL: "رقم الهاتف", custPhonePh: "06 XX XX XX XX",
@@ -1026,6 +1067,11 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
       cartTitle: "Votre panier", cartEmpty: "Le panier est vide — ajoutez un premier plat.", delBadge: "Livraison disponible",
       mDelB: "Livraison à domicile", mDelS: "Votre commande arrive chaude chez vous", mPickB: "À emporter au restaurant", mPickS: "Branes 2 · près du Centre Laitier",
       geoBtn: "◎ Utiliser ma position actuelle", addrNote: "Les frais et le délai de livraison sont confirmés sur WhatsApp avant la préparation. Votre position n'est ajoutée qu'au message de commande, elle n'est jamais enregistrée.",
+      barEmpty: "Les plats du chef, en photos réelles", barOrder: "Commander", barInCart: "{n} au panier", barCheckout: "Finaliser",
+      friT: "Couscous du vendredi 🍲", friP: "Le plat maison du vendredi — préparé uniquement ce jour-là, à la traditionnelle. Ajoutez-le à votre commande et choisissez vendredi comme rendez-vous.", friAdd: "+ Ajouter",
+      friToday: "C'est vendredi — le couscous est disponible aujourd'hui !", friIn: "Plus que {n} avant vendredi", friD: "j", friH: "h", friM: "min",
+      trust1: "💵 Paiement à la livraison ou par virement", trust2: "💬 Confirmation immédiate sur WhatsApp", trust3: "🛵 Livraison ou retrait au restaurant",
+      igFollow: "📸 Suivez le chef sur Instagram — @chef_ayoub_lbacha",
       freshNote: "La commande n'est préparée qu'à la réception de votre message — chaude et fraîche, sans attente.",
       sumExtrasL: "Extras", sumMethodL: "Mode de réception", sumAddrL: "Adresse", sumPayL: "Paiement", sumWhenL: "Rendez-vous", sumTotalL: "Total",
       confirmBtn: "Confirmer sur WhatsApp ←", custNameL: "Nom complet", custNamePh: "Ex. : Youssef El Alaoui", custPhoneL: "Numéro de téléphone", custPhonePh: "06 XX XX XX XX",
@@ -1610,5 +1656,48 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
 })();
 </script>
 
+
+<script id="persuasion-js">
+(function(){
+  var DICT = {
+    ar: { barEmpty: "أطباق الشيف — بصور حقيقية", barOrder: "اطلب دابا", barInCart: "{n} في السلة", barCheckout: "كمّل الطلب",
+      friToday: "اليوم الجمعة — الكسكس متوفر اليوم!", friIn: "باقي {n} على نهار الجمعة", friD: "يوم", friH: "ساعة", friM: "دقيقة" },
+    fr: { barEmpty: "Les plats du chef, en photos réelles", barOrder: "Commander", barInCart: "{n} au panier", barCheckout: "Finaliser",
+      friToday: "C'est vendredi — le couscous est disponible aujourd'hui !", friIn: "Plus que {n} avant vendredi", friD: "j", friH: "h", friM: "min" }
+  };
+  function curLang(){ var el = document.querySelector('[data-i18n="sumTotalL"]'); return (el && el.textContent.trim() === 'Total') ? 'fr' : 'ar'; }
+  function PT(k, n){ var d = DICT[curLang()] || DICT.ar; var v = d[k] || DICT.ar[k] || k; if (n !== undefined) v = v.replace('{n}', n); return v; }
+  var sb=document.getElementById('stickybar'), sbTxt=document.getElementById('sbTxt'), sbBtn=document.getElementById('sbBtn');
+  var target='#menu', orderVisible=false;
+  if(sbBtn){ sbBtn.addEventListener('click',function(){ var t=document.querySelector(target); if(t) t.scrollIntoView({behavior:'smooth'}); }); }
+  function updBar(){
+    if(!sb) return;
+    var n=document.querySelectorAll('#cartLines .cart-line').length;
+    var totEl=document.getElementById('sumTotal'); var tot=totEl?totEl.textContent:'';
+    if(n>0){ sbTxt.textContent=PT('barInCart', n)+' · '+tot; sbBtn.textContent=PT('barCheckout'); target='#order'; }
+    else { sbTxt.textContent=PT('barEmpty'); sbBtn.textContent=PT('barOrder'); target='#menu'; }
+    var sheet=document.getElementById('dishSheet');
+    var sheetOpen=sheet && !sheet.hidden;
+    sb.classList.toggle('sb-hide', !!sheetOpen || orderVisible);
+  }
+  var ord=document.getElementById('order');
+  if(ord && 'IntersectionObserver' in window){ new IntersectionObserver(function(e){ orderVisible=e[0].isIntersecting; updBar(); },{threshold:.06}).observe(ord); }
+  function casaNow(){
+    var p=new Intl.DateTimeFormat('en-US',{timeZone:'Africa/Casablanca',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).reduce(function(o,x){ o[x.type]=x.value; return o; },{});
+    return new Date(Date.UTC(+p.year,+p.month-1,+p.day,+p.hour,+p.minute,+p.second));
+  }
+  function updFri(){
+    var el=document.getElementById('friCount'); if(!el) return;
+    var n=casaNow(), day=n.getUTCDay();
+    if(day===5){ el.textContent=PT('friToday'); return; }
+    var add=(5-day+7)%7, t=new Date(n); t.setUTCDate(n.getUTCDate()+add); t.setUTCHours(12,0,0,0);
+    var diff=t-n, d=Math.floor(diff/864e5), h=Math.floor(diff%864e5/36e5), m=Math.floor(diff%36e5/6e4);
+    var s = d>0 ? d+' '+PT('friD')+' '+h+' '+PT('friH') : (h>0 ? h+' '+PT('friH')+' '+m+' '+PT('friM') : m+' '+PT('friM'));
+    el.textContent=PT('friIn', s);
+  }
+  setInterval(updBar, 900); setInterval(updFri, 30000);
+  updBar(); updFri();
+})();
+</script>
 </body>
 </html>
