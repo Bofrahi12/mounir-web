@@ -315,14 +315,9 @@ h1.mega .o{color:var(--gold)}
 
 /* 06 STORY stack */
 #story{align-items:center}
-.stack-zone{position:relative;width:min(780px,92vw);height:min(64vh,540px);perspective:1200px}
+.stack-zone{position:relative;width:min(780px,92vw);height:min(54vh,440px);perspective:1200px}
 .story-panel{position:absolute;inset:0;border-radius:18px;border:1px solid rgba(247,241,227,.13);box-shadow:0 50px 100px rgba(0,0,0,.55);
   display:flex;flex-direction:column;justify-content:center;padding:44px 48px;will-change:transform,opacity;background:linear-gradient(155deg,#1A1206,#0B0805 72%)}
-.story-panel .s-img{height:150px;border-radius:12px;overflow:hidden;margin:0 0 18px}
-.story-panel .s-img img{width:100%;height:100%;object-fit:cover;display:block}
-.story-panel.sp1 .s-img img{object-position:center 45%}
-.story-panel.sp3 .s-img img{object-position:center 32%}
-@media(max-width:760px){.story-panel .s-img{height:116px;margin-bottom:14px}}
 .story-panel .s-num{font-family:var(--font-g);font-size:.72rem;font-weight:700;color:var(--gold);margin-bottom:14px}
 .story-panel h3{font-family:var(--font-d);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.35;margin-bottom:10px}
 .story-panel p{color:var(--muted);max-width:46ch}
@@ -485,6 +480,38 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 .findus-note{color:var(--muted);font-size:.83rem;line-height:1.9;margin-top:16px;border-top:1px dashed rgba(247,241,227,.13);padding-top:12px}
 @media(max-width:560px){.pick-row{flex-wrap:wrap}.pick-info{flex:1 1 100%}.hero-ctas .hbtn{flex:1;justify-content:center}}
 .findus-grid{grid-template-columns:1fr;max-width:840px;margin-inline:auto}
+.lang-toggle{background:rgba(12,10,6,.5);border:1px solid rgba(227,160,8,.55);color:var(--gold2);border-radius:99px;padding:9px 16px;font-weight:800;font-family:var(--font-g);cursor:pointer;margin-inline-start:10px}
+.cust-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.cust-grid{grid-template-columns:1fr}}
+.cust-f label{display:block;font-weight:700;margin-bottom:8px;font-size:.92rem}
+.cust-f input{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--white);font-family:inherit;font-size:1rem}
+.cust-f input:focus{outline:2px solid rgba(227,160,8,.5);border-color:rgba(227,160,8,.6)}
+.cust-f input.err{border-color:#E5484D;animation:shake .35s}
+.pay-t{margin-top:26px}
+.cl-note{display:block;color:var(--gold2);font-size:.78rem;margin-top:2px}
+.cat-card{cursor:pointer}
+.pick-row{cursor:pointer}
+.sheet-backdrop{position:fixed;inset:0;background:rgba(4,3,1,.66);backdrop-filter:blur(3px);z-index:300;opacity:0;transition:opacity .28s}
+.sheet-backdrop.open{opacity:1}
+.dish-sheet{position:fixed;z-index:301;inset-inline:0;bottom:0;max-height:90vh;overflow-y:auto;background:var(--panel2);border-top:2px solid var(--gold);border-radius:22px 22px 0 0;transform:translateY(30px);opacity:0;transition:transform .3s var(--ease),opacity .3s}
+.dish-sheet.open{transform:none;opacity:1}
+@media(min-width:760px){.dish-sheet{inset-inline:auto;left:50%;bottom:auto;top:50%;width:min(560px,94vw);border:1px solid rgba(227,160,8,.45);border-radius:22px;transform:translate(-50%,-46%)}.dish-sheet.open{transform:translate(-50%,-50%)}}
+.sheet-x{position:absolute;top:12px;inset-inline-end:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:rgba(12,10,6,.65);color:var(--white);font-size:1rem;cursor:pointer}
+.sheet-media{position:relative;height:270px;background:#000}
+.sheet-media img{width:100%;height:100%;object-fit:cover;display:block}
+#sheetViewer{position:absolute;inset:0;display:none}
+#sheetViewer model-viewer{width:100%;height:100%}
+.sheet-3d-badge{position:absolute;bottom:12px;inset-inline-start:12px;background:rgba(12,10,6,.78);border:1px solid rgba(227,160,8,.5);color:var(--gold2);border-radius:99px;padding:7px 14px;font-size:.76rem;font-weight:700}
+.sheet-body{padding:20px 22px 26px}
+.sheet-body h3{font-family:var(--font-d);font-size:1.55rem;font-weight:800}
+.sheet-alt{color:var(--gold);font-family:var(--font-g);font-size:.82rem;font-weight:700;margin-top:2px}
+.sheet-desc{color:var(--muted);margin-top:8px;line-height:1.9}
+.sheet-row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:16px}
+.sheet-price{color:var(--gold2);font-family:var(--font-g);font-size:1.3rem}
+.sheet-note-l{display:block;font-weight:700;margin-top:18px;margin-bottom:8px;font-size:.92rem}
+#sheetNote{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:13px 16px;color:var(--white);font-family:inherit;font-size:.95rem}
+#sheetNote:focus{outline:2px solid rgba(227,160,8,.5)}
+.sheet-add{width:100%;margin-top:18px}
 .map-card{position:relative;border:1px solid rgba(227,160,8,.35);border-radius:16px;overflow:hidden;background:#0B0805}
 .map-card svg{display:block;width:100%;height:auto}
 .map-chip{position:absolute;top:10px;left:10px;background:rgba(6,4,3,.72);color:var(--gold2);font-family:var(--font-g);font-size:.64rem;font-weight:700;padding:5px 10px;border-radius:99px;border:1px solid rgba(227,160,8,.4)}
@@ -582,7 +609,8 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
     <a href="#findus" data-scroll><b>08</b>فين تلقانا</a>
     <a href="#order" data-scroll><b>09</b>اطلب</a>
   </nav>
-  <a class="btn-order magnetic" href="#order" data-scroll>اطلب دابا</a>
+  <button class="lang-toggle magnetic" id="langToggle" type="button" title="Français / العربية">FR</button>
+  <a class="btn-order magnetic" href="#order" data-scroll data-i18n="orderNow">اطلب دابا</a>
 </header>
 
 <main>
@@ -608,9 +636,9 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
       </div>
     </div>
     <div class="hero-ctas">
-      <a class="hbtn ghost magnetic" href="#menu" data-scroll>شوف المنيو</a>
-      <a class="hbtn gold magnetic" href="#order" data-scroll>اطلب دابا</a>
-      <a class="hlink" href="#findus" data-scroll>فين تلقانا ←</a>
+      <a class="hbtn ghost magnetic" href="#menu" data-scroll data-i18n="seeMenu">شوف المنيو</a>
+      <a class="hbtn gold magnetic" href="#order" data-scroll data-i18n="orderNow">اطلب دابا</a>
+      <a class="hlink" href="#findus" data-scroll data-i18n="findUs">فين تلقانا ←</a>
     </div>
   </div>
   <div class="chef-badge" aria-label="الشيف أيوب بنعمر">
@@ -688,7 +716,7 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 <!-- ============ 05 · القائمة ============ -->
 <section class="scene" id="menu" data-chapter="05" data-name="الكتالوغ" aria-label="الكتالوغ">
   <div class="layers-head">
-    <p class="spec">05. الكتالوغ — تخصصات الباشا</p>
+    <p class="spec" data-i18n="menuSpec">05. الكتالوغ — تخصصات الباشا</p>
     <h2 class="big">تخصصات الدار<br><span class="grad-gold">بصور حقيقية من مطبخنا</span></h2>
   </div>
   <div class="cat-grid">
@@ -701,6 +729,21 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
     <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-pasticho.webp')"><span class="cprice">45 درهم</span></div><div class="cbody"><h3>باستيشو</h3><p>باستا غراتان بالجبن، كتخرج من الفرن وهي كتغلي.</p><button class="add-btn" type="button" data-add="pasticho">+ زيدها للطلب</button></div></article>
     <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-platter.webp')"><span class="cprice">110 درهم</span><span class="cbadge">للمشاركة</span></div><div class="cbody"><h3>طبق مشترك الباشا</h3><p>كلامار مقرمش ومقليات الدار مع الصلصات — طبق كيجمع الحباب.</p><button class="add-btn" type="button" data-add="platter">+ زيدها للطلب</button></div></article>
     <article class="cat-card"><div class="cimg" style="background-image:url('demo-bacha/p-formule.webp')"><span class="cprice">85 درهم</span><span class="cbadge">عرض خاص</span></div><div class="cbody"><h3>فورمول الباشا</h3><p>بيتزا + لحسة + باستيشو — العرض اللي كيهضرو عليه كاملين.</p><button class="add-btn" type="button" data-add="formule">+ زيدها للطلب</button></div></article>
+  </div>
+  <div class="boards-wrap">
+    <p class="spec" style="justify-content:center">المنيو الأصلي</p>
+    <h2 class="big" style="text-align:center">المنيو <span class="grad-gold">كما هو</span> عند الشيف</h2>
+    <p class="lede" style="text-align:center;max-width:620px;margin:10px auto 0">اللوحات الأصلية ديال منيو مطعم الباشا — مرّر باش تشوف الأصناف الثمانية كاملة.</p>
+    <div class="boards">
+      <figure class="board"><img src="demo-bacha/board-1.webp" alt="المنيو الأصلي — المقبلات والسلطات" loading="lazy"><figcaption>المقبلات والسلطات</figcaption></figure>
+      <figure class="board"><img src="demo-bacha/board-2.webp" alt="المنيو الأصلي — الساندويتشات والطاكوس" loading="lazy"><figcaption>الساندويتشات والطاكوس</figcaption></figure>
+      <figure class="board"><img src="demo-bacha/board-3.webp" alt="المنيو الأصلي — البرغر، البيتزا واللفائف" loading="lazy"><figcaption>البرغر، البيتزا واللفائف</figcaption></figure>
+      <figure class="board"><img src="demo-bacha/board-4.webp" alt="المنيو الأصلي — البانيني، الشاورما والكاساديا" loading="lazy"><figcaption>البانيني، الشاورما والكاساديا</figcaption></figure>
+      <figure class="board"><img src="demo-bacha/board-5.webp" alt="المنيو الأصلي — المعكرونة والكامبيرو" loading="lazy"><figcaption>المعكرونة والكامبيرو</figcaption></figure>
+      <figure class="board"><img src="demo-bacha/board-6.webp" alt="المنيو الأصلي — البولز والباييلا" loading="lazy"><figcaption>البولز والباييلا</figcaption></figure>
+      <figure class="board"><img src="demo-bacha/board-7.webp" alt="المنيو الأصلي — الأطباق والطواجن" loading="lazy"><figcaption>الأطباق والطواجن</figcaption></figure>
+      <figure class="board"><img src="demo-bacha/board-8.webp" alt="المنيو الأصلي — التحلية" loading="lazy"><figcaption>التحلية</figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -727,9 +770,9 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 <!-- ============ 07 · القصة ============ -->
 <section class="scene" id="story" data-chapter="07" data-name="القصة" aria-label="القصة">
   <div class="stack-zone" id="stackZone">
-    <article class="story-panel sp1"><figure class="s-img"><img src="demo-bacha/story-1.webp" alt="الشيف أيوب بنعمر في مطبخ مطعم الباشا" loading="lazy"></figure><p class="s-num">القصة — 01 / 03 · الحلم</p><h3>بدات الحكاية بحلم</h3><p>شيف شاب من طنجة، كبر بين أطباق الواليدة ووصفات الدار، وحلم يكون عندو مطعم باسمو — وطبق باسمو.</p></article>
-    <article class="story-panel sp2"><figure class="s-img"><img src="demo-bacha/story-2.webp" alt="كونطوار مطعم الباشا — أطباق جاهزة للتقديم" loading="lazy"></figure><p class="s-num">القصة — 02 / 03 · الدار</p><h3>مطعم الباشا — البرانص 2</h3><p>تحقق الحلم في البرانص 2: مطعم بروح كبيرة، أطباق بثمن في المتناول، وطعم ما كيتنساش — واللحسة ولّات العنوان.</p></article>
-    <article class="story-panel sp3"><figure class="s-img"><img src="demo-bacha/story-3.webp" alt="تقديم الأطباق للزبناء داخل مطعم الباشا" loading="lazy"></figure><p class="s-num">القصة — 03 / 03 · اليوم</p><h3>كل طبق له حكاية</h3><p>اليوم، أكثر من 51 ألف متابع كيتابعو الحكاية كل نهار على إنستغرام — والحكاية ما زالت كتتكتب، طبق بعد طبق.</p></article>
+    <article class="story-panel sp1"><p class="s-num">القصة — 01 / 03 · الحلم</p><h3>بدات الحكاية بحلم</h3><p>شيف شاب من طنجة، كبر بين أطباق الواليدة ووصفات الدار، وحلم يكون عندو مطعم باسمو — وطبق باسمو.</p></article>
+    <article class="story-panel sp2"><p class="s-num">القصة — 02 / 03 · الدار</p><h3>مطعم الباشا — البرانص 2</h3><p>تحقق الحلم في البرانص 2: مطعم بروح كبيرة، أطباق بثمن في المتناول، وطعم ما كيتنساش — واللحسة ولّات العنوان.</p></article>
+    <article class="story-panel sp3"><p class="s-num">القصة — 03 / 03 · اليوم</p><h3>كل طبق له حكاية</h3><p>اليوم، أكثر من 51 ألف متابع كيتابعو الحكاية كل نهار على إنستغرام — والحكاية ما زالت كتتكتب، طبق بعد طبق.</p></article>
   </div>
 </section>
 
@@ -762,11 +805,11 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 
 <!-- ============ 09 · اطلب ============ -->
 <section class="scene" id="order" data-chapter="09" data-name="اطلب" aria-label="اطلب">
-  <p class="spec">09. اطلب</p>
+  <p class="spec" data-i18n="orderSpec">09. اطلب</p>
   <h2 class="big">بنِ <span class="grad-gold">طلبك</span></h2>
 
   <div class="builder" id="builder">
-    <p class="step-t">الخطوة 1 — اختر الأطباق</p>
+    <p class="step-t" data-i18n="step1">الخطوة 1 — اختر الأطباق</p>
     <div class="pick-list" id="pickList">
       <div class="pick-row"><div class="pick-info"><b>لحسة الباشا</b><span>توقيع الدار — الأكثر طلباً</span></div><b class="pick-price">35 درهم</b><button class="add-btn" type="button" data-add="lahssa">+ زيدها</button></div>
       <div class="pick-row"><div class="pick-info"><b>برغر الباشا</b><span>توقيع الدار — 200غ لحم وصلصة سرية</span></div><b class="pick-price">55 درهم</b><button class="add-btn" type="button" data-add="burger">+ زيدها</button></div>
@@ -781,12 +824,12 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
       <div class="pick-row"><div class="pick-info"><b>كسكس الجمعة</b><span class="fri-note">متوفر غير نهار الجمعة</span></div><b class="pick-price">60 درهم</b><button class="add-btn" type="button" data-add="couscous">+ زيدها</button></div>
     </div>
     <div class="cart-box" id="cartBox">
-      <p class="cart-t">سلة الطلب</p>
+      <p class="cart-t" data-i18n="cartTitle">سلة الطلب</p>
       <div id="cartLines"></div>
       <p class="cart-empty" id="cartEmpty">السلة خاوية — زيد أول طبق من اللائحة.</p>
     </div>
 
-    <p class="step-t">الخطوة 2 — زيد لمسات</p>
+    <p class="step-t" data-i18n="step2">الخطوة 2 — زيد لمسات</p>
     <div class="extras" id="extraOpts">
       <button class="extra" type="button" data-extra="جبن إضافي" data-price="7" aria-pressed="false"><span><b>جبن إضافي</b><span>+ 7 درهم</span></span></button>
       <button class="extra" type="button" data-extra="صلصة الباشا" data-price="5" aria-pressed="false"><span><b>صلصة الباشا</b><span>+ 5 درهم</span></span></button>
@@ -796,39 +839,50 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
       <button class="extra" type="button" data-extra="حلوى اليوم" data-price="18" aria-pressed="false"><span><b>حلوى اليوم</b><span>+ 18 درهم</span></span></button>
     </div>
 
-    <p class="step-t">الخطوة 3 — كيفاش يوصلك الطلب؟</p>
+    <p class="step-t" data-i18n="step3">الخطوة 3 — كيفاش يوصلك الطلب؟</p>
     <div class="methods" id="methodOpts" role="radiogroup" aria-label="طريقة الوصول">
-      <button class="method" type="button" data-method="delivery" role="radio" aria-checked="false"><span class="m-badge">التوصيل متوفر</span><b>التوصيل لباب الدار</b><span>كيوصلك الطلب سخون حتى لعندك</span></button>
-      <button class="method sel" type="button" data-method="pickup" role="radio" aria-checked="true"><b>الاستلام من المطعم</b><span>البرانص 2 · قريب من مركز الحليب</span></button>
+      <button class="method" type="button" data-method="delivery" role="radio" aria-checked="false"><span class="m-badge" data-i18n="delBadge">التوصيل متوفر</span><b data-i18n="mDelB">التوصيل لباب الدار</b><span data-i18n="mDelS">كيوصلك الطلب سخون حتى لعندك</span></button>
+      <button class="method sel" type="button" data-method="pickup" role="radio" aria-checked="true"><b data-i18n="mPickB">الاستلام من المطعم</b><span data-i18n="mPickS">البرانص 2 · قريب من مركز الحليب</span></button>
     </div>
     <div class="addr-block" id="addrBlock" hidden>
       <label for="addrInput">الحومة والعنوان <b class="req">— مطلوب للتوصيل</b></label>
       <input id="addrInput" type="text" autocomplete="street-address" placeholder="مثال: البرانص 2، زنقة الياسمين، رقم 12، قدام الصيدلية…">
-      <button class="geo-btn" id="geoBtn" type="button">◎ استعمل موقعي الحالي</button>
+      <button class="geo-btn" id="geoBtn" type="button" data-i18n="geoBtn">◎ استعمل موقعي الحالي</button>
       <p class="geo-status" id="geoStatus" role="status"></p>
-      <p class="addr-note">ثمن ومدة التوصيل كيتأكدو معاك في واتساب قبل ما يتحضّر الطلب. موقعك كيتزاد غير في رسالة الطلب، ما كيتخزّن حتى في بلاصة.</p>
+      <p class="addr-note" data-i18n="addrNote">ثمن ومدة التوصيل كيتأكدو معاك في واتساب قبل ما يتحضّر الطلب. موقعك كيتزاد غير في رسالة الطلب، ما كيتخزّن حتى في بلاصة.</p>
     </div>
     <p class="pickup-note" id="pickupNote">طلبك غادي يكون واجد في <b>مطعم الباشا</b> — البرانص 2، طنجة، قريب من مركز الحليب.</p>
+    <p class="step-t" data-i18n="stepCustomer">الخطوة 4 — معلوماتك</p>
+    <div class="cust-grid">
+      <div class="cust-f"><label for="custName" data-i18n="custNameL">الاسم الكامل</label><input id="custName" type="text" autocomplete="name" data-i18n-ph="custNamePh" placeholder="مثال: يوسف العلوي"></div>
+      <div class="cust-f"><label for="custPhone" data-i18n="custPhoneL">رقم الهاتف</label><input id="custPhone" type="tel" autocomplete="tel" inputmode="tel" data-i18n-ph="custPhonePh" placeholder="06 XX XX XX XX"></div>
+    </div>
+    <p class="step-t pay-t" data-i18n="stepPay">طريقة الأداء</p>
+    <div class="methods" id="payOpts" role="radiogroup" aria-label="طريقة الأداء">
+      <button class="method sel" type="button" data-pay="cash" role="radio" aria-checked="true"><b data-i18n="payCashB">نقداً عند الاستلام</b><span data-i18n="payCashS">خلّص ملي يوصلك الطلب ولا ملي تجي تاخدو</span></button>
+      <button class="method" type="button" data-pay="transfer" role="radio" aria-checked="false"><b data-i18n="payTrB">تحويل</b><span data-i18n="payTrS">نتفاهمو على التفاصيل في واتساب</span></button>
+    </div>
 
     <div class="build-grid">
       <div>
-        <p class="step-t">الخطوة 4 — اختر النهار</p>
+        <p class="step-t" data-i18n="stepDay">الخطوة 5 — اختر النهار</p>
         <div class="slots" id="dateSlots" role="radiogroup" aria-label="نهار الاستلام"></div>
-        <p class="step-t">الخطوة 5 — اختر الوقت</p>
+        <p class="step-t" data-i18n="stepTime">الخطوة 6 — اختر الوقت</p>
         <div class="slots" id="timeSlots" role="radiogroup" aria-label="وقت الاستلام"></div>
-        <p style="color:var(--faint);font-size:.82rem;margin-top:22px">الطلب كيتحضّر غير ملي توصّلنا الرسالة — سخون وطازج، بلا انتظار.</p>
+        <p style="color:var(--faint);font-size:.82rem;margin-top:22px" data-i18n="freshNote">الطلب كيتحضّر غير ملي توصّلنا الرسالة — سخون وطازج، بلا انتظار.</p>
       </div>
       <aside class="summary" aria-label="ملخص الطلب">
         <div class="simg" role="img" aria-label="مطعم الباشا"></div>
         <div class="sbody">
           <div id="sumItems"><div class="sline"><span>الأطباق</span><b>—</b></div></div>
-          <div class="sline"><span>الإضافات</span><b id="sumExtras">بدون</b></div>
-          <div class="sline"><span>طريقة الوصول</span><b id="sumMethod">الاستلام من المطعم</b></div>
-          <div class="sline"><span>العنوان</span><b id="sumAddr">المطعم — البرانص 2</b></div>
-          <div class="sline"><span>الموعد</span><b id="sumWhen">اليوم · 13:00</b></div>
-          <div class="stotal"><span>المجموع</span><b id="sumTotal">0 درهم</b></div>
+          <div class="sline"><span data-i18n="sumExtrasL">الإضافات</span><b id="sumExtras">بدون</b></div>
+          <div class="sline"><span data-i18n="sumMethodL">طريقة الوصول</span><b id="sumMethod">الاستلام من المطعم</b></div>
+          <div class="sline"><span data-i18n="sumAddrL">العنوان</span><b id="sumAddr">المطعم — البرانص 2</b></div>
+          <div class="sline"><span data-i18n="sumPayL">الأداء</span><b id="sumPay">نقداً عند الاستلام</b></div>
+          <div class="sline"><span data-i18n="sumWhenL">الموعد</span><b id="sumWhen">اليوم · 13:00</b></div>
+          <div class="stotal"><span data-i18n="sumTotalL">المجموع</span><b id="sumTotal">0 درهم</b></div>
         </div>
-        <button class="order-btn magnetic" id="orderBtn" type="button">أكّد الطلب في واتساب ←</button>
+        <button class="order-btn magnetic" id="orderBtn" type="button" data-i18n="confirmBtn">أكّد الطلب في واتساب ←</button>
       </aside>
     </div>
   </div>
@@ -858,6 +912,29 @@ footer .f-mid{font-family:var(--font-g);font-weight:600;font-size:.7rem;color:va
 </section>
 
 </main>
+<div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+<aside class="dish-sheet" id="dishSheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetName">
+  <button class="sheet-x" id="sheetClose" type="button" aria-label="إغلاق">✕</button>
+  <div class="sheet-media">
+    <img id="sheetImg" src="" alt="">
+    <div id="sheetViewer"></div>
+    <span class="sheet-3d-badge" id="sheet3dBadge">النموذج ثلاثي الأبعاد في طور الإعداد</span>
+  </div>
+  <div class="sheet-body">
+    <h3 id="sheetName"></h3>
+    <p class="sheet-alt" id="sheetAlt"></p>
+    <p class="sheet-desc" id="sheetDesc"></p>
+    <div class="sheet-row">
+      <b class="sheet-price" id="sheetPrice"></b>
+      <div class="qty">
+        <button type="button" id="sheetMinus" aria-label="نقص الكمية">−</button><b id="sheetQty">1</b><button type="button" id="sheetPlus" aria-label="زيد الكمية">+</button>
+      </div>
+    </div>
+    <label class="sheet-note-l" for="sheetNote" data-i18n="noteLabel">ملاحظة على هاد الطبق (اختيارية)</label>
+    <input id="sheetNote" type="text" data-i18n-ph="notePh" placeholder="مثال: بلا حار، الصلصة على جنب…">
+    <button class="order-btn sheet-add" id="sheetAdd" type="button">زيدها للسلة</button>
+  </div>
+</aside>
 <div class="toast" id="toast" role="status"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -873,7 +950,7 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   const fine = window.matchMedia("(pointer: fine)").matches;
 
   /* ---------- ORDER BUILDER ---------- */
-  const state = { extras: new Map(), date: null, dateObj: new Date(), time: "13:00", method: "pickup", address: "", geoLink: null };
+  const state = { extras: new Map(), date: null, dateObj: new Date(), time: "13:00", method: "pickup", address: "", geoLink: null, name: "", phone: "", pay: "cash" };
   const MENU = {
     lahssa:    { name: "لحسة الباشا", price: 35 },
     burger:    { name: "برغر الباشا", price: 55 },
@@ -888,15 +965,82 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
     couscous:  { name: "كسكس الجمعة", price: 60, friday: true }
   };
   const cart = new Map();
-  const fmt = n => n + " درهم";
-  function cartTotal(){ let t = 0; cart.forEach((q,k)=> t += MENU[k].price * q); state.extras.forEach(p => t += p); return t; }
+  /* ====== v14 — معطيات الأطباق، النماذج ثلاثية الأبعاد، اللغة ======
+     روابط النماذج 3D بصيغة .glb لكل طبق: زيد الرابط هنا وغيتحمّل العارض
+     غير ملي يتفتح تفاصيل الطبق. بلا رابط: كتبقى الصورة الحقيقية + شارة
+     «النموذج ثلاثي الأبعاد في طور الإعداد» — بلا ادعاءات كاذبة. */
+  var LANG = "ar";
+  var MODELS = { lahssa: "", burger: "", pizza: "", spaghetti: "", formule: "", kampiro: "", crispy: "", emince: "", pasticho: "", platter: "", couscous: "" };
+  var DISHIMG = { lahssa: "demo-bacha/p-lahssa.webp", burger: "demo-bacha/sig-poster.webp", pizza: "demo-bacha/p-pizza.webp", spaghetti: "demo-bacha/stage.webp", formule: "demo-bacha/p-formule.webp", kampiro: "demo-bacha/p-kampiro.webp", crispy: "demo-bacha/p-crispy.webp", emince: "demo-bacha/p-emince.webp", pasticho: "demo-bacha/p-pasticho.webp", platter: "demo-bacha/p-platter.webp", couscous: "demo-bacha/p-couscous.webp" };
+  var DISHES = {
+    lahssa:    { ar: { name: "لحسة الباشا", desc: "توقيع الدار والطبق اللي شهّرها — كتغلي وكتوصل سخونة.", note: "توقيع الدار — الأكثر طلباً" },
+                 fr: { name: "Lahssa El Bacha", desc: "La signature de la maison — le plat qui a fait sa réputation, servi bouillant.", note: "Signature de la maison — le plus commandé" } },
+    burger:    { ar: { name: "برغر الباشا", desc: "200غ لحم بقري، جبن ذائب، خبز طري وصلصة الباشا السرية — البرغر اللي كيتصوّر قبل ما يتكال.", note: "توقيع الدار — 200غ لحم وصلصة سرية" },
+                 fr: { name: "Burger El Bacha", desc: "200 g de bœuf, fromage fondu, pain moelleux et sauce secrète El Bacha.", note: "Signature — 200 g de bœuf, sauce secrète" } },
+    pizza:     { ar: { name: "بيتزا ثمار البحر", desc: "قمرون وكلامار وفطر على عجينة رقيقة — نجمة الحساب.", note: "قمرون وكلامار على عجينة رقيقة" },
+                 fr: { name: "Pizza Fruits de Mer", desc: "Crevettes, calamars et champignons sur pâte fine.", note: "Crevettes et calamars sur pâte fine" } },
+    spaghetti: { ar: { name: "سباغيتي ثمار البحر", desc: "سباغيتي كريمية بالقمرون وثمار البحر، كتتقدم سخونة في صحنها.", note: "كريمية بالقمرون" },
+                 fr: { name: "Spaghetti Fruits de Mer", desc: "Spaghetti crémeux aux crevettes et fruits de mer, servi bien chaud.", note: "Crémeux aux crevettes" } },
+    formule:   { ar: { name: "فورمول الباشا", desc: "بيتزا + لحسة + باستيشو — العرض اللي كيهضرو عليه كاملين.", note: "بيتزا + لحسة + باستيشو" },
+                 fr: { name: "Formule El Bacha", desc: "Pizza + Lahssa + Pasticho — l'offre dont tout le monde parle.", note: "Pizza + Lahssa + Pasticho" } },
+    kampiro:   { ar: { name: "كامبيرو الباشا", desc: "ساندويتش عامر بالدجاج والفلفلة والجبن، مع بطاطس وصلصة الدار.", note: "ساندويتش الدجاج العامر" },
+                 fr: { name: "Kampiro El Bacha", desc: "Sandwich généreux au poulet, poivrons et fromage, frites et sauce maison.", note: "Sandwich poulet généreux" } },
+    crispy:    { ar: { name: "برغر كرسبي", desc: "قطعة كرسبي مقرمشة بالجبن — كتتركب قدامك.", note: "قطعة مقرمشة بالجبن" },
+                 fr: { name: "Crispy Burger", desc: "Pièce crispy croustillante au fromage, montée devant vous.", note: "Pièce croustillante au fromage" } },
+    emince:    { ar: { name: "إمينسي الدجاج", desc: "دجاج بصلصة الفطر الكريمية مع روز وخضرة — طبق رئيسي كامل.", note: "صلصة الفطر — طبق كامل" },
+                 fr: { name: "Émincé de Poulet", desc: "Poulet à la sauce champignons crémeuse, riz et légumes — un plat complet.", note: "Sauce champignons — plat complet" } },
+    pasticho:  { ar: { name: "باستيشو", desc: "باستا غراتان بالجبن، كتخرج من الفرن وهي كتغلي.", note: "غراتان من الفرن" },
+                 fr: { name: "Pasticho", desc: "Gratin de pâtes au fromage, qui sort du four en bouillonnant.", note: "Gratin du four" } },
+    platter:   { ar: { name: "طبق مشترك الباشا", desc: "كلامار مقرمش ومقليات الدار مع الصلصات — طبق كيجمع الحباب.", note: "كلامار ومقليات — للمشاركة" },
+                 fr: { name: "Plat Partagé El Bacha", desc: "Calamars croustillants et fritures maison avec leurs sauces — à partager.", note: "Calamars et fritures — à partager" } },
+    couscous:  { ar: { name: "كسكس الجمعة", desc: "موعد الجمعة المقدس: سميدة، لحم، خضرة وتفاية ذهبية.", note: "متوفر غير نهار الجمعة" },
+                 fr: { name: "Couscous du Vendredi", desc: "Le rendez-vous du vendredi : semoule, viande, légumes et tfaya dorée.", note: "Disponible le vendredi uniquement" } }
+  };
+  var STR = {
+    ar: { orderNow: "اطلب دابا", seeMenu: "شوف المنيو", findUs: "فين تلقانا", menuSpec: "05. الكتالوغ — تخصصات الباشا",
+      orderSpec: "09. اطلب", step1: "الخطوة 1 — اختر الأطباق", step2: "الخطوة 2 — زيد لمسات", step3: "الخطوة 3 — كيفاش يوصلك الطلب؟",
+      stepCustomer: "الخطوة 4 — معلوماتك", stepPay: "طريقة الأداء", stepDay: "الخطوة 5 — اختر النهار", stepTime: "الخطوة 6 — اختر الوقت",
+      cartTitle: "سلة الطلب", cartEmpty: "السلة خاوية — زيد أول طبق من اللائحة.", delBadge: "التوصيل متوفر",
+      mDelB: "التوصيل لباب الدار", mDelS: "كيوصلك الطلب سخون حتى لعندك", mPickB: "الاستلام من المطعم", mPickS: "البرانص 2 · قريب من مركز الحليب",
+      geoBtn: "◎ استعمل موقعي الحالي", addrNote: "ثمن ومدة التوصيل كيتأكدو معاك في واتساب قبل ما يتحضّر الطلب. موقعك كيتزاد غير في رسالة الطلب، ما كيتخزّن حتى في بلاصة.",
+      freshNote: "الطلب كيتحضّر غير ملي توصّلنا الرسالة — سخون وطازج، بلا انتظار.",
+      sumExtrasL: "الإضافات", sumMethodL: "طريقة الوصول", sumAddrL: "العنوان", sumPayL: "الأداء", sumWhenL: "الموعد", sumTotalL: "المجموع",
+      confirmBtn: "أكّد الطلب في واتساب ←", custNameL: "الاسم الكامل", custNamePh: "مثال: يوسف العلوي", custPhoneL: "رقم الهاتف", custPhonePh: "06 XX XX XX XX",
+      payCashB: "نقداً عند الاستلام", payCashS: "خلّص ملي يوصلك الطلب ولا ملي تجي تاخدو", payTrB: "تحويل", payTrS: "نتفاهمو على التفاصيل في واتساب",
+      addBtn: "+ زيدها", addBtnLong: "+ زيدها للطلب", noteLabel: "ملاحظة على هاد الطبق (اختيارية)", notePh: "مثال: بلا حار، الصلصة على جنب…",
+      sheetAdd: "زيدها للسلة", sheet3d: "النموذج ثلاثي الأبعاد في طور الإعداد", fridayOnly: "هاد الطبق متوفر غير نهار الجمعة",
+      couscousRemoved: "تزال الكسكس من السلة — متوفر غير نهار الجمعة", added: "تزاد «{n}» للسلة — {t}. كمّل طلبك لتحت ↓",
+      cartEmptyToast: "السلة خاوية — زيد طبق بعدا من اللائحة", needAddress: "كتب الحومة والعنوان باش يوصلك الطلب",
+      needName: "كتب الاسم ديالك باش نعرفو الطلب ديال من", needPhone: "كتب رقم هاتف مغربي صحيح (06/07…)" },
+    fr: { orderNow: "Commander", seeMenu: "Voir le menu", findUs: "Nous trouver", menuSpec: "05 · Le catalogue — les spécialités El Bacha",
+      orderSpec: "09 · Commander", step1: "Étape 1 — Choisissez vos plats", step2: "Étape 2 — Ajoutez une touche", step3: "Étape 3 — Comment recevoir votre commande ?",
+      stepCustomer: "Étape 4 — Vos informations", stepPay: "Moyen de paiement", stepDay: "Étape 5 — Choisissez le jour", stepTime: "Étape 6 — Choisissez l'heure",
+      cartTitle: "Votre panier", cartEmpty: "Le panier est vide — ajoutez un premier plat.", delBadge: "Livraison disponible",
+      mDelB: "Livraison à domicile", mDelS: "Votre commande arrive chaude chez vous", mPickB: "À emporter au restaurant", mPickS: "Branes 2 · près du Centre Laitier",
+      geoBtn: "◎ Utiliser ma position actuelle", addrNote: "Les frais et le délai de livraison sont confirmés sur WhatsApp avant la préparation. Votre position n'est ajoutée qu'au message de commande, elle n'est jamais enregistrée.",
+      freshNote: "La commande n'est préparée qu'à la réception de votre message — chaude et fraîche, sans attente.",
+      sumExtrasL: "Extras", sumMethodL: "Mode de réception", sumAddrL: "Adresse", sumPayL: "Paiement", sumWhenL: "Rendez-vous", sumTotalL: "Total",
+      confirmBtn: "Confirmer sur WhatsApp ←", custNameL: "Nom complet", custNamePh: "Ex. : Youssef El Alaoui", custPhoneL: "Numéro de téléphone", custPhonePh: "06 XX XX XX XX",
+      payCashB: "Espèces à la réception", payCashS: "Payez à la livraison ou au retrait", payTrB: "Virement", payTrS: "Les détails se règlent sur WhatsApp",
+      addBtn: "+ Ajouter", addBtnLong: "+ Ajouter à la commande", noteLabel: "Une note pour ce plat (optionnel)", notePh: "Ex. : sans piment, sauce à part…",
+      sheetAdd: "Ajouter au panier", sheet3d: "Le modèle 3D est en préparation", fridayOnly: "Ce plat n'est disponible que le vendredi",
+      couscousRemoved: "Le couscous a été retiré — disponible le vendredi uniquement", added: "« {n} » ajouté au panier — {t}. Finalisez ci-dessous ↓",
+      cartEmptyToast: "Le panier est vide — ajoutez d'abord un plat", needAddress: "Écrivez votre quartier et votre adresse pour la livraison",
+      needName: "Écrivez votre nom pour identifier la commande", needPhone: "Écrivez un numéro marocain valide (06/07…)" }
+  };
+  function T(k, a, b){ let s = (STR[LANG] && STR[LANG][k]) || STR.ar[k] || k; if (a !== undefined) s = s.replace("{n}", a); if (b !== undefined) s = s.replace("{t}", b); return s; }
+  function dname(k){ const d = DISHES[k]; return d ? d[LANG].name : MENU[k].name; }
+  function payShort(){ return state.pay === "transfer" ? (LANG === "fr" ? "Virement — à confirmer" : "تحويل — يتأكد في واتساب") : (LANG === "fr" ? "Espèces à la réception" : "نقداً عند الاستلام"); }
+  const fmt = n => n + (LANG === "fr" ? " DH" : " درهم");
+  function cartTotal(){ let t = 0; cart.forEach((it,k)=> t += MENU[k].price * it.qty); state.extras.forEach(p => t += p); return t; }
   function recalc(){
     const total = cartTotal();
-    document.getElementById("sumExtras").textContent = state.extras.size ? [...state.extras.keys()].join("، ") : "بدون";
+    document.getElementById("sumExtras").textContent = state.extras.size ? [...state.extras.keys()].join(LANG === "fr" ? ", " : "، ") : (LANG === "fr" ? "Aucun" : "بدون");
     document.getElementById("sumWhen").textContent = (state.date || "اليوم") + " · " + state.time;
     const mEl = document.getElementById("sumMethod"), aEl = document.getElementById("sumAddr");
-    if (mEl) mEl.textContent = state.method === "delivery" ? "التوصيل لباب الدار" : "الاستلام من المطعم";
-    if (aEl) aEl.textContent = state.method === "delivery" ? (state.address || "—") : "المطعم — البرانص 2";
+    if (mEl) mEl.textContent = state.method === "delivery" ? (LANG === "fr" ? "Livraison à domicile" : "التوصيل لباب الدار") : (LANG === "fr" ? "À emporter au restaurant" : "الاستلام من المطعم");
+    if (aEl) aEl.textContent = state.method === "delivery" ? (state.address || "—") : (LANG === "fr" ? "Le restaurant — Branes 2" : "المطعم — البرانص 2");
+    const pEl2 = document.getElementById("sumPay"); if (pEl2) pEl2.textContent = payShort();
     document.getElementById("sumTotal").textContent = fmt(total);
     return total;
   }
@@ -915,13 +1059,14 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
     const wrap = document.getElementById("cartLines");
     wrap.innerHTML = "";
     document.getElementById("cartEmpty").style.display = cart.size ? "none" : "";
-    cart.forEach((qty, key) => {
-      const it = MENU[key];
+    cart.forEach((item, key) => {
+      const it = MENU[key]; const qty = item.qty;
       const row = document.createElement("div"); row.className = "cart-line";
       const info = document.createElement("div"); info.className = "cl-info";
-      const nm = document.createElement("b"); nm.textContent = it.name;
-      const un = document.createElement("span"); un.textContent = fmt(it.price) + " للوحدة";
+      const nm = document.createElement("b"); nm.textContent = dname(key);
+      const un = document.createElement("span"); un.textContent = fmt(it.price) + (LANG === "fr" ? " / pièce" : " للوحدة");
       info.append(nm, un);
+      if (item.note) { const nt = document.createElement("span"); nt.className = "cl-note"; nt.textContent = (LANG === "fr" ? "Note : " : "ملاحظة: ") + item.note; info.appendChild(nt); }
       const q = document.createElement("div"); q.className = "qty";
       q.innerHTML = '<button type="button" data-dec="' + key + '" aria-label="نقص الكمية">−</button><b>' + qty + '</b><button type="button" data-inc="' + key + '" aria-label="زيد الكمية">+</button>';
       const tot = document.createElement("b"); tot.className = "cl-total"; tot.textContent = fmt(it.price * qty);
@@ -931,26 +1076,29 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
     });
     const si = document.getElementById("sumItems");
     si.innerHTML = "";
-    if (!cart.size) { si.innerHTML = '<div class="sline"><span>الأطباق</span><b>—</b></div>'; }
-    cart.forEach((qty, key) => {
+    if (!cart.size) { si.innerHTML = '<div class="sline"><span>' + (LANG === "fr" ? "Plats" : "الأطباق") + '</span><b>—</b></div>'; }
+    cart.forEach((item, key) => {
       const d = document.createElement("div"); d.className = "sline";
-      const s = document.createElement("span"); s.textContent = MENU[key].name + " × " + qty;
-      const b = document.createElement("b"); b.textContent = fmt(MENU[key].price * qty);
+      const s = document.createElement("span"); s.textContent = dname(key) + " × " + item.qty;
+      const b = document.createElement("b"); b.textContent = fmt(MENU[key].price * item.qty);
       d.append(s, b); si.appendChild(d);
     });
     recalc();
   }
-  function addToCart(key){
+  function addToCart(key, n, note){
     const it = MENU[key]; if (!it) return false;
-    if (it.friday && !isFriday()) { toast("هاد الطبق متوفر غير نهار الجمعة"); return false; }
-    cart.set(key, (cart.get(key) || 0) + 1);
+    if (it.friday && !isFriday()) { toast(T("fridayOnly")); return false; }
+    const cur = cart.get(key) || { qty: 0, note: "" };
+    cur.qty += (n || 1);
+    if (note) cur.note = note;
+    cart.set(key, cur);
     renderCart();
     return true;
   }
   function guardCouscous(){
     if (cart.has("couscous") && !isFriday()) {
       cart.delete("couscous"); renderCart();
-      toast("تزال الكسكس من السلة — متوفر غير نهار الجمعة");
+      toast(T("couscousRemoved"));
     }
   }
   function toggleExtra(btn, force){
@@ -965,7 +1113,7 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
     if (add) {
       const key = add.dataset.add;
       if (addToCart(key) && !add.closest("#order")) {
-        toast("تزاد «" + MENU[key].name + "» للسلة — " + fmt(cartTotal()) + ". كمّل طلبك لتحت ↓");
+        toast(T("added", dname(key), fmt(cartTotal())));
         const target = document.getElementById("builder");
         if (window.__lenis) window.__lenis.scrollTo(target, { offset: -70, duration: 1.3 });
         else target.scrollIntoView({ behavior: "smooth" });
@@ -975,21 +1123,27 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
     const inc = e.target.closest("[data-inc]");
     if (inc) { addToCart(inc.dataset.inc); return; }
     const dec = e.target.closest("[data-dec]");
-    if (dec) { const k = dec.dataset.dec, q = (cart.get(k) || 0) - 1; if (q <= 0) cart.delete(k); else cart.set(k, q); renderCart(); return; }
+    if (dec) { const k = dec.dataset.dec, it3 = cart.get(k); if (it3) { it3.qty -= 1; if (it3.qty <= 0) cart.delete(k); } renderCart(); return; }
     const rm = e.target.closest("[data-rm]");
     if (rm) { cart.delete(rm.dataset.rm); renderCart(); }
   });
   const dateWrap = document.getElementById("dateSlots");
-  const days = ["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"], months = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليوز","غشت","شتنبر","أكتوبر","نونبر","دجنبر"];
-  for (let i = 0; i < 7; i++){
-    const d = new Date(); d.setDate(d.getDate() + i);
-    const label = (i === 0 ? "اليوم" : days[d.getDay()]) + " " + d.getDate() + " " + months[d.getMonth()];
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "slot" + (i === 0 ? " sel" : ""); b.textContent = label; b.dataset.label = label;
-    if (i === 0) { state.date = label; state.dateObj = d; }
-    b.addEventListener("click", ()=>{ dateWrap.querySelectorAll(".slot").forEach(s=>s.classList.remove("sel")); b.classList.add("sel"); state.date = label; state.dateObj = d; recalc(); guardCouscous(); });
-    dateWrap.appendChild(b);
+  let dateIdx = 0;
+  function buildDates(){
+    dateWrap.innerHTML = "";
+    const days = LANG === "fr" ? ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"] : ["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+    const months = LANG === "fr" ? ["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."] : ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليوز","غشت","شتنبر","أكتوبر","نونبر","دجنبر"];
+    for (let i = 0; i < 7; i++){
+      const d = new Date(); d.setDate(d.getDate() + i);
+      const label = (i === 0 ? (LANG === "fr" ? "Aujourd'hui" : "اليوم") : days[d.getDay()]) + " " + d.getDate() + " " + months[d.getMonth()];
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "slot" + (i === dateIdx ? " sel" : ""); b.textContent = label; b.dataset.label = label;
+      if (i === dateIdx) { state.date = label; state.dateObj = d; }
+      b.addEventListener("click", ()=>{ dateIdx = i; dateWrap.querySelectorAll(".slot").forEach(s=>s.classList.remove("sel")); b.classList.add("sel"); state.date = label; state.dateObj = d; recalc(); guardCouscous(); });
+      dateWrap.appendChild(b);
+    }
   }
+  buildDates();
   const timeWrap = document.getElementById("timeSlots");
   ["12:30","13:00","13:30","14:00","19:00","20:00","21:00","22:00"].forEach(tm=>{
     const b = document.createElement("button");
@@ -999,8 +1153,8 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   });
   renderCart();
   function buildOrderMessage(st, total){
-    const L = [CONFIG.brand + " — طلب جديد", "", "الأطباق:"];
-    cart.forEach((q,k)=> L.push("- " + MENU[k].name + " × " + q));
+    const L = [CONFIG.brand + " — طلب جديد", "", "الزبون: " + (st.name || "—"), "الهاتف: " + (st.phone || "—"), "", "الأطباق:"];
+    cart.forEach((it,k)=> { L.push("- " + MENU[k].name + " × " + it.qty); if (it.note) L.push("  ملاحظة: " + it.note); });
     L.push("", "الإضافات:");
     if (st.extras.size) [...st.extras.keys()].forEach(x=> L.push("- " + x)); else L.push("بدون إضافات");
     L.push("", "طريقة الوصول:", st.method === "delivery" ? "التوصيل لباب الدار" : "الاستلام من المطعم");
@@ -1009,7 +1163,8 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
       if (st.geoLink) L.push("موقعي: " + st.geoLink);
     }
     L.push("", "الموعد:", (st.date || "اليوم") + " " + st.time);
-    L.push("", "المجموع:", fmt(total));
+    L.push("", "طريقة الأداء:", st.pay === "transfer" ? "تحويل — يتأكد في واتساب" : "نقداً عند الاستلام");
+    L.push("", "المجموع:", total + " درهم");
     if (st.method === "delivery") L.push("", "ثمن ومدة التوصيل يتأكدو مع المطعم في واتساب.");
     return L.join("\n");
   }
@@ -1041,18 +1196,168 @@ const CONFIG = { whatsapp: "212719161654", brand: "مطعم الباشا", mapsU
   document.getElementById("orderBtn").addEventListener("click", ()=>{
     const total = recalc();
     if (!cart.size) {
-      toast("السلة خاوية — زيد طبق بعدا من اللائحة");
+      toast(T("cartEmptyToast"));
       document.getElementById("pickList").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
       return;
     }
+    if (!state.name || state.name.trim().length < 2) {
+      toast(T("needName"));
+      const cn = document.getElementById("custName"); cn.classList.add("err"); cn.focus();
+      cn.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+      return;
+    }
+    if (!/^(\+?212|0)(5|6|7)[0-9]{8}$/.test((state.phone || "").replace(/[\s-]/g, ""))) {
+      toast(T("needPhone"));
+      const cp = document.getElementById("custPhone"); cp.classList.add("err"); cp.focus();
+      cp.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+      return;
+    }
     if (state.method === "delivery" && !state.address) {
-      toast("كتب الحومة والعنوان باش يوصلك الطلب");
+      toast(T("needAddress"));
       addrInput.classList.add("err"); addrInput.focus();
       addrBlock.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
       return;
     }
     window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(buildOrderMessage(state, total)), "_blank");
   });
+
+
+  /* ---------- v14: dish detail sheet (photo + ready 3D slot) ---------- */
+  const sheet = document.getElementById("dishSheet"), sheetBd = document.getElementById("sheetBackdrop");
+  let sheetKey = null, sheetQty = 1, mvRequested = false;
+  function ensureModelViewer(cb){
+    if (window.customElements && customElements.get("model-viewer")) { cb(); return; }
+    if (mvRequested) { const iv = setInterval(()=>{ if (window.customElements && customElements.get("model-viewer")) { clearInterval(iv); cb(); } }, 150); return; }
+    mvRequested = true;
+    const s = document.createElement("script");
+    s.type = "module"; s.src = "https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js";
+    s.onload = ()=>cb(); s.onerror = ()=>cb();
+    document.head.appendChild(s);
+  }
+  function sheetTotal(){ document.getElementById("sheetAdd").textContent = T("sheetAdd") + " — " + fmt(MENU[sheetKey].price * sheetQty); }
+  function fillSheet(){
+    const d = DISHES[sheetKey], other = LANG === "fr" ? "ar" : "fr";
+    document.getElementById("sheetName").textContent = d[LANG].name;
+    document.getElementById("sheetAlt").textContent = d[other].name;
+    document.getElementById("sheetDesc").textContent = d[LANG].desc;
+    document.getElementById("sheetPrice").textContent = fmt(MENU[sheetKey].price);
+    document.getElementById("sheetQty").textContent = sheetQty;
+    document.getElementById("sheet3dBadge").textContent = T("sheet3d");
+    sheetTotal();
+  }
+  function openSheet(key){
+    if (!MENU[key]) return;
+    sheetKey = key; sheetQty = 1;
+    document.getElementById("sheetNote").value = "";
+    const img = document.getElementById("sheetImg"), viewer = document.getElementById("sheetViewer"), badge = document.getElementById("sheet3dBadge");
+    img.src = DISHIMG[key]; img.alt = DISHES[key][LANG].name;
+    viewer.innerHTML = ""; viewer.style.display = "none"; img.style.display = ""; badge.style.display = "";
+    fillSheet();
+    if (MODELS[key]) {
+      ensureModelViewer(()=>{
+        if (sheetKey !== key) return;
+        img.style.display = "none"; badge.style.display = "none"; viewer.style.display = "block";
+        viewer.innerHTML = '<model-viewer src="' + MODELS[key] + '" poster="' + DISHIMG[key] + '" camera-controls auto-rotate shadow-intensity="0.5" style="width:100%;height:100%" alt="' + DISHES[key][LANG].name + '"></model-viewer>';
+      });
+    }
+    sheet.hidden = false; sheetBd.hidden = false;
+    requestAnimationFrame(()=>{ sheet.classList.add("open"); sheetBd.classList.add("open"); });
+    if (window.__lenis) window.__lenis.stop();
+    document.body.style.overflow = "hidden";
+  }
+  function closeSheet(){
+    sheet.classList.remove("open"); sheetBd.classList.remove("open");
+    setTimeout(()=>{ sheet.hidden = true; sheetBd.hidden = true; }, 300);
+    if (window.__lenis) window.__lenis.start();
+    document.body.style.overflow = "";
+  }
+  document.getElementById("sheetClose").addEventListener("click", closeSheet);
+  sheetBd.addEventListener("click", closeSheet);
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !sheet.hidden) closeSheet(); });
+  document.getElementById("sheetPlus").addEventListener("click", ()=>{ if (sheetQty < 20) { sheetQty++; fillSheet(); } });
+  document.getElementById("sheetMinus").addEventListener("click", ()=>{ if (sheetQty > 1) { sheetQty--; fillSheet(); } });
+  document.getElementById("sheetAdd").addEventListener("click", ()=>{
+    const note = document.getElementById("sheetNote").value.trim();
+    if (addToCart(sheetKey, sheetQty, note)) {
+      const nm = dname(sheetKey);
+      closeSheet();
+      toast(T("added", nm, fmt(cartTotal())));
+      const target = document.getElementById("builder");
+      if (window.__lenis) window.__lenis.scrollTo(target, { offset: -70, duration: 1.2 });
+      else target.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+  document.querySelectorAll(".cat-card").forEach(card => {
+    card.addEventListener("click", e => {
+      if (e.target.closest("button, a")) return;
+      const b = card.querySelector("[data-add]"); if (b) openSheet(b.dataset.add);
+    });
+  });
+  document.querySelectorAll(".pick-row").forEach(row => {
+    row.addEventListener("click", e => {
+      if (e.target.closest("button, a")) return;
+      const b = row.querySelector("[data-add]"); if (b) openSheet(b.dataset.add);
+    });
+  });
+  const sigFig = document.querySelector("#signature .reveal-img");
+  if (sigFig) { sigFig.style.cursor = "pointer"; sigFig.addEventListener("click", ()=>openSheet("burger")); }
+  const stageEl = document.querySelector(".stage-wrap");
+  if (stageEl) { stageEl.style.cursor = "pointer"; stageEl.addEventListener("click", e => { if (!e.target.closest("button")) openSheet("spaghetti"); }); }
+
+  /* ---------- v14: customer + payment bindings ---------- */
+  const custName = document.getElementById("custName"), custPhone = document.getElementById("custPhone");
+  custName.addEventListener("input", ()=>{ state.name = custName.value; custName.classList.remove("err"); });
+  custPhone.addEventListener("input", ()=>{ state.phone = custPhone.value; custPhone.classList.remove("err"); });
+  document.querySelectorAll("#payOpts .method").forEach(b => b.addEventListener("click", ()=>{
+    state.pay = b.dataset.pay;
+    document.querySelectorAll("#payOpts .method").forEach(x => { const on = x === b; x.classList.toggle("sel", on); x.setAttribute("aria-checked", on ? "true" : "false"); });
+    recalc();
+  }));
+
+  /* ---------- v14: AR / FR language toggle (menu + order) ---------- */
+  const BADGES = { "الأكثر طلباً": "Le plus commandé", "توقيع الباشا": "Signature El Bacha", "نهار الجمعة": "Le vendredi", "للمشاركة": "À partager", "عرض خاص": "Offre spéciale" };
+  const EXTRAS_FR = { "جبن إضافي": "Fromage supplémentaire", "صلصة الباشا": "Sauce El Bacha", "بطاطس مقلية": "Frites", "سلطة الدار": "Salade de la maison", "عصير أفوكادو": "Jus d'avocat", "حلوى اليوم": "Dessert du jour" };
+  function setLang(l){
+    LANG = l;
+    document.querySelectorAll("[data-i18n]").forEach(el => { const k = el.dataset.i18n; if (STR[l][k]) el.textContent = STR[l][k]; });
+    document.querySelectorAll("[data-i18n-ph]").forEach(el => { const k = el.dataset.i18nPh; if (STR[l][k]) el.placeholder = STR[l][k]; });
+    const mh = document.querySelector("#menu .layers-head h2");
+    if (mh) mh.innerHTML = l === "fr" ? 'Les spécialités de la maison<br><span class="grad-gold">en vraies photos de notre cuisine</span>' : 'تخصصات الدار<br><span class="grad-gold">بصور حقيقية من مطبخنا</span>';
+    const oh = document.querySelector("#order > h2.big");
+    if (oh) oh.innerHTML = l === "fr" ? 'Composez <span class="grad-gold">votre commande</span>' : 'بنِ <span class="grad-gold">طلبك</span>';
+    const al = document.querySelector('label[for="addrInput"]');
+    if (al) al.innerHTML = l === "fr" ? 'Quartier et adresse <b class="req">— requis pour la livraison</b>' : 'الحومة والعنوان <b class="req">— مطلوب للتوصيل</b>';
+    const pn = document.getElementById("pickupNote");
+    if (pn) pn.innerHTML = l === "fr" ? 'Votre commande sera prête chez <b>Restaurant El Bacha</b> — Branes 2, Tanger, près du Centre Laitier.' : 'طلبك غادي يكون واجد في <b>مطعم الباشا</b> — البرانص 2، طنجة، قريب من مركز الحليب.';
+    document.getElementById("cartEmpty").textContent = T("cartEmpty");
+    document.querySelectorAll(".cat-card").forEach(card => {
+      const b = card.querySelector("[data-add]"); if (!b) return; const key = b.dataset.add;
+      card.querySelector("h3").textContent = DISHES[key][l].name;
+      card.querySelector("p").textContent = DISHES[key][l].desc;
+      const cp = card.querySelector(".cprice"); if (cp) cp.textContent = fmt(MENU[key].price);
+      b.textContent = T("addBtnLong");
+    });
+    document.querySelectorAll(".cbadge").forEach(bd => {
+      if (!bd.dataset.ar) bd.dataset.ar = bd.textContent.trim();
+      bd.textContent = l === "fr" ? (BADGES[bd.dataset.ar] || bd.dataset.ar) : bd.dataset.ar;
+    });
+    document.querySelectorAll(".pick-row").forEach(row => {
+      const b = row.querySelector("[data-add]"); if (!b) return; const key = b.dataset.add;
+      row.querySelector(".pick-info b").textContent = DISHES[key][l].name;
+      row.querySelector(".pick-info span").textContent = DISHES[key][l].note;
+      row.querySelector(".pick-price").textContent = fmt(MENU[key].price);
+      b.textContent = T("addBtn");
+    });
+    document.querySelectorAll("#extraOpts .extra").forEach(b => {
+      const nm = b.querySelector("b"); if (nm) nm.textContent = l === "fr" ? (EXTRAS_FR[b.dataset.extra] || b.dataset.extra) : b.dataset.extra;
+      const pr = b.querySelector("span span"); if (pr) pr.textContent = "+ " + fmt(+b.dataset.price);
+    });
+    ["menu", "order"].forEach(id => { const s = document.getElementById(id); if (s) { s.dir = l === "fr" ? "ltr" : "rtl"; s.classList.toggle("fr-mode", l === "fr"); } });
+    document.getElementById("langToggle").textContent = l === "fr" ? "عربي" : "FR";
+    buildDates(); renderCart();
+    if (!sheet.hidden && sheetKey) fillSheet();
+  }
+  document.getElementById("langToggle").addEventListener("click", ()=> setLang(LANG === "fr" ? "ar" : "fr"));
 
   /* ---------- SECTION VIDEOS (autoplay-hardened) ---------- */
   const vids = [...document.querySelectorAll("video[data-vid]")];
